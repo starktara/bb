@@ -1,1 +1,31 @@
-Top nav vertical borders
+--1) Put Slash (|) in between phone number and mail, also in between login and sign up in the top black bar above navigation.
+
+--2) Need some breathing space in location button (in header).
+
+3) Search icon should be a little thiker in Header and Banner section.
+
+--4) "Search your two-wheeler" in search bar should be a little bolder.
+
+--5) Header logo of BikeBazaar should be resize as per the design & align linear to the Navigation/Page Name text.
+
+--6) Change color to black of "Location" word in banner section, also give some space in between "Search icon" and "Location" word.
+
+--7) Smaller the font size of 3-Points "certified two-wheeler..." in banner by 2-3 points/pixels.
+
+--8) Replace "6 month warranty" to "6 Months' Warranty"
+
+--9) Capitalize the word through out page as per design.
+
+--10) Correct the spelling of Motorcycle through out the page.
+
+--11) Space above the "WHAT ARE YOU LOOKING FOR?" in too big, please fix it. Make it as per the design.
+
+--12) 3-Icons below the "WHAT ARE YOU LOOKING FOR?" are not align linearly. Please fix it.
+
+--13) "BikeBazaar Advantage" section- in this section paragraphs should a little bolder, Icons should be a little smaller, so that this whole section should be in one screen.
+
+--14) Remove "Comprehensive" word from the 2nd paragraph of BikeBazaar Advantage section.
+
+--15) Testimonials section should same as per the design, other circle than the selected should be smaller in size with 100% opacity/no transparent.
+
+--16) Space between the "design element" and "Heading" should be smaller, follow the "Testimonials Heading" and "design element" style.

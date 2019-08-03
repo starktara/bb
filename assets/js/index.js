@@ -17,7 +17,8 @@ var testiminialMessages = [
     }
 ];
 var carouselOptions = {
-    padding: 150,
+    padding: 300,
+    dist: -200,
     onCycleTo: function(data){
         var index = $(data).attr('index');
         var message = testiminialMessages[index].message;

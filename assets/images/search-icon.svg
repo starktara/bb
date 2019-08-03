@@ -1,6 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="31" viewBox="0 0 32 31">
-    <g fill="none" fill-rule="evenodd" stroke="#FFF" transform="translate(1 1)">
-        <circle cx="10.435" cy="10.435" r="10.435"/>
-        <path stroke-linecap="round" d="M17.87 17.804L30 30"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56 (81588) - https://sketch.com -->
+    <title>Search-icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="BB-Locate-Store-A" transform="translate(-999.000000, -79.000000)" stroke="#FFFFFF" stroke-width="3">
+            <g id="Header">
+                <g id="Search-Bar" transform="translate(400.000000, 65.000000)">
+                    <g id="Search-icon" transform="translate(601.000000, 16.000000)">
+                        <circle id="Oval" cx="10.4347826" cy="10.4347826" r="10.4347826"></circle>
+                        <path d="M17.8695652,17.8043478 L30,30" id="Path" stroke-linecap="round"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
     </g>
 </svg>
