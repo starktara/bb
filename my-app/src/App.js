@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App = () =>  {
   return (
     <div className="App">
         <header className="header">
@@ -25,10 +25,10 @@ function App() {
                         </li>
                         <li className="signup"><a href="#">Signup</a></li>
                         </ul>
-                    </div>
+                </div>
             </nav>
           <nav className="nav-extended nav-color">
-                  <div className="nav-wrapper row">
+                <div className="nav-wrapper row">
                     {/* <div className="header-title col s2">      
                         <img src="assets/images/logo.svg" height="105" id="logoImg">
                     </div> */}
