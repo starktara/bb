@@ -297,12 +297,13 @@ nav{
     box-shadow: 0 0 7px rgba(0,0,0,0.6);
 }
 .advantage-subtitle{
+    margin-left: 25px;
     font-size: 15px;
     font-weight: 500;
 }
 
 .arrow-container{
-    height: 300px;
+    height: 350px;
     justify-content: center;
 }
 i.icon-black{
@@ -511,4 +512,7 @@ max-height: 350px !important;
 
 .signup{
     padding-left: 19px;
+}
+.hfdc{
+    margin-left: -30px;
 }
