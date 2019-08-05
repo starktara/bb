@@ -2,7 +2,7 @@
 
 --2) Need some breathing space in location button (in header).
 
-3) Search icon should be a little thiker in Header and Banner section.
+--3) Search icon should be a little thiker in Header and Banner section.
 
 --4) "Search your two-wheeler" in search bar should be a little bolder.
 
