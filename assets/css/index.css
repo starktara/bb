@@ -272,7 +272,7 @@ nav{
     padding-top: 43.8px;
 }
 .section-4 h3{
-    margin-bottom: 15px !important;
+    padding-bottom: 15px;
     font-size: 36px;
     font-weight: 800;
     letter-spacing: 2.37px;
@@ -437,7 +437,7 @@ i.icon-black{
     height: inherit;
     background-color: #d6d6d6;
     opacity: 0.7; 
-    padding: 15px 0px 22px 15px;
+    padding: 17px 0px 22px 15px;
 }
 .carousel-search-box{
     width: 56.77%;
@@ -470,6 +470,7 @@ i.icon-black{
     margin-top: 3px;
     color: #000;
     font-size: 16.8px;
+    font-weight: 500;
 }
 .carousel-search-label{
     height: inherit;
