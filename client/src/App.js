@@ -10,9 +10,9 @@ import dropDown from '../src/assets/drop-down.svg';
 import logoPng from '../src/assets/logo.png';
 import sliderImg from '../src/assets/slider-image.png';
 import headingLines from '../src/assets/heading-lines.svg';
-import bike2 from '../src/assets/bike2.svg';
-import scooter from '../src//assets/scooter.svg';
-import bike from '../src/assets/bike.svg';
+import bike2 from '../src/assets/motorcycle-icon.svg';
+import scooter from '../src//assets/scooter-icon.svg';
+import bike from '../src/assets/high-end-bike-icon.svg';
 import certifiedAutoExperts from '../src/assets/certified_by_auto_experts.svg';
 import monthWarranty from  "../src/assets/6_month_warranty.svg";
 import buyerProtection from "../src/assets/buyer_protection.svg";
@@ -148,7 +148,7 @@ const App = () =>  {
                     </h4>
                     <h4 className="text-white">
                         <img src={logo} className="tick-icon" />
-                        6 Months <span className="bold">Warranty</span>
+                        6 Months' <span className="bold">Warranty</span>
                     </h4>
                     <h4 className="text-white">
                         <img src={logo} className="tick-icon" />
@@ -226,9 +226,9 @@ const App = () =>  {
                         </div>
                     </div>
                     <div className="center-align">
-                        <h5>Free 6 Months Warranty</h5>
+                        <h5>Free 6 Months' Warranty</h5>
                         <p className="advantage-subtitle">
-                            Get 6 Month's Warranty covering critical parts including engine and gear box, extendable upto 12 months 
+                            Get 6 Months' Warranty covering critical parts including engine and gear box, extendable upto 12 months 
                         </p>
                     </div>
                 </div>
@@ -347,7 +347,7 @@ const App = () =>  {
                 </div>
                 <div className="row last-row">
                     <div className="col s4 m4">
-                        <a href="#" className="copyright">© 2019 Bike Bazaar. All rights reserved.</a>
+                        <a href="#" className="copyright">© 2019 BikeBazaar. All rights reserved.</a>
                     </div>
                     <div className="col s2 m2 offset-s6 offset-m6">
                         <div className="row">
