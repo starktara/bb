@@ -1,0 +1,576 @@
+<html>
+<head>
+<title>Bike Bazaar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href= "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800" rel="stylesheet" >
+<link href="assets/css/index.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+<link href="assets/css/rangeslider.css" rel="stylesheet">
+<script src="assets/js/jquery.min.js"></script>
+
+
+<script>
+function resize() {
+    if ($(window).width() < 993) {
+     $('aside').addClass('sidenav');
+    }
+    else {$('aside').removeClass('sidenav');}
+}
+
+$(document).ready( function() {
+    $(window).resize(resize);
+    resize();
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>
+
+
+
+
+
+</head>
+<body>
+        
+<header style="width100%; overflow: hidden;">
+  <nav id="topNav">
+    <div class="nav-wrapper nav-flexify">
+      <ul class="left hide-on-med-and-down left-ul">
+        <li class="phone-number"> <img src="assets/images/phone-icon.svg" height="22" class="nav-img responsive-img"/> <a href="#" class="right">9999999999</a> </li>
+        <li> <img src="assets/images/email-icon.svg" height="22" class="nav-img responsive-img"/> <a href="#" class="right">help@bikebazaar.com</a> </li>
+      </ul>
+      <ul class="right hide-on-med-and-down">
+        <li class="login"> <img src="assets/images/user-icon.svg" height="22" class="nav-img responsive-img"/> <a href="#" class="right">Login</a> </li>
+        <li class="signup"><a href="#">Signup</a></li>
+      </ul>
+    </div>
+  </nav>
+  <nav class="nav-extended nav-color">
+    <div class="nav-wrapper row">
+      <div class="header-title col s2"> <img src="assets/images/logo.svg" height="105" id="logoImg"> </div>
+      <div class="col s8">
+        <div class="row">
+          <form id="searchForm" class="input-field col s12">
+            <div class="search-container">
+              <input id="searchField" type="text" placeholder="Search Your Two-wheeler">
+              <button class="btn search-label-btn"><img src="assets/images/search-icon.svg" height="30"></button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col s2 location-btn-container">
+        <div class="location-btn">
+          <div class="icon-wrapper"><img src="assets/images/location-icon.svg" height="20"></div>
+          <span class="location-btn-text">Location</span><img src="assets/images/drop-down.svg" height="11" class="dropdown-icon"></div>
+      </div>
+    </div>
+    <div class="second-nav-wrapper row">
+      <div class="col s2 logo-text-container"> <img src="assets/images/logo.png" width="225" height="29" class="text-logo"> </div>
+      <div class="col s10">
+        <div class="row option-row">
+          <div class="col s12">
+            <ul class="nav-options">
+              <li> <a href="#">BUY</a> </li>
+              <li> <a href="#">SELL</a> </li>
+              <li> <a href="#">LOCATE STORE</a> </li>
+              <li> <a href="#">BECOME A FRANCHISE OWNER</a> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="wapper"><!---->
+	<div class="pageDtl">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li class="current"><a href="#">Motorcycles</a></li>
+		</ul>
+		<h1>Motorcycles</h1>
+		<p>Bikes are available at easy EMI starting at st 2,000*. Your  dream bike is not a distant dream now.</p>
+	</div>
+	
+	<!-- Start Filter Section -->
+	<div class="row">
+		<aside id="slide-out" class="filter col s12 m4 l4 xl3">
+		<h5>Filter by</h5>
+		<div class="filterSec">
+			<div class="CityWidget">
+				<h3 class="WidgetTitle">
+					<a data-toggle="collapse" href="#widget-body-1" role="button" aria-expanded="true" aria-controls="widget-body-1">City</a>
+				</h3>
+				<div class="WidgetBody">
+					<ul class="cat-list">
+						<li><a href="#">Mumbai</a></li>
+						<li><a href="#">Pune</a></li>
+						<li><a href="#">Kollim</a></li>
+						<li><a href="#">Rajmundary</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="BudgetWidget">
+				<h3 class="WidgetTitle">
+					<a data-toggle="collapse" href="#widget-body-1" role="button" aria-expanded="true" aria-controls="widget-body-1">Budget</a>
+				</h3>
+				<div class="WidgetBody">
+					<ul class="list">
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#"><strong>`</strong> 0 - <strong>`</strong> 15,000</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#"><strong>`</strong> 15,001 - <strong>`</strong> 25,000</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#"><strong>`</strong> 25,001 - <strong>`</strong> 35,000</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#"><strong>`</strong> 35,001 - <strong>`</strong> 45,000</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#"><strong>`</strong> 45,001 - <strong>`</strong> 55,000</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#"><strong>`</strong> 55,001 - <strong>`</strong> 1,00,000</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#"><strong>`</strong> 1,00,001 +</a>
+							</label>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="BrandWidget">
+				<h3 class="WidgetTitle">
+					<a data-toggle="collapse" href="#widget-body-1" role="button" aria-expanded="true" aria-controls="widget-body-1">Brand</a>
+				</h3>
+				<div class="WidgetBody">
+					<ul class="list">
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">Hero</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">Honda</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">TVS</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">Bajaj</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">Yamaha</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">Suzuki</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">Others</a>
+							</label>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="YearWidget">
+				<h3 class="WidgetTitle">
+					<a data-toggle="collapse" href="#widget-body-1" role="button" aria-expanded="true" aria-controls="widget-body-1">Manufacturing Year</a>
+				</h3>
+				<div class="WidgetBody">
+					<ul class="list">
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2019</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2018</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2017</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2016</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2015</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2014</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2013</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2012</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2011</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2010</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2009</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2008</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2007</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2006</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2005</a>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="filled-in" /><span></span> <a href="#">2004</a>
+							</label>
+						</li>
+					</ul>
+					<br class="clr"/>
+				</div>
+			</div>
+			<div class="kmWidget">
+				<h3 class="WidgetTitle">
+					<a data-toggle="collapse" href="#widget-body-1" role="button" aria-expanded="true" aria-controls="widget-body-1">Kilometers</a>
+				</h3>
+				<div class="WidgetBody">
+					<input type="range" min="10" max="1000" step="10" value="10" data-rangeslider="" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0;">
+  <output id="js-output">10</output>
+			
+				</div>
+			</div>
+		</div>
+		</aside>
+
+		<div class="ProductListSec col s12 m12 l8 xl9">
+		    <div class="filterBand"><a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">filter_list</i> Filter</a></div>
+			<h5>One Step Closer to Your Dream Bike</h5>
+			<div class="input-field sortby">
+				<select>
+					<option value="" disabled selected>Sort by</option>
+					<option value="1">Popular</option>
+					<option value="2">Price: Low to High</option>
+					<option value="3">Price: High to Low</option>
+					<option value="4">Mileage: High to Low</option>
+				</select>
+			</div>
+			<br class="clr" />
+			<div class="col s12 m6 l6 xl4 Prod">
+				<div class="Product">
+					<img src="assets/images/product/bike-img.png" alt="">
+					<div class="detail">
+						<h3>Bajaj Platina </h3>
+						<p class="price"><strong>`</strong> 17,500</p>
+						<ul class="detailPoints">
+							<li class="year">2007</li>
+							<li class="km">25,000 KMs</li>
+							<li class="cc">99 CC</li>
+							<li class="owner">1<sup>st</sup> Owner</li>
+						</ul><br class="clr"/>
+						<div class="location">Baner, Pune</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l6 xl4 Prod">
+				<div class="Product">
+					<img src="assets/images/product/bike-img.png" alt="">
+					<div class="detail">
+						<h3>Bajaj Platina </h3>
+						<p class="price"><strong>`</strong> 17,500</p>
+						<ul class="detailPoints">
+							<li class="year">2007</li>
+							<li class="km">25,000 KMs</li>
+							<li class="cc">99 CC</li>
+							<li class="owner">1<sup>st</sup> Owner</li>
+						</ul><br class="clr"/>
+						<div class="location">Baner, Pune</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l6 xl4 Prod">
+				<div class="Product">
+					<img src="assets/images/product/bike-img.png" alt="">
+					<div class="detail">
+						<h3>Bajaj Platina </h3>
+						<p class="price"><strong>`</strong> 17,500</p>
+						<ul class="detailPoints">
+							<li class="year">2007</li>
+							<li class="km">25,000 KMs</li>
+							<li class="cc">99 CC</li>
+							<li class="owner">1<sup>st</sup> Owner</li>
+						</ul><br class="clr"/>
+						<div class="location">Baner, Pune</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l6 xl4 Prod">
+				<div class="Product">
+					<img src="assets/images/product/bike-img.png" alt="">
+					<div class="detail">
+						<h3>Bajaj Platina </h3>
+						<p class="price"><strong>`</strong> 17,500</p>
+						<ul class="detailPoints">
+							<li class="year">2007</li>
+							<li class="km">25,000 KMs</li>
+							<li class="cc">99 CC</li>
+							<li class="owner">1<sup>st</sup> Owner</li>
+						</ul><br class="clr"/>
+						<div class="location">Baner, Pune</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l6 xl4 Prod">
+				<div class="Product">
+					<img src="assets/images/product/bike-img.png" alt="">
+					<div class="detail">
+						<h3>Bajaj Platina </h3>
+						<p class="price"><strong>`</strong> 17,500</p>
+						<ul class="detailPoints">
+							<li class="year">2007</li>
+							<li class="km">25,000 KMs</li>
+							<li class="cc">99 CC</li>
+							<li class="owner">1<sup>st</sup> Owner</li>
+						</ul><br class="clr"/>
+						<div class="location">Baner, Pune</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l6 xl4 Prod">
+				<div class="Product">
+					<img src="assets/images/product/bike-img.png" alt="">
+					<div class="detail">
+						<h3>Bajaj Platina </h3>
+						<p class="price"><strong>`</strong> 17,500</p>
+						<ul class="detailPoints">
+							<li class="year">2007</li>
+							<li class="km">25,000 KMs</li>
+							<li class="cc">99 CC</li>
+							<li class="owner">1<sup>st</sup> Owner</li>
+						</ul><br class="clr"/>
+						<div class="location">Baner, Pune</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l6 xl4 Prod">
+				<div class="Product">
+					<img src="assets/images/product/bike-img.png" alt="">
+					<div class="detail">
+						<h3>Bajaj Platina </h3>
+						<p class="price"><strong>`</strong> 17,500</p>
+						<ul class="detailPoints">
+							<li class="year">2007</li>
+							<li class="km">25,000 KMs</li>
+							<li class="cc">99 CC</li>
+							<li class="owner">1<sup>st</sup> Owner</li>
+						</ul><br class="clr"/>
+						<div class="location">Baner, Pune</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l6 xl4 Prod">
+				<div class="Product">
+					<img src="assets/images/product/bike-img.png" alt="">
+					<div class="detail">
+						<h3>Bajaj Platina </h3>
+						<p class="price"><strong>`</strong> 17,500</p>
+						<ul class="detailPoints">
+							<li class="year">2007</li>
+							<li class="km">25,000 KMs</li>
+							<li class="cc">99 CC</li>
+							<li class="owner">1<sup>st</sup> Owner</li>
+						</ul><br class="clr"/>
+						<div class="location">Baner, Pune</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l6 xl4 Prod">
+				<div class="Product">
+					<img src="assets/images/product/bike-img.png" alt="">
+					<div class="detail">
+						<h3>Bajaj Platina </h3>
+						<p class="price"><strong>`</strong> 17,500</p>
+						<ul class="detailPoints">
+							<li class="year">2007</li>
+							<li class="km">25,000 KMs</li>
+							<li class="cc">99 CC</li>
+							<li class="owner">1<sup>st</sup> Owner</li>
+						</ul><br class="clr"/>
+						<div class="location">Baner, Pune</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l6 xl4 Prod">
+				<div class="Product">
+					<img src="assets/images/product/bike-img.png" alt="">
+					<div class="detail">
+						<h3>Bajaj Platina </h3>
+						<p class="price"><strong>`</strong> 17,500</p>
+						<ul class="detailPoints">
+							<li class="year">2007</li>
+							<li class="km">25,000 KMs</li>
+							<li class="cc">99 CC</li>
+							<li class="owner">1<sup>st</sup> Owner</li>
+						</ul><br class="clr"/>
+						<div class="location">Baner, Pune</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l6 xl4 Prod">
+				<div class="Product">
+					<img src="assets/images/product/bike-img.png" alt="">
+					<div class="detail">
+						<h3>Bajaj Platina </h3>
+						<p class="price"><strong>`</strong> 17,500</p>
+						<ul class="detailPoints">
+							<li class="year">2007</li>
+							<li class="km">25,000 KMs</li>
+							<li class="cc">99 CC</li>
+							<li class="owner">1<sup>st</sup> Owner</li>
+						</ul><br class="clr"/>
+						<div class="location">Baner, Pune</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l6 xl4 Prod">
+				<div class="Product">
+					<img src="assets/images/product/bike-img.png" alt="">
+					<div class="detail">
+						<h3>Bajaj Platina </h3>
+						<p class="price"><strong>`</strong> 17,500</p>
+						<ul class="detailPoints">
+							<li class="year">2007</li>
+							<li class="km">25,000 KMs</li>
+							<li class="cc">99 CC</li>
+							<li class="owner">1<sup>st</sup> Owner</li>
+						</ul><br class="clr"/>
+						<div class="location">Baner, Pune</div>
+					</div>
+				</div>
+			</div>
+			<br class="clr"/>
+			<ul class="pagination">
+				<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+				<li class="active"><a href="#!">1</a></li>
+				<li><a href="#!">2</a></li>
+				<li><a href="#!">3</a></li>
+				<li><a href="#!">4</a></li>
+				<li><a href="#!">5</a></li>
+				<li class="dot"><a href="#!">....</a></li>
+				<li><a href="#!">25</a></li>
+				<li><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+			</ul>
+		</div>
+	</div>
+	<br class="clr"/>
+	
+</div>
+
+
+<div class="footer">
+  <div class="row mb-9">
+    <div class="col s4 m4"> <a href="#">About</a> </div>
+    <div class="col s4 m4">
+      <div class="center-align"> <a href="#">How it works</a> </div>
+    </div>
+    <div class="col s4 m4"> <a href="#" class="right">Privacy Policy</a> </div>
+  </div>
+  <div class="row mb-20">
+    <div class="col s4 m4"> <a href="#">FAQs</a> </div>
+    <div class="col s4 m4">
+      <div class="center-align"> <a href="#">Contact Us</a> </div>
+    </div>
+    <div class="col s4 m4"> <a href="#" class="right">Terms & Conditions</a> </div>
+  </div>
+  <div class="row last-row">
+    <div class="col s4 m4"> <a href="#" class="copyright">© 2019 BikeBazaar. All rights reserved.</a> </div>
+    <div class="col s2 m2 offset-s6 offset-m6">
+      <div class="row">
+        <div class="col s3 m3"> <a href="#"> <img src="assets/images/facebook-icon.svg"/> </a> </div>
+        <div class="col s3 m3"> <a href="#"> <img src="assets/images/twitter-icon.svg"/> </a> </div>
+        <div class="col s3 m3"> <a href="#"> <img src="assets/images/linkedin-icon.svg"/> </a> </div>
+        <div class="col s3 m3"> <a href="#"> <img src="assets/images/instagram-icon.svg"/> </a> </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
+<script src="assets/js/index.js"></script>
+
+</body>
+</html>
