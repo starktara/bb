@@ -58,7 +58,8 @@ nav {
 }
 .search-label-btn{
   background: #232b2b;
-  margin-left: -91px;
+  margin-left: -87px;
+  padding-top: 9px;
   height: 54.5px;
   margin-top: -4px;
   width: 86px;
@@ -385,7 +386,7 @@ i.icon-black{
   display: inline-block;
   width: 13px;
   height: 20px;
-  margin-top: 21px;
+  margin-top: 5px;
 }
 .second-nav-wrapper{
   margin-bottom: 0px;

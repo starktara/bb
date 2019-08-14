@@ -32,6 +32,10 @@ import M from 'materialize-css';
 
 const App = () =>  {
 
+    const sliderChange = (e) => {
+        console.log(e);
+    }
+
     useEffect(() => {
         const testiminialMessages = [
             {
@@ -52,7 +56,7 @@ const App = () =>  {
             }
         ];
         let topSlider = document.querySelectorAll('.slider');
-        let topSliderInstances = M.Slider.init(topSlider, {});
+        M.Slider.init(topSlider, {});
         let carouselOptions = {
             shift: -150,
            padding: 800,
@@ -61,10 +65,12 @@ const App = () =>  {
             let index = data.getAttribute('index');
             let message = testiminialMessages[index].message;
             let name = testiminialMessages[index].name;
+            document.querySelector('#clientName').innerText = name;
+            document.querySelector('#testimonialMessage').innerText = message;
            }
        }
        let testimonialCarousel = document.querySelectorAll('.carousel');
-       let testimonialCarouselInstance = M.Carousel.init(testimonialCarousel, carouselOptions);
+       M.Carousel.init(testimonialCarousel, carouselOptions);
     });
   return (
     <div className="App">
@@ -285,9 +291,10 @@ const App = () =>  {
                 <div className="row mb-0">
                     <div className="col s1 m1">
                         <div className="valign-wrapper arrow-container">
-                            <a className="btn-floating btn-large waves-effect waves-light white" id="slideLeft"><i className="material-icons icon-black">
+                            <a className="btn-floating btn-large waves-effect waves-light white" id="slideLeft" onClick={sliderChange}>
+                                <i className="material-icons icon-black">
                                     keyboard_arrow_left
-                                    </i>
+                                </i>
                             </a>
                         </div>
                     </div>
@@ -302,9 +309,11 @@ const App = () =>  {
                     </div>
                     <div className="col s1 m1">
                         <div className="valign-wrapper arrow-container">
-                            <a className="btn-floating btn-large waves-effect waves-light white"  id="slideRight"><i className="material-icons icon-black">
+                            <a className="btn-floating btn-large waves-effect waves-light white"  id="slideRight"  onClick={sliderChange}>
+                                <i className="material-icons icon-black">
                                     keyboard_arrow_right
-                                    </i></a>
+                               </i>
+                            </a>
                         </div>
                     </div>
                 </div>
