@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import emailIcon from '../src/assets/emailIcon.svg';
 import phoneIcon from '../src/assets/phone-icon.svg';
@@ -32,40 +32,58 @@ import M from 'materialize-css';
 
 const App = () =>  {
 
-    useEffect(() => {
-        const testiminialMessages = [
-            {
-                name: 'Jai Kumar',
-                message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-            },{
-                name: 'Jimi Hendrix',
-                message: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-            },{
-                name: 'Buckethead',
-                message: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-            },{
-                name: 'David Gilmour',
-                message: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.'
-            },{
-                name: 'Slash',
-                message: 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.'
-            }
-        ];
-        let topSlider = document.querySelectorAll('.slider');
-        let topSliderInstances = M.Slider.init(topSlider, {});
-        let carouselOptions = {
-            shift: -150,
-           padding: 800,
-           dist: -200,
-           onCycleTo: function(data){
-            let index = data.getAttribute('index');
-            let message = testiminialMessages[index].message;
-            let name = testiminialMessages[index].name;
+    const [sliderState, changeSlider] = useState(null);
+
+    const initCar = (direction) => {
+        if(sliderState == null){
+            var instance;
+            const testiminialMessages = [
+                {
+                    name: 'Jai Kumar',
+                    message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+                },{
+                    name: 'Jimi Hendrix',
+                    message: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+                },{
+                    name: 'Buckethead',
+                    message: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+                },{
+                    name: 'David Gilmour',
+                    message: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.'
+                },{
+                    name: 'Slash',
+                    message: 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.'
+                }
+            ];
+            let carouselOptions = {
+                shift: -150,
+               padding: 800,
+               dist: -200,
+               onCycleTo: function(data){
+                let index = data.getAttribute('index');
+                let message = testiminialMessages[index].message;
+                let name = testiminialMessages[index].name;
+                document.querySelector('#clientName').innerText = name;
+                document.querySelector('#testimonialMessage').innerText = message;
+               }
            }
-       }
-       let testimonialCarousel = document.querySelectorAll('.carousel');
-       let testimonialCarouselInstance = M.Carousel.init(testimonialCarousel, carouselOptions);
-    });
+           let testimonialCarousel = document.querySelectorAll('.carousel');
+           instance = M.Carousel.init(testimonialCarousel, carouselOptions);
+           changeSlider(instance);
+        }else{
+            if(direction=='left'){
+                sliderState[0].prev();
+            }else{
+                sliderState[0].next();
+            }
+        }
+    }
+
+    useEffect(() => {
+        let topSlider = document.querySelectorAll('.slider');
+        M.Slider.init(topSlider, {});
+        initCar();
+    },[]);
   return (
     <div className="App">
         <header className="header">
@@ -285,9 +303,10 @@ const App = () =>  {
                 <div className="row mb-0">
                     <div className="col s1 m1">
                         <div className="valign-wrapper arrow-container">
-                            <a className="btn-floating btn-large waves-effect waves-light white" id="slideLeft"><i className="material-icons icon-black">
+                            <a className="btn-floating btn-large waves-effect waves-light white" id="slideLeft" onClick={() => initCar('left')}>
+                                <i className="material-icons icon-black">
                                     keyboard_arrow_left
-                                    </i>
+                                </i>initCar
                             </a>
                         </div>
                     </div>
@@ -302,9 +321,11 @@ const App = () =>  {
                     </div>
                     <div className="col s1 m1">
                         <div className="valign-wrapper arrow-container">
-                            <a className="btn-floating btn-large waves-effect waves-light white"  id="slideRight"><i className="material-icons icon-black">
+                            <a className="btn-floating btn-large waves-effect waves-light white"  id="slideRight"  onClick={() => initCar('right')}>
+                                <i className="material-icons icon-black">
                                     keyboard_arrow_right
-                                    </i></a>
+                               </i>
+                            </a>
                         </div>
                     </div>
                 </div>
