@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
-
+import Footer from './Components/Footer/Footer';
 import logo from '../src/assets/logo.svg';
 import searchIcon from '../src/assets/search-icon.svg';
 import locationIcon from '../src/assets/location-icon.svg';
@@ -20,10 +20,6 @@ import testimonial2 from '../src/assets/testimonial-image-2.png';
 import testimonial3 from '../src/assets/testimonial-image-3.png';
 import testimonial4 from '../src/assets/testimonial-image-4.png';
 import testimonial5 from '../src/assets/testimonial-image-5.png';
-import faceBookIcon from '../src/assets/facebook-icon.svg';
-import twitterIcon from '../src/assets/twitter-icon.svg';
-import linkedinIcon from '../src/assets/linkedin-icon.svg';
-import instagramIcon from '../src/assets/instagram-icon.svg';
 import M from 'materialize-css';
 
 
@@ -269,63 +265,7 @@ const App = () =>  {
                     </div>
                 </div>
             </div>
-            <div className="footer">
-                <div className="row mb-9">
-                    <div className="col s4 m4">
-                        <a href="#">About</a>
-                    </div>
-                    <div className="col s4 m4">
-                        <div className="center-align">
-                            <a href="#">How it works</a>
-                        </div>
-                    </div>
-                    <div className="col s4 m4">
-                        <a href="#" className="right">Privacy Policy</a>
-                    </div>
-                </div>
-                <div className="row mb-20">
-                    <div className="col s4 m4">
-                        <a href="#">FAQs</a>
-                    </div>
-                    <div className="col s4 m4">
-                        <div className="center-align">
-                            <a href="#">Contact Us</a>
-                        </div>
-                    </div>
-                    <div className="col s4 m4">
-                        <a href="#" className="right">Terms & Conditions</a>
-                    </div>
-                </div>
-                <div className="row last-row">
-                    <div className="col s4 m4">
-                        <a href="#" className="copyright">© 2019 BikeBazaar. All rights reserved.</a>
-                    </div>
-                    <div className="col s2 m2 offset-s6 offset-m6">
-                        <div className="row">
-                            <div className="col s3 m3">
-                                <a href="#">
-                                    <img src={faceBookIcon} />
-                                </a>
-                            </div>
-                            <div className="col s3 m3">
-                                <a href="#">
-                                    <img src={twitterIcon} />
-                                </a>
-                            </div>
-                            <div className="col s3 m3">
-                                <a href="#">
-                                    <img src={linkedinIcon} />
-                                </a>
-                            </div>
-                            <div className="col s3 m3">
-                                <a href="#">
-                                    <img src={instagramIcon} />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Footer />
     </div>
   );
 }
