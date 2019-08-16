@@ -4,11 +4,10 @@ import Header from '../Header/Header';
 
 const CategoryPage  = () => {
     return (
-        <div className = "Category">
-         <Header />
+        <div>
+            This is a category page. Bhavik will develop it.
         </div>
-    )
-
+    );
 }
 
 
