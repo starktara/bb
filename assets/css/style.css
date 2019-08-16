@@ -115,7 +115,7 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .sidenav li > a:hover { background: none; }
 .filterBand { display:block; }
 .filterBand a { width: 100%; position:fixed; bottom: 0; text-align: center; color: #fff; background: #fd1b1b; padding: 10px; z-index: 10000; }
-.filterBand i.material-icons { vertical-align: text-bottom; font-size:  }
+.filterBand i.material-icons { vertical-align: text-bottom; }
 }
 
 @media screen and (min-width: 993px) and (max-width: 1199px) {
