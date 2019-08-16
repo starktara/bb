@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Bike Bazaar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href= "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800" rel="stylesheet" >
+<link href="assets/css/index.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/lightGallery.js"></script>
+<link type="text/css" rel="stylesheet" href="assets/css/lightGallery.css" />                  
+<script>
+      $(document).ready(function() {
+        $('#imageGallery').lightSlider({
+            gallery:true,
+            item:1,
+            loop:true,
+            thumbItem:9,
+            slideMargin:0,
+            enableDrag: false,
+            currentPagerPosition:'left',
+            onSliderLoad: function(el) {
+                el.lightGallery({
+                    selector: '#imageGallery .lslide'
+                });
+            }   
+        });  
+      });
+</script>
+
+
+</head>
+<body>
+        
+<div class="wapper"><!---->
+	<div class="pageDtl">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Scooters</a></li>
+			<li class="current"><a href="#">Suzuki Access 125</a></li>
+		</ul>
+		<h1>Suzuki Access 125</h1>
+	</div>
+	
+	<!-- Start Filter Section -->
+	<div class="row">
+		
+    <ul id="imageGallery">
+      <li data-thumb="img/thumb/cS-1.jpg" data-src="img/largeImage.jpg">
+        <img src="img/cS-1.jpg" />
+      </li>
+      <li data-thumb="img/thumb/cS-2.jpg" data-src="img/largeImage1.jpg">
+        <img src="img/cS-2.jpg" />
+      </li>
+    </ul>
+		
+	</div>
+	<br class="clr"/>
+	
+</div>
+
+
+</body>
+</html>
