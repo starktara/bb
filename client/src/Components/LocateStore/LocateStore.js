@@ -5,17 +5,18 @@ import Footer from '../Footer/Footer';
 import Banner from '../Banner/Banner';
 import locationIcon from '../../assets/location-icon.svg';
 import dropdownIcon from '../../assets/drop-down.svg';
+import searchIcon from '../../assets/search-icon.svg';
 import M from 'materialize-css';
 
 const LocateStore  = () => {
 
-    const [cities, cityHandler] = useState([
+    const [cities] = useState([
         'New Delhi',
         'Varanasi',
         'Noida'
     ]);
 
-    const [locations, locationHandler] = useState([
+    const [locations] = useState([
         'Loc 1',
         'Loc 2',
         'Loc 3'
@@ -47,10 +48,11 @@ const LocateStore  = () => {
                 />
                 <div className="locateDropdownCard">
                     <div className="row">
-                        <div className="col s12 m6 input-field">
+                        <div className="input-field">
+                            <p>Please Select Your City</p>
                             <a className='dropdown-trigger btn custom-drop white black-text' href='#' data-target='cityDropdown'>
                                 <img src={locationIcon} width="32.9" height="28.3"/>
-                                    <span id="currentCity">Select Your City</span>
+                                    <span id="currentCity">Search Your City</span>
                                 <img src={dropdownIcon} width="22" height="11"/>
                             </a>
                             <ul id='cityDropdown' className='dropdown-content'>
@@ -61,10 +63,11 @@ const LocateStore  = () => {
                                 }
                             </ul>
                         </div>
-                        <div className="col s12 m6 input-field">
+                        <div className="input-field">
+                        <p>Please Select Your Location</p>
                             <a className='dropdown-trigger btn custom-drop white black-text' href='#' data-target='locationDropdown'>
                                 <img src={locationIcon} width="32.9" height="28.3"/>
-                                    <span id="currentLocation">Select Your Location</span>
+                                    <span id="currentLocation">Search Your Location</span>
                                 <img src={dropdownIcon} width="22" height="11"/>
                             </a>
                             <ul id='locationDropdown' className='dropdown-content'>
@@ -74,6 +77,9 @@ const LocateStore  = () => {
                                     }) 
                                 }
                             </ul>
+                        </div>
+                        <div className="seacrh-location-button">
+                            <img src={searchIcon} width="30" height="30" />
                         </div>
                     </div>
                 </div>

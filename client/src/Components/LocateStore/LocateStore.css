@@ -12,7 +12,7 @@
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
   padding: 15px 20px;
-  margin: 0 14px 40px 0;
+  margin: 0 14px 140px 0;
 }
 .locateDropdownCard ul {
   list-style: none;
@@ -38,13 +38,17 @@
   margin: 8px 0 0;
 }
 .custom-drop {
-  width: 550px;
+  width: 500px;
   height: 60px;
   border-radius: 4px;
   line-height: 60px;
+  text-transform: none;
   text-align: left;
   font-size: 16px;
   color: #232b2b;
+}
+.custom-drop span{
+  margin-left: 5px;
 }
 .custom-drop img:first-child {
   float: left;
@@ -54,4 +58,27 @@
 .custom-drop img:nth-child(3) {
   float: right;
   margin-top: 24.5px;
+}
+.locateDropdownCard .row{
+  display: flex;
+}
+.locateDropdownCard .input-field{
+  padding: 0px 10px 0px 25px;
+}
+.seacrh-location-button{
+  width: 60px;
+  height: 60px;
+  background-color: #ff0000;
+  border-radius: 3px;
+  margin-top: 49px;
+  margin-left: 5px;
+  padding: 13px; 
+  cursor: pointer;
+}
+.locateDropdownCard .input-field p{
+  margin-left: 5px;
+  margin-bottom: 4px;
+  letter-spacing: 0.47px;
+  color: #232b2b;
+  font-size: 15px; 
 }
