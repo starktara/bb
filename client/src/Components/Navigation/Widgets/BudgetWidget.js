@@ -5,7 +5,7 @@ const BudgetWidget = (props) => {
 
     for(let i = 0; i < props.budget.length - 1; i++){
         budgetArray.push(
-            <li>
+            <li key={i}>
                 <label>
                     <input type="checkbox" className="filled-in checkbox-red checkbox-indigo" /><span><strong>₹</strong> {props.budget[i] === 0 ? props.budget[i] : props.budget[i] + 1} - <strong></strong> {props.budget[i+1]}</span>
                 </label>
@@ -14,7 +14,7 @@ const BudgetWidget = (props) => {
     }
 
     budgetArray.push(
-        <li>
+        <li key={props.budget.length - 1}>
             <label>
                 <input type="checkbox" className="filled-in" /><span><strong>₹</strong> {props.budget[props.budget.length - 1] + 1} +</span>
             </label>

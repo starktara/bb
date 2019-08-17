@@ -161,3 +161,18 @@
   border-bottom-left-radius: 0;
   color: #fff;
 }
+
+.rangeOut {
+  padding: 10px 0 0;
+  font-size: 16px;
+}
+.MinMaxRange {
+  padding: 0 0 10px;
+  font-size: 16px;
+}
+.MinRange {
+  float: left;
+}
+.MaxRange {
+  float: right;
+}

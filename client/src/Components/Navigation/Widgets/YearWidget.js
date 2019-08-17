@@ -8,7 +8,7 @@ const YearWidget = (props) => {
 
     for (let i = props.endYear; i >= props.startYear; i--) {
         yearArray.push(
-            <li>
+            <li key={i}>
                 <label>
                     <input type="checkbox" className="filled-in" /><span>{i}</span>
                 </label>
