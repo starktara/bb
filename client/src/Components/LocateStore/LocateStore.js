@@ -10,10 +10,26 @@ import M from 'materialize-css';
 const LocateStore  = () => {
 
     const [cities, cityHandler] = useState([
-        'one',
-        'two',
-        'three'
+        'New Delhi',
+        'Varanasi',
+        'Noida'
     ]);
+
+    const [locations, locationHandler] = useState([
+        'Loc 1',
+        'Loc 2',
+        'Loc 3'
+    ]);
+
+    const setCity = (key) => {
+        let city = cities[key];
+        document.querySelector('#currentCity').innerText = city;
+    }
+
+    const setLocation = (key) => {
+        let location = locations[key];
+        document.querySelector('#currentLocation').innerText = location;
+    }
     
 
     useEffect(() =>{
@@ -29,20 +45,35 @@ const LocateStore  = () => {
                     heading="Locate Store"
                     text="Locate BikeBazaar Store Near You"
                 />
-                <div className="pageDtl">
+                <div className="locateDropdownCard">
                     <div className="row">
                         <div className="col s12 m6 input-field">
-                        <a className='dropdown-trigger btn custom-drop white black-text' href='#' data-target='cityDropdown'><img src={locationIcon} width="32.9" height="28.3"/>Select Your City<img src={dropdownIcon} width="22" height="11"/></a>
-                        <ul id='cityDropdown' className='dropdown-content'>
-                            {
-                                cities.map((city,key) => {
-                                    return <li key={key}><a href="#!" onClick={cityHandler}>{city}</a></li>;
-                                }) 
-                            }
-                        </ul>
+                            <a className='dropdown-trigger btn custom-drop white black-text' href='#' data-target='cityDropdown'>
+                                <img src={locationIcon} width="32.9" height="28.3"/>
+                                    <span id="currentCity">Select Your City</span>
+                                <img src={dropdownIcon} width="22" height="11"/>
+                            </a>
+                            <ul id='cityDropdown' className='dropdown-content'>
+                                {
+                                    cities.map((city,key) => {
+                                        return <li key={key}  onClick={() => setCity(key)}><a href="#!">{city}</a></li>;
+                                    }) 
+                                }
+                            </ul>
                         </div>
                         <div className="col s12 m6 input-field">
-                            
+                            <a className='dropdown-trigger btn custom-drop white black-text' href='#' data-target='locationDropdown'>
+                                <img src={locationIcon} width="32.9" height="28.3"/>
+                                    <span id="currentLocation">Select Your Location</span>
+                                <img src={dropdownIcon} width="22" height="11"/>
+                            </a>
+                            <ul id='locationDropdown' className='dropdown-content'>
+                                {
+                                    locations.map((location,key) => {
+                                        return <li key={key}  onClick={() => setLocation(key)}><a href="#!">{location}</a></li>;
+                                    }) 
+                                }
+                            </ul>
                         </div>
                     </div>
                 </div>
