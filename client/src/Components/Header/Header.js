@@ -8,6 +8,8 @@ import logo from '../../assets/logo.svg';
 import searchIcon from '../../assets/search-icon.svg';
 import locationIcon from '../../assets/location-icon.svg';
 
+import './Header.css'
+
 
 
 const Header = () => {

@@ -5,10 +5,10 @@ import './Banner.css'
 const Banner = (props) =>  {
 
     return (
-        <div class="pageDtl">
+        <div className="pageDtl">
 		<ul>
 			<li><a href="#">Home</a></li>
-			<li class="current"><a href="#">{props.navigation}</a></li>
+			<li className="current"><a href="#">{props.navigation}</a></li>
 		</ul>
 		<h1>{props.heading}</h1>
 		<p>{props.text}</p>
