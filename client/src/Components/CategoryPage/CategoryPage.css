@@ -2,16 +2,33 @@
 
 /***********Fonts*************/
 
-*, ::after, ::before { box-sizing: border-box; }
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
 
-h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+form {
+  margin: 0;
+}
 
-.clr { clear: both; }
+.clr {
+  clear: both;
+}
 
-.padL0 { padding-left:0!important;}
+.padL0 {
+  padding-left: 0 !important;
+}
 
-.wapper { width: 1200px; margin:40px auto;}
-
-@media screen and (min-width: 993px) and (max-width: 1199px) {
-    .wapper { width: 100%; margin:40px auto;}
+.wapper {
+  width: 1200px;
+  margin: 40px auto;
 }
