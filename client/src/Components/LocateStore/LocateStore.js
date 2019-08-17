@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './LocateStore.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import Banner from '../Banner/Banner';
 import locationIcon from '../../assets/location-icon.svg';
 import dropdownIcon from '../../assets/drop-down.svg';
 import M from 'materialize-css';
@@ -16,7 +17,6 @@ const LocateStore  = () => {
     
 
     useEffect(() =>{
-        console.log(cities);
         var elems = document.querySelectorAll('.dropdown-trigger');
         M.Dropdown.init(elems, {});
     },[]);
@@ -24,13 +24,11 @@ const LocateStore  = () => {
         <div className = "LocateStore">
             <Header />
             <div className="wapper">
-                <div className="pageDtl">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li className="current"><a href="#">Locate Store</a></li>
-                    </ul>
-                    <h1>Locate BikeBazaar Store Near You</h1>
-                </div>
+            <Banner 
+                    navigation="Locate Store"
+                    heading="Locate Store"
+                    text="Locate BikeBazaar Store Near You"
+                />
                 <div className="pageDtl">
                     <div className="row">
                         <div className="col s12 m6 input-field">
