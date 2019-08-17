@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+
 import "./CategoryPage.css";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer"
 import Banner from "../Banner/Banner";
 import Navigation from "../Navigation/Navigation"
 
@@ -26,7 +28,7 @@ class CategoryPage extends Component {
           <Banner navigation={navigation} heading={heading} text={text} />
           <Navigation />
         </div>
-        This is a category page. Bhavik will develop it.
+        <Footer />
       </div>
     );
   }
