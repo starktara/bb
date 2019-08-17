@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import emailIcon from '../../assets/emailIcon.svg';
 import phoneIcon from '../../assets/phone-icon.svg';
 import userIcon from '../../assets/user-icon.svg';
@@ -40,7 +41,7 @@ const Header = () => {
       <nav className="nav-extended nav-color">
             <div className="nav-wrapper row">
                 <div className="header-title col s2">      
-                    <img src={logo} height="105" id="logoImg" />
+                    <Link to="/"><img src={logo} height="105" id="logoImg" /></Link>
                 </div>
                 <div className="col s8">
                     <div className="row">
@@ -58,7 +59,7 @@ const Header = () => {
             </div>
             <div className="second-nav-wrapper row">
                 <div className="col s2 logo-text-container">
-                    <img src={logoPng} width="225" height="29" className="text-logo" />
+                    <Link to="/"><img src={logoPng} width="225" height="29" className="text-logo" /></Link>
                 </div>
                 <div className="col s10">
                     <div className="row option-row">
@@ -71,7 +72,7 @@ const Header = () => {
                                     <a href="#">SELL</a>
                                 </li>
                                 <li>
-                                    <a href="#">LOCATE STORE</a>
+                                <Link to="/locate-store">LOCATE STORE</Link>
                                 </li>
                                 <li>
                                     <a href="#">BECOME A FRANCHISE OWNER</a>

@@ -1,35 +1,57 @@
-.navigation-bar{
-    height: 118px;
-    border-radius: 4px;
-    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
-    background-color: #ffffff;
+.navigation-bar {
+  height: 118px;
+  border-radius: 4px;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
 }
-.jumbotron{
-    padding: 40px 40px 123px 40px;
+.jumbotron {
+  padding: 40px 40px 123px 40px;
 }
-.wapper { width: 1200px; margin:40px auto;}
-.wapper .pageDtl { border-radius: 4px; box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2); background-color: #ffffff; padding: 15px 20px; margin: 0 14px 40px 0; }
-.wapper .pageDtl ul { list-style: none; margin: 0 0 24px; }
-/* .wapper .pageDtl ul li:first-child { background:none; display: inline-block; padding:0; } */
-/* .wapper .pageDtl ul li {  display: inline-block; background-size: 18px 10px; padding:0 0 0 20px;  } */
-.wapper .pageDtl ul li a { color:#707575; } .wapper .pageDtl ul li.current { font-weight: bold; }
-.wapper .pageDtl h1 { font-size: 36px; font-weight: bold; }
-.wapper .pageDtl p { font-size: 16px; margin: 8px 0 0; }
-.custom-drop{
-    width: 580px;
-    height: 60px;
-    border-radius: 4px;
-    line-height: 60px;
-    text-align: left;
-    font-size: 16px;
-    color: #232b2b;
+.locateDropdownCard {
+  border-radius: 4px;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  padding: 15px 20px;
+  margin: 0 14px 40px 0;
 }
-.custom-drop img:first-child{
-    float: left;
-    margin-top: 13.55px;
-    padding-right: 10px; 
+.locateDropdownCard ul {
+  list-style: none;
+  margin: 0 0 24px;
 }
-.custom-drop img:nth-child(2){
-    float: right;
-    margin-top: 24.5px;
+.locateDropdownCard ul li {
+  background: none;
+  display: inline-block;
+  padding: 0;
+}
+.locateDropdownCard ul li a {
+  color: #707575;
+}
+.locateDropdownCard ul li.current {
+  font-weight: bold;
+}
+.locateDropdownCard h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+.locateDropdownCard p {
+  font-size: 16px;
+  margin: 8px 0 0;
+}
+.custom-drop {
+  width: 550px;
+  height: 60px;
+  border-radius: 4px;
+  line-height: 60px;
+  text-align: left;
+  font-size: 16px;
+  color: #232b2b;
+}
+.custom-drop img:first-child {
+  float: left;
+  margin-top: 13.55px;
+  padding-right: 10px;
+}
+.custom-drop img:nth-child(3) {
+  float: right;
+  margin-top: 24.5px;
 }
