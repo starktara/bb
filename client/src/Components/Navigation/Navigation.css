@@ -11,6 +11,8 @@
 }
 
 .filter {
+  width: 300px !important;
+  margin: 0 !important;
   padding: 0 !important;
 }
 .filter h5 {
@@ -166,6 +168,7 @@
   border-bottom-left-radius: 0;
   color: #fff;
 }
+
 .rangeOut {
   padding: 10px 0 0;
   font-size: 16px;

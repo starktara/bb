@@ -39,6 +39,7 @@ class KmWidget extends Component {
                             step={10}
                             tooltip={false}
                         />
+                        <br className="clr"/>
                         <div className="rangeOut">Upto <output id="js-output">{this.state.slideValue}</output> KMs</div>
                     </div>
                 </div>
