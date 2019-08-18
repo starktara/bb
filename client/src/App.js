@@ -1,5 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import * as actions from './store/actions/index';
 
 import Homepage from './Components/Homepage/Homepage';
 import CategoryPage from './Components/CategoryPage/CategoryPage';
@@ -16,4 +19,4 @@ const App = () =>  {
     );
 }
 
-export default App;
+export default connect(null)(App);
