@@ -3,12 +3,49 @@ import './LocateStore.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Banner from '../Banner/Banner';
+import GoogleMap from '../GoogleMap/GoogleMap';
 import locationIcon from '../../assets/location-icon.svg';
 import dropdownIcon from '../../assets/drop-down.svg';
 import searchIcon from '../../assets/search-icon.svg';
+import headingLines from '../../assets/heading-lines.svg';
 import M from 'materialize-css';
 
+const mapProps = {
+    center: {
+      lat: 59.95,
+      lng: 30.33
+    },
+    zoom: 11
+  };
+
 const LocateStore  = () => {
+
+    const [mapLocations, mapLocationsHandler] = useState([
+        {
+            locationName: 'R.K Dealers',
+            address: 'Shop 22/33, Balewadi High Street, Cummins India Office Campus Balewadi Link Road',
+            coordinates: {
+                latitude: 59.3,
+                longitude: 30.33
+            }        
+        },
+        {
+            locationName: 'The Saddle Store',
+            address: 'Shop No 19, Upper Ground Floor, East Court, Phoenix Market City, Someshwar Wadi Road',
+            coordinates: {
+                latitude: 59.3,
+                longitude: 30.33
+            }
+        },
+        {
+            locationName: 'Open Road Riding Gear',
+            address: 'Shop No 19, Upper Ground Floor, East Court, Phoenix Market City',
+            coordinates: {
+                latitude: 59.3,
+                longitude: 30.33
+            }
+        }
+    ]);
 
     const [cities] = useState([
         'New Delhi',
@@ -37,11 +74,30 @@ const LocateStore  = () => {
         var elems = document.querySelectorAll('.dropdown-trigger');
         M.Dropdown.init(elems, {});
     },[]);
+
+    const locationCards = mapLocations.map((thisLocation, key) => {
+        return (
+            <div className="col s4 m4" key={key}>
+                <div className="locationCard">
+                <h5>{thisLocation.locationName}</h5>
+                <div className="locationAddress">
+                    {thisLocation.address}
+                    <br/>
+                    Baner, Pune
+                </div>
+                <div className="mapContainer">
+                    <GoogleMap center={thisLocation.coordinates} zoom={mapProps.zoom} location={thisLocation.locationName}/>
+                </div>
+                </div>
+            </div>
+        );
+    });
+
     return (
         <div className = "LocateStore">
             <Header />
             <div className="wapper">
-            <Banner 
+                <Banner 
                     navigation="Locate Store"
                     heading="Locate Store"
                     text="Locate BikeBazaar Store Near You"
@@ -81,6 +137,54 @@ const LocateStore  = () => {
                         <div className="seacrh-location-button">
                             <img src={searchIcon} width="30" height="30" />
                         </div>
+                    </div>
+                </div>
+                <div className="locateDropdownCard">
+                    <h4 className="mapHeading">List of Stores Nearest to Selected Location</h4>
+                    <div className="heading-lines"><img src={headingLines} width="57" height="4" /></div>
+                    <div className="row">
+                        <div className="col s4 m4">
+                            <div className="locationCard">
+                                <h5>R.K Dealers</h5>
+                                <div className="locationAddress">
+                                    <br/>
+                                    Baner, Pune
+                                </div>
+                                <div className="mapContainer">
+                                    <GoogleMap center={mapProps.center} zoom={mapProps.zoom} location="R.K Dealers"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col s4 m4">
+                            <div className="locationCard">
+                                <h5>The Saddle store</h5>
+                                <div className="locationAddress">
+                                    <br/>
+                                    Baner, Pune
+                                </div>
+                                <div className="mapContainer">
+                                    <GoogleMap center={mapProps.center} zoom={mapProps.zoom} location="The Saddle Store"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col s4 m4">
+                            <div className="locationCard">
+                                <h5></h5>
+                                <div className="locationAddress">
+                                Shop 22/33, Balewadi High Street, Cummins India
+                                    Office Campus
+                                    Balewadi Link Road
+                                    <br/>
+                                    Baner, Pune
+                                </div>
+                                <div className="mapContainer">
+                                    <GoogleMap center={mapProps.center} zoom={mapProps.zoom} location="Open Road Riding Gear"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        {locationCards}
                     </div>
                 </div>
             </div>
