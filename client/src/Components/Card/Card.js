@@ -11,9 +11,9 @@ const Card = props => {
         <div className="detail">
           <h3>Bajaj Platina </h3>
           <ul className="detailPoints">
-            <li className="year">2007</li>
-            <li className="km">25,000 KMs</li>
-            <li className="cc">99 CC</li>
+            <li className="year">{props.year}</li>
+            <li className="km">{props.kms} KMs</li>
+            <li className="cc">{props.cc} CC</li>
             <li className="owner">
               1<sup>st</sup> Owner
             </li>
