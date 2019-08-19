@@ -1,8 +1,18 @@
-const express = require('express')
-const app = express()
- 
-
+const express = require('express');
+const app = express();
+const bodyParser = require("body-parser");
+const path = require("path");
+//Require route files
+const seedData = require("./apis/seedingData/seedingData");
 const { Client } = require('@elastic/elasticsearch');
+
+//middleware for body parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use("/apis/seedData", seedData);
+
+
 const client = new Client({ node: 'http://localhost:9200' });
 async function run () {
   // Let's start by indexing some data
