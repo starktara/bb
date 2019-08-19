@@ -3,12 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "@material-ui/core": "^4.3.2",
-=======
     "axios": "^0.19.0",
     "google-map-react": "^1.1.4",
->>>>>>> 1233ab7b06d1e1aaee2504e09b34e25fcbcadfdf
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-rangeslider": "^2.2.0",
