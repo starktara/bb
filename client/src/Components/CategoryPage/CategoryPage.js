@@ -49,6 +49,10 @@ class CategoryPage extends Component {
                 <Card />
                 <Card />
                 <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
               </Grid>
             </Grid>
           </Grid>
