@@ -1,8 +1,6 @@
 import React from "react";
 
 const YearWidget = props => {
-  console.log(props);
-
   const yearArray = [];
 
   for (let i = props.endYear; i >= props.startYear; i--) {
