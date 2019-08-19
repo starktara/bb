@@ -1,4 +1,5 @@
 import React from "react";
+import Grid from '@material-ui/core/Grid';
 
 import './Navigation.css'
 import CityWidget from "./Widgets/CityWidget";
@@ -9,8 +10,14 @@ import KmWidget from "./Widgets/KmWidget/KmWidget";
 
 const Navigation = () => {
     return (
-        <div className="row">
-            <aside id="slide-out" className="filter col s12 m4 l4 xl3">
+            <Grid 
+            item
+            component="aside"
+            // lg={4}
+            // md={4}
+            // sm={12}
+            xs={3}
+            className="filter">
               <h5>Filter by</h5>
               <div className="filterSec" >
                 <CityWidget />
@@ -18,9 +25,8 @@ const Navigation = () => {
                 <BudgetWidget budget={[0, 15000, 25000, 35000, 45000, 55000, 100000]}/>
                 <BrandWidget brands={['Hero', 'Honda', 'TVS', 'Yamaha', 'Suzuki', 'UM Motorcycles', 'Piaggio', 'KTM']} />
                 <KmWidget />
-            </div>
-            </aside>
-          </div>
+              </div>
+            </Grid>
     );
 }
 

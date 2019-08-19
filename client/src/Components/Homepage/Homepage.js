@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import './Homepage.css';
 import Header from '../Header/Header';
@@ -124,7 +125,7 @@ const Homepage = () => {
                 <div className="row">
                     <div className="col s12 m4 flex-center">
                         <div className="box-shadow center-align">
-                            <img src={bike2} height="192" width="290"/>
+                            <Link to="/category/bike"><img src={bike2} height="192" width="290"/></Link>
                             <h5>Motorcycle</h5>
                         </div>
                     </div>
