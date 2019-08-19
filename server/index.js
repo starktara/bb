@@ -8,7 +8,7 @@ const seedData = require("./apis/seedingData/seedingData");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use("/apis/seedData", seedData);
+ app.use("/apis/seedData", seedData);
 
 
 // Server static assets if in production

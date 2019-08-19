@@ -48,3 +48,4 @@ async function run () {
   }
   run().catch(console.log)
   
+module.exports  = router;
