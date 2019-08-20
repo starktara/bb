@@ -122,8 +122,11 @@ form {
 .ProductListSec .Product .detail ul.detailPoints li.owner {
   background: url(../../assets/images/icons/owner.png) 0 7px no-repeat;
 }
-.ProductListSec .Product .detail ul.detailPoints li.location {
-  background: url(../../assets/images/icons/location.png) 0 7px no-repeat;
+.ProductListSec .Product .detail p.location {
+  background: url(../../assets/images/icons/location.png) 0 19px no-repeat;
+  padding: 15px 0 0 18px;
+  margin: 15px 0 0;
+  border-top: #e5e5e5 solid 1px;
 }
 .ProductListSec .pagination {
   text-align: center;
