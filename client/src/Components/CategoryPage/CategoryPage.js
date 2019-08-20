@@ -317,7 +317,7 @@ class CategoryPage extends Component {
               className="ProductListSec"
             >
               <SortDropDown />
-              <Grid container direction="row" component="div">
+              <Grid container direction="row" component="div" className="cardConntainer">
                 {this.state.currentData.map((bike, index) => {
                   return <Card key= {index} year={bike.year} kms={bike.kms} cc={bike.cc}/>
                 })}
