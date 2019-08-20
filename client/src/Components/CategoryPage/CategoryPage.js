@@ -9,6 +9,8 @@ import Navigation from "../Navigation/Navigation";
 import Card from "../Card/Card";
 import SortDropDown from "../SortDropDown/SortDropDown";
 import Pagination from "../Pagination/Pagination";
+import * as actions from '../../store/actions/index';
+
 
 const cardData = [
   {
@@ -271,8 +273,8 @@ class CategoryPage extends Component {
     totalPages: null
   }
 
-  conmponentDidMount () {
-    // this.setState({data: JSON.parse(cardData)})
+  componentDidMount () {
+    this.props.getVehicles(this.props.match.params.category);
   }
 
   onPageChanged = paginationData => {
@@ -351,7 +353,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-      // onIngredientAdded: (ingName) => dispatch(actions.addIngredient(ingName)),
+    getVehicles: (vehicleCategory) => dispatch(actions.getVehicles(vehicleCategory)),
      
   }
 }
