@@ -150,6 +150,7 @@ form {
   border: solid 1px rgba(35, 43, 43, 0.4);
   background-color: #fff;
   margin-right: 30px;
+  pointer-events: none !important;
 }
 .ProductListSec .pagination li.active {
   background: none;
@@ -384,6 +385,9 @@ form {
 }
 .vehicleAdvantage .advantageSec .advantage h3 {
   background: #e9eaea url(../../assets/images/icons/mobile.png) 340px 9px no-repeat;
+}
+.cardConntainer{
+  min-height: 2110px;
 }
 
 
