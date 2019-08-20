@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
-
+import { connect } from 'react-redux';
 import "./CategoryPage.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -341,4 +341,19 @@ class CategoryPage extends Component {
   }
 }
 
-export default CategoryPage;
+const mapStateToProps = state => {
+  return {
+      // ings: state.burgerBuilder.ingredients,
+      // price: state.burgerBuilder.totalPrice,
+      // error: state.burgerBuilder.error,
+      // isAuthenticated: state.auth.token !== null
+  };
+}
+const mapDispatchToProps = dispatch => {
+  return {
+      // onIngredientAdded: (ingName) => dispatch(actions.addIngredient(ingName)),
+     
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CategoryPage);
