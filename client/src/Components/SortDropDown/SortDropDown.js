@@ -1,14 +1,18 @@
 import React, { Component } from "react";
+import M from 'materialize-css';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 
 class SortDropDown extends Component {
   constructor(props) {
     super(props);
     this.state = {
       listOpen: false,
-      headerTitle: this.props.title
+      headerTitle: ""
     };
     this.toggleList = this.toggleList.bind(this);
     this.selectOption = this.selectOption.bind(this);
@@ -18,6 +22,11 @@ class SortDropDown extends Component {
     this.setState({
       listOpen: false
     });
+  }
+
+  componentDidMount () {
+    let elems = this.select;
+    let instances = M.FormSelect.init(elems, {});
   }
 
   toggleList() {
@@ -34,33 +43,26 @@ class SortDropDown extends Component {
   }
 
   render() {
-    const{list} = this.props;
+    const {list} = this.props;
 
     return (
       <React.Fragment>
 		    <div className="filterBand"><a href="#" data-target="slide-out" className="sidenav-trigger"><i className="material-icons">filter_list</i> Filter</a></div>        
         <h5>One Step Closer to Your Dream Bike</h5>
-        <Select
-          open={this.state.listOpen}
-          onClose={this.toggleList}
-          onOpen={this.toggleList}
+        <div className="input-field sortby" onClick={this.toggleList}>
+				<select
+          ref={(select) => {this.select = select}}
           onChange={this.selectOption}
-          value={this.state.headerTitle}
-          inputProps={{
-            name: "Sort by",
-            id: "sort-vehicles-select"
-          }}
-          className="drop-down"
-          >
-            
-            <MenuItem value={"Price - Low to High"}>Price - Low to High</MenuItem>
-            <MenuItem value={"Price - High to Low"}>Price - High to Low</MenuItem>
-            <MenuItem value={"Distance from My Location - Low to High"}>Distance from My Location - Low to High</MenuItem>
-            <MenuItem value={"Manufacturing Year - Low to High"}>Manufacturing Year - Low to High</MenuItem>
-            <MenuItem value={"Manufacturing Year - High to Low"}>Manufacturing Year - High to Low</MenuItem>
-            <MenuItem value={"Kilometer - Low to High"}>Kilometer - Low to High</MenuItem>
-
-        </Select>
+          defaultValue="">
+					<option value="" disabled>Sort by</option>
+					<option value="1">Price - Low to High</option>
+					<option value="2">Price - High to Low</option>
+					<option value="3">Distance from My Location - Low to High</option>
+					<option value="4">Manufacturing Year - Low to High</option>
+					<option value="5">Manufacturing Year - High to Low</option>
+					<option value="6">Kilometer - Low to High</option>
+				</select> 
+      </div>
         <br className="clr" />
       </React.Fragment>
     );
