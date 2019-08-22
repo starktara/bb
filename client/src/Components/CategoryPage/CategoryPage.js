@@ -266,50 +266,51 @@ const cardData = [
   }
 ];
 
+const menu =  [
+  {
+    id: 0,
+    title: 'Price - Low to High',
+    selected: false,
+    key: 'location'
+},
+{
+  id: 1,
+  title: 'Price - High to Low',
+  selected: false,
+  key: 'location'
+},
+{
+  id: 2,
+  title: 'Distance from My Location - Low to High',
+  selected: false,
+  key: 'location'
+},
+{
+  id: 3,
+  title: 'Manufacturing Year - Low to High',
+  selected: false,
+  key: 'location'
+},
+{
+  id: 4,
+  title: 'Manufacturing Year - High to Low',
+  selected: false,
+  key: 'location'
+},
+{
+  id: 5,
+  title: 'Kilometer - Low to High',
+  selected: false,
+  key: 'location'
+}
+];
+
 class CategoryPage extends Component {
   state = {
     data: cardData,
     currentData: [],
     currentPage: null,
-    totalPages: null,
-    menu: [
-      {
-        id: 0,
-        title: 'Price - Low to High',
-        selected: false,
-        key: 'location'
-    },
-    {
-      id: 1,
-      title: 'Price - High to Low',
-      selected: false,
-      key: 'location'
-    },
-    {
-      id: 2,
-      title: 'Distance from My Location - Low to High',
-      selected: false,
-      key: 'location'
-    },
-    {
-      id: 3,
-      title: 'Manufacturing Year - Low to High',
-      selected: false,
-      key: 'location'
-    },
-    {
-      id: 4,
-      title: 'Manufacturing Year - High to Low',
-      selected: false,
-      key: 'location'
-    },
-    {
-      id: 5,
-      title: 'Kilometer - Low to High',
-      selected: false,
-      key: 'location'
-    }
-    ]
+    totalPages: null
   }
 
   componentDidMount () {
@@ -317,7 +318,8 @@ class CategoryPage extends Component {
   }
 
   onPageChanged = paginationData => {
-    const { data } = this.state;
+    console.log(paginationData);
+    const  data  = this.props.vehicles;
     const { currentPage, totalPages, pageLimit } = paginationData;
 
     const offset = (currentPage - 1) * pageLimit;
@@ -331,7 +333,14 @@ class CategoryPage extends Component {
 
     if (!this.props.loading) {
       vehicles = this.props.vehicles.map((vehicle,index) => (
-         <Card key= {index} year={vehicle._source.myear} kms={vehicle._source.kmdriven} cc={vehicle._source.cc} />
+        <Card key= {index} 
+              year={vehicle._source.myear} 
+              kms={vehicle._source.kmdriven} 
+              cc={vehicle._source.cc}  
+              name={vehicle._source.name} 
+              loc={vehicle._source.loc}
+              cost={vehicle._source.price}
+        />
         ))
     }
 
@@ -366,7 +375,7 @@ class CategoryPage extends Component {
             >
               <SortDropDown 
                 title="Sort by"
-                list={this.state.menu} />
+                list={menu} />
               <Grid container direction="row" component="div" className="cardConntainer">
                 {vehicles}
               </Grid>
