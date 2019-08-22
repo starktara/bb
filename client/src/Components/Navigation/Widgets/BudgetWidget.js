@@ -9,7 +9,7 @@ const BudgetWidget = props => {
         <label>
           <input
             type="checkbox"
-            className="filled-in checkbox-red checkbox-indigo"
+            className="filled-in"
           />
           <span>
             <strong>₹</strong>{" "}

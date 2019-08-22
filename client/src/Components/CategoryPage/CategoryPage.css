@@ -46,6 +46,7 @@ form {
   padding: 28px 0 13px 14px;
   float: left;
 }
+
 .ProductListSec .sortby {
   width: 274px;
   float: right;
@@ -56,6 +57,22 @@ form {
   padding: 0 20px;
   margin-bottom: 13px;
 }
+.ProductListSec .sortby .select-wrapper ul.dropdown-content {
+  width: 274px !important;
+  margin: 0 0 0 -20px;
+  left: 0 !important;
+  top: 45 !important;
+}
+.ProductListSec .sortby input.select-dropdown {
+  background: url(../../assets/icons/drop-down.png) 100% / 15% no-repeat #fff;
+  background-size: 24px 11px;
+}
+
+.input-field {
+  margin-left: -44px;
+  height: 48px;
+}
+
 .ProductListSec .Prod {
   height: auto;
   padding: 0 14px 28px;
@@ -88,9 +105,12 @@ form {
   color: #ff0000;
   margin: 0;
   font-weight: bold;
-  padding: 15px 0 0 0;
-  border-top: #e5e5e5 solid 1px;
-  margin-top: 15px;
+  margin-top: 10px;
+}
+.ProductListSec .Product .detail p.price img.rupees {
+  width: 16px;
+  vertical-align: sub;
+  color: #ff0000;
 }
 .ProductListSec .Product .detail p.price strong {
   font-family: RupeeForadian;
@@ -119,8 +139,11 @@ form {
 .ProductListSec .Product .detail ul.detailPoints li.owner {
   background: url(../../assets/images/icons/owner.png) 0 7px no-repeat;
 }
-.ProductListSec .Product .detail ul.detailPoints li.location {
-  background: url(../../assets/images/icons/location.png) 0 7px no-repeat;
+.ProductListSec .Product .detail p.location {
+  background: url(../../assets/images/icons/location.png) 0 19px no-repeat;
+  padding: 15px 0 0 18px;
+  margin: 15px 0 0;
+  border-top: #e5e5e5 solid 1px;
 }
 .ProductListSec .pagination {
   text-align: center;

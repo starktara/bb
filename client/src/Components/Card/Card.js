@@ -10,6 +10,7 @@ const Card = props => {
         <img src={require("../../assets/images/product/bike-img.png")} alt="" />
         <div className="detail">
           <h3>Bajaj Platina </h3>
+						<p className="price"><img className="rupees" src={require("../../assets/icons/rupee-indian-red.svg")}/> 17,500</p>
           <ul className="detailPoints">
             <li className="year">{props.year}</li>
             <li className="km">{props.kms} KMs</li>
@@ -17,12 +18,9 @@ const Card = props => {
             <li className="owner">
               1<sup>st</sup> Owner
             </li>
-            <li className="location">Baner, Pune</li>
-          </ul>
-          <br className="clr" />
-          <p className="price">
-            <strong>₹</strong> 17,500
-          </p>
+          </ul><br className="clr" />          
+            <p className="location">Baner, Pune</p>
+
         </div>
       </div>
     </Grid>
