@@ -1,11 +1,9 @@
 import * as actionTypes from '../actions/actionTypes';
+import { vehicleList } from '../actions/vehiclesDetails';
 
 const initialState = {
-    token: null,
-    userId: null,
-    error: null,
+    vehicleList: null,
     loading: false,
-    authRedirectPath: '/'
 };
 
 // const authStart = (state, action) => {
@@ -38,11 +36,8 @@ const setAuthRedirectPath = (state, action) => {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        // case actionTypes.AUTH_START: return authStart(state, action);
-        // case actionTypes.AUTH_SUCCESS: return authSuccess(state, action);
-        // case actionTypes.AUTH_FAIL: return authFail(state, action);
-        // case actionTypes.AUTH_LOGOUT: return authLogout(state, action);
-        // case actionTypes.SET_AUTH_REDIRECT_PATH: return setAuthRedirectPath(state, action);
+        case actionTypes.VEHICLE_LIST: return vehicleList(state, action);
+    
         default:
             return state;
     }

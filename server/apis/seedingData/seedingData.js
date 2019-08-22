@@ -149,8 +149,8 @@ router.get("/getAllBikes",(req,res) => {
         }
       }
     })
-    console.log(body.hits.hits);
-    return body,hits.hits;
+    res.send(body.hits.hits);
+     
   }
   getData().catch(console.log);
 })
