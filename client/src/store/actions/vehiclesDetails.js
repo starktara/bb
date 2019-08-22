@@ -3,34 +3,29 @@ import axios from '../../axios-conf';
 import * as actionTypes from './actionTypes';
 
 
-export const vehicleList = (token, userId) => {
+export const vehicleList = (vehicleList) => {
     return {
-        type: actionTypes.AUTH_SUCCESS,
-        idToken: token,
-        userId: userId
+        type: actionTypes.VEHICLE_LIST,
+        vehicleList: vehicleList
     };
 };
 
 export const apiFail = (error) => {
     return {
-        type: actionTypes.AUTH_FAIL,
+        type: actionTypes.API_FAIL,
         error: error
     };
 };
 
 export const getVehicles = () => {
     return dispatch => {
-  
         let url = "/apis/seedData/getAllBikes";
-         console.log('dsdsd');
         axios.get(url)
             .then(response => {
-                console.log('helllo guys');
-                console.log(response);
+                dispatch(vehicleList(response.data));
             })
             .catch(err => {
-                console.log('dsdsdsdsdsd');
-                console.log(err);
+                dispatch(apiFail(err));
             });
     };
 };
