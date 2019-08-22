@@ -10,6 +10,7 @@ import Card from "../Card/Card";
 import SortDropDown from "../SortDropDown/SortDropDown";
 import Pagination from "../Pagination/Pagination";
 import * as actions from '../../store/actions/index';
+import Spinner from '../../Components/UI/Spinner/Spinner';
 
 
 const cardData = [
@@ -326,6 +327,7 @@ class CategoryPage extends Component {
   }
 
   render() {
+    let burger = this.props.loading == true ? <p>Ingredients can't be loaded!</p> : <Spinner />;
 
     const {data, currentData, currentPage, totalPages} = this.state;
     const totalRecords = data.length;
@@ -385,10 +387,8 @@ class CategoryPage extends Component {
 
 const mapStateToProps = state => {
   return {
-      // ings: state.burgerBuilder.ingredients,
-      // price: state.burgerBuilder.totalPrice,
-      // error: state.burgerBuilder.error,
-      // isAuthenticated: state.auth.token !== null
+       vehicles: state.vehicleDetails.vehicles,
+       loading: state.vehicleDetails.loading,
   };
 }
 const mapDispatchToProps = dispatch => {
