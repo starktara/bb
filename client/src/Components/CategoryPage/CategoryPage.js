@@ -327,7 +327,13 @@ class CategoryPage extends Component {
   }
 
   render() {
-    let burger = this.props.loading == true ? <p>Ingredients can't be loaded!</p> : <Spinner />;
+    let vehicles = <Spinner />;
+
+    if (!this.props.loading) {
+      vehicles = this.props.vehicles.map((vehicle,index) => (
+         <Card key= {index} year={vehicle._source.myear} kms={vehicle._source.kmdriven} cc={vehicle._source.cc} />
+        ))
+    }
 
     const {data, currentData, currentPage, totalPages} = this.state;
     const totalRecords = data.length;
@@ -362,10 +368,7 @@ class CategoryPage extends Component {
                 title="Sort by"
                 list={this.state.menu} />
               <Grid container direction="row" component="div" className="cardConntainer">
-                {this.state.currentData.map((bike, index) => {
-                  return <Card key= {index} year={bike.year} kms={bike.kms} cc={bike.cc}/>
-                })}
-                {/* <Card year="2007" kms="25,000" cc="2000"/> */}
+                {vehicles}
               </Grid>
               <Pagination 
               totalRecords={totalRecords}
