@@ -11,46 +11,7 @@ import SortDropDown from "../SortDropDown/SortDropDown";
 import Pagination from "../Pagination/Pagination";
 import * as actions from '../../store/actions/index';
 import Spinner from '../../Components/UI/Spinner/Spinner';
-
-
-const menu =  [
-  {
-    id: 0,
-    title: 'Price - Low to High',
-    selected: false,
-    key: 'location'
-},
-{
-  id: 1,
-  title: 'Price - High to Low',
-  selected: false,
-  key: 'location'
-},
-{
-  id: 2,
-  title: 'Distance from My Location - Low to High',
-  selected: false,
-  key: 'location'
-},
-{
-  id: 3,
-  title: 'Manufacturing Year - Low to High',
-  selected: false,
-  key: 'location'
-},
-{
-  id: 4,
-  title: 'Manufacturing Year - High to Low',
-  selected: false,
-  key: 'location'
-},
-{
-  id: 5,
-  title: 'Kilometer - Low to High',
-  selected: false,
-  key: 'location'
-}
-];
+import {Menu} from '../../shared/utility'
 
 class CategoryPage extends Component {
   state = {
@@ -65,6 +26,7 @@ class CategoryPage extends Component {
 
   onPageChanged = paginationData => {
     const  data  = this.props.vehicles;
+    // this.props(data);
     const { currentPage, totalPages, pageLimit } = paginationData;
 
     const offset = (currentPage - 1) * pageLimit;
@@ -130,7 +92,7 @@ class CategoryPage extends Component {
             >
               <SortDropDown 
                 title="Sort by"
-                list={menu} />
+                list={Menu} />
               <Grid container direction="row" component="div" className="cardConntainer">
                 {vehicles}
               </Grid>
