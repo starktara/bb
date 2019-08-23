@@ -13,259 +13,6 @@ import * as actions from '../../store/actions/index';
 import Spinner from '../../Components/UI/Spinner/Spinner';
 
 
-const cardData = [
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2022',
-    kms: '25,000',
-    cc: '99'
-  }
-];
-
 const menu =  [
   {
     id: 0,
@@ -307,7 +54,6 @@ const menu =  [
 
 class CategoryPage extends Component {
   state = {
-    data: cardData,
     currentData: [],
     currentPage: null,
     totalPages: null
@@ -318,7 +64,6 @@ class CategoryPage extends Component {
   }
 
   onPageChanged = paginationData => {
-    console.log(paginationData);
     const  data  = this.props.vehicles;
     const { currentPage, totalPages, pageLimit } = paginationData;
 
@@ -330,6 +75,7 @@ class CategoryPage extends Component {
 
   render() {
     let vehicles = <Spinner />;
+    let paginations = '';
 
     if (!this.props.loading) {
       vehicles = this.props.vehicles.map((vehicle,index) => (
@@ -341,11 +87,20 @@ class CategoryPage extends Component {
               loc={vehicle._source.loc}
               cost={vehicle._source.price}
         />
-        ))
+        ));
+      const totalRecords = Object.keys(this.props.vehicles).length;
+      paginations =  (
+         <Pagination 
+        totalRecords={totalRecords}
+        pageLimit={8}
+        pageNeighbours={1}
+        onPageChanged={this.onPageChanged}
+      />
+      );
     }
 
-    const {data, currentData, currentPage, totalPages} = this.state;
-    const totalRecords = data.length;
+    const {currentData, currentPage, totalPages} = this.state;
+
 
     let navigation = null;
     let heading = null;
@@ -379,18 +134,10 @@ class CategoryPage extends Component {
               <Grid container direction="row" component="div" className="cardConntainer">
                 {vehicles}
               </Grid>
-              <Pagination 
-              totalRecords={totalRecords}
-              pageLimit={12}
-              pageNeighbours={1}
-              onPageChanged={this.onPageChanged}
-            />
-            </Grid>
-            
+            {paginations}
+            </Grid>   
           </Grid>
-          
         </div>
-        
         <Footer />
       </div>
     );
@@ -405,8 +152,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    getVehicles: (vehicleCategory) => dispatch(actions.getVehicles(vehicleCategory)),
-     
+    getVehicles: (vehicleCategory) => dispatch(actions.getVehicles(vehicleCategory)),     
   }
 }
 
