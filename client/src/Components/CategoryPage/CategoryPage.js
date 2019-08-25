@@ -14,25 +14,15 @@ import Spinner from '../../Components/UI/Spinner/Spinner';
 import {Menu} from '../../shared/utility'
 
 class CategoryPage extends Component {
-  state = {
-    currentData: [],
-    currentPage: null,
-    totalPages: null
-  }
 
   componentDidMount () {
     this.props.getVehicles(this.props.match.params.category);
   }
 
   onPageChanged = paginationData => {
-    const  data  = this.props.vehicles;
-    // this.props(data);
     const { currentPage, totalPages, pageLimit } = paginationData;
-
     const offset = (currentPage - 1) * pageLimit;
-    const currentData = data.slice(offset, offset + pageLimit);
-
-    this.setState({ currentPage, currentData, totalPages });
+    this.props.getPaginatedData(offset,pageLimit);
   }
 
   render() {
@@ -40,7 +30,7 @@ class CategoryPage extends Component {
     let paginations = '';
 
     if (!this.props.loading) {
-      vehicles = this.props.vehicles.map((vehicle,index) => (
+      vehicles = this.props.currentData.map((vehicle,index) => (
         <Card key= {index} 
               year={vehicle._source.myear} 
               kms={vehicle._source.kmdriven} 
@@ -54,15 +44,12 @@ class CategoryPage extends Component {
       paginations =  (
          <Pagination 
         totalRecords={totalRecords}
-        pageLimit={8}
+        pageLimit={10}
         pageNeighbours={1}
         onPageChanged={this.onPageChanged}
       />
       );
     }
-
-    const {currentData, currentPage, totalPages} = this.state;
-
 
     let navigation = null;
     let heading = null;
@@ -110,11 +97,15 @@ const mapStateToProps = state => {
   return {
        vehicles: state.vehicleDetails.vehicles,
        loading: state.vehicleDetails.loading,
+       currentData: state.vehicleDetails.currentData,
+       currentPage: state.vehicleDetails.currentPage,
+       totalPages: state.vehicleDetails.totalPages
   };
 }
 const mapDispatchToProps = dispatch => {
   return {
-    getVehicles: (vehicleCategory) => dispatch(actions.getVehicles(vehicleCategory)),     
+    getVehicles: (vehicleCategory) => dispatch(actions.getVehicles(vehicleCategory)),  
+    getPaginatedData: (offset,pagelimit) => dispatch(actions.getPaginatedData(offset,pagelimit)) 
   }
 }
 

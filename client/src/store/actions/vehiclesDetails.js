@@ -29,3 +29,10 @@ export const getVehicles = () => {
             });
     };
 };
+export const getPaginatedData = (offset,pageLimit) => {
+    return {
+        type:actionTypes.GET_PAGINATED_VEHICLES,
+        offset,
+        pageLimit
+    }
+}
