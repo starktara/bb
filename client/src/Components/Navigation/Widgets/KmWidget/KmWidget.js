@@ -21,6 +21,7 @@ class KmWidget extends Component {
 
   render() {
     return (
+  
       <div className="kmWidget">
         <h3 className="WidgetTitle">
           <a
@@ -42,9 +43,9 @@ class KmWidget extends Component {
           <Slider
             value={this.state.slideValue}
             onChange={this.handleChange}
-            min={10}
+            min={0}
             max={100000}
-            step={10}
+            step={5000}
             tooltip={false}
           />
           <br className="clr" />
@@ -52,8 +53,10 @@ class KmWidget extends Component {
             Upto <output id="js-output">{this.state.slideValue}</output> KMs
           </div>
         </div>
-      </div>
+    </div>
+    
     );
+    
   }
 }
 

@@ -269,44 +269,6 @@ class CategoryPage extends Component {
     currentData: [],
     currentPage: null,
     totalPages: null,
-    menu: [
-      {
-        id: 0,
-        title: 'Price - Low to High',
-        selected: false,
-        key: 'location'
-    },
-    {
-      id: 1,
-      title: 'Price - High to Low',
-      selected: false,
-      key: 'location'
-    },
-    {
-      id: 2,
-      title: 'Distance from My Location - Low to High',
-      selected: false,
-      key: 'location'
-    },
-    {
-      id: 3,
-      title: 'Manufacturing Year - Low to High',
-      selected: false,
-      key: 'location'
-    },
-    {
-      id: 4,
-      title: 'Manufacturing Year - High to Low',
-      selected: false,
-      key: 'location'
-    },
-    {
-      id: 5,
-      title: 'Kilometer - Low to High',
-      selected: false,
-      key: 'location'
-    }
-    ]
   }
 
   conmponentDidMount () {
@@ -355,8 +317,7 @@ class CategoryPage extends Component {
               className="ProductListSec"
             >
               <SortDropDown 
-                title="Sort by"
-                list={this.state.menu} />
+                title="Sort by"/>
               <Grid container direction="row" component="div" className="cardConntainer">
                 {this.state.currentData.map((bike, index) => {
                   return <Card key= {index} year={bike.year} kms={bike.kms} cc={bike.cc}/>

@@ -65,11 +65,15 @@
   height: 100%;
   background-color: #eb2c2d;
   top: 0;
+  left: -10px;
+
 }
 .rangeslider-horizontal .rangeslider__handle {
   top: -7px;
   touch-action: pan-y;
   -ms-touch-action: pan-y;
+  left: -10px;
+
 }
 .rangeslider-horizontal .rangeslider__handle:after {
   content: "";
