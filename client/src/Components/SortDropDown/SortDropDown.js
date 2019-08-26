@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import M from 'materialize-css';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
 
-import { withStyles, makeStyles } from "@material-ui/core/styles";
 
 class SortDropDown extends Component {
   constructor(props) {
@@ -14,25 +9,12 @@ class SortDropDown extends Component {
       listOpen: false,
       headerTitle: ""
     };
-    this.toggleList = this.toggleList.bind(this);
     this.selectOption = this.selectOption.bind(this);
-  }
-
-  handleClickOutside() {
-    this.setState({
-      listOpen: false
-    });
   }
 
   componentDidMount () {
     let elems = this.select;
     let instances = M.FormSelect.init(elems, {});
-  }
-
-  toggleList() {
-    this.setState(prevState => ({
-      listOpen: !prevState.listOpen
-    }));
   }
 
   selectOption(event) {
@@ -43,7 +25,6 @@ class SortDropDown extends Component {
   }
 
   render() {
-    const {list} = this.props;
 
     return (
       <React.Fragment>
