@@ -25,7 +25,7 @@ const LocateStore  = () => {
             locationName: 'R.K Dealers',
             address: 'Shop 22/33, Balewadi High Street, Cummins India Office Campus Balewadi Link Road',
             coordinates: {
-                lat: 59.30,
+                lat: 59.95,
                 lng: 30.33
             }        
         },
@@ -33,7 +33,7 @@ const LocateStore  = () => {
             locationName: 'The Saddle Store',
             address: 'Shop No 19, Upper Ground Floor, East Court, Phoenix Market City, Someshwar Wadi Road',
             coordinates: {
-                lat: 59.30,
+                lat: 59.95,
                 lng: 30.33
             }
         },
@@ -41,7 +41,7 @@ const LocateStore  = () => {
             locationName: 'Open Road Riding Gear',
             address: 'Shop No 19, Upper Ground Floor, East Court, Phoenix Market City',
             coordinates: {
-                lat: 59.30,
+                lat: 59.95,
                 lng: 30.33
             }
         }
