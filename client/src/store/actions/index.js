@@ -1,6 +1,4 @@
 export {
-    auth,
-    logout,
-    setAuthRedirectPath,
-    authCheckState
-} from './auth';
+  getVehicles,
+  getPaginatedData
+} from './vehiclesDetails';

@@ -9,286 +9,47 @@ import Navigation from "../Navigation/Navigation";
 import Card from "../Card/Card";
 import SortDropDown from "../SortDropDown/SortDropDown";
 import Pagination from "../Pagination/Pagination";
-
-const cardData = [
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2007',
-    kms: '25,000',
-    cc: '99'
-  },
-  {
-    year: '2022',
-    kms: '25,000',
-    cc: '99'
-  }
-];
+import * as actions from '../../store/actions/index';
+import Spinner from '../../Components/UI/Spinner/Spinner';
+import {Menu} from '../../shared/utility'
 
 class CategoryPage extends Component {
-  state = {
-    data: cardData,
-    currentData: [],
-    currentPage: null,
-    totalPages: null,
-  }
 
-  conmponentDidMount () {
-    // this.setState({data: JSON.parse(cardData)})
+  componentDidMount () {
+    this.props.getVehicles(this.props.match.params.category);
   }
 
   onPageChanged = paginationData => {
-    const { data } = this.state;
     const { currentPage, totalPages, pageLimit } = paginationData;
-
     const offset = (currentPage - 1) * pageLimit;
-    const currentData = data.slice(offset, offset + pageLimit);
-
-    this.setState({ currentPage, currentData, totalPages });
+    this.props.getPaginatedData(offset,pageLimit);
   }
 
   render() {
+    let vehicles = <Spinner />;
+    let paginations = '';
 
-    const {data, currentData, currentPage, totalPages} = this.state;
-    const totalRecords = data.length;
+    if (!this.props.loading) {
+      vehicles = this.props.currentData.map((vehicle,index) => (
+        <Card key= {index} 
+              year={vehicle._source.myear} 
+              kms={vehicle._source.kmdriven} 
+              cc={vehicle._source.cc}  
+              name={vehicle._source.name} 
+              loc={vehicle._source.loc}
+              cost={vehicle._source.price}
+        />
+        ));
+      const totalRecords = Object.keys(this.props.vehicles).length;
+      paginations =  (
+         <Pagination 
+        totalRecords={totalRecords}
+        pageLimit={10}
+        pageNeighbours={1}
+        onPageChanged={this.onPageChanged}
+      />
+      );
+    }
 
     let navigation = null;
     let heading = null;
@@ -317,25 +78,15 @@ class CategoryPage extends Component {
               className="ProductListSec"
             >
               <SortDropDown 
-                title="Sort by"/>
+                title="Sort by"
+                list={Menu} />
               <Grid container direction="row" component="div" className="cardConntainer">
-                {this.state.currentData.map((bike, index) => {
-                  return <Card key= {index} year={bike.year} kms={bike.kms} cc={bike.cc}/>
-                })}
-                {/* <Card year="2007" kms="25,000" cc="2000"/> */}
+                {vehicles}
               </Grid>
-              <Pagination 
-              totalRecords={totalRecords}
-              pageLimit={12}
-              pageNeighbours={1}
-              onPageChanged={this.onPageChanged}
-            />
-            </Grid>
-            
+            {paginations}
+            </Grid>   
           </Grid>
-          
         </div>
-        
         <Footer />
       </div>
     );
@@ -344,16 +95,17 @@ class CategoryPage extends Component {
 
 const mapStateToProps = state => {
   return {
-      // ings: state.burgerBuilder.ingredients,
-      // price: state.burgerBuilder.totalPrice,
-      // error: state.burgerBuilder.error,
-      // isAuthenticated: state.auth.token !== null
+       vehicles: state.vehicleDetails.vehicles,
+       loading: state.vehicleDetails.loading,
+       currentData: state.vehicleDetails.currentData,
+       currentPage: state.vehicleDetails.currentPage,
+       totalPages: state.vehicleDetails.totalPages
   };
 }
 const mapDispatchToProps = dispatch => {
   return {
-      // onIngredientAdded: (ingName) => dispatch(actions.addIngredient(ingName)),
-     
+    getVehicles: (vehicleCategory) => dispatch(actions.getVehicles(vehicleCategory)),  
+    getPaginatedData: (offset,pagelimit) => dispatch(actions.getPaginatedData(offset,pagelimit)) 
   }
 }
 
