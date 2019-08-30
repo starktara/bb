@@ -1,0 +1,249 @@
+@charset "utf-8";
+
+/***********Fonts*************/
+@font-face{font-family:'RupeeForadian';src:url('../../assets/fonts/RupeeForadian.eot');src:url('../../assets/fonts/RupeeForadian.eot?#iefix') format('embedded-opentype'),
+url('../../assets/fonts/RupeeForadian.woff') format('woff'),
+url('../../assets/fonts/RupeeForadian.ttf') format('truetype'),
+url('../../assets/fonts/RupeeForadian.svg#RupeeForadian') format('svg');font-weight:normal;font-style:normal;}
+
+*, ::after, ::before { box-sizing: border-box; }
+
+h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
+
+.clr { clear: both; }
+
+.padL0 { padding-left:0!important;}
+
+.wapper { width: 1200px; margin:40px auto;}
+.wapper .pageDtl { border-radius: 4px; box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2); background-color: #ffffff; padding: 15px 20px; margin: 0 14px 40px 0; }
+.wapper .pageDtl ul { list-style: none; margin: 0 0 24px; }
+.wapper .pageDtl ul li:first-child { background:none; display: inline-block; padding:0; }
+.wapper .pageDtl ul li {  display: inline-block; background: url(../../assets/images/icons/right.svg) 0 7px no-repeat; background-size: 18px 10px; padding:0 0 0 20px;  }
+.wapper .pageDtl ul li a { color:#707575; } .wapper .pageDtl ul li.current { font-weight: bold; }
+.wapper .pageDtl h1 { font-size: 36px; text-transform: uppercase; font-weight: bold; }
+.wapper .pageDtl p { font-size: 16px; margin: 8px 0 0; }
+.filter { padding: 0!important; }
+.filter h5 { font-size: 16px; padding: 29px 0 13px; }
+.filterSec { border-radius: 4px; box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2); background-color: #ffffff; }
+.filterSec .CityWidget,.filterSec .BudgetWidget, .filterSec .BrandWidget, .filterSec .YearWidget, .filterSec .kmWidget
+{ padding:18px 18px 0; margin: 0; }
+.filterSec .CityWidget h3.WidgetTitle, .filterSec .BudgetWidget h3.WidgetTitle, .filterSec .BrandWidget h3.WidgetTitle, .filterSec .YearWidget h3.WidgetTitle, .filterSec .kmWidget h3.WidgetTitle
+{ font-size: 16px; color: #232b2b; font-weight: bold; }
+.filterSec .CityWidget h3.WidgetTitle a, .filterSec .BudgetWidget h3.WidgetTitle a, .filterSec .BrandWidget h3.WidgetTitle a, .filterSec .YearWidget h3.WidgetTitle a, .filterSec .kmWidget h3.WidgetTitle a
+{ color: #232b2b;}
+.filterSec .CityWidget .WidgetBody, .filterSec .BudgetWidget .WidgetBody, .filterSec .BrandWidget .WidgetBody, .filterSec .YearWidget .WidgetBody, .filterSec .kmWidget .WidgetBody
+{ padding: 17px 0 15px; border-bottom: solid 1px #e5e5e5; }
+.filterSec .CityWidget .WidgetBody ul.cat-list { list-style: none; } .filterSec .CityWidget .WidgetBody ul.cat-list li { padding: 6px 0; font-size: 16px; } .filterSec .CityWidget .WidgetBody ul.cat-list li a { color: #232b2b; }
+
+.filterSec .kmWidget .WidgetBody { border-bottom:none; }
+
+.filterSec .BudgetWidget .WidgetBody ul.list, .filterSec .BrandWidget .WidgetBody ul.list, .filterSec .YearWidget .WidgetBody ul.list
+{ list-style: none; }
+.filterSec .BudgetWidget .WidgetBody ul.list li, .filterSec .BrandWidget .WidgetBody ul.list li
+{ padding: 6px 0; font-weight: 100; }
+.filterSec .BudgetWidget .WidgetBody ul.list li label, .filterSec .BrandWidget .WidgetBody ul.list li label, .filterSec .YearWidget .WidgetBody ul.list li label
+{ cursor: pointer; }
+.filterSec .BudgetWidget .WidgetBody ul.list li label img.rupees, .filterSec .BrandWidget .WidgetBody ul.list li label img.rupees, .filterSec .YearWidget .WidgetBody ul.list li label img.rupees
+{ width: 9px; color: #232b2b; }
+.filterSec .BudgetWidget .WidgetBody ul.list li label span, .filterSec .BrandWidget .WidgetBody ul.list li label span, .filterSec .YearWidget .WidgetBody ul.list li label span
+{ font-size: 16px!important; color:#232b2b; padding: 2px 0 0; }
+.filterSec .BudgetWidget .WidgetBody ul.list li label input.BudgetBox, .filterSec .BrandWidget .WidgetBody ul.list li label input.BudgetBox, .filterSec .YearWidget .WidgetBody ul.list li label input.BudgetBox
+{ margin-right: .4rem; position: relative; overflow: visible; box-sizing: border-box; }
+.filterSec .BudgetWidget .WidgetBody ul.list li label span, .filterSec .BrandWidget .WidgetBody ul.list li label span, .filterSec .YearWidget .WidgetBody ul.list li label span
+{ display: inline; padding-left: 25px; font-size: 19px; }
+.filterSec .BudgetWidget .WidgetBody ul.list li label a, .filterSec .BrandWidget .WidgetBody ul.list li label a, .filterSec .YearWidget .WidgetBody ul.list li label a
+{ font-size: 16px; color: #232b2b; }
+.filterSec .BudgetWidget .WidgetBody ul.list li label a strong, .filterSec .BrandWidget .WidgetBody ul.list li label a strong, .filterSec .YearWidget .WidgetBody ul.list li label a strong
+{ font-family: RupeeForadian; font-size: 18px; color: #232b2b; }
+
+.filterSec .YearWidget .WidgetBody ul.list li { width: 50%; float: left; padding: 6px 0; }
+
+.select-wrapper input.select-dropdown { border: none; padding: 0; margin: 0; }
+.ProductListSec { padding: 0 0 0 14px!important; }
+.ProductListSec h5 { font-size: 16px; padding:28px 0 13px 14px; float: left; }
+.ProductListSec .sortby { width: 274px; float: right; margin: 0 14px 0 0; border-radius: 4px; border: solid 1px rgba(35, 43, 43, 0.4); background-color: #ffffff; padding: 0 20px; margin-bottom: 13px; }
+.ProductListSec .sortby .select-wrapper ul.dropdown-content { width: 274px!important; margin: 0 0 0 -20px; left:0!important; top:45!important; }
+.ProductListSec .sortby input.select-dropdown { background: url(../../assets/images/icons/drop-down.png) 100% / 15% no-repeat #fff; background-size: 24px 11px; }
+.ProductListSec .Prod { height: auto; padding: 0 14px 28px; }
+.ProductListSec .Product { border-radius: 4px; box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2); background-color: #ffffff; }
+.ProductListSec .Product:hover { box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.2); cursor: pointer; transition: 0.3s; }
+.ProductListSec .Product img { max-width:100%; padding: 3px; }
+.ProductListSec .Product .detail { padding: 19px; }
+.ProductListSec .Product .detail h3 { font-size: 18px; padding-bottom: 0; font-weight: bold; }
+.ProductListSec .Product .detail p.price { font-size: 20px; color: #ff0000; margin: 0; font-weight: bold; margin-top: 10px; }
+.ProductListSec .Product .detail p.price img.rupees { width:16px; vertical-align: sub; color: #ff0000; }
+.ProductListSec .Product .detail p.price strong { font-family: RupeeForadian; font-size: 21px;  font-weight: bold; }
+.ProductListSec .Product .detail ul.detailPoints { list-style: none; margin: 20px 0 0 0; }
+.ProductListSec .Product .detail ul.detailPoints li { padding:4px 0 4px 23px; font-size: 14px; width: 50%; float: left; }
+.ProductListSec .Product .detail ul.detailPoints li.year { background: url(../../assets/images/icons/calender.png) 0 7px no-repeat; }
+.ProductListSec .Product .detail ul.detailPoints li.km { background: url(../../assets/images/icons/km.png) 0 7px no-repeat; }
+.ProductListSec .Product .detail ul.detailPoints li.cc { background: url(../../assets/images/icons/cc.png) 0 7px no-repeat; }
+.ProductListSec .Product .detail ul.detailPoints li.owner { background: url(../../assets/images/icons/owner.png) 0 7px no-repeat; }
+.ProductListSec .Product .detail p.location { background: url(../../assets/images/icons/location.png) 0 19px no-repeat; padding: 15px 0 0 18px; margin: 15px 0 0; border-top: #e5e5e5 solid 1px;}
+.ProductListSec .pagination { text-align: center; }
+.ProductListSec .pagination li { height: 40px; padding: 0; }
+.ProductListSec .pagination li:last-child { margin-left:30px; }
+.ProductListSec .pagination li a { width:40px; height: 40px; border-radius: 25px; padding: 5px; border: solid 1px rgba(35, 43, 43, 0.4); background-color: #fff; margin:0 7px; }
+.ProductListSec .pagination li.disabled a { border-radius: 25px; cursor: default; color: #999; opacity: 0.4; padding: 5px; border: solid 1px rgba(35, 43, 43, 0.4); background-color: #fff; margin-right: 30px; }
+.ProductListSec .pagination li.active { background: none; }
+.ProductListSec .pagination li.active a { border-radius: 25px; color: #fff; box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2); border: solid 2px #ffffff; background-color: #ff0000; }
+.ProductListSec .pagination li.dot a { box-shadow:0; border:none; background-color:transparent; font-size: 30px; margin: 0; }
+
+.dropdown-content li > a, .dropdown-content li > span { color:#333; }
+
+.filterBand { display: none; }
+
+
+[type="checkbox"].filled-in:not(:checked) + span:not(.lever)::after { height: 18px; width: 18px; background-color: transparent; border: 1px solid #d3d5d5; top: 0px; z-index: 0; margin-top:3px; }
+[type="checkbox"].filled-in:checked + span:not(.lever):after { border: 1px solid #ff0000!important; background-color: #ff0000;height: 18px; width: 18px;  margin-top:3px; }
+
+
+.filterSec .CityWidget .WidgetBody input[type=text] { padding: 6px 10px; font-size: 17px; border: solid 1px rgba(35, 43, 43, 0.4); background: #fff; width: 80%;	height: 40px; box-sizing: border-box; border-top-left-radius: 3px; border-bottom-left-radius: 3px; border-right: none; }
+.filterSec .CityWidget .WidgetBody input[ type="text"]:not(.browser-default):focus:not([readonly]) {box-shadow:none;}
+.filterSec .CityWidget .WidgetBody .search-container { padding: 0; }
+.filterSec .CityWidget .WidgetBody .search-container button { width: 20%; float: right; padding: 6px 10px; font-size: 17px; border: none; cursor: pointer; height: 40px;border-radius: 3px;
+  background-color: #ff0000; border-top-left-radius: 0; border-bottom-left-radius: 0; color:#fff; }
+
+.vehicleGalSec { padding: 0 15px 0 0!important; }
+.vehicleGal { height: 592px; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17); background-color: #ffffff; border-radius: 5px; padding: 0!important; }
+.vehicleDetails { box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17); background-color: #ffffff; }
+.vehicleDetails .PriceSec { border-bottom: #a8a9ab solid 1px; text-align: center; padding: 21px 0 28px }
+.vehicleDetails .PriceSec p.price { font-size: 36px; color: #ff0000; margin: 0; font-weight: bold; padding: 0 0 5px; }
+.vehicleDetails .PriceSec p.price strong { font-family: RupeeForadian; font-size: 38px;  }
+.vehicleDetails .PriceSec span { display: inline-block; font-size: 20px; color: #ff0000; margin: 0; padding: 3px 15px; }
+.vehicleDetails .PriceSec span.del { font-size: 20px; color: #ff0000; text-decoration: line-through; position: relative; padding: 3px 5px; margin-right: 10px; }
+.vehicleDetails .PriceSec span.del::after{ content: ''; border-bottom: 2px solid #000; position: absolute; left: 0; top: 50%; width: 100%; }
+.vehicleDetails .PriceSec span.del strong { font-family: RupeeForadian; font-size: 21px; }
+.vehicleDetails .PriceSec span.save { font-size: 20px; color: #fff; background: #000; border-radius: 4px; font-weight: bold; }
+
+.vehicleDetails .ProductDetail { padding:15px 25px; border-bottom: #a8a9ab solid 1px; }
+.vehicleDetails .ProductDetail ul.detailPoints { list-style: none; }
+.vehicleDetails .ProductDetail ul.detailPoints li { padding:10px 0 10px 38px; font-size: 20px; width: 33%; float: left; }
+.vehicleDetails .ProductDetail ul.detailPoints li.year { background: url(../../assets/images/icons/calender-dtl.png) 0 11px no-repeat; }
+.vehicleDetails .ProductDetail ul.detailPoints li.km { background: url(../../assets/images/icons/km-dtl.png) 0 10px no-repeat; }
+.vehicleDetails .ProductDetail ul.detailPoints li.cc { background: url(../../assets/images/icons/cc-dtl.png) 0 12px no-repeat; }
+.vehicleDetails .ProductDetail ul.detailPoints li.owner { background: url(../../assets/images/icons/owner-dtl.png) 0 10px no-repeat; }
+.vehicleDetails .ProductDetail ul.detailPoints li.location { background: url(../../assets/images/icons/location-dtl.png) 0 12px no-repeat;}
+
+.ProductForm { padding:15px 40px 15px 10px; }
+.ProductForm .form-group { margin: 10px 0; }
+.ProductForm .form-group label.fieldname { font-size: 18px; padding: 6px 0 0 10px; font-size: bold!important; color: #232c2b; }
+.ProductForm .form-group label.fieldname span { font-size: 18px; padding-left: 30px; }
+.ProductForm .form-group input[type="text"] { background: #e9eaea; height: 40px; border-radius: 4px; box-shadow: none; border: none; box-sizing: border-box; color: #333; padding: 5px 10px; }
+.ProductForm .form-group input[type="text"]::placeholder { color: #666; }
+.ProductForm .form-group input[type="text"]:not(.browser-default):focus:not([readonly]) {box-shadow:none;}
+.ProductForm .form-group input.name { background:#e9eaea url(../../assets/images/icons/name.png) 370px 9px no-repeat; }
+.ProductForm .form-group input.contact { background:#e9eaea url(../../assets/images/icons/mobile.png) 370px 9px no-repeat; }
+.ProductForm .form-group input.email { background:#e9eaea url(../../assets/images/icons/email.png) 370px 9px no-repeat; }
+.ProductForm .form-group .btn { background: #ff0000; padding: 6px 30px; border-radius: 24px; height: 48px; font-size: 20px; font-weight: bold; text-transform: capitalize; box-shadow: none; margin-left: 10px; }
+
+.vehicleSummarySec, .vehicleReportSec { padding: 50px 12px 0 0!important; }
+.vehicleSummary, .vehicleReport { box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17); background-color: #ffffff; border-radius: 5px; padding:40px; }
+.vehicleSummary h3 { font-size: 24px; color: #fe0000; font-weight: bold; margin-bottom: 15px; }
+.vehicleSummary h4 { font-size: 18px; color: #232c2b; font-weight: bold; }
+.vehicleSummary p { font-size: 16px; color: #232c2b; }
+.vehicleSummary ul.list { margin: 15px 0 0; }
+.vehicleSummary ul.list li { background: url(../../assets/images/icons/bullet.png) 0 13px no-repeat; padding: 5px 0 5px 20px; }
+
+.vehicleReport h2, .vehicleAdvantage h2 { font-size: 36px; color: #fe0000; font-weight: bold; margin-bottom: 15px; }
+.vehicleReport p { font-size: 18px; color: #232c2b; }
+
+.vehicleAdvantageSec { background-color: #e5e5e5; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);}
+.vehicleAdvantage {  width: 1200px; margin:40px auto; padding:40px; }
+.vehicleAdvantage h2 { color: #232c2b; }
+.vehicleAdvantage .advantageSec { padding: 0 0; }
+.vehicleAdvantage .advantageSec .advantage { padding: 10px 0; }
+.vehicleAdvantage .advantageSec .advantage .advantageIconLeft { width: 224px; height: 224px; border-radius: 50%; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17); background-color: #ffffff; position: relative; z-index: 1; text-align: center; }
+.vehicleAdvantage .advantageSec .advantage .advantageIconLeft img { margin: 30% 0; }
+.vehicleAdvantage .advantageSec .advantage h3 { font-size:32px; background: url(../../assets/images/icons/advantage-icon-lt.png) 0 30px no-repeat; font-weight: bold; color: #ff0000; padding-top: 30px; padding-left: 180px; }
+.vehicleAdvantage .advantageSec .advantage p { padding-left: 70px; font-size: 24px; }
+
+.vehicleAdvantage .advantageSec .advantage1 { padding: 10px 0; }
+.vehicleAdvantage .advantageSec .advantage1 .icon { float: right; }
+.vehicleAdvantage .advantageSec .advantage1 .detail { float: left; }
+.vehicleAdvantage .advantageSec .advantage1 .advantageIconRight { width: 224px; height: 224px; border-radius: 50%; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17); background-color: #ffffff; position: relative; z-index: 1; text-align: center; margin: 0 0 0 -50px;  }
+.vehicleAdvantage .advantageSec .advantage1 .advantageIconRight img { margin: 25% 0; }
+.vehicleAdvantage .advantageSec .advantage1 h3 { font-size:32px; background: url(../../assets/images/icons/advantage-icon-rt.png) right 30px no-repeat; font-weight: bold; color: #ff0000; padding-top: 30px; padding-right: 180px; text-align: right; }
+.vehicleAdvantage .advantageSec .advantage1 p { padding-right: 70px; font-size: 24px; text-align: right; }
+
+
+.similar { width: 1200px; margin:100px auto; }
+.similar .carousel { height:auto; max-height:100%; border: none; padding: 5px; background: none; overflow: inherit }
+.similar h2 { font-size: 36px; color: #232c2b;font-weight: bold; margin-bottom: 15px; text-align: center; }
+.similar .Product .detail img { display:inline-block}
+.similar .Product { border-radius: 4px; box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2); background-color: #ffffff; margin: 5px }
+.similar .Product:hover { box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.2); cursor: pointer; transition: 0.3s; }
+.similar .Product img { max-width:100%; padding: 3px; }
+.similar .Product .detail { padding: 19px; }
+.similar .Product .detail h3 { font-size: 18px; padding-bottom: 0; font-weight: bold; }
+.similar .Product .detail p.price { font-size: 20px; color: #ff0000; margin: 0; font-weight: bold; margin-top: 10px; }
+.similar .Product .detail p.price img.rupees { width:16px; vertical-align: sub; color: #ff0000; }
+.similar .Product .detail p.price strong { font-family: RupeeForadian; font-size: 21px;  font-weight: bold; }
+.similar .Product .detail ul.detailPoints { list-style: none; margin: 20px 0 0 0; }
+.similar .Product .detail ul.detailPoints li { padding:4px 0 4px 23px; font-size: 14px; width: 50%; float: left; }
+.similar .Product .detail ul.detailPoints li.year { background: url(../../assets/images/icons/calender.png) 0 7px no-repeat; }
+.similar .Product .detail ul.detailPoints li.km { background: url(../../assets/images/icons/km.png) 0 7px no-repeat; }
+.similar .Product .detail ul.detailPoints li.cc { background: url(../../assets/images/icons/cc.png) 0 7px no-repeat; }
+.similar .Product .detail ul.detailPoints li.owner { background: url(../../assets/images/icons/owner.png) 0 7px no-repeat; }
+.similar .Product .detail p.location { background: url(../../assets/images/icons/location.png) 0 19px no-repeat; padding: 15px 0 0 18px; margin: 15px 0 0; border-top: #e5e5e5 solid 1px;}
+
+.similar .carousel .flex-prev { left:-70px; opacity: 1; width: 50px; height: 50px; text-indent: -9999; background: url(../../assets/images/icons/left.png) 5px 5px no-repeat; }
+.similar .carousel .flex-next { right:-70px; opacity: 1; text-indent: -9999; width: 50px; height: 50px; background: url(../../assets/images/icons/right.png) 5px 5px no-repeat; }
+.similar .carousel .flex-prev:hover { left:-70px; }
+.similar .carousel .flex-next:hover { right:-70px;}
+.similar .carousel:hover .flex-direction-nav .flex-prev { opacity: 0.7; left:-60px; }
+.similar .carousel:hover .flex-direction-nav .flex-prev:hover { opacity: 1; }
+.similar .carousel:hover .flex-direction-nav .flex-next { opacity: 0.7; right:-70px; }
+.similar .carousel:hover .flex-direction-nav .flex-next:hover { opacity: 1; }
+
+.flex-control-nav { display:none;}
+
+
+@media screen and (min-width: 320px) and (max-width: 641px) {
+.ProductListSec .sortby { width: auto; float: none; margin: 0 15px; }
+.ProductListSec .sortby .select-wrapper ul.dropdown-content { width:auto!important; margin: 0 -20px; }
+.ProductListSec h5 { float:none;}
+.similar { width: 100%; margin:40px auto; }
+.similar .carousel { overflow:hidden; }
+.vehicleDetails .ProductDetail ul.detailPoints li { width: 50%; }
+}
+
+@media screen and (min-width: 320px) and (max-width: 992px) {
+.wapper .pageDtl { margin: 0 15px 30px; }
+.wapper { width: 100%;}
+.filter { padding:0; }
+.filter h5 { float:none; padding: 30px 0 13px 15px; }
+.sidenav { width: 300px!important; left:0; padding: 0!important; }
+.sidenav .filterSec { background-color: #ffffff; border-radius:0; padding: 0 0 120px; box-shadow:0 0 0; border-top: solid 1px #e5e5e5; }
+.ProductListSec { padding-left:0!important; }
+.sidenav li { padding: 6px 0; line-height: 20px; }
+.sidenav li > a { padding:0; font-weight: 100; height: auto; line-height: 20px; }
+.sidenav li > a:hover { background: none; }
+.filterBand { display:block; }
+.filterBand a { width: 100%; position:fixed; bottom: 0; text-align: center; color: #fff; background: #fd1b1b; padding: 10px; z-index: 10000; }
+.filterBand i.material-icons { vertical-align: text-bottom; }
+.similar { width: 100%; margin:40px auto; }
+.similar .carousel { overflow:hidden; }
+.vehicleAdvantage { width:100%; }
+.vehicleAdvantage .advantageSec .advantage, .vehicleAdvantage .advantageSec .advantage1 { padding:20px 0; }
+.vehicleAdvantage .advantageSec .advantage .advantageIconLeft, .vehicleAdvantage .advantageSec .advantage1 .advantageIconRight { margin: 0 auto;  }
+.vehicleAdvantage .advantageSec .advantage1 h3, .vehicleAdvantage .advantageSec .advantage h3{ background:none; text-align:center; padding: 20px 0 0; }
+.vehicleAdvantage .advantageSec .advantage1 p, .vehicleAdvantage .advantageSec .advantage p{ text-align:center; padding: 0; font-size: 20px; }
+.vehicleSummarySec, .vehicleReportSec { padding: 50px 12px 0 !important; }
+.vehicleGalSec { padding:0 12px 40px!important; }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1199px) {
+.wapper { width: 100%;}
+.filter { padding:0 0 0 15px!important; }
+.similar { width: 100%; margin:40px auto; }
+.similar .carousel { overflow:hidden; }
+.vehicleAdvantage { width:100%; }
+.vehicleSummarySec, .vehicleReportSec { padding: 50px 12px 0 !important; }
+.vehicleGalSec { padding:0 12px 40px!important; }
+.wapper .pageDtl {margin: 0 15px 40px 15px; }
+}
+
+.carousel{
+  min-height: 475px;
+}

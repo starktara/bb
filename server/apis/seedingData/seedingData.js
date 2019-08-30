@@ -42,6 +42,27 @@ router.get("/createbikeMapping", (req, res) =>{
 }
 );
 
+router.get('/createStoreLocationMapping', (req,res) =>{
+  async function createMapping() {
+    await client.indices.create({
+      index: 'store-location',
+      body:{
+        mappings:{
+          id: { type: 'integer' },
+          name: { type: 'text' },
+          city: { type: 'text'},
+          locality: { type: 'text'},
+          location : {type:'geo_point'}
+        }
+      }
+    },{ ignore: [400] });
+  }
+  createMapping().catch((err) => { console.log(err);})
+  res.json({
+    msg: 'mapping created'
+  });
+});
+
 router.get("/uploadBikes", (req,res) => {
   async function upload(){
 
@@ -106,7 +127,7 @@ router.get("/uploadBikes", (req,res) => {
       category : 1,
       mileage : 60
     }];
-  console.log(dataset);
+    console.log(dataset);
      const body = dataset.flatMap(doc => [{ index: { _index: 'bike-details' } }, doc]);
   
     const { body: bulkResponse } = await client.bulk({ refresh: true, body })
@@ -139,10 +160,62 @@ router.get("/uploadBikes", (req,res) => {
   upload().catch(console.log);
 });
 
+router.get("/uploadLocations", (req,res) => {
+  async function upload(){
+
+    const dataset = [{
+      id: 1,
+      name: "R.K Dealers",
+      city: "New Delhi",
+      locality: "Okhla Phase 3",
+      location : { "lat": 31.12, "lon": -71.34 }
+    }];
+     const body = dataset.flatMap(doc => [{ index: { _index: 'store-location' } }, doc]);
+  
+    const { body: bulkResponse } = await client.bulk({ refresh: true, body })
+  
+    if (bulkResponse.errors) {
+      const erroredDocuments = []
+      bulkResponse.items.forEach((action, i) => {
+        const operation = Object.keys(action)[0]
+        if (action[operation].error) {
+          erroredDocuments.push({
+            status: action[operation].status,
+            error: action[operation].error,
+            operation: body[i * 2],
+            document: body[i * 2 + 1]
+          })
+        }
+      })
+      console.log(erroredDocuments)
+    }
+  
+    const { body: count } = await client.count({ index: 'store-location' })
+    console.log(count)
+  }
+  upload().catch(console.log);
+});
+
 router.get("/getAllBikes",(req,res) => {
   async function getData(){
     const { body } = await client.search({
       index: 'bike-details',
+      body: {
+        query: {
+          match_all: {}
+        }
+      }
+    })
+    res.send(body.hits.hits);
+     
+  }
+  getData().catch(console.log);
+})
+
+router.get("/getAllStoreLocations",(req,res) => {
+  async function getData(){
+    const { body } = await client.search({
+      index: 'store-location',
       body: {
         query: {
           match_all: {}

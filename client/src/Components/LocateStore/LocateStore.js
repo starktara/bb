@@ -143,47 +143,6 @@ const LocateStore  = () => {
                     <h4 className="mapHeading">List of Stores Nearest to Selected Location</h4>
                     <div className="heading-lines"><img src={headingLines} width="57" height="4" /></div>
                     <div className="row">
-                        <div className="col s4 m4">
-                            <div className="locationCard">
-                                <h5>R.K Dealers</h5>
-                                <div className="locationAddress">
-                                    <br/>
-                                    Baner, Pune
-                                </div>
-                                <div className="mapContainer">
-                                    <GoogleMap center={mapProps.center} zoom={mapProps.zoom} location="R.K Dealers"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col s4 m4">
-                            <div className="locationCard">
-                                <h5>The Saddle store</h5>
-                                <div className="locationAddress">
-                                    <br/>
-                                    Baner, Pune
-                                </div>
-                                <div className="mapContainer">
-                                    <GoogleMap center={mapProps.center} zoom={mapProps.zoom} location="The Saddle Store"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col s4 m4">
-                            <div className="locationCard">
-                                <h5></h5>
-                                <div className="locationAddress">
-                                Shop 22/33, Balewadi High Street, Cummins India
-                                    Office Campus
-                                    Balewadi Link Road
-                                    <br/>
-                                    Baner, Pune
-                                </div>
-                                <div className="mapContainer">
-                                    <GoogleMap center={mapProps.center} zoom={mapProps.zoom} location="Open Road Riding Gear"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
                         {locationCards}
                     </div>
                 </div>
