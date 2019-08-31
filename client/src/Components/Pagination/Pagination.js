@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 
 const LEFT_PAGE = "LEFT";
 const RIGHT_PAGE = "RIGHT";

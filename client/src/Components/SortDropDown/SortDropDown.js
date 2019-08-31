@@ -14,7 +14,7 @@ class SortDropDown extends Component {
 
   componentDidMount () {
     let elems = this.select;
-    let instances = M.FormSelect.init(elems, {});
+    M.FormSelect.init(elems, {});
   }
 
   selectOption(event) {
@@ -28,7 +28,7 @@ class SortDropDown extends Component {
 
     return (
       <React.Fragment>
-		    <div className="filterBand"><a href="#" data-target="slide-out" className="sidenav-trigger"><i className="material-icons">filter_list</i> Filter</a></div>        
+		    <div className="filterBand"><button data-target="slide-out" className="sidenav-trigger"><i className="material-icons">filter_list</i> Filter</button></div>        
         <h5>One Step Closer to Your Dream Bike</h5>
         <div className="input-field sortby" onClick={this.toggleList}>
 				<select

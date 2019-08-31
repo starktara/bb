@@ -5,3 +5,4 @@ export const VEHICLE_LIST = 'VEHICLE_LIST';
 
 export const API_FAIL = 'API_FAIL';
 export const GET_PAGINATED_VEHICLES = 'GET_PAGINATED_VEHICLES';
+export const GET_VEHICLE_DATA = 'GET_VEHICLE_DATA';

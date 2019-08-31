@@ -527,3 +527,6 @@ body{
     box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
     padding: 16px 19px 13px 19px;
   }
+  #slideLeft, #slideRight{
+    margin-top: 110px;
+  }

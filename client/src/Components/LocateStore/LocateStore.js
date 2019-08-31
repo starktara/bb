@@ -20,7 +20,7 @@ const mapProps = {
 
 const LocateStore  = () => {
 
-    const [mapLocations, mapLocationsHandler] = useState([
+    const [mapLocations] = useState([
         {
             locationName: 'R.K Dealers',
             address: 'Shop 22/33, Balewadi High Street, Cummins India Office Campus Balewadi Link Road',
@@ -106,11 +106,11 @@ const LocateStore  = () => {
                     <div className="row">
                         <div className="input-field">
                             <p>Please Select Your City</p>
-                            <a className='dropdown-trigger btn custom-drop white black-text' href='#' data-target='cityDropdown'>
-                                <img src={locationIcon} width="32.9" height="28.3"/>
+                            <button className='dropdown-trigger btn custom-drop white black-text' data-target='cityDropdown'>
+                                <img src={locationIcon} width="32.9" height="28.3" alt=""/>
                                     <span id="currentCity">Search Your City</span>
-                                <img src={dropdownIcon} width="22" height="11"/>
-                            </a>
+                                <img src={dropdownIcon} width="22" height="11" alt=""/>
+                            </button>
                             <ul id='cityDropdown' className='dropdown-content'>
                                 {
                                     cities.map((city,key) => {
@@ -121,11 +121,11 @@ const LocateStore  = () => {
                         </div>
                         <div className="input-field">
                         <p>Please Select Your Location</p>
-                            <a className='dropdown-trigger btn custom-drop white black-text' href='#' data-target='locationDropdown'>
-                                <img src={locationIcon} width="32.9" height="28.3"/>
+                            <button className='dropdown-trigger btn custom-drop white black-text' href='#' data-target='locationDropdown'>
+                                <img src={locationIcon} width="32.9" height="28.3" alt=""/>
                                     <span id="currentLocation">Search Your Location</span>
-                                <img src={dropdownIcon} width="22" height="11"/>
-                            </a>
+                                <img src={dropdownIcon} width="22" height="11" alt=""/>
+                            </button>
                             <ul id='locationDropdown' className='dropdown-content'>
                                 {
                                     locations.map((location,key) => {
@@ -135,13 +135,13 @@ const LocateStore  = () => {
                             </ul>
                         </div>
                         <div className="seacrh-location-button">
-                            <img src={searchIcon} width="30" height="30" />
+                            <img src={searchIcon} width="30" height="30" alt=""/>
                         </div>
                     </div>
                 </div>
                 <div className="locateDropdownCard">
                     <h4 className="mapHeading">List of Stores Nearest to Selected Location</h4>
-                    <div className="heading-lines"><img src={headingLines} width="57" height="4" /></div>
+                    <div className="heading-lines"><img src={headingLines} width="57" height="4" alt=""/></div>
                     <div className="row">
                         {locationCards}
                     </div>

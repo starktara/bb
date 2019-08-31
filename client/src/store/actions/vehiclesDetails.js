@@ -29,6 +29,17 @@ export const getVehicles = () => {
             });
     };
 };
+
+export const getVehicleData = (vehicleid) => {
+    console.log('Action Called');
+    return{
+            type: actionTypes.GET_VEHICLE_DATA,
+            vehicle: {
+                name: 'Yamaha'
+            }
+        };
+};
+
 export const getPaginatedData = (offset,pageLimit) => {
     return {
         type:actionTypes.GET_PAGINATED_VEHICLES,

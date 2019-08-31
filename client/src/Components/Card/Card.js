@@ -11,7 +11,7 @@ const Card = props => {
         <div className="detail">
           <h3>{props.name} </h3>
 						<p className="price">
-            <img className="rupees" src={require("../../assets/icons/rupee-indian-red.svg")}/>{props.cost}
+            <img className="rupees" src={require("../../assets/icons/rupee-indian-red.svg")} alt=""/>{props.cost}
             </p>
           <ul className="detailPoints">
             <li className="year">{props.year}</li>

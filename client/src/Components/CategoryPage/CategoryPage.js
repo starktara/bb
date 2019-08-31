@@ -66,7 +66,7 @@ class CategoryPage extends Component {
       <div>
         <Header />
         <div className="wapper">
-          <Banner navigation={navigation} heading={heading} text={text} />
+          <Banner navigation={navigation} heading={heading} text={text} path={this.props.location.pathname}/>
           <Grid container component="div" direction="row">
             <Navigation />
             <Grid
