@@ -118,12 +118,13 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 
 .vehicleDetails .ProductDetail { padding:15px 25px; border-bottom: #a8a9ab solid 1px; }
 .vehicleDetails .ProductDetail ul.detailPoints { list-style: none; }
-.vehicleDetails .ProductDetail ul.detailPoints li { padding:10px 0 10px 38px; font-size: 20px; width: 33%; float: left; }
+.vehicleDetails .ProductDetail ul.detailPoints li:not(:last-child){ width: 33%; }
+.vehicleDetails .ProductDetail ul.detailPoints li { padding:10px 0 10px 38px; font-size: 20px; float: left; }
 .vehicleDetails .ProductDetail ul.detailPoints li.year { background: url(../../assets/images/icons/calender-dtl.png) 0 11px no-repeat; }
 .vehicleDetails .ProductDetail ul.detailPoints li.km { background: url(../../assets/images/icons/km-dtl.png) 0 10px no-repeat; }
 .vehicleDetails .ProductDetail ul.detailPoints li.cc { background: url(../../assets/images/icons/cc-dtl.png) 0 12px no-repeat; }
 .vehicleDetails .ProductDetail ul.detailPoints li.owner { background: url(../../assets/images/icons/owner-dtl.png) 0 10px no-repeat; }
-.vehicleDetails .ProductDetail ul.detailPoints li.location { background: url(../../assets/images/icons/location-dtl.png) 0 12px no-repeat;}
+.vehicleDetails .ProductDetail ul.detailPoints li.location { width: 50%; background: url(../../assets/images/icons/location-dtl.png) 0 12px no-repeat;}
 
 .ProductForm { padding:15px 40px 15px 10px; }
 .ProductForm .form-group { margin: 10px 0; }

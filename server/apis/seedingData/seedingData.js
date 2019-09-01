@@ -226,6 +226,26 @@ router.get("/getAllStoreLocations",(req,res) => {
      
   }
   getData().catch(console.log);
-})
+});
+
+router.get('/searchBike', (req,res) => {
+  async function getBike(){
+    const {body} = await client.search({
+      index: 'bike-details',
+      body: {
+        query: {
+          // match: {
+          //   id: req.query.id
+          // }
+          terms: {
+            _id: [ req.query.vehicleid ] 
+          }
+        }
+      }
+    });
+    res.send(body.hits.hits);
+  }
+  getBike().catch(console.log);
+});
   
 module.exports  = router;

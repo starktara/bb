@@ -38,6 +38,7 @@ class CategoryPage extends Component {
               name={vehicle._source.name} 
               loc={vehicle._source.loc}
               cost={vehicle._source.price}
+              vehicleid={vehicle._id} 
         />
         ));
       const totalRecords = Object.keys(this.props.vehicles).length;

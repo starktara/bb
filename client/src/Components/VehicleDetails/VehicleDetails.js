@@ -1,43 +1,44 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
-import './VehichleDetails.css';
+import './VehicleDetails.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import VehichleData from '../VehicleData/VehichleData';
-import VehichleMetaData from '../VehicleMetaData/VehicleMetaData';
+import VehicleData from '../VehicleData/VehicleData';
+import VehicleMetaData from '../VehicleMetaData/VehicleMetaData';
 import VehicleAdvantage from '../VehicleAdvantage/VehicleAdvantage';
 import SimilarVehicles from '../SimilarVehicles/SimilarVehicles';
-import Spinner from '../../Components/UI/Spinner/Spinner';
+import Spinner from '../UI/Spinner/Spinner';
 import Banner from '../Banner/Banner';
 import M from  'materialize-css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const VehichleDetails = (props) => {
-
+const VehicleDetails = (props) => {
+    
     useEffect(() => {
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('select');
             M.FormSelect.init(elems, {});
-          });
+        });
+        
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
             M.Sidenav.init(elems, {});
-          });
+        });
 
         if(props.match.params.vehicleid!==undefined){
             props.getVehicleData(props.match.params.vehicleid);
         }
     },[]);
 
-    var vehicle = <Spinner />
+    var vehicle = <Spinner />;
 
-    if(!props.loading){
-        vehicle = <VehichleData data={props.vehicle}/>;
+    if(props.vehicle!=null){
+        vehicle = <VehicleData data={props.vehicle._source}/>;
     }
 
     return (
-        <div className="VehichleDetails">
+        <div className="VehicleDetails">
             <Header />
             <div className="wapper">
                 <Banner
@@ -47,14 +48,14 @@ const VehichleDetails = (props) => {
                     path={props.location.pathname}
                 />
                 {vehicle}
-                <VehichleMetaData />
+                <VehicleMetaData />
                 <br className="clr"/>
             </div>
             <VehicleAdvantage />
             <SimilarVehicles />
             <Footer />
         </div>
-    );
+    );   
 }
 
 const mapStateToProps = state => {
@@ -69,4 +70,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(VehichleDetails);
+export default connect(mapStateToProps,mapDispatchToProps)(VehicleDetails);

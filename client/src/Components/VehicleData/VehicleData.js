@@ -1,10 +1,10 @@
 import React from 'react';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import Grid from "@material-ui/core/Grid";
 import bikeIcon from '../../assets/images/product/bike-img.png';
 
-const VehichleData = (props) => {
+const VehicleData = (props) => {
     return(
         <Grid container component="div" direction="row">
             <Grid item xs={12} md={12} sm={12} lg={6} className="vehicleGalSec">
@@ -22,17 +22,17 @@ const VehichleData = (props) => {
             <Grid item xs={12} md={12} sm={12} lg={6}>
                 <div className="vehicleDetails">
                     <div className="PriceSec">
-                        <p className="price"><strong>`</strong>{props.data.currentPrice}</p>
-                        <span className="del"><strong>`</strong>{props.data.previousPrice}</span>
+                        <p className="price"><strong>`</strong>{props.data.price}</p>
+                        <span className="del"><strong>`</strong>{props.data.price}</span>
                         <span className="save">Save {props.data.discount}%</span>
                     </div>
                     <div className="ProductDetail">
                         <ul className="detailPoints">
-                            <li className="year">{props.data.year}</li>
-                            <li className="km">{props.data.distance} KMs</li>
-                            <li className="cc">{props.data.engineSize} CC</li>
+                            <li className="year">{props.data.myear}</li>
+                            <li className="km">{props.data.kmdriven} KMs</li>
+                            <li className="cc">{props.data.cc} CC</li>
                             <li className="owner">{props.data.owner}</li>
-                            <li className="location">{props.data.location}</li>
+                            <li className="location">{props.data.loc+', '+props.data.city}</li>
                         </ul><br className="clr"/>
                     </div>
                     <div className="ProductForm">
@@ -77,4 +77,4 @@ const VehichleData = (props) => {
     );
 }
 
-export default VehichleData;
+export default VehicleData;

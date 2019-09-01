@@ -28,7 +28,7 @@ const getPaginatedData = (state,action) => {
 const getVehicleData = (state,action) => {
     return updateObject(state,{
         loading: false,
-        vehicle: action.vehicle
+        vehicle: action.vehicleData
     });
 }
 

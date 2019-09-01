@@ -201,7 +201,7 @@ const Homepage = () => {
                             <div className="center-align">
                                 <h5>Low Cost EMI</h5>
                                 <p className="advantage-subtitle">
-                                    All vehichles are available at EMI starting at ₹ 2000*. Your dream bike is not a distant dream now 
+                                    All vehicles are available at EMI starting at ₹ 2000*. Your dream bike is not a distant dream now 
                                 </p>
                             </div>
                         </div>
