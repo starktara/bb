@@ -23,6 +23,7 @@ import testimonial3 from '../../assets/testimonial-image-3.png';
 import testimonial4 from '../../assets/testimonial-image-4.png';
 import testimonial5 from '../../assets/testimonial-image-5.png';
 import M from 'materialize-css';
+import Grid from "@material-ui/core/Grid";
 
 const Homepage = () => {
     const [sliderState, changeSlider] = useState(null);
@@ -116,42 +117,42 @@ const Homepage = () => {
             </ul>
             </div>
             <div className="section-2">
-                <div className="row">
-                    <div className="col s12 m12 center-align section-2-heading">
+                <Grid container component="div" direction="row" className="row">
+                    <Grid item xs={12} md={12} sm={12} lg={12} className="center-align section-2-heading">
                         <h3>WHAT ARE YOU LOOKING FOR?</h3>
                         <img alt="" src={headingLines} width="57" height="4" />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col s12 m4 flex-center">
+                    </Grid>
+                </Grid>
+                <Grid container component="div" direction="row">
+                    <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
                         <div className="box-shadow center-align">
                             <Link to="/category/bike"><img alt="" src={bike2} height="192" width="290"/></Link>
                             <h5>Motorcycle</h5>
                         </div>
-                    </div>
-                    <div className="col s12 m4 flex-center">
+                    </Grid> 
+                    <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
                         <div className="box-shadow center-align">
                             <img alt="" src={scooter} height="192" width="290"/>
                             <h5>Scooter</h5>
                         </div>
-                    </div>
-                    <div className="col s12 m4 flex-center">
+                    </Grid> 
+                    <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
                         <div className="box-shadow center-align">
                             <img alt="" src={bike} height="192" width="290"/>
                             <h5>High-End Motorcycle</h5>
                         </div>
-                    </div>
-                </div>
+                    </Grid> 
+                </Grid>
             </div>
             <div className="section-3">
-                <div className="row mb-0">
-                    <div className="col s12 m12 center-align section-3-heading">
+                <Grid container component="div" direction="row" className="row">
+                    <Grid item xs={12} sm={12} md={12} lg={12} className="center-align section-3-heading">
                         <h3>BIKEBAZAAR ADVANTAGE</h3>
                         <img alt="" src={headingLines} width="57" height="4" />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col s12 m4">
+                    </Grid>
+                </Grid>
+                <Grid container component="div" direction="row" className="row">
+                    <Grid item xs={12} sm={12} md={4} lg={4}>
                         <div className="gola-wrapper">
                             <div className="gola valign-wrapper">
                                 <img alt="" src={certifiedAutoExperts} height="98" width="98"/>
@@ -159,12 +160,12 @@ const Homepage = () => {
                         </div>
                         <div className="center-align">
                             <h5>Certified by Auto Experts</h5>
-                                <p className="advantage-subtitle">
-                                    Every bike goes through a thorough inspection and is certified by our team of Auto Experts
-                                </p>
+                            <p className="advantage-subtitle-1">
+                                Every bike goes through a thorough inspection and is certified by our team of Auto Experts
+                            </p>
                         </div>
-                    </div>
-                    <div className="col s12 m4">
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4} lg={4}>
                         <div className="gola-wrapper">
                             <div className="gola valign-wrapper">
                                 <img alt="" src={monthWarranty} height="98" width="98"/>
@@ -172,12 +173,12 @@ const Homepage = () => {
                         </div>
                         <div className="center-align">
                             <h5>Free 6 Months' Warranty</h5>
-                            <p className="advantage-subtitle">
+                            <p className="advantage-subtitle-1">
                                 Get 6 Months' Warranty covering critical parts including engine and gear box, extendable upto 12 months 
                             </p>
                         </div>
-                    </div>
-                    <div className="col s12 m4">
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4} lg={4}>
                         <div className="gola-wrapper">
                             <div className="gola valign-wrapper">
                                 <img alt="" src={buyerProtection} height="98" width="98"/>
@@ -185,88 +186,88 @@ const Homepage = () => {
                         </div>
                         <div className="center-align">
                             <h5>Buyer Protection</h5>
-                            <p className="advantage-subtitle">
+                            <p className="advantage-subtitle-1">
                                 An unforseen issue faced within one week of purchase is resolved for free 
                             </p>
                         </div>
-                    </div>
-                </div>
-                    <div className="row">
-                        <div className="col s12 m3 offset-m2">
-                            <div className="gola-wrapper">
-                                <div className="gola-2 valign-wrapper">
-                                    <img alt="" src={lowCostEmi} height="98" width="98"/>
-                                </div>
-                            </div>
-                            <div className="center-align">
-                                <h5>Low Cost EMI</h5>
-                                <p className="advantage-subtitle">
-                                    All vehicles are available at EMI starting at ₹ 2000*. Your dream bike is not a distant dream now 
-                                </p>
+                    </Grid>
+                </Grid>
+                <Grid container component="div" direction="row" className="row" justify="center">
+                    <Grid item xs={12} sm={12} md={4} lg={5}>
+                        <div className="gola-wrapper">
+                            <div className="gola-2 valign-wrapper">
+                                <img alt="" src={lowCostEmi} height="98" width="98"/>
                             </div>
                         </div>
-                        <div className="col s12 m3 offset-m2">
-                            <div className="gola-wrapper">
-                                <div className="gola-2 valign-wrapper">
-                                    <img alt="" src={hassleFreeDocTransfer} height="98" width="98"/>
-                                </div>
-                            </div>
-                            <div className="center-align hfdc">
-                                <h5>Hassle Free Document Transfer</h5>
-                                <p className="advantage-subtitle">
-                                    Document transfer is facilitated and made easy for buyer and seller
-                                </p>
+                        <div className="center-align">
+                            <h5>Low Cost EMI</h5>
+                            <p className="advantage-subtitle">
+                                All vehicles are available at EMI starting at ₹ 2000*. Your dream bike is not a distant dream now 
+                            </p>
+                        </div>
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4} lg={4}>
+                        <div className="gola-wrapper">
+                            <div className="gola-2 valign-wrapper">
+                                <img alt="" src={hassleFreeDocTransfer} height="98" width="98"/>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div className="section-4">
-                    <div className="row">
-                        <div className="col s12 m12 center-align">
-                            <h3>TESTIMONIALS</h3>
-                            <img alt="" src={headingLines} width="57" height="4" />
+                        <div className="center-align hfdc">
+                            <h5>Hassle Free Document Transfer</h5>
+                            <p className="advantage-subtitle">
+                                Document transfer is facilitated and made easy for buyer and seller
+                            </p>
                         </div>
-                    </div>
-                    <div className="row mb-0">
-                        <div className="col s1 m1">
-                            <div className="valign-wrapper arrow-container">
-                                <button className="btn-floating btn-large waves-effect waves-light white" id="slideLeft" onClick={() => initCar('left')}>
-                                    <i className="material-icons icon-black">
-                                        keyboard_arrow_left
-                                    </i>initCar
-                                </button>
-                            </div>
+                    </Grid>
+                </Grid>
+            </div>
+            <div className="section-4">
+                <Grid container component="div" direction="row" className="row center-align">
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <h3>TESTIMONIALS</h3>
+                        <img alt="" src={headingLines} width="57" height="4" />
+                    </Grid>
+                </Grid>
+                <Grid container component="div" direction="row" className="row mb-0">
+                    <Grid item xs={1} sm={1} md={1} lg={1}>
+                        <div className="valign-wrapper arrow-container">
+                            <button className="btn-floating btn-large waves-effect waves-light white" id="slideLeft" onClick={() => initCar('left')}>
+                                <i className="material-icons icon-black">
+                                    keyboard_arrow_left
+                                </i>initCar
+                            </button>
                         </div>
-                        <div className="col s10 m10 center-align">
-                            <div className="carousel">
-                                <a className="carousel-item" href="#one!" index="0"><img alt="" className="circle" src={testimonial1} /></a>
-                                <a className="carousel-item" href="#two!" index="1"><img alt="" className="circle" src={testimonial2} /></a>
-                                <a className="carousel-item" href="#three!" index="2"><img alt="" className="circle" src={testimonial3} /></a>
-                                <a className="carousel-item" href="#four!" index="3"><img alt="" className="circle" src={testimonial4} /></a>
-                                <a className="carousel-item" href="#five!" index="4"><img alt="" className="circle" src={testimonial5} /></a>
-                            </div>
+                    </Grid>
+                    <Grid item xs={10} sm={10} md={10} lg={10} className="center-align">
+                        <div className="carousel">
+                            <a className="carousel-item" href="#one!" index="0"><img alt="" className="circle" src={testimonial1} /></a>
+                            <a className="carousel-item" href="#two!" index="1"><img alt="" className="circle" src={testimonial2} /></a>
+                            <a className="carousel-item" href="#three!" index="2"><img alt="" className="circle" src={testimonial3} /></a>
+                            <a className="carousel-item" href="#four!" index="3"><img alt="" className="circle" src={testimonial4} /></a>
+                            <a className="carousel-item" href="#five!" index="4"><img alt="" className="circle" src={testimonial5} /></a>
                         </div>
-                        <div className="col s1 m1">
-                            <div className="valign-wrapper arrow-container">
-                                <button className="btn-floating btn-large waves-effect waves-light white"  id="slideRight"  onClick={() => initCar('right')}>
-                                    <i className="material-icons icon-black">
-                                        keyboard_arrow_right
-                                   </i>
-                                </button>
-                            </div>
+                    </Grid>
+                    <Grid item xs={1} sm={1} md={1} lg={1}>
+                        <div className="valign-wrapper arrow-container">
+                            <button className="btn-floating btn-large waves-effect waves-light white"  id="slideRight"  onClick={() => initCar('right')}>
+                                <i className="material-icons icon-black">
+                                    keyboard_arrow_right
+                                </i>
+                            </button>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col s12">
-                            <div className="center-align">
-                                <h4 id="clientName"></h4>
-                            </div>
-                            <div id="testimonialMessage">
-                            </div>
+                    </Grid>
+                </Grid>
+                <Grid container component="div" direction="row" className="row">
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <div className="center-align">
+                            <h4 id="clientName"></h4>
                         </div>
-                    </div>
-                </div>
-                <Footer />
+                        <div id="testimonialMessage">
+                        </div>
+                    </Grid>
+                </Grid>
+            </div>
+            <Footer />
         </div>
       );
 }

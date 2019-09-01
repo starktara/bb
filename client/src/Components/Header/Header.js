@@ -8,6 +8,7 @@ import logoPng from '../../assets/logo.png';
 import logo from '../../assets/logo.svg';
 import searchIcon from '../../assets/search-icon.svg';
 import locationIcon from '../../assets/location-icon.svg';
+import Grid from "@material-ui/core/Grid";
 
 import './Header.css'
 
@@ -39,49 +40,51 @@ const Header = () => {
             </div>
         </nav>
       <nav className="nav-extended nav-color">
-            <div className="nav-wrapper row">
-                <div className="header-title col s2">      
-                    <Link to="/"><img src={logo} height="105" id="logoImg" alt=""/></Link>
-                </div>
-                <div className="col s8">
-                    <div className="row">
-                        <form id="searchForm" className="input-field col s12">
+        <Grid container component="div" direction="row" className="nav-wrapper">
+            <Grid item xs={2} sm={2} md={2} lg={2} className="header-title">
+                <Link to="/"><img src={logo} height="105" id="logoImg" alt=""/></Link>
+            </Grid>
+            <Grid item xs={8} sm={8} md={8} lg={8}>
+                <Grid container component="div" direction="row" className="row">
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <form id="searchForm" className="input-field">
                             <div className="search-container">
                                 <input id="searchField" type="text" placeholder="Search Your Two-wheeler" />
                                 <button className="btn search-label-btn"><img src={searchIcon} height="30" alt=""/></button>
                             </div>
                         </form>
-                    </div> 
-                </div>
-                <div className="col s2 location-btn-container">
-                    <div className="location-btn"><div className="icon-wrapper"><img src={locationIcon} height="20" alt=""/></div><span className="location-btn-text">Location</span><img src={dropDown} height="11" className="dropdown-icon" alt=""/></div>
-                </div>
-            </div>
-            <div className="second-nav-wrapper row">
-                <div className="col s2 logo-text-container">
-                    <Link to="/"><img src={logoPng} width="225" height="29" className="text-logo" alt=""/></Link>
-                </div>
-                <div className="col s10">
-                    <div className="row option-row">
-                        <div className="col s12">
-                            <ul className="nav-options">
-                                <li>
-                                    <Link to="/buy">BUY</Link>
-                                </li>
-                                <li>
-                                    <Link to="/sell"></Link>
-                                </li>
-                                <li>
-                                    <Link to="/locate-store">LOCATE STORE</Link>
-                                </li>
-                                <li>
-                                    <Link to="/franchise">BECOME A FRANCHISE OWNER</Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div> 
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid item xs={2} sm={2} md={2} lg={2} className="location-btn-container">
+                <div className="location-btn"><div className="icon-wrapper"><img src={locationIcon} height="20" alt=""/></div><span className="location-btn-text">Location</span><img src={dropDown} height="11" className="dropdown-icon" alt=""/></div>
+            </Grid>
+        </Grid>
+        <Grid container component="div" direction="row" className="second-nav-wrapper row">
+            <Grid item xs={2} sm={2} md={2} lg={2} className="logo-text-container">
+                <Link to="/"><img src={logoPng} width="225" height="29" className="text-logo" alt=""/></Link>
+            </Grid>
+            <Grid item xs={10} sm={10} md={10} lg={10}>
+                <Grid container component="div" direction="row" className="option-row row">
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <ul className="nav-options">
+                            <li>
+                                <Link to="/buy">BUY</Link>
+                            </li>
+                            <li>
+                                <Link to="/sell"></Link>
+                            </li>
+                            <li>
+                                <Link to="/locate-store">LOCATE STORE</Link>
+                            </li>
+                            <li>
+                                <Link to="/franchise">BECOME A FRANCHISE OWNER</Link>
+                            </li>
+                        </ul>
+                    </Grid>
+                </Grid>
+            </Grid> 
+        </Grid> 
         </nav> 
     </header>
     )
