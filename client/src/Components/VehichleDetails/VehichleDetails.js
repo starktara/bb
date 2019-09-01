@@ -8,12 +8,13 @@ import VehichleData from '../VehicleData/VehichleData';
 import VehichleMetaData from '../VehicleMetaData/VehicleMetaData';
 import VehicleAdvantage from '../VehicleAdvantage/VehicleAdvantage';
 import SimilarVehicles from '../SimilarVehicles/SimilarVehicles';
+import Spinner from '../../Components/UI/Spinner/Spinner';
 import Banner from '../Banner/Banner';
 import M from  'materialize-css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const VehichleDetails = (props) => {
-    
+
     useEffect(() => {
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('select');
@@ -24,15 +25,16 @@ const VehichleDetails = (props) => {
             M.Sidenav.init(elems, {});
           });
 
-        console.log('useEffect Called');
         if(props.match.params.vehicleid!==undefined){
             props.getVehicleData(props.match.params.vehicleid);
-            console.log('props-->')
-            console.log(props);
         }
-
     },[]);
 
+    var vehicle = <Spinner />
+
+    if(!props.loading){
+        vehicle = <VehichleData data={props.vehicle}/>;
+    }
 
     return (
         <div className="VehichleDetails">
@@ -44,7 +46,7 @@ const VehichleDetails = (props) => {
                     text=""
                     path={props.location.pathname}
                 />
-                <VehichleData />
+                {vehicle}
                 <VehichleMetaData />
                 <br className="clr"/>
             </div>
@@ -56,10 +58,9 @@ const VehichleDetails = (props) => {
 }
 
 const mapStateToProps = state => {
-    console.log('state in mapSateToProps-->');
-    console.log(state.vehicleDetails);
     return {
-        vehicle: state.vehicleDetails.vehicle
+        vehicle: state.vehicleDetails.vehicle,
+        loading: state.vehicleDetails.loading
     };
 }
 const mapDispatchToProps = dispatch => {

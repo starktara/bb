@@ -31,11 +31,18 @@ export const getVehicles = () => {
 };
 
 export const getVehicleData = (vehicleid) => {
-    console.log('Action Called');
     return{
             type: actionTypes.GET_VEHICLE_DATA,
             vehicle: {
-                name: 'Yamaha'
+                name: 'Yamaha',
+                year: 2007,
+                distance: 25000,
+                engineSize: 99,
+                owner: 'Bro',
+                location: 'Baner, Pune',
+                previousPrice: 18000,
+                currentPrice: 15000,
+                discount: 20
             }
         };
 };

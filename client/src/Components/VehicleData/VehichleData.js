@@ -4,7 +4,7 @@ import { Carousel } from 'react-responsive-carousel';
 import Grid from "@material-ui/core/Grid";
 import bikeIcon from '../../assets/images/product/bike-img.png';
 
-const VehichleData = () => {
+const VehichleData = (props) => {
     return(
         <Grid container component="div" direction="row">
             <Grid item xs={12} md={12} sm={12} lg={6} className="vehicleGalSec">
@@ -12,11 +12,9 @@ const VehichleData = () => {
                     <Carousel dynamicHeight={true}>
                         <div>
                             <img src={bikeIcon} alt=""/>
-                            <p className="legend">Legend 1</p>
                         </div>
                         <div>
                             <img src={bikeIcon} alt=""/>
-                            <p className="legend">Legend 2</p>
                         </div>
                     </Carousel>
                 </div>
@@ -24,17 +22,17 @@ const VehichleData = () => {
             <Grid item xs={12} md={12} sm={12} lg={6}>
                 <div className="vehicleDetails">
                     <div className="PriceSec">
-                        <p className="price"><strong>`</strong> 15,000</p>
-                        <span className="del"><strong>`</strong> 18,000</span>
-                        <span className="save">Save 20%</span>
+                        <p className="price"><strong>`</strong>{props.data.currentPrice}</p>
+                        <span className="del"><strong>`</strong>{props.data.previousPrice}</span>
+                        <span className="save">Save {props.data.discount}%</span>
                     </div>
                     <div className="ProductDetail">
                         <ul className="detailPoints">
-                            <li className="year">2007</li>
-                            <li className="km">25,000 KMs</li>
-                            <li className="cc">99 CC</li>
-                            <li className="owner">1st Owner</li>
-                            <li className="location">Baner, Pune</li>
+                            <li className="year">{props.data.year}</li>
+                            <li className="km">{props.data.distance} KMs</li>
+                            <li className="cc">{props.data.engineSize} CC</li>
+                            <li className="owner">{props.data.owner}</li>
+                            <li className="location">{props.data.location}</li>
                         </ul><br className="clr"/>
                     </div>
                     <div className="ProductForm">

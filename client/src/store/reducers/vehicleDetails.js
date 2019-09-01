@@ -26,8 +26,8 @@ const getPaginatedData = (state,action) => {
 }
 
 const getVehicleData = (state,action) => {
-    console.log('Reducer Called');
     return updateObject(state,{
+        loading: false,
         vehicle: action.vehicle
     });
 }
