@@ -34,25 +34,26 @@ const VehicleDetails = (props) => {
     var vehicle = <Spinner />;
 
     if(props.vehicle!=null){
-        vehicle = <VehicleData data={props.vehicle._source}/>;
+        vehicle = 
+        <div className="wapper">
+            <Banner
+                navigation="Bike"
+                heading={props.vehicle._source.name}
+                text=""
+                path={props.location.pathname}
+            />
+            <VehicleData data={props.vehicle._source}/>
+            <VehicleMetaData />
+            <br className="clr"/>
+        </div>
     }
 
     return (
         <div className="VehicleDetails">
             <Header />
-            <div className="wapper">
-                <Banner
-                    navigation="Scooters"
-                    heading="Suzuki Access 125"
-                    text=""
-                    path={props.location.pathname}
-                />
                 {vehicle}
-                <VehicleMetaData />
-                <br className="clr"/>
-            </div>
-            <VehicleAdvantage />
-            <SimilarVehicles />
+                <VehicleAdvantage />
+                <SimilarVehicles />
             <Footer />
         </div>
     );   
