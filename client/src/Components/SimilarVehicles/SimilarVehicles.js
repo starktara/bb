@@ -16,7 +16,6 @@ const SimilarVehicles = () => {
             <div className="flex-center"><img src={headingLines} alt=""/></div><br />
             <Grid container component="div" direction="row">
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                    
                 </Grid>
             </Grid>
         </div>
