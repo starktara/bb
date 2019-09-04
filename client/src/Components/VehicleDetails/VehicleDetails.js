@@ -34,7 +34,7 @@ const VehicleDetails = (props) => {
     var vehicle = <Spinner />;
 
     if(props.vehicle!=null){
-        vehicle = 
+        vehicle =
         <div className="wapper">
             <Banner
                 navigation="Bike"
