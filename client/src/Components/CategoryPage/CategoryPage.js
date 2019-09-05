@@ -28,6 +28,7 @@ class CategoryPage extends Component {
   render() {
     let vehicles = <Spinner />;
     let paginations = '';
+    let containerClass = '';
     if (this.props.vehicles.length) {
       vehicles = this.props.currentData.map((vehicle,index) => (
         <Card key= {index} 
@@ -41,11 +42,12 @@ class CategoryPage extends Component {
               image = {vehicle._source.mimage}
         />
         ));
+      containerClass = (this.props.vehicles.length > 9) ? 'cardContainer' : '';
       const totalRecords = Object.keys(this.props.vehicles).length;
       paginations =  (
          <Pagination 
         totalRecords={totalRecords}
-        pageLimit={10}
+        pageLimit={9}
         pageNeighbours={1}
         onPageChanged={this.onPageChanged}
       />
@@ -81,7 +83,7 @@ class CategoryPage extends Component {
               <SortDropDown 
                 title="Sort by"
                 list={Menu} />
-              <Grid container direction="row" component="div" className="cardConntainer">
+              <Grid container direction="row" component="div" className={containerClass}>
                 {vehicles}
               </Grid>
             {paginations}

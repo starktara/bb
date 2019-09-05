@@ -2,7 +2,6 @@ import React from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import Grid from "@material-ui/core/Grid";
-import bikeIcon from '../../assets/images/product/bike-img.png';
 
 const VehicleData = (props) => {
 

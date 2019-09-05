@@ -409,5 +409,8 @@ form {
 .vehicleAdvantage .advantageSec .advantage h3 {
   background: #e9eaea url(../../assets/images/icons/mobile.png) 340px 9px no-repeat;
 }
+.cardContainer{
+  min-height: 1476px;
+}
 
 
