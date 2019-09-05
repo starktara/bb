@@ -24,6 +24,7 @@ import testimonial4 from '../../assets/testimonial-image-4.png';
 import testimonial5 from '../../assets/testimonial-image-5.png';
 import M from 'materialize-css';
 import Grid from "@material-ui/core/Grid";
+import * as CATEGORY from '../../shared/constants/category';
 
 const Homepage = () => {
     const [sliderState, changeSlider] = useState(null);
@@ -126,19 +127,19 @@ const Homepage = () => {
                 <Grid container component="div" direction="row">
                     <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
                         <div className="box-shadow center-align">
-                            <Link to="/category/bike"><img alt="" src={bike2} height="192" width="290"/></Link>
+                            <Link to={'/category/'+CATEGORY.BIKE}><img alt="" src={bike2} height="192" width="290"/></Link>
                             <h5>Motorcycle</h5>
                         </div>
                     </Grid> 
                     <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
                         <div className="box-shadow center-align">
-                            <img alt="" src={scooter} height="192" width="290"/>
+                        <Link to={'/category/'+CATEGORY.SCOOTER}><img alt="" src={scooter} height="192" width="290"/></Link>
                             <h5>Scooter</h5>
                         </div>
                     </Grid> 
                     <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
                         <div className="box-shadow center-align">
-                            <img alt="" src={bike} height="192" width="290"/>
+                        <Link to={'/category/'+CATEGORY.HIGH_END_BIKE}><img alt="" src={bike} height="192" width="290"/></Link>
                             <h5>High-End Motorcycle</h5>
                         </div>
                     </Grid> 

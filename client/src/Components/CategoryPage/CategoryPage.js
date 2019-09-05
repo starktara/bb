@@ -11,12 +11,13 @@ import SortDropDown from "../SortDropDown/SortDropDown";
 import Pagination from "../Pagination/Pagination";
 import * as actions from '../../store/actions/index';
 import Spinner from '../../Components/UI/Spinner/Spinner';
-import {Menu} from '../../shared/utility'
+import {Menu} from '../../shared/utility';
+import categoryData from '../../shared/mappings/category_data';
 
 class CategoryPage extends Component {
 
   componentDidMount () {
-    this.props.getVehicles(this.props.match.params.category);
+    this.props.getVehicles(categoryData[this.props.match.params.category].id);
   }
 
   onPageChanged = paginationData => {
@@ -54,16 +55,11 @@ class CategoryPage extends Component {
       );
     }
 
-    let navigation = null;
-    let heading = null;
-    let text = null;
 
-    if (this.props.match.params.category === "bike") {
-      navigation = "Motorcycles";
-      heading = "MOTORCYCLES";
-      text =
+      let navigation = categoryData[this.props.match.params.category].name;
+      let heading = categoryData[this.props.match.params.category].name;
+      let text =
         "Motorcycles are available at easy EMI starting at st 2,000*. Your  dream bike is not a distant dream now.";
-    }
 
     return (
       <div>
