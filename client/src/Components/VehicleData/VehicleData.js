@@ -5,17 +5,25 @@ import Grid from "@material-ui/core/Grid";
 import bikeIcon from '../../assets/images/product/bike-img.png';
 
 const VehicleData = (props) => {
+
+    const vehicleImagePath = '../../vehicles/'
+    var discount = null;
+
+    if(props.data.discount){
+        discount = <span className="save">Save {props.data.discount}%</span>
+    }
     return(
         <Grid container component="div" direction="row">
             <Grid item xs={12} md={12} sm={12} lg={6} className="vehicleGalSec">
                 <div className="vehicleGal">
                     <Carousel dynamicHeight={true}>
-                        <div>
-                            <img src={bikeIcon} alt=""/>
-                        </div>
-                        <div>
-                            <img src={bikeIcon} alt=""/>
-                        </div>
+                        {
+                            props.data.images.map((image,key)=>{
+                                return <div>
+                                <img src={vehicleImagePath+image} alt=""/>
+                            </div>
+                            })
+                        }
                     </Carousel>
                 </div>
             </Grid>
@@ -24,7 +32,7 @@ const VehicleData = (props) => {
                     <div className="PriceSec">
                         <p className="price"><strong>`</strong>{props.data.price}</p>
                         <span className="del"><strong>`</strong>{props.data.price}</span>
-                        <span className="save">Save {props.data.discount}%</span>
+                        {discount}
                     </div>
                     <div className="ProductDetail">
                         <ul className="detailPoints">

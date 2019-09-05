@@ -16,6 +16,15 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const VehicleDetails = (props) => {
     
     useEffect(() => {
+        try {
+            window.scroll({
+              top: 270,
+              left: 0,
+              behavior: 'smooth',
+            });
+          } catch (error) {
+            window.scrollTo(0, 0);
+          }
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('select');
             M.FormSelect.init(elems, {});

@@ -28,8 +28,7 @@ class CategoryPage extends Component {
   render() {
     let vehicles = <Spinner />;
     let paginations = '';
-
-    if (!this.props.loading) {
+    if (this.props.vehicles.length) {
       vehicles = this.props.currentData.map((vehicle,index) => (
         <Card key= {index} 
               year={vehicle._source.myear} 

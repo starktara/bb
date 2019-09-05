@@ -40,7 +40,7 @@ router.get("/createbikeMapping", (req, res) =>{
     }, { ignore: [400] })
   }
   run().catch(console.log)
-  res.json({ msg: "posts works" })
+  res.json({ msg: "Index Created Sucessfully" })
 
 }
 );
@@ -375,7 +375,9 @@ router.get("/uploadBikes", (req,res) => {
     }
   
     const { body: count } = await client.count({ index: 'bike-details' })
-    console.log(count)
+    res.json({
+      msg:'Data Seeded'
+    });
   }
   upload().catch(console.log);
 });
@@ -467,5 +469,4 @@ router.get('/searchBike', (req,res) => {
   }
   getBike().catch(console.log);
 });
-
 module.exports  = router;
