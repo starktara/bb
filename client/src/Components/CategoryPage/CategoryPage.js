@@ -38,6 +38,7 @@ class CategoryPage extends Component {
               loc={vehicle._source.loc}
               cost={vehicle._source.price}
               vehicleid={vehicle._id} 
+              image = {vehicle._source.mimage}
         />
         ));
       const totalRecords = Object.keys(this.props.vehicles).length;
@@ -59,7 +60,7 @@ class CategoryPage extends Component {
       navigation = "Motorcycles";
       heading = "MOTORCYCLES";
       text =
-        "Bikes are available at easy EMI starting at st 2,000*. Your  dream bike is not a distant dream now.";
+        "Motorcycles are available at easy EMI starting at st 2,000*. Your  dream bike is not a distant dream now.";
     }
 
     return (

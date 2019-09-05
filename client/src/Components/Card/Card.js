@@ -5,11 +5,14 @@ import { Link } from 'react-router-dom';
 // const Bike = require("../../assets/images/product/bike-image.png");
 
 const Card = props => {
+  const vehicleImagePath = '../../vehicles/';
   return (
     <Grid item component="div" lg={4} md={6} sm={12} xs={12} className="Prod">
       <Link to={'/vehicledetails/'+props.vehicleid}>
         <div className="Product">
-          <img src={require("../../assets/images/product/bike-img.png")} alt="" />
+          <div className="Product-image-container">
+            <img src={vehicleImagePath+props.image} height="230" alt="" />
+          </div>
           <div className="detail">
             <h3>{props.name} </h3>
               <p className="price">

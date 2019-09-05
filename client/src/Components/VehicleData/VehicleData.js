@@ -6,7 +6,7 @@ import bikeIcon from '../../assets/images/product/bike-img.png';
 
 const VehicleData = (props) => {
 
-    const vehicleImagePath = '../../vehicles/'
+    const vehicleImagePath = '../../vehicles/';
     var discount = null;
 
     if(props.data.discount){
