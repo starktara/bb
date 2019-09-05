@@ -253,7 +253,7 @@ router.get("/uploadBikes", (req,res) => {
       bhp : 11,
       category : 1,
       mileage : 60
-    }{
+    },{
       id: 9,
       name: 'Name zz',
       type: 3,
