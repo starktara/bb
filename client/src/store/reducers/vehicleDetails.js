@@ -7,7 +7,15 @@ const initialState = {
     currentData: [],
     currentPage: null,
     totalPages: null,
-    vehicle: null
+    vehicle: null,
+    filter :{
+        sort:null,
+        city:null,
+        myear:[],
+        budget:[],
+        brand:[],
+        kms:null
+    },
 };
 
 const vehicles = (state, action) => {

@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import M from 'materialize-css';
+import * as actions from '../../store/actions/index';
+
 
 
 class SortDropDown extends Component {
@@ -18,6 +21,7 @@ class SortDropDown extends Component {
   }
 
   selectOption(event) {
+    this.props.getVehicles(event.target.value);
     console.log(event.target.value);
     this.setState({
       headerTitle: event.target.value
@@ -50,4 +54,15 @@ class SortDropDown extends Component {
   }
 }
 
-export default SortDropDown;
+const mapStateToProps = state => {
+  return {
+       vehicles: state.vehicleDetails.vehicles
+  };
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    getsortedData: (sortKey) => dispatch(actions.getVehicles(sortKey)),  
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(SortDropDown);
