@@ -124,7 +124,7 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .vehicleDetails .ProductDetail ul.detailPoints li.km { background: url(../../assets/images/icons/km-dtl.png) 0 10px no-repeat; }
 .vehicleDetails .ProductDetail ul.detailPoints li.cc { background: url(../../assets/images/icons/cc-dtl.png) 0 12px no-repeat; }
 .vehicleDetails .ProductDetail ul.detailPoints li.owner { background: url(../../assets/images/icons/owner-dtl.png) 0 10px no-repeat; }
-.vehicleDetails .ProductDetail ul.detailPoints li.location { width: 50%; background: url(../../assets/images/icons/location-dtl.png) 0 12px no-repeat;}
+.vehicleDetails .ProductDetail ul.detailPoints li.location { width: 60%; background: url(../../assets/images/icons/location-dtl.png) 0 12px no-repeat;}
 
 .ProductForm { padding:15px 40px 15px 10px; }
 .ProductForm .form-group { margin: 10px 0; }
