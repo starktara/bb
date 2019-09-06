@@ -432,7 +432,7 @@ router.get("/getAllBikes",(req,res) => {
      
   }
   getData().catch(console.log);
-})
+});
 
 router.get("/getAllStoreLocations",(req,res) => {
   async function getData(){
@@ -469,4 +469,22 @@ router.get('/searchBike', (req,res) => {
   }
   getBike().catch(console.log);
 });
+
+router.get('/getCategoryById', (req,res) => {
+  async function getBikesForCategory(){
+    const {body} = await client.search({
+      index: 'bike-details',
+      body: {
+        query: {
+          match: {
+             category: req.query.category
+          }
+        }
+      }
+    });
+    res.send(body.hits.hits);
+  }
+  getBikesForCategory().catch(console.log);
+});
+
 module.exports  = router;

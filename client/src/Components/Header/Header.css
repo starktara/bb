@@ -94,7 +94,7 @@ body{
     letter-spacing: 0.02px;
   }
   .option-row{
-    margin-left: 40px !important;
+    margin-left: 55px !important;
   }
   .search-icon{
     font-size: 30px !important  ;
@@ -118,6 +118,7 @@ body{
   @media screen and (min-width: 1900px) {
     .text-logo{
         margin-left: 20px;
+        margin-top: 7px;
     }
     #searchForm{
         height: 7%;
@@ -131,6 +132,7 @@ body{
   @media screen and (min-width: 600px) and (max-width: 1900px) {
     .text-logo{
         margin-left: -20px;
+        margin-top: 7px;
     }
     #searchForm{
         height: 7%;
@@ -145,6 +147,7 @@ body{
   @media screen and (max-device-width: 480px) {
     .text-logo{
         margin-left: -20px;
+        margin-top: 7px;
     }
     #searchForm{
         height: 3%;
