@@ -21,11 +21,10 @@ class SortDropDown extends Component {
   }
 
   selectOption(event) {
-    this.props.getVehicles(event.target.value);
-    console.log(event.target.value);
-    this.setState({
-      headerTitle: event.target.value
-    });
+    let category  = this.props.category;
+    let filterData = this.props.filter;
+    
+    this.props.getsortedData({...filterData,sort:'asc'});
   }
 
   render() {
@@ -56,12 +55,13 @@ class SortDropDown extends Component {
 
 const mapStateToProps = state => {
   return {
-       vehicles: state.vehicleDetails.vehicles
+       vehicles: state.vehicleDetails.vehicles,
+       filter:state.vehicleDetails.filter
   };
 }
 const mapDispatchToProps = dispatch => {
   return {
-    getsortedData: (sortKey) => dispatch(actions.getVehicles(sortKey)),  
+    getsortedData: (category,sortKey) => dispatch(actions.getVehicles(category,sortKey)),  
   }
 }
 

@@ -27,7 +27,8 @@ export const apiFail = (error) => {
     };
 };
 
-export const getVehicles = (category) => {
+export const getVehicles = (category,filterData = null) => {
+    // filter = 
     return dispatch => {
         let url = "/apis/seedData/getAllBikes";
         axios.get(url)

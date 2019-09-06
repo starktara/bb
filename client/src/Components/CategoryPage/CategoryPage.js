@@ -78,7 +78,9 @@ class CategoryPage extends Component {
             >
               <SortDropDown 
                 title="Sort by"
-                list={Menu} />
+                list={Menu} 
+                category ={categoryData[this.props.match.params.category].id}
+                />
               <Grid container direction="row" component="div" className={containerClass}>
                 {vehicles}
               </Grid>
@@ -98,7 +100,7 @@ const mapStateToProps = state => {
        loading: state.vehicleDetails.loading,
        currentData: state.vehicleDetails.currentData,
        currentPage: state.vehicleDetails.currentPage,
-       totalPages: state.vehicleDetails.totalPages
+       totalPages: state.vehicleDetails.totalPages,
   };
 }
 const mapDispatchToProps = dispatch => {

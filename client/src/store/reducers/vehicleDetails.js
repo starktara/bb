@@ -9,7 +9,10 @@ const initialState = {
     totalPages: null,
     vehicle: null,
     filter :{
-        sort:null,
+        sort:{
+            column:null,
+            order:null
+        },
         city:null,
         myear:[],
         budget:[],
