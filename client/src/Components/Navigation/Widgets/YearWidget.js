@@ -5,8 +5,13 @@ import * as actions from '../../../store/actions/index';
 const YearWidget = props => {
 
   const selectCheckbox = (selectedCheck) => {
-   console.log(props.filter)
+    let category  = this.props.category;
+    let filterData = this.props.filter;
+
+    filterData.myear.push(selectedCheck); 
+    this.props.manufactureDateFilter(category,filterData);
   }
+
   const yearArray = [];
 
   for (let i = props.endYear; i >= props.startYear; i--) {
@@ -48,7 +53,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    getsortedData: (category,sortKey) => dispatch(actions.getVehicles(category,sortKey)),  
+    manufactureDateFilter: (category,filterdata) => dispatch(actions.getVehicles(category,filterdata)),  
   }
 }
 
