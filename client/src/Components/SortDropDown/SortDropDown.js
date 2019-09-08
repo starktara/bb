@@ -59,7 +59,6 @@ class SortDropDown extends Component {
 
 const mapStateToProps = state => {
   return {
-       vehicles: state.vehicleDetails.vehicles,
        filter:state.vehicleDetails.filter
   };
 }

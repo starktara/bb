@@ -1,13 +1,19 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 const YearWidget = props => {
+
+  const selectCheckbox = (selectedCheck) => {
+   console.log(props.filter)
+  }
   const yearArray = [];
 
   for (let i = props.endYear; i >= props.startYear; i--) {
     yearArray.push(
       <li key={i}>
         <label>
-          <input type="checkbox" className="filled-in" />
+          <input type="checkbox" className="filled-in" onClick = {() => {selectCheckbox(i)}}/>
           <span>{i}</span>
         </label>
       </li>
@@ -35,4 +41,15 @@ const YearWidget = props => {
   );
 };
 
-export default YearWidget;
+const mapStateToProps = state => {
+  return {
+       filter:state.vehicleDetails.filter
+  };
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    getsortedData: (category,sortKey) => dispatch(actions.getVehicles(category,sortKey)),  
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(YearWidget);
