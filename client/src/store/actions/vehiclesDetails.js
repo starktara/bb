@@ -28,9 +28,8 @@ export const apiFail = (error) => {
 };
 
 export const getVehicles = (category,filterData = null) => {
-    // filter = 
     return dispatch => {
-        let url = "/apis/seedData/getCategoryById?category="+category;
+        let url = "/apis/seedData/getCategoryById?category="+category+"&filterData="+JSON.stringify(filterData);
         axios.get(url)
             .then(response => {
                 dispatch(vehicleList(response.data));
@@ -45,7 +44,8 @@ export const getVehicleData = (vehicleid) => {
     return dispatch => {
         let url = "/apis/seedData/searchBike?vehicleid="+vehicleid;
         axios.get(url)
-            .then(response => {
+            .then(response => {        console.log(url);
+
                 dispatch(vehicleData(response.data));
             })
             .catch(err => {

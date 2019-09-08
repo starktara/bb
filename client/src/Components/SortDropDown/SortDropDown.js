@@ -23,8 +23,12 @@ class SortDropDown extends Component {
   selectOption(event) {
     let category  = this.props.category;
     let filterData = this.props.filter;
-    
-    this.props.getsortedData({...filterData,sort:'asc'});
+
+    let selectedFilter = event.target.value.split("-");
+
+    filterData.sort.column = selectedFilter[0];
+    filterData.sort.order = selectedFilter[1];
+    this.props.getsortedData(category,filterData);
   }
 
   render() {
@@ -39,12 +43,12 @@ class SortDropDown extends Component {
           onChange={this.selectOption}
           defaultValue="">
 					<option value="" disabled>Sort by</option>
-					<option value="1">Price - Low to High</option>
-					<option value="2">Price - High to Low</option>
-					<option value="3">Distance from My Location - Low to High</option>
-					<option value="4">Manufacturing Year - Low to High</option>
-					<option value="5">Manufacturing Year - High to Low</option>
-					<option value="6">Kilometer - Low to High</option>
+					<option value="price-asc">Price - Low to High</option>
+					<option value="price-desc">Price - High to Low</option>
+					<option value="dist-asc">Distance from My Location - Low to High</option>
+					<option value="myear-asc">Manufacturing Year - Low to High</option>
+					<option value="myear-desc">Manufacturing Year - High to Low</option>
+					<option value="kmdriven-asc">Kilometer - Low to High</option>
 				</select> 
       </div>
         <br className="clr" />

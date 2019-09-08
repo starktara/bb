@@ -471,6 +471,21 @@ router.get('/searchBike', (req,res) => {
 });
 
 router.get('/getCategoryById', (req,res) => {
+  let filterData = JSON.parse(req.query.filterData);
+  let sortKey = {};
+
+  if(filterData != null){
+    if(filterData.sort.column != ''){
+      let column =filterData.sort.column;
+      let order = filterData.sort.order;
+      sortKey[column] = {
+        order:order
+      }
+    }
+  }else{
+    sortKey['id'] = {order:"desc"};
+  }
+
   async function getBikesForCategory(){
     const {body} = await client.search({
       index: 'bike-details',
@@ -479,7 +494,8 @@ router.get('/getCategoryById', (req,res) => {
           match: {
              category: req.query.category
           }
-        }
+        },
+       sort:[sortKey]
       }
     });
     res.send(body.hits.hits);
