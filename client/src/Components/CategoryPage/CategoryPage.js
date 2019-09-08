@@ -20,6 +20,12 @@ class CategoryPage extends Component {
     this.props.getVehicles(categoryData[this.props.match.params.category].id);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(this.props.vehicles != nextProps.vehicles){
+     this.props.getPaginatedData(0,9);
+    }
+  }
+
   onPageChanged = paginationData => {
     const { currentPage, totalPages, pageLimit } = paginationData;
     const offset = (currentPage - 1) * pageLimit;
