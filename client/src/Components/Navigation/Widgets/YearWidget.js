@@ -1,15 +1,20 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import * as actions from '../../../store/actions/index';
+import { connect } from "react-redux";
+import * as actions from "../../../store/actions/index";
 
 const YearWidget = props => {
+  const selectCheckbox = selectedCheck => {
+    let category = props.category;
+    let filterData = props.filter;
+    let position = filterData.myear.indexOf(selectedCheck);
 
-  const selectCheckbox = (selectedCheck) => {
-    let category  = props.category;
-    let filterData = props.filter;    
-    filterData.myear.push(selectedCheck); 
-    props.manufactureDateFilter(category,filterData);
-  }
+    if (~position) {
+      filterData.myear.splice(position, 1);
+    } else {
+      filterData.myear.push(selectedCheck);
+    }
+    props.manufactureDateFilter(category, filterData);
+  };
 
   const yearArray = [];
 
@@ -17,7 +22,13 @@ const YearWidget = props => {
     yearArray.push(
       <li key={i}>
         <label>
-          <input type="checkbox" className="filled-in" onClick = {() => {selectCheckbox(i)}}/>
+          <input
+            type="checkbox"
+            className="filled-in"
+            onClick={() => {
+              selectCheckbox(i);
+            }}
+          />
           <span>{i}</span>
         </label>
       </li>
@@ -47,14 +58,18 @@ const YearWidget = props => {
 
 const mapStateToProps = state => {
   return {
-       filter:state.vehicleDetails.filter,
-       category:state.vehicleDetails.category
+    filter: state.vehicleDetails.filter,
+    category: state.vehicleDetails.category
   };
-}
+};
 const mapDispatchToProps = dispatch => {
   return {
-    manufactureDateFilter: (category,filterdata) => dispatch(actions.getVehicles(category,filterdata)),  
-  }
-}
+    manufactureDateFilter: (category, filterdata) =>
+      dispatch(actions.getVehicles(category, filterdata))
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(YearWidget);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(YearWidget);
