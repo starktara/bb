@@ -3,11 +3,12 @@ import axios from '../../axios-conf';
 import * as actionTypes from './actionTypes';
 
 
-export const vehicleList = (vehicleList,filterData) => {
+export const vehicleList = (vehicleList,filterData,category) => {
     return {
         type: actionTypes.VEHICLE_LIST,
         vehicleList: vehicleList,
-        filterData : filterData
+        filterData : filterData,
+        category:category
     };
 };
 
@@ -33,7 +34,7 @@ export const getVehicles = (category,filterData = null) => {
         let url = "/apis/seedData/getCategoryById?category="+category+"&filterData="+JSON.stringify(filterData);
         axios.get(url)
             .then(response => {
-                dispatch(vehicleList(response.data,filterData));
+                dispatch(vehicleList(response.data,filterData,category));
             })
             .catch(err => {
                 dispatch(apiFail(err));
