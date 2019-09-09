@@ -517,6 +517,14 @@ router.get("/getCategoryById", (req, res) => {
         }
       });
     }
+    if (filterData.brand.length > 0) {
+      let brand = filterData.brand;
+      mustArray.push({
+        terms: {
+          brand: brand
+        }
+      });
+    }
   } else {
     sortKey["id"] = { order: "desc" };
   }

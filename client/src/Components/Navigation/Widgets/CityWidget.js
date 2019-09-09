@@ -1,6 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
+import * as actions from "../../../store/actions/index";
 
 const CityWidget = () => {
+
+
   return (
     <div className="CityWidget">
       <h3 className="WidgetTitle">
@@ -46,4 +50,22 @@ const CityWidget = () => {
   );
 };
 
-export default CityWidget;
+
+
+const mapStateToProps = state => {
+  return {
+    filter: state.vehicleDetails.filter,
+    category: state.vehicleDetails.category
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    cityFilter: (category, filterdata) =>
+      dispatch(actions.getVehicles(category, filterdata))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CityWidget);
