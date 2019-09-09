@@ -487,6 +487,7 @@ router.get('/getCategoryById', (req,res) => {
   }
 
   async function getBikesForCategory(){
+    console.log(req.query)
     const {body} = await client.search({
       index: 'bike-details',
       body: {
