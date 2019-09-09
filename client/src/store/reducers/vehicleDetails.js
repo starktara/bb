@@ -8,7 +8,7 @@ const initialState = {
   currentPage: null,
   totalPages: null,
   vehicle: null,
-  category:null,
+  category: null,
   filter: {
     sort: {
       column: null,
@@ -26,7 +26,7 @@ const vehicles = (state, action) => {
   return action.filterData == null
     ? updateObject(state, {
         vehicles: action.vehicleList,
-        category:action.category,
+        category: action.category,
         loading: false
       })
     : updateObject(state, {

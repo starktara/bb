@@ -36,7 +36,7 @@ class CategoryPage extends Component {
     let vehicles = <Spinner />;
     let paginations = '';
     let containerClass = '';
-    if (this.props.vehicles.length) {
+    if (this.props.vehicles.length && this.props.currentData[0] != 'NA') {
       vehicles = this.props.currentData.map((vehicle,index) => (
         <Card key= {index} 
               year={vehicle._source.myear} 
@@ -60,6 +60,11 @@ class CategoryPage extends Component {
       />
       );
     }
+
+    if(this.props.currentData[0] == 'NA'){
+      vehicles = <h2>'No Vehicles Found!'</h2>
+    }
+
 
 
       let navigation = categoryData[this.props.match.params.category].name;

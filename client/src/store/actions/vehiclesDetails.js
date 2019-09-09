@@ -4,6 +4,9 @@ import * as actionTypes from './actionTypes';
 
 
 export const vehicleList = (vehicleList,filterData,category) => {
+    if(vehicleList.length == 0){
+        vehicleList = ['NA'];
+    }
     return {
         type: actionTypes.VEHICLE_LIST,
         vehicleList: vehicleList,
@@ -46,8 +49,7 @@ export const getVehicleData = (vehicleid) => {
     return dispatch => {
         let url = "/apis/seedData/searchBike?vehicleid="+vehicleid;
         axios.get(url)
-            .then(response => {        console.log(url);
-
+            .then(response => {       
                 dispatch(vehicleData(response.data));
             })
             .catch(err => {
