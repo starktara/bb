@@ -490,3 +490,4 @@ router.get("/searchBike", (req, res) => {
   }
   getBike().catch(console.log);
 });
+module.exports = router;
