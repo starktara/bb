@@ -1,6 +1,22 @@
 import React from "react";
+import { connect } from "react-redux";
+import * as actions from "../../../store/actions/index";
+
 
 const BudgetWidget = props => {
+
+  const selectCheckbox = selectedCheck => {
+    let category = props.category;
+    let filterData = props.filter;
+    let position = filterData.budget.indexOf(selectedCheck);
+    if (~position) {
+      filterData.budget.splice(position, 1);
+    } else {
+      filterData.budget.push(selectedCheck);
+    }
+     props.budgetFilter(category, filterData);
+  };
+
   const budgetArray = [];
 
   for (let i = 0; i < props.budget.length - 1; i++) {
@@ -10,6 +26,9 @@ const BudgetWidget = props => {
           <input
             type="checkbox"
             className="filled-in"
+            onClick={() => {
+              selectCheckbox(props.budget[i] === 0 ? props.budget[i] : ((props.budget[i] + 1)+"-"+(props.budget[i + 1])))
+            }}
           />
           <span>
             <strong>₹</strong>{" "}
@@ -52,4 +71,20 @@ const BudgetWidget = props => {
   );
 };
 
-export default BudgetWidget;
+const mapStateToProps = state => {
+  return {
+    filter: state.vehicleDetails.filter,
+    category: state.vehicleDetails.category
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    budgetFilter: (category, filterdata) =>
+      dispatch(actions.getVehicles(category, filterdata))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BudgetWidget);
