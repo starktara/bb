@@ -13,14 +13,16 @@ router.get("/getCategoryById", (req, res) => {
       category: req.query.category
     }
   });
-
+console.log(req.query);
   if (filterData != null) {
-    if (filterData.sort.column != "") {
+    if (filterData.sort.column != null) {
       let column = filterData.sort.column;
       let order = filterData.sort.order;
       sortKey[column] = {
         order: order
       };
+    }else{
+        sortKey["id"] = { order: "desc" };
     }
     if (filterData.myear.length > 0) {
       let mYear = filterData.myear;
