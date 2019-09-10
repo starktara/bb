@@ -3,7 +3,6 @@ const router = express.Router();
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
 
-
 router.get("/getCategoryById", (req, res) => {
   let filterData = JSON.parse(req.query.filterData);
   let sortKey = {};
@@ -13,7 +12,6 @@ router.get("/getCategoryById", (req, res) => {
       category: req.query.category
     }
   });
-console.log(req.query);
   if (filterData != null) {
     if (filterData.sort.column != null) {
       let column = filterData.sort.column;
@@ -21,8 +19,8 @@ console.log(req.query);
       sortKey[column] = {
         order: order
       };
-    }else{
-        sortKey["id"] = { order: "desc" };
+    } else {
+      sortKey["id"] = { order: "desc" };
     }
     if (filterData.myear.length > 0) {
       let mYear = filterData.myear;
@@ -39,6 +37,20 @@ console.log(req.query);
           brand: brand
         }
       });
+    }
+
+    if (filterData.budget.length > 0) {
+      let budget = filterData.budget;
+      for (let value of budget) {
+        let rangeArr = value.split("-");
+        let gte = rangeArr[0];
+        let lte = rangeArr[1];
+        mustArray.push({
+          range: {
+            price: { gte: gte, lte: lte }
+          }
+        });
+      }
     }
   } else {
     sortKey["id"] = { order: "desc" };
@@ -62,25 +74,3 @@ console.log(req.query);
 });
 
 module.exports = router;
-
-// "query": {
-//   "bool" : {
-//     "must" : {
-//       "term" : { "user" : "kimchy" }
-//     },
-//     "filter": {
-//       "term" : { "tag" : "tech" }
-//     },
-//     "must_not" : {
-//       "range" : {
-//         "age" : { "gte" : 10, "lte" : 20 }
-//       }
-//     },
-//     "should" : [
-//       { "term" : { "tag" : "wow" } },
-//       { "term" : { "tag" : "elasticsearch" } }
-//     ],
-//     "minimum_should_match" : 1,
-//     "boost" : 1.0
-//   }
-// }
