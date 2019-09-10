@@ -218,93 +218,6 @@ body{
   #logoImg{
     padding: 21px;
   }
-  .indicators{
-    display: none;
-  }
-  .slider{
-    height: 675px !important;
-  }
-  .slides{
-    height: 675px !important;
-  }
-  .slides h4{
-    font-size: 32px;
-    letter-spacing: 2px;
-    padding-left: 37px;
-  }
-  .caption{
-    background-color: rgba(0,0,0,0.3);
-    transform: translateX(0px) translateY(0px) !important;
-    top: 0px !important;
-    left: 0px !important;
-    height: 100% !important;
-    width: 100% !important;
-  }
-  .section-2, section-3{
-    padding: 50px 0px 100px 0px;
-  }
-  .section-2 h3{
-    padding-bottom: 15px;
-    font-size: 36px;
-    font-weight: 800;
-    color: #232c2b;
-  }
-  .section-2-heading{
-    margin-bottom: 72px;
-  }
-  .section-3 h3{
-    padding-top: 43.8px;
-    padding-bottom: 15px; 
-    font-weight: 800;
-    font-size: 36px;
-    color: #232c2b; 
-  }
-  .section-3-heading{
-    margin-bottom: 55px;
-  }
-  .section-2 h5, .section-3 h5{
-    color: #e92d2c;
-    font-weight: bold;
-    white-space: nowrap;
-    font-size: 23px;
-  }
-  .section-3{
-    background-color: #f5f5f5;
-    padding-bottom: 20px;
-  }
-  .section-4{
-    padding-top: 43.8px;
-  }
-  .section-4 h3{
-    padding-bottom: 15px;
-    font-size: 36px;
-    font-weight: 800;
-    letter-spacing: 2.37px;
-  }
-  .spacing{
-    padding-top: 40px; 
-  }
-  .gola{
-    background-color: white;
-    width: 155px;
-    height: 155px;
-    justify-content: center;
-    border-radius: 100px;
-    box-shadow: 0 0 7px rgba(0,0,0,0.6);
-  }
-  .gola-2{
-    background-color: white;
-    width: 155px;
-    height: 155px;
-    justify-content: center;
-    border-radius: 100px;
-    box-shadow: 0 0 7px rgba(0,0,0,0.6);
-  }
-  .advantage-subtitle{
-    margin-left: 25px;
-    font-size: 15px;
-    font-weight: 500;
-  }
   
   .arrow-container{
     height: 350px;
@@ -313,36 +226,7 @@ body{
   i.icon-black{
     color: black;
   }
-  #testimonialMessage{
-    height: 146px;
-    font-size: 16px;
-    line-height: 35px;
-    letter-spacing: 0.47px;
-    font-weight: normal;
-    padding: 0px 75px;
-    text-align: center;
-  }
-  .footer{
-    height: 203px;
-    background-color: #404040;
-    padding: 40px 40px 43px 40px;
-  }
-  .footer .row:nth-child(1){
-    margin-bottom: 29px;
-  }
-  .footer .row:nth-child(2){
-    margin-bottom: 40px;
-  }
-  .footer a{
-    color: white;
-    font-size: 14px;
-    font-weight: 100;
-    letter-spacing: 1.5px;
-  }
-  .copyright{
-    font-size: 12px !important;
-    letter-spacing: 1.29px;
-  }
+
   .last-row{
     margin-bottom: 0px !important;
     padding-bottom: 0px !important;  
@@ -415,97 +299,18 @@ body{
     justify-content: center;
     align-items: center;
   }
-  .gola-wrapper{
-    display: flex;
-    justify-content: center;
-  }
-  #clientName{
-    font-weight: 700;
-    font-size: 24px;
-    letter-spacing: 0.71px;
-    margin-top: 45px;
-  }
-  .carousel-search-container{
-    width: 499px;
-    height: 66px;
-    border-radius: 4px;
-    background-color: #fff;
-    overflow: hidden;
-    margin-top: 85px;
-    margin-left: 37px;
-  }
-  .carousel-location-btn{
-    width: 26%;
-    float: left;
-    cursor: pointer;
-    height: inherit;
-    background-color: #d6d6d6;
-    opacity: 0.7; 
-    padding: 17px 0px 22px 15px;
-  }
-  .carousel-search-box{
-    width: 56.77%;
-    float: left;
-    height: inherit;
-    background-color: #fff; 
-  }
-  .carousel-search-box input{
-    height: inherit !important;
-    padding-left: 16px !important; 
-  }
-  .carousel-search-box input::placeholder{
-    color: #000000;
-    font-size: 16px;
-    letter-spacing: 0.11px;
-    font-weight: 100; 
-  }
-  .carousel-location-btn span{
-    margin-left: 10px; 
-  }
-  .carousel-location-btn img{
-    width: 25px !important;
-    height: 20px !important; 
-    background-size: 23px 20px !important;
-    margin-top: 5px;
-    margin-right: 3px;
-    float: left;
-  }
+
   .loc-text{
     margin-top: 3px;
     color: #000;
     font-size: 16.8px;
     font-weight: 500;
   }
-  .carousel-search-label{
-    height: inherit;
-    width: 17.23%;
-    background-color: #ff0000;
-    float: right; 
-  }
-  .carousel-search-label img{
-    background-size: 40px 40px !important;
-    background-repeat: no-repeat !important;  
-  }
-  
+
   .mb-0{
     margin-bottom: 0px !important;
   }
-  
-  .carousel {
-  max-height: 350px !important;
-  }
-  
-  .carousel .carousel-item {
-    opacity: 1 !important;
-    width: 250px !important;
-    height: 250px !important;
-  }
-  
-  .carousel-item img{
-    width: inherit !important;
-    height: inherit !important;
-  }
-  
+
   .phone-number{
     border-right: 1px solid #fff;
   }
@@ -518,14 +323,15 @@ body{
   .signup{
     padding-left: 19px;
   }
-  .hfdc{
-    margin-left: -30px;
-  }
-  .content{
-    padding: 40px;
-  }
   #routing{
     border-radius: 4px;
     box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
     padding: 16px 19px 13px 19px;
+  }
+
+  .sign-in{
+    width: 50px;
+    height: 22px;
+    cursor: pointer;
+    padding: 0px 15px;
   }

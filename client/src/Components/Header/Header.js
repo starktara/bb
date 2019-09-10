@@ -9,6 +9,7 @@ import logo from '../../assets/logo.svg';
 import searchIcon from '../../assets/search-icon.svg';
 import locationIcon from '../../assets/location-icon.svg';
 import Grid from "@material-ui/core/Grid";
+import AuthModal from '../Auth/Modal/AuthModal';
 
 import './Header.css'
 
@@ -33,7 +34,8 @@ const Header = () => {
                     <ul className="right hide-on-med-and-down">
                     <li className="login">
                         <img src={userIcon} height="22" className="nav-img responsive-img" alt=""/>
-                        <Link to="/login" className="right">Login</Link>
+                        {/* <Link to="/login" className="right">Login</Link> */}
+                        <AuthModal buttonClass="right sign-in"></AuthModal>
                     </li>
                         <li className="signup"><Link to="/signup">Signup</Link></li>
                     </ul>
