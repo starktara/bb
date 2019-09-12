@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../axios-conf';
 
 import * as actionTypes from './actionTypes';
 
