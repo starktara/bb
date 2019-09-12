@@ -60,6 +60,7 @@ router.get("/getCategoryById", (req, res) => {
     const { body } = await client.search({
       index: "bike-details",
       body: {
+        from : 0, size : 10000,
         query: {
           bool: {
             must: mustArray
