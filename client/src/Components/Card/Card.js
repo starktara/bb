@@ -14,7 +14,9 @@ const Card = props => {
             <img src={vehicleImagePath+props.image} height="230" alt="" />
           </div>
           <div className="detail">
-            <h3>{props.name} </h3>
+            <div className="bike-name">
+              <h3>{props.name} </h3>
+            </div>
               <p className="price">
               <img className="rupees" src={require("../../assets/icons/rupee-indian-red.svg")} alt=""/>{props.cost}
               </p>

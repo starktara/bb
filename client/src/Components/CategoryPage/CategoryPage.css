@@ -412,5 +412,8 @@ form {
 .cardContainer{
   min-height: 1476px;
 }
+.bike-name{
+  height: 38px;
+}
 
 

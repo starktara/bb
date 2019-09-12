@@ -12,6 +12,8 @@ import Spinner from '../UI/Spinner/Spinner';
 import Banner from '../Banner/Banner';
 import M from  'materialize-css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { BRANDS } from '../../shared/mappings/brands';
+import { MODELS } from '../../shared/mappings/bike_models';
 
 const VehicleDetails = (props) => {
     
@@ -43,11 +45,12 @@ const VehicleDetails = (props) => {
     var vehicle = <Spinner />;
 
     if(props.vehicle!=null){
+        let name = (props.vehicle._source.model <= MODELS.length-1 && props.vehicle._source.brand <= BRANDS.length-1) ? BRANDS[props.vehicle._source.brand] + ' ' + MODELS[props.vehicle._source.model] : 'NA';
         vehicle =
         <div className="wapper">
             <Banner
                 navigation="Bike"
-                heading={props.vehicle._source.name}
+                heading={name}
                 text=""
                 path={props.location.pathname}
             />

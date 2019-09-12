@@ -13,6 +13,8 @@ import * as actions from '../../store/actions/index';
 import Spinner from '../../Components/UI/Spinner/Spinner';
 import {Menu} from '../../shared/utility';
 import categoryData from '../../shared/mappings/category_data';
+import { BRANDS } from '../../shared/mappings/brands';
+import { MODELS } from '../../shared/mappings/bike_models';
 
 class CategoryPage extends Component {
 
@@ -42,7 +44,7 @@ class CategoryPage extends Component {
               year={vehicle._source.myear} 
               kms={vehicle._source.kmdriven} 
               cc={vehicle._source.cc}  
-              name={vehicle._source.name} 
+              name={(vehicle._source.model <= MODELS.length-1 && vehicle._source.brand <= BRANDS.length-1) ? BRANDS[vehicle._source.brand] + ' ' + MODELS[vehicle._source.model] : 'NA'} 
               loc={vehicle._source.loc}
               cost={vehicle._source.price}
               vehicleid={vehicle._id} 

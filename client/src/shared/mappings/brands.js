@@ -1,12 +1,12 @@
-export const BRANDS = {
-    'Yamaha': 1, 
-    'Harley Davidson': 2, 
-    'Royal Enfield': 3, 
-    'Bajaj': 4,
-    'Honda': 5,
-    'Hero': 6, 
-    'KTM': 7,
-    'Suzuki': 8,
-    'Kawasaki': 9,
-    'Benelli': 10 
-};
+export const BRANDS = [
+    'Yamaha',
+    'Harley Davidson', 
+    'Royal Enfield', 
+    'Bajaj',
+    'Honda',
+    'Hero', 
+    'KTM',
+    'Suzuki',
+    'Kawasaki',
+    'Benelli' 
+];

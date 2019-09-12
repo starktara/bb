@@ -76,10 +76,10 @@ router.get("/uploadBikes", (req, res) => {
     const dataset = [
       {
         id: 1,
-        name: "Yamaha X",
+        name: "",
         type: 1,
-        model: 1,
-        brand: 1,
+        model: 0,
+        brand: 0,
         regnumber: "GJ27BA0711",
         descr: "Pristine condition",
         price: 26000,

@@ -49,7 +49,7 @@ export const getVehicleData = (vehicleid) => {
     return dispatch => {
         let url = "/apis/seedData/searchBike?vehicleid="+vehicleid;
         axios.get(url)
-            .then(response => {       
+            .then(response => {
                 dispatch(vehicleData(response.data));
             })
             .catch(err => {
