@@ -111,6 +111,11 @@ const Sell = props => {
                                             </Grid>
                                         </Grid>
                                         <Grid container component="div" direction="row">
+                                            <Grid item xs={3} sm={3} md={3} lg={3}>
+                                                <div className="vehicle-image-uploader">
+                                                    <button name="vehicleimmages" className="vehicle-images">Upload Vehicle Images</button> 
+                                                </div>
+                                            </Grid>
                                             <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
                                             <div className="form-group"><button type="submit" className="btn">Sell Your Vehicle</button></div>
                                             </Grid>

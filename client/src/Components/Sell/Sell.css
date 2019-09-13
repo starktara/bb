@@ -85,3 +85,17 @@
   box-shadow: none;
   margin-left: 10px;
 }
+.vehicle-images{
+    margin-left: 15px;
+    background: #ff0000;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #ffff;
+    width: 250px;
+    border: none;
+    font-weight: 500;
+}
+.vehicle-image-uploader{
+    margin: 20px 0px;
+}
