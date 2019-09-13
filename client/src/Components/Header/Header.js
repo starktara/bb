@@ -34,8 +34,7 @@ const Header = () => {
                     <ul className="right hide-on-med-and-down">
                     <li className="login">
                         <img src={userIcon} height="22" className="nav-img responsive-img" alt=""/>
-                        {/* <Link to="/login" className="right">Login</Link> */}
-                        <AuthModal buttonClass="right sign-in"></AuthModal>
+                        <Link to="/login" className="right">Login</Link>
                     </li>
                         <li className="signup"><Link to="/signup">Signup</Link></li>
                     </ul>
@@ -74,7 +73,7 @@ const Header = () => {
                                 <Link to="/buy">BUY</Link>
                             </li>
                             <li>
-                                <Link to="/sell"></Link>
+                                <Link to="/sell">SELL</Link>
                             </li>
                             <li>
                                 <Link to="/locate-store">LOCATE STORE</Link>
