@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Slider from "react-rangeslider";
+import { connect } from "react-redux";
+import * as actions from "../../../../store/actions/index";
 
 import "./KmWidget.css";
 
@@ -17,6 +19,11 @@ class KmWidget extends Component {
     this.setState({
       slideValue: event
     });
+    console.log(event)
+    let category = this.props.category;
+    let filterData = this.props.filter;
+    filterData.kms = event;
+    this.props.kmFilter(category, filterData);
   }
 
   render() {
@@ -60,4 +67,21 @@ class KmWidget extends Component {
   }
 }
 
-export default KmWidget;
+const mapStateToProps = state => {
+  return {
+    filter: state.vehicleDetails.filter,
+    category: state.vehicleDetails.category
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    kmFilter: (category, filterdata) =>
+      dispatch(actions.getVehicles(category, filterdata))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(KmWidget);
