@@ -79,7 +79,7 @@ const Header = () => {
                                 <Link to="/locate-store">LOCATE STORE</Link>
                             </li>
                             <li>
-                                <Link to="/franchise">BECOME A FRANCHISE OWNER</Link>
+                                <Link to="/becomefranchiseowner">BECOME A FRANCHISE OWNER</Link>
                             </li>
                         </ul>
                     </Grid>
