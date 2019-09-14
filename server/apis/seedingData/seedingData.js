@@ -441,6 +441,35 @@ router.get("/uploadLocations", (req, res) => {
   upload().catch(console.log);
 });
 
+
+
+/*create schema to store bike details*/
+router.get("/createLeadDetail", (req, res) => {
+  async function run() {
+    await client.indices.create(
+      {
+        index: "leadDetail",
+        body: {
+          mappings: {
+            properties: {
+              name: { type: "text" },
+              email: { type: "text" },
+              phone: { type: "integer" },
+              emiOption: { type: "integer" },
+              bikeId: { type: "integer" },
+              storeId: { type: "integer" }
+            }
+          }
+        }
+      },
+      { ignore: [400] }
+    );
+  }
+  run().catch(console.log);
+  res.json({ msg: "Index Created Sucessfully" });
+});
+
+
 router.get("/getAllBikes", (req, res) => {
   async function getData() {
     const { body } = await client.search({
