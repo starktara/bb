@@ -19,10 +19,10 @@ class KmWidget extends Component {
     this.setState({
       slideValue: event
     });
-    console.log(event)
+    
     let category = this.props.category;
     let filterData = this.props.filter;
-    filterData.kms = event;
+    filterData.kmdriven = event;
     this.props.kmFilter(category, filterData);
   }
 

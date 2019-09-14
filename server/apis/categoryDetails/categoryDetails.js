@@ -5,8 +5,10 @@ const client = new Client({ node: "http://localhost:9200" });
 
 router.get("/getCategoryById", (req, res) => {
   let filterData = JSON.parse(req.query.filterData);
+  console.log(filterData)
   let sortKey = {};
   let mustArray = [];
+  let shouldArray= [];
   mustArray.push({
     match: {
       category: req.query.category
@@ -52,6 +54,14 @@ router.get("/getCategoryById", (req, res) => {
         });
       }
     }
+
+    if (filterData.kmdriven != null) {
+      mustArray.push({
+        range: {
+          kmdriven: { gte: 0, lte: filterData.kmdriven }
+        }
+      });
+    }
   } else {
     sortKey["id"] = { order: "desc" };
   }
@@ -60,7 +70,8 @@ router.get("/getCategoryById", (req, res) => {
     const { body } = await client.search({
       index: "bike-details",
       body: {
-        from : 0, size : 10000,
+        from: 0,
+        size: 10000,
         query: {
           bool: {
             must: mustArray
