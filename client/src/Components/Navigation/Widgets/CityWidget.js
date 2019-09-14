@@ -10,11 +10,21 @@ const CityWidget = (props) => {
   };
 
   const searchCity = () => {
+    console.log(searchTerm);
     let category = props.category;
     let filterData = props.filter;
     filterData.searchTerm = `${searchTerm}*`;
     props.cityFilter(category, filterData);
   }
+
+  const searchClick = (clickValue) => {
+    console.log(clickValue);
+    let category = props.category;
+    let filterData = props.filter;
+    filterData.searchTerm = `${clickValue}*`;
+    props.cityFilter(category, filterData);
+  }
+
 
   return (
     <div className="CityWidget">
@@ -46,17 +56,17 @@ const CityWidget = (props) => {
         </div>
         <ul className="cat-list">
           <li>
-            <a href="#">Mumbai</a>
+            <a href="#" onClick={() => searchClick('mumbai')}>Mumbai</a>
+          </li>
+           <li>
+            <a href="javascript:void" onClick={() => searchClick('pune')}>Pune</a>
           </li>
           <li>
-            <a href="#">Pune</a>
+            <a href="javascript:void" onClick={() => searchClick('kollim')}>Kollim</a>
           </li>
           <li>
-            <a href="#">Kollim</a>
-          </li>
-          <li>
-            <a href="#">Rajmundary</a>
-          </li>
+            <a href="javascript:void" onClick={() => searchClick('rajmundary')}>Rajmundary</a>
+          </li> 
         </ul>
       </div>
     </div>
