@@ -60,7 +60,7 @@ router.get("/getCategoryById", (req, res) => {
         }
       });
     }
-    if (filterData.searchTerm != null || filterData.searchTerm != "") {      
+    if (filterData.searchTerm != null) {      
       mustArray.push({
         wildcard: {
           city: {
@@ -71,13 +71,6 @@ router.get("/getCategoryById", (req, res) => {
     }
   } else {
     sortKey["id"] = { order: "desc" };
-    mustArray.push({
-      wildcard: {
-        city: {
-          value: "*"
-        }
-      }
-    });
   }
 
   async function getBikesForCategory() {
@@ -91,7 +84,6 @@ router.get("/getCategoryById", (req, res) => {
             must: mustArray
           }
         },
-
         sort: [sortKey]
       }
     });

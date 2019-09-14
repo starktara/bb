@@ -5,13 +5,16 @@ import * as actions from "../../../store/actions/index";
 const CityWidget = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const searchCity = event => {
+  const updateState = event => {
     setSearchTerm(event.target.value);
+  };
+
+  const searchCity = () => {
     let category = props.category;
     let filterData = props.filter;
     filterData.searchTerm = `${searchTerm}*`;
     props.cityFilter(category, filterData);
-  };
+  }
 
   return (
     <div className="CityWidget">
@@ -34,9 +37,9 @@ const CityWidget = (props) => {
               placeholder="Search your City"
               name="Search your City"
               value={searchTerm}
-              onChange={searchCity}
+              onChange={updateState}
             />
-            <button type="submit">
+            <button type="button" onClick={searchCity}>
               <i className="material-icons">search</i>
             </button>
           </form>
