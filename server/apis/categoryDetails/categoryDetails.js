@@ -5,10 +5,8 @@ const client = new Client({ node: "http://localhost:9200" });
 
 router.get("/getCategoryById", (req, res) => {
   let filterData = JSON.parse(req.query.filterData);
-  console.log(filterData)
   let sortKey = {};
   let mustArray = [];
-  let shouldArray= [];
   mustArray.push({
     match: {
       category: req.query.category
@@ -62,8 +60,24 @@ router.get("/getCategoryById", (req, res) => {
         }
       });
     }
+    if (filterData.searchTerm != null || filterData.searchTerm != "") {      
+      mustArray.push({
+        wildcard: {
+          city: {
+            value: filterData.searchTerm 
+          }
+        }
+      });
+    }
   } else {
     sortKey["id"] = { order: "desc" };
+    mustArray.push({
+      wildcard: {
+        city: {
+          value: "*"
+        }
+      }
+    });
   }
 
   async function getBikesForCategory() {
@@ -77,6 +91,7 @@ router.get("/getCategoryById", (req, res) => {
             must: mustArray
           }
         },
+
         sort: [sortKey]
       }
     });

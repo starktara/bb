@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../store/actions/index";
 
-const CityWidget = () => {
+const CityWidget = (props) => {
+  const [searchTerm, setSearchTerm] = useState("");
 
+  const searchCity = event => {
+    setSearchTerm(event.target.value);
+    let category = props.category;
+    let filterData = props.filter;
+    filterData.searchTerm = `${searchTerm}*`;
+    props.cityFilter(category, filterData);
+  };
 
   return (
     <div className="CityWidget">
@@ -25,6 +33,8 @@ const CityWidget = () => {
               type="text"
               placeholder="Search your City"
               name="Search your City"
+              value={searchTerm}
+              onChange={searchCity}
             />
             <button type="submit">
               <i className="material-icons">search</i>
@@ -49,8 +59,6 @@ const CityWidget = () => {
     </div>
   );
 };
-
-
 
 const mapStateToProps = state => {
   return {

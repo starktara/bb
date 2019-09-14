@@ -18,7 +18,8 @@ const initialState = {
     myear: [],
     budget: [],
     brand: [],
-    kmdriven: 100000
+    kmdriven: 100000,
+    searchTerm:null
   }
 };
 
