@@ -18,14 +18,14 @@ const Sell = props => {
             </div>
         </Grid>
         <Grid item xs={12} md={12} sm={12} lg={12} className="center-align">
-            <h3 className="book-appointment-heading">Booke an Appointment</h3>
+            <h3 className="book-appointment-heading">Book An Appointment</h3>
             <img alt="" src={headingLines} width="57" height="4" />
             <Grid container direction="row" justify="center" alignItems="center" id="shareYourDetailsContainer">
                 <Grid item xs={10} sm={10} md={10} lg={10}>
                     <div className="pageDtl">
                         <Grid container component="div" direction="row">
                             <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
-                                <h4>Shar Your Details</h4>
+                                <h4>Share Your Details</h4>
                             </Grid>
                             <Grid container component="div" direction="row">
                                 <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -111,11 +111,11 @@ const Sell = props => {
                                             </Grid>
                                         </Grid>
                                         <Grid container component="div" direction="row">
-                                            <Grid item xs={3} sm={3} md={3} lg={3}>
+                                            {/* <Grid item xs={3} sm={3} md={3} lg={3}>
                                                 <div className="vehicle-image-uploader">
                                                     <button name="vehicleimmages" className="vehicle-images">Upload Vehicle Images</button> 
                                                 </div>
-                                            </Grid>
+                                            </Grid> */}
                                             <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
                                             <div className="form-group"><button type="submit" className="btn">Sell Your Vehicle</button></div>
                                             </Grid>
