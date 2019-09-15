@@ -7,33 +7,81 @@ import Banner from "../Banner/Banner";
 import headingLines from "../../assets/heading-lines.svg";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
+import Alert from 'react-bootstrap/Alert'
+
 
 const Sell = props => {
   const [formData, setFormData] = useState({
-    name: '',
-    city: '',
-    make: '',
-    variant: '',
-    yom: '',
-    mobile: '',
-    address: '',
-    model: '',
-    kmsdriven: ''
+    name: "",
+    city: "",
+    make: "",
+    variant: "",
+    yom: "",
+    mobile: "",
+    address: "",
+    model: "",
+    kmsdriven: ""
   });
+  const [error, setError] = useState({
+    name: false,
+    city: false,
+    make: false,
+    mobile: false,
+    yom: false,
+    model: false
+  });
+  
+
+  const [successSubmit,setSuccessSubmit] = useState(false);
 
   const updateFormdata = (event, formData) => {
     let targetValue = event.target.value;
-    
+
     setFormData({
-        ...formData,
-        [event.target.name]: targetValue
-    })
+      ...formData,
+      [event.target.name]: targetValue
+    });
   };
 
-  const submitForm = (event) => {
+  const submitForm = event => {
     event.preventDefault();
-    console.log(formData)
+    var errorObj = { ...error };
+    var errorExists = false;
+    for (var prop in formData) {
+      if (formData[prop] == "" && error.hasOwnProperty(prop)) {
+        errorObj[prop] = true;
+        errorExists  = true;
+      }else{
+        errorObj[prop] = false;
+      }
+    }
+
+    if(errorExists){
+        setError({
+            ...error,
+            ...errorObj
+          });
+    }else{
+        setSuccessSubmit(true);
+    }
+  
   };
+
+  if(successSubmit){
+
+      var alertSuccess =( <Alert variant="success">
+      <Alert.Heading>Details Successfully Saved!</Alert.Heading>
+      <hr />
+      <p className="mb-0">
+       We will contact you soon!
+      </p>
+    </Alert>)
+
+  }else{
+
+    var alertSuccess = '';
+
+  }
 
   return (
     <div id="Sell">
@@ -59,6 +107,8 @@ const Sell = props => {
             alignItems="center"
             id="shareYourDetailsContainer"
           >
+                        {alertSuccess}
+
             <Grid item xs={10} sm={10} md={10} lg={10}>
               <div className="pageDtl">
                 <Grid container component="div" direction="row">
@@ -101,6 +151,11 @@ const Sell = props => {
                                   value={formData.name}
                                   required
                                 />
+                                {error.name && (
+                                  <div className="invalid-feedback d-block">
+                                    Name is required
+                                  </div>
+                                )}
                               </Grid>
                             </Grid>
                             <Grid
@@ -123,8 +178,14 @@ const Sell = props => {
                                     updateFormdata(event, formData)
                                   }
                                   value={formData.city}
+                                  error="dswdsdsd"
                                   required
                                 />
+                                {error.city && (
+                                  <div className="invalid-feedback d-block">
+                                    City is required
+                                  </div>
+                                )}
                               </Grid>
                             </Grid>
                             <Grid
@@ -149,6 +210,11 @@ const Sell = props => {
                                   }
                                   value={formData.make}
                                 />
+                                {error.make && (
+                                  <div className="invalid-feedback d-block">
+                                    Manufacturer is required
+                                  </div>
+                                )}
                               </Grid>
                             </Grid>
                             <Grid
@@ -195,6 +261,11 @@ const Sell = props => {
                                   }
                                   value={formData.yom}
                                 />
+                                {error.yom && (
+                                  <div className="invalid-feedback d-block">
+                                    Year of Manufacture is required
+                                  </div>
+                                )}
                               </Grid>
                             </Grid>
                           </Grid>
@@ -221,6 +292,11 @@ const Sell = props => {
                                   }
                                   value={formData.mobile}
                                 />
+                                {error.mobile && (
+                                  <div className="invalid-feedback d-block">
+                                    Mobile is required
+                                  </div>
+                                )}
                               </Grid>
                             </Grid>
                             <Grid
@@ -267,6 +343,11 @@ const Sell = props => {
                                   }
                                   value={formData.model}
                                 />
+                                {error.model && (
+                                  <div className="invalid-feedback d-block">
+                                    Model is required
+                                  </div>
+                                )}
                               </Grid>
                             </Grid>
                             <Grid
