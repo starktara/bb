@@ -99,3 +99,7 @@
 .vehicle-image-uploader{
     margin: 20px 0px;
 }
+.invalid-feedback{
+  color: #ff0000;
+
+}

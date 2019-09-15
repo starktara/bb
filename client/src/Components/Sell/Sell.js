@@ -7,7 +7,7 @@ import Banner from "../Banner/Banner";
 import headingLines from "../../assets/heading-lines.svg";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
-import Alert from 'react-bootstrap/Alert';
+import { Snackbar } from '@material-ui/core';
 
 
 
@@ -70,13 +70,9 @@ const Sell = props => {
 
   if(successSubmit){
 
-      var alertSuccess =( <Alert variant="success">
-      <Alert.Heading>Details Successfully Saved!</Alert.Heading>
-      <hr />
-      <p className="mb-0">
-       We will contact you soon!
-      </p>
-    </Alert>)
+      var alertSuccess =(
+          <Snackbar bodyStyle={{ backgroundColor: 'green', color: 'coral' }}  status="success"/>
+      )
 
   }else{
 
