@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import "./Sell.css";
 import Header from "../Header/Header";
@@ -8,13 +8,32 @@ import headingLines from "../../assets/heading-lines.svg";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 
-
 const Sell = props => {
   const [formData, setFormData] = useState({
-      
+    name: '',
+    city: '',
+    make: '',
+    variant: '',
+    yom: '',
+    mobile: '',
+    address: '',
+    model: '',
+    kmsdriven: ''
   });
 
-  
+  const updateFormdata = (event, formData) => {
+    let targetValue = event.target.value;
+    
+    setFormData({
+        ...formData,
+        [event.target.name]: targetValue
+    })
+  };
+
+  const submitForm = (event) => {
+    event.preventDefault();
+    console.log(formData)
+  };
 
   return (
     <div id="Sell">
@@ -76,6 +95,10 @@ const Sell = props => {
                                   name="name"
                                   id=""
                                   placeholder="Your Name"
+                                  onChange={event =>
+                                    updateFormdata(event, formData)
+                                  }
+                                  value={formData.name}
                                   required
                                 />
                               </Grid>
@@ -96,6 +119,10 @@ const Sell = props => {
                                   type="text"
                                   name="city"
                                   placeholder="Your City"
+                                  onChange={event =>
+                                    updateFormdata(event, formData)
+                                  }
+                                  value={formData.city}
                                   required
                                 />
                               </Grid>
@@ -117,6 +144,10 @@ const Sell = props => {
                                   name="make"
                                   placeholder="Manufacturer"
                                   required
+                                  onChange={event =>
+                                    updateFormdata(event, formData)
+                                  }
+                                  value={formData.make}
                                 />
                               </Grid>
                             </Grid>
@@ -136,6 +167,10 @@ const Sell = props => {
                                   type="text"
                                   name="variant"
                                   placeholder="Variant"
+                                  onChange={event =>
+                                    updateFormdata(event, formData)
+                                  }
+                                  value={formData.variant}
                                 />
                               </Grid>
                             </Grid>
@@ -155,6 +190,10 @@ const Sell = props => {
                                   type="text"
                                   name="yom"
                                   placeholder="Year of Manufacture"
+                                  onChange={event =>
+                                    updateFormdata(event, formData)
+                                  }
+                                  value={formData.yom}
                                 />
                               </Grid>
                             </Grid>
@@ -176,6 +215,11 @@ const Sell = props => {
                                   type="text"
                                   name="mobile"
                                   placeholder="Your Mobile Number"
+                                  required
+                                  onChange={event =>
+                                    updateFormdata(event, formData)
+                                  }
+                                  value={formData.mobile}
                                 />
                               </Grid>
                             </Grid>
@@ -194,6 +238,10 @@ const Sell = props => {
                                 <textarea
                                   name="address"
                                   placeholder="Your Address"
+                                  onChange={event =>
+                                    updateFormdata(event, formData)
+                                  }
+                                  value={formData.address}
                                 ></textarea>
                               </Grid>
                             </Grid>
@@ -213,6 +261,11 @@ const Sell = props => {
                                   type="text"
                                   name="model"
                                   placeholder="Vehicle Model"
+                                  required
+                                  onChange={event =>
+                                    updateFormdata(event, formData)
+                                  }
+                                  value={formData.model}
                                 />
                               </Grid>
                             </Grid>
@@ -235,6 +288,10 @@ const Sell = props => {
                                   type="text"
                                   name="kmsdriven"
                                   placeholder="Kilometers Driven"
+                                  onChange={event =>
+                                    updateFormdata(event, formData)
+                                  }
+                                  value={formData.kmsdriven}
                                 />
                               </Grid>
                             </Grid>
@@ -250,7 +307,11 @@ const Sell = props => {
                             className="center-align"
                           >
                             <div className="form-group">
-                              <button type="submit" className="btn">
+                              <button
+                                type="button"
+                                className="btn"
+                                onClick={submitForm}
+                              >
                                 Sell Your Vehicle
                               </button>
                             </div>
