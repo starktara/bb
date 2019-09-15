@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import Grid from "@material-ui/core/Grid";
 import "./Sell.css";
 import Header from "../Header/Header";
@@ -6,9 +6,16 @@ import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import headingLines from "../../assets/heading-lines.svg";
 import { connect } from "react-redux";
-import * as actions from "../../../../store/actions/index";
+import * as actions from "../../store/actions/index";
+
 
 const Sell = props => {
+  const [formData, setFormData] = useState({
+      
+  });
+
+  
+
   return (
     <div id="Sell">
       <Header />
