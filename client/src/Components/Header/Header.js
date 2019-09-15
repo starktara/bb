@@ -70,7 +70,7 @@ const Header = () => {
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <ul className="nav-options">
                             <li>
-                                <Link to="/buy">BUY</Link>
+                                <Link to="/category/bike">BUY</Link>
                             </li>
                             <li>
                                 <Link to="/sell">SELL</Link>
