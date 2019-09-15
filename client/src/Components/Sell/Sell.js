@@ -7,7 +7,8 @@ import Banner from "../Banner/Banner";
 import headingLines from "../../assets/heading-lines.svg";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
-import Alert from 'react-bootstrap/Alert'
+import Alert from 'react-bootstrap/Alert';
+
 
 
 const Sell = props => {

@@ -7,7 +7,6 @@ import LocateStore from './Components/LocateStore/LocateStore';
 import VehicleDetails from './Components/VehicleDetails/VehicleDetails';
 import Sell from './Components/Sell/Sell';
 import BecomeFranchiseOwner from './Components/BecomeFranchiseOwner/BecomeFranchiseOwner';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const App = () =>  {
