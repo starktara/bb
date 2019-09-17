@@ -111,7 +111,8 @@ const Homepage = () => {
                                 <div className="loc-text">Pune</div>
                             </div>
                             <div className="carousel-search-box">
-                                <input type="text" name="location-search" placeholder="Search Your Two-wheeler" />
+                                <input type="text" name="location-search" placeholder="Search Your Two-wheeler"  value={searchTerm}
+                      onChange={updateState}/>
                             </div>
                             <Link to={`/category/bike?searchTerm=${searchTerm}`}>
                             <button className="carousel-search-label" type="button">
