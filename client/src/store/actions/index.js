@@ -1,5 +1,6 @@
 export {
   getVehicles,
   getPaginatedData,
-  getVehicleData
+  getVehicleData,
+  getSearchData
 } from './vehiclesDetails';

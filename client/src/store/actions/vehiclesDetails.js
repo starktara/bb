@@ -57,6 +57,19 @@ export const getVehicleData = (vehicleid) => {
     };
 };
 
+export const getSearchData = (searchTerm,filterData = null) => {
+    return dispatch => {
+        let url = "/apis/globalSearch/getCategoryById?searchTerm="+searchTerm;
+        axios.get(url)
+            .then(response => {
+                dispatch(vehicleList(response.data,filterData = null,"bike"));
+            })
+            .catch(err => {
+                dispatch(apiFail(err));
+            });
+    };
+}
+
 export const getPaginatedData = (offset,pageLimit) => {
     return {
         type:actionTypes.GET_PAGINATED_VEHICLES,
