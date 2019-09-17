@@ -82,7 +82,7 @@ const Header = props => {
                       value={searchTerm}
                       onChange={updateState}
                     />
-                    <Link to="/category/bike">
+                    <Link to={`/category/bike?searchTerm=${searchTerm}`}>
                       <button className="btn search-label-btn" type="button">
                         <img src={searchIcon} height="30" alt="" />
                       </button>

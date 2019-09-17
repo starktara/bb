@@ -27,6 +27,10 @@ import Grid from "@material-ui/core/Grid";
 import * as CATEGORY from '../../shared/constants/category';
 
 const Homepage = () => {
+    const [searchTerm, setSearchTerm] = useState("");
+    const updateState = event => {
+      setSearchTerm(event.target.value);
+    };
     const [sliderState, changeSlider] = useState(null);
 
     const initCar = (direction) => {
@@ -109,9 +113,11 @@ const Homepage = () => {
                             <div className="carousel-search-box">
                                 <input type="text" name="location-search" placeholder="Search Your Two-wheeler" />
                             </div>
-                            <div className="carousel-search-label">
-                                <img alt="" src={searchIcon} width="40" height="40" />
-                            </div>
+                            <Link to={`/category/bike?searchTerm=${searchTerm}`}>
+                            <button className="carousel-search-label" type="button">
+                                <img alt="" src={searchIcon} width="40" height="44" />
+                            </button>
+                            </Link>
                         </div>
                     </div>
                 </li>
