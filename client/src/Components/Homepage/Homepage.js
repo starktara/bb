@@ -104,7 +104,7 @@ const Homepage = () => {
                         <div className="carousel-search-container">
                             <div className="carousel-location-btn">
                                 <img alt="" src={locationIcon} width="23" height="20" />
-                                <div className="loc-text">Location</div>
+                                <div className="loc-text">Pune</div>
                             </div>
                             <div className="carousel-search-box">
                                 <input type="text" name="location-search" placeholder="Search Your Two-wheeler" />

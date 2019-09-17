@@ -10,7 +10,6 @@ const CityWidget = (props) => {
   };
 
   const searchCity = () => {
-    console.log(searchTerm);
     let category = props.category;
     let filterData = props.filter;
     filterData.searchTerm = `${searchTerm}*`;
@@ -18,7 +17,6 @@ const CityWidget = (props) => {
   }
 
   const searchClick = (clickValue) => {
-    console.log(clickValue);
     let category = props.category;
     let filterData = props.filter;
     filterData.searchTerm = `${clickValue}*`;

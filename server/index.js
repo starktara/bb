@@ -5,6 +5,8 @@ const path = require("path");
 //Require route files
 const seedData = require("./apis/seedingData/seedingData");
 const categoryDetails = require("./apis/categoryDetails/categoryDetails");
+const homePageData = require("./apis/homepage/homepage");
+
 //middleware for body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -20,6 +22,7 @@ app.use(function(req, res, next) {
 
 app.use("/apis/seedData", seedData);
 app.use("/apis/categoryDetails", categoryDetails);
+app.use("/apis/globalSearch",homePageData);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === "production") {
