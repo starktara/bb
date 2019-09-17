@@ -60,8 +60,7 @@ const VehicleAdvantage = () => {
             <Grid item xs={10} sm={10} md={10} lg={10}>
               <h3>Verified Sellers</h3>
               <p>
-                Any unforeseen issue faced within one week of purchase is
-                resolved for free
+              All BikeBazaar Two-Wheelers are procured through Verified Sellers
               </p>
             </Grid>
           </Grid>
