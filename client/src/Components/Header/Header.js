@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import * as actions from "../../store/actions/index";
 import { Link } from "react-router-dom";
 import emailIcon from "../../assets/emailIcon.svg";
 import phoneIcon from "../../assets/phone-icon.svg";
@@ -17,15 +15,6 @@ const Header = props => {
   const [searchTerm, setSearchTerm] = useState("");
   const updateState = event => {
     setSearchTerm(event.target.value);
-  };
-
-  const searchBikes = (event) => {
-      event.preventDefault();
-    let category = props.category;
-    let filterData = props.filter;
-    filterData.searchTerm = `${searchTerm}*`;
-    console.log(filterData);
-    // props.locationFilter(category, filterData);
   };
 
   return (
@@ -93,12 +82,11 @@ const Header = props => {
                       value={searchTerm}
                       onChange={updateState}
                     />
-                    <button
-                      className="btn search-label-btn"
-                      onClick={searchBikes}
-                    >
-                      <img src={searchIcon} height="30" alt="" />
-                    </button>
+                    <Link to="/category/bike">
+                      <button className="btn search-label-btn" type="button">
+                        <img src={searchIcon} height="30" alt="" />
+                      </button>
+                    </Link>
                   </div>
                 </form>
               </Grid>
@@ -182,21 +170,4 @@ const Header = props => {
     </header>
   );
 };
-
-const mapStateToProps = state => {
-  return {
-    filter: state.vehicleDetails.filter,
-    category: state.vehicleDetails.category
-  };
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    locationFilter: (category, filterdata) =>
-      dispatch(actions.getVehicles(category, filterdata))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header);
+export default Header;

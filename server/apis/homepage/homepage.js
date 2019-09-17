@@ -6,12 +6,6 @@ const client = new Client({ node: "http://localhost:9200" });
 router.get("/getCategoryById", (req, res) => {
   let filterData = JSON.parse(req.query.filterData);
   let sortKey = {};
-  let mustArray = [];
-  mustArray.push({
-    multi_match: {
-      category: req.query.category
-    }
-  });
 
   async function getBikesForCategory() {
     const { body } = await client.search({
@@ -20,9 +14,8 @@ router.get("/getCategoryById", (req, res) => {
         from: 0,
         size: 10000,
         query_string: {
-          query: "*mar*"
-        },
-        sort: [sortKey]
+          query: "*okh*"
+        }
       }
     });
     res.send(body.hits.hits);
