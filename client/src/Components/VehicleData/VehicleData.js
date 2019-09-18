@@ -17,12 +17,9 @@ const VehicleData = (props) => {
         discount = <span className="save">Save {props.data.discount}%</span>
     }
 
-    useEffect(() => {
-        console.log(props)
-    },[])
-    
     const getStoreDetails = () =>{
-        props.history.push('locate-store');
+        console.log(props);
+        props.history.push(`locate-store?store-id=${props.data.storeId}`);
     }
     
     return( 
