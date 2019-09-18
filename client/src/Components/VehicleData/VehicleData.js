@@ -1,9 +1,14 @@
-import React,{useEffect} from 'react';
+import React, { useState,useEffect } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/index';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import Grid from "@material-ui/core/Grid";
+import { Redirect } from 'react-router'
+
 
 const VehicleData = (props) => {
+    const [redirect,setRedirect]  = useState(false);
 
     const vehicleImagePath = '../../vehicles/';
     var discount = null;
@@ -12,10 +17,15 @@ const VehicleData = (props) => {
         discount = <span className="save">Save {props.data.discount}%</span>
     }
 
-    useEffect(()=> {
-        console.log(props.data)
+    useEffect(() => {
+        console.log(props)
     },[])
-    return(
+    
+    const getStoreDetails = () =>{
+        props.history.push('locate-store');
+    }
+    
+    return( 
         <Grid container component="div" direction="row">
             <Grid item xs={12} md={12} sm={12} lg={6} className="vehicleGalSec">
                 <div className="vehicleGal">
@@ -79,7 +89,7 @@ const VehicleData = (props) => {
                                     <span>Interested in Low-Cost EMI Option</span>
                                 </label>
                             </Grid>
-                            <div className="form-group"><button type="submit" className="btn">Get Store Details</button></div>
+                            <div className="form-group"><button type="button" className="btn" onClick = {getStoreDetails}>Get Store Details</button></div>
                         </form>
                     </div>
                 </div>
@@ -88,4 +98,16 @@ const VehicleData = (props) => {
     );
 }
 
-export default VehicleData;
+const mapStateToProps = state => {
+    return {
+        vehicle: state.vehicleDetails.vehicle,
+        loading: state.vehicleDetails.loading
+    };
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        save: (vehicleid) => dispatch(actions.getVehicleData(vehicleid))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(VehicleData);

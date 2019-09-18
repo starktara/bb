@@ -2,9 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
-
-/*create schema to store bike details*/
-router.get("/createLeadDetail", (req, res) => {
+//details of seller and bike from sell page
+router.get("/createSellerDetail", (req, res) => {
   async function run() {
     await client.indices.create(
       {
@@ -44,5 +43,33 @@ router.get("/createLeadDetail", (req, res) => {
   run().catch(console.log);
   res.json({ msg: "Index Created Sucessfully" });
 });
+
+
+//details of buyer and bike from product detail page
+router.get("/createInterestedBuyer", (req, res) => {
+  async function run() {
+    await client.indices.create(
+      {
+        index: "buyerDetail",
+        body: {
+          mappings: {
+            properties: {
+              id: { type: "integer" },
+              buyerName: { type: "text" },
+              emailId:{type:"text"},
+              phone:{type:"integer"},
+              isEmi: { type: "integer" },
+              vehicleId: { type: "integer" },
+            }
+          }
+        }
+      },
+      { ignore: [400] }
+    );
+  }
+  run().catch(console.log);
+  res.json({ msg: "Index Created Sucessfully" });
+});
+
 
 module.exports = router;

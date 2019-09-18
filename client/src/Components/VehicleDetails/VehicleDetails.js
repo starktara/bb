@@ -54,7 +54,7 @@ const VehicleDetails = (props) => {
                 text=""
                 path={props.location.pathname}
             />
-            <VehicleData data={props.vehicle._source}/>
+            <VehicleData history ={props.history} data={props.vehicle._source}/>
             <VehicleMetaData />
             <br className="clr"/>
         </div>

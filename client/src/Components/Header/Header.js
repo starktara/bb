@@ -154,7 +154,7 @@ const Header = props => {
                     <Link to="/sell">SELL</Link>
                   </li>
                   <li>
-                    <Link to="/locate-store">LOCATE STORE</Link>
+                    <Link to="/vehicledetails/locate-store">LOCATE STORE</Link>
                   </li>
                   <li>
                     <Link to="/becomefranchiseowner">
