@@ -1,14 +1,12 @@
-import React, { useState,useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import Grid from "@material-ui/core/Grid";
-import { Redirect } from 'react-router'
 
 
 const VehicleData = (props) => {
-    const [redirect,setRedirect]  = useState(false);
 
     const vehicleImagePath = '../../vehicles/';
     var discount = null;
@@ -18,7 +16,6 @@ const VehicleData = (props) => {
     }
 
     const getStoreDetails = () =>{
-        console.log(props);
         props.history.push(`locate-store?store-id=${props.data.storeId}`);
     }
     
@@ -105,6 +102,6 @@ const mapDispatchToProps = dispatch => {
     return {
         save: (vehicleid) => dispatch(actions.getVehicleData(vehicleid))
     }
-}
-
+} 
+ 
 export default connect(mapStateToProps,mapDispatchToProps)(VehicleData);
