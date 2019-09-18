@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -7,6 +7,8 @@ import Grid from "@material-ui/core/Grid";
 
 
 const VehicleData = (props) => {
+
+    const [sliderImages, setSliderImages] = useState(props.data.images);
 
     const vehicleImagePath = '../../vehicles/';
     var discount = null;
@@ -18,15 +20,20 @@ const VehicleData = (props) => {
     const getStoreDetails = () =>{
         props.history.push(`locate-store?store-id=${props.data.storeId}`);
     }
+
+    useEffect(() => {
+        setSliderImages(props.data.images);
+        console.log(props.data.images);
+    }, [props.data.images]);
     
     return( 
         <Grid container component="div" direction="row">
-            <Grid item xs={12} md={12} sm={12} lg={6} className="vehicleGalSec">
+             <Grid item xs={12} md={12} sm={12} lg={6} className="vehicleGalSec">
                 <div className="vehicleGal">
                     <Carousel dynamicHeight={true}>
                         {
-                            props.data.images.map((image,key)=>{
-                                return <div>
+                            sliderImages.map((image,key)=>{
+                                return <div key={key}>
                                 <img src={vehicleImagePath+image} alt=""/>
                             </div>
                             })
