@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import Grid from "@material-ui/core/Grid";
@@ -8,9 +8,13 @@ const VehicleData = (props) => {
     const vehicleImagePath = '../../vehicles/';
     var discount = null;
 
-    if(props.data.discount){
+    if(props.data.discount){  
         discount = <span className="save">Save {props.data.discount}%</span>
     }
+
+    useEffect(()=> {
+        console.log(props.data)
+    },[])
     return(
         <Grid container component="div" direction="row">
             <Grid item xs={12} md={12} sm={12} lg={6} className="vehicleGalSec">
@@ -71,7 +75,7 @@ const VehicleData = (props) => {
                             </Grid>
                             <Grid container component="div" direction="row" className="form-group">
                                 <label className="fieldname">
-                                    <input type="checkbox" className="filled-in" checked="checked" />
+                                    <input type="checkbox" className="filled-in" defaultChecked />
                                     <span>Interested in Low-Cost EMI Option</span>
                                 </label>
                             </Grid>

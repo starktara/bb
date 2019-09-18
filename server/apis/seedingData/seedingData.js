@@ -16,6 +16,7 @@ router.get("/createbikeMapping", (req, res) => {
               name: { type: "text" },
               type: { type: "integer" },
               brand: { type: "integer" },
+              storeId:{type:"integer"},
               model: { type: "integer" },
               regnumber: { type: "text" },
               descr: { type: "text" },
@@ -96,7 +97,8 @@ router.get("/uploadBikes", (req, res) => {
         cc: 180,
         bhp: 11,
         category: 1,
-        mileage: 60
+        mileage: 60,
+        storeId:1
       },
       {
         id: 2,
@@ -120,7 +122,8 @@ router.get("/uploadBikes", (req, res) => {
         cc: 180,
         bhp: 11,
         category: 1,
-        mileage: 60
+        mileage: 60,
+        storeId:2
       },
       {
         id: 3,
@@ -144,7 +147,8 @@ router.get("/uploadBikes", (req, res) => {
         cc: 180,
         bhp: 11,
         category: 1,
-        mileage: 60
+        mileage: 60,
+        storeId:3
       },
       {
         id: 4,
@@ -168,7 +172,8 @@ router.get("/uploadBikes", (req, res) => {
         cc: 180,
         bhp: 11,
         category: 1,
-        mileage: 60
+        mileage: 60,
+        storeId:2
       },
       {
         id: 5,
@@ -192,7 +197,8 @@ router.get("/uploadBikes", (req, res) => {
         cc: 180,
         bhp: 11,
         category: 2,
-        mileage: 60
+        mileage: 60,
+        storeId:2
       },
       {
         id: 6,
@@ -216,7 +222,8 @@ router.get("/uploadBikes", (req, res) => {
         cc: 180,
         bhp: 11,
         category: 2,
-        mileage: 60
+        mileage: 60,
+        storeId:1
       },
       {
         id: 7,
@@ -240,7 +247,8 @@ router.get("/uploadBikes", (req, res) => {
         cc: 180,
         bhp: 11,
         category: 1,
-        mileage: 60
+        mileage: 60,
+        storeId:3
       },
       {
         id: 8,
@@ -264,7 +272,8 @@ router.get("/uploadBikes", (req, res) => {
         cc: 180,
         bhp: 11,
         category: 1,
-        mileage: 60
+        mileage: 60,
+        storeId:1
       },
       {
         id: 9,
@@ -288,7 +297,8 @@ router.get("/uploadBikes", (req, res) => {
         cc: 180,
         bhp: 11,
         category: 3,
-        mileage: 60
+        mileage: 60,
+        storeId:3
       },
       {
         id: 10,
@@ -312,7 +322,8 @@ router.get("/uploadBikes", (req, res) => {
         cc: 180,
         bhp: 11,
         category: 3,
-        mileage: 60
+        mileage: 60,
+        storeId:1
       },
       {
         id: 11,
@@ -336,7 +347,8 @@ router.get("/uploadBikes", (req, res) => {
         cc: 180,
         bhp: 11,
         category: 3,
-        mileage: 60
+        mileage: 60,
+        storeId:2
       },
       {
         id: 12,
@@ -360,10 +372,10 @@ router.get("/uploadBikes", (req, res) => {
         cc: 180,
         bhp: 11,
         category: 3,
-        mileage: 60
+        mileage: 60,
+        storeId:1
       }
     ];
-    console.log(dataset);
     const body = dataset.flatMap(doc => [
       { index: { _index: "bike-details" } },
       doc
