@@ -23,7 +23,18 @@ const VehicleData = (props) => {
 
     useEffect(() => {
         setSliderImages(props.data.images);
-        console.log(props.data.images);
+        var ul = document.querySelector('.thumbs');
+        ul.innerHTML = '';
+        for(var i=0;i<props.data.images.length;i++){
+            var li = document.createElement('li');
+            li.classList = 'thumb';
+            li.role = 'button';
+            li.tabIndex = 0;
+            var img = document.createElement('img');
+            img.src = vehicleImagePath + props.data.images[i];
+            li.appendChild(img);
+            ul.appendChild(li);
+        }
     }, [props.data.images]);
     
     return( 
