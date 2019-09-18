@@ -39,74 +39,74 @@ const SimilarVehicles = () => {
             <Grid container component="div" direction="row">
                 <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Carousel responsive={responsive}>
-                    <div class="Product">
+                    <div className="Product">
                         <img src={bikeIcon} alt="" />
-                        <div class="detail">
+                        <div className="detail">
                             <h3>Bajaj Platina </h3>
-                            <p class="price"><img class="rupees" src={indianRupeeRed} alt=""/> 17,500</p>
-                            <ul class="detailPoints">
-                                <li class="year">2007</li>
-                                <li class="km">25,000 KMs</li>
-                                <li class="cc">99 CC</li>
-                                <li class="owner">1<sup>st</sup> Owner</li>
-                            </ul><br class="clr"/>
-                                <p class="location">Baner, Pune</p>
+                            <p className="price"><img className="rupees" src={indianRupeeRed} alt=""/> 17,500</p>
+                            <ul className="detailPoints">
+                                <li className="year">2007</li>
+                                <li className="km">25,000 KMs</li>
+                                <li className="cc">99 CC</li>
+                                <li className="owner">1<sup>st</sup> Owner</li>
+                            </ul><br className="clr"/>
+                                <p className="location">Baner, Pune</p>
                         </div>
                     </div>
-                    <div class="Product">
+                    <div className="Product">
                         <img src={bikeIcon} alt="" />
-                        <div class="detail">
+                        <div className="detail">
                             <h3>Bajaj Platina </h3>
-                            <p class="price"><img class="rupees" src={indianRupeeRed} alt=""/> 17,500</p>
-                            <ul class="detailPoints">
-                                <li class="year">2007</li>
-                                <li class="km">25,000 KMs</li>
-                                <li class="cc">99 CC</li>
-                                <li class="owner">1<sup>st</sup> Owner</li>
-                            </ul><br class="clr"/>
-                                <p class="location">Baner, Pune</p>
+                            <p className="price"><img className="rupees" src={indianRupeeRed} alt=""/> 17,500</p>
+                            <ul className="detailPoints">
+                                <li className="year">2007</li>
+                                <li className="km">25,000 KMs</li>
+                                <li className="cc">99 CC</li>
+                                <li className="owner">1<sup>st</sup> Owner</li>
+                            </ul><br className="clr"/>
+                                <p className="location">Baner, Pune</p>
                         </div>
                     </div>
-                    <div class="Product">
+                    <div className="Product">
                         <img src={bikeIcon} alt="" />
-                        <div class="detail">
+                        <div className="detail">
                             <h3>Bajaj Platina </h3>
-                            <p class="price"><img class="rupees" src={indianRupeeRed} alt=""/> 17,500</p>
-                            <ul class="detailPoints">
-                                <li class="year">2007</li>
-                                <li class="km">25,000 KMs</li>
-                                <li class="cc">99 CC</li>
-                                <li class="owner">1<sup>st</sup> Owner</li>
-                            </ul><br class="clr"/>
-                                <p class="location">Baner, Pune</p>
+                            <p className="price"><img className="rupees" src={indianRupeeRed} alt=""/> 17,500</p>
+                            <ul className="detailPoints">
+                                <li className="year">2007</li>
+                                <li className="km">25,000 KMs</li>
+                                <li className="cc">99 CC</li>
+                                <li className="owner">1<sup>st</sup> Owner</li>
+                            </ul><br className="clr"/>
+                                <p className="location">Baner, Pune</p>
                         </div>
                     </div>
-                    <div class="Product">
+                    <div className="Product">
                         <img src={bikeIcon} alt="" />
-                        <div class="detail">
+                        <div className="detail">
                             <h3>Bajaj Platina </h3>
-                            <p class="price"><img class="rupees" src={indianRupeeRed} alt=""/> 17,500</p>
-                            <ul class="detailPoints">
-                                <li class="year">2007</li>
-                                <li class="km">25,000 KMs</li>
-                                <li class="cc">99 CC</li>
-                                <li class="owner">1<sup>st</sup> Owner</li>
-                            </ul><br class="clr"/>
-                                <p class="location">Baner, Pune</p>
+                            <p className="price"><img className="rupees" src={indianRupeeRed} alt=""/> 17,500</p>
+                            <ul className="detailPoints">
+                                <li className="year">2007</li>
+                                <li className="km">25,000 KMs</li>
+                                <li className="cc">99 CC</li>
+                                <li className="owner">1<sup>st</sup> Owner</li>
+                            </ul><br className="clr"/>
+                                <p className="location">Baner, Pune</p>
                         </div>
                     </div>
-                    <div class="Product">
+                    <div className="Product">
                         <img src={bikeIcon} alt="" />
-                        <div class="detail">
+                        <div className="detail">
                             <h3>Bajaj Platina </h3>
-                            <p class="price"><img class="rupees" src={indianRupeeRed} alt=""/> 17,500</p>
-                            <ul class="detailPoints">
-                                <li class="year">2007</li>
-                                <li class="km">25,000 KMs</li>
-                                <li class="cc">99 CC</li>
-                                <li class="owner">1<sup>st</sup> Owner</li>
-                            </ul><br class="clr"/>
-                                <p class="location">Baner, Pune</p>
+                            <p className="price"><img className="rupees" src={indianRupeeRed} alt=""/> 17,500</p>
+                            <ul className="detailPoints">
+                                <li className="year">2007</li>
+                                <li className="km">25,000 KMs</li>
+                                <li className="cc">99 CC</li>
+                                <li className="owner">1<sup>st</sup> Owner</li>
+                            </ul><br className="clr"/>
+                                <p className="location">Baner, Pune</p>
                         </div>
                     </div>
                 </Carousel>
