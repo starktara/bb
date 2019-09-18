@@ -77,7 +77,7 @@ const LocateStore = props => {
   }, []);
 
   var locationCards =    (
-    <div className="col s12 m12 " key={1}>
+    <div className="col s12 m12 flex-center" key={1}>
       <div className="locationCard">
         <h5>{mapLocations[0].locationName}</h5>
         <div className="locationAddress">
