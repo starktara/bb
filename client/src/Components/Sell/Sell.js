@@ -7,8 +7,7 @@ import Banner from "../Banner/Banner";
 import headingLines from "../../assets/heading-lines.svg";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
-import { Snackbar } from '@material-ui/core';
-
+import Tooltip from '../UI/Tooltip/Tooltip';
 
 
 const Sell = props => {
@@ -34,6 +33,22 @@ const Sell = props => {
   
 
   const [successSubmit,setSuccessSubmit] = useState(false);
+
+  const [tooltipState, setTooltipState] = useState({
+    open: false,
+    message: '',
+    variant: 'error'
+  });
+
+  const handleClose = () => {
+    setTooltipState({
+      open: false,
+      message: '',
+      variant: 'success'
+    });
+  }
+
+  const tooltip = <Tooltip open={tooltipState.open} message={tooltipState.message} variant={tooltipState.variant} handleClose={handleClose}/>
 
   const updateFormdata = (event, formData) => {
     let targetValue = event.target.value;
@@ -63,26 +78,20 @@ const Sell = props => {
             ...errorObj
           });
     }else{
+        setTooltipState({
+          open: true,
+          message: 'Your details have been saved',
+          variant: 'success'
+        });
         setSuccessSubmit(true);
     }
   
   };
 
-  if(successSubmit){
-
-      var alertSuccess =(
-          <Snackbar bodyStyle={{ backgroundColor: 'green', color: 'coral' }}  status="success"/>
-      )
-
-  }else{
-
-    var alertSuccess = '';
-
-  }
-
   return (
     <div id="Sell">
       <Header />
+      {tooltip}
       <Grid container component="div" direction="row">
         <Grid item xs={12} md={12} sm={12} lg={12}>
           <div className="wapper">
@@ -104,8 +113,6 @@ const Sell = props => {
             alignItems="center"
             id="shareYourDetailsContainer"
           >
-                        {alertSuccess}
-
             <Grid item xs={10} sm={10} md={10} lg={10}>
               <div className="pageDtl">
                 <Grid container component="div" direction="row">
