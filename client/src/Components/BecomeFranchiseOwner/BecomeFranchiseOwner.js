@@ -47,7 +47,7 @@ const BecomeFranchiseOwner = props => {
                     <div className="pageDtl">
                         <Grid container component="div" direction="row">
                             <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
-                                <h4>Shar Your Details</h4>
+                                <h4>Share Your Details</h4>
                             </Grid>
                             <Grid container component="div" direction="row">
                                 <Grid item xs={12} sm={12} md={12} lg={12}>
