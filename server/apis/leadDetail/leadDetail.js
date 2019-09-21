@@ -44,7 +44,6 @@ router.get("/createSellerDetail", (req, res) => {
   res.json({ msg: "Index Created Sucessfully" });
 });
 
-
 //details of buyer and bike from product detail page
 router.get("/createInterestedBuyer", (req, res) => {
   async function run() {
@@ -56,10 +55,10 @@ router.get("/createInterestedBuyer", (req, res) => {
             properties: {
               id: { type: "integer" },
               buyerName: { type: "text" },
-              emailId:{type:"text"},
-              phone:{type:"integer"},
+              emailId: { type: "text" },
+              phone: { type: "integer" },
               isEmi: { type: "integer" },
-              vehicleId: { type: "integer" },
+              vehicleId: { type: "integer" }
             }
           }
         }
@@ -71,5 +70,31 @@ router.get("/createInterestedBuyer", (req, res) => {
   res.json({ msg: "Index Created Sucessfully" });
 });
 
+//details of buyer and bike from product detail page
+router.get("/createFranchiserequest", (req, res) => {
+  async function run() {
+    await client.indices.create(
+      {
+        index: "franchise-request",
+        body: {
+          mappings: {
+            properties: {
+              id: { type: "integer" },
+              name: { type: "text" },
+              emailId: { type: "text" },
+              phone: { type: "integer" },
+              city: { type: "integer" },
+              address: { type: "text" },
+              pincode: { type: "integer" }
+            }
+          }
+        }
+      },
+      { ignore: [400] }
+    );
+  }
+  run().catch(console.log);
+  res.json({ msg: "Index Created Sucessfully" });
+});
 
 module.exports = router;
