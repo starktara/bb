@@ -71,7 +71,7 @@ router.get("/createInterestedBuyer", (req, res) => {
 });
 
 //details of buyer and bike from product detail page
-router.get("/createFranchiserequest", (req, res) => {
+router.get("/createFranchiseRequest", (req, res) => {
   async function run() {
     await client.indices.create(
       {
