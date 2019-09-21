@@ -9,7 +9,6 @@ import Tooltip from "../UI/Tooltip/Tooltip";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 
-
 const BecomeFranchiseOwner = props => {
   const [formData, setFormData] = useState({
     name: "",
@@ -77,6 +76,7 @@ const BecomeFranchiseOwner = props => {
         ...errorObj
       });
     } else {
+      props.addFranchiseRequest(formData);
       setTooltipState({
         open: true,
         message: "Your details have been saved",
@@ -359,8 +359,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    kmFilter: (category, filterdata) =>
-      dispatch(actions.getVehicles(category, filterdata))
+    addFranchiseRequest: formData =>
+      dispatch(actions.addFranchiseRequest(formData))
   };
 };
 

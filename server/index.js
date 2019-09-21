@@ -6,6 +6,8 @@ const path = require("path");
 const seedData = require("./apis/seedingData/seedingData");
 const categoryDetails = require("./apis/categoryDetails/categoryDetails");
 const homePageData = require("./apis/homepage/homepage");
+const leadDetail = require("./apis/leadDetail/leadDetail");
+
 
 //middleware for body parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,6 +25,7 @@ app.use(function(req, res, next) {
 app.use("/apis/seedData", seedData);
 app.use("/apis/categoryDetails", categoryDetails);
 app.use("/apis/globalSearch",homePageData);
+app.use("/apis/leadDetail",leadDetail);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === "production") {

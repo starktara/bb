@@ -3,4 +3,8 @@ export {
   getPaginatedData,
   getVehicleData,
   getSearchData
-} from './vehiclesDetails';
+} from "./vehiclesDetails";
+
+export {
+  addFranchiseRequest
+} from "./franchiseDetails"
