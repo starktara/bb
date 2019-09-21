@@ -6,6 +6,9 @@ import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import headingLines from "../../assets/heading-lines.svg";
 import Tooltip from "../UI/Tooltip/Tooltip";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/index";
+
 
 const BecomeFranchiseOwner = props => {
   const [formData, setFormData] = useState({
@@ -348,4 +351,20 @@ const BecomeFranchiseOwner = props => {
   );
 };
 
-export default BecomeFranchiseOwner;
+const mapStateToProps = state => {
+  return {
+    filter: state.vehicleDetails.filter
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    kmFilter: (category, filterdata) =>
+      dispatch(actions.getVehicles(category, filterdata))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BecomeFranchiseOwner);
