@@ -1,175 +1,94 @@
-import React, { useState } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import axios from 'axios';
-import {
-  Formik, Form, Field, ErrorMessage,
-} from 'formik';
-import * as Yup from 'yup';
-// import { DisplayFormikState } from './formikHelper';
+import React from "react";
 
-const styles = {
+// interface ICardProps {
+//     name: string;
+//     id: string;
+//     status: Number;
+//     logo: string;
+//     controls: {
+//         qualified: Number;
+//         failed: Number;
+//         notAssessed: Number;
+//         notApplicable: Number;
+//     };
+// }
 
+const ComplianceCards: React.FC = () => {
+
+  let complianceCards = [];
+    const data = [
+        {
+            name: "SEBI",
+            id: "COMP0001",
+            status: 67,
+            logo: "sebi",
+            controls: {
+                qualified: 10,
+                failed: 2,
+                notAssessed: 4,
+                notApplicable: 7
+            }
+        },
+        {
+            name: "ISO",
+            id: "COMP0002",
+            status: 67,
+            logo: "iso",
+            controls: {
+                qualified: 5,
+                failed: 12,
+                notAssessed: 4,
+                notApplicable: 7
+            }
+        },
+        {
+            name: "NIST",
+            id: "COMP0003",
+            status: 83,
+            logo: "nist",
+            controls: {
+                qualified: 5,
+                failed: 12,
+                notAssessed: 4,
+                notApplicable: 7
+            }
+        }
+    ];
+    complianceCards = data.map((el, index) => (
+            <div className="col-sm-4 col-md-3 text-center" key={el.id}>
+                <div
+                    className="individual-box color-10 able sebi-cont"
+                    id={`complianceData${index}`}
+                    data-id={el.id}
+                    data-name={el.name}
+                >
+                    <div className="block">
+                        <div className="logo-bg text-center">
+                            <svg height="80" width="80">
+                                <use
+                                    xlinkHref={`../assets/sprites/icons-sprite/symbol/icons-sprite.svg#compliance--${el.logo}`}
+                                ></use>
+                            </svg>
+                        </div>
+                        <h3 className="text-center head-weight">{el.name}</h3>
+                    </div>
+                    <div className="controls-container text-center">
+                        <span className="controls-span">
+                            Qualified: {el.controls.qualified}
+                        </span>
+                        <span className="controls-span">
+                            Failed: {el.controls.failed}
+                        </span>
+                        <span className="controls-span">
+                            Not Assessed: {el.controls.notAssessed}
+                        </span>
+                        <span className="controls-span">
+                            Not Applicable: {el.controls.notApplicable}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        ))
 };
 
-const contactFormEndpoint = process.env.REACT_APP_CONTACT_ENDPOINT;
-
-
-function Contact(props) {
-  const { classes } = props;
-  const [open, setOpen] = useState(false);
-  const [isSubmitionCompleted, setSubmitionCompleted] = useState(false);
-  
-  function handleClose() {
-    setOpen(false);
-  }
-
-  function handleClickOpen() {
-    setSubmitionCompleted(false);
-    setOpen(true);
-  }
-
-  return (
-    <React.Fragment>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Contact us!
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="form-dialog-title"
-      >
-        {!isSubmitionCompleted &&
-          <React.Fragment>
-            <DialogTitle id="form-dialog-title">Contact</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                Send us a comment!
-              </DialogContentText>
-              <Formik
-                initialValues={{ email: '', name: '', comment: '' }}
-                onSubmit={(values, { setSubmitting }) => {
-                   setSubmitting(true);
-                  axios.post(contactFormEndpoint,
-                    values,
-                    {
-                      headers: {
-                        'Access-Control-Allow-Origin': '*',
-                        'Content-Type': 'application/json',
-                      }
-                    },
-                  ).then((resp) => {
-                    setSubmitionCompleted(true);
-                  }
-                  );
-                }}
-
-                validationSchema={Yup.object().shape({
-                  email: Yup.string()
-                    .email()
-                    .required('Required'),
-                  name: Yup.string()
-                    .required('Required'),
-                  comment: Yup.string()
-                    .required('Required'),
-                })}
-              >
-                {(props) => {
-                  const {
-                    values,
-                    touched,
-                    errors,
-                    dirty,
-                    isSubmitting,
-                    handleChange,
-                    handleBlur,
-                    handleSubmit,
-                    handleReset,
-                  } = props;
-                  return (
-                    <form onSubmit={handleSubmit}>
-                      <TextField
-                        label="name"
-                        name="name"
-                        className={classes.textField}
-                        value={values.name}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        helperText={(errors.name && touched.name) && errors.name}
-                        margin="normal"
-                      />
-
-                      <TextField
-                        error={errors.email && touched.email}
-                        label="email"
-                        name="email"
-                        className={classes.textField}
-                        value={values.email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        helperText={(errors.email && touched.email) && errors.email}
-                        margin="normal"
-                      />
-
-                      <TextField
-                        label="comment"
-                        name="comment"
-                        className={classes.textField}
-                        value={values.comment}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        helperText={(errors.comment && touched.comment) && errors.comment}
-                        margin="normal"
-                      />
-                      <DialogActions>
-                        <Button
-                          type="button"
-                          className="outline"
-                          onClick={handleReset}
-                          disabled={!dirty || isSubmitting}
-                        >
-                          Reset
-                        </Button>
-                        <Button type="submit" disabled={isSubmitting}>
-                          Submit
-                        </Button>
-                        {/* <DisplayFormikState {...props} /> */}
-                      </DialogActions>
-                    </form>
-                  );
-                }}
-              </Formik>
-            </DialogContent>
-          </React.Fragment>
-        }
-        {isSubmitionCompleted &&
-          <React.Fragment>
-            <DialogTitle id="form-dialog-title">Thanks!</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                Thanks
-              </DialogContentText>
-              <DialogActions>
-                <Button
-                  type="button"
-                  className="outline"
-                  onClick={handleClose}
-                >
-                  Back to app
-                  </Button>
-                {/* <DisplayFormikState {...props} /> */}
-              </DialogActions>
-            </DialogContent>
-          </React.Fragment>}
-      </Dialog>
-    </React.Fragment >
-  );
-}
-
-export default withStyles(styles)(Contact);
+export default ComplianceCards;

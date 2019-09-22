@@ -8,6 +8,8 @@ import headingLines from "../../assets/heading-lines.svg";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import Tooltip from '../UI/Tooltip/Tooltip';
+import axios from "axios";
+
 
 
 const Sell = props => {
@@ -78,6 +80,16 @@ const Sell = props => {
             ...errorObj
           });
     }else{
+
+      axios
+      .post("/apis/leadDetail/insertSellrequest", formData)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
         setTooltipState({
           open: true,
           message: 'Your details have been saved',
