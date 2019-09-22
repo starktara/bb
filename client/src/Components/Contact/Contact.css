@@ -1,0 +1,77 @@
+.contact-heading{
+    color: #e92d2c;
+    font-weight: bold;
+    white-space: nowrap;
+    font-size: 33px;
+    text-align: center;
+}
+.heading-line{
+    text-align: center;
+}
+.sub-heading-black{
+    font-weight: 600;
+    font-size: 19px;
+    color: #232c2b;
+}
+.sub-heading-red{
+    font-weight: 600;
+    font-size: 20px;
+    color: #e92d2c;
+}
+p sup{
+    font-size: 60% !important;
+}
+.address{
+    font-size: 16px;
+}
+.mobile{
+    font-size: 16px;
+}
+.mobile span{
+    vertical-align: super;
+}
+.mail{
+    font-size: 16px;
+}
+.mail span{
+    vertical-align: super;
+}
+.social-media-links img:first-child{
+    margin-right: 20px;
+}
+.social-media-links img:not(:first-child){
+    margin: 0px 20px;
+}
+#contactForm label{
+    font-size: 15px;
+}
+#contactForm input:not([type]):focus:not([readonly]), input[type="text"]:not(.browser-default):focus:not([readonly]), input[type="password"]:not(.browser-default):focus:not([readonly]), input[type="email"]:not(.browser-default):focus:not([readonly]), input[type="url"]:not(.browser-default):focus:not([readonly]), input[type="time"]:not(.browser-default):focus:not([readonly]), input[type="date"]:not(.browser-default):focus:not([readonly]), input[type="datetime"]:not(.browser-default):focus:not([readonly]), input[type="datetime-local"]:not(.browser-default):focus:not([readonly]), input[type="tel"]:not(.browser-default):focus:not([readonly]), input[type="number"]:not(.browser-default):focus:not([readonly]), input[type="search"]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #e92d2c;
+    -webkit-box-shadow: 0 1px 0 0 #e92d2c;
+    box-shadow: 0 1px 0 0 #e92d2c;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-size: 14px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    font-size: 14px
+}
+:-ms-input-placeholder { /* IE 10+ */
+    font-size: 14px;
+}
+:-moz-placeholder { /* Firefox 18- */
+    font-size: 14px;
+}
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+    background-color: #e92d2c; 
+}
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
+    border: 2px solid #e92d2c; 
+}
+#contactForm span:not(:first-child){
+    margin-right: 10px;
+}
+.interest-container p {
+    margin-top: 0px !important;
+    color: #000 !important;
+}

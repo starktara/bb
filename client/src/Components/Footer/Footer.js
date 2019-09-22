@@ -27,7 +27,7 @@ const Footer = () => {
         </div>
         <div className="col s4 m4">
             <div className="center-align">
-                <Link to="/contactus">Contact Us</Link>
+                <Link to="/contact">Contact Us</Link>
             </div>
         </div>
         <div className="col s4 m4">

@@ -7,6 +7,7 @@ import LocateStore from './Components/LocateStore/LocateStore';
 import VehicleDetails from './Components/VehicleDetails/VehicleDetails';
 import Sell from './Components/Sell/Sell';
 import BecomeFranchiseOwner from './Components/BecomeFranchiseOwner/BecomeFranchiseOwner';
+import Contact from './Components/Contact/Contact';
 
 
 const App = () =>  {
@@ -19,6 +20,7 @@ const App = () =>  {
             <Route path='/vehicledetails/:vehicleid' component={VehicleDetails} />
             <Route path='/sell' component={Sell} />
             <Route path="/becomefranchiseowner" component={BecomeFranchiseOwner} />
+            <Route path="/contact" component={Contact} />
         </Switch>
     );
 }
