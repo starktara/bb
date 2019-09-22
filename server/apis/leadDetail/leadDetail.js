@@ -83,7 +83,7 @@ router.get("/createFranchiseRequest", (req, res) => {
               name: { type: "text" },
               emailId: { type: "text" },
               phone: { type: "integer" },
-              city: { type: "integer" },
+              city: { type: "text" },
               address: { type: "text" },
               pincode: { type: "integer" }
             }
@@ -95,6 +95,46 @@ router.get("/createFranchiseRequest", (req, res) => {
   }
   run().catch(console.log);
   res.json({ msg: "Index Created Sucessfully" });
+});
+
+router.post("/insertFranchiseRequest", (req, res) => {
+  let formData = req.body;
+  async function upload() {
+    const dataset = [
+      {
+        name: formData.name,
+        emailId: formData.email,
+        phone:formData.mobile,
+        city: formData.city,
+        address: formData.address,
+        pincode: formData.pin
+      }
+    ];
+    const body = dataset.flatMap(doc => [
+      { index: { _index: "franchise-request" } },
+      doc
+    ]);
+
+    const { body: bulkResponse } = await client.bulk({ refresh: true, body });
+
+    if (bulkResponse.errors) {
+      const erroredDocuments = [];
+      bulkResponse.items.forEach((action, i) => {
+        const operation = Object.keys(action)[0];
+        if (action[operation].error) {
+          erroredDocuments.push({
+            status: action[operation].status,
+            error: action[operation].error,
+            operation: body[i * 2],
+            document: body[i * 2 + 1]
+          });
+        }
+      });
+      console.log(erroredDocuments);
+    }
+    res.send("successfully inserted");
+  }
+  upload().catch(console.log);
 });
 
 module.exports = router;

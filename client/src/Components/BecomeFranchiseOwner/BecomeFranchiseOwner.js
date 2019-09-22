@@ -6,15 +6,16 @@ import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import headingLines from "../../assets/heading-lines.svg";
 import Tooltip from "../UI/Tooltip/Tooltip";
-import { connect } from "react-redux";
-import * as actions from "../../store/actions/index";
+import axios from "axios";
 
 const BecomeFranchiseOwner = props => {
   const [formData, setFormData] = useState({
     name: "",
     city: "",
     email: "",
-    mobile: ""
+    mobile: "",
+    address:"",
+    pin:""
   });
   const [error, setError] = useState({
     name: false,
@@ -76,7 +77,15 @@ const BecomeFranchiseOwner = props => {
         ...errorObj
       });
     } else {
-      props.addFranchiseRequest(formData);
+      axios
+        .post("/apis/leadDetail/insertFranchiseRequest", formData)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
       setTooltipState({
         open: true,
         message: "Your details have been saved",
@@ -267,6 +276,10 @@ const BecomeFranchiseOwner = props => {
                               type="text"
                               name="address"
                               placeholder="Address"
+                              onChange={event =>
+                                updateFormdata(event, formData)
+                              }
+                              value={formData.address}
                             />
                           </Grid>
                         </Grid>
@@ -286,6 +299,10 @@ const BecomeFranchiseOwner = props => {
                               type="text"
                               name="pin"
                               placeholder="PIN Code"
+                              onChange={event =>
+                                updateFormdata(event, formData)
+                              }
+                              value={formData.pin}
                             />
                           </Grid>
                         </Grid>
@@ -351,20 +368,4 @@ const BecomeFranchiseOwner = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    filter: state.vehicleDetails.filter
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    addFranchiseRequest: formData =>
-      dispatch(actions.addFranchiseRequest(formData))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BecomeFranchiseOwner);
+export default BecomeFranchiseOwner;
