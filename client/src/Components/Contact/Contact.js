@@ -31,7 +31,14 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(3),
       margin: theme.spacing(2),
       color: theme.palette.text.secondary,
+      height: '100%'
     },
+    mapContainer: {
+        marginTop: theme.spacing(5),
+        marginBottom: theme.spacing(5),
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2)
+    }
 }));
 
 const Contact = (props) => {
@@ -142,7 +149,7 @@ const Contact = (props) => {
                             </Paper>
                         </Grid>
                     </Grid>
-                    <Grid container component="div" direction="row">
+                    <Grid container component="div" direction="row" className={classes.mapContainer}>
                         <Grid item xs={12} sm={12} md={12} lg={12} className="mapContainer">
                         <GoogleMap 
                         center={{ lat: -34.397, lng: 150.644 }}
