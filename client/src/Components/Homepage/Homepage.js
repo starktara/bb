@@ -182,7 +182,7 @@ const Homepage = () => {
         </Grid>
       </div>
       <div className="section-3">
-        <Grid container component="div" direction="row" className="row">
+        <Grid container component="div" direction="row" className="advantageRow">
           <Grid
             item
             xs={12}
@@ -195,11 +195,11 @@ const Homepage = () => {
             <img alt="" src={headingLines} width="57" height="4" />
           </Grid>
         </Grid>
-        <Grid container component="div" direction="row" className="row">
+        <Grid container component="div" direction="row" className="row padHorizontal5">
           <Grid item xs={12} sm={12} md={4} lg={4}>
             <div className="gola-wrapper">
               <div className="gola valign-wrapper">
-                <img alt="" src={certifiedAutoExperts} height="98" width="98" />
+                <img alt="" src={certifiedAutoExperts} height="69" width="69" />
               </div>
             </div>
             <div className="center-align">
@@ -213,7 +213,7 @@ const Homepage = () => {
           <Grid item xs={12} sm={12} md={4} lg={4}>
             <div className="gola-wrapper">
               <div className="gola valign-wrapper">
-                <img alt="" src={monthWarranty} height="98" width="98" />
+                <img alt="" src={monthWarranty} height="69" width="69" />
               </div>
             </div>
             <div className="center-align">
@@ -227,7 +227,7 @@ const Homepage = () => {
           <Grid item xs={12} sm={12} md={4} lg={4}>
             <div className="gola-wrapper">
               <div className="gola valign-wrapper">
-                <img alt="" src={buyerProtection} height="98" width="98" />
+                <img alt="" src={buyerProtection} height="69" width="69" />
               </div>
             </div>
             <div className="center-align">
@@ -249,7 +249,7 @@ const Homepage = () => {
           <Grid item xs={12} sm={12} md={4} lg={5}>
             <div className="gola-wrapper">
               <div className="gola-2 valign-wrapper">
-                <img alt="" src={lowCostEmi} height="98" width="98" />
+                <img alt="" src={lowCostEmi} height="69" width="69" />
               </div>
             </div>
             <div className="center-align">
@@ -266,8 +266,8 @@ const Homepage = () => {
                 <img
                   alt=""
                   src={hassleFreeDocTransfer}
-                  height="98"
-                  width="98"
+                  height="69"
+                  width="69"
                 />
               </div>
             </div>
