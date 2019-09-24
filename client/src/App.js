@@ -8,6 +8,7 @@ import VehicleDetails from './Components/VehicleDetails/VehicleDetails';
 import Sell from './Components/Sell/Sell';
 import BecomeFranchiseOwner from './Components/BecomeFranchiseOwner/BecomeFranchiseOwner';
 import Contact from './Components/Contact/Contact';
+import Signup from './Components/Auth/Signup/Signup';
 
 
 const App = () =>  {
@@ -21,6 +22,7 @@ const App = () =>  {
             <Route path='/sell' component={Sell} />
             <Route path="/becomefranchiseowner" component={BecomeFranchiseOwner} />
             <Route path="/contact" component={Contact} />
+            <Route path="/signup" component={Signup} />
         </Switch>
     );
 }
