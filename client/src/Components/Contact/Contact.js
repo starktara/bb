@@ -19,7 +19,6 @@ import isEmpty from "validator/lib/isEmpty";
 import isAlpha from "validator/lib/isAlpha";
 import isEmail from "validator/lib/isEmail";
 import isMobilePhone from "validator/lib/isMobilePhone";
-import isIn from "validator/lib/isIn";
 import isAlphaNumeric from "validator/lib/isAlphanumeric";
 
 const useStyles = makeStyles(theme => ({
