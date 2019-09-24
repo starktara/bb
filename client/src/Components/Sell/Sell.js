@@ -7,50 +7,168 @@ import Banner from "../Banner/Banner";
 import headingLines from "../../assets/heading-lines.svg";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
-import Tooltip from '../UI/Tooltip/Tooltip';
+import Tooltip from "../UI/Tooltip/Tooltip";
 import axios from "axios";
+import isEmpty from "validator/lib/isEmpty";
+import isAlpha from "validator/lib/isAlpha";
+import isEmail from "validator/lib/isEmail";
+import isMobilePhone from "validator/lib/isMobilePhone";
+import isAlphaNumeric from "validator/lib/isAlphanumeric";
+import { makeStyles } from "@material-ui/core/styles";
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  banner: {
+    marginTop: theme.spacing(5)
+  },
+  formContainer: {
+    marginTop: theme.spacing(1)
+  },
+  paper: {
+    padding: theme.spacing(3),
+    margin: theme.spacing(2),
+    color: theme.palette.text.secondary,
+    height: "100%"
+  },
+  mapContainer: {
+    marginTop: theme.spacing(5),
+    marginBottom: theme.spacing(5),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2)
+  },
+  formError: {
+    color: "red"
+  }
+}));
 
+const formValidator = (name, value) => {
+  switch (name) {
+    case "name": {
+      return !isAlpha(value) ? "Name must contain only Alphabets" : "";
+    }
+    case "mobile": {
+      return !isMobilePhone(value) ? "Invalid Mobile Number" : "";
+    }
+    case "email": {
+      return !isEmail(value) ? "Invalid Email Id" : "";
+    }
+    case "query": {
+      return !isAlphaNumeric(value)
+        ? "Query must only have Alphanumeric Characters"
+        : "";
+    }
+    default: {
+      return false;
+    }
+  }
+};
 
 const Sell = props => {
-  const [formData, setFormData] = useState({
-    name: "",
-    city: "",
-    make: "",
-    variant: "",
-    yom: "",
-    mobile: "",
-    address: "",
-    model: "",
-    kmsdriven: ""
-  });
-  const [error, setError] = useState({
-    name: false,
-    city: false,
-    make: false,
-    mobile: false,
-    yom: false,
-    model: false
-  });
-  
+  const classes = useStyles();
 
-  const [successSubmit,setSuccessSubmit] = useState(false);
+  const [formData, setFormData] = useState({
+    name: {
+      value: "",
+      error: false,
+      errorMessage: ""
+    },
+    city: {
+      value: "",
+      error: false,
+      errorMessage: ""
+    },
+    make: {
+      value: "",
+      error: false,
+      errorMessage: ""
+    },
+    yom: {
+      value: "",
+      error: false,
+      errorMessage: ""
+    },
+    mobile: {
+      value: "",
+      error: false,
+      errorMessage: ""
+    },
+    variant: {
+      value: "",
+      error: false,
+      errorMessage: ""
+    },
+    email: {
+      value: "",
+      error: false,
+      errorMessage: ""
+    },
+    address: {
+      value: "",
+      error: false,
+      errorMessage: ""
+    },
+    model: {
+      value: "",
+      error: false,
+      errorMessage: ""
+    },
+    kmsdriven: {
+      value: "",
+      error: false,
+      errorMessage: ""
+    }
+  });
+
+  const [successSubmit, setSuccessSubmit] = useState(false);
 
   const [tooltipState, setTooltipState] = useState({
     open: false,
-    message: '',
-    variant: 'error'
+    message: "",
+    variant: "error"
   });
 
   const handleClose = () => {
     setTooltipState({
       open: false,
-      message: '',
-      variant: 'success'
+      message: "",
+      variant: "success"
     });
-  }
+  };
 
-  const tooltip = <Tooltip open={tooltipState.open} message={tooltipState.message} variant={tooltipState.variant} handleClose={handleClose}/>
+  const tooltip = (
+    <Tooltip
+      open={tooltipState.open}
+      message={tooltipState.message}
+      variant={tooltipState.variant}
+      handleClose={handleClose}
+    />
+  );
+
+  const validateAndUpdateFormdata = (event, formData) => {
+    let targetValue = event.target.value;
+    let targetName = event.target.name;
+    let errorMessage = "";
+    let error = false;
+    if (isEmpty(targetValue)) {
+      errorMessage = "This field is required";
+      error = true;
+    } else {
+      errorMessage = formValidator(targetName, targetValue);
+      if (errorMessage.length) {
+        error = true;
+      }
+    }
+    setFormData({
+      ...formData,
+      [event.target.name]: {
+        value: targetValue,
+        error: error,
+        errorMessage: errorMessage
+      }
+    });
+  };
 
   const updateFormdata = (event, formData) => {
     let targetValue = event.target.value;
@@ -62,26 +180,8 @@ const Sell = props => {
   };
 
   const submitForm = event => {
-    event.preventDefault();
-    var errorObj = { ...error };
-    var errorExists = false;
-    for (var prop in formData) {
-      if (formData[prop] == "" && error.hasOwnProperty(prop)) {
-        errorObj[prop] = true;
-        errorExists  = true;
-      }else{
-        errorObj[prop] = false;
-      }
-    }
 
-    if(errorExists){
-        setError({
-            ...error,
-            ...errorObj
-          });
-    }else{
-
-      axios
+    axios
       .post("/apis/leadDetail/insertSellrequest", formData)
       .then(response => {
         console.log(response);
@@ -90,14 +190,12 @@ const Sell = props => {
         console.log(err);
       });
 
-        setTooltipState({
-          open: true,
-          message: 'Your details have been saved',
-          variant: 'success'
-        });
-        setSuccessSubmit(true);
-    }
-  
+    setTooltipState({
+      open: true,
+      message: "Your details have been saved",
+      variant: "success"
+    });
+    setSuccessSubmit(true);
   };
 
   return (
@@ -157,20 +255,24 @@ const Sell = props => {
                               <Grid item xs={12} md={12} sm={12} lg={9}>
                                 <input
                                   type="text"
-                                  className="name"
                                   name="name"
                                   id=""
                                   placeholder="Your Name"
-                                  onChange={event =>
-                                    updateFormdata(event, formData)
+                                  onBlur={event =>
+                                    validateAndUpdateFormdata(event, formData)
                                   }
-                                  value={formData.name}
-                                  required
+                                  className={
+                                    formData.name.error
+                                      ? "invalid"
+                                      : formData.name.value
+                                      ? "valid"
+                                      : ""
+                                  }
                                 />
-                                {error.name && (
-                                  <div className="invalid-feedback d-block">
-                                    Name is required
-                                  </div>
+                                {formData.name.error && (
+                                  <p className={classes.formError}>
+                                    {formData.name.errorMessage}
+                                  </p>
                                 )}
                               </Grid>
                             </Grid>
@@ -190,17 +292,21 @@ const Sell = props => {
                                   type="text"
                                   name="city"
                                   placeholder="Your City"
-                                  onChange={event =>
-                                    updateFormdata(event, formData)
+                                  onBlur={event =>
+                                    validateAndUpdateFormdata(event, formData)
                                   }
-                                  value={formData.city}
-                                  error="dswdsdsd"
-                                  required
+                                  className={
+                                    formData.city.error
+                                      ? "invalid"
+                                      : formData.city.value
+                                      ? "valid"
+                                      : ""
+                                  }
                                 />
-                                {error.city && (
-                                  <div className="invalid-feedback d-block">
-                                    City is required
-                                  </div>
+                                {formData.city.error && (
+                                  <p className={classes.formError}>
+                                    {formData.city.errorMessage}
+                                  </p>
                                 )}
                               </Grid>
                             </Grid>
@@ -221,15 +327,21 @@ const Sell = props => {
                                   name="make"
                                   placeholder="Manufacturer"
                                   required
-                                  onChange={event =>
-                                    updateFormdata(event, formData)
+                                  onBlur={event =>
+                                    validateAndUpdateFormdata(event, formData)
                                   }
-                                  value={formData.make}
+                                  className={
+                                    formData.make.error
+                                      ? "invalid"
+                                      : formData.make.value
+                                      ? "valid"
+                                      : ""
+                                  }
                                 />
-                                {error.make && (
-                                  <div className="invalid-feedback d-block">
-                                    Manufacturer is required
-                                  </div>
+                                {formData.make.error && (
+                                  <p className={classes.formError}>
+                                    {formData.make.errorMessage}
+                                  </p>
                                 )}
                               </Grid>
                             </Grid>
@@ -252,7 +364,6 @@ const Sell = props => {
                                   onChange={event =>
                                     updateFormdata(event, formData)
                                   }
-                                  value={formData.variant}
                                 />
                               </Grid>
                             </Grid>
@@ -272,15 +383,21 @@ const Sell = props => {
                                   type="text"
                                   name="yom"
                                   placeholder="Year of Manufacture"
-                                  onChange={event =>
-                                    updateFormdata(event, formData)
+                                  onBlur={event =>
+                                    validateAndUpdateFormdata(event, formData)
                                   }
-                                  value={formData.yom}
+                                  className={
+                                    formData.yom.error
+                                      ? "invalid"
+                                      : formData.yom.value
+                                      ? "valid"
+                                      : ""
+                                  }
                                 />
-                                {error.yom && (
-                                  <div className="invalid-feedback d-block">
-                                    Year of Manufacture is required
-                                  </div>
+                                {formData.yom.error && (
+                                  <p className={classes.formError}>
+                                    {formData.yom.errorMessage}
+                                  </p>
                                 )}
                               </Grid>
                             </Grid>
@@ -306,12 +423,21 @@ const Sell = props => {
                                   onChange={event =>
                                     updateFormdata(event, formData)
                                   }
-                                  value={formData.mobile}
+                                  onBlur={event =>
+                                    validateAndUpdateFormdata(event, formData)
+                                  }
+                                  className={
+                                    formData.mobile.error
+                                      ? "invalid"
+                                      : formData.mobile.value
+                                      ? "valid"
+                                      : ""
+                                  }
                                 />
-                                {error.mobile && (
-                                  <div className="invalid-feedback d-block">
-                                    Mobile is required
-                                  </div>
+                                {formData.mobile.error && (
+                                  <p className={classes.formError}>
+                                    {formData.mobile.errorMessage}
+                                  </p>
                                 )}
                               </Grid>
                             </Grid>
@@ -333,8 +459,13 @@ const Sell = props => {
                                   onChange={event =>
                                     updateFormdata(event, formData)
                                   }
-                                  value={formData.address}
-                                ></textarea>
+                                  className={
+                                    formData.city.error
+                                      ? "invalid"
+                                      : formData.city.value
+                                      ? "valid"
+                                      : ""
+                                  }                                ></textarea>
                               </Grid>
                             </Grid>
                             <Grid
@@ -357,12 +488,21 @@ const Sell = props => {
                                   onChange={event =>
                                     updateFormdata(event, formData)
                                   }
-                                  value={formData.model}
+                                  onBlur={event =>
+                                    validateAndUpdateFormdata(event, formData)
+                                  }
+                                  className={
+                                    formData.model.error
+                                      ? "invalid"
+                                      : formData.model.value
+                                      ? "valid"
+                                      : ""
+                                  }
                                 />
-                                {error.model && (
-                                  <div className="invalid-feedback d-block">
-                                    Model is required
-                                  </div>
+                                {formData.model.error && (
+                                  <p className={classes.formError}>
+                                    {formData.model.errorMessage}
+                                  </p>
                                 )}
                               </Grid>
                             </Grid>
@@ -388,8 +528,13 @@ const Sell = props => {
                                   onChange={event =>
                                     updateFormdata(event, formData)
                                   }
-                                  value={formData.kmsdriven}
-                                />
+                                  className={
+                                    formData.kmsdriven.error
+                                      ? "invalid"
+                                      : formData.kmsdriven.value
+                                      ? "valid"
+                                      : ""
+                                  }                                />
                               </Grid>
                             </Grid>
                           </Grid>
