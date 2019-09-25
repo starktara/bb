@@ -82,7 +82,12 @@ section-3 {
 .section-3-heading {
   margin-bottom: 55px;
 }
-.section-2 h5,
+.section-2 h5{
+  color: #232c2b;
+  font-weight: bold;
+  white-space: nowrap;
+  font-size: 23px;
+}
 .section-3 h5 {
   color: #e92d2c;
   font-weight: bold;

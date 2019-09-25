@@ -281,7 +281,7 @@ const Homepage = () => {
           </Grid>
         </Grid>
       </div>
-      <div className="section-4">
+      {/* <div className="section-4">
         <Grid
           container
           component="div"
@@ -347,7 +347,7 @@ const Homepage = () => {
             <div id="testimonialMessage"></div>
           </Grid>
         </Grid>
-      </div>
+      </div> */}
       <Footer />
     </div>
   );
