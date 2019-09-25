@@ -1,0 +1,31 @@
+.faqContent p {
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: 0.53px;
+  color: #232b2b;
+}
+.MuiExpansionPanel-rounded {
+  border-radius: 0px !important;
+  border-bottom: solid 1px rgba(35, 43, 43, 0.4);
+  padding: 12px 0px;
+}
+.MuiExpansionPanel-rounded:not(:first-child):not(:last-child){
+    border-top: solid 0.015625rem  rgba(35, 43, 43, 0.4);
+    border-bottom: solid 0.015625rem  rgba(35, 43, 43, 0.4);
+}
+.MuiExpansionPanel-rounded:first-child{
+    border-top: solid 0.0625rem  rgba(35, 43, 43, 0.4);
+    border-bottom: solid 0.0625rem  rgba(35, 43, 43, 0.4);
+}
+.MuiExpansionPanel-rounded:last-child{
+    /* border-bottom: solid 0.0625rem  rgba(35, 43, 43, 0.4); */
+}
+.MuiExpansionPanel-root:before {
+  background-color: none !important;
+}
+.MuiPaper-elevation1{
+    box-shadow: none !important;
+}
+.MuiExpansionPanelSummary-content{
+    padding: 8px 0px;
+}

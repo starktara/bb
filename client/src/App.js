@@ -9,6 +9,7 @@ import Sell from './Components/Sell/Sell';
 import BecomeFranchiseOwner from './Components/BecomeFranchiseOwner/BecomeFranchiseOwner';
 import Contact from './Components/Contact/Contact';
 import Signup from './Components/Auth/Signup/Signup';
+import Faq from './Components/Faq/Faq';
 
 
 const App = () =>  {
@@ -23,6 +24,7 @@ const App = () =>  {
             <Route path="/becomefranchiseowner" component={BecomeFranchiseOwner} />
             <Route path="/contact" component={Contact} />
             <Route path="/signup" component={Signup} />
+            <Route path="/faq" component={Faq} />
         </Switch>
     );
 }
