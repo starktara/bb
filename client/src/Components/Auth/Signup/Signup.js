@@ -137,7 +137,7 @@ const Signup = (props) => {
             <Header />
                 <Grid container component="row" direction="row" alignItems="center" justify="center" className={classes.container}>
                     <Grid item xs={11} sm={11} md={11} lg={11}>
-                        <Paper className={classes.root}>
+                        <Paper>
                             <Grid container direction="row" component="div" alignItems="center" justify="center" className={classes.container}>
                                 <Grid item xs={9} sm={9} md={9} lg={9}>
                                     <h4 className={classes.signUpHeading}>Sign Up To Get Started</h4>

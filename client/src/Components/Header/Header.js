@@ -53,7 +53,7 @@ const Header = props => {
                 className="nav-img responsive-img"
                 alt=""
               />
-              <Link to="/login" className="right">
+              <Link to="/signin" className="right">
                 Login
               </Link>
             </li>
