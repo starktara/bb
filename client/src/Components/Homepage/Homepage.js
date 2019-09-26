@@ -9,9 +9,9 @@ import searchIcon from "../../assets/search-icon.svg";
 import locationIcon from "../../assets/location-icon.svg";
 import sliderImg from "../../assets/slider-image.png";
 import headingLines from "../../assets/heading-lines.svg";
-import bike2 from "../../assets/Motorcycle-Home-Page.svg";
-import scooter from "../..//assets/Scooter-Home-Page.svg";
-import bike from "../../assets/High-End-Motorcycle-Home-Page.svg";
+import bike2 from "../../assets/bike-icon.svg";
+import scooter from "../..//assets/scooter-icon.svg";
+import bike from "../../assets/high-end-bike-icon.svg";
 import certifiedAutoExperts from "../../assets/certified_by_auto_experts.svg";
 import monthWarranty from "../../assets/6_month_warranty.svg";
 import buyerProtection from "../../assets/buyer_protection.svg";
@@ -158,7 +158,7 @@ const Homepage = () => {
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
             <div className="box-shadow center-align">
               <Link to={"/category/" + CATEGORY.BIKE}>
-                <img alt="" src={bike2} height="192" width="290" />
+                <img alt="" src={bike2} height="170" width="290" />
               </Link>
               <h5>Motorcycle</h5>
             </div>
@@ -166,7 +166,7 @@ const Homepage = () => {
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
             <div className="box-shadow center-align">
               <Link to={"/category/" + CATEGORY.SCOOTER}>
-                <img alt="" src={scooter} height="192" width="290" />
+                <img alt="" src={scooter} height="170" width="290" />
               </Link>
               <h5>Scooter</h5>
             </div>
@@ -174,7 +174,7 @@ const Homepage = () => {
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
             <div className="box-shadow center-align">
               <Link to={"/category/" + CATEGORY.HIGH_END_BIKE}>
-                <img alt="" src={bike} height="192" width="290" />
+                <img alt="" src={bike} height="170" width="290" />
               </Link>
               <h5>High-End Motorcycle</h5>
             </div>
