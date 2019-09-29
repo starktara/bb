@@ -113,13 +113,9 @@ body{
     font-weight: 400;
   }
   nav{
-    line-height: 46px !important;
+    line-height: 36px !important;
   }
   @media screen and (min-width: 1900px) {
-    .text-logo{
-        margin-left: 20px;
-        margin-top: 7px;
-    }
     #searchForm{
         height: 7%;
     }
@@ -130,10 +126,6 @@ body{
   }
   /*Medium screen media queries */
   @media screen and (min-width: 600px) and (max-width: 1900px) {
-    .text-logo{
-        margin-left: -20px;
-        margin-top: 7px;
-    }
     #searchForm{
         height: 7%;
     }
@@ -145,10 +137,6 @@ body{
   
   /*Small  screen media queries*/
   @media screen and (max-device-width: 480px) {
-    .text-logo{
-        margin-left: -20px;
-        margin-top: 7px;
-    }
     #searchForm{
         height: 3%;
     }
@@ -216,7 +204,7 @@ body{
     cursor: pointer;
   }
   #logoImg{
-    padding: 21px;
+    margin-top: 23px; 
   }
   
   .arrow-container{
@@ -277,9 +265,6 @@ body{
   }
   .second-nav-wrapper{
     margin-bottom: 0px;
-  }
-  .logo-text-container{
-    margin-top: 5px;
   }
   .input-field input[type=text]:focus {
     border-bottom: none!important;

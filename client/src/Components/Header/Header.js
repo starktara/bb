@@ -67,7 +67,7 @@ const Header = props => {
         <Grid container component="div" direction="row" className="nav-wrapper">
           <Grid item xs={2} sm={2} md={2} lg={2} className="header-title">
             <Link to="/">
-              <img src={logo} height="105" id="logoImg" alt="" />
+              <img src={logo} height="57" id="logoImg" alt="" />
             </Link>
           </Grid>
           <Grid item xs={8} sm={8} md={8} lg={8}>

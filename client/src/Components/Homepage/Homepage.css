@@ -34,9 +34,6 @@ body {
   text-align: center;
   cursor: pointer;
 }
-#logoImg {
-  padding: 21px;
-}
 .indicators {
   display: none;
 }
@@ -130,7 +127,6 @@ section-3 {
   margin-left: 25px;
   font-size: 15px;
   font-weight: 500;
-  width: 500px;
 }
 
 .arrow-container {
@@ -220,9 +216,6 @@ i.icon-black {
 }
 .second-nav-wrapper {
   margin-bottom: 0px;
-}
-.logo-text-container {
-  margin-top: 5px;
 }
 .input-field input[type="text"]:focus {
   border-bottom: none !important;
