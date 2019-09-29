@@ -5,7 +5,8 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import GoogleMap from "../GoogleMap/GoogleMap";
-import locationIcon from "../../assets/location-icon.svg";
+import locationIcon from "../../assets/icons/location-new-icon.svg";
+import cityIcon from '../../assets/icons/store-locator-city-icon.svg';
 import dropdownIcon from "../../assets/drop-down.svg";
 import searchIcon from "../../assets/search-icon.svg";
 import headingLines from "../../assets/heading-lines.svg";
@@ -104,8 +105,8 @@ const LocateStore = props => {
       <>
         <Banner
           navigation="Locate Store"
-          heading="Locate Store"
-          text="Locate BikeBazaar Store Near You"
+          heading="Locate BikeBazaar Stores Near You"
+          text=""
         />
         <div className="locateDropdownCard">
           <div className="row">
@@ -115,7 +116,7 @@ const LocateStore = props => {
                 className="dropdown-trigger btn custom-drop white black-text"
                 data-target="cityDropdown"
               >
-                <img src={locationIcon} width="32.9" height="28.3" alt="" />
+                <img src={cityIcon} width="32.9" height="28.3" alt="" />
                 <span id="currentCity">Search Your City</span>
                 <img src={dropdownIcon} width="22" height="11" alt="" />
               </button>
@@ -188,7 +189,7 @@ const LocateStore = props => {
   }
 
   return (
-    <div className="LocateStore">
+    <div id="LocateStore">
       <Header />
       <div className="wapper">
         {multiStore}

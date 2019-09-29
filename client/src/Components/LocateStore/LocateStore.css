@@ -1,3 +1,11 @@
+#LocateStore {
+  background-color: #f7f7f7;
+  background-image: url('../../assets/icons/store-locator-image.png');
+  background-repeat: no-repeat;
+  background-size: 1332px 233px;
+  background-position-y: 375px;
+  background-position-x: 80px;
+}
 .navigation-bar {
   height: 118px;
   border-radius: 4px;
@@ -47,7 +55,7 @@
   font-size: 16px;
   color: #232b2b;
 }
-.custom-drop span{
+.custom-drop span {
   margin-left: 5px;
 }
 .custom-drop img:first-child {
@@ -59,59 +67,59 @@
   float: right;
   margin-top: 24.5px;
 }
-.locateDropdownCard .row{
+.locateDropdownCard .row {
   display: flex;
 }
-.locateDropdownCard .input-field{
+.locateDropdownCard .input-field {
   margin: 15px 0px;
   padding: 0px 10px 0px 25px;
 }
-.seacrh-location-button{
+.seacrh-location-button {
   width: 60px;
   height: 60px;
   background-color: #ff0000;
   border-radius: 3px;
   margin-top: 49px;
   margin-left: 5px;
-  padding: 13px; 
+  padding: 13px;
   cursor: pointer;
 }
-.locateDropdownCard .input-field p{
+.locateDropdownCard .input-field p {
   margin-left: 5px;
   margin-bottom: 4px;
   letter-spacing: 0.47px;
   color: #232b2b;
-  font-size: 15px; 
+  font-size: 15px;
 }
-.mapHeading{
+.mapHeading {
   letter-spacing: 1.07px;
   color: #ff0000;
   font-size: 36px;
   font-weight: bold;
   text-align: center;
 }
-.heading-lines{
+.heading-lines {
   text-align: center;
-  margin: 10px 0px 10px 0px; 
+  margin: 10px 0px 10px 0px;
 }
-.locationCard{
+.locationCard {
   border: solid 1px rgba(35, 43, 43, 0.4);
   border-radius: 4px;
   padding: 10px 10px;
 }
-.locationCard h5{
+.locationCard h5 {
   margin-left: 10px;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 0.23px;
 }
-.locationAddress{
+.locationAddress {
   opacity: 0.76;
   font-size: 13px;
   letter-spacing: 0.18px;
   padding: 10px 10px;
 }
-.mapContainer{
+.mapContainer {
   width: 337px;
   height: 400px;
 }

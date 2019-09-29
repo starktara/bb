@@ -302,9 +302,11 @@ i.icon-black {
 }
 .carousel-search-label {
   height: inherit;
-  width: 17.23%;
+  width: 15.23%;
   background-color: #ff0000;
   float: right;
+  border: none;
+  cursor: pointer;
 }
 .carousel-search-label img {
   background-size: 40px 40px !important;
