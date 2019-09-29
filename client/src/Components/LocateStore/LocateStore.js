@@ -9,7 +9,7 @@ import locationIcon from "../../assets/icons/location-new-icon.svg";
 import cityIcon from '../../assets/icons/store-locator-city-icon.svg';
 import dropdownIcon from "../../assets/drop-down.svg";
 import searchIcon from "../../assets/search-icon.svg";
-import headingLines from "../../assets/heading-lines.svg";
+import headingLines from "../../assets/black-heading-lines.svg";
 import M from "materialize-css";
 import * as actions from "../../store/actions/index";
 
