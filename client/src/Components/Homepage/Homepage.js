@@ -106,15 +106,21 @@ const Homepage = () => {
               </h3>
               <h4 className="text-white">
                 <img alt="" src={logo} className="tick-icon" />
-                <span className="bold">Certified</span> Two-wheeler
-              </h4>
-              <h4 className="text-white">
-                <img alt="" src={logo} className="tick-icon" />6 Months'{" "}
-                <span className="bold">Warranty</span>
+                <span>
+                  <span className="bold">Certified</span> Two-wheeler
+                </span>
               </h4>
               <h4 className="text-white">
                 <img alt="" src={logo} className="tick-icon" />
-                Low Cost <span className="bold">EMI</span>
+                <span>
+                  6 Months'{" "} <span className="bold">Warranty</span>
+                </span>
+              </h4>
+              <h4 className="text-white">
+                <img alt="" src={logo} className="tick-icon" />
+                <span>
+                  Low Cost <span className="bold">EMI</span>
+                </span>
               </h4>
               <div className="carousel-search-container">
                 <div className="carousel-location-btn">

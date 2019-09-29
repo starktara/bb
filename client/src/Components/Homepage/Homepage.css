@@ -48,6 +48,9 @@ body {
   letter-spacing: 2px;
   padding-left: 37px;
 }
+.slides h4 > span{
+  margin-left: 15px;
+}
 .caption {
   background-color: rgba(0, 0, 0, 0.3);
   transform: translateX(0px) translateY(0px) !important;
