@@ -1,16 +1,26 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Grid from "@material-ui/core/Grid";
 import headingLines from '../../assets/heading-lines.svg';
 import indianRupeeRed from '../../assets/images/icons/rupee-indian-red.svg';
 import bikeIcon from '../../assets/images/product/bike-img.png';
+import { makeStyles } from "@material-ui/core/styles";
+import CalendarTodayOutlinedIcon from '@material-ui/icons/CalendarTodayOutlined';
+import OfflineBoltOutlinedIcon from '@material-ui/icons/OfflineBoltOutlined';
+import SpeedOutlinedIcon from '@material-ui/icons/SpeedOutlined';
+import PersonOutlinedIcon from '@material-ui/icons/PersonOutlined';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
+const useStyle = makeStyles({
+    icon: {
+        fontSize: 16,
+        color: '#a4a3a3',
+    }
+})
+
 
 const SimilarVehicles = () => {
-    useEffect(() => {
-        
-    });
+    const classes = useStyle();
 
     const responsive = {
         superLargeDesktop: {
@@ -45,10 +55,22 @@ const SimilarVehicles = () => {
                             <h3>Bajaj Platina </h3>
                             <p className="price"><img className="rupees" src={indianRupeeRed} alt=""/> 17,500</p>
                             <ul className="detailPoints">
-                                <li className="year">2007</li>
-                                <li className="km">25,000 KMs</li>
-                                <li className="cc">99 CC</li>
-                                <li className="owner">1<sup>st</sup> Owner</li>
+                                <li className="year">
+                                    <CalendarTodayOutlinedIcon className={classes.icon}/>
+                                    <span>2007</span>
+                                </li>
+                                <li className="km">
+                                    <SpeedOutlinedIcon className={classes.icon}/>
+                                    <span>25,000 KMs</span>
+                                </li>
+                                <li className="cc">
+                                    <OfflineBoltOutlinedIcon className={classes.icon}/>
+                                    <span>99 CC</span>
+                                </li>
+                                <li className="owner">
+                                    <PersonOutlinedIcon className={classes.icon}/>
+                                    <span>1<sup>st</sup> Owner</span>
+                                </li>
                             </ul><br className="clr"/>
                                 <p className="location">Baner, Pune</p>
                         </div>
@@ -59,10 +81,22 @@ const SimilarVehicles = () => {
                             <h3>Bajaj Platina </h3>
                             <p className="price"><img className="rupees" src={indianRupeeRed} alt=""/> 17,500</p>
                             <ul className="detailPoints">
-                                <li className="year">2007</li>
-                                <li className="km">25,000 KMs</li>
-                                <li className="cc">99 CC</li>
-                                <li className="owner">1<sup>st</sup> Owner</li>
+                                <li className="year">
+                                    <CalendarTodayOutlinedIcon className={classes.icon}/>
+                                    <span>2007</span>
+                                </li>
+                                <li className="km">
+                                    <SpeedOutlinedIcon className={classes.icon}/>
+                                    <span>25,000 KMs</span>
+                                </li>
+                                <li className="cc">
+                                    <OfflineBoltOutlinedIcon className={classes.icon}/>
+                                    <span>99 CC</span>
+                                </li>
+                                <li className="owner">
+                                    <PersonOutlinedIcon className={classes.icon}/>
+                                    <span>1<sup>st</sup> Owner</span>
+                                </li>
                             </ul><br className="clr"/>
                                 <p className="location">Baner, Pune</p>
                         </div>
@@ -73,10 +107,22 @@ const SimilarVehicles = () => {
                             <h3>Bajaj Platina </h3>
                             <p className="price"><img className="rupees" src={indianRupeeRed} alt=""/> 17,500</p>
                             <ul className="detailPoints">
-                                <li className="year">2007</li>
-                                <li className="km">25,000 KMs</li>
-                                <li className="cc">99 CC</li>
-                                <li className="owner">1<sup>st</sup> Owner</li>
+                                <li className="year">
+                                    <CalendarTodayOutlinedIcon className={classes.icon}/>
+                                    <span>2007</span>
+                                </li>
+                                <li className="km">
+                                    <SpeedOutlinedIcon className={classes.icon}/>
+                                    <span>25,000 KMs</span>
+                                </li>
+                                <li className="cc">
+                                    <OfflineBoltOutlinedIcon className={classes.icon}/>
+                                    <span>99 CC</span>
+                                </li>
+                                <li className="owner">
+                                    <PersonOutlinedIcon className={classes.icon}/>
+                                    <span>1<sup>st</sup> Owner</span>
+                                </li>
                             </ul><br className="clr"/>
                                 <p className="location">Baner, Pune</p>
                         </div>
@@ -87,10 +133,22 @@ const SimilarVehicles = () => {
                             <h3>Bajaj Platina </h3>
                             <p className="price"><img className="rupees" src={indianRupeeRed} alt=""/> 17,500</p>
                             <ul className="detailPoints">
-                                <li className="year">2007</li>
-                                <li className="km">25,000 KMs</li>
-                                <li className="cc">99 CC</li>
-                                <li className="owner">1<sup>st</sup> Owner</li>
+                                <li className="year">
+                                    <CalendarTodayOutlinedIcon className={classes.icon}/>
+                                    <span>2007</span>
+                                </li>
+                                <li className="km">
+                                    <SpeedOutlinedIcon className={classes.icon}/>
+                                    <span>25,000 KMs</span>
+                                </li>
+                                <li className="cc">
+                                    <OfflineBoltOutlinedIcon className={classes.icon}/>
+                                    <span>99 CC</span>
+                                </li>
+                                <li className="owner">
+                                    <PersonOutlinedIcon className={classes.icon}/>
+                                    <span>1<sup>st</sup> Owner</span>
+                                </li>
                             </ul><br className="clr"/>
                                 <p className="location">Baner, Pune</p>
                         </div>
@@ -101,10 +159,22 @@ const SimilarVehicles = () => {
                             <h3>Bajaj Platina </h3>
                             <p className="price"><img className="rupees" src={indianRupeeRed} alt=""/> 17,500</p>
                             <ul className="detailPoints">
-                                <li className="year">2007</li>
-                                <li className="km">25,000 KMs</li>
-                                <li className="cc">99 CC</li>
-                                <li className="owner">1<sup>st</sup> Owner</li>
+                                <li className="year">
+                                    <CalendarTodayOutlinedIcon className={classes.icon}/>
+                                    <span>2007</span>
+                                </li>
+                                <li className="km">
+                                    <SpeedOutlinedIcon className={classes.icon}/>
+                                    <span>25,000 KMs</span>
+                                </li>
+                                <li className="cc">
+                                    <OfflineBoltOutlinedIcon className={classes.icon}/>
+                                    <span>99 CC</span>
+                                </li>
+                                <li className="owner">
+                                    <PersonOutlinedIcon className={classes.icon}/>
+                                    <span>1<sup>st</sup> Owner</span>
+                                </li>
                             </ul><br className="clr"/>
                                 <p className="location">Baner, Pune</p>
                         </div>

@@ -74,11 +74,11 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .ProductListSec .Product .detail p.price img.rupees { width:16px; vertical-align: sub; color: #ff0000; }
 .ProductListSec .Product .detail p.price strong { font-family: RupeeForadian; font-size: 21px;  font-weight: bold; }
 .ProductListSec .Product .detail ul.detailPoints { list-style: none; margin: 20px 0 0 0; }
-.ProductListSec .Product .detail ul.detailPoints li { padding:4px 0 4px 23px; font-size: 14px; width: 50%; float: left; }
-.ProductListSec .Product .detail ul.detailPoints li.year { background: url(../../assets/images/icons/calender.png) 0 7px no-repeat; }
+.ProductListSec .Product .detail ul.detailPoints li { padding:4px 0 4px 0px; font-size: 14px; width: 50%; float: left; }
+/* .ProductListSec .Product .detail ul.detailPoints li.year { background: url(../../assets/images/icons/calender.png) 0 7px no-repeat; }
 .ProductListSec .Product .detail ul.detailPoints li.km { background: url(../../assets/images/icons/km.png) 0 7px no-repeat; }
 .ProductListSec .Product .detail ul.detailPoints li.cc { background: url(../../assets/images/icons/cc.png) 0 7px no-repeat; }
-.ProductListSec .Product .detail ul.detailPoints li.owner { background: url(../../assets/images/icons/owner.png) 0 7px no-repeat; }
+.ProductListSec .Product .detail ul.detailPoints li.owner { background: url(../../assets/images/icons/owner.png) 0 7px no-repeat; } */
 .ProductListSec .Product .detail p.location { background: url(../../assets/images/icons/location.png) 0 19px no-repeat; padding: 15px 0 0 18px; margin: 15px 0 0; border-top: #e5e5e5 solid 1px;}
 .ProductListSec .pagination { text-align: center; }
 .ProductListSec .pagination li { height: 40px; padding: 0; }
@@ -181,11 +181,14 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .similar .Product .detail p.price img.rupees { width:16px; vertical-align: sub; color: #ff0000; }
 .similar .Product .detail p.price strong { font-family: RupeeForadian; font-size: 21px;  font-weight: bold; }
 .similar .Product .detail ul.detailPoints { list-style: none; margin: 20px 0 0 0; }
-.similar .Product .detail ul.detailPoints li { padding:4px 0 4px 23px; font-size: 14px; width: 50%; float: left; }
-.similar .Product .detail ul.detailPoints li.year { background: url(../../assets/images/icons/calender.png) 0 7px no-repeat; }
+.similar .Product .detail ul.detailPoints li { padding:4px 0 4px 0px; font-size: 14px; width: 50%; float: left; }
+.similar .Product .detail ul.detailPoints li span{
+  margin-left: 10px;
+}
+/* .similar .Product .detail ul.detailPoints li.year { background: url(../../assets/images/icons/calender.png) 0 7px no-repeat; }
 .similar .Product .detail ul.detailPoints li.km { background: url(../../assets/images/icons/km.png) 0 7px no-repeat; }
 .similar .Product .detail ul.detailPoints li.cc { background: url(../../assets/images/icons/cc.png) 0 7px no-repeat; }
-.similar .Product .detail ul.detailPoints li.owner { background: url(../../assets/images/icons/owner.png) 0 7px no-repeat; }
+.similar .Product .detail ul.detailPoints li.owner { background: url(../../assets/images/icons/owner.png) 0 7px no-repeat; } */
 .similar .Product .detail p.location { background: url(../../assets/images/icons/location.png) 0 19px no-repeat; padding: 15px 0 0 18px; margin: 15px 0 0; border-top: #e5e5e5 solid 1px;}
 
 .similar .carousel .flex-prev { left:-70px; opacity: 1; width: 50px; height: 50px; text-indent: -9999; background: url(../../assets/images/icons/left.png) 5px 5px no-repeat; }

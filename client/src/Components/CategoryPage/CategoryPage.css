@@ -122,12 +122,15 @@ form {
   margin: 20px 0 0 0;
 }
 .ProductListSec .Product .detail ul.detailPoints li {
-  padding: 4px 0 4px 23px;
+  padding: 4px 0 4px 0px;
   font-size: 14px;
   width: 50%;
   float: left;
 }
-.ProductListSec .Product .detail ul.detailPoints li.year {
+.ProductListSec .Product .detail ul.detailPoints li span{
+  margin-left: 10px;
+}
+/* .ProductListSec .Product .detail ul.detailPoints li.year {
   background: url(../../assets/images/icons/calender.png) 0 7px no-repeat;
 }
 .ProductListSec .Product .detail ul.detailPoints li.km {
@@ -138,7 +141,7 @@ form {
 }
 .ProductListSec .Product .detail ul.detailPoints li.owner {
   background: url(../../assets/images/icons/owner.png) 0 7px no-repeat;
-}
+} */
 .ProductListSec .Product .detail p.location {
   background: url(../../assets/images/icons/location.png) 0 19px no-repeat;
   padding: 15px 0 0 18px;

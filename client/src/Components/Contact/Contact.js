@@ -125,8 +125,6 @@ const Contact = props => {
     });
   };
 
-  const [successSubmit, setSuccessSubmit] = useState(false);
-
   return (
     <div id="Contact" className={classes.root}>
       <Header />
