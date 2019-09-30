@@ -83,7 +83,7 @@ class CategoryPage extends Component {
     let navigation = categoryData[this.props.match.params.category].name;
     let heading = categoryData[this.props.match.params.category].name;
     let text =
-      "Motorcycles are available at easy EMI starting at st 2,000*. Your  dream bike is not a distant dream now.";
+      "Motorcycles are available at easy EMI starting at ₹2,000*. Your  dream bike is not a distant dream now.";
 
     return (
       <div>
