@@ -11,6 +11,7 @@ import Contact from './Components/Contact/Contact';
 import Signup from './Components/Auth/Signup/Signup';
 import Signin from './Components/Auth/Signin/Signin';
 import Faq from './Components/Faq/Faq';
+import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
 
 
 const App = () =>  {
@@ -27,6 +28,7 @@ const App = () =>  {
             <Route path="/signup" component={Signup} />
             <Route path="/signin" component={Signin} />
             <Route path="/faq" component={Faq} />
+            <Route path="/privacypolicy" component={PrivacyPolicy} />
         </Switch>
     );
 }
