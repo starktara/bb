@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Signup.css';
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,6 +12,8 @@ import isAlpha from "validator/lib/isAlpha";
 import isEmail from "validator/lib/isEmail";
 import isMobilePhone from "validator/lib/isMobilePhone";
 import isAlphaNumeric from "validator/lib/isAlphanumeric";
+import facebookIcon from '../../../assets/icons/social_media/facebook-icon.png';
+import googleIcon from '../../../assets/icons/social_media/google-icon.png';
 
 const formValidator = (name, value) => {
     switch (name) {
@@ -51,13 +54,42 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'center',
         fontWeight: 600,
         fontSize: 32,
-        marginBottom: 50
+        marginBottom: 50,
+        letterSpacing: 0.03
     },
     formContainers: {
         marginBottom: theme.spacing(5)
     },
     formError: {
       color: "red"
+    },
+    socialLogin:{
+      marginTop: theme.spacing(5)
+    },
+    golaContainer: {
+      display: 'flex',
+      justifyContent: 'center',
+      '& div:first-child': {
+        marginRight:5
+      },
+      '& div:nth-child(2)': {
+        marginLeft:5
+      },
+    },
+    socialGola:{
+      display: 'inline-block',
+      textAlign: 'center',
+      boxShadow: '0 0 12px 0 rgba(0, 0, 0, 0.17)',
+      height: 45,
+      width: 45,
+      paddingTop: 10,
+      borderRadius: 45,
+      marginTop: 10,
+      cursor: 'pointer'
+    },
+    alreadyMember:{
+      marginTop: 10,
+      textAlign: 'center'
     }
   }));
 
@@ -279,11 +311,29 @@ const Signup = (props) => {
                                                     )}
                                             </Grid>
                                         </Grid>
-                                        <Grid container component="div" direction="row"  className={classes.formContainers}>
+                                        <Grid container component="div" direction="row" justify="center" className={classes.formContainers}>
                                             <Grid item xs={12} sm={12} md={12} lg={12}>
                                                 <div className="center-align">
                                                 <button id="submitButton" className="btn">Sign Up</button>
                                                 </div>
+                                                <Grid container component="div" direction="row" justify="center" className={classes.socialLogin}>
+                                                  <Grid item xs={12} sm={12} md={12} lg={12}>
+                                                    <div className="center-align">
+                                                      Or you can join us with
+                                                    </div>
+                                                  </Grid>
+                                                  <Grid item xs={12} sm={12} md={12} lg={12} className={classes.golaContainer}>
+                                                    <div className={classes.socialGola} id="googleSignup">
+                                                      <img src={googleIcon} height={25} alt="" />
+                                                    </div>
+                                                    <div className={classes.socialGola} id="facebookSignup">
+                                                      <img src={facebookIcon} height={25} alt="" />
+                                                    </div>
+                                                  </Grid>
+                                                  <Grid item xs={12} sm={12} md={12} lg={12} className={classes.alreadyMember}>
+                                                    Already a member? <span><Link to="/signin">Sign In</Link></span>
+                                                  </Grid>
+                                                </Grid>
                                             </Grid>
                                         </Grid>
                                     </form>

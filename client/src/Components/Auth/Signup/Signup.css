@@ -59,7 +59,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: 2px solid #e92d2c !important;
 }
 #submitButton {
-  background: #ff0000;
+  background: #ea2c2c;
   padding: 6px 30px;
   border-radius: 24px;
   height: 48px;
