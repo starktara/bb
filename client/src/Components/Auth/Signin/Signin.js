@@ -134,7 +134,7 @@ const Signin = (props) => {
     return (
         <div id="Signin" className={classes.body}>
             <Header />
-                <Grid container component="row" direction="row" alignItems="center" justify="center" className={classes.container}>
+                <Grid container component="div" direction="row" alignItems="center" justify="center" className={classes.container}>
                     <Grid item xs={11} sm={11} md={11} lg={11}>
                         <Paper>
                             <Grid container direction="row" component="div" alignItems="center" justify="center" className={classes.container}>
