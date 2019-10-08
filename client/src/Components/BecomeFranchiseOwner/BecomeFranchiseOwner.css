@@ -1,32 +1,116 @@
 .wapper {
-    margin: 40px auto;
+  margin: 40px auto;
 }
-.franchise-heading{
-    padding-top: 43.8px;
-    padding-bottom: 15px;
-    font-weight: 800;
-    font-size: 36px;
-    color: #232c2b;
+.franchise-heading {
+  padding-top: 43.8px;
+  padding-bottom: 15px;
+  font-weight: 800;
+  font-size: 36px;
+  color: #232c2b;
 }
-.about-bb{
-    margin: 20px 0px !important;
-    font-size: 18px;
-    letter-spacing: 0.53px;
-    line-height: 26px;
+.about-bb {
+  margin: 20px 0px !important;
+  font-size: 18px;
+  letter-spacing: 0.53px;
+  line-height: 26px;
 }
-#shareDetails{
-    margin-bottom: 20px;
+#shareDetails {
+  margin-bottom: 20px;
 }
-.redhead{
-    letter-spacing: 1.07px;
-    color: #ff0000;
-    font-size: 34px;
-    font-weight: bold;
+.redhead {
+  letter-spacing: 1.07px;
+  color: #ff0000;
+  font-size: 34px;
+  font-weight: bold;
 }
-.paper{
-    border-radius: 4px;
-    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
-    background-color: #ffffff;
-    padding: 15px 20px;
-    margin: 0 0px 40px 0;
+.paper {
+  border-radius: 4px;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  padding: 15px 20px;
+  margin: 0 0px 40px 0;
+}
+.franchiseAdvantage {
+  background-color: #e5e5e5;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);
+}
+.franchiseAdvantage {
+  margin: 40px auto;
+  padding: 40px;
+}
+.franchiseAdvantage h2 {
+  color: #232c2b;
+}
+.franchiseAdvantage .franchiseAdvantageSec {
+  padding: 0 0;
+}
+.franchiseAdvantage .franchiseAdvantageSec .advantage {
+  padding: 10px 0;
+}
+.franchiseAdvantage .franchiseAdvantageSec .advantage .advantageIconLeft {
+  width: 224px;
+  height: 224px;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17);
+  background-color: #ffffff;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.franchiseAdvantage .franchiseAdvantageSec .advantage .advantageIconLeft img {
+  margin: 30% 0;
+}
+.franchiseAdvantage .franchiseAdvantageSec .advantage h3 {
+  font-size: 32px;
+  background: url(../../assets/images/icons/advantage-icon-lt.png) 0 30px
+    no-repeat;
+  font-weight: bold;
+  color: #ff0000;
+  padding-top: 30px;
+  padding-left: 180px;
+  margin-top: 64px; 
+}
+.franchiseAdvantage .franchiseAdvantageSec .advantage p {
+  padding-left: 70px;
+  font-size: 24px;
+}
+
+.franchiseAdvantage .franchiseAdvantageSec .advantage1 {
+  padding: 10px 0;
+}
+.franchiseAdvantage .franchiseAdvantageSec .advantage1 .icon {
+  float: right;
+}
+.franchiseAdvantage .franchiseAdvantageSec .advantage1 .detail {
+  float: left;
+}
+.franchiseAdvantage .franchiseAdvantageSec .advantage1 .advantageIconRight {
+  width: 224px;
+  height: 224px;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17);
+  background-color: #ffffff;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin: 0 0 0 -50px;
+}
+.franchiseAdvantage .franchiseAdvantageSec .advantage1 .advantageIconRight img {
+  margin: 25% 0;
+}
+.franchiseAdvantage .franchiseAdvantageSec .advantage1 h3 {
+  font-size: 32px;
+  background: url(../../assets/images/icons/advantage-icon-rt.png) right 30px
+    no-repeat;
+  font-weight: bold;
+  color: #ff0000;
+  padding-top: 30px;
+  padding-right: 180px;
+  text-align: right;
+  margin-top: 64px;
+}
+.franchiseAdvantage .franchiseAdvantageSec .advantage1 p {
+  padding-right: 70px;
+  font-size: 24px;
+  text-align: right;
 }
