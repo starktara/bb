@@ -5,6 +5,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import headingLines from "../../assets/heading-lines.svg";
+import blackHeadingLines from '../../assets/black-heading-lines.svg';
 import certifiedIcon from "../../assets/images/icons/certified.png";
 import buyerIcon from "../../assets/images/icons/buyer.png";
 import emiIcon from "../../assets/images/icons/emi.png";
@@ -80,6 +81,11 @@ const useStyles = makeStyles(theme => ({
     boxShadow: 'none',
     marginLeft: 10,
     top: 37
+  },
+  divider: {
+    width: 1,
+    height: 395,
+    backgroundColor: '#a7aaaa'
   }
 }));
 
@@ -117,7 +123,7 @@ const BecomeFranchiseOwner = props => {
       value: "",
       error: false,
       errorMessage: ""
-    },
+    }
   });
 
   const [successSubmit, setSuccessSubmit] = useState(false);
@@ -518,13 +524,85 @@ const BecomeFranchiseOwner = props => {
       <Grid container direction="row" justify="center" alignItems="center">
         <Grid item xs={11} sm={11} md={11} lg={11}>
           <div className="paper">
-          <Grid container direction="row" justify="space-evenly" alignItems="center">
-              <Grid item xs={12} sm={12} md={5} lg={5}>
+          <Grid container direction="row" justify="space-evenly" alignItems="center" className="support">
+              <Grid item xs={12} sm={12} md={5} lg={5} className="center-align">
                 <h4 className="center-align redhead">Pre-Launch Support</h4>
+                <img src={blackHeadingLines} alt=""/>
+                    <Grid container component="div" direction="row" className="advantage">
+                    <Grid item xs={2} md={2} lg={2}>
+                      <div className="advantageIconLeft">
+                        <img className="rupees" src={certifiedIcon} alt=""/>
+                      </div>
+                    </Grid>
+                    <Grid item xs={10} md={10} lg={10}>
+                      <h3>Strong Online Presence</h3>
+                    </Grid>
+                  </Grid>
+                  <Grid
+                    container
+                    component="div"
+                    direction="row"
+                    className="advantage1"
+                  >
+                    <Grid item xs={10} sm={10} md={10} lg={10}>
+                      <h3>Certified Two-Wheelers</h3>
+                    </Grid>
+                    <Grid item xs={2} sm={2} md={2} lg={2} className="icon">
+                      <div className="advantageIconRight">
+                        <img className="rupees" src={certifiedIcon} alt="" />
+                      </div>
+                    </Grid>
+                  </Grid>
+                  <Grid container component="div" direction="row" className="advantage">
+                    <Grid item xs={2} sm={2} md={2} lg={2}>
+                      <div className="advantageIconLeft">
+                        <img className="rupees" src={buyerIcon} alt="" />
+                      </div>
+                    </Grid>
+                    <Grid item xs={10} sm={10} md={10} lg={10}>
+                      <h3>Strong IT Infrastructure</h3>
+                    </Grid>
+                  </Grid>
               </Grid>
-              <Divider orientation="vertical" />
-              <Grid item xs={12} sm={12} md={5} lg={5}>
-                <h4 className="center-align redhead">Post-Launch Support</h4>
+              <Divider orientation="vertical" className={classes.divider}/>
+              <Grid item xs={12} sm={12} md={5} lg={5} className="center-align">
+                <h4 className="redhead">Post-Launch Support</h4>
+                <img src={blackHeadingLines} alt=""/>
+                <Grid container component="div" direction="row" className="advantage">
+                    <Grid item xs={2} md={2} lg={2}>
+                      <div className="advantageIconLeft">
+                        <img className="rupees" src={certifiedIcon} alt=""/>
+                      </div>
+                    </Grid>
+                    <Grid item xs={10} md={10} lg={10}>
+                      <h3>Strong Online Presence</h3>
+                    </Grid>
+                  </Grid>
+                  <Grid
+                    container
+                    component="div"
+                    direction="row"
+                    className="advantage1"
+                  >
+                    <Grid item xs={10} sm={10} md={10} lg={10}>
+                      <h3>Certified Two-Wheelers</h3>
+                    </Grid>
+                    <Grid item xs={2} sm={2} md={2} lg={2} className="icon">
+                      <div className="advantageIconRight">
+                        <img className="rupees" src={certifiedIcon} alt="" />
+                      </div>
+                    </Grid>
+                  </Grid>
+                  <Grid container component="div" direction="row" className="advantage">
+                    <Grid item xs={2} sm={2} md={2} lg={2}>
+                      <div className="advantageIconLeft">
+                        <img className="rupees" src={buyerIcon} alt="" />
+                      </div>
+                    </Grid>
+                    <Grid item xs={10} sm={10} md={10} lg={10}>
+                      <h3>Strong IT Infrastructure</h3>
+                    </Grid>
+                  </Grid>
               </Grid>
           </Grid>
           </div>

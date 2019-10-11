@@ -68,7 +68,7 @@
   color: #ff0000;
   padding-top: 30px;
   padding-left: 180px;
-  margin-top: 64px; 
+  margin-top: 64px;
 }
 .franchiseAdvantage .franchiseAdvantageSec .advantage p {
   padding-left: 70px;
@@ -110,6 +110,80 @@
   margin-top: 64px;
 }
 .franchiseAdvantage .franchiseAdvantageSec .advantage1 p {
+  padding-right: 70px;
+  font-size: 24px;
+  text-align: right;
+}
+
+.support .advantage {
+  padding: 10px 0;
+}
+.support .advantage .advantageIconLeft {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17);
+  background-color: #ffffff;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.support .advantage .advantageIconLeft img {
+  margin: 22% 0;
+  height: 60px;
+}
+.support .advantage h3 {
+  font-size: 21px;
+  background: url(../../assets/images/icons/advantage-icon-lt.png) 0 30px
+    no-repeat;
+  background-size: 95px;
+  font-weight: bold;
+  color: #ff0000;
+  padding-top: 30px;
+  padding-left: 100px;
+  margin-top: 10px;
+}
+.support .advantage p {
+  padding-left: 70px;
+  font-size: 24px;
+}
+
+.support .advantage1 {
+  padding: 10px 0;
+}
+.support .advantage1 .icon {
+  float: right;
+}
+.support .advantage1 .detail {
+  float: left;
+}
+.support .advantage1 .advantageIconRight {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17);
+  background-color: #ffffff;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.support .advantage1 .advantageIconRight img {
+  margin: 22% 0;
+  height: 60px;
+}
+.support .advantage1 h3 {
+  font-size: 21px;
+  background: url(../../assets/images/icons/advantage-icon-rt.png) right 30px
+    no-repeat;
+  background-size: 95px;
+  font-weight: bold;
+  color: #ff0000;
+  padding-top: 30px;
+  padding-right: 100px;
+  text-align: right;
+  margin-top: 10px;
+}
+.support .advantage1 p {
   padding-right: 70px;
   font-size: 24px;
   text-align: right;
