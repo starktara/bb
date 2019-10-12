@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import "./LocateStore.css";
 import Header from "../Header/Header";
+import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import GoogleMap from "../GoogleMap/GoogleMap";
@@ -69,6 +70,15 @@ const LocateStore = props => {
   };
 
   useEffect(() => {
+    try {
+      window.scroll({
+        top: 70,
+        left: 0,
+        behavior: 'smooth',
+      });
+    } catch (error) {
+      window.scrollTo(0, 0);
+    }
     var elems = document.querySelectorAll(".dropdown-trigger");
     M.Dropdown.init(elems, {});
     if (props.history.location.search.trim() != "") {
@@ -191,6 +201,7 @@ const LocateStore = props => {
   return (
     <div id="LocateStore">
       <Header />
+      <MainMenu />
       <div className="wapper">
         {multiStore}
 

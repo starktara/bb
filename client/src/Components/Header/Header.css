@@ -13,12 +13,6 @@ body{
   .nav-flexify ul{
     height: 22px;
   }
-  .heading{
-    font-size: 43px;
-    font-weight: 600;
-    margin-bottom: 113px;
-    padding-left: 37px;
-  }
   .bold{
     font-weight: 600;
   }
@@ -58,7 +52,7 @@ body{
   }
   .search-label-btn{
     background: #232b2b;
-    margin-left: -87px;
+    margin-left: -86px;
     padding-top: 9px;
     height: 54.5px;
     margin-top: -4px;
@@ -75,32 +69,37 @@ body{
     width: 80.2%;
     background-color: white;
     border-radius: 5px;
-    height: 57px;
+    height: 54px;
     padding-left: 20px;
   }
   .nav-options li{
     text-align: center;
   }
-  .nav-options li:not(:first-of-type):not(:last-child){
-    padding-left: 69px;
+  .nav-options li:nth-child(2){
+    padding-left: 74px;
+    padding-right: 93px;
+  }
+  .nav-options li:nth-child(3){
+    padding-left: 29px;
     padding-right: 68px;
   }
   .nav-options li:first-child{
     padding-right: 69px;
   }
   .nav-options a{
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
     letter-spacing: 0.02px;
   }
   .option-row{
     margin-left: 55px !important;
+    margin-bottom: 12px;
   }
   .search-icon{
     font-size: 30px !important  ;
   }
   .search-container{
-    padding-top: 23px; 
+    padding-top: 15px; 
   }
   #searchForm{
     margin-bottom: 0px;
@@ -152,7 +151,7 @@ body{
     display: flex;
     justify-content: center;
     background-color: white; 
-    margin: 21px 0px 0px 0px !important;
+    margin: 13px 0px 0px 0px !important;
     width: 196px;
     height: 61px;
     line-height: 61px;
@@ -204,7 +203,7 @@ body{
     cursor: pointer;
   }
   #logoImg{
-    margin-top: 23px; 
+    margin-top: 12px; 
   }
   
   .arrow-container{
@@ -319,4 +318,14 @@ body{
     height: 22px;
     cursor: pointer;
     padding: 0px 15px;
+  }
+
+  .sticky-nav{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .text-logo{
+    margin-top: 5px;
   }

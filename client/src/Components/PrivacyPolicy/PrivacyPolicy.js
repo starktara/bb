@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Header from "../Header/Header";
+import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import Grid from "@material-ui/core/Grid";
@@ -44,9 +45,22 @@ const useStyle = makeStyles(theme =>({
 const PrivacyPolicy = props => {
     const classes = useStyle();
 
+    useEffect(() =>{
+        try {
+          window.scroll({
+            top: 70,
+            left: 0,
+            behavior: 'smooth',
+          });
+        } catch (error) {
+          window.scrollTo(0, 0);
+        }
+      },[])
+
     return (
         <div id="PrivacyPolicy" className={classes.root}>
             <Header/>
+            <MainMenu/>
             <Grid container component="div" direction="row" justify="center" alignItems="center">
                 <Grid item xs={11} sm={11} md={11} lg={11} className={classes.banner}>
                     <Banner

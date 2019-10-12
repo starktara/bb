@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import "./BecomeFranchiseOwner.css";
 import Header from "../Header/Header";
+import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import headingLines from "../../assets/heading-lines.svg";
@@ -92,6 +93,19 @@ const useStyles = makeStyles(theme => ({
 const BecomeFranchiseOwner = props => {
 
   const classes = useStyles();
+
+  useEffect(() =>{
+    try {
+      window.scroll({
+        top: 70,
+        left: 0,
+        behavior: 'smooth',
+      });
+    } catch (error) {
+      window.scrollTo(0, 0);
+    }
+  },[])
+
 
   const [formData, setFormData] = useState({
     name: {
@@ -198,6 +212,7 @@ const BecomeFranchiseOwner = props => {
     <div id="BecomeFranchiseOwner" className={classes.root}>
       {tooltip}
       <Header />
+      <MainMenu />
       <Grid
         container
         component="div"

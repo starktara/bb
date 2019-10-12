@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Faq.css';
 import Header from "../Header/Header";
+import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import Grid from "@material-ui/core/Grid";
@@ -45,9 +46,24 @@ const useStyles = makeStyles(theme => ({
 
 const Faq = (props) => {
     const classes = useStyles();
+
+    useEffect(() =>{
+        try {
+          window.scroll({
+            top: 70,
+            left: 0,
+            behavior: 'smooth',
+          });
+        } catch (error) {
+          window.scrollTo(0, 0);
+        }
+      },[])
+
+      
     return (
         <div id="faq" className={classes.body}>
             <Header />
+            <MainMenu />
                 <Grid container component="div" direction="row" justify="center" className={classes.banner}>
                     <Grid item xs={11} sm={11} md={11} lg={11}>
                         <Banner

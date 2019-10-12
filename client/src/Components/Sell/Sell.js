@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import "./Sell.css";
 import Header from "../Header/Header";
+import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import headingLines from "../../assets/heading-lines.svg";
@@ -67,6 +68,18 @@ const formValidator = (name, value) => {
 
 const Sell = props => {
   const classes = useStyles();
+
+  useEffect(() =>{
+    try {
+      window.scroll({
+        top: 70,
+        left: 0,
+        behavior: 'smooth',
+      });
+    } catch (error) {
+      window.scrollTo(0, 0);
+    }
+  },[])
 
   const [formData, setFormData] = useState({
     name: {
@@ -201,6 +214,7 @@ const Sell = props => {
   return (
     <div id="Sell">
       <Header />
+      <MainMenu />
       {tooltip}
       <Grid container component="div" direction="row">
         <Grid item xs={12} md={12} sm={12} lg={12}>

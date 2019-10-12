@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import './VehicleDetails.css';
 import Header from '../Header/Header';
+import MainMenu from '../MainMenu/MainMenu';
 import Footer from '../Footer/Footer';
 import VehicleData from '../VehicleData/VehicleData';
 import VehicleMetaData from '../VehicleMetaData/VehicleMetaData';
@@ -20,7 +21,7 @@ const VehicleDetails = (props) => {
     useEffect(() => {
         try {
             window.scroll({
-              top: 270,
+              top: 70,
               left: 0,
               behavior: 'smooth',
             });
@@ -63,6 +64,7 @@ const VehicleDetails = (props) => {
     return (
         <div className="VehicleDetails">
             <Header />
+            <MainMenu />
                 {vehicle}
                 <VehicleAdvantage />
                 <SimilarVehicles />

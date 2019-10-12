@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
 import "./CategoryPage.css";
 import Header from "../Header/Header";
+import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import Navigation from "../Navigation/Navigation";
@@ -88,6 +89,7 @@ class CategoryPage extends Component {
     return (
       <div>
         <Header />
+        <MainMenu />
         <div className="wapper">
           <Banner
             navigation={navigation}

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Contact.css";
 import Header from "../Header/Header";
+import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import Grid from "@material-ui/core/Grid";
@@ -73,6 +74,18 @@ const formValidator = (name, value) => {
 const Contact = props => {
   const classes = useStyles();
 
+  useEffect(() =>{
+    try {
+      window.scroll({
+        top: 70,
+        left: 0,
+        behavior: 'smooth',
+      });
+    } catch (error) {
+      window.scrollTo(0, 0);
+    }
+  },[])
+
   const [formData, setFormData] = useState({
     name: {
       value: "",
@@ -128,6 +141,7 @@ const Contact = props => {
   return (
     <div id="Contact" className={classes.root}>
       <Header />
+      <MainMenu />
       <Grid
         container
         component="div"

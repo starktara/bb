@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./Homepage.css";
 import Header from "../Header/Header";
+import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import logo from "../../assets/logo.svg";
 import searchIcon from "../../assets/search-icon.svg";
@@ -96,6 +97,7 @@ const Homepage = () => {
   return (
     <div className="App">
       <Header />
+      <MainMenu />
       <div className="slider">
         <ul className="slides">
           <li>
