@@ -1,12 +1,12 @@
 # bb
 
-##TODO -
+## TODO -
 
 ```
 -- : Indicaates Done
 ```
 
-###Category Page:-
+### Category Page:-
 
 --1) Breadcrumb section, page name should be Motorcycles.
 
@@ -19,7 +19,7 @@
 --5) Filter section sequence should be City, Budget, Brand, Manufacturing Year, Kilometers.
 
 
-###Product Detail Page:-
+### Product Detail Page:-
 
 1) Please rework in vehicle specifications. Each specification is not aligned properly.   Like name of the bike needs to be left alligned (Needs clarity)
 
@@ -28,7 +28,7 @@
 --3) Please rename the two headings as per the attachment (Ref-02 & Ref-03).
 
 
-###Sell Page:-
+### Sell Page:-
 --1) Breadcrumb text should be "Sell Any Two-Wheeler".
 
 2) Steps to sell your two-wheeler, this whole section is missing, attaching a reference file (Ref-04). (Need icons)
@@ -38,7 +38,7 @@
 4) BikeBazaar Advantage (Selling process) section is missing, attaching a reference file (Ref-06).
 
  
-###Become a Franchise Owner Page:-
+### Become a Franchise Owner Page:-
 1) Breadcrumb should as per design, attaching reference file (Ref-07).
 
 2) About BikeBazaar section is different than the provided one, please rework on this, attaching reference file (Ref-08).
@@ -52,19 +52,19 @@
 7) BikeBazaar Store Section is missing at the bottom. Ref-BB-Franchise-Owner.jpg
 
  
-###FAQs Page:-
+### FAQs Page:-
 1) Please put the provided answers instead of the Lorem Ipsum. (Need content)
 
  
-###Privacy Policy:-
+### Privacy Policy:-
 
 1) All the content is missing. (Already there, needs to be verified)
 
  
-###Terms & Conditions Page:-
+### Terms & Conditions Page:-
 1) Not Completed
 
 
-###Contact Us Page:-
+### Contact Us Page:-
 1) Please rework the contact information and form section. Please ref an attached file (Ref-011) (Needs Clarity)
 2) Google map is not showing. – Error is coming on the control.
