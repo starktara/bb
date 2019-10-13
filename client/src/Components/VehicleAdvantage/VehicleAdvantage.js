@@ -11,7 +11,7 @@ const VehicleAdvantage = () => {
   return (
     <Grid item xs={12} sm={12} md={12} lg={12} className="vehicleAdvantageSec">
       <div className="vehicleAdvantage">
-        <h2 className="center-align">Inspection Report</h2>
+        <h2 className="center-align">BikeBazaar Advantage</h2>
         <div className="center-align">
           <img src={headingLines} alt="" />
         </div>

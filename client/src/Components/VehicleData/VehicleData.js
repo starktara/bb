@@ -95,13 +95,19 @@ const VehicleData = (props) => {
                                     <input type="text" className="email" name="" id="" placeholder="Type Your Email Id" maxLength="" required />
                                 </Grid>
                             </Grid>
-                            <Grid container component="div" direction="row" className="form-group">
+                            <Grid container component="div" direction="row" className="form-group" justify="flex-end">
+                                <Grid item xs={9} sm={9} md={9} lg={9}>
                                 <label className="fieldname">
                                     <input type="checkbox" className="filled-in" defaultChecked />
                                     <span>Interested in Low-Cost EMI Option</span>
                                 </label>
+                                </Grid>
                             </Grid>
-                            <div className="form-group"><button type="button" className="btn" onClick = {getStoreDetails}>Get Store Details</button></div>
+                            <Grid container component="div" direction="row" className="form-group" justify="center">
+                                <Grid item xs={4} sm={4} md={4} lg={4}>
+                                    <div className="form-group"><button type="button" className="btn" onClick = {getStoreDetails}>Get Store Details</button></div>
+                                </Grid>
+                            </Grid>
                         </form>
                     </div>
                 </div>

@@ -74,12 +74,13 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .ProductListSec .Product .detail p.price img.rupees { width:16px; vertical-align: sub; color: #ff0000; }
 .ProductListSec .Product .detail p.price strong { font-family: RupeeForadian; font-size: 21px;  font-weight: bold; }
 .ProductListSec .Product .detail ul.detailPoints { list-style: none; margin: 20px 0 0 0; }
-.ProductListSec .Product .detail ul.detailPoints li { padding:4px 0 4px 0px; font-size: 14px; width: 50%; float: left; }
-/* .ProductListSec .Product .detail ul.detailPoints li.year { background: url(../../assets/images/icons/calender.png) 0 7px no-repeat; }
-.ProductListSec .Product .detail ul.detailPoints li.km { background: url(../../assets/images/icons/km.png) 0 7px no-repeat; }
-.ProductListSec .Product .detail ul.detailPoints li.cc { background: url(../../assets/images/icons/cc.png) 0 7px no-repeat; }
-.ProductListSec .Product .detail ul.detailPoints li.owner { background: url(../../assets/images/icons/owner.png) 0 7px no-repeat; } */
-.ProductListSec .Product .detail p.location { background: url(../../assets/images/icons/location.png) 0 19px no-repeat; padding: 15px 0 0 18px; margin: 15px 0 0; border-top: #e5e5e5 solid 1px;}
+.ProductListSec .Product .detail ul.detailPoints li { padding:4px 0 4px 23px; font-size: 14px; width: 50%; float: left; }
+.ProductListSec .Product .detail ul.detailPoints li span{ margin-left: 10px; color: #232b2b; }
+.ProductListSec .Product .detail ul.detailPoints li.year { background: url(../../assets/icons/calender.svg) 0 3px no-repeat; background-size: 20px 20px;}
+.ProductListSec .Product .detail ul.detailPoints li.km { background: url(../../assets/icons/meter.svg) 0 3px no-repeat; background-size: 20px 20px;}
+.ProductListSec .Product .detail ul.detailPoints li.cc { background: url(../../assets/icons/engine-power.svg) 0 3px no-repeat; background-size: 20px 20px;}
+.ProductListSec .Product .detail ul.detailPoints li.owner { background: url(../../assets/icons/user.svg) 0 3px no-repeat; background-size: 20px 20px;}
+.ProductListSec .Product .detail p.location { background: url(../../assets/images/icons/location.png) 0 19px no-repeat; padding: 15px 0 0 18px; margin: 15px 0 0; border-top: #e5e5e5 solid 1px; color: #232b2b;}
 .ProductListSec .pagination { text-align: center; }
 .ProductListSec .pagination li { height: 40px; padding: 0; }
 .ProductListSec .pagination li:last-child { margin-left:30px; }
@@ -133,10 +134,10 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .ProductForm .form-group input[type="text"] { background: #e9eaea; height: 40px; border-radius: 4px; box-shadow: none; border: none; box-sizing: border-box; color: #333; padding: 5px 10px; }
 .ProductForm .form-group input[type="text"]::placeholder { color: #666; }
 .ProductForm .form-group input[type="text"]:not(.browser-default):focus:not([readonly]) {box-shadow:none;}
-.ProductForm .form-group input.name { background:#e9eaea url(../../assets/images/icons/name.png) 370px 9px no-repeat; }
-.ProductForm .form-group input.contact { background:#e9eaea url(../../assets/images/icons/mobile.png) 370px 9px no-repeat; }
-.ProductForm .form-group input.email { background:#e9eaea url(../../assets/images/icons/email.png) 370px 9px no-repeat; }
-.ProductForm .form-group .btn { background: #ff0000; padding: 6px 30px; border-radius: 24px; height: 48px; font-size: 20px; font-weight: bold; text-transform: capitalize; box-shadow: none; margin-left: 10px; }
+.ProductForm .form-group input.name { background:#e9eaea url(../../assets/images/icons/name.png) 382px 9px no-repeat; }
+.ProductForm .form-group input.contact { background:#e9eaea url(../../assets/images/icons/mobile.png) 382px 9px no-repeat; }
+.ProductForm .form-group input.email { background:#e9eaea url(../../assets/images/icons/email.png) 382px 9px no-repeat; }
+.ProductForm .form-group .btn { background: #ff0000; padding: 6px 30px; border-radius: 24px; height: 48px; font-size: 20px; font-weight: bold; text-transform: capitalize; box-shadow: none; margin-left: 10px; width: 236px;}
 
 .vehicleSummarySec, .vehicleReportSec { padding: 50px 12px 0 0!important; }
 .vehicleSummary, .vehicleReport { box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17); background-color: #ffffff; border-radius: 5px; padding:40px; }
@@ -256,4 +257,8 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
   display: flex;
   justify-content: center;
   align-items: center;
+}
+[type="checkbox"].filled-in:checked+span:not(.lever):before {
+  top: 1px !important;
+  left: 0px !important;
 }

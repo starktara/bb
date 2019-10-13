@@ -24,7 +24,7 @@ const VehicleMetaData = () => {
             </Grid>
             <Grid item xs={12} md={12} sm={12} lg={12} className="vehicleReportSec">
                 <div className="vehicleReport center-align">
-                    <h2>More details about the motorcycle</h2>
+                    <h2>Inspection Report</h2>
                     <div><img src={headingLines} alt=""/></div><br/>
                     <p>This bike has gone through a thorough and is certified by our auto experts having extensive experience.</p>
                     <p>It has also gone through a refurbishment process and is absolutely ready to take you on your adventurous journey.</p>

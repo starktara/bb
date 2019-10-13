@@ -94,12 +94,6 @@ form {
 .ProductListSec .Product .detail {
   padding: 19px;
 }
-.ProductListSec .Product .detail h3 {
-  font-size: 18px;
-  padding-bottom: 0;
-  font-weight: bold;
-  text-align: center;
-}
 .ProductListSec .Product .detail p.price {
   font-size: 20px;
   color: #ff0000;
@@ -126,27 +120,6 @@ form {
   font-size: 14px;
   width: 50%;
   float: left;
-}
-.ProductListSec .Product .detail ul.detailPoints li span{
-  margin-left: 10px;
-}
-/* .ProductListSec .Product .detail ul.detailPoints li.year {
-  background: url(../../assets/images/icons/calender.png) 0 7px no-repeat;
-}
-.ProductListSec .Product .detail ul.detailPoints li.km {
-  background: url(../../assets/images/icons/km.png) 0 7px no-repeat;
-}
-.ProductListSec .Product .detail ul.detailPoints li.cc {
-  background: url(../../assets/images/icons/cc.png) 0 7px no-repeat;
-}
-.ProductListSec .Product .detail ul.detailPoints li.owner {
-  background: url(../../assets/images/icons/owner.png) 0 7px no-repeat;
-} */
-.ProductListSec .Product .detail p.location {
-  background: url(../../assets/images/icons/location.png) 0 19px no-repeat;
-  padding: 15px 0 0 18px;
-  margin: 15px 0 0;
-  border-top: #e5e5e5 solid 1px;
 }
 .ProductListSec .pagination {
   text-align: center;
@@ -319,25 +292,6 @@ form {
 .ProductForm
   .form-group
   input[type="text"]:not(.browser-default):focus:not([readonly]) {
-  box-shadow: none;
-}
-.ProductForm .form-group input.name {
-  background: #e9eaea url(../../assets/images/icons/name.png) 340px 9px no-repeat;
-}
-.ProductForm .form-group input.contact {
-  background: #e9eaea url(../../assets/images/icons/mobile.png) 340px 9px no-repeat;
-}
-.ProductForm .form-group input.email {
-  background: #e9eaea url(../../assets/images/icons/email.png) 340px 9px no-repeat;
-}
-.ProductForm .form-group .btn {
-  background: #ff0000;
-  padding: 6px 30px;
-  border-radius: 24px;
-  height: 48px;
-  font-size: 20px;
-  font-weight: bold;
-  text-transform: capitalize;
   box-shadow: none;
 }
 

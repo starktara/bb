@@ -222,7 +222,7 @@ const Sell = props => {
             <Banner
               navigation="Sell"
               heading="Sell"
-              text="Sell your vehicle here"
+              text="Sell any Two-Wheeler"
               path={props.location.pathname}
             />
           </div>

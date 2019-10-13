@@ -81,8 +81,8 @@ class CategoryPage extends Component {
       vehicles = <h2>'No Vehicles Found!'</h2>;
     }
 
-    let navigation = categoryData[this.props.match.params.category].name;
-    let heading = categoryData[this.props.match.params.category].name;
+    let navigation = categoryData[this.props.match.params.category].name.replace('Bike', 'Motorcycle');
+    let heading = categoryData[this.props.match.params.category].name.replace('Bike', 'Motorcycle');
     let text =
       "Motorcycles are available at easy EMI starting at ₹2,000*. Your  dream bike is not a distant dream now.";
 

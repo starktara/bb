@@ -1,11 +1,70 @@
 # bb
-TODO -
-1) Complete Bike Detail page UI
-2) Write filter queries for category page
-3) Send data to details page from category page and reduxify details page accordingly 
-4) Integrate Locate store page with elastic and write queries for the same
-5) Add icons and background image to Locate store page
-6) Make header and footer responsive and independent of Materializecss library
 
-Feedback Changes - 
-1) Chage Category icons on homepage
+##TODO -
+
+```
+-- : Indicaates Done
+```
+
+###Category Page:-
+
+--1) Breadcrumb section, page name should be Motorcycles.
+
+--2) Bike detail blocks section, Motorcycle name should be left aligned.
+
+--3) Blue color of text has been used in bike detail blocks. It should be grey as per design.
+
+--4) Icons in bike detail block section (engine, year, km's) are different than the provided, also the icon for KM's driven is cropped.
+
+--5) Filter section sequence should be City, Budget, Brand, Manufacturing Year, Kilometers.
+
+
+###Product Detail Page:-
+
+1) Please rework in vehicle specifications. Each specification is not aligned properly.   Like name of the bike needs to be left alligned (Needs clarity)
+
+--2) Form Should be like the attached one (Ref-01).
+
+--3) Please rename the two headings as per the attachment (Ref-02 & Ref-03).
+
+
+###Sell Page:-
+--1) Breadcrumb text should be "Sell Any Two-Wheeler".
+
+2) Steps to sell your two-wheeler, this whole section is missing, attaching a reference file (Ref-04). (Need icons)
+
+3) The design of the form is different than the provided one, attaching a reference file (Ref-05).
+
+4) BikeBazaar Advantage (Selling process) section is missing, attaching a reference file (Ref-06).
+
+ 
+###Become a Franchise Owner Page:-
+1) Breadcrumb should as per design, attaching reference file (Ref-07).
+
+2) About BikeBazaar section is different than the provided one, please rework on this, attaching reference file (Ref-08).
+
+4) BikeBazaar Advantage section is also different than the provided one, please rework on this, attaching a file (Ref-09)
+
+5) The form is completely different, please rework. Attaching a reference file (Ref-010).
+
+6) Pre and Post Launch support section is incomplete. Ref-BB-Franchise-Owner.jpg
+
+7) BikeBazaar Store Section is missing at the bottom. Ref-BB-Franchise-Owner.jpg
+
+ 
+###FAQs Page:-
+1) Please put the provided answers instead of the Lorem Ipsum. (Need content)
+
+ 
+###Privacy Policy:-
+
+1) All the content is missing. (Already there, needs to be verified)
+
+ 
+###Terms & Conditions Page:-
+1) Not Completed
+
+
+###Contact Us Page:-
+1) Please rework the contact information and form section. Please ref an attached file (Ref-011) (Needs Clarity)
+2) Google map is not showing. – Error is coming on the control.

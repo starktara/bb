@@ -22,7 +22,6 @@ const Navigation = () => {
       <h5>Filter by</h5>
       <div className="filterSec">
         <CityWidget />
-        <YearWidget startYear={2004} endYear={2019} />
         <BudgetWidget budget={[0, 15000, 25000, 35000, 45000, 55000, 100000]} />
         <BrandWidget
           brands={[
@@ -36,6 +35,7 @@ const Navigation = () => {
             "KTM"
           ]}
         />
+        <YearWidget startYear={2004} endYear={2019} />
         <KmWidget />
       </div>
     </Grid>

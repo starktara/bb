@@ -1,22 +1,9 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { Link } from 'react-router-dom';
-import { makeStyles } from "@material-ui/core/styles";
-import CalendarTodayOutlinedIcon from '@material-ui/icons/CalendarTodayOutlined';
-import OfflineBoltOutlinedIcon from '@material-ui/icons/OfflineBoltOutlined';
-import SpeedOutlinedIcon from '@material-ui/icons/SpeedOutlined';
-import PersonOutlinedIcon from '@material-ui/icons/PersonOutlined';
-
-const useStyle = makeStyles({
-  icon: {
-    fontSize: 16,
-    color: '#a4a3a3',
-  }
-})
 
 const Card = props => {
 
-  const classes = useStyle();
   const vehicleImagePath = '../../vehicles/';
   return (
     <Grid item component="div" lg={4} md={6} sm={12} xs={12} className="Prod">
@@ -34,19 +21,15 @@ const Card = props => {
               </p>
             <ul className="detailPoints">
               <li className="year">
-                <CalendarTodayOutlinedIcon className={classes.icon}/>
                 <span>{props.year}</span>
               </li>
               <li className="km">
-                <SpeedOutlinedIcon className={classes.icon}/>
                 <span>{props.kms} KMs</span>
               </li>
               <li className="cc">
-                <OfflineBoltOutlinedIcon className={classes.icon}/>
                 <span>{props.cc} CC</span>
               </li>
               <li className="owner">
-                <PersonOutlinedIcon className={classes.icon} />
                 <span>1<sup>st</sup> Owner</span>
               </li>
             </ul><br className="clr" />          
