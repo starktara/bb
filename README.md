@@ -31,7 +31,7 @@
 ### Sell Page:-
 --1) Breadcrumb text should be "Sell Any Two-Wheeler".
 
-2) Steps to sell your two-wheeler, this whole section is missing, attaching a reference file (Ref-04). (Need icons)
+2) Steps to sell your two-wheeler, this whole section is missing, attaching a reference file (Ref-04). (WIP)
 
 3) The design of the form is different than the provided one, attaching a reference file (Ref-05).
 

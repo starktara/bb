@@ -1,7 +1,7 @@
 .wapper {
   margin: 40px auto;
 }
-.book-appointment-heading {
+.subHeading {
   padding-top: 43.8px;
   padding-bottom: 15px;
   font-weight: 800;
@@ -102,4 +102,9 @@
 .invalid-feedback{
   color: #ff0000;
 
+}
+.steps{
+  width: 900px;
+  height: 360px;
+  background: url(../../assets/steps-to-sell.svg) 0 3px no-repeat; background-size: 900px 360px;
 }
