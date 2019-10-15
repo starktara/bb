@@ -31,7 +31,7 @@
 ### Sell Page:-
 --1) Breadcrumb text should be "Sell Any Two-Wheeler".
 
---2) Steps to sell your two-wheeler, this whole section is missing, attaching a reference file (Ref-04). (WIP)
+--2) Steps to sell your two-wheeler, this whole section is missing, attaching a reference file (Ref-04)
 
 3) The design of the form is different than the provided one, attaching a reference file (Ref-05).
 
@@ -43,13 +43,13 @@
 
 --2) About BikeBazaar section is different than the provided one, please rework on this, attaching reference file (Ref-08).
 
-4) BikeBazaar Advantage section is also different than the provided one, please rework on this, attaching a file (Ref-09)
+--3) BikeBazaar Advantage section is also different than the provided one, please rework on this, attaching a file (Ref-09)
 
-5) The form is completely different, please rework. Attaching a reference file (Ref-010).
+4) The form is completely different, please rework. Attaching a reference file (Ref-010).
 
-6) Pre and Post Launch support section is incomplete. Ref-BB-Franchise-Owner.jpg
+5) Pre and Post Launch support section is incomplete. Ref-BB-Franchise-Owner.jpg
 
-7) BikeBazaar Store Section is missing at the bottom. Ref-BB-Franchise-Owner.jpg
+6) BikeBazaar Store Section is missing at the bottom. Ref-BB-Franchise-Owner.jpg
 
  
 ### FAQs Page:-

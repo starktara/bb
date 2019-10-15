@@ -564,29 +564,24 @@ const BecomeFranchiseOwner = props => {
                       <h3>Strong Online Presence</h3>
                     </Grid>
                   </Grid>
-                  <Grid
-                    container
-                    component="div"
-                    direction="row"
-                    className="advantage1"
-                  >
+                  <Grid container component="div" direction="row" className="advantage1">
                     <Grid item xs={10} sm={10} md={10} lg={10}>
-                      <h3>Certified Two-Wheelers</h3>
+                      <h3>Showroom Branding & Exhaustive<br/>Guidelines for CI of Showroom</h3>
                     </Grid>
                     <Grid item xs={2} sm={2} md={2} lg={2} className="icon">
                       <div className="advantageIconRight">
-                        <img className="rupees" src={certifiedIcon} alt="" />
+                        <img className="rupees" src={strongOnlinePresence} alt="" />
                       </div>
                     </Grid>
                   </Grid>
                   <Grid container component="div" direction="row" className="advantage">
                     <Grid item xs={2} sm={2} md={2} lg={2}>
                       <div className="advantageIconLeft">
-                        <img className="rupees" src={strongItInfra} alt="" />
+                        <img className="rupees" src={strongOnlinePresence} alt="" />
                       </div>
                     </Grid>
                     <Grid item xs={10} sm={10} md={10} lg={10}>
-                      <h3>Strong IT Infrastructure</h3>
+                      <h3>Training & Development for<br/>High Performance</h3>
                     </Grid>
                   </Grid>
               </Grid>
@@ -597,11 +592,11 @@ const BecomeFranchiseOwner = props => {
                 <Grid container component="div" direction="row" className="advantage">
                     <Grid item xs={2} md={2} lg={2}>
                       <div className="advantageIconLeft">
-                        <img className="rupees" src={certifiedIcon} alt=""/>
+                        <img className="rupees" src={strongOnlinePresence} alt=""/>
                       </div>
                     </Grid>
                     <Grid item xs={10} md={10} lg={10}>
-                      <h3>Strong Online Presence</h3>
+                      <h3>Online Demand Generation<br/>& BTL Activities</h3>
                     </Grid>
                   </Grid>
                   <Grid
@@ -611,22 +606,22 @@ const BecomeFranchiseOwner = props => {
                     className="advantage1"
                   >
                     <Grid item xs={10} sm={10} md={10} lg={10}>
-                      <h3>Certified Two-Wheelers</h3>
+                      <h3>Tools and Technologies for<br/>Business Efficiency</h3>
                     </Grid>
                     <Grid item xs={2} sm={2} md={2} lg={2} className="icon">
                       <div className="advantageIconRight">
-                        <img className="rupees" src={certifiedIcon} alt="" />
+                        <img className="rupees" src={strongOnlinePresence} alt="" />
                       </div>
                     </Grid>
                   </Grid>
                   <Grid container component="div" direction="row" className="advantage">
                     <Grid item xs={2} sm={2} md={2} lg={2}>
                       <div className="advantageIconLeft">
-                        <img className="rupees" src={buyerIcon} alt="" />
+                        <img className="rupees" src={strongOnlinePresence} alt="" />
                       </div>
                     </Grid>
                     <Grid item xs={10} sm={10} md={10} lg={10}>
-                      <h3>Strong IT Infrastructure</h3>
+                      <h3>Qualified Team & Dedicated<br/>Call Center</h3>
                     </Grid>
                   </Grid>
               </Grid>
