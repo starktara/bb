@@ -40,6 +40,12 @@ const useStyles = makeStyles(theme => ({
         color: '#232b2b',
         letterSpacing: 0.53,
         fontWeight: 600
+    },
+    collapsible:{
+        '& .MuiExpansionPanelDetails-root':{
+            fontSize: 17,
+            letterSpacing: 0.53
+        }
     }
   }));
 
@@ -88,7 +94,7 @@ const Faq = (props) => {
                             <p className={classes.faqSteps}>
                                 Step 3: You will be shown multiple options to select from for the two-wheeler you want to buy, select any of then to see further.
                             </p>
-                            <ExpansionPanel>
+                            <ExpansionPanel className={classes.collapsible}>
                                 <ExpansionPanelSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
@@ -97,11 +103,12 @@ const Faq = (props) => {
                                 I want to see two wheeler nearest to my location how do i do it?
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                    sit amet blandit leo lobortis eget.
+                                After selecting the two-wheeler category, you can use the “Sort By” option to see the 
+                                two-wheelers nearest to your location.<br/><br/>
+                                Another way to see two-wheeler nearest to your location is by using the “Locate Store” feature, through which you can find out the BikeBazaar store nearest to your location. 
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
-                            <ExpansionPanel>
+                            <ExpansionPanel className={classes.collapsible}>
                                 <ExpansionPanelSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
@@ -110,11 +117,12 @@ const Faq = (props) => {
                                 I liked on of the listed Bike and want to see it, what should i do next?
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                    sit amet blandit leo lobortis eget.
+                                When you like any two-wheeler, you just need to share your details 
+                                (Name, Mobile Number & Email ID) and BikeBazaar will help you with all the details related to the location of the BikeBazaar store.<br/><br/>
+                                You can visit the store and have a look at the bike and inspect it on all the parameters crucial for you.
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
-                            <ExpansionPanel>
+                            <ExpansionPanel className={classes.collapsible}>
                                 <ExpansionPanelSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
@@ -123,11 +131,15 @@ const Faq = (props) => {
                                 How can i be assured of the vehicle's quality? What if i see some issue in the bike after purchasing?
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                    sit amet blandit leo lobortis eget.
+                                All the bikes available at BikeBazaar store goes through a thorough inspection by auto experts.<br/><br/>
+                                Then it goes through a thorough refurbishment process and all the issues are resolved.<br/><br/>
+                                So, when a bike is displayed for a sale through BikeBazaar store, 
+                                it’s free of any issues and you can rest assured of its quality.<br/><br/>
+                                All the vehicles are also covered with "Buyer protection" (Any unforeseen issue in a week’s time is resolved for Free) and "Free 6 Months' Warranty" (warranty on Engine & Transmission, extendable up-to 1 Year).<br/><br/>
+                                So, you can buy the vehicle with "Zero Risk" from BikeBazaar stores.
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
-                            <ExpansionPanel>
+                            <ExpansionPanel className={classes.collapsible}>
                                 <ExpansionPanelSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
@@ -137,11 +149,11 @@ const Faq = (props) => {
                                 Can you help me with this
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                    sit amet blandit leo lobortis eget.
+                                Nothing can stop you from buying your dream bike, not even financial issues.<br/><br/>
+                                BikeBazaar provides financial assistance to you through which you can purchase your dream bike at EMI starting at as low as Rs 2000.
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
-                            <ExpansionPanel>
+                            <ExpansionPanel className={classes.collapsible}>
                                 <ExpansionPanelSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
@@ -150,11 +162,12 @@ const Faq = (props) => {
                                 How can i buy the bike at low cost EMI?
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                    sit amet blandit leo lobortis eget.
+                                If you want to avail the facility of low-cost EMI for the dream bike you want to purchase then you just need to show the interest in taking the loan by clicking on the checkbox “Interested in taking a loan”, while sharing your details.<br/><br/>
+                                Our team will help you in taking the loan with low-cost EMI 
+                                even if you don’t purchase the bike from the BikeBazaar store and buy it from somewhere else.
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
-                            <ExpansionPanel>
+                            <ExpansionPanel className={classes.collapsible}>
                                 <ExpansionPanelSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
@@ -163,8 +176,8 @@ const Faq = (props) => {
                                 I have decided to buy a bike but, have some doubts about document transfer... Will it be Hassle-free?
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                    sit amet blandit leo lobortis eget.
+                                Hassle-free document transfer is one of the biggest advantages of buying the used two-wheeler form BikeBazaar store.<br/><br/>
+                                We make all the efforts in making the process of transfer of ownership very smooth for both buyer and seller. 
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
                         </Paper>

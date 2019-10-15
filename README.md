@@ -47,18 +47,18 @@
 
 4) The form is completely different, please rework. Attaching a reference file (Ref-010).
 
-5) Pre and Post Launch support section is incomplete. Ref-BB-Franchise-Owner.jpg
+--5) Pre and Post Launch support section is incomplete. Ref-BB-Franchise-Owner.jpg
 
 6) BikeBazaar Store Section is missing at the bottom. Ref-BB-Franchise-Owner.jpg
 
  
 ### FAQs Page:-
-1) Please put the provided answers instead of the Lorem Ipsum. (Need content)
+--1) Please put the provided answers instead of the Lorem Ipsum. (Need content)
 
  
 ### Privacy Policy:-
 
-1) All the content is missing. (Already there, needs to be verified)
+--1) All the content is missing. (Already there, needs to be verified)
 
  
 ### Terms & Conditions Page:-
@@ -66,5 +66,5 @@
 
 
 ### Contact Us Page:-
-1) Please rework the contact information and form section. Please ref an attached file (Ref-011) (Needs Clarity)
+1) Please rework the contact information and form section. Please ref an attached file (Ref-011)
 2) Google map is not showing. – Error is coming on the control.
