@@ -11,6 +11,7 @@ import certifiedIcon from "../../assets/images/icons/certified.png";
 import buyerIcon from "../../assets/images/icons/buyer.png";
 import emiIcon from "../../assets/images/icons/emi.png";
 import transferIcon from "../../assets/images/icons/transfer.png";
+import storeImage from "../../assets/bike-bazaar-store.png";
 import Tooltip from "../UI/Tooltip/Tooltip";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from '@material-ui/core/Divider';
@@ -87,6 +88,13 @@ const useStyles = makeStyles(theme => ({
     width: 1,
     height: 395,
     backgroundColor: '#a7aaaa'
+  },
+  about:{
+    backgroundImage: 'url("'+storeImage+'")',
+    backgroundPosition: 'right',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 500,
+    backgroundPositionY: -2
   }
 }));
 
@@ -224,7 +232,7 @@ const BecomeFranchiseOwner = props => {
           <Banner
             navigation="Become Franchise Owner"
             heading="Become Franchise Owner"
-            text="Become Franchise Owner"
+            text=""
             path={props.location.pathname}
           />
 
@@ -240,16 +248,16 @@ const BecomeFranchiseOwner = props => {
               justify="center"
               alignItems="center"
             >
-              <Grid item xs={12} sm={12} md={12} lg={12}>
+              <Grid item xs={12} sm={12} md={12} lg={12} className={classes.about}>
                 <h4 className="redhead">About BikeBazaar</h4>
                 <p className="about-bb">
-                  BikeBazaar aims to provide a hassle-free experience to anyone looking to buy/sell a pre-owned 2 wheeler with the help of technology & team of experts.
+                  BikeBazaar aims to provide a hassle-free experience to anyone looking to<br/>buy/sell a pre-owned 2 wheeler with the help of technology & team of<br/ >experts.
                   <br/>
                   <br/>
-                  For the buyer we ensure quality and make the process smooth by offering <span className={classes.bold}>"Free 6 Month's Warranty"</span>, <span className={classes.bold}>"Certified Two Wheelers"</span>, <span className={classes.bold}>"Low Cost EMI"</span>, <span className={classes.bold}>Hassle-Free Document Transfer.</span>
+                  For the buyer we ensure quality and make the process smooth by offering<br/><span className={classes.bold}>"Free 6 Month's Warranty"</span>, <span className={classes.bold}>"Certified Two Wheelers"</span>, <span className={classes.bold}>"Low Cost EMI"</span>,<br/><span className={classes.bold}>"Hassle-Free Document Transfer"</span> and more.
                   <br/>
                   <br/>
-                  We are building up a hybrid model (Mix of Online and Offline) to bring structure in this domian and ensure a great and hassle-free experience for our Customers.
+                  We are building up a hybrid model (Mix of Online and Offline) to bring structure in this<br/>domian and ensure a great and hassle-free experience for our Customers.
                   <br/>
                   <br/>
                   And we are offering a reliable and hassle-free way to buy and sell any Pre-Owned Two-Wheeler, stakeholders would rely on BikeBazaar for their purchasing or selling decisions regarding their vehicles.

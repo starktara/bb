@@ -39,9 +39,9 @@
 
  
 ### Become a Franchise Owner Page:-
-1) Breadcrumb should as per design, attaching reference file (Ref-07).
+--1) Breadcrumb should as per design, attaching reference file (Ref-07).
 
-2) About BikeBazaar section is different than the provided one, please rework on this, attaching reference file (Ref-08).
+--2) About BikeBazaar section is different than the provided one, please rework on this, attaching reference file (Ref-08).
 
 4) BikeBazaar Advantage section is also different than the provided one, please rework on this, attaching a file (Ref-09)
 
