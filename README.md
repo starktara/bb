@@ -6,6 +6,8 @@
 -- : Indicaates Done
 ```
 
+### Pending Issues - 4/22
+
 ### Category Page:-
 
 --1) Breadcrumb section, page name should be Motorcycles.
@@ -67,4 +69,5 @@
 
 ### Contact Us Page:-
 --1) Please rework the contact information and form section. Please ref an attached file (Ref-011)
+
 --2) Google map is not showing. – Error is coming on the control.(API Key with billing information needs to be added for this)
