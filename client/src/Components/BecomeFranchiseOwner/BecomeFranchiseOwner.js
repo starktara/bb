@@ -98,6 +98,12 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 500,
     backgroundPositionY: -2
+  },
+  label:{
+    fontWeight: 600,
+    fontSize: 15,
+    letterSpacing: '0.83px',
+    color: '#000'
   }
 }));
 
@@ -357,7 +363,8 @@ const BecomeFranchiseOwner = props => {
                 lg={12}
                 className="center-align"
               >
-                <h4>Share Your Details to own a BikeBazaar Store</h4>
+                <h4 className="redhead">Share Your Details to own a BikeBazaar Store</h4>
+                <img src={blackHeadingLines} alt=""/>
               </Grid>
                   <form action="" id="shareYourDetailsForm" className={classes.form}>
                     <Grid container component="div" direction="row">
@@ -370,7 +377,7 @@ const BecomeFranchiseOwner = props => {
                         >
                           <Grid item xs={12} sm={12} md={5} lg={5}>
                             <label className="fieldname" htmlFor="name">
-                              Name* :
+                              <span className={classes.label}>Name:*</span>&nbsp;&nbsp;(eg. Varunam Reddy)
                             </label>
                             <input
                               type="text"
@@ -383,7 +390,7 @@ const BecomeFranchiseOwner = props => {
                               }
                               name="name"
                               id=""
-                              placeholder="Your Name"
+                              placeholder=""
                               onBlur={event =>
                                 updateFormdata(event, formData)
                               }
@@ -396,7 +403,7 @@ const BecomeFranchiseOwner = props => {
                           </Grid>
                           <Grid item xs={12} sm={12} md={5} lg={5}>
                             <label className="fieldname" htmlFor="mobile">
-                              Mobile No* :
+                            <span  className={classes.label}>Mobile No:*</span>&nbsp;&nbsp;(eg. +91 9999999999)
                             </label>
                             <input
                               type="text"
@@ -408,7 +415,7 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              placeholder="Mobile No."
+                              placeholder=""
                               onBlur={event =>
                                 updateFormdata(event, formData)
                               }
@@ -421,7 +428,7 @@ const BecomeFranchiseOwner = props => {
                           </Grid>
                           <Grid item xs={12} sm={12} md={5} lg={5}>
                             <label className="fieldname" htmlFor="email">
-                              Email Id* :
+                              <span className={classes.label}>Email:*</span>&nbsp;&nbsp;(eg. abc@gmail.com)
                             </label>
                             <input
                               type="text"
@@ -433,7 +440,7 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              placeholder="Your Email"
+                              placeholder=""
                               onBlur={event =>
                                 updateFormdata(event, formData)
                               }
@@ -446,7 +453,7 @@ const BecomeFranchiseOwner = props => {
                           </Grid>
                           <Grid item xs={12} sm={12} md={5} lg={5}>
                             <label className="fieldname" htmlFor="city">
-                              City* :
+                              <span className={classes.label}>City:*</span>&nbsp;&nbsp;(eg. Pune, Kolkata)
                             </label>
                             <input
                               type="text"
@@ -458,7 +465,7 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              placeholder="City"
+                              placeholder=""
                               onBlur={event =>
                                 updateFormdata(event, formData)
                               }
@@ -471,7 +478,7 @@ const BecomeFranchiseOwner = props => {
                           </Grid>
                           <Grid item xs={12} sm={12} md={5} lg={5}>
                             <label className="fieldname" htmlFor="variant">
-                              Address :
+                              <span className={classes.label}>Address:*</span>&nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
                             </label>
                             <input
                               type="text"
@@ -483,7 +490,7 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              placeholder="Address"
+                              placeholder=""
                               onBlur={event =>
                                 updateFormdata(event, formData)
                               }
@@ -496,7 +503,7 @@ const BecomeFranchiseOwner = props => {
                           </Grid>
                           <Grid item xs={12} sm={12} md={5} lg={5}>
                             <label className="fieldname" htmlFor="pin">
-                              PIN :
+                              <span className={classes.label}>Pincode:*</span>&nbsp;&nbsp;(eg. 110075)
                             </label>
                             <input
                               type="text"
@@ -508,7 +515,7 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              placeholder="PIN Code"
+                              placeholder=""
                               onBlur={event =>
                                 updateFormdata(event, formData)
                               }
@@ -523,14 +530,7 @@ const BecomeFranchiseOwner = props => {
                       </Grid>
                     </Grid>
                     <Grid container component="div" direction="row">
-                      <Grid
-                        item
-                        xs={12}
-                        sm={12}
-                        md={12}
-                        lg={12}
-                        className="center-align"
-                      >
+                      <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
                         <div className="form-group">
                           <button
                             type="button"

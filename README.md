@@ -45,7 +45,7 @@
 
 --3) BikeBazaar Advantage section is also different than the provided one, please rework on this, attaching a file (Ref-09)
 
-4) The form is completely different, please rework. Attaching a reference file (Ref-010).
+--4) The form is completely different, please rework. Attaching a reference file (Ref-010).
 
 --5) Pre and Post Launch support section is incomplete. Ref-BB-Franchise-Owner.jpg
 
@@ -58,7 +58,7 @@
  
 ### Privacy Policy:-
 
---1) All the content is missing. (Already there, needs to be verified)
+--1) All the content is missing.
 
  
 ### Terms & Conditions Page:-
@@ -66,5 +66,5 @@
 
 
 ### Contact Us Page:-
-1) Please rework the contact information and form section. Please ref an attached file (Ref-011)
-2) Google map is not showing. – Error is coming on the control.
+--1) Please rework the contact information and form section. Please ref an attached file (Ref-011)
+--2) Google map is not showing. – Error is coming on the control.(API Key with billing information needs to be added for this)
