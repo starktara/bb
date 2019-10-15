@@ -9,6 +9,9 @@ import Banner from "../Banner/Banner";
 import headingLines from "../../assets/heading-lines.svg";
 import blackHeadingLines from '../../assets/black-heading-lines.svg';
 import stepsToSell from '../../assets/steps-to-sell.svg';
+import hfdt from '../../assets/hfdt.svg';
+import rp from '../../assets/rp.svg';
+import syv from '../../assets/syv.svg'; 
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import Tooltip from "../UI/Tooltip/Tooltip";
@@ -68,25 +71,52 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center'
   },
   steps:{
+    position: 'relative',
     width:900,
     height:360,
     backgroundImage: 'url("'+stepsToSell+'")',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '900px 360px',
-    marginLeft: 145
+    marginLeft: 145,
+    marginTop: 50
   },
   stepOne:{
-
+    position: 'absolute',
+    top: 50,
+    fontWeight: 600
   },
   stepTwo:{
-
+    position: 'absolute',
+    left: 268,
+    top: 30,
+    fontWeight: 600
   },
   stepThree:{
-
+    position: 'absolute',
+    left: 517,
+    fontWeight: 600
   },
   stepFour:{
-    
+    position: 'absolute',
+    left: 716,
+    top: -18,
+    fontWeight: 600
+  },
+  advantageHeading:{
+    color: '#232c2b',
+    fontSize: 36,
+    fontWeight: 800
+  },
+  advantageContainer:{
+    marginTop: 50
+  },
+  advantageSubHeading:{
+    fontSize: 19,
+    fontWeight: 600
+  },
+  advantageText:{
+    fontSize: 15
   }
 }));
 
@@ -617,18 +647,47 @@ const Sell = props => {
               </Grid>
             </Paper>
           </Grid>
-        <Grid item xs={11} sm={11} md={11} lg={11}>
-          <Paper className={classes.paper}>
-            <h3 className={classes.sellHeading}>Steps to Sell Your Two-Wheeler</h3>
-            <img alt="" src={blackHeadingLines} width="57" height="4"/>
-            <div className={classes.steps}>
-              <div className={classes.stepOne}>Step 1</div>
-              <div className={classes.stepTwo}>Step 2</div>
-              <div className={classes.stepThree}>Step 3</div>
-              <div className={classes.stepFour}>Step 4</div>
-            </div>
-          </Paper>
-        </Grid>
+          <Grid item xs={11} sm={11} md={11} lg={11}>
+            <Paper className={classes.paper}>
+              <h3 className={classes.sellHeading}>Steps to Sell Your Two-Wheeler</h3>
+              <img alt="" src={blackHeadingLines} width="57" height="4"/>
+              <div className={classes.steps}>
+                  <div className={classes.stepOne}>Share Your<br/>Two-Wheeler's Details</div>
+                  <div className={classes.stepTwo}>Inspection by our<br/>Auto Expert</div>
+                  <div className={classes.stepThree}>Document<br/>Verification</div>
+                  <div className={classes.stepFour}>Instant Payment For<br/>Your Two-Wheeler</div>
+              </div>
+            </Paper>
+          </Grid>
+          <Grid item xs={11} sm={11} md={11} lg={11}>
+            <Paper className={classes.paper}>
+              <h3 className={classes.advantageHeading}>BikeBazaar Advantage</h3>
+              <img alt="" src={headingLines} width="57" height="4"/>
+              <Grid container component="div" direction="row" justify="center" className={classes.advantageContainer}>
+                <Grid item xs={4} sm={4} md={4} lg={4}>
+                    <img src={rp} width={145} alt=""/>
+                      <div>
+                        <h5 className={classes.advantageSubHeading}>Get Right Price<br/>for your Vehicle</h5>
+                        <p className={classes.advantageText}>For any of your two-wheeler,<br/>you get the right market price</p>
+                      </div>
+                </Grid>
+                <Grid item xs={4} sm={4} md={4} lg={4}>
+                    <img src={syv} width={145} alt=""/>
+                      <div>
+                        <h5 className={classes.advantageSubHeading}>Sell your Vehicle<br/>in "1 Visit"</h5>
+                        <p className={classes.advantageText}>Any two-wheeler can be sold<br/>to us just in one visit.<br/>Now encash your two-wheeler<br/>within few hours</p>
+                      </div>
+                </Grid>
+                <Grid item xs={4} sm={4} md={4} lg={4}>
+                    <img src={hfdt} width={145} alt=""/>
+                      <div>
+                        <h5 className={classes.advantageSubHeading}>Hassle Free<br/>Document Transfer</h5>
+                        <p className={classes.advantageText}>Document transfer is facilitated and<br/>made easy for buyer and seller</p>
+                      </div>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Grid>
         </Grid>
       <Footer />
     </div>
