@@ -190,14 +190,14 @@ const Signup = props => {
   }, []);
   const submitForm = event => {
     event.preventDefault();
-    // axios
-    //   .post("/apis/leadDetail/insertSellrequest", formData)
-    //   .then(response => {
-    //     console.log(response);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    axios
+      .post("/apis/userDetail/insertUserDetails", formData)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
     setTooltipState({
       open: true,
