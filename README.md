@@ -21,7 +21,7 @@
 
 ### Product Detail Page:-
 
-1) Please rework in vehicle specifications. Each specification is not aligned properly.   Like name of the bike needs to be left alligned (Needs clarity)
+1) Please rework in vehicle specifications. Each specification is not aligned properly.   Like name of the bike needs to be left alligned
 
 --2) Form Should be like the attached one (Ref-01).
 
@@ -31,11 +31,11 @@
 ### Sell Page:-
 --1) Breadcrumb text should be "Sell Any Two-Wheeler".
 
-2) Steps to sell your two-wheeler, this whole section is missing, attaching a reference file (Ref-04). (WIP)
+--2) Steps to sell your two-wheeler, this whole section is missing, attaching a reference file (Ref-04). (WIP)
 
 3) The design of the form is different than the provided one, attaching a reference file (Ref-05).
 
-4) BikeBazaar Advantage (Selling process) section is missing, attaching a reference file (Ref-06).
+--4) BikeBazaar Advantage (Selling process) section is missing, attaching a reference file (Ref-06).
 
  
 ### Become a Franchise Owner Page:-
