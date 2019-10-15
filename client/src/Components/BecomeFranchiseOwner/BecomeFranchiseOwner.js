@@ -12,6 +12,9 @@ import buyerIcon from "../../assets/images/icons/buyer.png";
 import emiIcon from "../../assets/images/icons/emi.png";
 import transferIcon from "../../assets/images/icons/transfer.png";
 import storeImage from "../../assets/bike-bazaar-store.png";
+import strongItInfra from '../../assets/icons/strong-it-infra.svg'
+import strongOnlinePresence from '../../assets/icons/strong-online-presence.svg';
+import moreSalesThanEver from '../../assets/icons/more-than-sales.svg';
 import Tooltip from "../UI/Tooltip/Tooltip";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from '@material-ui/core/Divider';
@@ -279,63 +282,63 @@ const BecomeFranchiseOwner = props => {
             <br />
             <div className="franchiseAdvantageSec">
               <Grid container component="div" direction="row" className="advantage">
-                <Grid item xs={2} md={2} lg={2}>
+                <Grid item xs={1} md={1} lg={1}>
                   <div className="advantageIconLeft">
-                    <img className="rupees" src={certifiedIcon} alt="" />
+                    <img className="strong-presence" src={strongOnlinePresence} alt="" />
                   </div>
                 </Grid>
-                <Grid item xs={10} md={10} lg={10}>
+                <Grid item xs={11} md={11} lg={11}>
                   <h3>Strong Online Presence</h3>
                 </Grid>
               </Grid>
-              <Grid
-                container
-                component="div"
-                direction="row"
-                className="advantage1"
-              >
-                <Grid item xs={10} sm={10} md={10} lg={10}>
+              <Grid container component="div" direction="row" className="advantage1">
+                <Grid item xs={11} sm={11} md={11} lg={11}>
                   <h3>Certified Two-Wheelers</h3>
                 </Grid>
-                <Grid item xs={2} sm={2} md={2} lg={2} className="icon">
+                <Grid item xs={1} sm={1} md={1} lg={1} className="icon">
                   <div className="advantageIconRight">
-                    <img className="rupees" src={certifiedIcon} alt="" />
+                    <img className="certified" src={certifiedIcon} alt="" />
                   </div>
                 </Grid>
               </Grid>
               <Grid container component="div" direction="row" className="advantage">
-                <Grid item xs={2} sm={2} md={2} lg={2}>
+                <Grid item xs={1} sm={1} md={1} lg={1}>
                   <div className="advantageIconLeft">
-                    <img className="rupees" src={buyerIcon} alt="" />
+                    <img className="strong-infa" src={strongItInfra} alt="" />
                   </div>
                 </Grid>
-                <Grid item xs={10} sm={10} md={10} lg={10}>
+                <Grid item xs={11} sm={11} md={11} lg={11}>
                   <h3>Strong IT Infrastructure</h3>
                 </Grid>
               </Grid>
-              <Grid
-                container
-                component="div"
-                direction="row"
-                className="advantage1"
-              >
-                <Grid item xs={10} sm={10} md={10} lg={10} className="detail">
+              <Grid container component="div" direction="row" className="advantage1">
+                <Grid item xs={11} sm={11} md={11} lg={11} className="detail">
                   <h3>Dedicated Call-Center</h3>
                 </Grid>
-                <Grid item xs={2} sm={2} md={2} lg={2} className="icon">
+                <Grid item xs={1} sm={1} md={1} lg={1} className="icon">
                   <div className="advantageIconRight">
-                    <img className="rupees" src={emiIcon} alt="" />
+                    <img className="call-center" src={emiIcon} alt="" />
                   </div>
                 </Grid>
               </Grid>
               <Grid container component="div" direction="row" className="advantage">
-                <Grid item xs={2} sm={2} md={2} lg={2}>
+                <Grid item xs={1} sm={1} md={1} lg={1}>
                   <div className="advantageIconLeft">
-                    <img className="rupees" src={transferIcon} alt="" />
+                    <img className="more-sales" src={moreSalesThanEver} alt="" />
                   </div>
                 </Grid>
-                <Grid item xs={10} sm={10} md={10} lg={10}>
+                <Grid item xs={11} sm={11} md={11} lg={11}>
                   <h3>More Sales Than Ever</h3>
+                </Grid>
+              </Grid>
+              <Grid container component="div" direction="row" className="advantage1">
+                <Grid item xs={11} sm={11} md={11} lg={11} className="detail">
+                  <h3>BTL Activities and B2B Tieups</h3>
+                </Grid>
+                <Grid item xs={1} sm={1} md={1} lg={1} className="icon">
+                  <div className="advantageIconRight">
+                    <img className="call-center" src={emiIcon} alt="" />
+                  </div>
                 </Grid>
               </Grid>
             </div>
@@ -554,7 +557,7 @@ const BecomeFranchiseOwner = props => {
                     <Grid container component="div" direction="row" className="advantage">
                     <Grid item xs={2} md={2} lg={2}>
                       <div className="advantageIconLeft">
-                        <img className="rupees" src={certifiedIcon} alt=""/>
+                        <img className="rupees" src={strongOnlinePresence} alt=""/>
                       </div>
                     </Grid>
                     <Grid item xs={10} md={10} lg={10}>
@@ -579,7 +582,7 @@ const BecomeFranchiseOwner = props => {
                   <Grid container component="div" direction="row" className="advantage">
                     <Grid item xs={2} sm={2} md={2} lg={2}>
                       <div className="advantageIconLeft">
-                        <img className="rupees" src={buyerIcon} alt="" />
+                        <img className="rupees" src={strongItInfra} alt="" />
                       </div>
                     </Grid>
                     <Grid item xs={10} sm={10} md={10} lg={10}>
