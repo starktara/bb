@@ -6,13 +6,13 @@
 -- : Indicaates Done
 ```
 
-### Pending Issues - 7/25
+### Pending Issues - 5/25
 
 ### Homepage
 
-1) Remove check logo from header and plaace bb icon
+--1) Remove check logo from header and plaace bb icon
 
-2) Decrease header height extended
+--2) Decrease header height extended
 
 3) Slider image decrease height (From Sachin)
 
