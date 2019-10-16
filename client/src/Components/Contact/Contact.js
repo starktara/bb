@@ -45,7 +45,8 @@ const useStyles = makeStyles(theme => ({
     paddingRight: theme.spacing(2)
   },
   formError: {
-    color: "red"
+    color: "red",
+    fontSize: 13
   },
   label:{
     fontWeight: 600,

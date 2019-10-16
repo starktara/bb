@@ -6,7 +6,15 @@
 -- : Indicaates Done
 ```
 
-### Pending Issues - 4/22
+### Pending Issues - 7/25
+
+### Homepage
+
+1) Remove check logo from header and plaace bb icon
+
+2) Decrease header height extended
+
+3) Slider image decrease height (From Sachin)
 
 ### Category Page:-
 
@@ -35,7 +43,7 @@
 
 --2) Steps to sell your two-wheeler, this whole section is missing, attaching a reference file (Ref-04)
 
-3) The design of the form is different than the provided one, attaching a reference file (Ref-05).
+3) The design of the form is different than the provided one, attaching a reference file (WIP - 5 Text fields to be converted to Dropdown).
 
 --4) BikeBazaar Advantage (Selling process) section is missing, attaching a reference file (Ref-06).
 
