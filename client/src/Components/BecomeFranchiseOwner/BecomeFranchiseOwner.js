@@ -8,11 +8,11 @@ import Banner from "../Banner/Banner";
 import headingLines from "../../assets/heading-lines.svg";
 import blackHeadingLines from '../../assets/black-heading-lines.svg';
 import certifiedIcon from "../../assets/images/icons/certified.png";
-import buyerIcon from "../../assets/images/icons/buyer.png";
 import emiIcon from "../../assets/images/icons/emi.png";
-import transferIcon from "../../assets/images/icons/transfer.png";
 import storeImage from "../../assets/bike-bazaar-store.png";
 import strongItInfra from '../../assets/icons/strong-it-infra.svg'
+import callCentre from '../../assets/icons/call-centre.svg'
+import shakeHand from '../../assets/icons/shake-hand.svg'
 import strongOnlinePresence from '../../assets/icons/strong-online-presence.svg';
 import moreSalesThanEver from '../../assets/icons/more-than-sales.svg';
 import Tooltip from "../UI/Tooltip/Tooltip";
@@ -230,33 +230,16 @@ const BecomeFranchiseOwner = props => {
       {tooltip}
       <Header />
       <MainMenu />
-      <Grid
-        container
-        component="div"
-        direction="row"
-        justify="center"
-        alignItems="center"
-      >
+      <Grid container component="div" direction="row" justify="center" alignItems="center">
         <Grid item xs={11} sm={11} md={11} lg={11} className={classes.banner}>
-          <Banner
-            navigation="Become Franchise Owner"
-            heading="Become Franchise Owner"
-            text=""
-            path={props.location.pathname}
-          />
-
+          <Banner navigation="Become Franchise Owner" heading="Become Franchise Owner" text=""path={props.location.pathname}/>
         </Grid>
       </Grid>
 
       <Grid container direction="row" justify="center" alignItems="center">
         <Grid item xs={11} sm={11} md={11} lg={11}>
           <div className="paper">
-            <Grid
-              container
-              direction="row"
-              justify="center"
-              alignItems="center"
-            >
+            <Grid container direction="row" justify="center" alignItems="center">
               <Grid item xs={12} sm={12} md={12} lg={12} className={classes.about}>
                 <h4 className="redhead">About BikeBazaar</h4>
                 <p className="about-bb">
@@ -323,7 +306,7 @@ const BecomeFranchiseOwner = props => {
                 </Grid>
                 <Grid item xs={1} sm={1} md={1} lg={1} className="icon">
                   <div className="advantageIconRight">
-                    <img className="call-center" src={emiIcon} alt="" />
+                    <img className="call-centre" src={callCentre} alt="" />
                   </div>
                 </Grid>
               </Grid>
@@ -343,7 +326,7 @@ const BecomeFranchiseOwner = props => {
                 </Grid>
                 <Grid item xs={1} sm={1} md={1} lg={1} className="icon">
                   <div className="advantageIconRight">
-                    <img className="call-center" src={emiIcon} alt="" />
+                    <img className="btl" src={shakeHand} alt="" />
                   </div>
                 </Grid>
               </Grid>
@@ -355,32 +338,19 @@ const BecomeFranchiseOwner = props => {
         <Grid item xs={11} sm={11} md={11} lg={11}>
           <div className="paper">
             <Grid container component="div" direction="row">
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={12}
-                lg={12}
-                className="center-align"
-              >
+              <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
                 <h4 className="redhead">Share Your Details to own a BikeBazaar Store</h4>
                 <img src={blackHeadingLines} alt=""/>
               </Grid>
                   <form action="" id="shareYourDetailsForm" className={classes.form}>
                     <Grid container component="div" direction="row">
                       <Grid item xs={12} sm={12} md={12} lg={12}>
-                        <Grid
-                          container
-                          component="div"
-                          direction="row"
-                          justify="space-evenly"
-                        >
+                        <Grid container component="div" direction="row" justify="space-evenly">
                           <Grid item xs={12} sm={12} md={5} lg={5}>
                             <label className="fieldname" htmlFor="name">
                               <span className={classes.label}>Name:*</span>&nbsp;&nbsp;(eg. Varunam Reddy)
                             </label>
-                            <input
-                              type="text"
+                            <input type="text" name="name" id="name"
                               className={
                                 formData.name.error
                                   ? "invalid"
@@ -388,13 +358,9 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              name="name"
-                              id=""
-                              placeholder=""
                               onBlur={event =>
                                 updateFormdata(event, formData)
-                              }
-                            />
+                              }/>
                             {formData.name.error && (
                               <div className="invalid-feedback d-block">
                                 {formData.name.errorMessage}
@@ -405,9 +371,7 @@ const BecomeFranchiseOwner = props => {
                             <label className="fieldname" htmlFor="mobile">
                             <span  className={classes.label}>Mobile No:*</span>&nbsp;&nbsp;(eg. +91 9999999999)
                             </label>
-                            <input
-                              type="text"
-                              name="mobile"
+                            <input type="text" name="mobile"
                               className={
                                 formData.mobile.error
                                   ? "invalid"
@@ -415,11 +379,9 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              placeholder=""
                               onBlur={event =>
                                 updateFormdata(event, formData)
-                              }
-                            />
+                              }/>
                             {formData.mobile.error && (
                               <div className="invalid-feedback d-block">
                                 {formData.mobile.errorMessage}
@@ -430,9 +392,7 @@ const BecomeFranchiseOwner = props => {
                             <label className="fieldname" htmlFor="email">
                               <span className={classes.label}>Email:*</span>&nbsp;&nbsp;(eg. abc@gmail.com)
                             </label>
-                            <input
-                              type="text"
-                              name="email"
+                            <input type="text" name="email" id="email"
                               className={
                                 formData.email.error
                                   ? "invalid"
@@ -440,11 +400,9 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              placeholder=""
                               onBlur={event =>
                                 updateFormdata(event, formData)
-                              }
-                            />
+                              }/>
                             {formData.email.error && (
                               <div className="invalid-feedback d-block">
                                 {formData.email.errorMessage}
@@ -455,9 +413,7 @@ const BecomeFranchiseOwner = props => {
                             <label className="fieldname" htmlFor="city">
                               <span className={classes.label}>City:*</span>&nbsp;&nbsp;(eg. Pune, Kolkata)
                             </label>
-                            <input
-                              type="text"
-                              name="city"
+                            <input type="text" name="city" id="city"
                               className={
                                 formData.city.error
                                   ? "invalid"
@@ -465,11 +421,9 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              placeholder=""
                               onBlur={event =>
                                 updateFormdata(event, formData)
-                              }
-                            />
+                              }/>
                             {formData.city.error && (
                               <div className="invalid-feedback d-block">
                                 {formData.city.errorMessage}
@@ -480,9 +434,7 @@ const BecomeFranchiseOwner = props => {
                             <label className="fieldname" htmlFor="variant">
                               <span className={classes.label}>Address:*</span>&nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
                             </label>
-                            <input
-                              type="text"
-                              name="address"
+                            <input type="text" name="address" id="address"
                               className={
                                 formData.address.error
                                   ? "invalid"
@@ -490,11 +442,9 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              placeholder=""
                               onBlur={event =>
                                 updateFormdata(event, formData)
-                              }
-                            />
+                              }/>
                             {formData.address.error && (
                               <div className="invalid-feedback d-block">
                                 {formData.address.errorMessage}
@@ -505,9 +455,7 @@ const BecomeFranchiseOwner = props => {
                             <label className="fieldname" htmlFor="pin">
                               <span className={classes.label}>Pincode:*</span>&nbsp;&nbsp;(eg. 110075)
                             </label>
-                            <input
-                              type="text"
-                              name="pin"
+                            <input type="text" name="pin" id="pin"
                               className={
                                 formData.pin.error
                                   ? "invalid"
@@ -515,11 +463,9 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              placeholder=""
                               onBlur={event =>
                                 updateFormdata(event, formData)
-                              }
-                            />
+                              }/>
                             {formData.pin.error && (
                               <div className="invalid-feedback d-block">
                                 {formData.pin.errorMessage}
@@ -532,11 +478,7 @@ const BecomeFranchiseOwner = props => {
                     <Grid container component="div" direction="row">
                       <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
                         <div className="form-group">
-                          <button
-                            type="button"
-                            className={classes.submitButton+ ' btn'}
-                            onClick={submitForm}
-                          >
+                          <button type="button" className={classes.submitButton+ ' btn'} onClick={submitForm}>
                             Share
                           </button>
                         </div>
@@ -599,12 +541,7 @@ const BecomeFranchiseOwner = props => {
                       <h3>Online Demand Generation<br/>& BTL Activities</h3>
                     </Grid>
                   </Grid>
-                  <Grid
-                    container
-                    component="div"
-                    direction="row"
-                    className="advantage1"
-                  >
+                  <Grid container component="div" direction="row" className="advantage1">
                     <Grid item xs={10} sm={10} md={10} lg={10}>
                       <h3>Tools and Technologies for<br/>Business Efficiency</h3>
                     </Grid>

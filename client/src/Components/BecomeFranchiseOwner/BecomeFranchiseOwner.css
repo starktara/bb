@@ -101,8 +101,14 @@
   text-align: center;
   margin: 0 0 0 -50px;
 }
-.franchiseAdvantage .franchiseAdvantageSec .advantage1 .advantageIconRight img {
+.certified {
   margin: 20% 0;
+}
+.call-centre{
+  margin:  25% 0;
+}
+.btl{
+  margin: 32% 0;
 }
 .franchiseAdvantage .franchiseAdvantageSec .advantage1 h3 {
   font-size: 24px;
