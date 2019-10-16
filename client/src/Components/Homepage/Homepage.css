@@ -38,14 +38,14 @@ body {
   display: none;
 }
 .slider {
-  height: 480px !important;
+  height: 675px !important;
 }
 .slides {
-  height: 480px !important;
+  height: 675px !important;
 }
-.slider > ul > li > img{
+/* .slider > ul > li > img{
   background-size: 1350px 480px !important; 
-}
+} */
 .slides h4 {
   font-size: 32px;
   letter-spacing: 2px;
