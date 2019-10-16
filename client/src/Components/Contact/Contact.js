@@ -52,6 +52,18 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
     fontSize: 15,
     letterSpacing: '0.83px'
+  },
+  submit:{
+    background: '#ff0000',
+    padding: '6px 30px',
+    borderRadius: 24,
+    height: 48,
+    fontSize: 20,
+    fontWeight: 600,  
+    textTransform: 'capitalize',
+    boxShadow: 'none',
+    marginLeft: 10,
+    marginTop: 60
   }
 }));
 
@@ -335,6 +347,11 @@ const Contact = props => {
                         )}
                       </Grid>
                     </Grid>
+                    <Grid container component="div" direction="row" className={classes.banner}>
+                      <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
+                        <button type="button" class={classes.submit+' btn'}>Sell Your Bike</button>
+                      </Grid>
+                      </Grid>
                   </form>
                 </div>
               </Paper>

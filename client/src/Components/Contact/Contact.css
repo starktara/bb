@@ -75,3 +75,6 @@ p sup{
     margin-top: 0px !important;
     color: #000 !important;
 }
+.btn:hover, .btn:focus{
+    background-color: #ff0000;
+}
