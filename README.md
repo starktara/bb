@@ -6,7 +6,7 @@
 -- : Indicaates Done
 ```
 
-### Pending Issues - 5/25
+### Pending Issues - 3/25
 
 ### Homepage
 
@@ -14,7 +14,7 @@
 
 --2) Decrease header height extended
 
-3) Slider image decrease height (From Sachin)
+--3) Slider image decrease height
 
 ### Category Page:-
 
@@ -72,7 +72,7 @@
 
  
 ### Terms & Conditions Page:-
-1) Not Completed
+--1) Not Completed
 
 
 ### Contact Us Page:-
