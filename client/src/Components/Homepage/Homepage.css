@@ -38,10 +38,10 @@ body {
   display: none;
 }
 .slider {
-  height: 675px !important;
+  height: 500px !important;
 }
 .slides {
-  height: 675px !important;
+  height: 500px !important;
 }
 /* .slider > ul > li > img{
   background-size: 1350px 480px !important; 
