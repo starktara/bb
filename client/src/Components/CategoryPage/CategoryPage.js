@@ -51,14 +51,15 @@ class CategoryPage extends Component {
           year={vehicle._source.myear}
           kms={vehicle._source.kmdriven}
           cc={vehicle._source.cc}
-          name={
-            vehicle._source.model <= MODELS.length - 1 &&
-            vehicle._source.brand <= BRANDS.length - 1
-              ? BRANDS[vehicle._source.brand] +
-                " " +
-                MODELS[vehicle._source.model]
-              : "NA"
-          }
+          // name={
+            // vehicle._source.model <= MODELS.length - 1 &&
+            // vehicle._source.brand <= BRANDS.length - 1
+              // ? BRANDS[vehicle._source.brand] +
+                // " " +
+                // MODELS[vehicle._source.model]
+              // : "NA"
+          // }
+          name = {vehicle._source.name}
           loc={vehicle._source.loc}
           cost={vehicle._source.price}
           vehicleid={vehicle._id}
