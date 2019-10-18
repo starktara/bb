@@ -11,10 +11,31 @@ router.get("/getCategoryById", (req, res) => {
         from: 0,
         size: 10000,
         query: {
-          query_string: {
-            query: req.query.searchTerm
+          bool: {
+            should: [
+              {
+                match: {
+                  descr: req.query.searchTerm
+                }
+              },
+              {
+                match: {
+                  name: req.query.searchTerm
+                }
+              },
+              {
+                match: {
+                  brand: req.query.searchTerm
+                }
+              },
+              {
+                match: {
+                  model: req.query.searchTerm
+                }
+              },
+            ]
           }
-        },
+        }
       }
     });
     res.send(body.hits.hits);
