@@ -42,7 +42,6 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: 0.63,
     color: '#232b2b',
     lineHeight: '28px',
-    textAlign: 'center'
   },
   mapContainer: {
     marginTop: theme.spacing(5),
@@ -51,13 +50,20 @@ const useStyles = makeStyles(theme => ({
     paddingRight: theme.spacing(2)
   },
   formError: {
-    color: "red"
+    color: "red",
+    fontSize: 13
   },
   bookAppointmentHeading:{
     paddingTop: 43.8,
     paddingBottom: 15,
     fontWeight: 800,
     fontSize: 36,
+    color: '#232c2b'
+  },
+  label: {
+    fontWeight: 600,
+    fontSize: 15,
+    letterSpacing: '0.83px',
     color: '#232c2b'
   },
   sellHeading:{
@@ -294,12 +300,7 @@ const Sell = props => {
       {tooltip}
       <Grid container component="div" direction="row" justify="center">
         <Grid item xs={11} md={11} sm={11} lg={11} className={classes.banner}>
-            <Banner
-              navigation="Sell"
-              heading="Sell"
-              text="Sell any Two-Wheeler"
-              path={props.location.pathname}
-            />
+            <Banner navigation="Sell" heading="Sell" text="Sell any Two-Wheeler" path={props.location.pathname}/>
         </Grid>
         <Grid item xs={11} sm={11} md={11} lg={11} className="center-align">
           <h3 className={classes.bookAppointmentHeading}>Book An Appointment</h3>
@@ -308,38 +309,20 @@ const Sell = props => {
         <Grid item xs={11} sm={11} md={11} lg={11}>
             <Paper className={classes.paper}>
               <Grid container component="div" direction="row">
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={12}
-                  lg={12}
-                  className="center-align"
-                >
+                <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
                   <h4>Share Your Details</h4>
                 </Grid>
                 <Grid container component="div" direction="row">
                   <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <form action="" id="shareYpurDetailsForm">
-                      <Grid container component="div" direction="row">
-                        <Grid item xs={6} sm={6} md={6} lg={6}>
-                          <Grid
-                            container
-                            component="div"
-                            direction="row"
-                            className="form-group"
-                          >
-                            <Grid item xs={12} md={12} sm={12} lg={3}>
-                              <label className="fieldname" htmlFor="name">
-                                Name* :
+                    <form action="" id="shareYourDetailsForm">
+                      <Grid container component="div" direction="row" justify="space-evenly">
+                        <Grid item xs={5} sm={5} md={5} lg={5}>
+                          <Grid container component="div" direction="row">
+                            <Grid item xs={12} md={12} sm={12} lg={12}>
+                              <label htmlFor="name">
+                                <span className={classes.label}>Name:*</span>&nbsp;&nbsp;(eg. Varunam Reddy)
                               </label>
-                            </Grid>
-                            <Grid item xs={12} md={12} sm={12} lg={9}>
-                              <input
-                                type="text"
-                                name="name"
-                                id=""
-                                placeholder="Your Name"
+                              <input type="text" name="name" id="name"
                                 onBlur={event =>
                                   validateAndUpdateFormdata(event, formData)
                                 }
@@ -349,8 +332,7 @@ const Sell = props => {
                                     : formData.name.value
                                     ? "valid"
                                     : ""
-                                }
-                              />
+                                }/>
                               {formData.name.error && (
                                 <p className={classes.formError}>
                                   {formData.name.errorMessage}
@@ -358,22 +340,12 @@ const Sell = props => {
                               )}
                             </Grid>
                           </Grid>
-                          <Grid
-                            container
-                            component="div"
-                            direction="row"
-                            className="form-group"
-                          >
-                            <Grid item xs={12} sm={12} md={3} lg={3}>
-                              <label className="fieldname" htmlFor="city">
-                                City* :
+                          <Grid container component="div" direction="row">
+                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                              <label htmlFor="city">
+                                <span  className={classes.label}>City:*</span>&nbsp;&nbsp;(eg. Pune, Kolkata)
                               </label>
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={9} lg={9}>
-                              <input
-                                type="text"
-                                name="city"
-                                placeholder="Your City"
+                              <input type="text" name="city" id="city"
                                 onBlur={event =>
                                   validateAndUpdateFormdata(event, formData)
                                 }
@@ -383,8 +355,7 @@ const Sell = props => {
                                     : formData.city.value
                                     ? "valid"
                                     : ""
-                                }
-                              />
+                                }/>
                               {formData.city.error && (
                                 <p className={classes.formError}>
                                   {formData.city.errorMessage}
@@ -392,23 +363,12 @@ const Sell = props => {
                               )}
                             </Grid>
                           </Grid>
-                          <Grid
-                            container
-                            component="div"
-                            direction="row"
-                            className="form-group"
-                          >
-                            <Grid item xs={12} sm={12} md={3} lg={3}>
-                              <label className="fieldname" htmlFor="make">
-                                Make* :
+                          <Grid container component="div" direction="row">
+                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                              <label htmlFor="make">
+                                <span  className={classes.label}>Make:*</span>&nbsp;&nbsp;(eg. Honda, Bajaj)
                               </label>
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={9} lg={9}>
-                              <input
-                                type="text"
-                                name="make"
-                                placeholder="Manufacturer"
-                                required
+                              <input type="text" name="make" required
                                 onBlur={event =>
                                   validateAndUpdateFormdata(event, formData)
                                 }
@@ -418,8 +378,7 @@ const Sell = props => {
                                     : formData.make.value
                                     ? "valid"
                                     : ""
-                                }
-                              />
+                                }/>
                               {formData.make.error && (
                                 <p className={classes.formError}>
                                   {formData.make.errorMessage}
@@ -427,44 +386,24 @@ const Sell = props => {
                               )}
                             </Grid>
                           </Grid>
-                          <Grid
-                            container
-                            component="div"
-                            direction="row"
-                            className="form-group"
-                          >
-                            <Grid item xs={12} sm={12} md={3} lg={3}>
-                              <label className="fieldname" htmlFor="variant">
-                                Variant :
+                          <Grid container component="div" direction="row">
+                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                              <label htmlFor="variant">
+                                <span  className={classes.label}>Variant:*</span>&nbsp;&nbsp;(eg. 150cc std)
                               </label>
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={9} lg={9}>
-                              <input
-                                type="text"
-                                name="variant"
-                                placeholder="Variant"
+                              <input type="text" name="variant" id="variant"
                                 onChange={event =>
-                                  updateFormdata(event, formData)
-                                }
-                              />
+                                  updateFormdata(event, formData)}/>
                             </Grid>
                           </Grid>
-                          <Grid
-                            container
-                            component="div"
-                            direction="row"
-                            className="form-group"
-                          >
-                            <Grid item xs={12} sm={12} md={3} lg={3}>
-                              <label className="fieldname" htmlFor="yom">
-                                Year of Manufacture* :
+                          <Grid container component="div" direction="row">
+                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                              <label htmlFor="yom">
+                                <span  className={classes.label}>Year of Manufacture:*</span>&nbsp;&nbsp;(eg. 2013)
                               </label>
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={9} lg={9}>
                               <input
                                 type="text"
                                 name="yom"
-                                placeholder="Year of Manufacture"
                                 onBlur={event =>
                                   validateAndUpdateFormdata(event, formData)
                                 }
@@ -474,8 +413,7 @@ const Sell = props => {
                                     : formData.yom.value
                                     ? "valid"
                                     : ""
-                                }
-                              />
+                                }/>
                               {formData.yom.error && (
                                 <p className={classes.formError}>
                                   {formData.yom.errorMessage}
@@ -484,24 +422,13 @@ const Sell = props => {
                             </Grid>
                           </Grid>
                         </Grid>
-                        <Grid item xs={6} sm={6} md={6} lg={6}>
-                          <Grid
-                            container
-                            component="div"
-                            direction="row"
-                            className="form-group"
-                          >
-                            <Grid item xs={12} sm={12} md={3} lg={3}>
-                              <label className="fieldname" htmlFor="mobile">
-                                Mobile Number* :
+                        <Grid item xs={5} sm={5} md={5} lg={5}>
+                          <Grid container component="div" direction="row">
+                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                              <label htmlFor="mobile">
+                                <span  className={classes.label}>Mobile No:*</span>&nbsp;&nbsp;(eg. +91 9999999999)
                               </label>
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={9} lg={9}>
-                              <input
-                                type="text"
-                                name="mobile"
-                                placeholder="Your Mobile Number"
-                                required
+                              <input type="text" name="mobile" required
                                 onChange={event =>
                                   updateFormdata(event, formData)
                                 }
@@ -514,8 +441,7 @@ const Sell = props => {
                                     : formData.mobile.value
                                     ? "valid"
                                     : ""
-                                }
-                              />
+                                }/>
                               {formData.mobile.error && (
                                 <p className={classes.formError}>
                                   {formData.mobile.errorMessage}
@@ -523,50 +449,30 @@ const Sell = props => {
                               )}
                             </Grid>
                           </Grid>
-                          <Grid
-                            container
-                            component="div"
-                            direction="row"
-                            className="form-group"
-                          >
-                            <Grid item xs={12} sm={12} md={3} lg={3}>
-                              <label className="fieldname" htmlFor="address">
-                                Address :
+                          <Grid container component="div" direction="row">
+                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                              <label htmlFor="address">
+                                <span  className={classes.label}>Address:*</span>&nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
                               </label>
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={9} lg={9}>
-                              <textarea
-                                name="address"
-                                placeholder="Your Address"
+                              <textarea name="address"
                                 onChange={event =>
                                   updateFormdata(event, formData)
                                 }
                                 className={
                                   formData.city.error
-                                    ? "invalid"
+                                    ? "invalid materialize-textarea"
                                     : formData.city.value
-                                    ? "valid"
-                                    : ""
+                                    ? "valid materialize-textarea"
+                                    : "materialize-textarea"
                                 }></textarea>
                             </Grid>
                           </Grid>
-                          <Grid
-                            container
-                            component="div"
-                            direction="row"
-                            className="form-group"
-                          >
-                            <Grid item xs={12} sm={12} md={3} lg={3}>
-                              <label className="fieldname" htmlFor="model">
-                                Model* :
+                          <Grid container component="div" direction="row">
+                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                              <label htmlFor="model">
+                                <span  className={classes.label}>Model:*</span>&nbsp;&nbsp;(eg. Activa, Pulsar)
                               </label>
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={9} lg={9}>
-                              <input
-                                type="text"
-                                name="model"
-                                placeholder="Vehicle Model"
-                                required
+                              <input type="text" name="model" required
                                 onChange={event =>
                                   updateFormdata(event, formData)
                                 }
@@ -579,8 +485,7 @@ const Sell = props => {
                                     : formData.model.value
                                     ? "valid"
                                     : ""
-                                }
-                              />
+                                }/>
                               {formData.model.error && (
                                 <p className={classes.formError}>
                                   {formData.model.errorMessage}
@@ -588,25 +493,12 @@ const Sell = props => {
                               )}
                             </Grid>
                           </Grid>
-                          <Grid
-                            container
-                            component="div"
-                            direction="row"
-                            className="form-group"
-                          >
-                            <Grid item xs={12} sm={12} md={3} lg={3}>
-                              <label
-                                className="fieldname"
-                                htmlFor="kmsdriven"
-                              >
-                                KMs Driven :
+                          <Grid container component="div" direction="row">
+                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                              <label htmlFor="kmsdriven">
+                                <span  className={classes.label}>Kms Driven:*</span>&nbsp;&nbsp;(eg. 40,0000 km)
                               </label>
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={9} lg={9}>
-                              <input
-                                type="text"
-                                name="kmsdriven"
-                                placeholder="Kilometers Driven"
+                              <input type="text" name="kmsdriven" id="kmsdriven"
                                 onChange={event =>
                                   updateFormdata(event, formData)
                                 }
@@ -616,26 +508,15 @@ const Sell = props => {
                                     : formData.kmsdriven.value
                                     ? "valid"
                                     : ""
-                                }                                />
+                                }/>
                             </Grid>
                           </Grid>
                         </Grid>
                       </Grid>
                       <Grid container component="div" direction="row">
-                        <Grid
-                          item
-                          xs={12}
-                          sm={12}
-                          md={12}
-                          lg={12}
-                          className="center-align"
-                        >
+                        <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
                           <div className="form-group">
-                            <button
-                              type="button"
-                              className="btn"
-                              onClick={submitForm}
-                            >
+                            <button type="button" className="btn" onClick={submitForm}>
                               Sell Your Vehicle
                             </button>
                           </div>
@@ -648,7 +529,7 @@ const Sell = props => {
             </Paper>
           </Grid>
           <Grid item xs={11} sm={11} md={11} lg={11}>
-            <Paper className={classes.paper}>
+            <Paper className={classes.paper+ ' center-align'}>
               <h3 className={classes.sellHeading}>Steps to Sell Your Two-Wheeler</h3>
               <img alt="" src={blackHeadingLines} width="57" height="4"/>
               <div className={classes.steps}>
@@ -660,7 +541,7 @@ const Sell = props => {
             </Paper>
           </Grid>
           <Grid item xs={11} sm={11} md={11} lg={11}>
-            <Paper className={classes.paper}>
+            <Paper className={classes.paper+ ' center-align'}>
               <h3 className={classes.advantageHeading}>BikeBazaar Advantage</h3>
               <img alt="" src={headingLines} width="57" height="4"/>
               <Grid container component="div" direction="row" justify="center" className={classes.advantageContainer}>

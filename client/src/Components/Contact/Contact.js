@@ -45,7 +45,25 @@ const useStyles = makeStyles(theme => ({
     paddingRight: theme.spacing(2)
   },
   formError: {
-    color: "red"
+    color: "red",
+    fontSize: 13
+  },
+  label:{
+    fontWeight: 600,
+    fontSize: 15,
+    letterSpacing: '0.83px'
+  },
+  submit:{
+    background: '#ff0000',
+    padding: '6px 30px',
+    borderRadius: 24,
+    height: 48,
+    fontSize: 20,
+    fontWeight: 600,  
+    textTransform: 'capitalize',
+    boxShadow: 'none',
+    marginLeft: 10,
+    marginTop: 60
   }
 }));
 
@@ -205,13 +223,13 @@ const Contact = props => {
                     <Grid container component="div" direction="row">
                       <Grid item xs={12} sm={12} md={12} lg={12}>
                         <label htmlFor="name" className="black-text">
-                          Name:*
+                          <span className={classes.label}>Name:*</span>&nbsp;&nbsp;(eg. Varunam Reddy)
                         </label>
                         <input
                           type="text"
                           name="name"
                           id="name"
-                          placeholder="(eg. Varunam Reddy)"
+                          placeholder=""
                           onBlur={event =>
                             validateAndUpdateFormdata(event, formData)
                           }
@@ -230,22 +248,12 @@ const Contact = props => {
                         )}
                       </Grid>
                     </Grid>
-                    <Grid
-                      container
-                      component="div"
-                      direction="row"
-                      justify="space-between"
-                      className={classes.banner}
-                    >
+                    <Grid container component="div" direction="row" justify="space-between" className={classes.banner}>
                       <Grid item xs={5} sm={5} md={5} lg={5}>
                         <label htmlFor="mobilno" className="black-text">
-                          Mobile No:*
+                          <span  className={classes.label}>Mobile No:*</span>&nbsp;&nbsp;(eg. +91 9999999999)
                         </label>
-                        <input
-                          type="text"
-                          name="mobile"
-                          id="mobile"
-                          placeholder="(eg. +91 9999999999)"
+                        <input type="text" name="mobile" id="mobile" placeholder=""
                           onBlur={event =>
                             validateAndUpdateFormdata(event, formData)
                           }
@@ -255,8 +263,7 @@ const Contact = props => {
                               : formData.mobile.value
                               ? "valid"
                               : ""
-                          }
-                        />
+                          }/>
                         {formData.mobile.error && (
                           <p className={classes.formError}>
                             {formData.mobile.errorMessage}
@@ -265,13 +272,9 @@ const Contact = props => {
                       </Grid>
                       <Grid item xs={6} sm={6} md={6} lg={6}>
                         <label htmlFor="email" className="black-text">
-                          Email:*
+                          <span className={classes.label}>Email:*</span>&nbsp;&nbsp;(eg. abc@gmail.com)
                         </label>
-                        <input
-                          type="email"
-                          name="email"
-                          id="email"
-                          placeholder="(eg. abc@gmail.com)"
+                        <input type="email" name="email" id="email" placeholder=""
                           onBlur={event =>
                             validateAndUpdateFormdata(event, formData)
                           }
@@ -290,21 +293,9 @@ const Contact = props => {
                         )}
                       </Grid>
                     </Grid>
-                    <Grid
-                      container
-                      component="div"
-                      direction="row"
-                      className="interest-container"
-                    >
-                      <Grid
-                        item
-                        xs={12}
-                        sm={12}
-                        md={12}
-                        lg={12}
-                        className={classes.banner}
-                      >
-                        <p>Interested In:*</p>
+                    <Grid container component="div" direction="row" className="interest-container">
+                      <Grid item xs={12} sm={12} md={12} lg={12} className={classes.banner}>
+                        <p><span className={classes.label}>Interested In:*</span></p>
                         <span>
                           <label>
                             <input name="interest" type="radio" value="buy" />
@@ -319,11 +310,7 @@ const Contact = props => {
                         </span>
                         <span>
                           <label>
-                            <input
-                              name="interest"
-                              type="radio"
-                              value="franchise"
-                            />
+                            <input name="interest" type="radio" value="franchise"/>
                             <span>Franchise</span>
                           </label>
                         </span>
@@ -335,20 +322,13 @@ const Contact = props => {
                         </span>
                       </Grid>
                     </Grid>
-                    <Grid
-                      container
-                      component="div"
-                      direction="row"
-                      className={classes.banner}
-                    >
+                    <Grid container component="div" direction="row" className={classes.banner}>
                       <Grid item xs={12} sm={12} md={12} lg={12}>
                         <label htmlFor="query" className="black-text">
-                          Query: (Ask any query here, we will get back to you
+                          <span className={classes.label}>Query:</span> (Ask any query here, we will get back to you
                           soon)
                         </label>
-                        <textarea
-                          id="query"
-                          name="query"
+                        <textarea id="query" name="query"
                           onBlur={event =>
                             validateAndUpdateFormdata(event, formData)
                           }
@@ -367,17 +347,17 @@ const Contact = props => {
                         )}
                       </Grid>
                     </Grid>
+                    <Grid container component="div" direction="row" className={classes.banner}>
+                      <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
+                        <button type="button" class={classes.submit+' btn'}>Sell Your Bike</button>
+                      </Grid>
+                      </Grid>
                   </form>
                 </div>
               </Paper>
             </Grid>
           </Grid>
-          <Grid
-            container
-            component="div"
-            direction="row"
-            className={classes.mapContainer}
-          >
+          <Grid container component="div" direction="row" className={classes.mapContainer}>
             <Grid item xs={12} sm={12} md={12} lg={12} className="mapContainer">
               <GoogleMap
                 center={{ lat: -34.397, lng: 150.644 }}

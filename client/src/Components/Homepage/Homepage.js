@@ -8,7 +8,7 @@ import Footer from "../Footer/Footer";
 import logo from "../../assets/logo.svg";
 import searchIcon from "../../assets/search-icon.svg";
 import locationIcon from "../../assets/location-icon.svg";
-import sliderImg from "../../assets/slider-image.png";
+import sliderImg from "../../assets/main-img.png";
 import headingLines from "../../assets/heading-lines.svg";
 import bike2 from "../../assets/bike-icon.svg";
 import scooter from "../..//assets/scooter-icon.svg";
@@ -101,10 +101,10 @@ const Homepage = () => {
       <div className="slider">
         <ul className="slides">
           <li>
-            <img alt="" src={sliderImg} width="1351" />
+            <img alt="" src={sliderImg} />
             <div className="caption left-align">
               <h3 className="heading">
-                India's Favourite place to buy Pre-owned Two-wheelers
+                India's Favourite Place to Buy<br/>Pre-owned Two-wheelers
               </h3>
               <h4 className="text-white">
                 <img alt="" src={logo} className="tick-icon" />

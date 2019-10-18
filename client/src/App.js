@@ -12,6 +12,7 @@ import Signup from './Components/Auth/Signup/Signup';
 import Signin from './Components/Auth/Signin/Signin';
 import Faq from './Components/Faq/Faq';
 import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
+import TermsAndConditions from './Components/TermsAndConditions/TermsAndConditions';
 
 
 const App = () =>  {
@@ -29,6 +30,7 @@ const App = () =>  {
             <Route path="/signin" component={Signin} />
             <Route path="/faq" component={Faq} />
             <Route path="/privacypolicy" component={PrivacyPolicy} />
+            <Route path="/termsandconditions" component={TermsAndConditions} />
         </Switch>
     );
 }

@@ -6,6 +6,16 @@
 -- : Indicaates Done
 ```
 
+### Pending Issues - 3/25
+
+### Homepage
+
+--1) Remove check logo from header and plaace bb icon
+
+--2) Decrease header height extended
+
+--3) Slider image decrease height
+
 ### Category Page:-
 
 --1) Breadcrumb section, page name should be Motorcycles.
@@ -31,40 +41,41 @@
 ### Sell Page:-
 --1) Breadcrumb text should be "Sell Any Two-Wheeler".
 
---2) Steps to sell your two-wheeler, this whole section is missing, attaching a reference file (Ref-04). (WIP)
+--2) Steps to sell your two-wheeler, this whole section is missing, attaching a reference file (Ref-04)
 
-3) The design of the form is different than the provided one, attaching a reference file (Ref-05).
+3) The design of the form is different than the provided one, attaching a reference file (WIP - 5 Text fields to be converted to Dropdown).
 
 --4) BikeBazaar Advantage (Selling process) section is missing, attaching a reference file (Ref-06).
 
  
 ### Become a Franchise Owner Page:-
-1) Breadcrumb should as per design, attaching reference file (Ref-07).
+--1) Breadcrumb should as per design, attaching reference file (Ref-07).
 
-2) About BikeBazaar section is different than the provided one, please rework on this, attaching reference file (Ref-08).
+--2) About BikeBazaar section is different than the provided one, please rework on this, attaching reference file (Ref-08).
 
-4) BikeBazaar Advantage section is also different than the provided one, please rework on this, attaching a file (Ref-09)
+--3) BikeBazaar Advantage section is also different than the provided one, please rework on this, attaching a file (Ref-09)
 
-5) The form is completely different, please rework. Attaching a reference file (Ref-010).
+--4) The form is completely different, please rework. Attaching a reference file (Ref-010).
 
-6) Pre and Post Launch support section is incomplete. Ref-BB-Franchise-Owner.jpg
+--5) Pre and Post Launch support section is incomplete. Ref-BB-Franchise-Owner.jpg
 
-7) BikeBazaar Store Section is missing at the bottom. Ref-BB-Franchise-Owner.jpg
+6) BikeBazaar Store Section is missing at the bottom. Ref-BB-Franchise-Owner.jpg
 
  
 ### FAQs Page:-
-1) Please put the provided answers instead of the Lorem Ipsum. (Need content)
+--1) Please put the provided answers instead of the Lorem Ipsum. (Need content)
 
  
 ### Privacy Policy:-
 
-1) All the content is missing. (Already there, needs to be verified)
+--1) All the content is missing.
 
  
 ### Terms & Conditions Page:-
-1) Not Completed
+--1) Not Completed
 
 
 ### Contact Us Page:-
-1) Please rework the contact information and form section. Please ref an attached file (Ref-011) (Needs Clarity)
-2) Google map is not showing. – Error is coming on the control.
+--1) Please rework the contact information and form section. Please ref an attached file (Ref-011)
+
+--2) Google map is not showing. – Error is coming on the control.(API Key with billing information needs to be added for this)

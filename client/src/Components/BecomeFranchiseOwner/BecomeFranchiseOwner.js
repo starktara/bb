@@ -8,9 +8,13 @@ import Banner from "../Banner/Banner";
 import headingLines from "../../assets/heading-lines.svg";
 import blackHeadingLines from '../../assets/black-heading-lines.svg';
 import certifiedIcon from "../../assets/images/icons/certified.png";
-import buyerIcon from "../../assets/images/icons/buyer.png";
 import emiIcon from "../../assets/images/icons/emi.png";
-import transferIcon from "../../assets/images/icons/transfer.png";
+import storeImage from "../../assets/bike-bazaar-store.png";
+import strongItInfra from '../../assets/icons/strong-it-infra.svg'
+import callCentre from '../../assets/icons/call-centre.svg'
+import shakeHand from '../../assets/icons/shake-hand.svg'
+import strongOnlinePresence from '../../assets/icons/strong-online-presence.svg';
+import moreSalesThanEver from '../../assets/icons/more-than-sales.svg';
 import Tooltip from "../UI/Tooltip/Tooltip";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from '@material-ui/core/Divider';
@@ -87,6 +91,19 @@ const useStyles = makeStyles(theme => ({
     width: 1,
     height: 395,
     backgroundColor: '#a7aaaa'
+  },
+  about:{
+    backgroundImage: 'url("'+storeImage+'")',
+    backgroundPosition: 'right',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 500,
+    backgroundPositionY: -2
+  },
+  label:{
+    fontWeight: 600,
+    fontSize: 15,
+    letterSpacing: '0.83px',
+    color: '#000'
   }
 }));
 
@@ -213,43 +230,26 @@ const BecomeFranchiseOwner = props => {
       {tooltip}
       <Header />
       <MainMenu />
-      <Grid
-        container
-        component="div"
-        direction="row"
-        justify="center"
-        alignItems="center"
-      >
+      <Grid container component="div" direction="row" justify="center" alignItems="center">
         <Grid item xs={11} sm={11} md={11} lg={11} className={classes.banner}>
-          <Banner
-            navigation="Become Franchise Owner"
-            heading="Become Franchise Owner"
-            text="Become Franchise Owner"
-            path={props.location.pathname}
-          />
-
+          <Banner navigation="Become Franchise Owner" heading="Become Franchise Owner" text=""path={props.location.pathname}/>
         </Grid>
       </Grid>
 
       <Grid container direction="row" justify="center" alignItems="center">
         <Grid item xs={11} sm={11} md={11} lg={11}>
           <div className="paper">
-            <Grid
-              container
-              direction="row"
-              justify="center"
-              alignItems="center"
-            >
-              <Grid item xs={12} sm={12} md={12} lg={12}>
+            <Grid container direction="row" justify="center" alignItems="center">
+              <Grid item xs={12} sm={12} md={12} lg={12} className={classes.about}>
                 <h4 className="redhead">About BikeBazaar</h4>
                 <p className="about-bb">
-                  BikeBazaar aims to provide a hassle-free experience to anyone looking to buy/sell a pre-owned 2 wheeler with the help of technology & team of experts.
+                  BikeBazaar aims to provide a hassle-free experience to anyone looking to<br/>buy/sell a pre-owned 2 wheeler with the help of technology & team of<br/ >experts.
                   <br/>
                   <br/>
-                  For the buyer we ensure quality and make the process smooth by offering <span className={classes.bold}>"Free 6 Month's Warranty"</span>, <span className={classes.bold}>"Certified Two Wheelers"</span>, <span className={classes.bold}>"Low Cost EMI"</span>, <span className={classes.bold}>Hassle-Free Document Transfer.</span>
+                  For the buyer we ensure quality and make the process smooth by offering<br/><span className={classes.bold}>"Free 6 Month's Warranty"</span>, <span className={classes.bold}>"Certified Two Wheelers"</span>, <span className={classes.bold}>"Low Cost EMI"</span>,<br/><span className={classes.bold}>"Hassle-Free Document Transfer"</span> and more.
                   <br/>
                   <br/>
-                  We are building up a hybrid model (Mix of Online and Offline) to bring structure in this domian and ensure a great and hassle-free experience for our Customers.
+                  We are building up a hybrid model (Mix of Online and Offline) to bring structure in this<br/>domian and ensure a great and hassle-free experience for our Customers.
                   <br/>
                   <br/>
                   And we are offering a reliable and hassle-free way to buy and sell any Pre-Owned Two-Wheeler, stakeholders would rely on BikeBazaar for their purchasing or selling decisions regarding their vehicles.
@@ -271,63 +271,63 @@ const BecomeFranchiseOwner = props => {
             <br />
             <div className="franchiseAdvantageSec">
               <Grid container component="div" direction="row" className="advantage">
-                <Grid item xs={2} md={2} lg={2}>
+                <Grid item xs={1} md={1} lg={1}>
                   <div className="advantageIconLeft">
-                    <img className="rupees" src={certifiedIcon} alt="" />
+                    <img className="strong-presence" src={strongOnlinePresence} alt="" />
                   </div>
                 </Grid>
-                <Grid item xs={10} md={10} lg={10}>
+                <Grid item xs={11} md={11} lg={11}>
                   <h3>Strong Online Presence</h3>
                 </Grid>
               </Grid>
-              <Grid
-                container
-                component="div"
-                direction="row"
-                className="advantage1"
-              >
-                <Grid item xs={10} sm={10} md={10} lg={10}>
+              <Grid container component="div" direction="row" className="advantage1">
+                <Grid item xs={11} sm={11} md={11} lg={11}>
                   <h3>Certified Two-Wheelers</h3>
                 </Grid>
-                <Grid item xs={2} sm={2} md={2} lg={2} className="icon">
+                <Grid item xs={1} sm={1} md={1} lg={1} className="icon">
                   <div className="advantageIconRight">
-                    <img className="rupees" src={certifiedIcon} alt="" />
+                    <img className="certified" src={certifiedIcon} alt="" />
                   </div>
                 </Grid>
               </Grid>
               <Grid container component="div" direction="row" className="advantage">
-                <Grid item xs={2} sm={2} md={2} lg={2}>
+                <Grid item xs={1} sm={1} md={1} lg={1}>
                   <div className="advantageIconLeft">
-                    <img className="rupees" src={buyerIcon} alt="" />
+                    <img className="strong-infa" src={strongItInfra} alt="" />
                   </div>
                 </Grid>
-                <Grid item xs={10} sm={10} md={10} lg={10}>
+                <Grid item xs={11} sm={11} md={11} lg={11}>
                   <h3>Strong IT Infrastructure</h3>
                 </Grid>
               </Grid>
-              <Grid
-                container
-                component="div"
-                direction="row"
-                className="advantage1"
-              >
-                <Grid item xs={10} sm={10} md={10} lg={10} className="detail">
+              <Grid container component="div" direction="row" className="advantage1">
+                <Grid item xs={11} sm={11} md={11} lg={11} className="detail">
                   <h3>Dedicated Call-Center</h3>
                 </Grid>
-                <Grid item xs={2} sm={2} md={2} lg={2} className="icon">
+                <Grid item xs={1} sm={1} md={1} lg={1} className="icon">
                   <div className="advantageIconRight">
-                    <img className="rupees" src={emiIcon} alt="" />
+                    <img className="call-centre" src={callCentre} alt="" />
                   </div>
                 </Grid>
               </Grid>
               <Grid container component="div" direction="row" className="advantage">
-                <Grid item xs={2} sm={2} md={2} lg={2}>
+                <Grid item xs={1} sm={1} md={1} lg={1}>
                   <div className="advantageIconLeft">
-                    <img className="rupees" src={transferIcon} alt="" />
+                    <img className="more-sales" src={moreSalesThanEver} alt="" />
                   </div>
                 </Grid>
-                <Grid item xs={10} sm={10} md={10} lg={10}>
+                <Grid item xs={11} sm={11} md={11} lg={11}>
                   <h3>More Sales Than Ever</h3>
+                </Grid>
+              </Grid>
+              <Grid container component="div" direction="row" className="advantage1">
+                <Grid item xs={11} sm={11} md={11} lg={11} className="detail">
+                  <h3>BTL Activities and B2B Tieups</h3>
+                </Grid>
+                <Grid item xs={1} sm={1} md={1} lg={1} className="icon">
+                  <div className="advantageIconRight">
+                    <img className="btl" src={shakeHand} alt="" />
+                  </div>
                 </Grid>
               </Grid>
             </div>
@@ -338,31 +338,19 @@ const BecomeFranchiseOwner = props => {
         <Grid item xs={11} sm={11} md={11} lg={11}>
           <div className="paper">
             <Grid container component="div" direction="row">
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={12}
-                lg={12}
-                className="center-align"
-              >
-                <h4>Share Your Details to own a BikeBazaar Store</h4>
+              <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
+                <h4 className="redhead">Share Your Details to own a BikeBazaar Store</h4>
+                <img src={blackHeadingLines} alt=""/>
               </Grid>
                   <form action="" id="shareYourDetailsForm" className={classes.form}>
                     <Grid container component="div" direction="row">
                       <Grid item xs={12} sm={12} md={12} lg={12}>
-                        <Grid
-                          container
-                          component="div"
-                          direction="row"
-                          justify="space-evenly"
-                        >
+                        <Grid container component="div" direction="row" justify="space-evenly">
                           <Grid item xs={12} sm={12} md={5} lg={5}>
                             <label className="fieldname" htmlFor="name">
-                              Name* :
+                              <span className={classes.label}>Name:*</span>&nbsp;&nbsp;(eg. Varunam Reddy)
                             </label>
-                            <input
-                              type="text"
+                            <input type="text" name="name" id="name"
                               className={
                                 formData.name.error
                                   ? "invalid"
@@ -370,13 +358,9 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              name="name"
-                              id=""
-                              placeholder="Your Name"
                               onBlur={event =>
                                 updateFormdata(event, formData)
-                              }
-                            />
+                              }/>
                             {formData.name.error && (
                               <div className="invalid-feedback d-block">
                                 {formData.name.errorMessage}
@@ -385,11 +369,9 @@ const BecomeFranchiseOwner = props => {
                           </Grid>
                           <Grid item xs={12} sm={12} md={5} lg={5}>
                             <label className="fieldname" htmlFor="mobile">
-                              Mobile No* :
+                            <span  className={classes.label}>Mobile No:*</span>&nbsp;&nbsp;(eg. +91 9999999999)
                             </label>
-                            <input
-                              type="text"
-                              name="mobile"
+                            <input type="text" name="mobile"
                               className={
                                 formData.mobile.error
                                   ? "invalid"
@@ -397,11 +379,9 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              placeholder="Mobile No."
                               onBlur={event =>
                                 updateFormdata(event, formData)
-                              }
-                            />
+                              }/>
                             {formData.mobile.error && (
                               <div className="invalid-feedback d-block">
                                 {formData.mobile.errorMessage}
@@ -410,11 +390,9 @@ const BecomeFranchiseOwner = props => {
                           </Grid>
                           <Grid item xs={12} sm={12} md={5} lg={5}>
                             <label className="fieldname" htmlFor="email">
-                              Email Id* :
+                              <span className={classes.label}>Email:*</span>&nbsp;&nbsp;(eg. abc@gmail.com)
                             </label>
-                            <input
-                              type="text"
-                              name="email"
+                            <input type="text" name="email" id="email"
                               className={
                                 formData.email.error
                                   ? "invalid"
@@ -422,11 +400,9 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              placeholder="Your Email"
                               onBlur={event =>
                                 updateFormdata(event, formData)
-                              }
-                            />
+                              }/>
                             {formData.email.error && (
                               <div className="invalid-feedback d-block">
                                 {formData.email.errorMessage}
@@ -435,11 +411,9 @@ const BecomeFranchiseOwner = props => {
                           </Grid>
                           <Grid item xs={12} sm={12} md={5} lg={5}>
                             <label className="fieldname" htmlFor="city">
-                              City* :
+                              <span className={classes.label}>City:*</span>&nbsp;&nbsp;(eg. Pune, Kolkata)
                             </label>
-                            <input
-                              type="text"
-                              name="city"
+                            <input type="text" name="city" id="city"
                               className={
                                 formData.city.error
                                   ? "invalid"
@@ -447,11 +421,9 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              placeholder="City"
                               onBlur={event =>
                                 updateFormdata(event, formData)
-                              }
-                            />
+                              }/>
                             {formData.city.error && (
                               <div className="invalid-feedback d-block">
                                 {formData.city.errorMessage}
@@ -460,11 +432,9 @@ const BecomeFranchiseOwner = props => {
                           </Grid>
                           <Grid item xs={12} sm={12} md={5} lg={5}>
                             <label className="fieldname" htmlFor="variant">
-                              Address :
+                              <span className={classes.label}>Address:*</span>&nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
                             </label>
-                            <input
-                              type="text"
-                              name="address"
+                            <input type="text" name="address" id="address"
                               className={
                                 formData.address.error
                                   ? "invalid"
@@ -472,11 +442,9 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              placeholder="Address"
                               onBlur={event =>
                                 updateFormdata(event, formData)
-                              }
-                            />
+                              }/>
                             {formData.address.error && (
                               <div className="invalid-feedback d-block">
                                 {formData.address.errorMessage}
@@ -485,11 +453,9 @@ const BecomeFranchiseOwner = props => {
                           </Grid>
                           <Grid item xs={12} sm={12} md={5} lg={5}>
                             <label className="fieldname" htmlFor="pin">
-                              PIN :
+                              <span className={classes.label}>Pincode:*</span>&nbsp;&nbsp;(eg. 110075)
                             </label>
-                            <input
-                              type="text"
-                              name="pin"
+                            <input type="text" name="pin" id="pin"
                               className={
                                 formData.pin.error
                                   ? "invalid"
@@ -497,11 +463,9 @@ const BecomeFranchiseOwner = props => {
                                   ? "valid"
                                   : ""
                               }
-                              placeholder="PIN Code"
                               onBlur={event =>
                                 updateFormdata(event, formData)
-                              }
-                            />
+                              }/>
                             {formData.pin.error && (
                               <div className="invalid-feedback d-block">
                                 {formData.pin.errorMessage}
@@ -512,20 +476,9 @@ const BecomeFranchiseOwner = props => {
                       </Grid>
                     </Grid>
                     <Grid container component="div" direction="row">
-                      <Grid
-                        item
-                        xs={12}
-                        sm={12}
-                        md={12}
-                        lg={12}
-                        className="center-align"
-                      >
+                      <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
                         <div className="form-group">
-                          <button
-                            type="button"
-                            className={classes.submitButton+ ' btn'}
-                            onClick={submitForm}
-                          >
+                          <button type="button" className={classes.submitButton+ ' btn'} onClick={submitForm}>
                             Share
                           </button>
                         </div>
@@ -546,36 +499,31 @@ const BecomeFranchiseOwner = props => {
                     <Grid container component="div" direction="row" className="advantage">
                     <Grid item xs={2} md={2} lg={2}>
                       <div className="advantageIconLeft">
-                        <img className="rupees" src={certifiedIcon} alt=""/>
+                        <img className="rupees" src={strongOnlinePresence} alt=""/>
                       </div>
                     </Grid>
                     <Grid item xs={10} md={10} lg={10}>
                       <h3>Strong Online Presence</h3>
                     </Grid>
                   </Grid>
-                  <Grid
-                    container
-                    component="div"
-                    direction="row"
-                    className="advantage1"
-                  >
+                  <Grid container component="div" direction="row" className="advantage1">
                     <Grid item xs={10} sm={10} md={10} lg={10}>
-                      <h3>Certified Two-Wheelers</h3>
+                      <h3>Showroom Branding & Exhaustive<br/>Guidelines for CI of Showroom</h3>
                     </Grid>
                     <Grid item xs={2} sm={2} md={2} lg={2} className="icon">
                       <div className="advantageIconRight">
-                        <img className="rupees" src={certifiedIcon} alt="" />
+                        <img className="rupees" src={strongOnlinePresence} alt="" />
                       </div>
                     </Grid>
                   </Grid>
                   <Grid container component="div" direction="row" className="advantage">
                     <Grid item xs={2} sm={2} md={2} lg={2}>
                       <div className="advantageIconLeft">
-                        <img className="rupees" src={buyerIcon} alt="" />
+                        <img className="rupees" src={strongOnlinePresence} alt="" />
                       </div>
                     </Grid>
                     <Grid item xs={10} sm={10} md={10} lg={10}>
-                      <h3>Strong IT Infrastructure</h3>
+                      <h3>Training & Development for<br/>High Performance</h3>
                     </Grid>
                   </Grid>
               </Grid>
@@ -586,36 +534,31 @@ const BecomeFranchiseOwner = props => {
                 <Grid container component="div" direction="row" className="advantage">
                     <Grid item xs={2} md={2} lg={2}>
                       <div className="advantageIconLeft">
-                        <img className="rupees" src={certifiedIcon} alt=""/>
+                        <img className="rupees" src={strongOnlinePresence} alt=""/>
                       </div>
                     </Grid>
                     <Grid item xs={10} md={10} lg={10}>
-                      <h3>Strong Online Presence</h3>
+                      <h3>Online Demand Generation<br/>& BTL Activities</h3>
                     </Grid>
                   </Grid>
-                  <Grid
-                    container
-                    component="div"
-                    direction="row"
-                    className="advantage1"
-                  >
+                  <Grid container component="div" direction="row" className="advantage1">
                     <Grid item xs={10} sm={10} md={10} lg={10}>
-                      <h3>Certified Two-Wheelers</h3>
+                      <h3>Tools and Technologies for<br/>Business Efficiency</h3>
                     </Grid>
                     <Grid item xs={2} sm={2} md={2} lg={2} className="icon">
                       <div className="advantageIconRight">
-                        <img className="rupees" src={certifiedIcon} alt="" />
+                        <img className="rupees" src={strongOnlinePresence} alt="" />
                       </div>
                     </Grid>
                   </Grid>
                   <Grid container component="div" direction="row" className="advantage">
                     <Grid item xs={2} sm={2} md={2} lg={2}>
                       <div className="advantageIconLeft">
-                        <img className="rupees" src={buyerIcon} alt="" />
+                        <img className="rupees" src={strongOnlinePresence} alt="" />
                       </div>
                     </Grid>
                     <Grid item xs={10} sm={10} md={10} lg={10}>
-                      <h3>Strong IT Infrastructure</h3>
+                      <h3>Qualified Team & Dedicated<br/>Call Center</h3>
                     </Grid>
                   </Grid>
               </Grid>
