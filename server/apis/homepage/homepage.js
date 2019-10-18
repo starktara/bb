@@ -25,12 +25,12 @@ router.get("/getCategoryById", (req, res) => {
               },
               {
                 match: {
-                  brand: req.query.searchTerm
+                  state: req.query.searchTerm
                 }
               },
               {
                 match: {
-                  model: req.query.searchTerm
+                  city: req.query.searchTerm
                 }
               },
             ]
