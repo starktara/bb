@@ -19,20 +19,28 @@ import { MODELS } from "../../shared/mappings/bike_models";
 
 class CategoryPage extends Component {
   componentDidMount() {
-    if (this.props.history.location.search.trim() == "") {
-      this.props.getVehicles(categoryData[this.props.match.params.category].id);
-    } else {
-      const search = new URLSearchParams(this.props.history.location.search);
-      if (search.get("searchTerm")) {
-        this.props.getSearchData(search.get("searchTerm"));
+    this.unlisten = this.props.history.listen((location, action) => {
+      if (this.props.history.location.search.trim() == "") {
+        this.props.getVehicles(categoryData[this.props.match.params.category].id);
+      } else {
+        const search = new URLSearchParams(this.props.history.location.search);
+        if (search.get("searchTerm")) {
+          this.props.getSearchData(search.get("searchTerm"));
+        }
       }
-    }
+    });
+
+  
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.vehicles != nextProps.vehicles) {
       this.props.getPaginatedData(0, 9);
     }
   }
+
+  // componentWillUnmount() {
+  //   this.unlisten();
+  // }
 
   onPageChanged = paginationData => {
     const { currentPage, totalPages, pageLimit } = paginationData;
@@ -52,14 +60,14 @@ class CategoryPage extends Component {
           kms={vehicle._source.kmdriven}
           cc={vehicle._source.cc}
           // name={
-            // vehicle._source.model <= MODELS.length - 1 &&
-            // vehicle._source.brand <= BRANDS.length - 1
-              // ? BRANDS[vehicle._source.brand] +
-                // " " +
-                // MODELS[vehicle._source.model]
-              // : "NA"
+          // vehicle._source.model <= MODELS.length - 1 &&
+          // vehicle._source.brand <= BRANDS.length - 1
+          // ? BRANDS[vehicle._source.brand] +
+          // " " +
+          // MODELS[vehicle._source.model]
+          // : "NA"
           // }
-          name = {vehicle._source.name}
+          name={vehicle._source.name}
           loc={vehicle._source.loc}
           cost={vehicle._source.price}
           vehicleid={vehicle._id}
@@ -82,8 +90,13 @@ class CategoryPage extends Component {
       vehicles = <h2>'No Vehicles Found!'</h2>;
     }
 
-    let navigation = categoryData[this.props.match.params.category].name.replace('Bike', 'Motorcycle');
-    let heading = categoryData[this.props.match.params.category].name.replace('Bike', 'Motorcycle');
+    let navigation = categoryData[
+      this.props.match.params.category
+    ].name.replace("Bike", "Motorcycle");
+    let heading = categoryData[this.props.match.params.category].name.replace(
+      "Bike",
+      "Motorcycle"
+    );
     let text =
       "Motorcycles are available at easy EMI starting at ₹2,000*. Your  dream bike is not a distant dream now.";
 
