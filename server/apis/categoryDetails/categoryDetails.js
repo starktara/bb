@@ -7,6 +7,7 @@ router.get("/getCategoryById", (req, res) => {
   let filterData = JSON.parse(req.query.filterData);
   let sortKey = {};
   let mustArray = [];
+  let shouldArray = [];
   mustArray.push({
     match: {
       category: req.query.category
@@ -41,15 +42,25 @@ router.get("/getCategoryById", (req, res) => {
 
     if (filterData.budget.length > 0) {
       let budget = filterData.budget;
+      var i = 1;
       for (let value of budget) {
-        let rangeArr = value.split("-");
+        let rangeArr = value ? value.split("-") : ["1", "15000"];
         let gte = rangeArr[0];
         let lte = rangeArr[1];
-        mustArray.push({
-          range: {
-            price: { gte: gte, lte: lte }
-          }
-        });
+        if (i == 1) {
+          mustArray.push({
+            range: {
+              price: { gte: gte, lte: lte }
+            }
+          });
+        } else {
+          shouldArray.push({
+            range: {
+              price: { gte: gte, lte: lte }
+            }
+          });
+        }
+        i++;
       }
     }
 
@@ -60,11 +71,11 @@ router.get("/getCategoryById", (req, res) => {
         }
       });
     }
-    if (filterData.searchTerm != null) {      
+    if (filterData.searchTerm != null) {
       mustArray.push({
         wildcard: {
           city: {
-            value: filterData.searchTerm 
+            value: filterData.searchTerm
           }
         }
       });
@@ -81,7 +92,8 @@ router.get("/getCategoryById", (req, res) => {
         size: 10000,
         query: {
           bool: {
-            must: mustArray
+            must: mustArray,
+            should: shouldArray
           }
         },
         sort: [sortKey]
