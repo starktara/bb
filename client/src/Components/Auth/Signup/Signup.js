@@ -134,7 +134,7 @@ const Signup = props => {
       errorMessage: ""
     },
     gender: {
-      value: "",
+      value: "male",
       error: false,
       errorMessage: ""
     },
@@ -165,6 +165,8 @@ const Signup = props => {
     let targetName = event.target.name;
     let errorMessage = "";
     let error = false;
+    console.log(targetValue);
+    console.log(targetName);
     if (isEmpty(targetValue)) {
       errorMessage = "This field is required";
       error = true;
@@ -188,6 +190,7 @@ const Signup = props => {
     var elems = document.querySelectorAll("select");
     M.FormSelect.init(elems, {});
   }, []);
+
   const submitForm = event => {
     event.preventDefault();
     const formDataCopy = formData;
@@ -208,27 +211,32 @@ const Signup = props => {
       }
       if (error) {
         errorFlag = true;
+        console.log(targetName);
+        console.log(errorMessage);
       }
       formDataCopy[targetName].errorMessage = errorMessage;
       formDataCopy[targetName].error = error;
     });
-
+    console.log(errorFlag);
     if (!errorFlag) {
-      // axios
-      //   .post("/apis/userDetail/insertUserDetails", formData)
-      //   .then(response => {
-      //     console.log(response);
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
-
-      setTooltipState({
-        open: true,
-        message: "Your details have been saved",
-        variant: "success"
-      });
-      setSuccessSubmit(true);
+      axios
+        .post("/apis/userDetail/insertUserDetails", formData)
+        .then(response => {
+          console.log(response);
+          setTooltipState({
+            open: true,
+            message: "Your details have been saved. Please Login!",
+            variant: "success"
+          });
+          setSuccessSubmit(true);
+        })
+        .catch(err => {
+          setTooltipState({
+            open: true,
+            message: err,
+            variant: "error"
+          });
+        });
     } else {
       setFormData({
         ...formData,
@@ -337,7 +345,12 @@ const Signup = props => {
                       <label htmlFor="gender" className="black-text">
                         Gender
                       </label>
-                      <select name="gender">
+                      <select
+                        name="gender"
+                        onChange={event =>
+                          validateAndUpdateFormdata(event, formData)
+                        }
+                      >
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                       </select>
@@ -387,13 +400,25 @@ const Signup = props => {
                       <Grid container component="div" direction="row">
                         <Grid item xs={4} sm={4} md={4} lg={4}>
                           <label>
-                            <input type="checkbox" name="motorcycles" />
+                            <input
+                              type="checkbox"
+                              name="motorcycles"
+                              onChange={event =>
+                                validateAndUpdateFormdata(event, formData)
+                              }
+                            />
                             <span>Motorcycles</span>
                           </label>
                         </Grid>
                         <Grid item xs={4} sm={4} md={4} lg={4}>
                           <label>
-                            <input type="checkbox" name="scooters" />
+                            <input
+                              type="checkbox"
+                              name="scooters"
+                              onChange={event =>
+                                validateAndUpdateFormdata(event, formData)
+                              }
+                            />
                             <span>Scooters</span>
                           </label>
                         </Grid>
@@ -402,6 +427,9 @@ const Signup = props => {
                             <input
                               type="checkbox"
                               name="high-end-motorcycles"
+                              onChange={event =>
+                                validateAndUpdateFormdata(event, formData)
+                              }
                             />
                             <span>High-End Motorcycles</span>
                           </label>
