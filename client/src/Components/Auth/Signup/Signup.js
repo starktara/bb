@@ -42,7 +42,7 @@ const formValidator = (name, value) => {
         : "";
     }
     default: {
-      return false;
+      return true;
     }
   }
 };
@@ -200,6 +200,7 @@ const Signup = props => {
       let targetName = data[0];
       let errorMessage = "";
       let error = false;
+      if(targetName != "interest"){
       if (isEmpty(targetValue)) {
         errorMessage = "This field is required";
         error = true;
@@ -209,10 +210,9 @@ const Signup = props => {
           error = true;
         }
       }
+    }
       if (error) {
         errorFlag = true;
-        console.log(targetName);
-        console.log(errorMessage);
       }
       formDataCopy[targetName].errorMessage = errorMessage;
       formDataCopy[targetName].error = error;
