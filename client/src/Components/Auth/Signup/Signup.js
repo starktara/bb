@@ -165,8 +165,6 @@ const Signup = props => {
     let targetName = event.target.name;
     let errorMessage = "";
     let error = false;
-    console.log(targetValue);
-    console.log(targetName);
     if (isEmpty(targetValue)) {
       errorMessage = "This field is required";
       error = true;
@@ -200,29 +198,27 @@ const Signup = props => {
       let targetName = data[0];
       let errorMessage = "";
       let error = false;
-      if(targetName != "interest"){
-      if (isEmpty(targetValue)) {
-        errorMessage = "This field is required";
-        error = true;
-      } else {
-        errorMessage = formValidator(targetName, targetValue);
-        if (errorMessage.length) {
+      if (targetName != "interest") {
+        if (isEmpty(targetValue)) {
+          errorMessage = "This field is required";
           error = true;
+        } else {
+          errorMessage = formValidator(targetName, targetValue);
+          if (errorMessage.length) {
+            error = true;
+          }
         }
       }
-    }
       if (error) {
         errorFlag = true;
       }
       formDataCopy[targetName].errorMessage = errorMessage;
       formDataCopy[targetName].error = error;
     });
-    console.log(errorFlag);
     if (!errorFlag) {
       axios
         .post("/apis/userDetail/insertUserDetails", formData)
         .then(response => {
-          console.log(response);
           setTooltipState({
             open: true,
             message: "Your details have been saved. Please Login!",
