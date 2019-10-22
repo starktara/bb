@@ -46,6 +46,19 @@ router.get("/createbikeMapping", (req, res) => {
   res.json({ msg: "Index Created Sucessfully" });
 });
 
+router.get("/deleteMapping", (req, res) => {
+  async function run() {
+    await client.indices.delete(
+      {
+        index: req.query.index
+      },
+      { ignore: [400] }
+    );
+  }
+  run().catch(console.log);
+  res.json({ msg: "Index Deleted Sucessfully" });
+});
+
 router.get("/createStoreLocationMapping", (req, res) => {
   async function createMapping() {
     await client.indices.create(
