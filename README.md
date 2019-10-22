@@ -79,3 +79,11 @@
 --1) Please rework the contact information and form section. Please ref an attached file (Ref-011)
 
 --2) Google map is not showing. – Error is coming on the control.(API Key with billing information needs to be added for this)
+
+
+### TODO
+
+1) About
+2) How it Works
+3) BikeBazaar Store Section is missing at the bottom.
+4) Mobile Header, responsive images
