@@ -46,10 +46,6 @@ class CategoryPage extends Component {
     }
   }
 
-  // componentWillUnmount() {
-  //   this.unlisten();
-  // }
-
   onPageChanged = paginationData => {
     const { currentPage, totalPages, pageLimit } = paginationData;
     const offset = (currentPage - 1) * pageLimit;
