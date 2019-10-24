@@ -29,6 +29,14 @@ class CategoryPage extends Component {
         }
       }
     });
+    if (this.props.history.location.search.trim() == "") {
+      this.props.getVehicles(categoryData[this.props.match.params.category].id);
+    } else {
+      const search = new URLSearchParams(this.props.history.location.search);
+      if (search.get("searchTerm")) {
+        this.props.getSearchData(search.get("searchTerm"));
+      }
+    }
 
   
   }
