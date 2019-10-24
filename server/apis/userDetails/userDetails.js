@@ -1,4 +1,6 @@
 const express = require("express");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const router = express.Router();
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
@@ -15,10 +17,10 @@ router.get("/createUser", (req, res) => {
               name: { type: "text" },
               email: { type: "integer" },
               gender: { type: "text" },
-              phone:{ type: "integer" },
-              interests:{type:"string"},
-              userName: {type:"string"},
-              password:{type:"string"}
+              phone: { type: "integer" },
+              interests: { type: "string" },
+              userName: { type: "string" },
+              password: { type: "string" }
             }
           }
         }
@@ -32,45 +34,51 @@ router.get("/createUser", (req, res) => {
 
 router.post("/insertUserDetails", (req, res) => {
   let formData = req.body;
-  async function upload() {
-    const dataset = [
-      {
-        name: formData.name,
-        emailId: formData.email,
-        phone:formData.mobile,
-        city: formData.city,
-        gender:formData.gender,
-        interests:formData.interests,
-        userName:formData.userName,
-        password:formData.password
-      }
-    ];
-    const body = dataset.flatMap(doc => [
-      { index: { _index: "user-detail" } },
-      doc
-    ]);
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(formData.password.value, salt, (err, hash) => {
+      if (err) throw err;
+      async function upload() {
+        const dataset = [
+          {
+            name: formData.name.value,
+            emailId: formData.email.value,
+            phone: formData.mobile.value,
+            gender: formData.gender.value,
+            interests: formData.interest.value,
+            userName: formData.loginid.value,
+            password: hash
+          }
+        ];
+        const body = dataset.flatMap(doc => [
+          { index: { _index: "user-detail" } },
+          doc
+        ]);
 
-    const { body: bulkResponse } = await client.bulk({ refresh: true, body });
+        const { body: bulkResponse } = await client.bulk({
+          refresh: true,
+          body
+        });
 
-    if (bulkResponse.errors) {
-      const erroredDocuments = [];
-      bulkResponse.items.forEach((action, i) => {
-        const operation = Object.keys(action)[0];
-        if (action[operation].error) {
-          erroredDocuments.push({
-            status: action[operation].status,
-            error: action[operation].error,
-            operation: body[i * 2],
-            document: body[i * 2 + 1]
+        if (bulkResponse.errors) {
+          const erroredDocuments = [];
+          bulkResponse.items.forEach((action, i) => {
+            const operation = Object.keys(action)[0];
+            if (action[operation].error) {
+              erroredDocuments.push({
+                status: action[operation].status,
+                error: action[operation].error,
+                operation: body[i * 2],
+                document: body[i * 2 + 1]
+              });
+            }
           });
+          console.log(erroredDocuments);
         }
-      });
-      console.log(erroredDocuments);
-    }
-    res.send("successfully inserted");
-  }
-  upload().catch(console.log);
+        res.send("successfully inserted");
+      }
+      upload().catch(console.log);
+    });
+  });
 });
-
 
 module.exports = router;

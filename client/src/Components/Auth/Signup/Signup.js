@@ -227,11 +227,11 @@ const Signup = props => {
           setSuccessSubmit(true);
         })
         .catch(err => {
-          setTooltipState({
-            open: true,
-            message: err,
-            variant: "error"
-          });
+          // setTooltipState({
+          //   open: true,
+          //   message: err,
+          //   variant: "error"
+          // });
         });
     } else {
       setFormData({
