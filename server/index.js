@@ -7,8 +7,13 @@ const seedData = require("./apis/seedingData/seedingData");
 const categoryDetails = require("./apis/categoryDetails/categoryDetails");
 const homePageData = require("./apis/homepage/homepage");
 const leadDetail = require("./apis/leadDetail/leadDetail");
-const userDetail = require("./apis/userDetails/userDetails")
+const userDetail = require("./apis/userDetails/userDetails");
+const passport = require("passport");
 
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./config/passport")(passport);
 
 //middleware for body parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,9 +30,9 @@ app.use(function(req, res, next) {
 
 app.use("/apis/seedData", seedData);
 app.use("/apis/categoryDetails", categoryDetails);
-app.use("/apis/globalSearch",homePageData);
-app.use("/apis/leadDetail",leadDetail);
-app.use("/apis/userDetail",userDetail);
+app.use("/apis/globalSearch", homePageData);
+app.use("/apis/leadDetail", leadDetail);
+app.use("/apis/userDetail", userDetail);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === "production") {
