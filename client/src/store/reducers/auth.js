@@ -1,46 +1,23 @@
-import * as actionTypes from '../actions/actionTypes';
-import { vehicleList } from '../actions/vehiclesDetails';
-
+import { SET_CURRENT_USER, USER_LOADING } from "../actions/actionTypes";
 const initialState = {
-    vehicleList: null,
-    loading: false,
+  isAuthenticated: false,
+  user: {},
+  loading: false
 };
-
-// const authStart = (state, action) => {
-//     return updateObject(state, { error: null, loading: true });
-// };
-
-const authSuccess = (state, action) => {
-    // return updateObject(state, {
-    //     token: action.idToken,
-    //     userId: action.userId,
-    //     error: null,
-    //     loading: false
-    // });
-};
-
-const authFail = (state, action) => {
-    // return updateObject(state, {
-        // error: action.error,
-        // loading: false
-    // });
-};
-
-const authLogout = (state, action) => {
-    // return updateObject(state, { token: null, userId: null });
-};
-
-const setAuthRedirectPath = (state, action) => {
-    // return updateObject(state, { authRedirectPath: action.path })
+export default function(state = initialState, action) {
+  switch (action.type) {
+    case SET_CURRENT_USER:
+      return {
+        ...state,
+        isAuthenticated: action.payload ? true : false,
+        user: action.payload
+      };
+    case USER_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
+    default:
+      return state;
+  }
 }
-
-const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case actionTypes.VEHICLE_LIST: return vehicleList(state, action);
-    
-        default:
-            return state;
-    }
-};
-
-export default reducer;
