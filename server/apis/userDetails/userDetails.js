@@ -38,47 +38,75 @@ router.get("/createUser", (req, res) => {
 
 router.post("/insertUserDetails", (req, res) => {
   let formData = req.body;
+
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(formData.password.value, salt, (err, hash) => {
       if (err) throw err;
       async function upload() {
-        const dataset = [
-          {
-            name: formData.name.value,
-            emailId: formData.email.value,
-            phone: formData.mobile.value,
-            gender: formData.gender.value,
-            interests: formData.interest.value,
-            userName: formData.loginid.value,
-            password: hash
-          }
-        ];
-        const body = dataset.flatMap(doc => [
-          { index: { _index: "user-detail" } },
-          doc
-        ]);
-
-        const { body: bulkResponse } = await client.bulk({
-          refresh: true,
-          body
-        });
-
-        if (bulkResponse.errors) {
-          const erroredDocuments = [];
-          bulkResponse.items.forEach((action, i) => {
-            const operation = Object.keys(action)[0];
-            if (action[operation].error) {
-              erroredDocuments.push({
-                status: action[operation].status,
-                error: action[operation].error,
-                operation: body[i * 2],
-                document: body[i * 2 + 1]
-              });
+        const userName = await client.search({
+          index: "user-detail",
+          body: {
+            query: {
+              match_phrase: {
+                userName: formData.loginid.value
+              }
             }
+          }
+        });
+        const emailId  = await client.search({
+          index: "user-detail",
+          body: {
+            query: {
+              match_phrase: {
+                userName: formData.email.value
+              }
+            }
+          }
+        });
+        if (
+          emailId.body.hits.total.value == 0 &&
+          userName.body.hits.total.value == 0
+        ) {
+          const dataset = [
+            {
+              name: formData.name.value,
+              emailId: formData.email.value,
+              phone: formData.mobile.value,
+              gender: formData.gender.value,
+              interests: formData.interest.value,
+              userName: formData.loginid.value,
+              password: hash
+            }
+          ];
+          const body = dataset.flatMap(doc => [
+            { index: { _index: "user-detail" } },
+            doc
+          ]);
+
+          const { body: bulkResponse } = await client.bulk({
+            refresh: true,
+            body
           });
-          console.log(erroredDocuments);
+
+          if (bulkResponse.errors) {
+            const erroredDocuments = [];
+            bulkResponse.items.forEach((action, i) => {
+              const operation = Object.keys(action)[0];
+              if (action[operation].error) {
+                erroredDocuments.push({
+                  status: action[operation].status,
+                  error: action[operation].error,
+                  operation: body[i * 2],
+                  document: body[i * 2 + 1]
+                });
+              }
+            });
+            console.log(erroredDocuments);
+          }
+          res.send("successfully inserted");
+        } else {
+          res.send("User already exists!");
         }
-        res.send("successfully inserted");
       }
       upload().catch(console.log);
     });
@@ -88,7 +116,6 @@ router.post("/insertUserDetails", (req, res) => {
 router.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-  
 
   // // Check if user exists
   // if (!user) {
