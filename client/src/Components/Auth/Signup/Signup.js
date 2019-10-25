@@ -221,7 +221,7 @@ const Signup = props => {
         .then(response => {
           setTooltipState({
             open: true,
-            message: "Your details have been saved. Please Login!",
+            message: response.data.msg,
             variant: "success"
           });
           setSuccessSubmit(true);

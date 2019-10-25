@@ -53,7 +53,7 @@ router.post("/insertUserDetails", (req, res) => {
             }
           }
         });
-        const emailId  = await client.search({
+        const emailId = await client.search({
           index: "user-detail",
           body: {
             query: {
@@ -103,9 +103,9 @@ router.post("/insertUserDetails", (req, res) => {
             });
             console.log(erroredDocuments);
           }
-          res.send("successfully inserted");
+          res.send({ type: "success", msg: "User added succes" });
         } else {
-          res.send("User already exists!");
+          res.send({ type: "error", msg: "User already exists" });
         }
       }
       upload().catch(console.log);
