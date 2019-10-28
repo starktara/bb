@@ -17,6 +17,9 @@ import facebookIcon from "../../../assets/icons/social_media/facebook-icon.png";
 import googleIcon from "../../../assets/icons/social_media/google-icon.png";
 import axios from "axios";
 import Tooltip from "../../UI/Tooltip/Tooltip";
+import { loginUser } from "../../../store/actions/authActions";
+import { connect } from "react-redux";
+
 
 const formValidator = (name, value) => {
   switch (name) {
@@ -580,4 +583,10 @@ const Signup = props => {
   );
 };
 
-export default Signup;
+const mapStateToProps = state => ({
+  auth: state.auth,
+});
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Signup);

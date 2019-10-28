@@ -98,20 +98,26 @@ const formValidator = (name, value) => {
 };
 
 const Signin = props => {
-    const [successSubmit, setSuccessSubmit] = useState(false);
-    const [tooltipState, setTooltipState] = useState({
+  const [successSubmit, setSuccessSubmit] = useState(false);
+  const [tooltipState, setTooltipState] = useState({
+    open: false,
+    message: "",
+    variant: "error"
+  });
+
+  useEffect(() => {
+    if (props.auth.isAuthenticated == true) {
+      props.history.push("/"); // push user to dashboard when they login
+    }
+  }, [props.auth.isAuthenticated]);
+
+  const handleClose = () => {
+    setTooltipState({
       open: false,
       message: "",
-      variant: "error"
+      variant: "success"
     });
-    const handleClose = () => {
-      setTooltipState({
-        open: false,
-        message: "",
-        variant: "success"
-      });
-    };
-  
+  };
 
   const classes = useStyles();
 
@@ -161,15 +167,15 @@ const Signin = props => {
       let targetName = data[0];
       let errorMessage = "";
       let error = false;
-        if (isEmpty(targetValue)) {
-          errorMessage = "This field is required";
+      if (isEmpty(targetValue)) {
+        errorMessage = "This field is required";
+        error = true;
+      } else {
+        errorMessage = formValidator(targetName, targetValue);
+        if (errorMessage.length) {
           error = true;
-        } else {
-          errorMessage = formValidator(targetName, targetValue);
-          if (errorMessage.length) {
-            error = true;
-          }
         }
+      }
       if (error) {
         errorFlag = true;
       }
@@ -177,30 +183,28 @@ const Signin = props => {
       formDataCopy[targetName].error = error;
     });
     if (!errorFlag) {
-    //   axios
-    //     .post("/apis/userDetail/insertUserDetails", formData)
-    //     .then(response => {
-    //       if (response.data.type == "success") {
-    //         setTimeout(() => {
-    //           props.history.push(`/signin`);
-    //         }, 2000);
-    //       }
-
-    //       setTooltipState({
-    //         open: true,
-    //         message: response.data.msg,
-    //         variant: "success"
-    //       });
-
-    //       setSuccessSubmit(true);
-    //     })
-    //     .catch(err => {
-    //       // setTooltipState({
-    //       //   open: true,
-    //       //   message: err,
-    //       //   variant: "error"
-    //       // });
-    //     });
+      //   axios
+      //     .post("/apis/userDetail/insertUserDetails", formData)
+      //     .then(response => {
+      //       if (response.data.type == "success") {
+      //         setTimeout(() => {
+      //           props.history.push(`/signin`);
+      //         }, 2000);
+      //       }
+      //       setTooltipState({
+      //         open: true,
+      //         message: response.data.msg,
+      //         variant: "success"
+      //       });
+      //       setSuccessSubmit(true);
+      //     })
+      //     .catch(err => {
+      //       // setTooltipState({
+      //       //   open: true,
+      //       //   message: err,
+      //       //   variant: "error"
+      //       // });
+      //     });
     } else {
       setFormData({
         ...formData,
@@ -373,4 +377,11 @@ const Signin = props => {
   );
 };
 
-export default Signin;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Signin);
