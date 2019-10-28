@@ -5,9 +5,6 @@ const keys = require("../../config/keys");
 const router = express.Router();
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
-//details of seller and bike from sell page
-// Load input validation
-// Load User model
 
 router.get("/createUser", (req, res) => {
   async function run() {
@@ -103,7 +100,7 @@ router.post("/insertUserDetails", (req, res) => {
             });
             console.log(erroredDocuments);
           }
-          res.send({ type: "success", msg: "User added succes" });
+          res.send({ type: "success", msg: "User added successfully!" });
         } else {
           res.send({ type: "error", msg: "User already exists" });
         }
@@ -116,11 +113,6 @@ router.post("/insertUserDetails", (req, res) => {
 router.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-
-  // // Check if user exists
-  // if (!user) {
-  //   return res.status(404).json({ emailnotfound: "Email not found" });
-  // }
   // Check password
   bcrypt.compare(password, user.password).then(isMatch => {
     if (isMatch) {

@@ -3,7 +3,7 @@ import "./Signup.css";
 import Header from "../../Header/Header";
 import MainMenu from "../../MainMenu/MainMenu";
 import Footer from "../../Footer/Footer";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
@@ -219,11 +219,18 @@ const Signup = props => {
       axios
         .post("/apis/userDetail/insertUserDetails", formData)
         .then(response => {
+          if (response.data.type == "success") {
+            setTimeout(() => {
+              props.history.push(`/signin`);
+            }, 2000);
+          }
+
           setTooltipState({
             open: true,
             message: response.data.msg,
             variant: "success"
           });
+
           setSuccessSubmit(true);
         })
         .catch(err => {
