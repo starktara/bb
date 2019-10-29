@@ -8,8 +8,8 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyle = makeStyles(theme =>({
-    root: {
-        flexGrow: 1
+    body: {
+        backgroundColor: '#f7f7f7'
     },
     banner: {
         marginTop: theme.spacing(5)
@@ -58,7 +58,7 @@ const PrivacyPolicy = props => {
       },[])
 
     return (
-        <div id="PrivacyPolicy" className={classes.root}>
+        <div id="PrivacyPolicy" className={classes.body}>
             <Header/>
             <MainMenu/>
             <Grid container component="div" direction="row" justify="center" alignItems="center">

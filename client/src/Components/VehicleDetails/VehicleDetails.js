@@ -15,8 +15,16 @@ import M from  'materialize-css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { BRANDS } from '../../shared/mappings/brands';
 import { MODELS } from '../../shared/mappings/bike_models';
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+    body: {
+        backgroundColor: '#f7f7f7'
+    }
+}));
 
 const VehicleDetails = (props) => {
+    const classes = useStyles();
     
     useEffect(() => {
         try {
@@ -62,11 +70,11 @@ const VehicleDetails = (props) => {
     }
 
     return (
-        <div className="VehicleDetails">
+        <div id="VehicleDetails" className={classes.body}>
             <Header />
             <MainMenu />
                 {vehicle}
-                <VehicleAdvantage />
+                <VehicleAdvantage continerStyle="advantageContainer"/>
                 <SimilarVehicles />
             <Footer />
         </div>

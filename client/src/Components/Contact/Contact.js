@@ -23,8 +23,8 @@ import isMobilePhone from "validator/lib/isMobilePhone";
 import isAlphaNumeric from "validator/lib/isAlphanumeric";
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
+  body: {
+    backgroundColor: '#f7f7f7'
   },
   banner: {
     marginTop: theme.spacing(5)
@@ -157,7 +157,7 @@ const Contact = props => {
   };
 
   return (
-    <div id="Contact" className={classes.root}>
+    <div id="Contact" className={classes.body}>
       <Header />
       <MainMenu />
       <Grid

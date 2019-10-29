@@ -8,6 +8,9 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyle = makeStyles(theme =>({
+    body: {
+        backgroundColor: '#f7f7f7'
+    },
     banner: {
         marginTop: theme.spacing(5)
     },
@@ -51,7 +54,7 @@ const TermsAndConditions = props => {
     const classes = useStyle();
 
     return (
-        <div id="TermsAndConditions">
+        <div id="TermsAndConditions" className={classes.body}>
             <Header/>
             <MainMenu/>
             <Grid container component="div" direction="row" justify="center" alignItems="center">

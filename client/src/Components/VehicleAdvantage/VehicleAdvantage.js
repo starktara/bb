@@ -7,10 +7,10 @@ import buyerIcon from "../../assets/images/icons/buyer.png";
 import emiIcon from "../../assets/images/icons/emi.png";
 import transferIcon from "../../assets/images/icons/transfer.png";
 
-const VehicleAdvantage = () => {
+const VehicleAdvantage = (props) => {
   return (
     <Grid item xs={12} sm={12} md={12} lg={12} className="vehicleAdvantageSec">
-      <div className="vehicleAdvantage">
+      <div className={props.continerStyle+' vehicleAdvantage'}>
         <h2 className="center-align">BikeBazaar Advantage</h2>
         <div className="center-align">
           <img src={headingLines} alt="" />

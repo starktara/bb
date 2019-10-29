@@ -89,7 +89,7 @@ const VehicleData = (props) => {
                             </Grid>
                             <Grid container component="div" direction="row" className="form-group">
                                 <Grid item xs={12} sm={12} md={3} lg={3}>
-                                    <label className="fieldname" htmlFor="txtOrgName">Email Id</label>
+                                    <label className="fieldname" htmlFor="txtOrgName">Email Id :</label>
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={9} lg={9}>
                                     <input type="text" className="email" name="" id="" placeholder="Type Your Email Id" maxLength="" required />

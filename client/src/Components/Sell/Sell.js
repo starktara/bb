@@ -24,8 +24,8 @@ import isAlphaNumeric from "validator/lib/isAlphanumeric";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
+  body: {
+    backgroundColor: '#f7f7f7'
   },
   banner: {
     marginTop: theme.spacing(5)
@@ -123,6 +123,18 @@ const useStyles = makeStyles(theme => ({
   },
   advantageText:{
     fontSize: 15
+  },
+  imageUploadButton: {
+    borderRadius: 5,
+    fontSize: 12,
+    fontWeight: 600,
+    backgroundColor: '#2c3232',
+    boxShadow: 'none',
+    textTransform: 'capitalize',
+    padding: 8,
+    border: 'none',
+    letterSpacing: '0.83px',
+    color: 'white'
   }
 }));
 
@@ -294,7 +306,7 @@ const Sell = props => {
   };
 
   return (
-    <div id="Sell">
+    <div id="Sell" className={classes.body}>
       <Header />
       <MainMenu />
       {tooltip}
@@ -309,9 +321,6 @@ const Sell = props => {
         <Grid item xs={11} sm={11} md={11} lg={11}>
             <Paper className={classes.paper}>
               <Grid container component="div" direction="row">
-                <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
-                  <h4>Share Your Details</h4>
-                </Grid>
                 <Grid container component="div" direction="row">
                   <Grid item xs={12} sm={12} md={12} lg={12}>
                     <form action="" id="shareYourDetailsForm">
@@ -420,6 +429,23 @@ const Sell = props => {
                                 </p>
                               )}
                             </Grid>
+                          </Grid>
+                          <Grid container component="div" direction="row" className={classes.banner+' form-group'}>
+                              <Grid item xs={9} sm={9} md={9} lg={9}>
+                                <label className="fieldname">
+                                    <input type="checkbox" className="filled-in" defaultChecked />
+                                    <span>Interested in Exchange</span>
+                                </label>
+                              </Grid>
+                          </Grid>
+                          <Grid container component="div" direction="row" className={classes.banner+' form-group'}>
+                              <Grid item xs={9} sm={9} md={9} lg={9}>
+                                <div className="form-group">
+                                  <button type="button" className={classes.imageUploadButton}>
+                                    Upload Images Here
+                                  </button>
+                                </div>
+                              </Grid>
                           </Grid>
                         </Grid>
                         <Grid item xs={5} sm={5} md={5} lg={5}>

@@ -105,7 +105,7 @@ class CategoryPage extends Component {
       "Motorcycles are available at easy EMI starting at ₹2,000*. Your  dream bike is not a distant dream now.";
 
     return (
-      <div>
+      <div id="CategoryPage">
         <Header />
         <MainMenu />
         <div className="wapper">
