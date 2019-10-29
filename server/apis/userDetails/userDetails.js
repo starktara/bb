@@ -16,7 +16,7 @@ router.get("/createUser", (req, res) => {
             properties: {
               id: { type: "integer" },
               name: { type: "text" },
-              email: { type: "integer" },
+              email: { type: "text" },
               gender: { type: "text" },
               phone: { type: "integer" },
               interests: { type: "string" },
@@ -55,7 +55,7 @@ router.post("/insertUserDetails", (req, res) => {
           body: {
             query: {
               match_phrase: {
-                userName: formData.email.value
+                email: formData.email.value
               }
             }
           }
@@ -111,34 +111,69 @@ router.post("/insertUserDetails", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  // Check password
-  bcrypt.compare(password, user.password).then(isMatch => {
-    if (isMatch) {
-      // Create JWT Payload
-      const payload = {
-        id: user.id,
-        name: user.name
-      };
-      // Sign token
-      jwt.sign(
-        payload,
-        keys.secretOrKey,
-        {
-          expiresIn: 31556926 // 1 year in seconds
-        },
-        (err, token) => {
-          res.json({
-            success: true,
-            token: "Bearer " + token
-          });
+  async function loginUser() {
+    const email = req.body.loginid;
+    const password = req.body.password;
+    console.log(email);
+    const userName = await client.search({
+      index: "user-detail",
+      body: {
+        query: {
+          match_phrase: {
+            userName: email.value
+          }
         }
-      );
-    } else {
-      return res.status(400).json({ passwordincorrect: "Password incorrect" });
+      }
+    });
+
+    const emailId = await client.search({
+      index: "user-detail",
+      body: {
+        query: {
+          match_phrase: {
+            email: email.value
+          }
+        }
+      }
+    });
+    if (
+      emailId.body.hits.total.value == 0 &&
+      userName.body.hits.total.value == 0
+    ) {
+      return res.status(404).json({ emailnotfound: "Email not found" });
     }
-  });
+
+    //   // Check password
+    //   bcrypt.compare(password, user.password).then(isMatch => {
+    //     if (isMatch) {
+    //       // Create JWT Payload
+    //       const payload = {
+    //         id: user.id,
+    //         name: user.name
+    //       };
+    //       // Sign token
+    //       jwt.sign(
+    //         payload,
+    //         keys.secretOrKey,
+    //         {
+    //           expiresIn: 31556926 // 1 year in seconds
+    //         },
+    //         (err, token) => {
+    //           res.json({
+    //             success: true,
+    //             token: "Bearer " + token
+    //           });
+    //         }
+    //       );
+    //     } else {
+    //       return res
+    //         .status(400)
+    //         .json({ passwordincorrect: "Password incorrect" });
+    //     }
+    //   });
+    // });
+  }
+  loginUser().catch(console.log);
 });
 
 module.exports = router;
