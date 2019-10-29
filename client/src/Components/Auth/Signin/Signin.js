@@ -15,6 +15,8 @@ import googleIcon from "../../../assets/icons/social_media/google-icon.png";
 import { connect } from "react-redux";
 import { loginUser } from "../../../store/actions/authActions";
 import axios from "axios";
+import Tooltip from "../../UI/Tooltip/Tooltip";
+
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -104,6 +106,24 @@ const Signin = props => {
     message: "",
     variant: "error"
   });
+  const handleClose = () => {
+    setTooltipState({
+      open: false,
+      message: "",
+      variant: "success"
+    });
+  };
+  
+  const tooltip = (
+    <Tooltip
+      open={tooltipState.open}
+      message={tooltipState.message}
+      variant={tooltipState.variant}
+      handleClose={handleClose}
+    />
+  );
+
+
 
   useEffect(() => {
     if (props.auth.isAuthenticated == true) {
@@ -116,17 +136,11 @@ const Signin = props => {
     setTooltipState({
         open: true,
         message: props.errors.emailnotfound,
-        variant: "success"
+        variant: "error"
       });
     }
   }, [props.errors]);
-  const handleClose = () => {
-    setTooltipState({
-      open: false,
-      message: "",
-      variant: "success"
-    });
-  };
+  
 
   const classes = useStyles();
 
@@ -202,9 +216,12 @@ const Signin = props => {
   };
 
   return (
+      
     <div id="Signin" className={classes.body}>
       <Header />
       <MainMenu />
+      {tooltip}
+
       <Grid
         container
         component="div"
