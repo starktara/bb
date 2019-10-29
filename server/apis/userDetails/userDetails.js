@@ -43,6 +43,8 @@ router.post("/insertUserDetails", (req, res) => {
         const userName = await client.search({
           index: "user-detail",
           body: {
+            from: 0,
+            size: 1,
             query: {
               match_phrase: {
                 userName: formData.loginid.value
@@ -53,6 +55,8 @@ router.post("/insertUserDetails", (req, res) => {
         const emailId = await client.search({
           index: "user-detail",
           body: {
+            from: 0,
+            size: 1,
             query: {
               match_phrase: {
                 email: formData.email.value
@@ -118,6 +122,8 @@ router.post("/login", (req, res) => {
     const userName = await client.search({
       index: "user-detail",
       body: {
+        from: 0,
+        size: 1,
         query: {
           match_phrase: {
             userName: email.value
@@ -129,6 +135,8 @@ router.post("/login", (req, res) => {
     const emailId = await client.search({
       index: "user-detail",
       body: {
+        from: 0,
+        size: 1,
         query: {
           match_phrase: {
             email: email.value
@@ -142,35 +150,44 @@ router.post("/login", (req, res) => {
     ) {
       return res.status(404).json({ emailnotfound: "Email not found" });
     }
-
-      // Check password
-      // bcrypt.compare(password.value, user.password).then(isMatch => {
-      //   if (isMatch) {
-      //     // Create JWT Payload
-      //     const payload = {
-      //       id: user.id,
-      //       name: user.name
-      //     };
-      //     // Sign token
-      //     jwt.sign(
-      //       payload,
-      //       keys.secretOrKey,
-      //       {
-      //         expiresIn: 31556926 // 1 year in seconds
-      //       },
-      //       (err, token) => {
-      //         res.json({
-      //           success: true,
-      //           token: "Bearer " + token
-      //         });
-      //       }
-      //     );
-      //   } else {
-      //     return res
-      //       .status(400)
-      //       .json({ passwordincorrect: "Password incorrect" });
-      //   }
-      // });
+    let savedPassword =
+      emailId.body.hits.total.value == 0
+        ? userName.body.hits.hits[0]._source.password
+        : emailId.body.hits.hits[0]._source.password;
+    //Check password
+    bcrypt.compare(password.value, savedPassword).then(isMatch => {
+      if (isMatch) {
+        // Create JWT Payload
+        const payload = {
+          id:
+            emailId.body.hits.total.value == 0
+              ? userName.body.hits.hits[0]._id
+              : emailId.body.hits.hits[0]._id,
+          name:
+            emailId.body.hits.total.value == 0
+              ? userName.body.hits.hits[0]._source.name
+              : emailId.body.hits.hits[0]._source.name
+        };
+        // Sign token
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          {
+            expiresIn: 31556926 // 1 year in seconds
+          },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: "Bearer " + token
+            });
+          }
+        );
+      } else {
+        return res
+          .status(400)
+          .json({ passwordincorrect: "Password incorrect" });
+      }
+    });
   }
   loginUser().catch(console.log);
 });
