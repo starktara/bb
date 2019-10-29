@@ -9,6 +9,10 @@ import { connect } from "react-redux";
 
 const Header = props => {
   const { user } = props.auth;
+  const onLogoutClick = e => {
+    e.preventDefault();
+    props.logoutUser();
+  };
 
   return (
     <header className="header">
@@ -58,8 +62,8 @@ const Header = props => {
           )}
           {user.name && (
             <ul className="right hide-on-med-and-down">
-              <li className="login">`Hey there, ${user.name}`</li>
-              <li className="signup"></li>
+              <li className="login">Hey there, {user.name}</li>
+              <li className="signup"><button onClick={onLogoutClick}>Logout</button></li>
             </ul>
           )}
         </div>
