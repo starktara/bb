@@ -16,7 +16,7 @@ router.get("/createUser", (req, res) => {
             properties: {
               id: { type: "integer" },
               name: { type: "text" },
-              email: { type: "integer" },
+              email: { type: "text" },
               gender: { type: "text" },
               phone: { type: "integer" },
               interests: { type: "string" },
@@ -33,6 +33,7 @@ router.get("/createUser", (req, res) => {
   res.json({ msg: "Index Created Sucessfully" });
 });
 
+//function to sign up
 router.post("/insertUserDetails", (req, res) => {
   let formData = req.body;
 
@@ -43,6 +44,8 @@ router.post("/insertUserDetails", (req, res) => {
         const userName = await client.search({
           index: "user-detail",
           body: {
+            from: 0,
+            size: 1,
             query: {
               match_phrase: {
                 userName: formData.loginid.value
@@ -53,9 +56,11 @@ router.post("/insertUserDetails", (req, res) => {
         const emailId = await client.search({
           index: "user-detail",
           body: {
+            from: 0,
+            size: 1,
             query: {
               match_phrase: {
-                userName: formData.email.value
+                email: formData.email.value
               }
             }
           }
@@ -110,35 +115,83 @@ router.post("/insertUserDetails", (req, res) => {
   });
 });
 
+//function to login user
 router.post("/login", (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  // Check password
-  bcrypt.compare(password, user.password).then(isMatch => {
-    if (isMatch) {
-      // Create JWT Payload
-      const payload = {
-        id: user.id,
-        name: user.name
-      };
-      // Sign token
-      jwt.sign(
-        payload,
-        keys.secretOrKey,
-        {
-          expiresIn: 31556926 // 1 year in seconds
-        },
-        (err, token) => {
-          res.json({
-            success: true,
-            token: "Bearer " + token
-          });
+  async function loginUser() {
+    const email = req.body.loginid;
+    const password = req.body.password;
+    console.log(email);
+    const userName = await client.search({
+      index: "user-detail",
+      body: {
+        from: 0,
+        size: 1,
+        query: {
+          match_phrase: {
+            userName: email.value
+          }
         }
-      );
-    } else {
-      return res.status(400).json({ passwordincorrect: "Password incorrect" });
+      }
+    });
+
+    const emailId = await client.search({
+      index: "user-detail",
+      body: {
+        from: 0,
+        size: 1,
+        query: {
+          match_phrase: {
+            email: email.value
+          }
+        }
+      }
+    });
+    if (
+      emailId.body.hits.total.value == 0 &&
+      userName.body.hits.total.value == 0
+    ) {
+      return res.status(404).json({ emailnotfound: "Email not found" });
     }
-  });
+    let savedPassword =
+      emailId.body.hits.total.value == 0
+        ? userName.body.hits.hits[0]._source.password
+        : emailId.body.hits.hits[0]._source.password;
+    //Check password
+    bcrypt.compare(password.value, savedPassword).then(isMatch => {
+      if (isMatch) {
+        // Create JWT Payload
+        const payload = {
+          id:
+            emailId.body.hits.total.value == 0
+              ? userName.body.hits.hits[0]._id
+              : emailId.body.hits.hits[0]._id,
+          name:
+            emailId.body.hits.total.value == 0
+              ? userName.body.hits.hits[0]._source.name
+              : emailId.body.hits.hits[0]._source.name
+        };
+        // Sign token
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          {
+            expiresIn: 31556926 // 1 year in seconds
+          },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: "Bearer " + token
+            });
+          }
+        );
+      } else {
+        return res
+          .status(400)
+          .json({ passwordincorrect: "Password incorrect" });
+      }
+    });
+  }
+  loginUser().catch(console.log);
 });
 
 module.exports = router;

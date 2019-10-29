@@ -15,6 +15,8 @@ import googleIcon from "../../../assets/icons/social_media/google-icon.png";
 import { connect } from "react-redux";
 import { loginUser } from "../../../store/actions/authActions";
 import axios from "axios";
+import Tooltip from "../../UI/Tooltip/Tooltip";
+
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -80,7 +82,7 @@ const useStyles = makeStyles(theme => ({
 const formValidator = (name, value) => {
   switch (name) {
     case "loginid": {
-      return !isAlphaNumeric(value) || !isEmail(value)
+      return !isAlphaNumeric(value) && !isEmail(value)
         ? "Loginid must be alphanumeric or a valid email id"
         : "";
     }
@@ -104,13 +106,6 @@ const Signin = props => {
     message: "",
     variant: "error"
   });
-
-  useEffect(() => {
-    if (props.auth.isAuthenticated == true) {
-      props.history.push("/"); // push user to dashboard when they login
-    }
-  }, [props.auth.isAuthenticated]);
-
   const handleClose = () => {
     setTooltipState({
       open: false,
@@ -118,6 +113,34 @@ const Signin = props => {
       variant: "success"
     });
   };
+  
+  const tooltip = (
+    <Tooltip
+      open={tooltipState.open}
+      message={tooltipState.message}
+      variant={tooltipState.variant}
+      handleClose={handleClose}
+    />
+  );
+
+
+
+  useEffect(() => {
+    if (props.auth.isAuthenticated == true) {
+      props.history.push("/"); // push user to dashboard when they login
+    }
+  }, [props.auth.isAuthenticated]);
+
+  useEffect(() => {
+   if(Object.entries(props.errors).length){
+    setTooltipState({
+        open: true,
+        message: props.errors.emailnotfound,
+        variant: "error"
+      });
+    }
+  }, [props.errors]);
+  
 
   const classes = useStyles();
 
@@ -183,28 +206,7 @@ const Signin = props => {
       formDataCopy[targetName].error = error;
     });
     if (!errorFlag) {
-      //   axios
-      //     .post("/apis/userDetail/insertUserDetails", formData)
-      //     .then(response => {
-      //       if (response.data.type == "success") {
-      //         setTimeout(() => {
-      //           props.history.push(`/signin`);
-      //         }, 2000);
-      //       }
-      //       setTooltipState({
-      //         open: true,
-      //         message: response.data.msg,
-      //         variant: "success"
-      //       });
-      //       setSuccessSubmit(true);
-      //     })
-      //     .catch(err => {
-      //       // setTooltipState({
-      //       //   open: true,
-      //       //   message: err,
-      //       //   variant: "error"
-      //       // });
-      //     });
+      props.loginUser(formData); // push user to dashboard when they login
     } else {
       setFormData({
         ...formData,
@@ -214,9 +216,12 @@ const Signin = props => {
   };
 
   return (
+      
     <div id="Signin" className={classes.body}>
       <Header />
       <MainMenu />
+      {tooltip}
+
       <Grid
         container
         component="div"
