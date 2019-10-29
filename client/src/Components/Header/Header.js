@@ -4,8 +4,12 @@ import emailIcon from "../../assets/emailIcon.svg";
 import phoneIcon from "../../assets/phone-icon.svg";
 import userIcon from "../../assets/user-icon.svg";
 import "./Header.css";
+import { logoutUser } from "../../store/actions/authActions";
+import {connect} from "react-redux";
 
 const Header = props => {
+  const { user } = props.auth;
+  console.log(props.auth)
 
   return (
     <header className="header">
@@ -56,4 +60,12 @@ const Header = props => {
     </header>
   );
 };
-export default Header;
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(Header);

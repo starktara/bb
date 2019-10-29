@@ -33,6 +33,7 @@ router.get("/createUser", (req, res) => {
   res.json({ msg: "Index Created Sucessfully" });
 });
 
+//function to sign up
 router.post("/insertUserDetails", (req, res) => {
   let formData = req.body;
 
@@ -114,6 +115,7 @@ router.post("/insertUserDetails", (req, res) => {
   });
 });
 
+//function to login user
 router.post("/login", (req, res) => {
   async function loginUser() {
     const email = req.body.loginid;
