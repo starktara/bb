@@ -12,6 +12,7 @@ import Signup from './Components/Auth/Signup/Signup';
 import Signin from './Components/Auth/Signin/Signin';
 import Faq from './Components/Faq/Faq';
 import HowItWorks from './Components/HowItWorks/HowItWorks';
+import About from './Components/About/About';
 import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
 import TermsAndConditions from './Components/TermsAndConditions/TermsAndConditions';
 
@@ -30,6 +31,7 @@ const App = () =>  {
             <Route path="/signup" component={Signup} />
             <Route path="/signin" component={Signin} />
             <Route path="/faq" component={Faq} />
+            <Route path="/about" component={About} />
             <Route path="/howitworks" component={HowItWorks} />
             <Route path="/privacypolicy" component={PrivacyPolicy} />
             <Route path="/termsandconditions" component={TermsAndConditions} />
