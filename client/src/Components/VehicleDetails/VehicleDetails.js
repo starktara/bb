@@ -23,6 +23,12 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+const CATEGORY = [
+    'Motorcycle',
+    'Scooter',
+    'High-End Motorcycle'
+]
+
 const VehicleDetails = (props) => {
     const classes = useStyles();
     
@@ -50,15 +56,14 @@ const VehicleDetails = (props) => {
             props.getVehicleData(props.match.params.vehicleid);
         }
     },[]);
-
+    
     var vehicle = <Spinner />;
-
     if(props.vehicle!=null){
         let name = (props.vehicle._source.model <= MODELS.length-1 && props.vehicle._source.brand <= BRANDS.length-1) ? BRANDS[props.vehicle._source.brand] + ' ' + MODELS[props.vehicle._source.model] : 'NA';
         vehicle =
         <div className="wapper">
             <Banner
-                navigation="Bike"
+                navigation={CATEGORY[props.vehicle._source.category-1]}
                 heading={name}
                 text=""
                 path={props.location.pathname}

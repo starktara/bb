@@ -314,6 +314,18 @@ const Sell = props => {
         <Grid item xs={11} md={11} sm={11} lg={11} className={classes.banner}>
             <Banner navigation="Sell" heading="Sell" text="Sell any Two-Wheeler" path={props.location.pathname}/>
         </Grid>
+        <Grid item xs={11} sm={11} md={11} lg={11}>
+          <Paper className={classes.paper+ ' center-align'}>
+            <h3 className={classes.sellHeading}>Steps to Sell Your Two-Wheeler</h3>
+            <img alt="" src={blackHeadingLines} width="57" height="4"/>
+            <div className={classes.steps}>
+                <div className={classes.stepOne}>Share Your<br/>Two-Wheeler's Details</div>
+                <div className={classes.stepTwo}>Inspection by our<br/>Auto Expert</div>
+                <div className={classes.stepThree}>Document<br/>Verification</div>
+                <div className={classes.stepFour}>Instant Payment For<br/>Your Two-Wheeler</div>
+            </div>
+          </Paper>
+        </Grid>
         <Grid item xs={11} sm={11} md={11} lg={11} className="center-align">
           <h3 className={classes.bookAppointmentHeading}>Book An Appointment</h3>
           <img alt="" src={headingLines} width="57" height="4"/>
@@ -552,18 +564,6 @@ const Sell = props => {
                   </Grid>
                 </Grid>
               </Grid>
-            </Paper>
-          </Grid>
-          <Grid item xs={11} sm={11} md={11} lg={11}>
-            <Paper className={classes.paper+ ' center-align'}>
-              <h3 className={classes.sellHeading}>Steps to Sell Your Two-Wheeler</h3>
-              <img alt="" src={blackHeadingLines} width="57" height="4"/>
-              <div className={classes.steps}>
-                  <div className={classes.stepOne}>Share Your<br/>Two-Wheeler's Details</div>
-                  <div className={classes.stepTwo}>Inspection by our<br/>Auto Expert</div>
-                  <div className={classes.stepThree}>Document<br/>Verification</div>
-                  <div className={classes.stepFour}>Instant Payment For<br/>Your Two-Wheeler</div>
-              </div>
             </Paper>
           </Grid>
           <Grid item xs={11} sm={11} md={11} lg={11}>

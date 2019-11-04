@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from "@material-ui/core/Grid";
-import headingLines from '../../assets/heading-lines.svg';
+import blackHeadingLines from '../../assets/black-heading-lines.svg';
 
 const VehicleMetaData = () => {
     return (
@@ -25,7 +25,7 @@ const VehicleMetaData = () => {
             <Grid item xs={12} md={12} sm={12} lg={12} className="vehicleReportSec">
                 <div className="vehicleReport center-align">
                     <h2>Inspection Report</h2>
-                    <div><img src={headingLines} alt=""/></div><br/>
+                    <div><img src={blackHeadingLines} alt=""/></div><br/>
                     <p>This bike has gone through a thorough and is certified by our auto experts having extensive experience.</p>
                     <p>It has also gone through a refurbishment process and is absolutely ready to take you on your adventurous journey.</p>
                 </div>
