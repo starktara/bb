@@ -9,6 +9,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import headingLines from "../../assets/heading-lines.svg";
 import blackHeadingLines from '../../assets/black-heading-lines.svg';
 import VehicleAdvantage from '../../Components/VehicleAdvantage/VehicleAdvantage';
+import buyIcon from '../../assets/Buy-Icon.svg';
+import selectIcon from '../../assets/Select-Icon.svg';
+import visitIcon from '../../assets/Visit-BB-Store-Icon.svg';
 
 const useStyles = makeStyles(theme => ({
     body: {
@@ -42,7 +45,7 @@ const useStyles = makeStyles(theme => ({
         fontWeight: 600
     },
     text:{
-        fontSize: 19
+        fontSize: 20
     },
     advantageContainer:{
         width: 1200,
@@ -82,7 +85,7 @@ const HowItWorks = props => {
                         <Grid item xs={4} sm={4} md={4} lg={4}>
                             <div>
                                 <h5 className={classes.subHeading}>Select</h5>
-                            <img src={headingLines} width={145} alt=""/>
+                            <img src={selectIcon} width={300} alt=""/>
                                 <p className={classes.text}>Find any Two-Wheeler using<br/>
                                 multiple filtering options and Select<br/>
                                 the mose suitable two-wheelerfor you from hundreds of options.</p>
@@ -91,7 +94,7 @@ const HowItWorks = props => {
                         <Grid item xs={4} sm={4} md={4} lg={4}>
                             <div>
                                 <h5 className={classes.subHeading}>Visit BikeBazaar Store</h5>
-                            <img src={headingLines} width={145} alt=""/>
+                            <img src={visitIcon} width={300} alt=""/>
                                 <p className={classes.text}>Visit the nearest BikeBazaar Store<br/>
                                 to have a look & feel of Two-<br/>
                                 Wheeler chosen by you. You can inspect it on all parameters.</p>
@@ -100,7 +103,7 @@ const HowItWorks = props => {
                         <Grid item xs={4} sm={4} md={4} lg={4}>
                             <div>
                                 <h5 className={classes.subHeading}>Buy</h5>
-                            <img src={headingLines} width={145} alt=""/>
+                            <img src={buyIcon} width={300} alt=""/>
                                 <p className={classes.text}>After you make your decision about<br/>
                                 any Two-Wheeler,<br/>
                                 you can buy the vehicle<br/>

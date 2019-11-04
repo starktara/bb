@@ -7,6 +7,9 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import blackHeadingLines from '../../assets/black-heading-lines.svg';
+import missionIcon from  '../../assets/Mission-Icon.svg';
+import visionIcon from  '../../assets/Vision-Icon.svg';
+import VehicleAdvantage from '../../Components/VehicleAdvantage/VehicleAdvantage';
 
 const useStyles = makeStyles(theme => ({
     body: {
@@ -25,11 +28,33 @@ const useStyles = makeStyles(theme => ({
         lineHeight: '28px',
         fontWeight: 500
     },
+    paper2: {
+        marginBottom: theme.spacing(5),
+        boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
+        padding: '24px 90px 24px 90px',
+        fontSize: 18,
+        letterSpacing: 0.63,
+        color: '#232b2b',
+        lineHeight: '28px',
+        fontWeight: 500
+    },
     redHeading: {
         paddingBottom: 15,
         fontSize: 32,
         fontWeight: 800,
         color: '#ff0000',
+    },
+    flexEnd: {
+        display: 'flex',
+        justifyContent: 'flex-end'
+    },
+    mTop50: {
+        marginTop: 50
+    },
+    advantageContainer:{
+        width: 1200,
+        margin: '40px 40px 0px 40px',
+        padding: 40
     }
 }));
 
@@ -72,32 +97,33 @@ const About = (props) => {
                     </Paper>
                 </Grid>
                 <Grid item xs={11} sm={11} md={11} lg={11}>
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.paper2}>
                     <Grid container component="div" direction="row">
-                        <Grid item xs={4} sm={4} md={4} lg={4}>
-                        <img alt="" src={blackHeadingLines} width="57" height="4"/>
+                        <Grid item xs={5} sm={5} md={5} lg={5}>
+                        <img alt="" src={missionIcon} height="250"/>
                         </Grid>
-                        <Grid item xs={8} sm={8} md={8} lg={8}>
-                            <h3 className={classes.redHeading}>Mission</h3>
+                        <Grid item xs={7} sm={7} md={7} lg={7}>
+                            <h3 className={classes.redHeading+' '+classes.mTop50}>Mission</h3>
                             <p>
                                 Our mission is to become the most trusted company in the Pre-Owned Two-Wheeler market. We strive to position ourseleves as a one-stop destination  for buyers and sellers of Pre-Owned Two-Wheelers.
                             </p>
                         </Grid>
                         </Grid>
                         <Grid container component="div" direction="row">
-                        <Grid item xs={8} sm={8} md={8} lg={8}>
-                            <h3 className={classes.redHeading}>Vision</h3>
+                        <Grid item xs={7} sm={7} md={7} lg={7}>
+                            <h3 className={classes.redHeading+' '+classes.mTop50}>Vision</h3>
                             <p>
                                 To make Buying of Pre-Owned two-wheelers as easy as that of New Two-Wheelers.
                             </p>
                         </Grid>
-                        <Grid item xs={4} sm={4} md={4} lg={4}>
-                        <img alt="" src={blackHeadingLines} width="57" height="4"/>
+                        <Grid item xs={5} sm={5} md={5} lg={5} className={classes.flexEnd}>
+                        <img alt="" src={visionIcon} height="250"/>
                         </Grid>
                     </Grid>
                     </Paper>
                 </Grid>
             </Grid>
+            <VehicleAdvantage continerStyle={classes.advantageContainer} heading="BikeBazaar Brings Great Advantage for Buyers"/>
             <Footer />
         </div>
     )
