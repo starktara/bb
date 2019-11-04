@@ -96,11 +96,11 @@ class CategoryPage extends Component {
 
     let navigation = categoryData[
       this.props.match.params.category
-    ].name.replace("Bike", "Motorcycle");
+    ].name.replace("Bike", "Motorcycle").slice(0,-1).split(" ").join("-");
     let heading = categoryData[this.props.match.params.category].name.replace(
       "Bike",
       "Motorcycle"
-    );
+    ).slice(0,-1).split(" ").join("-");
     let text =
       "Motorcycles are available at easy EMI starting at ₹2,000*. Your  dream bike is not a distant dream now.";
 
