@@ -132,6 +132,7 @@ section-3 {
 .advantage-subtitle {
   margin-left: 25px;
   font-size: 15px;
+  padding: 0px 30px; 
   font-weight: 500;
 }
 
@@ -367,4 +368,7 @@ i.icon-black {
 }
 .padHorizontal5{
   padding: 0px 5px;
+}
+.advantage-subtitle-1{
+  padding: 0px 30px;
 }

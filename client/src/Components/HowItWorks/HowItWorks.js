@@ -88,7 +88,7 @@ const HowItWorks = props => {
                             <img src={selectIcon} width={300} alt=""/>
                                 <p className={classes.text}>Find any Two-Wheeler using<br/>
                                 multiple filtering options and Select<br/>
-                                the most suitable two-wheelerfor you from hundreds of options.</p>
+                                the most suitable two-wheeler for you from hundreds of options.</p>
                             </div>
                         </Grid>
                         <Grid item xs={4} sm={4} md={4} lg={4}>
