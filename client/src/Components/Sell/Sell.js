@@ -312,7 +312,7 @@ const Sell = props => {
       {tooltip}
       <Grid container component="div" direction="row" justify="center">
         <Grid item xs={11} md={11} sm={11} lg={11} className={classes.banner}>
-            <Banner navigation="Sell" heading="Sell" text="Sell any Two-Wheeler" path={props.location.pathname}/>
+            <Banner navigation="Sell" heading="Sell any Two-Wheeler" text="" path={props.location.pathname}/>
         </Grid>
         <Grid item xs={11} sm={11} md={11} lg={11}>
           <Paper className={classes.paper+ ' center-align'}>

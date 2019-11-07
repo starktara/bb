@@ -87,7 +87,7 @@ const PrivacyPolicy = props => {
                 <Grid item xs={11} sm={11} md={11} lg={11}>
                     <Paper className={classes.paper}>
                         <h3 className={classes.paperHeading}>Information we collect, store and use</h3><br/>
-                        BikeBazaar collects a range of information about you to provide you relevant products, services, information and offers. All your information is secure with us and it is free of any probable misuse. 
+                        BikeBazaar collects a range of information about you to provide relevant products, services, information and offers. All your information is secure with us and it is free of any probable misuse. 
                         <br/><br/>
                         Following are some ways through which we collect information about you:
                         <br/><br/>
