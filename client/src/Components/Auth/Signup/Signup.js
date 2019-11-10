@@ -24,7 +24,8 @@ import { connect } from "react-redux";
 const formValidator = (name, value) => {
   switch (name) {
     case "name": {
-      return !isAlpha(value) ? "Name must contain only Alphabets" : "";
+      const nameValue = value.replace(/ /g, '');
+      return !isAlpha(nameValue) ? "Name must contain only Alphabets" : "";
     }
     case "mobile": {
       return !isMobilePhone(value) ? "Invalid Mobile Number" : "";

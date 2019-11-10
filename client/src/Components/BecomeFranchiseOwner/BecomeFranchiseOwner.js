@@ -29,7 +29,8 @@ import isAlphaNumeric from "validator/lib/isAlphanumeric";
 const formValidator = (name, value) => {
   switch (name) {
     case "name": {
-      return !isAlpha(value) ? "Name must contain only Alphabets" : "";
+      const nameValue = value.replace(/ /g, '');
+      return !isAlpha(nameValue) ? "Name must contain only Alphabets" : "";
     }
     case "mobile": {
       return !isMobilePhone(value) ? "Invalid Mobile Number" : "";
@@ -38,12 +39,14 @@ const formValidator = (name, value) => {
       return !isEmail(value) ? "Invalid Email Id" : "";
     }
     case "city": {
-      return !isAlpha(value)
+      const cityValue = value.replace(/ /g, '');
+      return !isAlpha(cityValue)
         ? "Query must only have Alphanumeric Characters"
         : "";
     }
     case "address": {
-      return !isAlphaNumeric(value)
+      const addressValue = value.replace(/ /g,'');
+      return !isAlphaNumeric(addressValue)
         ? "Address must only have Alphanumeric Characters"
         : "";
     }
@@ -53,7 +56,7 @@ const formValidator = (name, value) => {
         : "";
     }
     default: {
-      return false;
+      return false; 
     }
   }
 };
