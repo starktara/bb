@@ -39,9 +39,7 @@ const formValidator = (name, value) => {
         : "";
     }
     case "password": {
-      return value.length > 6
-        ? true
-        : false
+      return value.length < 6
         ? "Password length must be of minimum 6 characters"
         : "";
     }

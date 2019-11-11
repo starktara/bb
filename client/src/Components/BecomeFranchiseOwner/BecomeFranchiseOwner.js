@@ -21,6 +21,7 @@ import Divider from '@material-ui/core/Divider';
 import axios from "axios";
 import isEmpty from "validator/lib/isEmpty";
 import isAlpha from "validator/lib/isAlpha";
+import isAscii from "validator/lib/isAscii";
 import isEmail from "validator/lib/isEmail";
 import isMobilePhone from "validator/lib/isMobilePhone";
 import isNumeric from "validator/lib/isNumeric";
@@ -45,9 +46,8 @@ const formValidator = (name, value) => {
         : "";
     }
     case "address": {
-      const addressValue = value.replace(/ /g,'');
-      return !isAlphaNumeric(addressValue)
-        ? "Address must only have Alphanumeric Characters"
+      return !isAscii(value)
+        ? "Address must have Valid Characters"
         : "";
     }
     case "pin": {
