@@ -21,6 +21,7 @@ import isAlpha from "validator/lib/isAlpha";
 import isEmail from "validator/lib/isEmail";
 import isMobilePhone from "validator/lib/isMobilePhone";
 import isAlphaNumeric from "validator/lib/isAlphanumeric";
+import isNumeric from "validator/lib/isNumeric";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
@@ -147,13 +148,28 @@ const formValidator = (name, value) => {
     case "mobile": {
       return !isMobilePhone(value) ? "Invalid Mobile Number" : "";
     }
-    case "email": {
-      return !isEmail(value) ? "Invalid Email Id" : "";
+    case "city":{
+      const cityValue = value.replace(/ /g,'');
+      return !isAlphaNumeric(cityValue) ? "City name must only be Alphanumeric" : "";
     }
-    case "query": {
-      return !isAlphaNumeric(value)
-        ? "Query must only have Alphanumeric Characters"
-        : "";
+    case "address": {
+      return !isAlphaNumeric(value) ? "Enter valid address" : "";
+    }
+    case "make": {  
+      const makeValue = value.replace(/ /g, '');
+      return !isAlpha(makeValue) ? "Make must conatin only aplhabets" : "";
+    }
+    case "model": {
+      return !isAlphaNumeric(value) ? "Model must be alphanumeric" : "";
+    }
+    case "variant":{
+      return !isAlphaNumeric(value) ? "Variant must be alphanumric" : "";
+    }
+    case "yom": {
+      return !isNumeric(value) ? "Enter valid year" : "" ;
+    }
+    case "kmsdriven" :{
+      return !isNumeric(value) ? "Kms. driven must be number" : "";
     }
     default: {
       return false;
@@ -207,11 +223,11 @@ const Sell = props => {
       error: false,
       errorMessage: ""
     },
-    email: {
-      value: "",
-      error: false,
-      errorMessage: ""
-    },
+    // email: {
+    //   value: "",
+    //   error: false,
+    //   errorMessage: ""
+    // },
     address: {
       value: "",
       error: false,
