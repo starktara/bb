@@ -31,11 +31,15 @@ setSearchTerm(event.target.value);
                       id="searchField"
                       type="text"
                       placeholder="Search Your Two-wheeler"
+                      required
                       value={searchTerm}
                       onChange={updateState}
                     />
                     <Link to={`/category/bike?searchTerm=${searchTerm}`}>
-                      <button className="btn search-label-btn" type="button">
+                      <button 
+                        className="btn search-label-btn" 
+                        type="submit"
+                        disabled={!searchTerm}>
                         <img src={searchIcon} height="30" alt="" />
                       </button>
                     </Link>
