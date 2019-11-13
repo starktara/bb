@@ -73,10 +73,8 @@ router.get("/getCategoryById", (req, res) => {
     }
     if (filterData.searchTerm != null) {
       mustArray.push({
-        wildcard: {
-          city: {
-            value: filterData.searchTerm
-          }
+        match_phrase: {
+          city: filterData.searchTerm
         }
       });
     }
