@@ -9,7 +9,8 @@ const CityWidget = (props) => {
     setSearchTerm(event.target.value);
   };
 
-  const searchCity = () => {
+  const searchCity = (event) => {
+     event.preventDefault();
     let category = props.category;
     let filterData = props.filter;
     filterData.searchTerm = `${searchTerm}*`;
@@ -39,7 +40,7 @@ const CityWidget = (props) => {
       </h3>
       <div className="WidgetBody">
         <div className="search-container">
-          <form action="/action_page.php">
+          <form  onSubmit={searchCity}>
             <input
               type="text"
               placeholder="Search your City"
