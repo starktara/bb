@@ -53,7 +53,7 @@ setSearchTerm(event.target.value);
               <div className="icon-wrapper">
                 <img src={locationIcon} height="20" alt="" />
               </div>
-              <span className="location-btn-text">Pune</span>
+              <span className="location-btn-text">Aluva</span>
               <img src={dropDown} height="11" className="dropdown-icon" alt=""/>
             </div>
           </Grid>

@@ -15,5 +15,8 @@ export const MODELS = [
     'Ninja Z 1000',
     'Ninja ZX 10 R ',
     'TNT 300',
-    'Activa 4g'
+    'Activa',
+    'Shine',
+    'Classic 500',
+    'Unicorn 160'
 ];

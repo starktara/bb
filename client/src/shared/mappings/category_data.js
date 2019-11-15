@@ -1,7 +1,7 @@
 export default {
     'bike' : {
         id: 1,
-        name: 'Bikes'
+        name: 'Motorcycles'
     },
     'scooter': {
         id: 2,
@@ -9,6 +9,6 @@ export default {
     },
     'high_end_bike': {
         id: 3,
-        name: 'High End Bikes'
+        name: 'High End Motorcycles'
     }
 };
