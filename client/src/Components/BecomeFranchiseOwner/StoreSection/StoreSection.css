@@ -1,0 +1,129 @@
+#StoreSection{
+    margin-bottom: 50px;
+}
+.carousel {
+  height: auto;
+  max-height: 100%;
+  border: none;
+  padding: 5px;
+  background: none;
+  overflow: inherit;
+}
+h2 {
+    color: #ff0000;
+    font-size: 34px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 1.07px;
+}
+.StoreCard .detail img {
+  display: inline-block;
+}
+.StoreCard {
+  border-radius: 4px;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  margin: 5px;
+}
+.StoreCard:hover {
+  box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.StoreCard img {
+  max-width: 100%;
+  padding: 3px;
+}
+.StoreCard .detail {
+  padding: 19px;
+}
+.StoreCard .detail h3 {
+  font-size: 18px;
+  padding-bottom: 0;
+  font-weight: bold;
+}
+.StoreCard .detail p.address {
+  margin-bottom: 0px;
+  font-size: 14px;
+  letter-spacing: 0.18px;
+  min-height: 90px;
+}
+.StoreCard .detail p.price {
+  font-size: 20px;
+  color: #ff0000;
+  margin: 0;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.StoreCard .detail p.price img.rupees {
+  width: 16px;
+  vertical-align: sub;
+  color: #ff0000;
+}
+.StoreCard .detail p.price strong {
+  font-family: RupeeForadian;
+  font-size: 21px;
+  font-weight: bold;
+}
+.StoreCard .detail ul.detailPoints {
+  list-style: none;
+  margin: 20px 0 0 0;
+}
+.StoreCard .detail ul.detailPoints li {
+  padding: 4px 0 4px 0px;
+  font-size: 14px;
+  width: 50%;
+  float: left;
+}
+.StoreCard .detail ul.detailPoints li span {
+  margin-left: 10px;
+}
+/*  .StoreCard .detail ul.detailPoints li.year { background: url(../../assets/images/icons/calender.png) 0 7px no-repeat; }
+ .StoreCard .detail ul.detailPoints li.km { background: url(../../assets/images/icons/km.png) 0 7px no-repeat; }
+ .StoreCard .detail ul.detailPoints li.cc { background: url(../../assets/images/icons/cc.png) 0 7px no-repeat; }
+ .StoreCard .detail ul.detailPoints li.owner { background: url(../../assets/images/icons/owner.png) 0 7px no-repeat; } */
+.StoreCard .detail p.location {
+  margin: 0px;
+  font-size: 16px;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.carousel .flex-prev {
+  left: -70px;
+  opacity: 1;
+  width: 50px;
+  height: 50px;
+  text-indent: -9999;
+  background: url(../../../assets/images/icons/left.png) 5px 5px no-repeat;
+}
+.carousel .flex-next {
+  right: -70px;
+  opacity: 1;
+  text-indent: -9999;
+  width: 50px;
+  height: 50px;
+  background: url(../../../assets/images/icons/right.png) 5px 5px no-repeat;
+}
+.carousel .flex-prev:hover {
+  left: -70px;
+}
+.carousel .flex-next:hover {
+  right: -70px;
+}
+.carousel:hover .flex-direction-nav .flex-prev {
+  opacity: 0.7;
+  left: -60px;
+}
+.carousel:hover .flex-direction-nav .flex-prev:hover {
+  opacity: 1;
+}
+.carousel:hover .flex-direction-nav .flex-next {
+  opacity: 0.7;
+  right: -70px;
+}
+.carousel:hover .flex-direction-nav .flex-next:hover {
+  opacity: 1;
+}

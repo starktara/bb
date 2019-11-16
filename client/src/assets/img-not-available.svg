@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="429" height="341" viewBox="0 0 429 341">
+    <defs>
+        <path id="a" d="M4 0h421a4 4 0 0 1 4 4v337H0V4a4 4 0 0 1 4-4z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <mask id="b" fill="#fff">
+            <use xlink:href="#a"/>
+        </mask>
+        <use fill="#E7E6E6" xlink:href="#a"/>
+        <g fill="#000" fill-rule="nonzero" mask="url(#b)" opacity=".2">
+            <path d="M214.923 141.615c-2.994 0-5.84.612-8.455 1.687 2.356 1.606 3.994 4.171 3.994 7.236 0 4.926-3.998 8.924-8.924 8.924-3.065 0-5.63-1.638-7.236-3.99a22.119 22.119 0 0 0-1.687 8.451c0 12.3 10.008 22.308 22.308 22.308s22.308-10.007 22.308-22.308c0-12.3-10.007-22.308-22.308-22.308zm58-26.769h-17.846L246.154 97h-62.462l-8.923 17.846h-17.846A8.92 8.92 0 0 0 148 123.77v80.308a8.923 8.923 0 0 0 8.923 8.923h116c4.926 0 8.923-3.998 8.923-8.923v-80.308a8.923 8.923 0 0 0-8.923-8.923zm-58 80.308c-17.244 0-31.23-13.987-31.23-31.23 0-17.245 13.986-31.232 31.23-31.232s31.23 13.987 31.23 31.231-13.986 31.23-31.23 31.23z"/>
+        </g>
+        <text fill="#000" font-family="Montserrat-SemiBold, Montserrat SemiBold" font-size="14" font-weight="500" letter-spacing=".175" mask="url(#b)" opacity=".5">
+            <tspan x="141" y="247">Image Not available</tspan>
+        </text>
+    </g>
+</svg>
