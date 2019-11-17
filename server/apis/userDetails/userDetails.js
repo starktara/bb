@@ -30,6 +30,25 @@ router.get("/createUser", (req, res) => {
     );
   }
   run().catch(console.log);
+  async function insertRoot(){
+    const dataset = [{
+      id: 0,
+      name: 'root',
+      email: 'root@bikebazaar.com',
+      gender: 'NA',
+      phone: '0000000000',
+      interests: 'NA',
+      userName: 'root',
+      password: 'root'
+    }];
+    const body = dataset.flatMap(doc => [
+      { index: { _index: "user-detail" } },
+      doc
+    ]);
+    const { body: bulkResponse } = await client.bulk({ refresh: true, body });
+    console.log(bulkResponse);
+  }
+  insertRoot().catch(console.log);
   res.json({ msg: "Index Created Sucessfully" });
 });
 
