@@ -46,7 +46,7 @@ router.get("/createSellerDetail", (req, res) => {
 });
 
 //details of buyer and bike from product detail page
-router.get("/createInterestedBuyer", (req, res) => {
+router.get("/createBuyerIndex", (req, res) => {
   async function run() {
     await client.indices.create(
       {
@@ -72,18 +72,17 @@ router.get("/createInterestedBuyer", (req, res) => {
 });
 
 //details of buyer and bike from product detail page
-router.get("/createFranchiseRequest", (req, res) => {
+router.get("/createFranchiseIndex", (req, res) => {
   async function run() {
     await client.indices.create(
       {
-        index: "franchise-request",
+        index: "franchisedetail",
         body: {
           mappings: {
             properties: {
-              id: { type: "integer" },
               name: { type: "text" },
               emailId: { type: "text" },
-              phone: { type: "integer" },
+              phone: { type: "text" },
               city: { type: "text" },
               address: { type: "text" },
               pincode: { type: "integer" }
@@ -98,21 +97,51 @@ router.get("/createFranchiseRequest", (req, res) => {
   res.json({ msg: "Index Created Sucessfully" });
 });
 
+//details of buyer and bike from product detail page
+router.get("/createSellerIndex", (req, res) => {
+  async function run() {
+    await client.indices.create(
+      {
+        index: "sellerdetails",
+        body: {
+          mappings: {
+            properties: {
+              name: { type: "text"},
+              city: { type: "text"},
+              brand:{ type: "text"},
+              variant: {type: "text"},
+              manufactureYear: { type: "integer"},
+              mobile:{ type: "text"},
+              address: {type: "text"},
+              model: {type: "text"},
+              kmsdriven: { type: "text"}
+            }
+          }
+        }
+      },
+      { ignore: [400] }
+    );
+  }
+  run().catch(console.log);
+  res.json({ msg: "Index Created Sucessfully" });
+});
+
 router.post("/insertFranchiseRequest", (req, res) => {
   let formData = req.body;
+  console.log(formData);
   async function upload() {
     const dataset = [
       {
-        name: formData.name,
-        emailId: formData.email,
-        phone:formData.mobile,
-        city: formData.city,
-        address: formData.address,
-        pincode: formData.pin
+        name: formData.name.value,
+        emailId: formData.email.value,
+        phone: formData.mobile.value,
+        city: formData.city.value,
+        address: formData.address.value,
+        pincode: formData.pin.value
       }
     ];
     const body = dataset.flatMap(doc => [
-      { index: { _index: "franchise-request" } },
+      { index: { _index: "franchisedetail" } },
       doc
     ]);
 
@@ -140,20 +169,23 @@ router.post("/insertFranchiseRequest", (req, res) => {
 
 router.post("/insertSellrequest",(req,res) => {
   let formData = req.body;
+  console.log(formData);
   async function upload() {
     const dataset = [
       {
-        name: formData.name,
-        city: formData.city,
-        brand:formData.make ,
-        phone:formData.mobile ,
+        name: formData.name.value,
+        city: formData.city.value,
+        brand:formData.make.value ,
+        variant: formData.variant,
+        mobile:formData.mobile.value ,
         address: formData.address,
-        model: formData.model,
-        kmsdriven: formData.kmdriven
+        model: formData.model.value,
+        kmsdriven: formData.kmsdriven,
+        manufactureYear: formData.yom.value
       }
     ];
     const body = dataset.flatMap(doc => [
-      { index: { _index: "franchise-request" } },
+      { index: { _index: "sellerdetails" } },
       doc
     ]);
 
