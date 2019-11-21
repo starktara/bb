@@ -482,7 +482,7 @@ const BecomeFranchiseOwner = props => {
                     <Grid container component="div" direction="row">
                       <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
                         <div className="form-group">
-                          <button type="button" className={classes.submitButton+ ' btn'} onClick={submitForm}>
+                          <button type="submit" className={classes.submitButton+ ' btn'} onClick={submitForm}>
                             Share
                           </button>
                         </div>

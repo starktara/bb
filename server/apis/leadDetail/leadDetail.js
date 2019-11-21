@@ -1,4 +1,5 @@
 const express = require("express");
+const nodemailer = require('nodemailer');
 const router = express.Router();
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
@@ -128,7 +129,7 @@ router.get("/createSellerIndex", (req, res) => {
 
 router.post("/insertFranchiseRequest", (req, res) => {
   let formData = req.body;
-  console.log(formData);
+  //console.log(formData);
   async function upload() {
     const dataset = [
       {
@@ -140,6 +141,61 @@ router.post("/insertFranchiseRequest", (req, res) => {
         pincode: formData.pin.value
       }
     ];
+     const data = dataset[0];
+    // console.log(output);
+    const output = `
+      <table border='1' style='width:100%'>
+        <tr>
+          <td> Name </td>
+          <td> ${data.name} </td>
+        </tr>
+        <tr>
+          <td> Mobile No. </td>
+          <td> ${data.phone} </td>
+        </tr>
+        <tr>
+          <td> Email </td>
+          <td> ${data.emailId} </td>
+        </tr>
+        <tr>
+          <td> City </td>
+          <td> ${data.city} </td>
+        </tr>
+        <tr>
+          <td> Address </td>
+          <td> ${data.address} </td>
+        </tr>
+        <tr>
+          <td> Pincode </td>
+          <td> ${data.pincode} </td>
+        </tr>
+      </table>
+    `;
+
+    async function main() {      
+      let transporter = nodemailer.createTransport({
+        host: "smtp.office365.com",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+          user: 'webadmin@bikebazaar.com',
+          pass: 'bikebaz@1981'
+        }
+      });
+
+      let info = await transporter.sendMail({
+        from: '"Trial" <webadmin@bikebazaar.com>', // sender address
+        to: 'ankit@tekonika.co', 
+        subject: "Franchise request", // Subject line
+        text: '', // plain text body
+        html: output // html body
+      });
+    
+      console.log("Message sent: %s", info.messageId);
+      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    }
+    main().catch(console.error);
+
     const body = dataset.flatMap(doc => [
       { index: { _index: "franchisedetail" } },
       doc
