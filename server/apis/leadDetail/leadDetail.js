@@ -1,8 +1,10 @@
 const express = require("express");
-const nodemailer = require('nodemailer');
+//const nodemailer = require('nodemailer');
 const router = express.Router();
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
+const  mailer = require('../../helper/mailer');
+
 //details of seller and bike from sell page
 router.get("/createSellerDetail", (req, res) => {
   async function run() {
@@ -141,8 +143,7 @@ router.post("/insertFranchiseRequest", (req, res) => {
         pincode: formData.pin.value
       }
     ];
-     const data = dataset[0];
-    // console.log(output);
+    const data = dataset[0];
     const output = `
       <table border='1' style='width:100%'>
         <tr>
@@ -172,29 +173,29 @@ router.post("/insertFranchiseRequest", (req, res) => {
       </table>
     `;
 
-    async function main() {      
-      let transporter = nodemailer.createTransport({
-        host: "smtp.office365.com",
-        port: 587,
-        secure: false, // true for 465, false for other ports
-        auth: {
-          user: 'webadmin@bikebazaar.com',
-          pass: 'bikebaz@1981'
-        }
-      });
+    // async function main() {      
+    //   let transporter = nodemailer.createTransport({
+    //     host: "smtp.office365.com",
+    //     port: 587,
+    //     secure: false, // true for 465, false for other ports
+    //     auth: {
+    //       user: 'webadmin@bikebazaar.com',
+    //       pass: 'bikebaz@1981'
+    //     }
+    //   });
 
-      let info = await transporter.sendMail({
-        from: '"Trial" <webadmin@bikebazaar.com>', // sender address
-        to: 'ankit@tekonika.co', 
-        subject: "Franchise request", // Subject line
-        text: '', // plain text body
-        html: output // html body
-      });
+    //   let info = await transporter.sendMail({
+    //     from: '"Trial" <webadmin@bikebazaar.com>', // sender address
+    //     to: 'ankit@tekonika.co', 
+    //     subject: "Franchise request", // Subject line
+    //     text: '', // plain text body
+    //     html: output // html body
+    //   });
     
-      console.log("Message sent: %s", info.messageId);
-      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    }
-    main().catch(console.error);
+    //   console.log("Message sent: %s", info.messageId);
+    //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    // }
+    mailer(output).catch(console.error);
 
     const body = dataset.flatMap(doc => [
       { index: { _index: "franchisedetail" } },
