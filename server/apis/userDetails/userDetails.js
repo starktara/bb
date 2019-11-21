@@ -32,7 +32,6 @@ router.get("/createUser", (req, res) => {
   run().catch(console.log);
   async function insertRoot(){
     const dataset = [{
-      id: 0,
       name: 'root',
       email: 'root@bikebazaar.com',
       gender: 'NA',
@@ -55,7 +54,7 @@ router.get("/createUser", (req, res) => {
 //function to sign up
 router.post("/insertUserDetails", (req, res) => {
   let formData = req.body;
-
+  
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(formData.password.value, salt, (err, hash) => {
       if (err) throw err;
@@ -91,7 +90,7 @@ router.post("/insertUserDetails", (req, res) => {
           const dataset = [
             {
               name: formData.name.value,
-              emailId: formData.email.value,
+              email: formData.email.value,
               phone: formData.mobile.value,
               gender: formData.gender.value,
               interests: formData.interest.value,
