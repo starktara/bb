@@ -26,7 +26,6 @@ import isAscii from "validator/lib/isAscii";
 import isEmail from "validator/lib/isEmail";
 import isMobilePhone from "validator/lib/isMobilePhone";
 import isNumeric from "validator/lib/isNumeric";
-import isAlphaNumeric from "validator/lib/isAlphanumeric";
 
 const formValidator = (name, value) => {
   switch (name) {

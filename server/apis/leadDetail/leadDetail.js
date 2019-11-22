@@ -50,14 +50,13 @@ router.get("/createBuyerIndex", (req, res) => {
   async function run() {
     await client.indices.create(
       {
-        index: "buyerDetail",
+        index: "buyerdetails",
         body: {
           mappings: {
             properties: {
-              id: { type: "integer" },
               buyerName: { type: "text" },
               emailId: { type: "text" },
-              phone: { type: "integer" },
+              phone: { type: "text" },
               isEmi: { type: "integer" },
               vehicleId: { type: "integer" }
             }
@@ -211,5 +210,44 @@ router.post("/insertSellrequest",(req,res) => {
   upload().catch(console.log);
 
 })
+
+router.post("/insertBuyRequest", (req, res) => {
+  let formData = req.body;
+  async function upload() {
+    const dataset = [
+      {
+        buyerName: formData.name.value,
+        emailId: formData.email.value,
+        phone: formData.phone.value,
+        isEmi: formData.emi.value,
+        vehicleId: formData.vehicleid.value
+      }
+    ];
+    const body = dataset.flatMap(doc => [
+      { index: { _index: "buyerdetails" } },
+      doc
+    ]);
+
+    const { body: bulkResponse } = await client.bulk({ refresh: true, body });
+
+    if (bulkResponse.errors) {
+      const erroredDocuments = [];
+      bulkResponse.items.forEach((action, i) => {
+        const operation = Object.keys(action)[0];
+        if (action[operation].error) {
+          erroredDocuments.push({
+            status: action[operation].status,
+            error: action[operation].error,
+            operation: body[i * 2],
+            document: body[i * 2 + 1]
+          });
+        }
+      });
+      console.log(erroredDocuments);
+    }
+    res.send("successfully inserted");
+  }
+  upload().catch(console.log);
+});
 
 module.exports = router;
