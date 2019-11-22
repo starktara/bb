@@ -1,9 +1,10 @@
 const express = require("express");
-//const nodemailer = require('nodemailer');
 const router = express.Router();
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
 const  mailer = require('../../helper/mailer');
+
+const sendToEmail = 'ankit@tekonika.co'; //email to send alerts to
 
 //details of seller and bike from sell page
 router.get("/createSellerDetail", (req, res) => {
@@ -172,8 +173,8 @@ router.post("/insertFranchiseRequest", (req, res) => {
         </tr>
       </table>
     `;
-
-    mailer(output, 'Franchise Request').catch(console.error);
+    
+    mailer(output, 'Franchise Request', sendToEmail).catch(console.error);
 
     const body = dataset.flatMap(doc => [
       { index: { _index: "franchisedetail" } },
@@ -204,7 +205,6 @@ router.post("/insertFranchiseRequest", (req, res) => {
 
 router.post("/insertSellrequest",(req,res) => {
   let formData = req.body;
-  console.log(formData);
   async function upload() {
     const dataset = [
       {
@@ -219,6 +219,46 @@ router.post("/insertSellrequest",(req,res) => {
         manufactureYear: formData.yom.value
       }
     ];
+    const data = dataset[0];
+    const output = `
+      <table border='1' style='width:100%'>
+        <tr>
+          <td> Name </td>
+          <td> ${data.name} </td>
+        </tr>
+        <tr>
+          <td> Mobile No. </td>
+          <td> ${data.mobile} </td>
+        </tr>
+        <tr>
+          <td> City </td>
+          <td> ${data.city} </td>
+        </tr>
+        <tr>
+          <td> Make </td>
+          <td> ${data.brand} </td>
+        </tr>
+        <tr>
+          <td> Model </td>
+          <td> ${data.model} </td>
+        </tr>
+        <tr>
+          <td> Variant </td>
+          <td> ${data.variant} </td>
+        </tr>
+        <tr>
+          <td> KMs driven </td>
+          <td> ${data.kmsdriven} </td>
+        </tr>
+        <tr>
+          <td> Year of Manufacture </td>
+          <td> ${data.manufactureYear} </td>
+        </tr>
+      </table>
+    `;
+    
+    mailer(output, 'Appointment Booked', sendToEmail).catch(console.error);
+
     const body = dataset.flatMap(doc => [
       { index: { _index: "sellerdetails" } },
       doc
