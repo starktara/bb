@@ -83,7 +83,7 @@ const Faq = (props) => {
                     <Grid item xs={11} sm={11} md={11} lg={11}>
                         <Paper className={classes.paper}>
                             <h5 id="faqHeading" className={classes.faqHeading}>
-                                How do i select a suitable two-wheeler for me?
+                                How do I select a suitable two-wheeler for myself?
                             </h5>
                             <p className={classes.faqSteps}>
                                 Step 1: Select the category of the two-wheeler you want to buy out of Motorcycles, Scooters and High-End Motorcycles
@@ -100,7 +100,7 @@ const Faq = (props) => {
                                 aria-controls="panel1a-content"
                                 className={classes.faqQuestion}
                                 >
-                                I want to see two wheeler nearest to my location how do i do it?
+                                I want to see two-wheeler nearest to my location how do I do it?
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
                                 After selecting the two-wheeler category, you can use the “Sort By” option to see the 
@@ -114,7 +114,7 @@ const Faq = (props) => {
                                 aria-controls="panel1a-content"
                                 className={classes.faqQuestion}
                                 >
-                                I liked on of the listed Bike and want to see it, what should i do next?
+                                I liked one of the listed Bike and want to see it, what should I do next?
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
                                 When you like any two-wheeler, you just need to share your details 
@@ -128,7 +128,7 @@ const Faq = (props) => {
                                 aria-controls="panel1a-content"
                                 className={classes.faqQuestion}
                                 >
-                                How can i be assured of the vehicle's quality? What if i see some issue in the bike after purchasing?
+                                How can I be assured of the vehicle's quality? What if I see some issue in the bike after purchasing?
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
                                 All the bikes available at BikeBazaar store goes through a thorough inspection by auto experts.<br/><br/>
@@ -146,11 +146,11 @@ const Faq = (props) => {
                                 className={classes.faqQuestion}
                                 >
                                 I like the bike but, have some financial issues which are stopping me from purchasing the bike right now.
-                                Can you help me with this
+                                Can you help me with this?
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
                                 Nothing can stop you from buying your dream bike, not even financial issues.<br/><br/>
-                                BikeBazaar provides financial assistance to you through which you can purchase your dream bike at EMI starting at as low as Rs 2000.
+                                BikeBazaar provides financial assistance to you through which you can purchase your dream bike at EMI starting at as low as ₹2000*.
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
                             <ExpansionPanel className={classes.collapsible}>
@@ -159,7 +159,7 @@ const Faq = (props) => {
                                 aria-controls="panel1a-content"
                                 className={classes.faqQuestion}
                                 >
-                                How can i buy the bike at low cost EMI?
+                                How can I buy the bike at low cost EMI?
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
                                 If you want to avail the facility of low-cost EMI for the dream bike you want to purchase then you just need to show the interest in taking the loan by clicking on the checkbox “Interested in taking a loan”, while sharing your details.<br/><br/>

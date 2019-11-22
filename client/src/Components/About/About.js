@@ -105,7 +105,7 @@ const About = (props) => {
                         <Grid item xs={7} sm={7} md={7} lg={7}>
                             <h3 className={classes.redHeading+' '+classes.mTop50}>Mission</h3>
                             <p>
-                                Our mission is to become the most trusted company in the Pre-Owned Two-Wheeler market. We strive to position ourseleves as a one-stop destination  for buyers and sellers of Pre-Owned Two-Wheelers.
+                                Our mission is to become the most trusted company in the Pre-Owned Two-Wheeler market. We strive to position ourselves as a one-stop destination for buyers and sellers of Pre-Owned Two-Wheelers.
                             </p>
                         </Grid>
                         </Grid>
@@ -113,7 +113,7 @@ const About = (props) => {
                         <Grid item xs={7} sm={7} md={7} lg={7}>
                             <h3 className={classes.redHeading+' '+classes.mTop50}>Vision</h3>
                             <p>
-                                To make purchase of Pre-Owned two-wheelers as easy as that of New Two-Wheelers.
+                                To make purchase of Pre-Owned Two-Wheelers as easy as that of New Two-Wheelers.
                             </p>
                         </Grid>
                         <Grid item xs={5} sm={5} md={5} lg={5} className={classes.flexEnd}>

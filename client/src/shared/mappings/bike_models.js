@@ -5,7 +5,7 @@ export const MODELS = [
     'Classic 350',
     'Pulsar 150',
     'Dio',
-    'Pulsar RS 200',
+    'Pulsar ₹200',
     'Maestro',
     'Discover 125',
     'Dominor',

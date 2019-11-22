@@ -247,13 +247,13 @@ const BecomeFranchiseOwner = props => {
               <Grid item xs={12} sm={12} md={12} lg={12} className={classes.about}>
                 <h4 className="redhead">About BikeBazaar</h4>
                 <p className="about-bb">
-                  BikeBazaar aims to provide a hassle-free experience to anyone looking to<br/>buy/sell a pre-owned 2 wheeler with the help of technology & team of<br/ >experts.
+                  BikeBazaar aims to provide a hassle-free experience to anyone looking to<br/>buy/sell a pre-owned two-wheeler with the help of technology & team of<br/ >experts.
                   <br/>
                   <br/>
-                  For the buyer we ensure quality and make the process smooth by offering<br/><span className={classes.bold}>"Free 6 Months' Warranty"</span>, <span className={classes.bold}>"Certified Two Wheelers"</span>, <span className={classes.bold}>"Low Cost EMI"</span>,<br/><span className={classes.bold}>"Hassle-Free Document Transfer"</span> and more.
+                  For the buyer we ensure quality and make the process smooth by offering<br/><span className={classes.bold}>"Free 6 Months' Warranty"</span>, <span className={classes.bold}>"Certified Two-Wheelers"</span>, <span className={classes.bold}>"Low Cost EMI"</span>,<br/><span className={classes.bold}>"Hassle-Free Document Transfer"</span> and more.
                   <br/>
                   <br/>
-                  We are building a hybrid model (Mix of Online and Offline) to bring structure to this<br/>domian and ensure a great and hassle-free experience for our Customers.
+                  We are building a hybrid model (Mix of Online and Offline) to bring structure to this<br/>domain and ensure a great and hassle-free experience for our Customers.
                   <br/>
                   <br/>
                   And we are offering a reliable and hassle-free way to buy and sell any Pre-Owned Two-Wheeler, stakeholders would rely on BikeBazaar for their purchasing or selling decisions regarding their vehicles.
