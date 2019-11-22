@@ -113,7 +113,7 @@ const TermsAndConditions = props => {
                                 Any other reason (apart from buying) for accessing the information about the two-wheeler or BikeBazaar or franchise stores will not be entertained.
                             </li>
                             <li>
-                                Dealers/Mediators/Brokers cannot disguise themselves as buyers and access the information related to tTwo-wheelers or BikeBazaar or franchise stores. BikeBazaar reserves all the rights related to qualifying or disqualifying anyone as “Buyer”.
+                                Dealers/Mediators/Brokers cannot disguise themselves as buyers and access the information related to Two-wheelers or BikeBazaar or franchise stores. BikeBazaar reserves all the rights related to qualifying or disqualifying anyone as “Buyer”.
                             </li>
                         </ul><br/><br/>
                         <h4 className={classes.subHeading}>Sellers</h4><br/>
@@ -244,7 +244,7 @@ const TermsAndConditions = props => {
                 <Grid item xs={11} sm={11} md={11} lg={11}>
                     <Paper className={classes.paper}>
                         <h3 className={classes.paperHeading}>Warranty and Buyer Protection</h3><br/>
-                        BikeBazaar facilitatesprovides 6 months’ (or such other period as may be decided by BikeBazaar) warranty on all refurbished pre-owned two-wheelers which is extendable beyond 6 months’ time (or such period as may be decided by BikeBazaar) through third party providing warranty solutions and administration. BikeBazaar reserves all rights to decide whether it wants to facilitate extended warranty on any two-wheeler or not. The said warranty coverage is provided for only some specific parts of two-wheeler. 
+                        BikeBazaar facilitates provides 6 months’ (or such other period as may be decided by BikeBazaar) warranty on all refurbished pre-owned two-wheelers which is extendable beyond 6 months’ time (or such period as may be decided by BikeBazaar) through third party providing warranty solutions and administration. BikeBazaar reserves all rights to decide whether it wants to facilitate extended warranty on any two-wheeler or not. The said warranty coverage is provided for only some specific parts of two-wheeler. 
                     </Paper>
                 </Grid>
                 <Grid item xs={11} sm={11} md={11} lg={11}>

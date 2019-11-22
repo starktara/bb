@@ -89,10 +89,10 @@ const Faq = (props) => {
                                 Step 1: Select the category of the two-wheeler you want to buy out of Motorcycles, Scooters and High-End Motorcycles
                             </p>
                             <p className={classes.faqSteps}>
-                                Step 2: Use the filter for City, Manufactruring Year, Budget, Brand and KMs driven for the chosen category of the two-wheeler.
+                                Step 2: Use the filter for City, Manufacturing Year, Budget, Brand and KMs driven for the chosen category of the two-wheeler.
                             </p>
                             <p className={classes.faqSteps}>
-                                Step 3: You will be shown multiple options to select from for the two-wheeler you want to buy, select any of then to see further.
+                                Step 3: You will be shown multiple options to select from for the two-wheeler you want to buy, select any of them to see further.
                             </p>
                             <ExpansionPanel className={classes.collapsible}>
                                 <ExpansionPanelSummary
@@ -133,10 +133,10 @@ const Faq = (props) => {
                                 <ExpansionPanelDetails>
                                 All the bikes available at BikeBazaar store goes through a thorough inspection by auto experts.<br/><br/>
                                 Then it goes through a thorough refurbishment process and all the issues are resolved.<br/><br/>
-                                So, when a bike is displayed for a sale through BikeBazaar store, 
-                                it’s free of any issues and you can rest assured of its quality.<br/><br/>
+                                So, when a bike is displayed for sale through BikeBazaar store, 
+                                it’s free of any issues and you can be assured of its quality.<br/><br/>
                                 All the vehicles are also covered with "Buyer protection" (Any unforeseen issue in a week’s time is resolved for Free) and "Free 6 Months' Warranty" (warranty on Engine & Transmission, extendable up-to 1 Year).<br/><br/>
-                                So, you can buy the vehicle with "Zero Risk" from BikeBazaar stores.
+                                So, you can buy the vehicle at "Zero Risk" from BikeBazaar stores.
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
                             <ExpansionPanel className={classes.collapsible}>

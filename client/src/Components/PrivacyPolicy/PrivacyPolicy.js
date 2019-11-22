@@ -76,7 +76,7 @@ const PrivacyPolicy = props => {
                     <br/><br/>
                     We value the trust you place on BikeBazaar, it’s why BikeBazaar is governed by the highest possible standards to protect your privacy.
                     <br/><br/>
-                    Please read our ‘Privacy Policy’ & ‘Terms & Conditions’ before starting using our services. By using BikeBazaar services, you are deemed to agree to our ‘Privacy Policy’ and ‘Term & Conditions’. If you wish to not bound yourself by our privacy policy, please do not use our services and unsubscribe from the website. 
+                    Please read our ‘Privacy Policy’ & ‘Terms & Conditions’ before starting using our services. By using BikeBazaar services, you are deemed to agree to our ‘Privacy Policy’ and ‘Term & Conditions’. If you wish to not bind yourself by our privacy policy, please do not use our services and unsubscribe from the website. 
                     <br/><br/>
                     This privacy policy of BikeBazaar is an electronic record in the form of electronic contract as per the ‘Information Technology Act, 2000’ and rules made thereunder and don’t require any physical copy, signature or seal.
                     <br/><br/>
@@ -125,12 +125,12 @@ const PrivacyPolicy = props => {
                         For the purpose of better security of your personal data, we may ask for proof of identity before disclosing your personal information to you. 
                         <br/><br/>
                         <h4 className={classes.subHeading}>Third-Party Web Tools</h4><br/>
-                        We regularly use third party web tools which help us to provide you a better user experience of BikeBazaar website and serve you better. Your information shared with such third-party web tools is anonymized and you are given full freedom to opt-out of such web tools.
+                        We regularly use third party web tools which help us to provide you a better user experience of BikeBazaar website and serve you better. Your information shared with such third-party web tools is anonymised and you are given full freedom to opt-out of such web tools.
                         <br/><br/>
                         <h4 className={classes.subHeading}>Third-Party Websites</h4><br/>
                         To give you the opportunity to learn more about the industry and about the products and services you are interested in, we may provide links to resources of third-party websites. We make our best efforts to link to only those websites which are secure and reliable from any international standards.  
                         <br/><br/>
-                        We may share some of your information with advertising portals (Like Google, Facebook) to show you customized ads which will have products and services you are interested in. And this is done in an anonymized manner.
+                        We may share some of your information with advertising portals (Like Google, Facebook) to show you customized ads which will have products and services you are interested in. And this is done in an anonymised manner.
                         <br/><br/>
                         All such third-party websites may have different policies for ‘Privacy’ and ‘Terms of use’. We don’t have any control over policies of such websites and are not responsible for its content. It’s why you are advised to go through the policies of such websites to be sure of the security of your data.
                     </Paper>

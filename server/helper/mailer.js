@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 
-async function mailer(output) {      
+async function mailer(output, subject) {      
     let transporter = nodemailer.createTransport({
       host: "smtp.office365.com",
       port: 587,
@@ -14,7 +14,7 @@ async function mailer(output) {
     let info = await transporter.sendMail({
       from: '"Trial" <webadmin@bikebazaar.com>', // sender address
       to: 'ankit@tekonika.co', 
-      subject: "Franchise request", // Subject line
+      subject: subject, // Subject line
       text: '', // plain text body
       html: output // html body
     });
