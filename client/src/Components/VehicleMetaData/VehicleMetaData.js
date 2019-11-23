@@ -26,7 +26,7 @@ const VehicleMetaData = () => {
                 <div className="vehicleReport center-align">
                     <h2>Inspection Report</h2>
                     <div><img src={blackHeadingLines} alt=""/></div><br/>
-                    <p>This bike has gone through a thorough and is certified by our auto experts having extensive experience.</p>
+                    <p>This bike has gone through a thorough inspection and is certified by our auto experts having extensive experience.</p>
                     <p>It has also gone through a refurbishment process and is absolutely ready to take you on your adventurous journey.</p>
                 </div>
             </Grid>

@@ -91,9 +91,9 @@ const About = (props) => {
                             <img alt="" src={blackHeadingLines} width="57" height="4"/>
                         </div>
                         BikeBazaar aims to provide a hassle-free experience to anyone looking to buy/sell a pre-owned 2 wheeler with the help of technology and a team of experts.<br/><br/>
-                        For the buyer we ensure quality and make the process smooth by offering "Free 6 Month's Warranty", "Certified Two-Wheelers", "Low-Cost EMI", "Hassle-Free Document Transfer" and more.<br/><br/>
-                        For the seller, we make the process quick & smooth by "Rich Market Place", "Ensuring the transaction is completed within one visit" and "Hassle-Free Document Transfer".<br/><br/>
-                        We are building up a hybrid model (mix of Online & Offline) to bring in structure in this domain and ensure a great and hassle-free experience for our Customers.
+                        For the buyer we ensure quality and make the process smooth by offering "Free 6 Months' Warranty", "Certified Two-Wheelers", "Low-Cost EMI", "Hassle-Free Document Transfer" and more.<br/><br/>
+                        For the seller, we make the process quick & smooth through "Rich Market Place", "Ensuring the transaction is completed within one visit" and "Hassle-Free Document Transfer".<br/><br/>
+                        We are building up a hybrid model (mix of Online & Offline) to bring in structure to this domain and ensure a great and hassle-free experience for our Customers.
                     </Paper>
                 </Grid>
                 <Grid item xs={11} sm={11} md={11} lg={11}>
@@ -105,7 +105,7 @@ const About = (props) => {
                         <Grid item xs={7} sm={7} md={7} lg={7}>
                             <h3 className={classes.redHeading+' '+classes.mTop50}>Mission</h3>
                             <p>
-                                Our mission is to become the most trusted company in the Pre-Owned Two-Wheeler market. We strive to position ourseleves as a one-stop destination  for buyers and sellers of Pre-Owned Two-Wheelers.
+                                Our mission is to become the most trusted company in the Pre-Owned Two-Wheeler market. We strive to position ourselves as a one-stop destination for buyers and sellers of Pre-Owned Two-Wheelers.
                             </p>
                         </Grid>
                         </Grid>
@@ -113,7 +113,7 @@ const About = (props) => {
                         <Grid item xs={7} sm={7} md={7} lg={7}>
                             <h3 className={classes.redHeading+' '+classes.mTop50}>Vision</h3>
                             <p>
-                                To make Buying of Pre-Owned two-wheelers as easy as that of New Two-Wheelers.
+                                To make purchase of Pre-Owned Two-Wheelers as easy as that of New Two-Wheelers.
                             </p>
                         </Grid>
                         <Grid item xs={5} sm={5} md={5} lg={5} className={classes.flexEnd}>

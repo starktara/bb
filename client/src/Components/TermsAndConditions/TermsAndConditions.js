@@ -76,7 +76,7 @@ const TermsAndConditions = props => {
                 <Grid item xs={11} sm={11} md={11} lg={11}>
                     <Paper className={classes.paper}>
                         <h3 className={classes.paperHeading}>Membership Eligibility</h3><br/>
-                        To qualify to be user of BikeBazaar website, you need to be of 18+ age. If your age is lower than 18 years, you shall not register as user of BikeBazaar and shall not use or transact on our website. If you wish to use or transact on our website, such use or transaction must be done by your parents or legal guardians. If you are found to be minor, BikeBazaar reserves all rights to terminate your membership.<br/><br/>
+                        To qualify to be user of BikeBazaar website, you need to be of 18+ age. If your age is lower than 18 years, you shall not register as a user of BikeBazaar and shall not use or transact on our website. If you wish to use or transact on our website, such use or transaction must be done by your parents or legal guardians. If you are found to be minor, BikeBazaar reserves all rights to terminate your membership.<br/><br/>
                         BikeBazaar reserves all the rights to terminate your membership at any point of time with or without giving any prior notice to you. 
                     </Paper>
                 </Grid>
@@ -113,7 +113,7 @@ const TermsAndConditions = props => {
                                 Any other reason (apart from buying) for accessing the information about the two-wheeler or BikeBazaar or franchise stores will not be entertained.
                             </li>
                             <li>
-                                Dealers/Mediators/Brokers cannot disguise themselves as buyers and access the information related to tTwo-wheelers or BikeBazaar or franchise stores. BikeBazaar reserves all the rights related to qualifying or disqualifying anyone as “Buyer”.
+                                Dealers/Mediators/Brokers cannot disguise themselves as buyers and access the information related to Two-wheelers or BikeBazaar or franchise stores. BikeBazaar reserves all the rights related to qualifying or disqualifying anyone as “Buyer”.
                             </li>
                         </ul><br/><br/>
                         <h4 className={classes.subHeading}>Sellers</h4><br/>
@@ -238,19 +238,19 @@ const TermsAndConditions = props => {
                     <Paper className={classes.paper}>
                         <h3 className={classes.paperHeading}>Credit and EMI</h3><br/>
                         BikeBazaar through its credit partners facilitates low cost EMI option to buyers to purchase their dream two-wheeler. However, availability of credit varies profile to profile basis. And the amount of loan, minimum EMI possible and term of loan depends upon your credit history and CIBIL Score.<br/><br/>
-                        Any decision taken by the credit partner regarding the loan will be final and you can not request to alter it. 
+                        Any decision taken by the credit partner regarding the loan will be final and you cannot request to alter it. 
                     </Paper>
                 </Grid>
                 <Grid item xs={11} sm={11} md={11} lg={11}>
                     <Paper className={classes.paper}>
                         <h3 className={classes.paperHeading}>Warranty and Buyer Protection</h3><br/>
-                        BikeBazaar facilitatesprovides 6 months’ (or such other period as may be decided by BikeBazaar) warranty on all refurbished pre-owned two-wheelers which is extendable beyond 6 months’ time (or such period as may be decided by BikeBazaar) through third party providing warranty solutions and administration. BikeBazaar reserves all rights to decide whether it wants to facilitate extended warranty on any two-wheeler or not. The said warranty coverage is provided for only some specific parts of two-wheeler. 
+                        BikeBazaar facilitates and provides 6 months’ (or such other period as may be decided by BikeBazaar) warranty on all refurbished pre-owned two-wheelers which is extendable beyond 6 months’ time (or such period as may be decided by BikeBazaar) through third party providing warranty solutions and administration. BikeBazaar reserves all rights to decide whether it wants to facilitate extended warranty on any two-wheeler or not. The said warranty coverage is provided for only some specific parts of two-wheeler. 
                     </Paper>
                 </Grid>
                 <Grid item xs={11} sm={11} md={11} lg={11}>
                     <Paper className={classes.paper}>
                         <h3 className={classes.paperHeading}>Indemnity</h3><br/>
-                        You shall indemnify and hold harmless BikeBazaar website, Mobile App, it’s owners, licensees, affiliates, subsidiaries, associated companies, group companies and their respective employees, agents, directors, investors, from any demand or claim or actions arising out of your breach of BikeBazaar’s ‘Terms and Conditions’ or ‘Privacy Policy’, Or your violation of any rules, law or regulations or the rights of a third party, Or legal code formulated by Indian government. 
+                        You shall indemnify and hold harmless BikeBazaar website, Mobile App, it’s owners, licensees, affiliates, subsidiaries, associated companies, group companies and their respective employees, agents, directors, investors, from any demand or claim or actions arising out of your breach of BikeBazaar’s ‘Terms and Conditions’ or ‘Privacy Policy’, or your violation of any rules, law or regulations or the rights of a third party, or legal code formulated by Indian government. 
                     </Paper>
                 </Grid>
                 <Grid item xs={11} sm={11} md={11} lg={11}>
@@ -282,7 +282,7 @@ const TermsAndConditions = props => {
                 <Grid item xs={11} sm={11} md={11} lg={11}>
                     <Paper className={classes.paper}>
                         <h3 className={classes.paperHeading}>Contact Us</h3><br/>
-                        You may reach out to us for any questions or comments regarding usage of BikeBazaar’s website,mobile app or services. 
+                        You may reach out to us for any questions or comments regarding usage of BikeBazaar’s website, mobile app or services. 
                         Please write to us at <span className={classes.red}>legal@bikebazaar.com</span> with a thorough description of such concerns/issues faced by you and we will try to resolve the issue for you.
                     </Paper>
                 </Grid>

@@ -39,10 +39,10 @@ const VehicleAdvantage = (props) => {
             className="advantage1"
           >
             <Grid item xs={10} sm={10} md={10} lg={10}>
-              <h3>Free 6 Month's Warranty</h3>
+              <h3>Free 6 Months' Warranty</h3>
               <p>
-                Get 6 Month's Comprehensive Warranty covering critical parts
-                including engine and gearbox, extendable uo tp 12 months
+                Get 6 Months' Comprehensive Warranty covering critical parts
+                including engine and gearbox, extendable up to 12 months
               </p>
             </Grid>
             <Grid item xs={2} sm={2} md={2} lg={2} className="icon">
