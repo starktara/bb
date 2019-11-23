@@ -273,7 +273,7 @@ const Contact = props => {
                       </Grid>
                       <Grid item xs={6} sm={6} md={6} lg={6}>
                         <label htmlFor="email" className="black-text">
-                          <span className={classes.label}>Email:*</span>&nbsp;&nbsp;(eg. abc@gmail.com)
+                          <span className={classes.label}>Email:</span>&nbsp;&nbsp;(eg. abc@gmail.com)
                         </label>
                         <input type="email" name="email" id="email" placeholder=""
                           onBlur={event =>
@@ -299,7 +299,7 @@ const Contact = props => {
                         <p><span className={classes.label}>Interested In:*</span></p>
                         <span>
                           <label>
-                            <input name="interest" type="radio" value="buy" />
+                            <input name="interest" type="radio" value="buy" checked/>
                             <span>Buy</span>
                           </label>
                         </span>

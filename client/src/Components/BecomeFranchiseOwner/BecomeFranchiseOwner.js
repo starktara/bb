@@ -10,6 +10,7 @@ import headingLines from "../../assets/heading-lines.svg";
 import blackHeadingLines from '../../assets/black-heading-lines.svg';
 import certifiedIcon from "../../assets/images/icons/certified.png";
 import emiIcon from "../../assets/images/icons/emi.png";
+import rupeeIcon from '../../assets/images/icons/rupee-indian-red.svg';
 import storeImage from "../../assets/bike-bazaar-store.png";
 import strongItInfra from '../../assets/icons/strong-it-infra.svg'
 import callCentre from '../../assets/icons/call-centre.svg'
@@ -316,7 +317,7 @@ const BecomeFranchiseOwner = props => {
               <Grid container component="div" direction="row" className="advantage">
                 <Grid item xs={1} sm={1} md={1} lg={1}>
                   <div className="advantageIconLeft">
-                    <img className="more-sales" src={moreSalesThanEver} alt="" />
+                    <img className="more-sales" src={rupeeIcon} height="90" alt="" />
                   </div>
                 </Grid>
                 <Grid item xs={11} sm={11} md={11} lg={11}>

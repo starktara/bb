@@ -113,7 +113,8 @@ const useStyles = makeStyles(theme => ({
   advantageHeading:{
     color: '#232c2b',
     fontSize: 36,
-    fontWeight: 800
+    fontWeight: 800,
+    lineHeight: '55px'
   },
   advantageContainer:{
     marginTop: 50
@@ -427,7 +428,7 @@ const Sell = props => {
                           <Grid container component="div" direction="row">
                             <Grid item xs={12} sm={12} md={12} lg={12}>
                               <label htmlFor="variant">
-                                <span  className={classes.label}>Variant:*</span>&nbsp;&nbsp;(eg. 150cc std)
+                                <span  className={classes.label}>Variant:</span>&nbsp;&nbsp;(eg. 150cc std)
                               </label>
                               <input type="text" name="variant" id="variant"
                                 onChange={event =>
@@ -507,7 +508,7 @@ const Sell = props => {
                           <Grid container component="div" direction="row">
                             <Grid item xs={12} sm={12} md={12} lg={12}>
                               <label htmlFor="address">
-                                <span  className={classes.label}>Address:*</span>&nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
+                                <span  className={classes.label}>Address:</span>&nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
                               </label>
                               <textarea name="address"
                                 onChange={event =>
@@ -551,7 +552,7 @@ const Sell = props => {
                           <Grid container component="div" direction="row">
                             <Grid item xs={12} sm={12} md={12} lg={12}>
                               <label htmlFor="kmsdriven">
-                                <span  className={classes.label}>Kms Driven:*</span>&nbsp;&nbsp;(eg. 40,0000 km)
+                                <span  className={classes.label}>KMs Driven:</span>&nbsp;&nbsp;(eg. 40,0000 km)
                               </label>
                               <input type="text" name="kmsdriven" id="kmsdriven"
                                 onChange={event =>

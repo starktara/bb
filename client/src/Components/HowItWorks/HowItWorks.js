@@ -84,7 +84,7 @@ const HowItWorks = props => {
                     <Grid container component="div" direction="row" justify="center" className={classes.subContainer}>
                         <Grid item xs={4} sm={4} md={4} lg={4}>
                             <div>
-                                <h5 className={classes.subHeading}>Select</h5>
+                                <h5 className={classes.subHeading}>1. Select</h5>
                             <img src={selectIcon} width={300} alt=""/>
                                 <p className={classes.text}>Find any Two-Wheeler using<br/>
                                 multiple filtering options and Select<br/>
@@ -93,7 +93,7 @@ const HowItWorks = props => {
                         </Grid>
                         <Grid item xs={4} sm={4} md={4} lg={4}>
                             <div>
-                                <h5 className={classes.subHeading}>Visit BikeBazaar Store</h5>
+                                <h5 className={classes.subHeading}>2. Visit BikeBazaar Store</h5>
                             <img src={visitIcon} width={300} alt=""/>
                                 <p className={classes.text}>Visit the nearest BikeBazaar Store<br/>
                                 to have a look & feel of Two-<br/>
@@ -102,7 +102,7 @@ const HowItWorks = props => {
                         </Grid>
                         <Grid item xs={4} sm={4} md={4} lg={4}>
                             <div>
-                                <h5 className={classes.subHeading}>Buy</h5>
+                                <h5 className={classes.subHeading}>3. Buy</h5>
                             <img src={buyIcon} width={300} alt=""/>
                                 <p className={classes.text}>After you make your decision about<br/>
                                 any Two-Wheeler,<br/>
