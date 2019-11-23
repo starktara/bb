@@ -50,6 +50,7 @@ body {
   font-size: 32px;
   letter-spacing: 2px;
   padding-left: 37px;
+  margin: 15px 0px;
 }
 .slides h4 > span{
   margin-left: 15px;
@@ -259,7 +260,7 @@ i.icon-black {
   border-radius: 4px;
   background-color: #fff;
   overflow: hidden;
-  margin-top: 85px;
+  margin-top: 50px;
   margin-left: 37px;
 }
 .carousel-location-btn {

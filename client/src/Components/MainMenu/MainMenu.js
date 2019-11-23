@@ -38,8 +38,7 @@ setSearchTerm(event.target.value);
                     <Link to={`/category/bike?searchTerm=${searchTerm}`}>
                       <button 
                         className="btn search-label-btn" 
-                        type="submit"
-                        disabled={!searchTerm}>
+                        type="submit">
                         <img src={searchIcon} height="30" alt="" />
                       </button>
                     </Link>
