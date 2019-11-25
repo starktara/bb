@@ -4,8 +4,6 @@ const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
 const  mailer = require('../../helper/mailer');
 
-const sendToEmail = 'ankit@tekonika.co'; //email to send alerts to
-
 //details of seller and bike from sell page
 router.get("/createSellerDetail", (req, res) => {
   async function run() {
@@ -172,6 +170,7 @@ router.post("/insertFranchiseRequest", (req, res) => {
         </tr>
       </table>
     `;
+    const sendToEmail = 'franchisequery@bikebazaar.com'; //email to send alerts to
     
     mailer(output, 'Franchise Request', sendToEmail).catch(console.error);
 
@@ -255,7 +254,7 @@ router.post("/insertSellrequest",(req,res) => {
         </tr>
       </table>
     `;
-    
+    const sendToEmail = 'inspection@bikebazaar.com'; //email to send alerts to
     mailer(output, 'Appointment Booked', sendToEmail).catch(console.error);
 
     const body = dataset.flatMap(doc => [

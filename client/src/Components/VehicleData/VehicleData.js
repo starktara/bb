@@ -129,7 +129,6 @@ const VehicleData = (props) => {
           }
         };
         setFormData(newData);
-        console.log(formData);
       };
     
       const submitForm = event => {
