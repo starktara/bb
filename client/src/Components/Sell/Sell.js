@@ -6,19 +6,19 @@ import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
+import SellingProcess from '../SellingProcess/SellingProcess';
 import headingLines from "../../assets/heading-lines.svg";
 import blackHeadingLines from '../../assets/black-heading-lines.svg';
 import stepsToSell from '../../assets/steps-to-sell.svg';
 import hfdt from '../../assets/hfdt.svg';
 import rp from '../../assets/rp.svg';
-import syv from '../../assets/syv.svg'; 
+import syv from '../../assets/syv.svg';
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import Tooltip from "../UI/Tooltip/Tooltip";
 import axios from "axios";
 import isEmpty from "validator/lib/isEmpty";
 import isAlpha from "validator/lib/isAlpha";
-import isEmail from "validator/lib/isEmail";
 import isMobilePhone from "validator/lib/isMobilePhone";
 import isAlphaNumeric from "validator/lib/isAlphanumeric";
 import isNumeric from "validator/lib/isNumeric";
@@ -585,33 +585,7 @@ const Sell = props => {
             </Paper>
           </Grid>
           <Grid item xs={11} sm={11} md={11} lg={11}>
-            <Paper className={classes.paper+ ' center-align'}>
-              <h3 className={classes.advantageHeading}>BikeBazaar Advantage</h3>
-              <img alt="" src={headingLines} width="57" height="4"/>
-              <Grid container component="div" direction="row" justify="center" className={classes.advantageContainer}>
-                <Grid item xs={4} sm={4} md={4} lg={4}>
-                    <img src={rp} width={145} alt=""/>
-                      <div>
-                        <h5 className={classes.advantageSubHeading}>Get Right Price<br/>for your Vehicle</h5>
-                        <p className={classes.advantageText}>For any of your two-wheeler,<br/>you get the right market price</p>
-                      </div>
-                </Grid>
-                <Grid item xs={4} sm={4} md={4} lg={4}>
-                    <img src={syv} width={145} alt=""/>
-                      <div>
-                        <h5 className={classes.advantageSubHeading}>Sell your Vehicle<br/>in "1 Visit"</h5>
-                        <p className={classes.advantageText}>Any two-wheeler can be sold<br/>to us just in one visit.<br/>Now encash your two-wheeler<br/>within few hours</p>
-                      </div>
-                </Grid>
-                <Grid item xs={4} sm={4} md={4} lg={4}>
-                    <img src={hfdt} width={145} alt=""/>
-                      <div>
-                        <h5 className={classes.advantageSubHeading}>Hassle Free<br/>Document Transfer</h5>
-                        <p className={classes.advantageText}>Document transfer is facilitated and<br/>made easy for buyer and seller</p>
-                      </div>
-                </Grid>
-              </Grid>
-            </Paper>
+            <SellingProcess heading="BikeBazaar Advantage"/>
           </Grid>
         </Grid>
       <Footer />

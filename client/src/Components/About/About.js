@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
+import SellingProcess from '../SellingProcess/SellingProcess';
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
@@ -124,6 +125,11 @@ const About = (props) => {
                 </Grid>
             </Grid>
             <VehicleAdvantage continerStyle={classes.advantageContainer} heading="BikeBazaar Brings Great Advantage for Buyers"/>
+            <Grid container component="div" direction="row" justify="center" className={classes.banner}>
+                <Grid item xs={11} sm={11} md={11} lg={11}>
+                    <SellingProcess heading="BikeBazaar Advantage"/>
+                </Grid>
+            </Grid>
             <Footer />
         </div>
     )
