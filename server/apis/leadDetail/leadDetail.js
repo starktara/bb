@@ -301,6 +301,29 @@ router.post("/insertBuyRequest", (req, res) => {
       { index: { _index: "buyerdetails" } },
       doc
     ]);
+    const link = formData.vehiclelink.value;
+    const output = `
+      <table border='1' style='width:100%'>
+        <tr>
+          <td> Vehicle </td>
+          <td> <a href ="${link}">${link}</a> </td>
+        </tr>
+        <tr>
+          <td> Name. </td>
+          <td> ${formData.name.value} </td>
+        </tr>
+        <tr>
+          <td> Phone No. </td>
+          <td> ${formData.phone.value} </td>
+        </tr>
+        <tr>
+          <td> Email Id </td>
+          <td> ${formData.email.value} </td>
+        </tr>
+      </table>
+    `;
+    const sendToEmail = 'onlinesales@bikebazaar.com'; //email to send alerts to
+    mailer(output, 'Appointment Booked', sendToEmail).catch(console.error);
 
     const { body: bulkResponse } = await client.bulk({ refresh: true, body });
 

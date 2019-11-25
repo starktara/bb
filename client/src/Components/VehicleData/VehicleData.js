@@ -64,6 +64,11 @@ const VehicleData = (props) => {
             value: 0,
             error: false,
             errorMessage: ""
+        },
+        vehiclelink:{
+          value: window.location.href,
+          error: false,
+          errorMessage: ""
         }
       });
     
