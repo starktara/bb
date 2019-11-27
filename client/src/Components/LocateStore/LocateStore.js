@@ -27,11 +27,11 @@ const LocateStore = props => {
 
   const [mapLocations] = useState([
     {
-      locationName: "BikeBazaar, JKB Motors",
+      locationName: "BikeBazaar, Aluva, Kerela",
       address: "Jkb – Bike Bazaar, Near JKB Bajaj, Pulinchode Jn. Bypass, Aluva – 683101, Kerala, India",
       coordinates: {
-        lat: 28.54,
-        lng: 77.27
+        lat: 10.785720,
+        lng: 76.396889
       }
     },
     {
