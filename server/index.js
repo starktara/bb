@@ -8,6 +8,7 @@ const categoryDetails = require("./apis/categoryDetails/categoryDetails");
 const homePageData = require("./apis/homepage/homepage");
 const leadDetail = require("./apis/leadDetail/leadDetail");
 const userDetail = require("./apis/userDetails/userDetails");
+const stores = require("./apis/stores/stores");
 const passport = require("passport");
 
 // Passport middleware
@@ -33,6 +34,7 @@ app.use("/apis/categoryDetails", categoryDetails);
 app.use("/apis/globalSearch", homePageData);
 app.use("/apis/leadDetail", leadDetail);
 app.use("/apis/userDetail", userDetail);
+app.use("/apis/stores", stores);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === "production") {

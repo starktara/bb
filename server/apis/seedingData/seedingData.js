@@ -231,9 +231,9 @@ router.get("/uploadLocations", (req, res) => {
     const dataset = [
       {
         id: 1,
-        name: "R.K Dealers",
-        city: "New Delhi",
-        locality: "Okhla Phase 3",
+        name: "Aluva, Kerela",
+        city: "Aluva",
+        locality: "Building No. XVII – 27&28 , Pullinchode, Aluva - 683101",
         location: { lat: 31.12, lon: -71.34 }
       }
     ];
@@ -264,6 +264,7 @@ router.get("/uploadLocations", (req, res) => {
     console.log(count);
   }
   upload().catch(console.log);
+  res.json({ msg: "Location index seeded" });
 });
 
 
