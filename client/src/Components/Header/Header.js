@@ -26,9 +26,9 @@ const Header = props => {
                 className="nav-img responsive-img"
                 alt=""
               />
-              <Link to="tel:+6494461709" className="right">
+              <a target="_blank" href="tel:+6494461709" className="right">
                 9607993434
-              </Link>
+              </a>
             </li>
             <li>
               <img
