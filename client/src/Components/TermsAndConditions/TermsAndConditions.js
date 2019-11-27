@@ -67,7 +67,8 @@ const TermsAndConditions = props => {
                 </Grid>
                 <Grid item xs={11} sm={11} md={11} lg={11}>
                     <Paper className={classes.paper}>
-                        These ‘Terms and Conditions’ are for the users of the BikeBazaar website. Website www.BikeBazaar.com is owned and operated by ‘BluBird Auto Trade Private Limited’. Through BikeBazaar website, we provide access to users to our services, products and information present therein. You are required to read our ‘Terms and Conditions’ and ‘Privacy Policy’ before starting using our services. By using BikeBazaar services, you agree to our ‘Terms and Conditions’ and ‘Privacy Policy’. If you don’t agree with our ‘Terms and Conditions’, please do not use our services and unsubscribe from BikeBazaar website.<br/><br/>
+                        These ‘Terms and Conditions’ are for the users of the BikeBazaar website. Website www.BikeBazaar.com is owned and operated by ‘BluBird Auto Trade Private Limited’. Through BikeBazaar website, we provide access to users to our services, products and information present therein. <br /> <br />
+                        You are required to read our ‘Terms and Conditions’ and ‘Privacy Policy’ before starting using our services. By using BikeBazaar services, you agree to our ‘Terms and Conditions’ and ‘Privacy Policy’. If you don’t agree with our ‘Terms and Conditions’, please do not use our services and unsubscribe from BikeBazaar website.<br/><br/>
                         This document of ‘Terms and Conditions’ of BikeBazaar is an electronic record in terms of Information Technology Act, 2000 and rules made thereunder and doesn’t require any physical copy, signature or seal.<br/><br/>
                         BikeBazaar reserves all the rights related to these ‘Terms and Conditions’ and these can be changed anytime without any notice. And you are required to check the ‘Terms and Conditions’ periodically to keep yourself updated with the changes.<br/><br/>
                         These ‘Terms and Conditions’ apply to users who come to BikeBazaar website and transact and extend to those users who just access the information and don’t transact.
@@ -98,7 +99,7 @@ const TermsAndConditions = props => {
                         <h4 className={classes.subHeading}>Buyers</h4><br/>
                         <ul className={classes.list}>
                             <li>
-                                “Buyers” is the category of users who want to buy used two-wheeler through franchise stores registered on BikeBazaar website or store.
+                                “Buyers” is the category of users who want to buy used two-wheeler through franchise stores registered on BikeBazaar website.
                             </li>
                             <li>
                                 Buyers are required to share their correct information and contact details. You solely are responsible for the consequences of not sharing the correct details about you.
@@ -123,9 +124,6 @@ const TermsAndConditions = props => {
                             </li>
                             <li>
                                 Sellers are required to share correct information about themselves while submitting their personal information on the website.
-                            </li>
-                            <li>
-                                Sellers should not share any fake information about their vehicle.
                             </li>
                             <li>
                                 Sellers should not share any fake information about their vehicle. You solely are responsible for the consequences of not sharing the correct details about your vehicle.
@@ -231,12 +229,6 @@ const TermsAndConditions = props => {
                 <Grid item xs={11} sm={11} md={11} lg={11}>
                     <Paper className={classes.paper}>
                         <h3 className={classes.paperHeading}>Credit and EMI</h3><br/>
-                        BikeBazaar through its credit partners facilitates low cost EMI option to buyers to purchase their dream two-wheeler. However, availability of credit varies profile to profile basis. And the amount of loan, minimum EMI possible and term of loan depends upon your credit history and CIBIL Score. 
-                    </Paper>
-                </Grid>
-                <Grid item xs={11} sm={11} md={11} lg={11}>
-                    <Paper className={classes.paper}>
-                        <h3 className={classes.paperHeading}>Credit and EMI</h3><br/>
                         BikeBazaar through its credit partners facilitates low cost EMI option to buyers to purchase their dream two-wheeler. However, availability of credit varies profile to profile basis. And the amount of loan, minimum EMI possible and term of loan depends upon your credit history and CIBIL Score.<br/><br/>
                         Any decision taken by the credit partner regarding the loan will be final and you cannot request to alter it. 
                     </Paper>
@@ -244,7 +236,7 @@ const TermsAndConditions = props => {
                 <Grid item xs={11} sm={11} md={11} lg={11}>
                     <Paper className={classes.paper}>
                         <h3 className={classes.paperHeading}>Warranty and Buyer Protection</h3><br/>
-                        BikeBazaar facilitates and provides 6 months’ (or such other period as may be decided by BikeBazaar) warranty on all refurbished pre-owned two-wheelers which is extendable beyond 6 months’ time (or such period as may be decided by BikeBazaar) through third party providing warranty solutions and administration. BikeBazaar reserves all rights to decide whether it wants to facilitate extended warranty on any two-wheeler or not. The said warranty coverage is provided for only some specific parts of two-wheeler. 
+                        BikeBazaar facilitates 6 months’ (or such other period as may be decided by BikeBazaar) warranty on all refurbished pre-owned two-wheelers which is extendable beyond 6 months’ time (or such period as may be decided by BikeBazaar) through third party providing warranty solutions and administration. BikeBazaar reserves all rights to decide whether it wants to facilitate extended warranty on any two-wheeler or not. The said warranty coverage is provided for only some specific parts of two-wheeler. 
                     </Paper>
                 </Grid>
                 <Grid item xs={11} sm={11} md={11} lg={11}>

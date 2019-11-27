@@ -40,11 +40,11 @@ const StoreSection = () => {
                         <div className="detail">
                             <h3>BikeBazaar, JKB Motors</h3>
                             <p className="address">
-                                Shop 22/23, Balewadi High Street, Cummins India
-                                Office Campus, Balewadi Link Road
+                                Jkb - Bike Bazaar, Near JKB Bajaj,Pulinchode Jn. Bypass,
+                                Aluva - 683101, Kerala, India
                             </p>
                             <br className="clr"/>
-                            <p className="location">Baner, Pune</p>
+                            <p className="location">Aluva, Kerala</p>
                         </div>
                     </div>
                     <div className="StoreCard">
@@ -55,7 +55,7 @@ const StoreSection = () => {
                                 D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry - 533103, Andhra Pradesh, India. Also put map of this location.
                             </p>
                             <br className="clr"/>
-                            <p className="location">Baner, Pune</p>
+                            <p className="location">Rajahmundry, AP</p>
                         </div>
                     </div>
                 </Carousel>

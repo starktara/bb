@@ -30,7 +30,8 @@ const useStyles = makeStyles(theme => ({
       },
       subHeading:{
         fontSize: 19,
-        fontWeight: 600
+        fontWeight: 600,
+        lineHeight: '2em'
       },
       text:{
         fontSize: 15
@@ -46,7 +47,7 @@ const SellingProcess  = (props) => {
               <img alt="" src={headingLines} width="57" height="4"/>
               <Grid container component="div" direction="row" justify="center" className={classes.container}>
                 <Grid item xs={4} sm={4} md={4} lg={4}>
-   ``                 <img src={rp} width={145} alt=""/>
+                     <img src={rp} width={145} alt=""/>
                       <div>
                         <h5 className={classes.subHeading}>Get Right Price<br/>for your Vehicle</h5>
                         <p className={classes.text}>For any of your two-wheeler,<br/>you get the right market price</p>

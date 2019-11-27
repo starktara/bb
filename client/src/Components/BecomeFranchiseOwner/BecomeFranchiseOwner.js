@@ -98,16 +98,20 @@ const useStyles = makeStyles(theme => ({
   },
   about:{
     backgroundImage: 'url("'+storeImage+'")',
-    backgroundPosition: 'right',
+    backgroundPosition: 'right center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 500,
-    backgroundPositionY: -2
+    backgroundPositionY: -2,
+    backgroundSize: '40%'
   },
   label:{
     fontWeight: 600,
     fontSize: 15,
     letterSpacing: '0.83px',
     color: '#000'
+  },
+  pstyle:{
+    maxWidth: '60%'
   }
 }));
 
@@ -246,7 +250,7 @@ const BecomeFranchiseOwner = props => {
             <Grid container direction="row" justify="center" alignItems="center">
               <Grid item xs={12} sm={12} md={12} lg={12} className={classes.about}>
                 <h4 className="redhead">About BikeBazaar</h4>
-                <p className="about-bb">
+                <p className="about-bb" className={classes.pstyle}>
                   BikeBazaar aims to provide a hassle-free experience to anyone looking to<br/>buy/sell a pre-owned two-wheeler with the help of technology & team of<br/ >experts.
                   <br/>
                   <br/>

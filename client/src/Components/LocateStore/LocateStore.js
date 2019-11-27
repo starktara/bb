@@ -27,9 +27,8 @@ const LocateStore = props => {
 
   const [mapLocations] = useState([
     {
-      locationName: "R.K Dealers",
-      address:
-        "Shop 22/33, Balewadi High Street, Cummins India Office Campus Balewadi Link Road",
+      locationName: "BikeBazaar, JKB Motors",
+      address: "Jkb – Bike Bazaar, Near JKB Bajaj, Pulinchode Jn. Bypass, Aluva – 683101, Kerala, India",
       coordinates: {
         lat: 28.54,
         lng: 77.27
@@ -55,7 +54,7 @@ const LocateStore = props => {
     }
   ]);
 
-  const [cities] = useState(["Pune", "New Delhi", "Noida"]);
+  const [cities] = useState(['Aluva', 'Rajahmundry']);
 
   const [locations] = useState(["Loc 1", "Loc 2", "Loc 3"]);
 

@@ -92,11 +92,16 @@ const PrivacyPolicy = props => {
                         Following are some ways through which we collect information about you:
                         <br/><br/>
                         <h4 className={classes.subHeading}>Personal Information</h4><br/>
-                        We collect and save your personal information voluntarily submitted by you on BikeBazaar website. 
+                        We collect and save your personal information voluntarily submitted by you on BikeBazaar website. <br/> <br/>
                         While you can browse some sections of BikeBazaar website without the requirement of sharing your personal information, you would be required to share your personal information for accessing some sections of the website. 
                         <br/><br/>
                         This information could be your Name, Mobile Number, Email ID, Your Preferences related to Two-Wheeler, Gender, Interest in taking a loan and other relevant and specific information about you.
                         <br/><br/>
+                        We collect this information to offer you a personalized experience on our website and to provide you customized products, services and information. 
+                        <br /> <br />
+                        Your personal information is safe with us and we do not share it with any third party. 
+                        Even if we are required to share it with any third party to offer you relevant products, services and information we do share it in an anonymized manner.
+                        <br /> <br />
                         <h4 className={classes.subHeading}>Cookies</h4><br/>
                         To be able to provide you relevant information, products and services, we are required to drop cookies on your computer which are alphanumeric information enabling us to recognize your browser and serve you better. 
                         <br/><br/>
