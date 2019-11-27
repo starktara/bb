@@ -73,7 +73,7 @@ const VehicleAdvantage = (props) => {
             <Grid item xs={10} sm={10} md={10} lg={10} className="detail">
               <h3>Low-Cost EMI</h3>
               <p>
-                All vehicles are available at EMI starting from Rs.2000*. Your
+                All vehicles are available at EMI starting from ₹ 2000*. Your
                 Dream Bike is not a distant dream now.
               </p>
             </Grid>

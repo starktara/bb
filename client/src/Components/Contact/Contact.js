@@ -184,7 +184,7 @@ const Contact = props => {
                 </div>
                 <p className="sub-heading-black">Office:</p>
                 <p className="sub-heading-red">
-                  BikeBazaar<sup>TM</sup>:
+                  BikeBazaar<sup>TM</sup>
                 </p>
                 <p className="address">
                   The Daftar, Bunglow No. 261/2/7,

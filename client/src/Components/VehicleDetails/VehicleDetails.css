@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .wapper .pageDtl ul li:first-child { background:none; display: inline-block; padding:0; }
 .wapper .pageDtl ul li {  display: inline-block; background: url(../../assets/images/icons/right.svg) 0 7px no-repeat; background-size: 18px 10px; padding:0 0 0 20px;  }
 .wapper .pageDtl ul li a { color:#707575; } .wapper .pageDtl ul li.current { font-weight: bold; }
-.wapper .pageDtl h1 { font-size: 36px; text-transform: uppercase; font-weight: bold; }
+.wapper .pageDtl h1 { font-size: 36px; text-transform: none; font-weight: bold; }
 .wapper .pageDtl p { font-size: 16px; margin: 8px 0 0; }
 .filter { padding: 0!important; }
 .filter h5 { font-size: 16px; padding: 29px 0 13px; }
