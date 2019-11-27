@@ -82,6 +82,7 @@ const LocateStore = props => {
     var elems = document.querySelectorAll(".dropdown-trigger");
     M.Dropdown.init(elems, {});
     if (props.history.location.search.trim() != "") {
+      let storeId = props.history.location.search.trim().split('=')[1];
       console.log("single store dikha bhai");
       setSingleScore(true);
     }
@@ -220,12 +221,14 @@ const LocateStore = props => {
 
 const mapStateToProps = state => {
   return {
-    loading: state.vehicleDetails.loading
+    loading: state.vehicleDetails.loading,
+    stores: state.storeDetails.stores
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    save: vehicleid => dispatch(actions.getVehicleData(vehicleid))
+    save: vehicleid => dispatch(actions.getVehicleData(vehicleid)),
+    getStoreData: storeid => dispatch(actions.getStoreData(storeid))
   };
 };
 

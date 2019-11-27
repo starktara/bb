@@ -10,6 +10,7 @@ import thunk from 'redux-thunk';
 import authReducer from './store/reducers/auth';
 import errorReducer from  "./store/reducers/errorReducer"
 import  vehicleDetailsReducer from "./store/reducers/vehicleDetails";
+import  storeDetailsReducer from "./store/reducers/storeReducer";
 
 const composeEnhancers = compose;
 
@@ -18,7 +19,8 @@ const composeEnhancers = compose;
 const rootReducer = combineReducers({
   auth: authReducer,
   errors: errorReducer,
-  vehicleDetails: vehicleDetailsReducer
+  vehicleDetails: vehicleDetailsReducer,
+  storeDetails: storeDetailsReducer
 });
 
 

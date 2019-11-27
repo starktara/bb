@@ -4,5 +4,8 @@ export {
   getVehicleData,
   getSearchData
 } from "./vehiclesDetails";
+export {
+  getStoreData
+} from "./storeActions";
 
 
