@@ -52,7 +52,7 @@ const StoreSection = () => {
                         <div className="detail">
                             <h3>BikeBazaar, MCV Wheels</h3>
                             <p className="address">
-                                D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry - 533103, Andhra Pradesh, India. Also put map of this location.
+                                D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry - 533103, Andhra Pradesh, India.
                             </p>
                             <br className="clr"/>
                             <p className="location">Rajahmundry, AP</p>

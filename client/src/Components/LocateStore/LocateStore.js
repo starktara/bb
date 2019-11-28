@@ -35,23 +35,14 @@ const LocateStore = props => {
       }
     },
     {
-      locationName: "The Saddle Store",
-      address:
-        "Shop No 19, Upper Ground Floor, East Court, Phoenix Market City, Someshwar Wadi Road",
+      locationName: "BikeBazaar, MCV Wheels",
+      address: "D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry-533103, Andhra Pradesh, India",
       coordinates: {
-        lat: 59.95,
-        lng: 30.33
-      }
-    },
-    {
-      locationName: "Open Road Riding Gear",
-      address:
-        "Shop No 19, Upper Ground Floor, East Court, Phoenix Market City",
-      coordinates: {
-        lat: 59.95,
-        lng: 30.33
+        lat: 17.005,
+        lng: 81.7805
       }
     }
+    
   ]);
 
   const [cities] = useState(['Aluva', 'Rajahmundry']);
@@ -182,7 +173,7 @@ const LocateStore = props => {
           <div className="locationAddress">
             {thisLocation.address}
             <br />
-            Baner, Pune
+            {thisLocation.city}
           </div>
           <div className="mapContainer">
             <GoogleMap
