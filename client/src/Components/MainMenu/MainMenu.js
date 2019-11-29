@@ -19,7 +19,7 @@ setSearchTerm(event.target.value);
         <Grid container component="div" direction="row" className="nav-wrapper">
           <Grid item xs={2} sm={2} md={2} lg={2} className="header-title">
             <Link to="/">
-              <img src={logoPng} height="28" id="logoImg" alt="" />
+              <img src={logoPng} height="25" id="logoImg" alt="" />
             </Link>
           </Grid>
           <Grid item xs={8} sm={8} md={8} lg={8}>
@@ -39,7 +39,7 @@ setSearchTerm(event.target.value);
                       <button 
                         className="btn search-label-btn" 
                         type="submit">
-                        <img src={searchIcon} height="30" alt="" />
+                        <img src={searchIcon} height="25" alt="" />
                       </button>
                     </Link>
                   </div>
