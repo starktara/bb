@@ -127,7 +127,7 @@ const About = (props) => {
             <VehicleAdvantage continerStyle={classes.advantageContainer} heading="BikeBazaar Brings Great Advantage for Buyers"/>
             <Grid container component="div" direction="row" justify="center" className={classes.banner}>
                 <Grid item xs={11} sm={11} md={11} lg={11}>
-                    <SellingProcess heading="BikeBazaar Advantage"/>
+                    <SellingProcess heading="Selling Process made easy by BikeBazaar"/>
                 </Grid>
             </Grid>
             <Footer />

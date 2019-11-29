@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
 import "./LocateStore.css";
 import Header from "../Header/Header";
@@ -35,18 +36,9 @@ const LocateStore = props => {
       }
     },
     {
-      locationName: "The Saddle Store",
+      locationName: "BikeBazaar, MCV Wheels",
       address:
-        "Shop No 19, Upper Ground Floor, East Court, Phoenix Market City, Someshwar Wadi Road",
-      coordinates: {
-        lat: 59.95,
-        lng: 30.33
-      }
-    },
-    {
-      locationName: "Open Road Riding Gear",
-      address:
-        "Shop No 19, Upper Ground Floor, East Court, Phoenix Market City",
+        "D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry - 533103, Andhra Pradesh, India.",
       coordinates: {
         lat: 59.95,
         lng: 30.33
@@ -93,8 +85,6 @@ const LocateStore = props => {
         <h5>{mapLocations[0].locationName}</h5>
         <div className="locationAddress">
           {mapLocations[0].address}
-          <br />
-          Baner, Pune
         </div>
         <div className="mapContainer">
           <GoogleMap
@@ -176,23 +166,22 @@ const LocateStore = props => {
 
    locationCards = mapLocations.map((thisLocation, key) => {
     return (
-      <div className="col s4 m4" key={key}>
-        <div className="locationCard">
-          <h5>{thisLocation.locationName}</h5>
-          <div className="locationAddress">
-            {thisLocation.address}
-            <br />
-            Baner, Pune
+      
+        <Grid item xs={4} sm={4} md={4} lg={4} key={key}>
+          <div className="locationCard">
+            <h5>{thisLocation.locationName}</h5>
+            <div className="locationAddress">
+              {thisLocation.address}
+            </div>
+            <div className="mapContainer">
+              <GoogleMap
+                center={thisLocation.coordinates}
+                zoom={mapProps.zoom}
+                location={thisLocation.locationName}
+              />
+            </div>
           </div>
-          <div className="mapContainer">
-            <GoogleMap
-              center={thisLocation.coordinates}
-              zoom={mapProps.zoom}
-              location={thisLocation.locationName}
-            />
-          </div>
-        </div>
-      </div>
+        </Grid>
     );
   });
 
@@ -210,7 +199,7 @@ const LocateStore = props => {
           <div className="heading-lines">
             <img src={headingLines} width="57" height="4" alt="" />
           </div>
-          <div className="row">{locationCards}</div>
+          <Grid container component="div" direction="row" justify="space-evenly" alignItems="center">{locationCards}</Grid>
         </div>
       </div>
       <Footer />
