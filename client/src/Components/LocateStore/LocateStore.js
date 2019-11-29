@@ -31,8 +31,8 @@ const LocateStore = props => {
       locationName: "BikeBazaar, Aluva, Kerela",
       address: "Jkb – Bike Bazaar, Near JKB Bajaj, Pulinchode Jn. Bypass, Aluva – 683101, Kerala, India",
       coordinates: {
-        lat: 10.065280,
-        lng: 76.327040
+        lat: 10.100809,
+        lng: 76.348984
       }
     },
     {
@@ -40,8 +40,8 @@ const LocateStore = props => {
       address:
         "D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry - 533103, Andhra Pradesh, India.",
       coordinates: {
-        lat: 16.998920,
-        lng: 81.781780
+        lat: 16.999954,
+        lng: 81.786184
       }
     }
     
