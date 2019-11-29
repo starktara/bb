@@ -1,7 +1,7 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 
-const API_KEY = 'AIzaSyA4C1wRBvvFKaQ1OkN_5zNg8CTfi023v3E';
+const API_KEY = 'AIzaSyAFTYK6VvpgQEmKt5W2iGjNfw-Ode1TR3c';
 
 const MapContainerComponent = ({ text }) => <div>{text}</div>;
 

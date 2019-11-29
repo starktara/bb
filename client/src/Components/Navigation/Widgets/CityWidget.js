@@ -55,13 +55,13 @@ const CityWidget = (props) => {
         </div>
         <ul className="cat-list">
           <li>
-            <a href="#" onClick={() => searchClick('mumbai')}>Mumbai</a>
+            <a href="#" onClick={() => searchClick('aluva')}>Aluva</a>
           </li>
            <li>
-            <a href="javascript:void" onClick={() => searchClick('pune')}>Pune</a>
+            <a href="javascript:void" onClick={() => searchClick('kolkata')}>Kolkata</a>
           </li>
           <li>
-            <a href="javascript:void" onClick={() => searchClick('kollim')}>Kollim</a>
+            <a href="javascript:void" onClick={() => searchClick('pune')}>Pune</a>
           </li>
           <li>
             <a href="javascript:void" onClick={() => searchClick('rajmundary')}>Rajmundary</a>
