@@ -2,7 +2,8 @@ import React from 'react';
 import './StoreSection.css';
 import Grid from "@material-ui/core/Grid";
 import headingLines from '../../../assets/heading-lines.svg';
-import bikeIcon from '../../../assets/ina.png';
+import jkbIcon from '../../../assets/stores/bb_ jkb_motors.jpg';
+import mvcIcon from '../../../assets/stores/bb_mvc_wheels.jpg';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -36,7 +37,7 @@ const StoreSection = () => {
                 <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Carousel responsive={responsive} className="flex-center">
                     <div className="StoreCard">
-                        <img src={bikeIcon} alt="" />
+                        <img src={jkbIcon} alt="" />
                         <div className="detail">
                             <h3>BikeBazaar, JKB Motors</h3>
                             <p className="address">
@@ -48,7 +49,7 @@ const StoreSection = () => {
                         </div>
                     </div>
                     <div className="StoreCard">
-                        <img src={bikeIcon} alt="" />
+                        <img src={mvcIcon} alt="" />
                         <div className="detail">
                             <h3>BikeBazaar, MCV Wheels</h3>
                             <p className="address">
