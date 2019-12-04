@@ -18,28 +18,63 @@ import { BRANDS } from "../../shared/mappings/brands";
 import { MODELS } from "../../shared/mappings/bike_models";
 
 class CategoryPage extends Component {
-  componentDidMount() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchTerm: " ",
+    };
+  }
+
+  componentWillMount() {
+    console.log("dsd")
     this.unlisten = this.props.history.listen((location, action) => {
       if (this.props.history.location.search.trim() == "") {
-        this.props.getVehicles(categoryData[this.props.match.params.category].id);
+        this.setState({
+          searchTerm: categoryData[this.props.match.params.category].id
+        })
       } else {
-        const search = new URLSearchParams(this.props.history.location.search);
+        this.setState({
+          searchTerm: this.props.history.location.search
+        })
+      }
+    });
+    if (this.props.history.location.search.trim() == "") {
+      this.setState({
+        searchTerm: categoryData[this.props.match.params.category].id
+      })
+    } else {
+      this.setState({
+        searchTerm: this.props.history.location.search
+      })
+    }
+  }
+
+  componentWillUnmount() {
+    this.unlisten();
+  }
+
+  componentDidMount() {
+
+    this.unlisten = this.props.history.listen((location, action) => {
+      if (this.props.history.location.search.trim() == "") {
+        this.props.getVehicles(this.state.searchTerm);
+      } else {
+        const search = new URLSearchParams(this.state.searchTerm);
         if (search.get("searchTerm")) {
           this.props.getSearchData(search.get("searchTerm"));
         }
       }
     });
     if (this.props.history.location.search.trim() == "") {
-      this.props.getVehicles(categoryData[this.props.match.params.category].id);
+      this.props.getVehicles(this.state.searchTerm);
     } else {
-      const search = new URLSearchParams(this.props.history.location.search);
+      const search = new URLSearchParams(this.state.searchTerm);
       if (search.get("searchTerm")) {
         this.props.getSearchData(search.get("searchTerm"));
       }
     }
-
-  
   }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.vehicles != nextProps.vehicles) {
       this.props.getPaginatedData(0, 9);
@@ -96,11 +131,11 @@ class CategoryPage extends Component {
 
     let navigation = categoryData[
       this.props.match.params.category
-    ].name.replace("Bike", "Motorcycle").slice(0,-1).split(" ").join("-");
+    ].name.replace("Bike", "Motorcycle").slice(0, -1).split(" ").join("-");
     let heading = categoryData[this.props.match.params.category].name.replace(
       "Bike",
       "Motorcycle"
-    ).slice(0,-1).split(" ").join("-");
+    ).slice(0, -1).split(" ").join("-");
     let text =
       "Motorcycles are available at easy EMI starting at ₹2,000*. Your  dream bike is not a distant dream now.";
 
