@@ -1,8 +1,35 @@
 const express = require("express");
 const router = express.Router();
+const multer = require('multer');
+const cors = require('cors');
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
 const  mailer = require('../../helper/mailer');
+
+router.use(express.static('public'))
+
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/images/uploads')
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' + file.originalname)
+  }
+});
+
+const upload = multer({ storage })
+
+router.use(cors());
+
+router.post('/upload', upload.single('image'), (req, res) => {
+  if (req.file)
+    res.json({
+      imageUrl: `images/uploads/${req.file.filename}`
+    });
+  else 
+    res.status("409").json("No Files to Upload.")
+});
+
 
 //details of seller and bike from sell page
 router.get("/createSellerDetail", (req, res) => {
@@ -254,7 +281,8 @@ router.post("/insertSellrequest",(req,res) => {
         </tr>
       </table>
     `;
-    const sendToEmail = 'inspection@bikebazaar.com'; //email to send alerts to
+    //const sendToEmail = 'inspection@bikebazaar.com'; //email to send alerts to
+    const sendToEmail = 'ankit@tekonika.co';
     mailer(output, 'Appointment Booked', sendToEmail).catch(console.error);
 
     const body = dataset.flatMap(doc => [
