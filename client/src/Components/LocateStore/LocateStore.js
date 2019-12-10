@@ -192,7 +192,8 @@ const LocateStore = props => {
     <div id="LocateStore">
       <Header />
       <MainMenu />
-      <div className="wapper">
+      <Grid container component="div" direction="row" justify="center" className="mtop40">
+        <Grid item xs={11} md={11} sm={11} lg={11}>
         {multiStore}
 
         <div className="locateDropdownCard">
@@ -202,7 +203,8 @@ const LocateStore = props => {
           </div>
           <Grid container component="div" direction="row" justify="space-evenly" alignItems="center">{locationCards}</Grid>
         </div>
-      </div>
+        </Grid>
+      </Grid>
       <Footer />
     </div>
   );

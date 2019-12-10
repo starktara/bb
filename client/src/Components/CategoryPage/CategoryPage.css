@@ -32,6 +32,10 @@ form {
   padding-left: 0 !important;
 }
 
+.mtop40{
+  margin-top: 40px; 
+}
+
 .wapper {
   width: 1200px;
   margin: 40px auto;
