@@ -299,8 +299,10 @@ const Sell = props => {
       const data = new FormData();
       data.append("image", image, image.name);
       
-      return axios.post('http://localhost:4200/upload', data)
+      return axios.post('http://localhost:3000/upload', data)
       .then(response => {
+        console.log(response.data);
+        console.log(formData.image.imageUrls);
         setFormData({
           ...formData,
           image: {
