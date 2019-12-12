@@ -41,7 +41,7 @@ const StoreSection = () => {
                         <div className="detail">
                             <h3>BikeBazaar, JKB Motors</h3>
                             <p className="address">
-                                Jkb - Bike Bazaar, Near JKB Bajaj,Pulinchode Jn. Bypass,
+                                Jkb - BikeBazaar, Near JKB Bajaj,Pulinchode Jn. Bypass,
                                 Aluva - 683101, Kerala, India
                             </p>
                             <br className="clr"/>

@@ -131,7 +131,7 @@ const LocateStore = props => {
                 })}
               </ul>
             </div>
-            <div className="input-field">
+            {/* <div className="input-field">
               <p>Please Select Your Location</p>
               <button
                 className="dropdown-trigger btn custom-drop white black-text"
@@ -151,7 +151,7 @@ const LocateStore = props => {
                   );
                 })}
               </ul>
-            </div>
+            </div> */}
             <div className="seacrh-location-button">
               <img src={searchIcon} width="30" height="30" alt="" />
             </div>

@@ -38,7 +38,7 @@ const Header = props => {
                 alt=""
               />
               <Link to="/help" className="right">
-                help@bikebazaar.com
+                connect@bikebazaar.com
               </Link>
             </li>
           </ul>

@@ -202,7 +202,7 @@ const Contact = props => {
                 <div className="mail">
                   <EmailIcon style={{ fontSize: 23, color: grey[900] }} />
                   &nbsp;&nbsp;&nbsp;
-                  <span>help@bikebazaar.com</span>
+                  <span>contact@bikebazaar.com</span>
                 </div>
                 <p className="sub-heading-black">Follow Us On:</p>
                 <div className="social-media-links">
@@ -361,8 +361,8 @@ const Contact = props => {
           <Grid container component="div" direction="row" className={classes.mapContainer}>
             <Grid item xs={12} sm={12} md={12} lg={12} className="mapContainer">
               <GoogleMap
-                center={{ lat: -34.397, lng: 150.644 }}
-                zoom={8}
+                center={{ lat: 10.100809, lng: 76.348984 }}
+                zoom={12}
                 location=""
               />
             </Grid>
