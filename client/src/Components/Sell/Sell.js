@@ -240,6 +240,11 @@ const Sell = props => {
       value: "",
       error: false,
       errorMessage: ""
+    },
+    image: {
+      images: [],
+      imageUrls: [],
+      message: ""
     }
   });
 
@@ -267,6 +272,46 @@ const Sell = props => {
       handleClose={handleClose}
     />
   );
+
+  const selectFiles = (event, formData) => {
+    let images = [];
+    for (var i = 0; i < event.target.files.length; i++) {
+          images[i] = event.target.files.item(i);
+          console.log(images[i].name)
+      }
+      images = images.filter(image => image.name.match(/\.(jpg|jpeg|png)$/))
+      let message = `${images.length} valid image(s) selected`
+      
+      setFormData({
+        ...formData,
+        image: {
+          images: images,
+          message: message
+        }
+      });
+  }
+
+  const uploadImages = (formData) => {  
+    const uploaders = formData.image.images.map(image => {
+      const data = new FormData();
+      data.append("image", image, image.name);
+      
+      return axios.post('http://localhost:3000/upload', data)
+      .then(response => {
+        console.log(response.data);
+        console.log(formData.image.imageUrls);
+        setFormData({
+          ...formData,
+          image: {
+            imageUrls: [response.data.imageUrls, ...formData.image.imageUrls]
+          }
+        });
+      })
+    });
+    axios.all(uploaders).then(() => {
+      console.log('done');
+    }).catch(err => alert(err.message));
+  }
 
   const validateAndUpdateFormdata = (event, formData) => {
     let targetValue = event.target.value;
@@ -302,6 +347,7 @@ const Sell = props => {
   };
 
   const submitForm = event => {
+    uploadImages(formData);
 
     axios
       .post("/apis/leadDetail/insertSellrequest", formData)
@@ -350,7 +396,7 @@ const Sell = props => {
               <Grid container component="div" direction="row">
                 <Grid container component="div" direction="row">
                   <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <form action="" id="shareYourDetailsForm">
+                    <form action="" id="shareYourDetailsForm" encType="multipart/form-data">
                       <Grid container component="div" direction="row" justify="space-evenly">
                         <Grid item xs={5} sm={5} md={5} lg={5}>
                           <Grid container component="div" direction="row">
@@ -465,14 +511,19 @@ const Sell = props => {
                                 </label>
                               </Grid>
                           </Grid>
-                          <Grid container component="div" direction="row" className={classes.banner+' form-group'}>
-                              <Grid item xs={9} sm={9} md={9} lg={9}>
-                                <div className="form-group">
-                                  <button type="button" className={classes.imageUploadButton}>
-                                    Upload Images Here
-                                  </button>
-                                </div>
-                              </Grid>
+                          <Grid container component="div" direction="row">
+                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                              <label htmlFor="image">
+                                <span className={classes.label}> Upload images </span>
+                              </label>
+                              <input 
+                               className="form-control" 
+                               type="file" 
+                               onChange={(event)=>selectFiles(event, formData)} 
+                               multiple
+                               />
+                               { formData.image.message? <p className="text-info">{formData.image.message}</p>: ''}
+                            </Grid>
                           </Grid>
                         </Grid>
                         <Grid item xs={5} sm={5} md={5} lg={5}>
@@ -569,7 +620,7 @@ const Sell = props => {
                       <Grid container component="div" direction="row">
                         <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
                           <div className="form-group">
-                            <button type="button" className="btn" onClick={submitForm}>
+                            <button type="button" className="btn" onClick={submitForm} >
                               Sell Your Vehicle
                             </button>
                           </div>
