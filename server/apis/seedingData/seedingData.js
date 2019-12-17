@@ -116,7 +116,7 @@ router.get("/uploadBikes", (req, res) => {
       {
         id: 2,
         name: "Honda",
-        type: 2,
+        type: 1,
         model: 17,
         brand: 4,
         regnumber: "",
@@ -134,7 +134,7 @@ router.get("/uploadBikes", (req, res) => {
         owner: 1,
         cc: 120,
         bhp: 10,
-        category: 2,
+        category: 1,
         mileage: 65,
         storeId:1
       },
@@ -284,7 +284,7 @@ router.get("/uploadBikes", (req, res) => {
         owner: 1,
         cc: 100,
         bhp: 12,
-        category: 1,
+        category: 2,
         mileage: 40,
         storeId: 1
       },
