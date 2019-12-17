@@ -113,7 +113,7 @@ body{
     font-weight: 400;
   }
   nav{
-    line-height: 36px !important;
+    line-height: 28px !important;
   }
   @media screen and (min-width: 1900px) {
     #searchForm{

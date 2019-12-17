@@ -272,9 +272,9 @@ router.get("/uploadBikes", (req, res) => {
         regnumber: "",
         descr: "",
         price: 30000,
-        state: "Andhra Pradesh",
+        state: "Aluv",
         city: "",
-        loc: "Rajamundry",
+        loc: "Kerela",
         location: { lat: 10.100914, lon: 76.348984 },
         myear: 2013,
         mmonth: 0,
@@ -297,9 +297,9 @@ router.get("/uploadBikes", (req, res) => {
         regnumber: "",
         descr: "",
         price: 25000,
-        state: "Andhra Pradesh",
+        state: "Kerela",
         city: "",
-        loc: "Rajamundry",
+        loc: "Aluva",
         location: { lat: 10.100914, lon: 76.348984 },
         myear: 2010,
         mmonth: 0,
@@ -461,7 +461,7 @@ router.get("/uploadBikes", (req, res) => {
         bhp: 8,
         category: 1,
         mileage: 60,
-        storeId:2
+        storeId:3
       },
       {
         id: 16,
@@ -486,7 +486,7 @@ router.get("/uploadBikes", (req, res) => {
         bhp: 10,
         category: 2,
         mileage: 50,
-        storeId:2
+        storeId:3
       },
       {
         id: 17,
@@ -511,7 +511,7 @@ router.get("/uploadBikes", (req, res) => {
         bhp: 10,
         category: 1,
         mileage: 55,
-        storeId:2
+        storeId:3
       },
       {
         id: 18,
@@ -536,7 +536,7 @@ router.get("/uploadBikes", (req, res) => {
         bhp: 8,
         category: 2,
         mileage: 50,
-        storeId:2
+        storeId:3
       }
     ];
     const body = dataset.flatMap(doc => [
