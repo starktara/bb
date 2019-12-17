@@ -8,14 +8,14 @@
 
 ### Pending Issues - 3/25
 
-### Merge Ankit and aush bike data
+### Merge Ankit and aush bike data - done
 
-### Change model
+### Change model - done
 
-### Check right type
+### Check right type - done
 
-### Change storeid
+### Change storeid - done
 
-### Verify image mapping
+### Verify image mapping - done
 
-### Center align header options
+### Center align header options - done
