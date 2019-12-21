@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import searchIcon from "../../assets/search-icon.svg";
 import locationIcon from "../../assets/location-icon.svg";
@@ -6,8 +6,17 @@ import dropDown from "../../assets/drop-down.svg";
 import logoPng from "../../assets/logo.png";
 import logo from "../../assets/logo.svg";
 import Grid from "@material-ui/core/Grid";
+import M from "materialize-css";
+import './MainMenu.css';
 
 const MainMenu = props => {
+
+  useEffect(() => {
+    let dropDown = document.querySelectorAll('.dropdown-trigger');
+    M.Dropdown.init(dropDown, {
+      coverTrigger: false
+    });
+  },[]);
 
 const [searchTerm, setSearchTerm] = useState("");
 const updateState = event => {
@@ -48,13 +57,20 @@ setSearchTerm(event.target.value);
             </Grid>
           </Grid>
           <Grid item xs={2} sm={2} md={2} lg={2} className="location-btn-container">
+              <a className='dropdown-trigger'data-target='dropdown1'>
             <div className="location-btn">
-              <div className="icon-wrapper">
-                <img src={locationIcon} height="20" alt="" />
-              </div>
-              <span className="location-btn-text">Aluva</span>
-              <img src={dropDown} height="11" className="dropdown-icon" alt=""/>
+                <div className="icon-wrapper">
+                  <img src={locationIcon} height="20" alt="" />
+                </div>
+                <span className="location-btn-text">Aluva</span>
+                <img src={dropDown} height="11" className="dropdown-icon" alt=""/>
             </div>
+              </a>
+            <ul id='dropdown1' className='dropdown-content'>
+              <li><a href="#!">one</a></li>
+              <li><a href="#!">two</a></li>
+              <li><a href="#!">three</a></li>
+            </ul>
           </Grid>
         </Grid>
         <Grid container component="div" direction="row" className="second-nav-wrapper row" justify="center">
