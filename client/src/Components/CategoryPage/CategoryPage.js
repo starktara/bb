@@ -22,6 +22,7 @@ class CategoryPage extends Component {
     super(props);
     this.state = {
       searchTerm: " ",
+      filterData: ""
     };
   }
 
@@ -32,8 +33,12 @@ class CategoryPage extends Component {
           searchTerm: categoryData[this.props.match.params.category].id
         })
       } else {
+        const city = new URLSearchParams(this.props.history.location.search).get('city');
+        const stateFilterData = {...this.props.filterData};
+        stateFilterData.city = city;
         this.setState({
-          searchTerm: this.props.history.location.search
+          searchTerm: this.props.history.location.search,
+          filterData: stateFilterData
         })
       }
     });
@@ -42,9 +47,13 @@ class CategoryPage extends Component {
         searchTerm: categoryData[this.props.match.params.category].id
       })
     } else {
-      this.setState({
-        searchTerm: this.props.history.location.search
-      })
+      const city = new URLSearchParams(this.props.history.location.search).get('city');
+      const stateFilterData = {...this.props.filterData};
+        stateFilterData.city = city;
+        this.setState({
+          searchTerm: this.props.history.location.search,
+          filterData: stateFilterData
+        })
     }
   }
 
@@ -53,24 +62,23 @@ class CategoryPage extends Component {
   }
 
   componentDidMount() {
-
     this.unlisten = this.props.history.listen((location, action) => {
       if (this.props.history.location.search.trim() == "") {
         this.props.getVehicles(this.state.searchTerm);
       } else {
         const search = new URLSearchParams(this.state.searchTerm);
-        if (search.get("searchTerm")) {
-          this.props.getSearchData(search.get("searchTerm"));
-        }
+        let searchedTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
+        let filterdata = {...this.state.filterData};
+        this.props.getSearchData(searchedTerm,filterdata);
       }
     });
     if (this.props.history.location.search.trim() == "") {
       this.props.getVehicles(this.state.searchTerm);
     } else {
       const search = new URLSearchParams(this.state.searchTerm);
-      if (search.get("searchTerm")) {
-        this.props.getSearchData(search.get("searchTerm"));
-      }
+      let searchedTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
+        let filterdata = {...this.state.filterData};
+        this.props.getSearchData(searchedTerm,filterdata);
     }
   }
 
@@ -170,6 +178,7 @@ class CategoryPage extends Component {
 const mapStateToProps = state => {
   return {
     vehicles: state.vehicleDetails.vehicles,
+    filterData: state.vehicleDetails.filter,
     loading: state.vehicleDetails.loading,
     currentData: state.vehicleDetails.currentData,
     currentPage: state.vehicleDetails.currentPage,
@@ -182,7 +191,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.getVehicles(vehicleCategory)),
     getPaginatedData: (offset, pagelimit) =>
       dispatch(actions.getPaginatedData(offset, pagelimit)),
-    getSearchData: searchData => dispatch(actions.getSearchData(searchData))
+    getSearchData: (searchTerm, searchedCity) => dispatch(actions.getSearchData(searchTerm, searchedCity))
   };
 };
 

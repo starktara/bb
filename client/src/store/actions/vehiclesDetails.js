@@ -59,7 +59,7 @@ export const getVehicleData = (vehicleid) => {
 
 export const getSearchData = (searchTerm,filterData = null) => {
     return dispatch => {
-        let url = "/apis/globalSearch/getCategoryById?searchTerm="+searchTerm;
+        let url = "/apis/globalSearch/getCategoryById?searchTerm="+searchTerm+"&filterData="+JSON.stringify(filterData);
         axios.get(url)
             .then(response => {
                 dispatch(vehicleList(response.data,filterData = null,"bike"));

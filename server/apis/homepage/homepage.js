@@ -4,6 +4,7 @@ const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
 
 router.get("/getCategoryById", (req, res) => {
+  let filter = JSON.parse(req.query.filterData);
   async function getBikesForCategory() {
     const { body } = await client.search({
       index: "bike-details",
@@ -30,7 +31,7 @@ router.get("/getCategoryById", (req, res) => {
               },
               {
                 match: {
-                  city: req.query.searchTerm
+                  city: filter.city
                 }
               },
             ]

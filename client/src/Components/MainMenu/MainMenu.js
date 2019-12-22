@@ -53,7 +53,7 @@ setSearchTerm(event.target.value);
                       value={searchTerm}
                       onChange={updateState}
                     />
-                    <Link to={`/category/bike?searchTerm=${searchTerm}`}>
+                    <Link to={`/category/bike?searchTerm=${searchTerm}&city=${currentLocation}`}>
                       <button 
                         className="btn search-label-btn" 
                         type="submit">
