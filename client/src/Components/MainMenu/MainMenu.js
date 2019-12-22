@@ -11,6 +11,8 @@ import './MainMenu.css';
 
 const MainMenu = props => {
 
+  const [locations] = useState(["Aluva", "Kolkata", "Rajahmundry"]);
+  const [currentLocation, setCurrentLocation] = useState('Aluva');
   useEffect(() => {
     let dropDown = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(dropDown, {
@@ -18,6 +20,13 @@ const MainMenu = props => {
     });
   },[]);
 
+
+  const setLocation = key => {
+    const loc = locations[key];
+    setCurrentLocation(loc);
+    let displayLoc = (loc.length > 8) ? loc.substr(0,7) + '..' : loc;
+    document.querySelector('#currentLocation').innerText = displayLoc;
+  };
 const [searchTerm, setSearchTerm] = useState("");
 const updateState = event => {
 setSearchTerm(event.target.value);
@@ -62,23 +71,24 @@ setSearchTerm(event.target.value);
                 <div className="icon-wrapper">
                   <img src={locationIcon} height="20" alt="" />
                 </div>
-                <span className="location-btn-text">Aluva</span>
+                <span className="location-btn-text" id="currentLocation">Aluva</span>
                 <img src={dropDown} height="11" className="dropdown-icon" alt=""/>
             </div>
               </a>
             <ul id='dropdown1' className='dropdown-content'>
-              <li><a href="#!">one</a></li>
-              <li><a href="#!">two</a></li>
-              <li><a href="#!">three</a></li>
+                {locations.map((location, key) => {
+                  if(location!==currentLocation){
+                    return (
+                      <li key={key} onClick={() => setLocation(key)}>
+                        <a href="#!">{location}</a>
+                      </li>
+                    );
+                  }
+                })}
             </ul>
           </Grid>
         </Grid>
         <Grid container component="div" direction="row" className="second-nav-wrapper row" justify="center">
-          {/* <Grid item xs={2} sm={2} md={2} lg={2} className="logo-text-container">
-            <Link to="/">
-              <img src={logoPng} width="193" height="22" className="text-logo" alt=""/>
-            </Link>
-          </Grid> */}
           <Grid item xs={10} sm={10} md={10} lg={10}>
             <Grid container component="div" direction="row" className="option-row">
               <Grid item xs={12} sm={12} md={12} lg={12}>
