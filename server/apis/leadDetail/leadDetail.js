@@ -204,17 +204,18 @@ router.post("/insertFranchiseRequest", (req, res) => {
 
 router.post("/insertSellrequest",(req,res) => {
   let formData = req.body;
+  console.log(formData.image.images);
   async function upload() {
     const dataset = [
       {
         name: formData.name.value,
         city: formData.city.value,
         brand:formData.make.value ,
-        variant: formData.variant,
+        variant: formData.variant.value,
         mobile:formData.mobile.value ,
-        address: formData.address,
+        address: formData.address.value,
         model: formData.model.value,
-        kmsdriven: formData.kmsdriven,
+        kmsdriven: formData.kmsdriven.value,
         manufactureYear: formData.yom.value
       }
     ];
