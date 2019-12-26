@@ -116,7 +116,8 @@ router.get("/createSellerIndex", (req, res) => {
               mobile:{ type: "text"},
               address: {type: "text"},
               model: {type: "text"},
-              kmsdriven: { type: "text"}
+              kmsdriven: { type: "text"},
+              images: { type: "text" }
             }
           }
         }
@@ -204,7 +205,6 @@ router.post("/insertFranchiseRequest", (req, res) => {
 
 router.post("/insertSellrequest",(req,res) => {
   let formData = req.body;
-  console.log(formData.image.images);
   async function upload() {
     const dataset = [
       {
@@ -216,7 +216,8 @@ router.post("/insertSellrequest",(req,res) => {
         address: formData.address.value,
         model: formData.model.value,
         kmsdriven: formData.kmsdriven.value,
-        manufactureYear: formData.yom.value
+        manufactureYear: formData.yom.value,
+        images: formData.image.imageNames.toString()
       }
     ];
     const data = dataset[0];

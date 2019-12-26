@@ -243,7 +243,7 @@ const Sell = props => {
     },
     image: {
       images: [],
-      imageUrls: [],
+      imageNames: [],
       message: ""
     }
   });
@@ -277,38 +277,30 @@ const Sell = props => {
     let images = [];
     for (var i = 0; i < event.target.files.length; i++) {
           images[i] = event.target.files.item(i);
-          console.log(images[i].name)
       }
       images = images.filter(image => image.name.match(/\.(jpg|jpeg|png)$/))
+      let imgNames = images.map(image => image.name);
       let message = `${images.length} valid image(s) selected`
       
       setFormData({
         ...formData,
         image: {
           images: images,
+          imageNames: imgNames,
           message: message
         }
       });
   }
 
-  const uploadImages = (formData) => {  
+  const uploadImages = (formData) => {
     const uploaders = formData.image.images.map(image => {
       const data = new FormData();
       data.append("image", image, image.name);
       
       return axios.post('/upload', data)
-      .then(response => {
-        let imgNames = formData.image.images.map(el => el.name);
-        setFormData({
-          ...formData,
-          image: {
-            images: imgNames
-          }
-        });
-      })
+      .then(response => {})
     });
     axios.all(uploaders).then(() => {
-      console.log('done');
     }).catch(err => alert(err.message));
   }
 
@@ -345,14 +337,11 @@ const Sell = props => {
     });
   };
 
-  const submitForm = event => {
+  const submitForm = async(event) => {
     uploadImages(formData);
-
     axios
       .post("/apis/leadDetail/insertSellrequest", formData)
-      .then(response => {
-        console.log(response);
-      })
+      .then(response => {})
       .catch(err => {
         console.log(err);
       });
