@@ -27,21 +27,21 @@ class CategoryPage extends Component {
   }
 
   componentWillMount() {
-    this.unlisten = this.props.history.listen((location, action) => {
-      if (this.props.history.location.search.trim() == "") {
-        this.setState({
-          searchTerm: categoryData[this.props.match.params.category].id
-        })
-      } else {
-        const city = new URLSearchParams(this.props.history.location.search).get('city');
-        const stateFilterData = {...this.props.filterData};
-        stateFilterData.city = city;
-        this.setState({
-          searchTerm: this.props.history.location.search,
-          filterData: stateFilterData
-        })
-      }
-    });
+    // this.unlisten = this.props.history.listen((location, action) => {
+    //   if (this.props.history.location.search.trim() == "") {
+    //     this.setState({
+    //       searchTerm: categoryData[this.props.match.params.category].id
+    //     })
+    //   } else {
+    //     const city = new URLSearchParams(this.props.history.location.search).get('city');
+    //     const stateFilterData = {...this.props.filterData};
+    //     stateFilterData.city = city;
+    //     this.setState({
+    //       searchTerm: this.props.history.location.search,
+    //       filterData: stateFilterData
+    //     })
+    //   }
+    // });
     if (this.props.history.location.search.trim() == "") {
       this.setState({
         searchTerm: categoryData[this.props.match.params.category].id
@@ -58,20 +58,22 @@ class CategoryPage extends Component {
   }
 
   componentWillUnmount() {
-    this.unlisten();
+    //this.unlisten();
   }
 
   componentDidMount() {
-    this.unlisten = this.props.history.listen((location, action) => {
-      if (this.props.history.location.search.trim() == "") {
-        this.props.getVehicles(this.state.searchTerm);
-      } else {
-        const search = new URLSearchParams(this.state.searchTerm);
-        let searchedTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
-        let filterdata = {...this.state.filterData};
-        this.props.getSearchData(searchedTerm,filterdata);
-      }
-    });
+    // this.unlisten = this.props.history.listen((location, action) => {
+    //   console.log('unlisten');
+    //   if (this.props.history.location.search.trim() == "") {
+    //     console.log(this.state);
+    //     this.props.getVehicles(this.state.searchTerm);
+    //   } else {
+    //     const search = new URLSearchParams(this.state.searchTerm);
+    //     let searchedTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
+    //     let filterdata = {...this.state.filterData};
+    //     this.props.getSearchData(searchedTerm,filterdata);
+    //   }
+    // });
     if (this.props.history.location.search.trim() == "") {
       this.props.getVehicles(this.state.searchTerm);
     } else {

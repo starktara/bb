@@ -64,7 +64,7 @@ const CityWidget = (props) => {
             <a href="javascript:void" onClick={() => searchClick('pune')}>Pune</a>
           </li>
           <li>
-            <a href="javascript:void" onClick={() => searchClick('rajmundary')}>Rajmundary</a>
+            <a href="javascript:void" onClick={() => searchClick('rajahmundry')}>Rajahmundry</a>
           </li> 
         </ul>
       </div>

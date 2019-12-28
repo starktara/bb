@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../store/actions/index";
+import {BRANDS} from '../../../shared/mappings/brands';
 
 const BrandWidget = props => {
-
   const selectCheckbox = selectedCheck => {
     let category = props.category;
     let filterData = props.filter;
