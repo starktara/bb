@@ -1,19 +1,24 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../store/actions/index";
 import {BRANDS} from '../../../shared/mappings/brands';
 
 const BrandWidget = props => {
+
+  useEffect(() => {
+    props.brandFilter(props.category, null);
+  });
+
   const selectCheckbox = selectedCheck => {
     let category = props.category;
     let filterData = props.filter;
     let position = filterData.brand.indexOf(selectedCheck);
-
-    if (~position) {
+    if (position>=0 && filterData.brand.length) {
       filterData.brand.splice(position, 1);
     } else {
       filterData.brand.push(selectedCheck);
     }
+
     props.brandFilter(category, filterData);
   };
 
