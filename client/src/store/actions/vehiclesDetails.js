@@ -2,20 +2,20 @@ import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
 
-export const vehicleList = (vehicleList,filterData,category) => {
-    if(vehicleList.length == 0){
+export const vehicleList = (vehicleList, filterData, category) => {
+    if (vehicleList.length == 0) {
         vehicleList = ['NA'];
     }
     return {
         type: actionTypes.VEHICLE_LIST,
         vehicleList: vehicleList,
-        filterData : filterData,
-        category:category
+        filterData: filterData,
+        category: category
     };
 };
 
 export const vehicleData = (vehicle) => {
-    if(vehicle.length){
+    if (vehicle.length) {
         vehicle = vehicle[0]
     }
     return {
@@ -31,12 +31,12 @@ export const apiFail = (error) => {
     };
 };
 
-export const getVehicles = (category,filterData = null) => {
+export const getVehicles = (category, filterData = null) => {
     return dispatch => {
-        let url = "/apis/categoryDetails/getCategoryById?category="+category+"&filterData="+JSON.stringify(filterData);
+        let url = "/apis/categoryDetails/getCategoryById?category=" + category + "&filterData=" + JSON.stringify(filterData);
         axios.get(url)
             .then(response => {
-                dispatch(vehicleList(response.data,filterData,category));
+                dispatch(vehicleList(response.data, filterData, category));
             })
             .catch(err => {
                 dispatch(apiFail(err));
@@ -46,7 +46,7 @@ export const getVehicles = (category,filterData = null) => {
 
 export const getVehicleData = (vehicleid) => {
     return dispatch => {
-        let url = "/apis/seedData/searchBike?vehicleid="+vehicleid;
+        let url = "/apis/seedData/searchBike?vehicleid=" + vehicleid;
         axios.get(url)
             .then(response => {
                 dispatch(vehicleData(response.data));
@@ -57,22 +57,9 @@ export const getVehicleData = (vehicleid) => {
     };
 };
 
-export const getSearchData = (searchTerm,filterData = null) => {
-    return dispatch => {
-        let url = "/apis/globalSearch/getCategoryById?searchTerm="+searchTerm+"&filterData="+JSON.stringify(filterData);
-        axios.get(url)
-            .then(response => {
-                dispatch(vehicleList(response.data,filterData = null,"bike"));
-            })
-            .catch(err => {
-                dispatch(apiFail(err));
-            });
-    };
-}
-
-export const getPaginatedData = (offset,pageLimit) => {
+export const getPaginatedData = (offset, pageLimit) => {
     return {
-        type:actionTypes.GET_PAGINATED_VEHICLES,
+        type: actionTypes.GET_PAGINATED_VEHICLES,
         offset,
         pageLimit
     }

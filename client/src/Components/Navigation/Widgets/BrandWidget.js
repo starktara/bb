@@ -1,19 +1,14 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../store/actions/index";
-import {BRANDS} from '../../../shared/mappings/brands';
+import { BRANDS } from '../../../shared/mappings/brands';
 
 const BrandWidget = props => {
-
-  useEffect(() => {
-    props.brandFilter(props.category, null);
-  });
-
   const selectCheckbox = selectedCheck => {
     let category = props.category;
     let filterData = props.filter;
     let position = filterData.brand.indexOf(selectedCheck);
-    if (position>=0 && filterData.brand.length) {
+    if (position >= 0 && filterData.brand.length) {
       filterData.brand.splice(position, 1);
     } else {
       filterData.brand.push(selectedCheck);
@@ -26,9 +21,9 @@ const BrandWidget = props => {
     return (
       <li key={index}>
         <label>
-          <input type="checkbox" className="filled-in"  onClick={() => {
-              selectCheckbox(index);
-            }} />
+          <input type="checkbox" className="filled-in" onClick={() => {
+            selectCheckbox(index);
+          }} />
           <span>{brand}</span>
         </label>
       </li>
