@@ -9,12 +9,12 @@ const BudgetWidget = props => {
     let category = props.category;
     let filterData = props.filter;
     let position = filterData.budget.indexOf(selectedCheck);
-    if (~position) {
+    if (position && filterData.budget.length != 0) {
       filterData.budget.splice(position, 1);
     } else {
       filterData.budget.push(selectedCheck);
     }
-     props.budgetFilter(category, filterData);
+    props.budgetFilter(category, filterData);
   };
 
   const budgetArray = [];
@@ -27,7 +27,7 @@ const BudgetWidget = props => {
             type="checkbox"
             className="filled-in"
             onClick={() => {
-              selectCheckbox(props.budget[i] === 0 ? props.budget[i] : ((props.budget[i] + 1)+"-"+(props.budget[i + 1])))
+              selectCheckbox(props.budget[i] === 0 ? props.budget[i] : ((props.budget[i] + 1) + "-" + (props.budget[i + 1])))
             }}
           />
           <span>
