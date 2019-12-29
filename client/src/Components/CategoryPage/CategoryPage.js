@@ -27,60 +27,29 @@ class CategoryPage extends Component {
   }
 
   componentWillMount() {
-    // this.unlisten = this.props.history.listen((location, action) => {
-    //   if (this.props.history.location.search.trim() == "") {
-    //     this.setState({
-    //       searchTerm: categoryData[this.props.match.params.category].id
-    //     })
-    //   } else {
-    //     const city = new URLSearchParams(this.props.history.location.search).get('city');
-    //     const stateFilterData = {...this.props.filterData};
-    //     stateFilterData.city = city;
-    //     this.setState({
-    //       searchTerm: this.props.history.location.search,
-    //       filterData: stateFilterData
-    //     })
-    //   }
-    // });
     if (this.props.history.location.search.trim() == "") {
       this.setState({
         searchTerm: categoryData[this.props.match.params.category].id
       })
     } else {
       const city = new URLSearchParams(this.props.history.location.search).get('city');
-      const stateFilterData = {...this.props.filterData};
-        stateFilterData.city = city;
-        this.setState({
-          searchTerm: this.props.history.location.search,
-          filterData: stateFilterData
-        })
+      const stateFilterData = { ...this.props.filterData };
+      stateFilterData.city = city;
+      this.setState({
+        searchTerm: this.props.history.location.search,
+        filterData: stateFilterData
+      })
     }
   }
 
-  componentWillUnmount() {
-    //this.unlisten();
-  }
-
   componentDidMount() {
-    // this.unlisten = this.props.history.listen((location, action) => {
-    //   console.log('unlisten');
-    //   if (this.props.history.location.search.trim() == "") {
-    //     console.log(this.state);
-    //     this.props.getVehicles(this.state.searchTerm);
-    //   } else {
-    //     const search = new URLSearchParams(this.state.searchTerm);
-    //     let searchedTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
-    //     let filterdata = {...this.state.filterData};
-    //     this.props.getSearchData(searchedTerm,filterdata);
-    //   }
-    // });
     if (this.props.history.location.search.trim() == "") {
       this.props.getVehicles(this.state.searchTerm);
     } else {
       const search = new URLSearchParams(this.state.searchTerm);
       let searchedTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
-        let filterdata = {...this.state.filterData};
-        this.props.getSearchData(searchedTerm,filterdata);
+      let filterdata = { ...this.state.filterData };
+      this.props.getSearchData(searchedTerm, filterdata);
     }
   }
 
@@ -153,24 +122,24 @@ class CategoryPage extends Component {
         <Header />
         <MainMenu />
         <Grid container component="div" direction="row" justify="center" className="mtop40">
-        <Grid item xs={11} md={11} sm={11} lg={11}>
-          <Banner navigation={navigation} heading={heading} text={text} path={this.props.location.pathname}/>
-        </Grid>
-        </Grid>
-          <Grid container component="div" direction="row">
-            <Navigation />
-            <Grid item xs={12} md={12} sm={12} lg={9} className="ProductListSec">
-              <SortDropDown
-                title="Sort by"
-                list={Menu}
-                category={categoryData[this.props.match.params.category].id}
-              />
-              <Grid container direction="row" component="div" className={containerClass}>
-                {vehicles}
-              </Grid>
-              {paginations}
-            </Grid>
+          <Grid item xs={11} md={11} sm={11} lg={11}>
+            <Banner navigation={navigation} heading={heading} text={text} path={this.props.location.pathname} />
           </Grid>
+        </Grid>
+        <Grid container component="div" direction="row">
+          <Navigation />
+          <Grid item xs={12} md={12} sm={12} lg={9} className="ProductListSec">
+            <SortDropDown
+              title="Sort by"
+              list={Menu}
+              category={categoryData[this.props.match.params.category].id}
+            />
+            <Grid container direction="row" component="div" className={containerClass}>
+              {vehicles}
+            </Grid>
+            {paginations}
+          </Grid>
+        </Grid>
         <Footer />
       </div>
     );
