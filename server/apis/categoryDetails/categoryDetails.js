@@ -85,7 +85,7 @@ router.get("/getCategoryById", (req, res) => {
             let gte = rangeArr[0];
             let lte = rangeArr[1];
             if (i == 1) {
-              mustArray.push({
+              shouldArray.push({
                 range: {
                   price: { gte: gte, lte: lte }
                 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../store/actions/index";
+import { SlowBuffer } from "buffer";
 
 
 const BudgetWidget = props => {
@@ -9,7 +10,7 @@ const BudgetWidget = props => {
     let category = props.category;
     let filterData = props.filter;
     let position = filterData.budget.indexOf(selectedCheck);
-    if (position && filterData.budget.length != 0) {
+    if (position != -1) {
       filterData.budget.splice(position, 1);
     } else {
       filterData.budget.push(selectedCheck);
