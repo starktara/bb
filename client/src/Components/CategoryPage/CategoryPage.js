@@ -18,18 +18,19 @@ import categoryData from "../../shared/mappings/category_data";
 const CategoryPage = (props) => {
 
   useEffect(() => {
-    var searchedTerm;
+    var category;
+    var searchTerm;
     if (props.history.location.search.trim() == "") {
       var stateFilterData = null;
-      searchedTerm = categoryData[props.match.params.category].id;
+      category = categoryData[props.match.params.category].id;
     } else {
       const city = new URLSearchParams(props.history.location.search).get('city');
       const stateFilterData = { ...props.filterData };
       stateFilterData.city = city;
       const search = new URLSearchParams(props.history.location.search);
-      searchedTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
+      searchTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
     }
-    props.getVehicles(searchedTerm, stateFilterData);
+    props.getVehicles(category, stateFilterData, searchTerm);
   }, []);
 
   useEffect(() => {
@@ -101,7 +102,7 @@ const CategoryPage = (props) => {
                 title="Sort by"
                 list={Menu}
                 category={categoryData[props.match.params.category].id}
-                />
+              />
               <Grid container direction="row" component="div" className={containerClass}>
                 {vehicles}
               </Grid>

@@ -5,8 +5,9 @@ const client = new Client({ node: "http://localhost:9200" });
 
 router.get("/getCategoryById", (req, res) => {
   let filterData = JSON.parse(req.query.filterData);
+  console.log(req.query.searchTerm)
   async function getBikesForCategory() {
-    if (req.query.searchTerm) {
+    if (req.query.searchTerm != "null") {
       const { body } = await client.search({
         index: "bike-details",
         body: {
@@ -32,7 +33,7 @@ router.get("/getCategoryById", (req, res) => {
                 },
                 {
                   match: {
-                    city: filter.city
+                    city: filterData.city
                   }
                 },
               ]
@@ -85,7 +86,7 @@ router.get("/getCategoryById", (req, res) => {
             let gte = rangeArr[0];
             let lte = rangeArr[1];
             if (i == 1) {
-              shouldArray.push({
+              mustArray.push({
                 range: {
                   price: { gte: gte, lte: lte }
                 }
