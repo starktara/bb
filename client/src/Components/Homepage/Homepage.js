@@ -99,7 +99,7 @@ const Homepage = () => {
     <div className="App">
       <Header />
       <MainMenu />
-      <div className="slider">
+      <div className="slider hide-on-small-only">
         <ul className="slides">
           <li>
             <img alt="" src={bannerImg} />

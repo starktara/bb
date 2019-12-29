@@ -14,10 +14,10 @@ const Navigation = () => {
     <Grid
       item
       component="aside"
-      // lg={4}
-      // md={4}
-      // sm={12}
-      xs={3}
+      xs={12}
+      sm={12}
+      md={3}
+      lg={3}
       className="filter"
     >
       <h5>Filter by</h5>
