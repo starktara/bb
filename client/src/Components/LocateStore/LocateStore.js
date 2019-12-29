@@ -7,7 +7,6 @@ import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import GoogleMap from "../GoogleMap/GoogleMap";
-import locationIcon from "../../assets/icons/location-new-icon.svg";
 import cityIcon from '../../assets/icons/store-locator-city-icon.svg';
 import dropdownIcon from "../../assets/drop-down.svg";
 import searchIcon from "../../assets/search-icon.svg";
@@ -44,7 +43,7 @@ const LocateStore = props => {
         lng: 81.786184
       }
     }
-    
+
   ]);
 
   const [cities] = useState(['Aluva', 'Rajahmundry']);
@@ -54,11 +53,6 @@ const LocateStore = props => {
   const setCity = key => {
     let city = cities[key];
     document.querySelector("#currentCity").innerText = city;
-  };
-
-  const setLocation = key => {
-    let location = locations[key];
-    document.querySelector("#currentLocation").innerText = location;
   };
 
   useEffect(() => {
@@ -80,7 +74,7 @@ const LocateStore = props => {
     }
   }, []);
 
-  var locationCards =    (
+  var locationCards = (
     <div className="col s12 m12 flex-center" key={1}>
       <div className="locationCard">
         <h5>{mapLocations[0].locationName}</h5>
@@ -100,7 +94,7 @@ const LocateStore = props => {
 
 
   var multiStore = "";
-  var heading="";
+  var heading = "";
   if (singleStore != true) {
     multiStore = (
       <>
@@ -131,27 +125,6 @@ const LocateStore = props => {
                 })}
               </ul>
             </div>
-            {/* <div className="input-field">
-              <p>Please Select Your Location</p>
-              <button
-                className="dropdown-trigger btn custom-drop white black-text"
-                href="#"
-                data-target="locationDropdown"
-              >
-                <img src={locationIcon} width="32.9" height="28.3" alt="" />
-                <span id="currentLocation">Search Your Location</span>
-                <img src={dropdownIcon} width="22" height="11" alt="" />
-              </button>
-              <ul id="locationDropdown" className="dropdown-content">
-                {locations.map((location, key) => {
-                  return (
-                    <li key={key} onClick={() => setLocation(key)}>
-                      <a href="#!">{location}</a>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div> */}
             <div className="seacrh-location-button">
               <img src={searchIcon} width="30" height="30" alt="" />
             </div>
@@ -160,14 +133,14 @@ const LocateStore = props => {
       </>
     );
     heading = (
-        <h4 className="mapHeading">
+      <h4 className="mapHeading">
         List of Stores Nearest to Selected Location
       </h4>
     )
 
-   locationCards = mapLocations.map((thisLocation, key) => {
-    return (
-      
+    locationCards = mapLocations.map((thisLocation, key) => {
+      return (
+
         <Grid item xs={4} sm={4} md={4} lg={4} key={key}>
           <div className="locationCard">
             <h5>{thisLocation.locationName}</h5>
@@ -183,8 +156,8 @@ const LocateStore = props => {
             </div>
           </div>
         </Grid>
-    );
-  });
+      );
+    });
 
   }
 
@@ -194,15 +167,15 @@ const LocateStore = props => {
       <MainMenu />
       <Grid container component="div" direction="row" justify="center" className="mtop40">
         <Grid item xs={11} md={11} sm={11} lg={11}>
-        {multiStore}
+          {multiStore}
 
-        <div className="locateDropdownCard">
+          <div className="locateDropdownCard">
             {heading}
-          <div className="heading-lines">
-            <img src={headingLines} width="57" height="4" alt="" />
+            <div className="heading-lines">
+              <img src={headingLines} width="57" height="4" alt="" />
+            </div>
+            <Grid container component="div" direction="row" justify="space-evenly" alignItems="center">{locationCards}</Grid>
           </div>
-          <Grid container component="div" direction="row" justify="space-evenly" alignItems="center">{locationCards}</Grid>
-        </div>
         </Grid>
       </Grid>
       <Footer />

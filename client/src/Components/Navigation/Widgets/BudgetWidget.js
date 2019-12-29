@@ -1,8 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../store/actions/index";
-import { SlowBuffer } from "buffer";
-
 
 const BudgetWidget = props => {
 
@@ -44,7 +42,9 @@ const BudgetWidget = props => {
   budgetArray.push(
     <li key={props.budget.length - 1}>
       <label>
-        <input type="checkbox" className="filled-in" />
+        <input type="checkbox" className="filled-in" onClick={() => {
+          selectCheckbox((100000 + "-" + 200000))
+        }} />
         <span>
           <strong>₹</strong> {props.budget[props.budget.length - 1] + 1} +
         </span>

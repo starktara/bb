@@ -15,7 +15,7 @@ router.get("/getCategoryById", (req, res) => {
           size: 10000,
           query: {
             bool: {
-              should: [
+              must: [
                 {
                   match: {
                     descr: req.query.searchTerm
@@ -82,7 +82,7 @@ router.get("/getCategoryById", (req, res) => {
           let budget = filterData.budget;
           var i = 1;
           for (let value of budget) {
-            let rangeArr = value ? value.split("-") : ["1", "15000"];
+            let rangeArr = value ? value.split("-") : value == 0 ? ["1", "15000"] : ["100000", "115000"];
             let gte = rangeArr[0];
             let lte = rangeArr[1];
             if (i == 1) {

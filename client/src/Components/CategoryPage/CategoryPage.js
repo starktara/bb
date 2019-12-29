@@ -20,7 +20,7 @@ const CategoryPage = (props) => {
   useEffect(() => {
     var category;
     var searchTerm;
-    if (props.history.location.search.trim() == "") {
+    if (props.history.location.search.trim() === "") {
       var stateFilterData = null;
       category = categoryData[props.match.params.category].id;
     } else {
