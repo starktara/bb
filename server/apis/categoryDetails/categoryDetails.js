@@ -83,21 +83,59 @@ router.get("/getCategoryById", (req, res) => {
   }
 
   async function getBikesForCategory() {
-    const { body } = await client.search({
-      index: "bike-details",
-      body: {
-        from: 0,
-        size: 10000,
-        query: {
-          bool: {
-            must: mustArray,
-            should: shouldArray
+    if (filterData == null) {
+      const { body } = await client.search({
+        index: "bike-details",
+        body: {
+          from: 0,
+          size: 10000,
+          query: {
+            bool: {
+              should: [
+                {
+                  match: {
+                    descr: req.query.searchTerm
+                  }
+                },
+                {
+                  match: {
+                    name: req.query.searchTerm
+                  }
+                },
+                {
+                  match: {
+                    state: req.query.searchTerm
+                  }
+                },
+                {
+                  match: {
+                    city: filter.city
+                  }
+                },
+              ]
+            }
           }
-        },
-        sort: [sortKey]
-      }
-    });
-    res.send(body.hits.hits);
+        }
+      });
+      res.send(body.hits.hits);
+    } else {
+      const { body } = await client.search({
+        index: "bike-details",
+        body: {
+          from: 0,
+          size: 10000,
+          query: {
+            bool: {
+              must: mustArray,
+              should: shouldArray
+            }
+          },
+          sort: [sortKey]
+        }
+      });
+      res.send(body.hits.hits);
+
+    }
   }
   getBikesForCategory().catch(console.log);
 });

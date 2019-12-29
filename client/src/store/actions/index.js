@@ -1,8 +1,7 @@
 export {
   getVehicles,
   getPaginatedData,
-  getVehicleData,
-  getSearchData
+  getVehicleData
 } from "./vehiclesDetails";
 export {
   getStoreData

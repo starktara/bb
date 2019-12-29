@@ -18,16 +18,18 @@ import categoryData from "../../shared/mappings/category_data";
 const CategoryPage = (props) => {
 
   useEffect(() => {
+    var searchedTerm;
     if (props.history.location.search.trim() == "") {
-      props.getVehicles(categoryData[props.match.params.category].id);
+      var stateFilterData = null;
+      searchedTerm = categoryData[props.match.params.category].id;
     } else {
       const city = new URLSearchParams(props.history.location.search).get('city');
       const stateFilterData = { ...props.filterData };
       stateFilterData.city = city;
       const search = new URLSearchParams(props.history.location.search);
-      let searchedTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
-      props.getSearchData(searchedTerm, stateFilterData);
+      searchedTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
     }
+    props.getVehicles(searchedTerm, stateFilterData);
   }, []);
 
   useEffect(() => {
@@ -128,7 +130,6 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.getVehicles(vehicleCategory)),
     getPaginatedData: (offset, pagelimit) =>
       dispatch(actions.getPaginatedData(offset, pagelimit)),
-    getSearchData: (searchTerm, searchedCity) => dispatch(actions.getSearchData(searchTerm, searchedCity))
   };
 };
 
