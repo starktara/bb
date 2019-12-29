@@ -1,10 +1,6 @@
 body{
     font-family: 'Montserrat', sans-serif;
   }
-  nav {
-    padding: 0px 28px 0px 35px;
-    line-height: 60px!important;
-  }
   .nav-flexify{
     display: flex;
     align-items: center;
@@ -111,9 +107,6 @@ body{
     font-size: 16px;
     letter-spacing: 0.41px;
     font-weight: 400;
-  }
-  nav{
-    line-height: 28px !important;
   }
   @media screen and (min-width: 1900px) {
     #searchForm{
@@ -325,6 +318,8 @@ body{
     position: sticky;
     top: 0;
     z-index: 100;
+    padding: 0px 28px 0px 35px;
+    line-height: 28px!important;
   }
 
   .text-logo{

@@ -95,7 +95,7 @@ section-3 {
 .section-3 h5 {
   color: #e92d2c;
   font-weight: bold;
-  white-space: nowrap;
+  white-space: pre-line;
   font-size: 23px;
 }
 .section-3 {

@@ -93,19 +93,21 @@ const CategoryPage = (props) => {
         <Grid item xs={11} md={11} sm={11} lg={11}>
           <Banner navigation={navigation} heading={heading} text={text} path={props.location.pathname} />
         </Grid>
-      </Grid>
-      <Grid container component="div" direction="row">
-        <Navigation />
-        <Grid item xs={12} md={12} sm={12} lg={9} className="ProductListSec">
-          <SortDropDown
-            title="Sort by"
-            list={Menu}
-            category={categoryData[props.match.params.category].id}
-          />
-          <Grid container direction="row" component="div" className={containerClass}>
-            {vehicles}
+        <Grid item xs={11} md={11} sm={11} lg={11}>
+          <Grid container component="div" direction="row">
+            <Navigation />
+            <Grid item xs={12} md={12} sm={12} lg={9} className="ProductListSec">
+              <SortDropDown
+                title="Sort by"
+                list={Menu}
+                category={categoryData[props.match.params.category].id}
+                />
+              <Grid container direction="row" component="div" className={containerClass}>
+                {vehicles}
+              </Grid>
+              {paginations}
+            </Grid>
           </Grid>
-          {paginations}
         </Grid>
       </Grid>
       <Footer />
