@@ -20,6 +20,8 @@ import isMobilePhone from "validator/lib/isMobilePhone";
 import isAlphaNumeric from "validator/lib/isAlphanumeric";
 import isNumeric from "validator/lib/isNumeric";
 import { makeStyles } from "@material-ui/core/styles";
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles(theme => ({
   body: {
@@ -176,6 +178,8 @@ const formValidator = (name, value) => {
 };
 
 const Sell = props => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   const classes = useStyles();
 
   useEffect(() =>{
@@ -354,6 +358,19 @@ const Sell = props => {
     setSuccessSubmit(true);
   };
 
+  let stepsToSellSection = (matches) ? <Grid item xs={11} sm={11} md={11} lg={11}>
+            <Paper className={classes.paper+ ' center-align'}>
+              <h3 className={classes.sellHeading}>Steps to Sell Your Two-Wheeler</h3>
+              <img alt="" src={blackHeadingLines} width="57" height="4"/>
+              <div className={classes.steps}>
+                  <div className={classes.stepOne}>Share Your<br/>Two-Wheeler's Details</div>
+                  <div className={classes.stepTwo}>Inspection by our<br/>Auto Expert</div>
+                  <div className={classes.stepThree}>Document<br/>Verification</div>
+                  <div className={classes.stepFour}>Instant Payment For<br/>Your Two-Wheeler</div>
+              </div>
+            </Paper>
+          </Grid> : <div></div>;
+
   return (
     <div id="Sell" className={classes.body}>
       <Header />
@@ -363,18 +380,7 @@ const Sell = props => {
         <Grid item xs={11} md={11} sm={11} lg={11} className={classes.banner}>
             <Banner navigation="Sell" heading="Sell any Two-Wheeler" text="" path={props.location.pathname}/>
         </Grid>
-        <Grid item xs={11} sm={11} md={11} lg={11}>
-          <Paper className={classes.paper+ ' center-align'}>
-            <h3 className={classes.sellHeading}>Steps to Sell Your Two-Wheeler</h3>
-            <img alt="" src={blackHeadingLines} width="57" height="4"/>
-            <div className={classes.steps}>
-                <div className={classes.stepOne}>Share Your<br/>Two-Wheeler's Details</div>
-                <div className={classes.stepTwo}>Inspection by our<br/>Auto Expert</div>
-                <div className={classes.stepThree}>Document<br/>Verification</div>
-                <div className={classes.stepFour}>Instant Payment For<br/>Your Two-Wheeler</div>
-            </div>
-          </Paper>
-        </Grid>
+        {stepsToSellSection}
         <Grid item xs={11} sm={11} md={11} lg={11} className="center-align">
           <h3 className={classes.bookAppointmentHeading}>Book An Appointment</h3>
           <img alt="" src={headingLines} width="57" height="4"/>
@@ -386,7 +392,7 @@ const Sell = props => {
                   <Grid item xs={12} sm={12} md={12} lg={12}>
                     <form action="" id="shareYourDetailsForm" encType="multipart/form-data">
                       <Grid container component="div" direction="row" justify="space-evenly">
-                        <Grid item xs={5} sm={5} md={5} lg={5}>
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
                           <Grid container component="div" direction="row">
                             <Grid item xs={12} md={12} sm={12} lg={12}>
                               <label htmlFor="name">
@@ -491,30 +497,8 @@ const Sell = props => {
                               )}
                             </Grid>
                           </Grid>
-                          <Grid container component="div" direction="row" className={classes.banner+' form-group'}>
-                              <Grid item xs={9} sm={9} md={9} lg={9}>
-                                <label className="fieldname">
-                                    <input type="checkbox" className="filled-in" defaultChecked />
-                                    <span>Interested in Exchange</span>
-                                </label>
-                              </Grid>
-                          </Grid>
-                          <Grid container component="div" direction="row">
-                            <Grid item xs={12} sm={12} md={12} lg={12}>
-                              <label htmlFor="image">
-                                <span className={classes.label}> Upload images </span>
-                              </label>
-                              <input 
-                               className="form-control" 
-                               type="file" 
-                               onChange={(event)=>selectFiles(event, formData)} 
-                               multiple
-                               />
-                               { formData.image.message? <p className="text-info">{formData.image.message}</p>: ''}
-                            </Grid>
-                          </Grid>
                         </Grid>
-                        <Grid item xs={5} sm={5} md={5} lg={5}>
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
                           <Grid container component="div" direction="row">
                             <Grid item xs={12} sm={12} md={12} lg={12}>
                               <label htmlFor="mobile">
@@ -603,8 +587,30 @@ const Sell = props => {
                                 }/>
                             </Grid>
                           </Grid>
-                        </Grid>
                       </Grid>
+                      <Grid container component="div" direction="row" justify="space-evenly" className={classes.banner+' form-group'}>
+                              <Grid item xs={11} sm={11} md={11} lg={11}>
+                                <label className="fieldname">
+                                    <input type="checkbox" className="filled-in" defaultChecked />
+                                    <span>Interested in Exchange</span>
+                                </label>
+                              </Grid>
+                          </Grid>
+                          <Grid container component="div" direction="row" justify="space-evenly">
+                            <Grid item xs={11} sm={11} md={11} lg={11}>
+                              <label htmlFor="image">
+                                <span className={classes.label}> Upload images </span>
+                              </label>
+                              <input 
+                               className="form-control" 
+                               type="file" 
+                               onChange={(event)=>selectFiles(event, formData)} 
+                               multiple
+                               />
+                               { formData.image.message? <p className="text-info">{formData.image.message}</p>: ''}
+                            </Grid>
+                          </Grid>
+                        </Grid>
                       <Grid container component="div" direction="row">
                         <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
                           <div className="form-group">
