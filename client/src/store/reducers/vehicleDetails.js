@@ -19,7 +19,7 @@ const initialState = {
     budget: [],
     brand: [],
     kmdriven: 100000,
-    searchTerm: null
+    searchTerm: "aluva*" //this will serve as city filter gets update on city widget
   }
 };
 
@@ -59,7 +59,6 @@ const reducer = (state = initialState, action) => {
     case actionTypes.GET_VEHICLE_DATA:
       return getVehicleData(state, action);
     default:
-      console.log(state);
       return state;
   }
 };

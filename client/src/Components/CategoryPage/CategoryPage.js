@@ -26,8 +26,6 @@ const CategoryPage = (props) => {
     if (props.history.location.search.trim() === "") {
       category = categoryData[props.match.params.category].id;
     } else {
-      const city = new URLSearchParams(props.history.location.search).get('city');
-      stateFilterData.city = city;
       const search = new URLSearchParams(props.history.location.search);
       searchTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
     }
