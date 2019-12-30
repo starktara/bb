@@ -17,17 +17,16 @@ import categoryData from "../../shared/mappings/category_data";
 
 const CategoryPage = (props) => {
   const dispatch = useDispatch();
-  const { vehicles, filterData, loading, currentData, currentPage, totalPages } = useSelector((state) => state.vehicleDetails);
+  const { vehicles, filter, loading, currentData, currentPage, totalPages } = useSelector((state) => state.vehicleDetails);
 
   useEffect(() => {
     var category;
     var searchTerm;
+    const stateFilterData = { ...filter };
     if (props.history.location.search.trim() === "") {
-      var stateFilterData = null;
       category = categoryData[props.match.params.category].id;
     } else {
       const city = new URLSearchParams(props.history.location.search).get('city');
-      const stateFilterData = { ...filterData };
       stateFilterData.city = city;
       const search = new URLSearchParams(props.history.location.search);
       searchTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
@@ -87,7 +86,6 @@ const CategoryPage = (props) => {
   ).slice(0, -1).split(" ").join("-");
   let text =
     "Motorcycles are available at easy EMI starting at ₹2,000*. Your  dream bike is not a distant dream now.";
-  console.log(vehicles);
   return (
     <div id="CategoryPage">
       <Header />
