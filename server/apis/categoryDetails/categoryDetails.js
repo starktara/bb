@@ -12,11 +12,13 @@ router.get("/getCategoryById", (req, res) => {
     let shouldArray = [];
 
     if (req.query.searchTerm !== "null") {
-      mustArray.push({
-        match_phrase: {
-          name: `${req.query.searchTerm}*`
-        }
-      });
+      if (req.query.searchTerm != "") {
+        mustArray.push({
+          match_phrase: {
+            name: `${req.query.searchTerm}*`
+          }
+        });
+      }
     } else {
       mustArray.push({
         match: {
