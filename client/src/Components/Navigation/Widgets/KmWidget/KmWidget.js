@@ -10,7 +10,7 @@ class KmWidget extends Component {
     super(props);
     this.inputRef = React.createRef();
     this.state = {
-      slideValue: 20000
+      slideValue: 100000
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -19,7 +19,7 @@ class KmWidget extends Component {
     this.setState({
       slideValue: event
     });
-    
+
     let category = this.props.category;
     let filterData = this.props.filter;
     filterData.kmdriven = event;
@@ -28,7 +28,7 @@ class KmWidget extends Component {
 
   render() {
     return (
-  
+
       <div className="kmWidget">
         <h3 className="WidgetTitle">
           <a
@@ -60,10 +60,10 @@ class KmWidget extends Component {
             Upto <output id="js-output">{this.state.slideValue}</output> KMs
           </div>
         </div>
-    </div>
-    
+      </div>
+
     );
-    
+
   }
 }
 

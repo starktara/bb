@@ -2,19 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../store/actions/index";
 
-
 const BudgetWidget = props => {
 
   const selectCheckbox = selectedCheck => {
     let category = props.category;
     let filterData = props.filter;
     let position = filterData.budget.indexOf(selectedCheck);
-    if (~position) {
+    if (position != -1) {
       filterData.budget.splice(position, 1);
     } else {
       filterData.budget.push(selectedCheck);
     }
-     props.budgetFilter(category, filterData);
+    props.budgetFilter(category, filterData);
   };
 
   const budgetArray = [];
@@ -27,7 +26,7 @@ const BudgetWidget = props => {
             type="checkbox"
             className="filled-in"
             onClick={() => {
-              selectCheckbox(props.budget[i] === 0 ? props.budget[i] : ((props.budget[i] + 1)+"-"+(props.budget[i + 1])))
+              selectCheckbox(props.budget[i] === 0 ? props.budget[i] : ((props.budget[i] + 1) + "-" + (props.budget[i + 1])))
             }}
           />
           <span>
@@ -43,7 +42,9 @@ const BudgetWidget = props => {
   budgetArray.push(
     <li key={props.budget.length - 1}>
       <label>
-        <input type="checkbox" className="filled-in" />
+        <input type="checkbox" className="filled-in" onClick={() => {
+          selectCheckbox((100000 + "-" + 200000))
+        }} />
         <span>
           <strong>₹</strong> {props.budget[props.budget.length - 1] + 1} +
         </span>

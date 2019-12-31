@@ -46,21 +46,21 @@ const SellingProcess  = (props) => {
               <h3 className={classes.heading}>{props.heading}</h3>
               <img alt="" src={headingLines} width="57" height="4"/>
               <Grid container component="div" direction="row" justify="center" className={classes.container}>
-                <Grid item xs={4} sm={4} md={4} lg={4}>
+                <Grid item xs={12} sm={12} md={4} lg={4}>
                      <img src={rp} width={145} alt=""/>
                       <div>
                         <h5 className={classes.subHeading}>Get Right Price<br/>for your Vehicle</h5>
                         <p className={classes.text}>For any of your two-wheeler,<br/>you get the right market price</p>
                       </div>
                 </Grid>
-                <Grid item xs={4} sm={4} md={4} lg={4}>
+                <Grid item xs={12} sm={12} md={4} lg={4}>
                     <img src={syv} width={145} alt=""/>
                       <div>
                         <h5 className={classes.subHeading}>Sell your Vehicle<br/>in "1 Visit"</h5>
                         <p className={classes.text}>Any two-wheeler can be sold<br/>to us just in one visit.<br/>Now encash your two-wheeler<br/>within few hours</p>
                       </div>
                 </Grid>
-                <Grid item xs={4} sm={4} md={4} lg={4}>
+                <Grid item xs={12} sm={12} md={4} lg={4}>
                     <img src={hfdt} width={145} alt=""/>
                       <div>
                         <h5 className={classes.subHeading}>Hassle Free<br/>Document Transfer</h5>

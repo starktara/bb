@@ -18,7 +18,7 @@ nav.BBMNav a:hover {
 nav.BBMNav {
   background-color: #fd1b1b;
   height: auto;
-  line-height: 0px;
+  line-height: normal;
 }
 #BBMmenuToggle {
   display: flex;

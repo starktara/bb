@@ -8,7 +8,7 @@ import Footer from "../Footer/Footer";
 import logo from "../../assets/logo.svg";
 import searchIcon from "../../assets/search-icon.svg";
 import locationIcon from "../../assets/location-icon.svg";
-import sliderImg from "../../assets/main-img.png";
+// import sliderImg from "../../assets/main-img.png";
 import bannerImg from "../../assets/banner.png";
 import headingLines from "../../assets/heading-lines.svg";
 import bike2 from "../../assets/bike-icon.svg";
@@ -19,11 +19,11 @@ import monthWarranty from "../../assets/6_month_warranty.svg";
 import buyerProtection from "../../assets/buyer_protection.svg";
 import lowCostEmi from "../../assets/low_cost_emi.svg";
 import hassleFreeDocTransfer from "../../assets/hassle_free_document_transfer.svg";
-import testimonial1 from "../../assets/testimonial-image-1.png";
-import testimonial2 from "../../assets/testimonial-image-2.png";
-import testimonial3 from "../../assets/testimonial-image-3.png";
-import testimonial4 from "../../assets/testimonial-image-4.png";
-import testimonial5 from "../../assets/testimonial-image-5.png";
+// import testimonial1 from "../../assets/testimonial-image-1.png";
+// import testimonial2 from "../../assets/testimonial-image-2.png";
+// import testimonial3 from "../../assets/testimonial-image-3.png";
+// import testimonial4 from "../../assets/testimonial-image-4.png";
+// import testimonial5 from "../../assets/testimonial-image-5.png";
 import M from "materialize-css";
 import Grid from "@material-ui/core/Grid";
 import * as CATEGORY from "../../shared/constants/category";
@@ -69,7 +69,7 @@ const Homepage = () => {
         shift: -150,
         padding: 800,
         dist: -200,
-        onCycleTo: function(data) {
+        onCycleTo: function (data) {
           let index = data.getAttribute("index");
           let message = testiminialMessages[index].message;
           let name = testiminialMessages[index].name;
@@ -105,7 +105,7 @@ const Homepage = () => {
             <img alt="" src={bannerImg} />
             <div className="caption left-align">
               <h3 className="heading">
-                India's Favourite Place to Buy<br/>Pre-owned Two-wheelers
+                India's Favourite Place to Buy<br />Pre-owned Two-wheelers
               </h3>
               <h4 className="text-white">
                 <img alt="" src={logo} className="tick-icon" />

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./CategoryPage.css";
 import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
@@ -16,37 +16,37 @@ import { Menu } from "../../shared/utility";
 import categoryData from "../../shared/mappings/category_data";
 
 const CategoryPage = (props) => {
+  const dispatch = useDispatch();
+  const { vehicles, filter, loading, currentData, currentPage, totalPages } = useSelector((state) => state.vehicleDetails);
+
   useEffect(() => {
-    var searchedTerm;
-    if (props.history.location.search.trim() == "") {
-      var stateFilterData = null;
-      searchedTerm = categoryData[props.match.params.category].id;
+    var category;
+    var searchTerm;
+    const stateFilterData = { ...filter };
+    if (props.history.location.search.trim() === "") {
+      category = categoryData[props.match.params.category].id;
     } else {
-      const city = new URLSearchParams(props.history.location.search).get('city');
-      const stateFilterData = { ...props.filterData };
-      stateFilterData.city = city;
       const search = new URLSearchParams(props.history.location.search);
-      searchedTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
+      searchTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
     }
-    props.getVehicles(searchedTerm, stateFilterData);
+    dispatch(actions.getVehicles(category, stateFilterData, searchTerm));
   }, []);
 
   useEffect(() => {
-    props.getPaginatedData(0, 9);
-  }, [props.vehicles])
+    dispatch(actions.getPaginatedData(0, 9));
+  }, [vehicles])
 
   const onPageChanged = paginationData => {
     const { currentPage, totalPages, pageLimit } = paginationData;
     const offset = (currentPage - 1) * pageLimit;
-    props.getPaginatedData(offset, pageLimit);
+    dispatch(actions.getPaginatedData(offset, pageLimit));
   };
 
-  let vehicles = <Spinner />;
+  let renderedVehicles = <Spinner />;
   let paginations = "";
   let containerClass = "";
-  console.log(props.currentData);
-  if (props.vehicles.length && props.currentData[0] != "NA") {
-    vehicles = props.currentData.map((vehicle, index) => (
+  if (vehicles.length && currentData[0] != "NA") {
+    renderedVehicles = currentData.map((vehicle, index) => (
       <Card
         key={index}
         year={vehicle._source.myear}
@@ -59,8 +59,8 @@ const CategoryPage = (props) => {
         image={vehicle._source.mimage}
       />
     ));
-    containerClass = props.vehicles.length > 9 ? "cardContainer" : "";
-    const totalRecords = Object.keys(props.vehicles).length;
+    containerClass = vehicles.length > 9 ? "cardContainer" : "";
+    const totalRecords = Object.keys(vehicles).length;
     paginations = (
       <Pagination
         totalRecords={totalRecords}
@@ -71,8 +71,8 @@ const CategoryPage = (props) => {
     );
   }
 
-  if (props.currentData[0] == "NA") {
-    vehicles = <h2>'No Vehicles Found!'</h2>;
+  if (currentData[0] == "NA") {
+    renderedVehicles = <h2>'No Vehicles Found!'</h2>;
   }
 
   let navigation = categoryData[
@@ -84,7 +84,6 @@ const CategoryPage = (props) => {
   ).slice(0, -1).split(" ").join("-");
   let text =
     "Motorcycles are available at easy EMI starting at ₹2,000*. Your  dream bike is not a distant dream now.";
-
   return (
     <div id="CategoryPage">
       <Header />
@@ -101,9 +100,9 @@ const CategoryPage = (props) => {
                 title="Sort by"
                 list={Menu}
                 category={categoryData[props.match.params.category].id}
-                />
+              />
               <Grid container direction="row" component="div" className={containerClass}>
-                {vehicles}
+                {renderedVehicles}
               </Grid>
               {paginations}
             </Grid>
@@ -116,26 +115,4 @@ const CategoryPage = (props) => {
 
 }
 
-const mapStateToProps = state => {
-  return {
-    vehicles: state.vehicleDetails.vehicles,
-    filterData: state.vehicleDetails.filter,
-    loading: state.vehicleDetails.loading,
-    currentData: state.vehicleDetails.currentData,
-    currentPage: state.vehicleDetails.currentPage,
-    totalPages: state.vehicleDetails.totalPages
-  };
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    getVehicles: vehicleCategory =>
-      dispatch(actions.getVehicles(vehicleCategory)),
-    getPaginatedData: (offset, pagelimit) =>
-      dispatch(actions.getPaginatedData(offset, pagelimit)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CategoryPage);
+export default CategoryPage;

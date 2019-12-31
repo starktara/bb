@@ -14,7 +14,6 @@ import facebookIcon from "../../../assets/icons/social_media/facebook-icon.png";
 import googleIcon from "../../../assets/icons/social_media/google-icon.png";
 import { connect } from "react-redux";
 import { loginUser } from "../../../store/actions/authActions";
-import axios from "axios";
 import Tooltip from "../../UI/Tooltip/Tooltip";
 
 
@@ -90,8 +89,8 @@ const formValidator = (name, value) => {
       return value.length > 6
         ? true
         : false
-        ? "Password length must be of minimum 6 characters"
-        : "";
+          ? "Password length must be of minimum 6 characters"
+          : "";
     }
     default: {
       return false;
@@ -113,7 +112,7 @@ const Signin = props => {
       variant: "success"
     });
   };
-  
+
   const tooltip = (
     <Tooltip
       open={tooltipState.open}
@@ -132,15 +131,15 @@ const Signin = props => {
   }, [props.auth.isAuthenticated]);
 
   useEffect(() => {
-   if(Object.entries(props.errors).length){
-    setTooltipState({
+    if (Object.entries(props.errors).length) {
+      setTooltipState({
         open: true,
         message: props.errors.emailnotfound,
         variant: "error"
       });
     }
   }, [props.errors]);
-  
+
 
   const classes = useStyles();
 
@@ -216,7 +215,7 @@ const Signin = props => {
   };
 
   return (
-      
+
     <div id="Signin" className={classes.body}>
       <Header />
       <MainMenu />
@@ -265,8 +264,8 @@ const Signin = props => {
                           formData.loginid.error
                             ? "invalid"
                             : formData.loginid.value
-                            ? "valid"
-                            : ""
+                              ? "valid"
+                              : ""
                         }
                       />
                       {formData.loginid.error && (
@@ -298,8 +297,8 @@ const Signin = props => {
                           formData.password.error
                             ? "invalid"
                             : formData.password.value
-                            ? "valid"
-                            : ""
+                              ? "valid"
+                              : ""
                         }
                       />
                       {formData.password.error && (

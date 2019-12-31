@@ -10,7 +10,7 @@ const CityWidget = (props) => {
   };
 
   const searchCity = (event) => {
-     event.preventDefault();
+    event.preventDefault();
     let category = props.category;
     let filterData = props.filter;
     filterData.searchTerm = `${searchTerm}*`;
@@ -40,7 +40,7 @@ const CityWidget = (props) => {
       </h3>
       <div className="WidgetBody">
         <div className="search-container">
-          <form  onSubmit={searchCity}>
+          <form onSubmit={searchCity}>
             <input
               type="text"
               placeholder="Search your City"
@@ -57,7 +57,7 @@ const CityWidget = (props) => {
           <li>
             <a href="#" onClick={() => searchClick('aluva')}>Aluva</a>
           </li>
-           <li>
+          <li>
             <a href="javascript:void" onClick={() => searchClick('kolkata')}>Kolkata</a>
           </li>
           <li>
@@ -65,7 +65,7 @@ const CityWidget = (props) => {
           </li>
           <li>
             <a href="javascript:void" onClick={() => searchClick('rajahmundry')}>Rajahmundry</a>
-          </li> 
+          </li>
         </ul>
       </div>
     </div>

@@ -19,22 +19,17 @@ const initialState = {
     budget: [],
     brand: [],
     kmdriven: 100000,
-    searchTerm:null
+    searchTerm: "aluva*" //this will serve as city filter gets update on city widget
   }
 };
 
 const vehicles = (state, action) => {
-  return action.filterData == null
-    ? updateObject(state, {
-        vehicles: action.vehicleList,
-        category: action.category,
-        loading: false
-      })
-    : updateObject(state, {
-        vehicles: action.vehicleList,
-        filter: action.filterData,
-        loading: false
-      });
+  return updateObject(state, {
+    filter: action.filterData,
+    category: action.category,
+    loading: false,
+    vehicles: action.vehicleList
+  });
 };
 
 const getPaginatedData = (state, action) => {
