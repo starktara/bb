@@ -16,7 +16,6 @@ import { Menu } from "../../shared/utility";
 import categoryData from "../../shared/mappings/category_data";
 
 const CategoryPage = (props) => {
-
   useEffect(() => {
     var searchedTerm;
     if (props.history.location.search.trim() == "") {
@@ -45,6 +44,7 @@ const CategoryPage = (props) => {
   let vehicles = <Spinner />;
   let paginations = "";
   let containerClass = "";
+  console.log(props.currentData);
   if (props.vehicles.length && props.currentData[0] != "NA") {
     vehicles = props.currentData.map((vehicle, index) => (
       <Card

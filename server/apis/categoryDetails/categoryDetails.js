@@ -5,8 +5,6 @@ const client = new Client({ node: "http://localhost:9200" });
 
 router.get("/getCategoryById", (req, res) => {
   let filterData = JSON.parse(req.query.filterData);
-  console.log(filterData);
-  console.log("dsdsd");
   async function getBikesForCategory() {
     if (req.query.searchTerm) {
       const { body } = await client.search({

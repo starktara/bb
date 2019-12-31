@@ -15,6 +15,7 @@ import HowItWorks from './Components/HowItWorks/HowItWorks';
 import About from './Components/About/About';
 import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
 import TermsAndConditions from './Components/TermsAndConditions/TermsAndConditions';
+import AdminListPage from './Components/AdminListPage/AdminListPage';
 
 
 const App = () =>  {
@@ -22,6 +23,7 @@ const App = () =>  {
     return (
         <Switch>
             <Route exact path='/' component={Homepage} />
+            <Route exact path='/admin/list' component={AdminListPage} />
             <Route exact path='/category/:category' component={CategoryPage} />
             <Route path='/vehicledetails/locate-store' component={LocateStore} />
             <Route path='/vehicledetails/:vehicleid' component={VehicleDetails} />
