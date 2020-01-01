@@ -23,7 +23,7 @@ const MainMenu = props => {
     M.Dropdown.init(dropDown, {
       coverTrigger: false
     });
-  }, []);
+  });
 
 
   const setLocation = key => {
