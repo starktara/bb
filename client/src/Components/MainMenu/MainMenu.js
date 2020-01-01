@@ -37,7 +37,7 @@ const MainMenu = props => {
     setSearchTerm(event.target.value);
   };
 
-  if(matches) {
+  if (matches) {
     return (
       <nav className="nav-extended nav-color sticky-nav">
         <Grid container component="div" direction="row" className="nav-wrapper">
@@ -120,9 +120,9 @@ const MainMenu = props => {
         </Grid>
       </nav>
     )
-  }else{
+  } else {
     return (
-      <MobNav/>
+      <MobNav />
     )
   }
 }

@@ -6,6 +6,7 @@ import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
+import { useLocation } from "react-router";
 import Navigation from "../Navigation/Navigation";
 import Card from "../Card/Card";
 import SortDropDown from "../SortDropDown/SortDropDown";
@@ -18,11 +19,12 @@ import categoryData from "../../shared/mappings/category_data";
 const CategoryPage = (props) => {
   const dispatch = useDispatch();
   const { vehicles, filter, loading, currentData, currentPage, totalPages } = useSelector((state) => state.vehicleDetails);
+  let location = useLocation();
+  var category;
+  var searchTerm;
+  const stateFilterData = { ...filter };
 
   useEffect(() => {
-    var category;
-    var searchTerm;
-    const stateFilterData = { ...filter };
     if (props.history.location.search.trim() === "") {
       category = categoryData[props.match.params.category].id;
     } else {
@@ -30,7 +32,9 @@ const CategoryPage = (props) => {
       searchTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
     }
     dispatch(actions.getVehicles(category, stateFilterData, searchTerm));
-  }, []);
+  }, [location.search])
+
+
 
   useEffect(() => {
     dispatch(actions.getPaginatedData(0, 9));

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
 import "./Homepage.css";
 import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
@@ -27,8 +27,10 @@ import hassleFreeDocTransfer from "../../assets/hassle_free_document_transfer.sv
 import M from "materialize-css";
 import Grid from "@material-ui/core/Grid";
 import * as CATEGORY from "../../shared/constants/category";
+import { HOMEPAGE_LOAD } from "../../store/actions/actionTypes"
 
 const Homepage = () => {
+  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const updateState = event => {
     setSearchTerm(event.target.value);
@@ -93,6 +95,7 @@ const Homepage = () => {
     let topSlider = document.querySelectorAll(".slider");
     M.Slider.init(topSlider, {});
     initCar();
+    dispatch({ type: HOMEPAGE_LOAD });
   }, []);
 
   return (

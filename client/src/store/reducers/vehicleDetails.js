@@ -58,6 +58,28 @@ const reducer = (state = initialState, action) => {
       return getPaginatedData(state, action);
     case actionTypes.GET_VEHICLE_DATA:
       return getVehicleData(state, action);
+    case actionTypes.HOMEPAGE_LOAD:
+      return {
+        vehicles: [],
+        loading: true,
+        currentData: [],
+        currentPage: null,
+        totalPages: null,
+        vehicle: null,
+        category: null,
+        filter: {
+          sort: {
+            column: null,
+            order: null
+          },
+          city: null,
+          myear: [],
+          budget: [],
+          brand: [],
+          kmdriven: 100000,
+          searchTerm: "aluva*" //this will serve as city filter gets update on city widget
+        }
+      };
     default:
       return state;
   }
