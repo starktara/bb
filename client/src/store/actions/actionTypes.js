@@ -14,3 +14,4 @@ export const SET_CURRENT_USER = "SET_CURRENT_USER";
 
 export const GET_LOCATION_DATA = "GET_LOCATION_DATA";
 export const HOMEPAGE_LOAD = "HOMEPAGE_LOAD";
+export const CHANGE_CITY = "CHANGE_CITY";

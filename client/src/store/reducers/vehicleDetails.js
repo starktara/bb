@@ -9,6 +9,7 @@ const initialState = {
   totalPages: null,
   vehicle: null,
   category: null,
+  selectedCity: "Aluva", //this will serve as city filter gets update on city widget
   filter: {
     sort: {
       column: null,
@@ -19,7 +20,7 @@ const initialState = {
     budget: [],
     brand: [],
     kmdriven: 100000,
-    searchTerm: "aluva*" //this will serve as city filter gets update on city widget
+    searchTerm: "aluva*"
   }
 };
 
@@ -67,6 +68,7 @@ const reducer = (state = initialState, action) => {
         totalPages: null,
         vehicle: null,
         category: null,
+        selectedCity: "Aluva",
         filter: {
           sort: {
             column: null,
@@ -77,9 +79,18 @@ const reducer = (state = initialState, action) => {
           budget: [],
           brand: [],
           kmdriven: 100000,
-          searchTerm: "aluva*" //this will serve as city filter gets update on city widget
+          searchTerm: "aluva*"
         }
       };
+    case actionTypes.CHANGE_CITY:
+      console.log({
+        ...state,
+        selectedCity: action.payload
+      })
+      return {
+        ...state,
+        selectedCity: action.payload
+      }
     default:
       return state;
   }

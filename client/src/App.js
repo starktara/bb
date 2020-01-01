@@ -17,7 +17,7 @@ import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
 import TermsAndConditions from './Components/TermsAndConditions/TermsAndConditions';
 
 
-const App = () =>  {
+const App = () => {
 
     return (
         <Switch>

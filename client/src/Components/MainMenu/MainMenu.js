@@ -11,13 +11,18 @@ import './MainMenu.css';
 import MobNav from '../MobileNav/MobNav';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useSelector, useDispatch } from "react-redux";
+import { CHANGE_CITY } from "../../store/actions/actionTypes"
+
 
 const MainMenu = props => {
+  const dispatch = useDispatch();
 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  const selectedCity = useSelector((state) => state.vehicleDetails.selectedCity);
   const [locations] = useState(["Aluva", "Kolkata", "Rajahmundry"]);
-  const [currentLocation, setCurrentLocation] = useState('Aluva');
+  const [currentLocation, setCurrentLocation] = useState(selectedCity);
   useEffect(() => {
     let dropDown = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(dropDown, {
@@ -28,6 +33,7 @@ const MainMenu = props => {
 
   const setLocation = key => {
     const loc = locations[key];
+    dispatch({ type: CHANGE_CITY, payload: loc })
     setCurrentLocation(loc);
     let displayLoc = (loc.length > 8) ? loc.substr(0, 7) + '..' : loc;
     document.querySelector('#currentLocation').innerText = displayLoc;
@@ -77,7 +83,7 @@ const MainMenu = props => {
                 <div className="icon-wrapper">
                   <img src={locationIcon} height="20" alt="" />
                 </div>
-                <span className="location-btn-text" id="currentLocation">Aluva</span>
+                <span className="location-btn-text" id="currentLocation">{currentLocation}</span>
                 <img src={dropDown} height="11" className="dropdown-icon" alt="" />
               </div>
             </a>
