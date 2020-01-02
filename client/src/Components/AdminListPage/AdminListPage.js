@@ -10,9 +10,6 @@ const AdminListPage = (props) => {
     props.getVehicles(1, null);
   }, []);
    console.log(props);
-  // useEffect(() => {
-  //   props.getPaginatedData(0, 9);
-  // }, [])
   let vehicles = <Spinner />
   vehicles = props.vehicles.map((vehicle, index) => (
     <tbody>
@@ -24,16 +21,19 @@ const AdminListPage = (props) => {
     </tbody>  
   ));
   return(
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Year</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      {vehicles}
-    </table>
+    <>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        {vehicles}
+      </table>
+      <button><a href='/admin/upload'>Upload Bikes</a></button>
+    </>
   )
 }
 
