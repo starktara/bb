@@ -369,7 +369,7 @@ const AdminUpload = (props) => {
               </p>
             )}
             <label htmlFor="descr">
-              <span >Description:*</span>&nbsp;&nbsp;(eg. Varunam Reddy)
+              <span >Description:*</span>&nbsp;&nbsp;
             </label>
             <input type="text" name="descr" id="descr"
               onBlur={event =>
