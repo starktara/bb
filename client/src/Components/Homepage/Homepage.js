@@ -95,7 +95,7 @@ const Homepage = () => {
     let topSlider = document.querySelectorAll(".slider");
     M.Slider.init(topSlider, {});
     initCar();
-    dispatch({ type: HOMEPAGE_LOAD });
+    //dispatch({ type: HOMEPAGE_LOAD });
   }, []);
 
   return (

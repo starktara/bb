@@ -17,15 +17,17 @@ import categoryData from "../../shared/mappings/category_data";
 
 const CategoryPage = (props) => {
   const dispatch = useDispatch();
-  const { vehicles, filter, loading, currentData, currentPage, totalPages } = useSelector((state) => state.vehicleDetails);
+  const { vehicles, filter, loading, currentData, selectedCity } = useSelector((state) => state.vehicleDetails);
   var category;
   var searchTerm;
-  const stateFilterData = { ...filter };
+  const stateFilterData = { 
+    ...filter,
+    city: selectedCity 
+  };
 
   useEffect(() => {
-    if (props.history.location.search.trim() === "") {
-      category = categoryData[props.match.params.category].id;
-    } else {
+    category = categoryData[props.match.params.category].id;
+    if (props.history.location.search.trim() !== "") {
       const search = new URLSearchParams(props.history.location.search);
       searchTerm = search.get("searchTerm") ? search.get("searchTerm") : '';
     }

@@ -13,14 +13,14 @@ const CityWidget = (props) => {
     event.preventDefault();
     let category = props.category;
     let filterData = props.filter;
-    filterData.searchTerm = `${searchTerm}*`;
+    filterData.city = `${searchTerm}*`;
     props.cityFilter(category, filterData);
   }
 
   const searchClick = (clickValue) => {
     let category = props.category;
     let filterData = props.filter;
-    filterData.searchTerm = `${clickValue}*`;
+    filterData.city = `${clickValue}*`;
     props.cityFilter(category, filterData);
   }
 
@@ -59,9 +59,6 @@ const CityWidget = (props) => {
           </li>
           <li>
             <a href="javascript:void" onClick={() => searchClick('kolkata')}>Kolkata</a>
-          </li>
-          <li>
-            <a href="javascript:void" onClick={() => searchClick('pune')}>Pune</a>
           </li>
           <li>
             <a href="javascript:void" onClick={() => searchClick('rajahmundry')}>Rajahmundry</a>

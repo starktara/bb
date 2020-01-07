@@ -5,7 +5,6 @@ const client = new Client({ node: "http://localhost:9200" });
 
 router.get("/getCategoryById", (req, res) => {
   let filterData = JSON.parse(req.query.filterData);
-  console.log(req.query.searchTerm)
   async function getBikesForCategory() {
     let sortKey = {};
     let mustArray = [];
@@ -87,7 +86,7 @@ router.get("/getCategoryById", (req, res) => {
 
     mustArray.push({
       match_phrase: {
-        city: filterData.searchTerm
+        city: `${filterData.city}*`
       }
     });
 

@@ -20,7 +20,7 @@ const initialState = {
     budget: [],
     brand: [],
     kmdriven: 100000,
-    searchTerm: "aluva*"
+    searchTerm: "*"
   }
 };
 
@@ -79,7 +79,7 @@ const reducer = (state = initialState, action) => {
           budget: [],
           brand: [],
           kmdriven: 100000,
-          searchTerm: "aluva*"
+          searchTerm: "*"
         }
       };
     case actionTypes.CHANGE_CITY:
