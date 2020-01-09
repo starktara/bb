@@ -331,19 +331,12 @@ const AdminUpload = (props) => {
             )} */}
             <div>
               <label>Type</label>
-              <select type="type" onBlur={event =>
-                validateAndUpdateFormdata(event, formData)
-              }>
+              <select>
                 <option value="" disabled selected>Choose the Type</option>
                 <option value="1">Bike</option>
                 <option value="2">Scooter</option>
                 <option value="3">High-end Bike</option>
               </select>
-              {formData.type.error && (
-              <p className={classes.formError}>
-                {formData.type.errorMessage}
-              </p>
-              )}
             </div>
             {/* <label htmlFor="brand">
               <span >Brand:*</span>&nbsp;&nbsp;(Brand No.)
