@@ -8,7 +8,7 @@ import * as actions from "../../store/actions/index";
 import axios from "axios";
 import Tooltip from "../UI/Tooltip/Tooltip";
 import { makeStyles } from "@material-ui/core/styles";
-
+import M from "materialize-css";
 const useStyles = makeStyles(theme => ({
   formError: {
     color: "red",
@@ -226,7 +226,7 @@ const AdminUpload = (props) => {
 
   const selectFiles = (event, formData) => {
     let images = [];
-    for (var i = 0; i < event.target.files.length; i++) {
+    for (var i = 0; i < event.target.files.length && i<3; i++) {
           images[i] = event.target.files.item(i);
       }
       images = images.filter(image => image.name.match(/\.(jpg|jpeg|png)$/))
@@ -289,6 +289,8 @@ const AdminUpload = (props) => {
   };
 
   const submitForm = async(event) => {
+      console.log(formData);
+      // console.log(instance.getSelectedValues());
       uploadImages(formData);
       axios
           .post("/apis/seedingData/uploadVehiclels", formData)
@@ -304,11 +306,18 @@ const AdminUpload = (props) => {
   });
   setSuccessSubmit(true);
   };
+  let instance = [];
+  useEffect(() => {
+    var elems = document.querySelectorAll("select");
+    M.FormSelect.init(elems, {});
+    instance = M.FormSelect.getInstance(elems);
+  }, []);
+  
   return(
       <div className={classes.body}>
         <h1 className={classes.mb}>Upload Vehicle Details</h1>
           <form action="" encType="multipart/form-data">
-            <label htmlFor="type">
+            {/* <label htmlFor="type">
               <span >Type:*</span>&nbsp;&nbsp;(1, 2 or 3)
             </label>
             <input type="number" name="type" id="type"
@@ -319,8 +328,24 @@ const AdminUpload = (props) => {
               <p className={classes.formError}>
                 {formData.type.errorMessage}
               </p>
-            )}
-            <label htmlFor="brand">
+            )} */}
+            <div>
+              <label>Type</label>
+              <select type="type" onBlur={event =>
+                validateAndUpdateFormdata(event, formData)
+              }>
+                <option value="" disabled selected>Choose the Type</option>
+                <option value="1">Bike</option>
+                <option value="2">Scooter</option>
+                <option value="3">High-end Bike</option>
+              </select>
+              {formData.type.error && (
+              <p className={classes.formError}>
+                {formData.type.errorMessage}
+              </p>
+              )}
+            </div>
+            {/* <label htmlFor="brand">
               <span >Brand:*</span>&nbsp;&nbsp;(Brand No.)
             </label>
             <input type="number" name="brand" id="brand"
@@ -331,8 +356,26 @@ const AdminUpload = (props) => {
               <p className={classes.formError}>
                 {formData.brand.errorMessage}
               </p>
-            )}
-            <label htmlFor="storeId">
+            )} */}
+            <div>
+              <label>Brand</label>
+              <select>
+                <option value="" disabled selected>Choose the Brand</option>
+                <option value="0">Yamaha</option>
+                <option value="1">Harley Davidson</option>
+                <option value="2">Royal Enfield</option>
+                <option value="3">Bajaj</option>
+                <option value="4">Honda</option>
+                <option value="5">Hero</option>
+                <option value="6">KTM</option>
+                <option value="7">Suzuki</option>
+                <option value="8">Kawasaki</option>
+                <option value="9">Benelli</option>
+                <option value="10">TVS</option>
+                <option value="11">Mahindra</option>
+              </select>
+            </div>
+            {/* <label htmlFor="storeId">
               <span >StoreId:*</span>&nbsp;&nbsp;
             </label>
             <input type="number" name="storeId" id="storeId"
@@ -343,19 +386,69 @@ const AdminUpload = (props) => {
               <p className={classes.formError}>
                 {formData.storeId.errorMessage}
               </p>
+            )} */}
+            <div>
+              <label>Store ID</label>
+              <select>
+                <option value="" disabled selected>Choose the Store ID</option>
+                <option value="1">BikeBazaar, Aluva, Kerela</option>
+                <option value="2">BikeBazaar, MCV Wheels</option>
+                {formData.storeId.error && (
+              <p className={classes.formError}>
+                {formData.storeId.errorMessage}
+              </p>
             )}
-            <label htmlFor="model">
+              </select>
+            </div>
+            {/* <label htmlFor="model">
               <span >Model:*</span>&nbsp;&nbsp;
             </label>
             <input type="number" name="model" id="model"
               onBlur={event =>
                 validateAndUpdateFormdata(event, formData)
               }/>
-            {formData.model.error && (
+            {formData.model.error && ( 
               <p className={classes.formError}>
                 {formData.model.errorMessage}
               </p>
-            )}
+            )} */}
+            <div>
+              <label>Model</label>
+              <select>
+                <option value="" disabled selected>Choose the Model</option>
+                <option value="0">R 15 S</option>
+                <option value="1">Sportster 883</option>
+                <option value="2">FZ</option>
+                <option value="3">Classic 350</option>
+                <option value="4">Pulsar 150</option>
+                <option value="5">Dio</option>
+                <option value="6">Pulsar 200</option>
+                <option value="7">Maestro</option>
+                <option value="8">Discover 125</option>
+                <option value="9">Dominor</option>
+                <option value="10">Hf Deluxe</option>
+                <option value="11">RC 200</option>
+                <option value="12">Access 125</option>
+                <option value="13">Ninja Z 1000</option>
+                <option value="14">Ninja ZX 10 R</option>
+                <option value="15">TNT 300</option> 
+                <option value="16">Activa</option>
+                <option value="17">Shine</option>
+                <option value="18">Classic 500</option>
+                <option value="19">Unicorn 160</option>
+                <option value="20">Fascino</option>
+                <option value="21">Passion Plus</option>
+                <option value="22">Pulsar 135</option>
+                <option value="23">CB Hornet</option>
+                <option value="24">Apache RTR 160</option>
+                <option value="25">Avenger 220 Street</option>
+                <option value="26">Centuro</option>
+                <option value="27">SZ RR</option>
+                <option value="28">Mastero Edge</option>     
+                <option value="29">Glamour i3s</option>   
+                <option value="30">Duet</option>        
+              </select>
+            </div>
             <label htmlFor="regNumber">
               <span >Registration Number:*</span>&nbsp;&nbsp;
             </label>
@@ -500,7 +593,7 @@ const AdminUpload = (props) => {
                 {formData.bhp.errorMessage}
               </p>
             )}
-            <label htmlFor="category">
+            {/* <label htmlFor="category">
               <span >Category:*</span>&nbsp;&nbsp;
             </label>
             <input type="number" name="category" id="category"
@@ -511,7 +604,16 @@ const AdminUpload = (props) => {
               <p className={classes.formError}>
                 {formData.category.errorMessage}
               </p>
-            )}
+            )} */}
+            <div>
+              <label>Category</label>
+              <select>
+                <option value="" disabled selected>Choose the Category</option>
+                <option value="1">Bike</option>
+                <option value="2">Scooter</option>
+                <option value="3">High-end Bike</option>
+              </select>
+            </div>
             <label htmlFor="mileage">
               <span >Mileage:*</span>&nbsp;&nbsp;
             </label>

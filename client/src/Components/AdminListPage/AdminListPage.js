@@ -18,7 +18,7 @@ const AdminListPage = (props) => {
         <td>{vehicle._source.myear}</td>
         <td>{vehicle._source.price}</td>
       </tr>
-    </tbody>  
+    </tbody>
   ));
   return(
     <>
@@ -38,12 +38,12 @@ const AdminListPage = (props) => {
 }
 
 const mapStateToProps = state => {
-    return {
-      vehicles: state.vehicleDetails.vehicles,
-      currentData: state.vehicleDetails.currentData,
-      currentPage: state.vehicleDetails.currentPage,
-      totalPages: state.vehicleDetails.totalPages
-    };
+  return {
+    vehicles: state.vehicleDetails.vehicles,
+    currentData: state.vehicleDetails.currentData,
+    currentPage: state.vehicleDetails.currentPage,
+    totalPages: state.vehicleDetails.totalPages
+  };
 };
 
 const mapDispatchToProps = dispatch => {
