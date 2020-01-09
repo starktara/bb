@@ -754,4 +754,15 @@ router.get("/searchBike", (req, res) => {
   }
   getBike().catch(console.log);
 });
+
+router.get("/deleteBike", (req, res) => {
+  async function deleteBike() {
+    const { body } = await client.delete({
+      index: "bike-details",
+      id: "7OODLW8By7dsofLEVwgz"
+    });
+    res.send(body);
+  }
+  deleteBike().catch(console.log);
+});
 module.exports = router;

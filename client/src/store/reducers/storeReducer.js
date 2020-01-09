@@ -7,14 +7,13 @@ const initialState = {
 
 const getStoreData = (state, action) => {
     return updateObject(state, {
-      loading: false,
-      vehicle: action.storeData
+      stores: action.storeData
     });
   };
   
   const reducer = (state = initialState, action) => {
     switch (action.type) {
-      case actionTypes.GET_VEHICLE_DATA:
+      case actionTypes.GET_LOCATION_DATA:
         return getStoreData(state, action);
       default:
         return state;

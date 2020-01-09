@@ -48,8 +48,6 @@ const LocateStore = props => {
 
   const [cities] = useState(['Aluva', 'Rajahmundry']);
 
-  const [locations] = useState(["Loc 1", "Loc 2", "Loc 3"]);
-
   const setCity = key => {
     let city = cities[key];
     document.querySelector("#currentCity").innerText = city;
@@ -68,9 +66,9 @@ const LocateStore = props => {
     var elems = document.querySelectorAll(".dropdown-trigger");
     M.Dropdown.init(elems, {});
     if (props.history.location.search.trim() != "") {
-      let storeId = props.history.location.search.trim().split('=')[1];
-      console.log("single store dikha bhai");
       setSingleScore(true);
+    }else{
+      props.getStoreData();
     }
   }, []);
 
@@ -102,6 +100,7 @@ const LocateStore = props => {
           navigation="Locate Store"
           heading="Locate BikeBazaar Stores Near You"
           text=""
+          path={props.location.pathname}
         />
         <div className="locateDropdownCard">
           <div className="row">

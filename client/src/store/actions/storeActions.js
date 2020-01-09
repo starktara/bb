@@ -2,9 +2,6 @@ import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
 export const storeData = (store) => {
-    if(store.length){
-        store = store[0]
-    }
     return {
         type: actionTypes.GET_LOCATION_DATA,
         storeData: store
@@ -18,9 +15,14 @@ export const apiFail = (error) => {
     };
 };
 
-export const getStoreData = (storeid) => {
+export const getStoreData = (storeid = null) => {
+    let url;
+    if(storeid===null){
+        url = '/apis/seedData/getAllStoreLocations';
+    }else{
+        url = "/apis/stores/searchStores?storeid="+storeid;
+    }
     return dispatch => {
-        let url = "/apis/stores/searchStores?storeid="+storeid;
         axios.get(url)
             .then(response => {
                 dispatch(storeData(response.data));
