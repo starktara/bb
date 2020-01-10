@@ -27,6 +27,7 @@ const LocateStore = props => {
 
   const [mapLocations] = useState([
     {
+      city: "Aluva",
       locationName: "BikeBazaar, Aluva, Kerela",
       address: "Jkb – Bike Bazaar, Near JKB Bajaj, Pulinchode Jn. Bypass, Aluva – 683101, Kerala, India",
       coordinates: {
@@ -35,6 +36,7 @@ const LocateStore = props => {
       }
     },
     {
+      city: "Rajahmundry",
       locationName: "BikeBazaar, MCV Wheels",
       address:
         "D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry - 533103, Andhra Pradesh, India.",
@@ -48,8 +50,11 @@ const LocateStore = props => {
 
   const [cities] = useState(['Aluva', 'Rajahmundry']);
 
+  const [searchedLocation,setSearchedLocation] = useState(null);
+
   const setCity = key => {
     let city = cities[key];
+    setSearchedLocation(city);
     document.querySelector("#currentCity").innerText = city;
   };
 
@@ -93,7 +98,7 @@ const LocateStore = props => {
 
   var multiStore = "";
   var heading = "";
-  if (singleStore != true) {
+  if (singleStore !== true) {
     multiStore = (
       <>
         <Banner
@@ -138,24 +143,48 @@ const LocateStore = props => {
     )
 
     locationCards = mapLocations.map((thisLocation, key) => {
-      return (
-
-        <Grid item xs={4} sm={4} md={4} lg={4} key={key}>
-          <div className="locationCard">
-            <h5>{thisLocation.locationName}</h5>
-            <div className="locationAddress">
-              {thisLocation.address}
+      console.log(thisLocation);
+      if(searchedLocation===null){
+        return (
+  
+          <Grid item xs={4} sm={4} md={4} lg={4} key={key}>
+            <div className="locationCard">
+              <h5>{thisLocation.locationName}</h5>
+              <div className="locationAddress">
+                {thisLocation.address}
+              </div>
+              <div className="mapContainer">
+                <GoogleMap
+                  center={thisLocation.coordinates}
+                  zoom={mapProps.zoom}
+                  location={thisLocation.locationName}
+                />
+              </div>
             </div>
-            <div className="mapContainer">
-              <GoogleMap
-                center={thisLocation.coordinates}
-                zoom={mapProps.zoom}
-                location={thisLocation.locationName}
-              />
-            </div>
-          </div>
-        </Grid>
-      );
+          </Grid>
+        );
+      }else{
+        if(thisLocation.city===searchedLocation){
+          return (
+  
+            <Grid item xs={4} sm={4} md={4} lg={4} key={key}>
+              <div className="locationCard">
+                <h5>{thisLocation.locationName}</h5>
+                <div className="locationAddress">
+                  {thisLocation.address}
+                </div>
+                <div className="mapContainer">
+                  <GoogleMap
+                    center={thisLocation.coordinates}
+                    zoom={mapProps.zoom}
+                    location={thisLocation.locationName}
+                  />
+                </div>
+              </div>
+            </Grid>
+          );
+        }
+      }
     });
 
   }
