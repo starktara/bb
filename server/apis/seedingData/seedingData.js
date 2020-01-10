@@ -765,4 +765,60 @@ router.get("/deleteBike", (req, res) => {
   }
   deleteBike().catch(console.log);
 });
+router.get("/adminVehiclesUpload", (req, res) => {
+  let formdata = req.body;
+  async function uploadVehiclels() {
+    const dataset = [
+      {
+        type: formData.type.value,
+        brand:formData.make.value ,
+        storeId: formData.storeId.value,
+        model: formData.model.value,
+        regNumber: formData.regNumber.value,
+        descr: formData.descr.value,
+        price: formData.price.value,
+        state: formData.state.value,
+        city: formData.city.value,
+        loc: formData.loc.value,
+        myear: formData.myear.value,
+        mmonth: formData.mmonth.value,
+        kmsdriven: formData.kmsdriven.value,
+        owner: formData.owner.value,        
+        cc: formData.cc.value,
+        bhp: formData.bhp.value,
+        category: formData.category.value,
+        mileage: formData.mileage.value
+      }
+    ]
+    const body = dataset.flatMap(doc => [
+      { index: { _index: "bike-details" } },
+      doc
+    ]);
+
+    const { body: bulkResponse } = await client.bulk({ refresh: true, body });
+
+    if (bulkResponse.errors) {
+      const erroredDocuments = [];
+      bulkResponse.items.forEach((action, i) => {
+        const operation = Object.keys(action)[0];
+        if (action[operation].error) {
+          erroredDocuments.push({
+            status: action[operation].status,
+            error: action[operation].error,
+            operation: body[i * 2],
+            document: body[i * 2 + 1]
+          });
+        }
+      });
+      console.log(erroredDocuments);
+    }
+
+    const { body: count } = await client.count({ index: "bike-details" });
+    res.json({
+      msg: "Data Uploaded"
+    });
+  }
+  upload().catch(console.log);
+});
+
 module.exports = router;
