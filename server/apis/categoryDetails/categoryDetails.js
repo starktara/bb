@@ -54,12 +54,13 @@ router.get("/getCategoryById", (req, res) => {
 
     if (filterData.budget.length > 0) {
       let budget = filterData.budget;
+      let budgetFilterLength = filterData.budget.length;
       var i = 1;
       for (let value of budget) {
         let rangeArr = value ? value.split("-") : value == 0 ? ["1", "15000"] : ["100000", "115000"];
         let gte = rangeArr[0];
         let lte = rangeArr[1];
-        if (i == 1) {
+        if (budgetFilterLength == 1) {
           mustArray.push({
             range: {
               price: { gte: gte, lte: lte }
