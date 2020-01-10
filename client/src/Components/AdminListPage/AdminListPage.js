@@ -7,7 +7,7 @@ import Card from "../Card/Card";
 
 const AdminListPage = (props) => {
   useEffect( () => {
-    props.getVehicles(1, null);
+    props.getVehicles(null, null);
   }, []);
    console.log(props);
   let vehicles = <Spinner />
