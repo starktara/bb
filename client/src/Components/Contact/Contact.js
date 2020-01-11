@@ -21,6 +21,7 @@ import isAlpha from "validator/lib/isAlpha";
 import isEmail from "validator/lib/isEmail";
 import isMobilePhone from "validator/lib/isMobilePhone";
 import isAlphaNumeric from "validator/lib/isAlphanumeric";
+import Tooltip from "../UI/Tooltip/Tooltip";
 
 const useStyles = makeStyles(theme => ({
   body: {
@@ -157,8 +158,71 @@ const Contact = props => {
     });
   };
 
+  const [tooltipState, setTooltipState] = useState({
+    open: false,
+    message: "",
+    variant: "error"
+  });
+  
+  const handleClose = () => {
+    setTooltipState({
+      open: false,
+      message: "",
+      variant: "success"
+    });
+  };
+  
+  const tooltip = (
+    <Tooltip
+      open={tooltipState.open}
+      message={tooltipState.message}
+      variant={tooltipState.variant}
+      handleClose={handleClose}
+    />
+  );
+  
+
+  const submitForm = async(event) => {
+    event.preventDefault();
+    const formDataCopy = formData;
+    let errorFlag = false;
+    Object.entries(formData).forEach(data => {
+      console.log(data);
+      let targetValue = data[1].value;
+      let targetName = data[0];
+      let errorMessage = "";
+      let error = false;
+      if(targetName !== "interestedIn" ) {
+        if(targetValue === ""){
+          errorMessage = "This field is required";
+          error = true;
+        }
+      }
+      if (error) {
+        errorFlag = true;
+      }
+      formDataCopy[targetName].errorMessage = errorMessage;
+      formDataCopy[targetName].error = error;
+    });
+    if(!errorFlag) {
+      // incomplete functionality
+      console.log("Form submit");
+      setTooltipState({
+        open: true,
+        message: "Your details have been saved",
+        variant: "success"
+      });
+    } else {
+      setFormData({
+        ...formData,
+        formDataCopy
+      });
+    }
+  };
+
   return (
     <div id="Contact" className={classes.body}>
+      {tooltip}
       <Header />
       <MainMenu />
       <Grid
@@ -350,7 +414,7 @@ const Contact = props => {
                     </Grid>
                     <Grid container component="div" direction="row" className={classes.banner}>
                       <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
-                        <button type="button" class={classes.submit+' btn'}>Sell Your Bike</button>
+                        <button type="button" class={classes.submit+' btn'} onClick={submitForm}>Sell Your Bike</button>
                       </Grid>
                       </Grid>
                   </form>
