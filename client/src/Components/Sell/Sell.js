@@ -342,20 +342,47 @@ const Sell = props => {
   };
 
   const submitForm = async(event) => {
-    uploadImages(formData);
-    axios
-      .post("/apis/leadDetail/insertSellrequest", formData)
-      .then(response => {})
-      .catch(err => {
-        console.log(err);
-      });
-
-    setTooltipState({
-      open: true,
-      message: "Your details have been saved",
-      variant: "success"
+    event.preventDefault();
+    const formDataCopy = formData;
+    let errorFlag = false;
+    Object.entries(formData).forEach(data => {
+      let targetValue = data[1].value;
+      let targetName = data[0];
+      let errorMessage = "";
+      let error = false;
+      if(targetName !== "image"){
+        if(targetValue === ""){
+          errorMessage = "This field is required";
+          error = true;
+        }
+      }
+      if (error) {
+        errorFlag = true;
+      }
+      formDataCopy[targetName].errorMessage = errorMessage;
+      formDataCopy[targetName].error = error;
     });
-    setSuccessSubmit(true);
+    if(!errorFlag) {
+      uploadImages(formData);
+      axios
+        .post("/apis/leadDetail/insertSellrequest", formData)
+        .then(response => {})
+        .catch(err => {
+          console.log(err);
+        });
+  
+      setTooltipState({
+        open: true,
+        message: "Your details have been saved",
+        variant: "success"
+      });
+      setSuccessSubmit(true);
+    } else {
+      setFormData({
+        ...formData,
+        formDataCopy
+      });
+    }
   };
 
   let stepsToSellSection = (matches) ? <Grid item xs={11} sm={11} md={11} lg={11}>

@@ -215,20 +215,42 @@ const BecomeFranchiseOwner = props => {
 
   const submitForm = event => {
     event.preventDefault();
-    axios
+    const formDataCopy = formData;
+    let errorFlag = false;
+    Object.entries(formData).forEach(data => {
+      let targetValue = data[1].value;
+      let targetName = data[0];
+      let errorMessage = "";
+      let error = false;
+      if(targetValue === ""){
+        errorMessage = "This field is required";
+        error = true;
+      }
+      if (error) {
+        errorFlag = true;
+      }
+      formDataCopy[targetName].errorMessage = errorMessage;
+      formDataCopy[targetName].error = error;
+    });
+    if(!errorFlag) {
+      axios
       .post("/apis/leadDetail/insertFranchiseRequest", formData)
-      .then(response => {
-        console.log(response);
-      })
+      .then(response => {})
       .catch(err => {
         console.log(err);
       });
 
-    setTooltipState({
-      open: true,
-      message: "Your details have been saved",
-      variant: "success"
-    });
+      setTooltipState({
+        open: true,
+        message: "Your details have been saved",
+        variant: "success"
+      });
+    } else {
+      setFormData({
+        ...formData,
+        formDataCopy
+      });
+    }
   };
   return (
     <div id="BecomeFranchiseOwner" className={classes.root}>
