@@ -154,7 +154,7 @@ i.icon-black {
   text-align: center;
 }
 .footer {
-  height: 208px;
+  min-height: 208px;
   background-color: #404040;
   padding: 40px 40px 43px 40px;
 }

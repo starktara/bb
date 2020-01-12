@@ -16,10 +16,10 @@ app.use(express.static('public'))
 
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'public/images/uploads')
+    cb(null, '../client/public/vehicles')
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname)
+    cb(null, file.originalname)
   }
 });
 

@@ -582,21 +582,24 @@ router.get("/uploadLocations", (req, res) => {
       {
         id: 1,
         name: "Jkb – Bike Bazaar",
-        city: "Aluva, Kerela",
+        city: "Aluva",
+        state: "Kerela",
         locality: "Building No. XVII – 27&28 , Pullinchode, Aluva - 683101",
         location: { lat: 31.12, lon: -71.34 }
       },
       {
         id: 2,
         name: "BikeBazaar, Kolkata",
-        city: "Kolkata, West Bengal",
+        city: "Kolkata",
+        state: "West Bengal",
         locality: "D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry - 533103, Andhra Pradesh, India.",
         location: { lat: 16.999954, lon: 81.786184 }
       },
       {
         id: 3,
         name: "BikeBazaar, MCV Wheels",
-        city: "Rajahmundry, Andhra Pradesh",
+        city: "Rajahmundry",
+        state: "Andhra Pradesh",
         locality: "D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry - 533103, Andhra Pradesh, India.",
         location: { lat: 16.999954, lon: 81.786184 }
       }
@@ -766,29 +769,48 @@ router.get("/deleteBike", (req, res) => {
   }
   deleteBike().catch(console.log);
 });
-router.get("/adminVehiclesUpload", (req, res) => {
-  let formdata = req.body;
+router.post("/adminVehiclesUpload", (req, res) => {
+  let formData = req.body;
+  console.log(formData);
   async function uploadVehiclels() {
+    async function getStore() {
+      const { body } = await client.search({
+        index: "store-location",
+        body: {
+          query: {
+            match: {
+              id: formData.storeId.value
+            }
+          }
+        }
+      });
+      return body.hits.hits[0]._source;
+    }
+    let storeDetails = await getStore();
     const dataset = [
       {
-        type: formData.type.value,
-        brand:formData.make.value ,
-        storeId: formData.storeId.value,
-        model: formData.model.value,
+        name: formData.name.value,
+        type: parseInt(formData.type.value),
+        brand: parseInt(formData.brand.value),
+        storeId: parseInt(formData.storeId.value),
+        location: storeDetails.location,
+        model: parseInt(formData.model.value),
         regNumber: formData.regNumber.value,
         descr: formData.descr.value,
-        price: formData.price.value,
-        state: formData.state.value,
-        city: formData.city.value,
-        loc: formData.loc.value,
-        myear: formData.myear.value,
-        mmonth: formData.mmonth.value,
-        kmsdriven: formData.kmsdriven.value,
-        owner: formData.owner.value,        
-        cc: formData.cc.value,
-        bhp: formData.bhp.value,
-        category: formData.category.value,
-        mileage: formData.mileage.value
+        price: parseInt(formData.price.value),
+        state: storeDetails.state,
+        city: storeDetails.city,
+        loc: storeDetails.city,
+        myear: parseInt(formData.myear.value),
+        mmonth: parseInt(formData.mmonth.value),
+        kmdriven: parseInt(formData.kmsdriven.value),
+        owner: parseInt(formData.owner.value),
+        cc: parseInt(formData.cc.value),
+        bhp: parseInt(formData.bhp.value),
+        category: parseInt(formData.type.value),
+        mileage: parseInt(formData.mileage.value),
+        images: formData.image.imageNames,
+        mimage: formData.image.imageNames[0],
       }
     ]
     const body = dataset.flatMap(doc => [
@@ -819,7 +841,7 @@ router.get("/adminVehiclesUpload", (req, res) => {
       msg: "Data Uploaded"
     });
   }
-  upload().catch(console.log);
+  uploadVehiclels().catch(console.log);
 });
 
 module.exports = router;
