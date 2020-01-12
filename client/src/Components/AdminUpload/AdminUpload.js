@@ -85,7 +85,7 @@ const formValidator = (name, value) => {
       case "category": {
         return !isNumeric(value) ? "Enter valid category" : "" ;
       }
-      case "nileage": {
+      case "mileage": {
         return !isNumeric(value) ? "Mileage must be numeric" : "" ;
       }
       default: {

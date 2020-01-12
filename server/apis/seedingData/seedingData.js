@@ -759,11 +759,12 @@ router.get("/searchBike", (req, res) => {
   getBike().catch(console.log);
 });
 
-router.get("/deleteBike", (req, res) => {
+router.post("/deleteVehicle", (req, res) => {
+  let data = req.body;
   async function deleteBike() {
     const { body } = await client.delete({
       index: "bike-details",
-      id: "7OODLW8By7dsofLEVwgz"
+      id: data.id
     });
     res.send(body);
   }
