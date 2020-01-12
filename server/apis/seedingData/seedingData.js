@@ -710,6 +710,7 @@ router.get("/getAllBikes", (req, res) => {
     const { body } = await client.search({
       index: "bike-details",
       body: {
+        size: 10000,
         query: {
           match_all: {}
         }
