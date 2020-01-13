@@ -20,7 +20,7 @@ const MobNav = (() => {
         </ul>
       </div>
       <div className="bbMlogo"><Link to="/"><img src={logoPng} alt="" /></Link></div>
-      <div className="BBMMyAcc"><img src={userIcon} alt="" /></div>((
+      <div className="BBMMyAcc"><img src={userIcon} alt="" /></div>
            <div className="BBMsearchSec"><input className="BBMsearchField" type="text" placeholder="Search Your Two-wheeler" value="" onChange={() => { }} />
       </div>
     </nav>
