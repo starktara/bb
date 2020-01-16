@@ -252,6 +252,8 @@ const Sell = props => {
     }
   });
 
+  const [showImage, setShowImage] = useState([]);
+
   const [successSubmit, setSuccessSubmit] = useState(false);
 
   const [tooltipState, setTooltipState] = useState({
@@ -277,23 +279,60 @@ const Sell = props => {
     />
   );
 
+  const buildImgTag = () => {
+
+    return <div className="photo-container">
+    { 
+      showImage.map(imageURI => 
+      (<img className="photo-uploaded" src={imageURI} alt="Photo uploaded"/>)) 
+    }
+    </div>
+  }
+
+  const readURI = (e) => {
+    if (e.target.files) {
+
+        const files = Array.from(e.target.files);
+        console.log(files);
+
+        Promise.all(files.map(file => {
+          console.log("here", file);
+            return (new Promise((resolve,reject) => {
+                const reader = new FileReader();
+                reader.addEventListener('load', (ev) => {
+                  resolve(ev.target.result);
+                });
+                reader.addEventListener('error', reject);
+                reader.readAsDataURL(file);
+            }));
+        }))
+        .then(images => {
+          console.log(showImage);
+            setShowImage(images);
+            console.log(showImage);
+        }, error => {        
+            console.error(error);
+        });
+    }
+}
+
   const selectFiles = (event, formData) => {
+    readURI(event);
     let images = [];
-    for (var i = 0; i < event.target.files.length; i++) {
-          images[i] = event.target.files.item(i);
+    for (let i = 0; i < event.target.files.length && i < 3; i++) {
+      images[i] = event.target.files.item(i);
+    }
+    images = images.filter(image => image.name.match(/\.(jpg|jpeg|png)$/))
+    let imgNames = images.map(image => image.name);
+    let message = `${images.length} valid image(s) selected`;
+    setFormData({
+      ...formData,
+      image: {
+        images: images,
+        imageNames: imgNames,
+        message: message
       }
-      images = images.filter(image => image.name.match(/\.(jpg|jpeg|png)$/))
-      let imgNames = images.map(image => image.name);
-      let message = `${images.length} valid image(s) selected`
-      
-      setFormData({
-        ...formData,
-        image: {
-          images: images,
-          imageNames: imgNames,
-          message: message
-        }
-      });
+    });
   }
 
   const uploadImages = (formData) => {
@@ -634,6 +673,11 @@ const Sell = props => {
                                onChange={(event)=>selectFiles(event, formData)} 
                                multiple
                                />
+                               {/* { (showImage.length > 0) && <img id="target" src={showImage} width="200" height="130"/> }     */}
+                               { showImage.map( image => (
+                                 <img src={image} width="200" height="140" />
+                               )) }
+                               { buildImgTag }
                                { formData.image.message? <p className="text-info">{formData.image.message}</p>: ''}
                             </Grid>
                           </Grid>
