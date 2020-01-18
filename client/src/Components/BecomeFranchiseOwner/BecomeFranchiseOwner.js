@@ -27,6 +27,8 @@ import isAscii from "validator/lib/isAscii";
 import isEmail from "validator/lib/isEmail";
 import isMobilePhone from "validator/lib/isMobilePhone";
 import isNumeric from "validator/lib/isNumeric";
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const formValidator = (name, value) => {
   switch (name) {
@@ -97,25 +99,23 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#a7aaaa'
   },
   about: {
-    backgroundImage: 'url("' + storeImage + '")',
-    backgroundPosition: 'right center',
-    backgroundRepeat: 'no-repeat',
-    backgroundPositionY: -2,
-    backgroundSize: '40%'
+    // backgroundImage: 'url("' + storeImage + '")',
+    // backgroundPosition: 'right center',
+    // backgroundRepeat: 'no-repeat',
+    // backgroundPositionY: -2,
+    // backgroundSize: '40%'
   },
   label: {
     fontWeight: 600,
     fontSize: 15,
     letterSpacing: '0.83px',
     color: '#000'
-  },
-  pstyle: {
-    maxWidth: '60%'
   }
 }));
 
 const BecomeFranchiseOwner = props => {
-
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   const classes = useStyles();
 
   useEffect(() => {
@@ -263,13 +263,13 @@ const BecomeFranchiseOwner = props => {
         </Grid>
       </Grid>
 
-      <Grid container direction="row" justify="center" alignItems="center">
+      <Grid container direction="row" justify="center" alignItems="center" id={(matches) ? "paper" : "paperMobile"}>
         <Grid item xs={11} sm={11} md={11} lg={11}>
           <div className="paper">
             <Grid container direction="row" justify="center" alignItems="center">
               <Grid item xs={12} sm={12} md={12} lg={12} className={classes.about}>
                 <h4 className="redhead">About BikeBazaar</h4>
-                <p className="about-bb" className={classes.pstyle}>
+                <p  className="about-bb">
                   BikeBazaar aims to provide a hassle-free experience to anyone looking to<br />buy/sell a pre-owned two-wheeler with the help of technology & team of<br />experts.
                   <br />
                   <br />

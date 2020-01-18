@@ -203,3 +203,29 @@
 .fieldname{
   font-size: 15px;
 }
+#paper::after {
+  content: "";
+  background: url(/static/media/Img_001.dec436e4.svg) no-repeat;
+  opacity: 0.5;
+  top: 396px;
+  left: 620px;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: 1;
+  height: 1000px;
+  background-size: 650px;
+}
+#paperMobile::after{
+  content: "";
+  background: url(/static/media/Img_001.dec436e4.svg) no-repeat;
+  opacity: 0.5;
+  top: 591px;
+  left: 17px;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: 1;
+  height: 1000px;
+  background-size: 375px;
+}
