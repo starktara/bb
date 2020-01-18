@@ -55,6 +55,15 @@
   font-size: 16px;
   color: #232b2b;
 }
+.custom-drop-mobile {
+  width: 195px;
+  height: 60px;
+  border-radius: 4px;
+  line-height: 62px;
+  text-transform: none;
+  text-align: left;
+  font-size: 13px;
+}
 .custom-drop span {
   margin-left: 5px;
 }

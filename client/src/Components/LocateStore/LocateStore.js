@@ -13,6 +13,20 @@ import searchIcon from "../../assets/search-icon.svg";
 import headingLines from "../../assets/black-heading-lines.svg";
 import M from "materialize-css";
 import * as actions from "../../store/actions/index";
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  mapContainer: {
+    width: 372,
+    height: 400
+  },
+  mapContainerMobile: {
+    width: 254,
+    height: 400 
+  }
+}));
 
 const mapProps = {
   center: {
@@ -23,7 +37,12 @@ const mapProps = {
 };
 
 const LocateStore = props => {
+  const classes = useStyles();
   let [singleStore, setSingleScore] = useState(false);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  const dropDownClass = (matches) ? 'custom-drop' : 'custom-drop-mobile';
+  const cityIconHeight = (matches) ? '28.3' : '20.3';
 
   const [mapLocations] = useState([
     {
@@ -112,10 +131,10 @@ const LocateStore = props => {
             <div className="input-field">
               <p>Please Select Your City</p>
               <button
-                className="dropdown-trigger btn custom-drop white black-text"
+                className={"dropdown-trigger btn white black-text "+dropDownClass}
                 data-target="cityDropdown"
               >
-                <img src={cityIcon} width="32.9" height="28.3" alt="" />
+                <img src={cityIcon} width="32.9" height={cityIconHeight} alt="" />
                 <span id="currentCity">Search Your City</span>
                 <img src={dropdownIcon} width="22" height="11" alt="" />
               </button>
@@ -143,17 +162,15 @@ const LocateStore = props => {
     )
 
     locationCards = mapLocations.map((thisLocation, key) => {
-      console.log(thisLocation);
       if(searchedLocation===null){
         return (
-  
-          <Grid item xs={4} sm={4} md={4} lg={4} key={key}>
+          <Grid item xs={12} sm={12} md={4} lg={4} key={key}>
             <div className="locationCard">
               <h5>{thisLocation.locationName}</h5>
               <div className="locationAddress">
                 {thisLocation.address}
               </div>
-              <div className="mapContainer">
+              <div className={(matches) ? classes.mapContainer : classes.mapContainerMobile}>
                 <GoogleMap
                   center={thisLocation.coordinates}
                   zoom={mapProps.zoom}
@@ -167,13 +184,13 @@ const LocateStore = props => {
         if(thisLocation.city===searchedLocation){
           return (
   
-            <Grid item xs={4} sm={4} md={4} lg={4} key={key}>
+            <Grid item xs={12} sm={12} md={4} lg={4} key={key}>
               <div className="locationCard">
                 <h5>{thisLocation.locationName}</h5>
                 <div className="locationAddress">
                   {thisLocation.address}
                 </div>
-                <div className="mapContainer">
+                <div className={(matches) ? classes.mapContainer : classes.mapContainerMobile}>
                   <GoogleMap
                     center={thisLocation.coordinates}
                     zoom={mapProps.zoom}
