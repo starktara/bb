@@ -111,7 +111,8 @@ nav.BBMNav {
 }
 .BBMsearchField {
   width: 100% !important;
-  background: #fff url("../../assets/icons/search-icon.svg") 15px 13px no-repeat !important;
+  /* background: #fff url("../../assets/icons/search-icon.svg") 15px 13px no-repeat !important; */
+  background: #fff !important;
   height: 48px !important;
   padding-left: 45px !important;
   box-shadow: none !important;
