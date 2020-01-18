@@ -22,6 +22,7 @@ import isNumeric from "validator/lib/isNumeric";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import stepsToSellMobile from '../../assets/steps_to_sell_ mobile.jpg';
 
 const useStyles = makeStyles(theme => ({
   body: {
@@ -69,6 +70,13 @@ const useStyles = makeStyles(theme => ({
   sellHeading:{
     paddingBottom: 15,
     fontSize: 32,
+    fontWeight: 600,
+    color: '#ff0000',
+    textAlign: 'center'
+  },
+  sellHeadingMobile:{
+    paddingBottom: 15,
+    fontSize: 19,
     fontWeight: 600,
     color: '#ff0000',
     textAlign: 'center'
@@ -396,7 +404,13 @@ const Sell = props => {
                   <div className={classes.stepFour}>Instant Payment For<br/>Your Two-Wheeler</div>
               </div>
             </Paper>
-          </Grid> : <div></div>;
+          </Grid> :
+          // <Grid item xs={11} sm={11}>
+            <Paper className={classes.paper+ ' center-align'}>
+                <h3 className={classes.sellHeadingMobile}>Steps to Sell Your Two-Wheeler</h3>
+                <img src={stepsToSellMobile} width="750" alt=""/>
+            </Paper>
+          {/* </Grid>; */}
 
   return (
     <div id="Sell" className={classes.body}>
