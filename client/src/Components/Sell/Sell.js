@@ -23,6 +23,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import stepsToSellMobile from '../../assets/steps_to_sell_ mobile.jpg';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles(theme => ({
   body: {
@@ -161,7 +162,8 @@ const formValidator = (name, value) => {
       return !isAlphaNumeric(cityValue) ? "City name must only be Alphanumeric" : "";
     }
     case "address": {
-      return !isAlphaNumeric(value) ? "Enter valid address" : "";
+      const addressValue = value.replace(/ /g,'');
+      return !isAlphaNumeric(addressValue) ? "Enter valid address" : "";
     }
     case "make": {  
       const makeValue = value.replace(/ /g, '');
@@ -260,6 +262,8 @@ const Sell = props => {
     }
   });
 
+  // const [showImage, setShowImage] = useState([]);
+
   const [successSubmit, setSuccessSubmit] = useState(false);
 
   const [tooltipState, setTooltipState] = useState({
@@ -285,23 +289,63 @@ const Sell = props => {
     />
   );
 
-  const selectFiles = (event, formData) => {
-    let images = [];
-    for (var i = 0; i < event.target.files.length; i++) {
-          images[i] = event.target.files.item(i);
+//   const readURI = (e) => {
+//     if (e.target.files) {
+//         const files = Array.from(e.target.files);
+//         Promise.all(files.map(file => {
+//             return (new Promise((resolve,reject) => {
+//                 const reader = new FileReader();
+//                 reader.addEventListener('load', (ev) => {
+//                   resolve(ev.target.result);
+//                 });
+//                 reader.addEventListener('error', reject);
+//                 reader.readAsDataURL(file);
+//             }));
+//         }))
+//         .then(images => {
+//             setShowImage([...showImage, images]);
+//         }, error => {
+//             console.error(error);
+//         });
+//     }
+// }
+
+  const removeImageHandler = (i, formData) => {
+    const copyData = formData;
+    let imgs = formData.image.images;
+    imgs.splice(i, 1);
+    let imgNames = imgs.map(img => img.name);
+    let msg = `${imgs.length} valid image(s) selected`;
+    setFormData({
+      ...formData,
+      image: {
+        images: imgs,
+        imageNames: imgNames,
+        message: msg
       }
-      images = images.filter(image => image.name.match(/\.(jpg|jpeg|png)$/))
-      let imgNames = images.map(image => image.name);
-      let message = `${images.length} valid image(s) selected`
-      
-      setFormData({
-        ...formData,
-        image: {
-          images: images,
-          imageNames: imgNames,
-          message: message
-        }
-      });
+    });
+  }
+
+  const selectFiles = (event, formData) => {
+    // readURI(event);
+    let images = formData.image.images;
+    for (let i = 0; i < event.target.files.length; i++) {
+      images.push(event.target.files.item(i));
+    }
+    images = images.filter(image => image.name.match(/\.(jpg|jpeg|png)$/));
+    if(images.length > 3){
+      images = images.slice(images.length-3, images.length);
+    }
+    let imgNames = images.map(image => image.name);
+    let message = `${images.length} valid image(s) selected`;
+    setFormData({
+      ...formData,
+      image: {
+        images: images,
+        imageNames: imgNames,
+        message: message
+      }
+    });
   }
 
   const uploadImages = (formData) => {
@@ -342,10 +386,26 @@ const Sell = props => {
 
   const updateFormdata = (event, formData) => {
     let targetValue = event.target.value;
-
+    let targetName = event.target.name;
+    let errorMessage = "";
+    let error = false;
+    if (isEmpty(targetValue)) {
+      errorMessage = "";
+      error = false;
+    } else {
+      console.log(targetName, targetValue);
+      errorMessage = formValidator(targetName, targetValue);
+      if (errorMessage.length) {
+        error = true;
+      }
+    }
     setFormData({
       ...formData,
-      [event.target.name]: targetValue
+      [event.target.name]: {
+        value: targetValue,
+        error: error,
+        errorMessage: errorMessage
+      }
     });
   };
 
@@ -358,17 +418,17 @@ const Sell = props => {
       let targetName = data[0];
       let errorMessage = "";
       let error = false;
-      if(targetName !== "image"){
+      if(targetName !== "image" && targetName !== "variant" && targetName !== "address" && targetName !== "kmsdriven"){
         if(targetValue === ""){
           errorMessage = "This field is required";
           error = true;
         }
+        formDataCopy[targetName].errorMessage = errorMessage;
+        formDataCopy[targetName].error = error;
       }
       if (error) {
         errorFlag = true;
-      }
-      formDataCopy[targetName].errorMessage = errorMessage;
-      formDataCopy[targetName].error = error;
+      }      
     });
     if(!errorFlag) {
       uploadImages(formData);
@@ -509,8 +569,20 @@ const Sell = props => {
                                 <span  className={classes.label}>Variant:</span>&nbsp;&nbsp;(eg. 150cc std)
                               </label>
                               <input type="text" name="variant" id="variant"
-                                onChange={event =>
-                                  updateFormdata(event, formData)}/>
+                                onBlur={event =>
+                                  updateFormdata(event, formData)}
+                                  className={
+                                    formData.variant.error
+                                      ? "invalid"
+                                      : formData.variant.value
+                                      ? "valid"
+                                      : ""
+                                  }/>
+                                {formData.variant.error && (
+                                  <p className={classes.formError}>
+                                    {formData.variant.errorMessage}
+                                  </p>
+                                )}
                             </Grid>
                           </Grid>
                           <Grid container component="div" direction="row">
@@ -546,9 +618,6 @@ const Sell = props => {
                                 <span  className={classes.label}>Mobile No:*</span>&nbsp;&nbsp;(eg. +91 9999999999)
                               </label>
                               <input type="text" name="mobile" required
-                                onChange={event =>
-                                  updateFormdata(event, formData)
-                                }
                                 onBlur={event =>
                                   validateAndUpdateFormdata(event, formData)
                                 }
@@ -572,16 +641,21 @@ const Sell = props => {
                                 <span  className={classes.label}>Address:</span>&nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
                               </label>
                               <textarea name="address"
-                                onChange={event =>
+                                onBlur={event =>
                                   updateFormdata(event, formData)
                                 }
                                 className={
-                                  formData.city.error
+                                  formData.address.error
                                     ? "invalid materialize-textarea"
-                                    : formData.city.value
+                                    : formData.address.value
                                     ? "valid materialize-textarea"
                                     : "materialize-textarea"
                                 }></textarea>
+                                {formData.address.error && (
+                                <p className={classes.formError}>
+                                  {formData.address.errorMessage}
+                                </p>
+                                )}
                             </Grid>
                           </Grid>
                           <Grid container component="div" direction="row">
@@ -590,9 +664,6 @@ const Sell = props => {
                                 <span  className={classes.label}>Model:*</span>&nbsp;&nbsp;(eg. Activa, Pulsar)
                               </label>
                               <input type="text" name="model" required
-                                onChange={event =>
-                                  updateFormdata(event, formData)
-                                }
                                 onBlur={event =>
                                   validateAndUpdateFormdata(event, formData)
                                 }
@@ -616,7 +687,7 @@ const Sell = props => {
                                 <span  className={classes.label}>KMs Driven:</span>&nbsp;&nbsp;(eg. 40,0000 km)
                               </label>
                               <input type="text" name="kmsdriven" id="kmsdriven"
-                                onChange={event =>
+                                onBlur={event =>
                                   updateFormdata(event, formData)
                                 }
                                 className={
@@ -626,6 +697,11 @@ const Sell = props => {
                                     ? "valid"
                                     : ""
                                 }/>
+                              {formData.kmsdriven.error && (
+                                <p className={classes.formError}>
+                                  {formData.kmsdriven.errorMessage}
+                                </p>
+                              )}
                             </Grid>
                           </Grid>
                       </Grid>
@@ -643,13 +719,21 @@ const Sell = props => {
                                 <span className={classes.label}> Upload images </span>
                               </label>
                               <input 
-                               className="form-control" 
-                               type="file" 
+                               title=""
+                               className="form-control transparent" 
+                               type="file"
                                onChange={(event)=>selectFiles(event, formData)} 
                                multiple
-                               />
+                               /> 
+                               <br />
                                { formData.image.message? <p className="text-info">{formData.image.message}</p>: ''}
-                            </Grid>
+                               { formData.image.imageNames.map((name, _i) => (
+                                  <div key={_i} className="image-preview">
+                                    <li>{name}</li>
+                                    <DeleteIcon className="delete-icon" onClick={() => removeImageHandler(_i, formData)} />
+                                  </div>
+                               ))}
+                            </Grid> 
                           </Grid>
                         </Grid>
                       <Grid container component="div" direction="row">

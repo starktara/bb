@@ -58,3 +58,15 @@
 label{
   font-size: 13px;
 }
+.transparent {
+  color: transparent;
+}
+.image-preview {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.delete-icon {
+  cursor: pointer;
+  margin-left: 8px;
+}
