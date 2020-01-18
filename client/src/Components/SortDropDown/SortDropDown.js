@@ -35,7 +35,7 @@ class SortDropDown extends Component {
 
     return (
       <React.Fragment>
-		    <div className="filterBand"><button data-target="slide-out" className="sidenav-trigger"><i className="material-icons">filter_list</i> Filter</button></div>        
+		    {/* <div className="filterBand"><button data-target="slide-out" className="sidenav-trigger"><i className="material-icons">filter_list</i> Filter</button></div> */}
         <h5>One Step Closer to Your Dream Bike</h5>
         <div className="input-field sortby" onClick={this.toggleList}>
 				<select
