@@ -22,6 +22,7 @@ import isNumeric from "validator/lib/isNumeric";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles(theme => ({
   body: {
@@ -253,7 +254,7 @@ const Sell = props => {
     }
   });
 
-  const [showImage, setShowImage] = useState([]);
+  // const [showImage, setShowImage] = useState([]);
 
   const [successSubmit, setSuccessSubmit] = useState(false);
 
@@ -300,6 +301,22 @@ const Sell = props => {
 //         });
 //     }
 // }
+
+  const removeImageHandler = (i, formData) => {
+    const copyData = formData;
+    let imgs = formData.image.images;
+    imgs.splice(i, 1);
+    let imgNames = imgs.map(img => img.name);
+    let msg = `${imgs.length} valid image(s) selected`;
+    setFormData({
+      ...formData,
+      image: {
+        images: imgs,
+        imageNames: imgNames,
+        message: msg
+      }
+    });
+  }
 
   const selectFiles = (event, formData) => {
     // readURI(event);
@@ -695,20 +712,14 @@ const Sell = props => {
                                multiple
                                /> 
                                <br />
-                               {/* { showImage.map( image => (
-                                 <div classame="image-preview">
-                                  <div>
-                                    <img src={image} width="100" height="70" /> 
-                                    <div>X</div>
-                                  </div>
-                                 </div>
-                               )) } */}
-                               {/* { buildImgTag } */}
                                { formData.image.message? <p className="text-info">{formData.image.message}</p>: ''}
                                { formData.image.imageNames.map((name, _i) => (
-                                   <li key={_i}>{name}</li>
+                                  <div key={_i} className="image-preview">
+                                    <li>{name}</li>
+                                    <DeleteIcon className="delete-icon" onClick={() => removeImageHandler(_i, formData)} />
+                                  </div>
                                ))}
-                            </Grid>
+                            </Grid> 
                           </Grid>
                         </Grid>
                       <Grid container component="div" direction="row">
