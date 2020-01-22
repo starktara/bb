@@ -16,14 +16,17 @@ nav.BBMNav a:hover {
   color: #fd1b1b;
 }
 nav.BBMNav {
+  position: sticky !important;
+  top: 0px;
   background-color: #fd1b1b;
   height: auto;
   line-height: normal;
+  z-index: 999;
 }
 #BBMmenuToggle {
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: fixed;
   top: 25px;
   left: 8px;
   z-index: 1;
@@ -75,7 +78,7 @@ nav.BBMNav {
   transform: rotate(-45deg) translate(0, -1px);
 }
 #BBMmenu {
-  position: absolute;
+  position: fixed;
   width: 180px;
   height: 1000px;
   box-shadow: 0 0 10px #85888c;
@@ -92,13 +95,14 @@ nav.BBMNav {
 #BBMmenu li {
   padding: 10px 0;
   transition-delay: 2s;
+  cursor: pointer;
 }
 #BBMmenuToggle input:checked ~ ul {
   transform: none;
 }
 .bbMlogo {
   float: left;
-  margin: 20px 0 0 20px;
+  margin: 20px 0 0 55px;
 }
 .BBMMyAcc {
   float: right;

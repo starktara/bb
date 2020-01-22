@@ -286,7 +286,7 @@ const Contact = props => {
                 <div id="contactForm">
                   <form>
                     <Grid container component="div" direction="row">
-                      <Grid item xs={12} sm={12} md={12} lg={12}>
+                      <Grid item xs={11} sm={11} md={12} lg={12}>
                         <label htmlFor="name" className="black-text">
                           <span className={classes.label}>Name:*</span>&nbsp;&nbsp;(eg. Varunam Reddy)
                         </label>
@@ -314,7 +314,7 @@ const Contact = props => {
                       </Grid>
                     </Grid>
                     <Grid container component="div" direction="row" justify="space-between" className={classes.banner}>
-                      <Grid item xs={5} sm={5} md={5} lg={5}>
+                      <Grid item xs={11} sm={12} md={5} lg={5}>
                         <label htmlFor="mobilno" className="black-text">
                           <span  className={classes.label}>Mobile No:*</span>&nbsp;&nbsp;(eg. +91 9999999999)
                         </label>
@@ -335,7 +335,7 @@ const Contact = props => {
                           </p>
                         )}
                       </Grid>
-                      <Grid item xs={6} sm={6} md={6} lg={6}>
+                      <Grid item xs={11} sm={11} md={6} lg={6}>
                         <label htmlFor="email" className="black-text">
                           <span className={classes.label}>Email:</span>&nbsp;&nbsp;(eg. abc@gmail.com)
                         </label>
@@ -361,30 +361,40 @@ const Contact = props => {
                     <Grid container component="div" direction="row" className="interest-container">
                       <Grid item xs={12} sm={12} md={12} lg={12} className={classes.banner}>
                         <p><span className={classes.label}>Interested In:*</span></p>
-                        <span>
-                          <label>
-                            <input name="interest" type="radio" value="buy" checked/>
-                            <span>Buy</span>
-                          </label>
-                        </span>
-                        <span>
-                          <label>
-                            <input name="interest" type="radio" value="sell" />
-                            <span>Sell</span>
-                          </label>
-                        </span>
-                        <span>
-                          <label>
-                            <input name="interest" type="radio" value="franchise"/>
-                            <span>Franchise</span>
-                          </label>
-                        </span>
-                        <span>
-                          <label>
-                            <input name="interest" type="radio" value="other" />
-                            <span>Other</span>
-                          </label>
-                        </span>
+                        <Grid container component="div" direction="row">
+                            <Grid item xs={6} sm={6} md={3} lg={3}>
+                              <span>
+                                <label>
+                                  <input name="interest" type="radio" value="buy" checked/>
+                                  <span>Buy</span>
+                                </label>
+                              </span>
+                            </Grid>
+                            <Grid item xs={6} sm={6} md={3} lg={3}>
+                              <span>
+                                <label>
+                                  <input name="interest" type="radio" value="sell" />
+                                  <span>Sell</span>
+                                </label>
+                              </span>
+                            </Grid>
+                            <Grid item xs={6} sm={6} md={3} lg={3}>
+                              <span>
+                                <label>
+                                  <input name="interest" type="radio" value="franchise"/>
+                                  <span>Franchise</span>
+                                </label>
+                              </span>
+                            </Grid>
+                            <Grid item xs={6} sm={6} md={3} lg={3}>
+                              <span>
+                                <label>
+                                  <input name="interest" type="radio" value="other" />
+                                  <span>Other</span>
+                                </label>
+                              </span>
+                            </Grid>
+                        </Grid>
                       </Grid>
                     </Grid>
                     <Grid container component="div" direction="row" className={classes.banner}>
