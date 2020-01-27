@@ -110,14 +110,24 @@ const useStyles = makeStyles(theme => ({
     fontSize: 15,
     letterSpacing: '0.83px',
     color: '#000'
-  }
+  },
+  padding0:{
+    padding: '0px !important'
+  },
 }));
 
 const BecomeFranchiseOwner = props => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
   const classes = useStyles();
-
+  const paddingClass = (matches) ? '' : 'padding0';
+  const marginClass = (matches) ? '' : 'margin0';
+  const advMobile = (matches) ? '' : 'advantageArrowMobile';
+  const adv1Mobile = (matches) ? '' : 'advantage1ArrowMobile';
+  const advantagePadding = (matches) ? '' : 'franchiseAdvantagePadding';
+  const mobileHeading = (matches) ? '' : 'mobileHeading';
+  const divider = (matches) ? <Divider orientation="vertical" className={classes.divider} /> : '';
+ 
   useEffect(() => {
     try {
       window.scroll({
@@ -289,7 +299,7 @@ const BecomeFranchiseOwner = props => {
           </div>
         </Grid>
         <Grid item xs={11} sm={11} md={11} lg={11} className="franchiseAdvantageSec">
-          <div className="franchiseAdvantage">
+          <div className={"franchiseAdvantage "+advantagePadding}>
             <h2 className="center-align">BikeBazaar Advantage</h2>
             <div className="center-align">
               <img src={headingLines} alt="" />
@@ -297,62 +307,62 @@ const BecomeFranchiseOwner = props => {
             <br />
             <br />
             <div className="franchiseAdvantageSec">
-              <Grid container component="div" direction="row" className="advantage">
-                <Grid item xs={1} md={1} lg={1}>
+              <Grid container component="div" direction="row" className={"advantage "+paddingClass}>
+                <Grid item xs={6} sm={6} md={1} lg={1}>
                   <div className="advantageIconLeft">
                     <img className="strong-presence" src={strongOnlinePresence} alt="" />
                   </div>
                 </Grid>
-                <Grid item xs={11} md={11} lg={11}>
-                  <h3>Strong Online Presence</h3>
+                <Grid item xs={6} sm={6} md={11} lg={11}>
+                  <h3 className={advMobile}>Strong Online Presence</h3>
                 </Grid>
               </Grid>
-              <Grid container component="div" direction="row" className="advantage1">
-                <Grid item xs={11} sm={11} md={11} lg={11}>
-                  <h3>Certified Two-Wheelers</h3>
+              <Grid container component="div" direction="row" className={"advantage1 "+paddingClass}>
+                <Grid item xs={6} sm={6} md={11} lg={11}>
+                  <h3 className={adv1Mobile}>Certified Two-Wheelers</h3>
                 </Grid>
-                <Grid item xs={1} sm={1} md={1} lg={1} className="icon">
-                  <div className="advantageIconRight">
+                <Grid item xs={6} sm={6} md={1} lg={1} className="icon">
+                  <div className={"advantageIconRight "+marginClass}>
                     <img className="certified" src={certifiedIcon} alt="" />
                   </div>
                 </Grid>
               </Grid>
-              <Grid container component="div" direction="row" className="advantage">
-                <Grid item xs={1} sm={1} md={1} lg={1}>
+              <Grid container component="div" direction="row" className={"advantage "+paddingClass}>
+                <Grid item xs={6} sm={6} md={1} lg={1}>
                   <div className="advantageIconLeft">
                     <img className="strong-infa" src={strongItInfra} alt="" />
                   </div>
                 </Grid>
-                <Grid item xs={11} sm={11} md={11} lg={11}>
-                  <h3>Strong IT Infrastructure</h3>
+                <Grid item xs={6} sm={6} md={11} lg={11}>
+                  <h3 className={advMobile}>Strong IT Infrastructure</h3>
                 </Grid>
               </Grid>
-              <Grid container component="div" direction="row" className="advantage1">
-                <Grid item xs={11} sm={11} md={11} lg={11} className="detail">
-                  <h3>Dedicated Call-Center</h3>
+              <Grid container component="div" direction="row" className={"advantage1 "+paddingClass}>
+                <Grid item xs={6} sm={6} md={11} lg={11} className="detail">
+                  <h3 className={adv1Mobile}>Dedicated Call-Center</h3>
                 </Grid>
-                <Grid item xs={1} sm={1} md={1} lg={1} className="icon">
-                  <div className="advantageIconRight">
+                <Grid item xs={6} sm={6} md={1} lg={1} className="icon">
+                  <div className={"advantageIconRight "+marginClass}>
                     <img className="call-centre" src={callCentre} alt="" />
                   </div>
                 </Grid>
               </Grid>
-              <Grid container component="div" direction="row" className="advantage">
-                <Grid item xs={1} sm={1} md={1} lg={1}>
+              <Grid container component="div" direction="row" className={"advantage "+paddingClass}>
+                <Grid item xs={6} sm={6} md={1} lg={1}>
                   <div className="advantageIconLeft">
                     <img className="more-sales" src={moreSalesThanEver} height="90" alt="" />
                   </div>
                 </Grid>
-                <Grid item xs={11} sm={11} md={11} lg={11}>
-                  <h3>More Sales Than Ever</h3>
+                <Grid item xs={6} sm={6} md={11} lg={11}>
+                  <h3 className={advMobile}>More Sales Than Ever</h3>
                 </Grid>
               </Grid>
-              <Grid container component="div" direction="row" className="advantage1">
-                <Grid item xs={11} sm={11} md={11} lg={11} className="detail">
-                  <h3>BTL Activities and B2B Tieups</h3>
+              <Grid container component="div" direction="row" className={"advantage1 "+paddingClass}>
+                <Grid item xs={6} sm={6} md={11} lg={11} className="detail">
+                  <h3 className={adv1Mobile}>BTL Activities and B2B Tieups</h3>
                 </Grid>
-                <Grid item xs={1} sm={1} md={1} lg={1} className="icon">
-                  <div className="advantageIconRight">
+                <Grid item xs={6} sm={6} md={1} lg={1} className="icon">
+                  <div className={"advantageIconRight "+marginClass}>
                     <img className="btl" src={shakeHand} alt="" />
                   </div>
                 </Grid>
@@ -524,20 +534,20 @@ const BecomeFranchiseOwner = props => {
                 <h4 className="center-align redhead">Pre-Launch Support</h4>
                 <img src={blackHeadingLines} alt="" />
                 <Grid container component="div" direction="row" className="advantage">
-                  <Grid item xs={2} md={2} lg={2}>
+                  <Grid item xs={4} sm={4} md={2} lg={2}>
                     <div className="advantageIconLeft">
                       <img className="rupees" src={strongOnlinePresence} alt="" />
                     </div>
                   </Grid>
-                  <Grid item xs={10} md={10} lg={10}>
-                    <h3>Strong Online Presence</h3>
+                  <Grid item xs={8} sm={8} md={10} lg={10}>
+                    <h3 className={mobileHeading}>Strong Online Presence</h3>
                   </Grid>
                 </Grid>
                 <Grid container component="div" direction="row" className="advantage1">
-                  <Grid item xs={10} sm={10} md={10} lg={10}>
-                    <h3>Showroom Branding & Exhaustive<br />Guidelines for CI of Showroom</h3>
+                  <Grid item xs={8} sm={8} md={10} lg={10}>
+                    <h3  className={mobileHeading}>Showroom Branding & Exhaustive<br />Guidelines for CI of Showroom</h3>
                   </Grid>
-                  <Grid item xs={2} sm={2} md={2} lg={2} className="icon">
+                  <Grid item xs={4} sm={4} md={2} lg={2} className="icon">
                     <div className="advantageIconRight">
                       <img className="rupees" src={strongOnlinePresence} alt="" />
                     </div>
@@ -550,42 +560,42 @@ const BecomeFranchiseOwner = props => {
                     </div>
                   </Grid>
                   <Grid item xs={10} sm={10} md={10} lg={10}>
-                    <h3>Training & Development for<br />High Performance</h3>
+                    <h3  className={mobileHeading}>Training & Development for<br />High Performance</h3>
                   </Grid>
                 </Grid>
               </Grid>
-              <Divider orientation="vertical" className={classes.divider} />
+              {divider}
               <Grid item xs={12} sm={12} md={5} lg={5} className="center-align">
                 <h4 className="redhead">Post-Launch Support</h4>
                 <img src={blackHeadingLines} alt="" />
                 <Grid container component="div" direction="row" className="advantage">
-                  <Grid item xs={2} md={2} lg={2}>
+                  <Grid item xs={4} sm={4} md={2} lg={2}>
                     <div className="advantageIconLeft">
                       <img className="rupees" src={strongOnlinePresence} alt="" />
                     </div>
                   </Grid>
-                  <Grid item xs={10} md={10} lg={10}>
-                    <h3>Online Demand Generation<br />& BTL Activities</h3>
+                  <Grid item xs={8} sm={8} md={10} lg={10}>
+                    <h3 className={mobileHeading}>Online Demand Generation<br />& BTL Activities</h3>
                   </Grid>
                 </Grid>
                 <Grid container component="div" direction="row" className="advantage1">
-                  <Grid item xs={10} sm={10} md={10} lg={10}>
-                    <h3>Tools and Technologies for<br />Business Efficiency</h3>
+                  <Grid item xs={8} sm={8} md={10} lg={10}>
+                    <h3 className={mobileHeading}>Tools and Technologies for<br />Business Efficiency</h3>
                   </Grid>
-                  <Grid item xs={2} sm={2} md={2} lg={2} className="icon">
+                  <Grid item xs={4} sm={4} md={2} lg={2} className="icon">
                     <div className="advantageIconRight">
                       <img className="rupees" src={strongOnlinePresence} alt="" />
                     </div>
                   </Grid>
                 </Grid>
                 <Grid container component="div" direction="row" className="advantage">
-                  <Grid item xs={2} sm={2} md={2} lg={2}>
+                  <Grid item xs={4} sm={4} md={2} lg={2}>
                     <div className="advantageIconLeft">
                       <img className="rupees" src={strongOnlinePresence} alt="" />
                     </div>
                   </Grid>
-                  <Grid item xs={10} sm={10} md={10} lg={10}>
-                    <h3>Qualified Team & Dedicated<br />Call Center</h3>
+                  <Grid item xs={8} sm={8} md={10} lg={10}>
+                    <h3 className={mobileHeading}>Qualified Team & Dedicated<br />Call Center</h3>
                   </Grid>
                 </Grid>
               </Grid>

@@ -229,3 +229,34 @@
   height: 1000px;
   background-size: 375px;
 }
+
+.advantageArrowMobile {
+  font-size: 14px !important;
+  background-position-x: -90px !important;
+  padding-left: 69px !important;
+}
+
+.advantage1ArrowMobile {
+  font-size: 14px !important;
+  background-position-x: 105px !important;
+}
+
+.padding0{
+  padding: 0px !important;
+}
+
+.margin0 {
+  margin: 0px !important;
+}
+
+.franchiseAdvantagePadding {
+  padding: 15px !important;
+}
+
+.support .advantage1 h3.mobileHeading {
+  font-size: 13px !important;
+}
+
+.support .advantage h3.mobileHeading {
+  font-size: 13px !important;
+}
