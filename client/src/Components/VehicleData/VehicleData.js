@@ -11,6 +11,8 @@ import isAlpha from "validator/lib/isAlpha";
 import isEmail from "validator/lib/isEmail";
 import isMobilePhone from "validator/lib/isMobilePhone";
 
+import "./VehicleData.css";
+
 const formValidator = (name, value) => {
     switch (name) {
       case "name": {
