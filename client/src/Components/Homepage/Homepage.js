@@ -128,7 +128,7 @@ const Homepage = () => {
                   Low Cost <span className="bold">EMI</span>
                 </span>
               </h4>
-              <div className="carousel-search-container">
+              {/* <div className="carousel-search-container">
                 <div className="carousel-location-btn">
                   <img alt="" src={locationIcon} width="23" height="20" />
                   <div className="loc-text">Aluva</div>
@@ -147,7 +147,7 @@ const Homepage = () => {
                     <img alt="" src={searchIcon} width="40" height="44" />
                   </button>
                 </Link>
-              </div>
+              </div> */}
             </div>
           </li>
         </ul>
