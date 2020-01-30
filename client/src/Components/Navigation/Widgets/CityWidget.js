@@ -4,7 +4,8 @@ import * as actions from "../../../store/actions/index";
 
 const CityWidget = (props) => {
   let stlyes = {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#ff0000'
   }
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCity, setActiveCity] = useState("aluva");
