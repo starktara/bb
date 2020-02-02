@@ -11,6 +11,8 @@ import blackHeadingLines from '../../assets/black-heading-lines.svg';
 import missionIcon from  '../../assets/Mission-Icon.svg';
 import visionIcon from  '../../assets/Vision-Icon.svg';
 import VehicleAdvantage from '../../Components/VehicleAdvantage/VehicleAdvantage';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles(theme => ({
     body: {
@@ -39,6 +41,15 @@ const useStyles = makeStyles(theme => ({
         lineHeight: '28px',
         fontWeight: 500
     },
+    paper2Mobile: {
+        marginBottom: theme.spacing(5),
+        boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
+        fontSize: 18,
+        letterSpacing: 0.63,
+        color: '#232b2b',
+        lineHeight: '28px',
+        fontWeight: 500
+    },
     redHeading: {
         paddingBottom: 15,
         fontSize: 32,
@@ -56,12 +67,56 @@ const useStyles = makeStyles(theme => ({
         width: 1200,
         margin: '40px 40px 0px 40px',
         padding: 40
+    },
+    ml50: {
+        marginLeft: '50px'
+    },
+    ml70: {
+        marginLeft: '70px'
+    },
+    fs17: {
+        fontSize: '17px',
+        textAign: 'center'
+    },
+    center: {
+        textAlign: 'center'
     }
 }));
 
 
 const About = (props) => {
-    const classes = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  const classes = useStyles();
+  const paper2  = (matches) ? classes.paper2: classes.paper2Mobile;
+  const ml50 = (matches) ? '' : classes.ml50;
+  const ml70 = (matches) ? '' : classes.ml70;
+  const centerClass = (matches) ? '' : classes.center;
+  const fs17 = (matches) ? '' : classes.fs17;
+  const flexEndClass = (matches) ? classes.flexEnd : '';
+
+  const visionCard = (matches) ? <Grid container component="div" direction="row" justify="center">
+                                <Grid item xs={11} sm={11} md={7} lg={7}>
+                                    <h3 className={classes.redHeading+' '+classes.mTop50 + ' '+ centerClass}>Vision</h3>
+                                    <p className={fs17}>
+                                        To make purchase of Pre-Owned Two-Wheelers as easy as that of New Two-Wheelers.
+                                    </p>
+                                </Grid>
+                                <Grid item xs={10} sm={10} md={5} lg={5} className={flexEndClass}>
+                                <img alt="" src={visionIcon} height="250" className={ml50}/>
+                                </Grid>
+                                </Grid> : 
+                                <Grid container component="div" direction="row" justify="center">
+                                    <Grid item xs={11} sm={11} md={5} lg={5} className={flexEndClass}>
+                                    <img alt="" src={visionIcon} height="250" className={ml50}/>
+                                    </Grid>
+                                    <Grid item xs={10} sm={10} md={7} lg={7}>
+                                        <h3 className={classes.redHeading+' '+classes.mTop50 + ' '+ centerClass}>Vision</h3>
+                                        <p className={fs17}>
+                                            To make purchase of Pre-Owned Two-Wheelers as easy as that of New Two-Wheelers.
+                                        </p>
+                                    </Grid>
+                                </Grid>
 
     useEffect(() =>{
         try {
@@ -98,29 +153,19 @@ const About = (props) => {
                     </Paper>
                 </Grid>
                 <Grid item xs={11} sm={11} md={11} lg={11}>
-                    <Paper className={classes.paper2}>
-                    <Grid container component="div" direction="row">
-                        <Grid item xs={5} sm={5} md={5} lg={5}>
-                        <img alt="" src={missionIcon} height="250"/>
+                    <Paper className={paper2}>
+                    <Grid container component="div" direction="row" justify="center">
+                        <Grid item xs={11} sm={11} md={5} lg={5}>
+                        <img alt="" src={missionIcon} height="250" className={ml70}/>
                         </Grid>
-                        <Grid item xs={7} sm={7} md={7} lg={7}>
-                            <h3 className={classes.redHeading+' '+classes.mTop50}>Mission</h3>
-                            <p>
+                        <Grid item xs={11} sm={11} md={7} lg={7}>
+                            <h3 className={classes.redHeading+' '+classes.mTop50 +' '+centerClass}>Mission</h3>
+                            <p className={fs17}>
                                 Our mission is to become the most trusted company in the Pre-Owned Two-Wheeler market. We strive to position ourselves as a one-stop destination for buyers and sellers of Pre-Owned Two-Wheelers.
                             </p>
                         </Grid>
-                        </Grid>
-                        <Grid container component="div" direction="row">
-                        <Grid item xs={7} sm={7} md={7} lg={7}>
-                            <h3 className={classes.redHeading+' '+classes.mTop50}>Vision</h3>
-                            <p>
-                                To make purchase of Pre-Owned Two-Wheelers as easy as that of New Two-Wheelers.
-                            </p>
-                        </Grid>
-                        <Grid item xs={5} sm={5} md={5} lg={5} className={classes.flexEnd}>
-                        <img alt="" src={visionIcon} height="250"/>
-                        </Grid>
                     </Grid>
+                        {visionCard}
                     </Paper>
                 </Grid>
             </Grid>
