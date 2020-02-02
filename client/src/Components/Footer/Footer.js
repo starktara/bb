@@ -35,10 +35,7 @@ const Footer = () => {
         </div>
     </div>
     <div className="row last-row">
-        <div className="col s4 m4">
-            <Link to="/copyright" className="copyright">© 2019 BikeBazaar. All rights reserved.</Link>
-        </div>
-        <div className="col s2 m2 offset-s6 offset-m6">
+        <div className="col s12 m2 floatRight">
             <div className="row">
                 <div className="col s3 m3">
                     <Link to="/facebook">
@@ -61,6 +58,9 @@ const Footer = () => {
                     </Link>
                 </div>
             </div>
+        </div>
+        <div className="col s12 m4">
+            <Link to="/copyright" className="copyright">© 2019 BikeBazaar. All rights reserved.</Link>
         </div>
     </div>
 </div>

@@ -373,3 +373,7 @@ i.icon-black {
 .advantage-subtitle-1{
   padding: 0px 30px;
 }
+
+.floatRight {
+  float: right !important;
+}
