@@ -51,6 +51,9 @@ const useStyles = makeStyles(theme => ({
         width: 1200,
         margin: '40px 40px 0px 40px',
         padding: 40
+    },
+    mb100: {
+        marginBottom: '100px'
     }
 }));
 
@@ -82,7 +85,7 @@ const HowItWorks = props => {
                     <h3 className={classes.redHeading}>Best Way to Buy a Pre-Owned Two-Wheeler</h3>
                     <img alt="" src={blackHeadingLines} width="57" height="4"/>
                     <Grid container component="div" direction="row" justify="center" className={classes.subContainer}>
-                        <Grid item xs={4} sm={4} md={4} lg={4}>
+                        <Grid item xs={12} sm={12} md={4} lg={4} className={classes.mb100}>
                             <div>
                                 <h5 className={classes.subHeading}>1. Select</h5>
                             <img src={selectIcon} width={300} alt=""/>
@@ -91,7 +94,7 @@ const HowItWorks = props => {
                                 the most suitable two-wheeler for you from hundreds of options.</p>
                             </div>
                         </Grid>
-                        <Grid item xs={4} sm={4} md={4} lg={4}>
+                        <Grid item xs={12} sm={12} md={4} lg={4} className={classes.mb100}>
                             <div>
                                 <h5 className={classes.subHeading}>2. Visit BikeBazaar Store</h5>
                             <img src={visitIcon} width={300} alt=""/>
@@ -100,7 +103,7 @@ const HowItWorks = props => {
                                 Wheeler chosen by you. You can inspect it on all parameters.</p>
                             </div>
                         </Grid>
-                        <Grid item xs={4} sm={4} md={4} lg={4}>
+                        <Grid item xs={12} sm={12} md={4} lg={4} className={classes.mb100}>
                             <div>
                                 <h5 className={classes.subHeading}>3. Buy</h5>
                             <img src={buyIcon} width={300} alt=""/>
