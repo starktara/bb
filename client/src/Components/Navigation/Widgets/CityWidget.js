@@ -3,12 +3,7 @@ import { connect, useSelector } from "react-redux";
 import * as actions from "../../../store/actions/index";
 
 const CityWidget = (props) => {
-  let stlyes = {
-    fontWeight: 'bold',
-    color: '#ff0000'
-  }
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeCity, setActiveCity] = useState("aluva");
   const updateState = event => {
     setSearchTerm(event.target.value);
   };
@@ -26,7 +21,6 @@ const CityWidget = (props) => {
     let filterData = props.filter;
     filterData.city = `${clickValue}*`;
     props.cityFilter(category, filterData);
-    setActiveCity(clickValue);
   }
 
 
@@ -60,13 +54,13 @@ const CityWidget = (props) => {
         </div>
         <ul className="cat-list">
           <li>
-            <a style={activeCity==='aluva'? stlyes : {} } href="#" onClick={() => searchClick('aluva')}>Aluva</a>
+            <a href="#" onClick={() => searchClick('aluva')}>Aluva</a>
           </li>
           <li>
-            <a style={activeCity==='kolkata'? stlyes : {} } href="javascript:void" onClick={() => searchClick('kolkata')}>Kolkata</a>
+            <a href="javascript:void" onClick={() => searchClick('kolkata')}>Kolkata</a>
           </li>
           <li>
-            <a style={activeCity==='rajahmundry'? stlyes : {} } href="javascript:void" onClick={() => searchClick('rajahmundry')}>Rajahmundry</a>
+            <a href="javascript:void" onClick={() => searchClick('rajahmundry')}>Rajahmundry</a>
           </li>
         </ul>
       </div>
