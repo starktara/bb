@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import searchIcon from "../../assets/search-icon.svg";
 import locationIcon from "../../assets/location-icon.svg";
@@ -7,36 +7,34 @@ import logoPng from "../../assets/logo.png";
 import logo from "../../assets/logo.svg";
 import Grid from "@material-ui/core/Grid";
 import M from "materialize-css";
-import './MainMenu.css';
-import MobNav from '../MobileNav/MobNav';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import "./MainMenu.css";
+import MobNav from "../MobileNav/MobNav";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useSelector, useDispatch } from "react-redux";
-import { CHANGE_CITY } from "../../store/actions/actionTypes"
-
+import { CHANGE_CITY } from "../../store/actions/actionTypes";
 
 const MainMenu = props => {
   const dispatch = useDispatch();
 
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
-  const selectedCity = useSelector((state) => state.vehicleDetails.selectedCity);
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  const selectedCity = useSelector(state => state.vehicleDetails.selectedCity);
   const [locations] = useState(["Aluva", "Kolkata", "Rajahmundry"]);
   const [currentLocation, setCurrentLocation] = useState(selectedCity);
   useEffect(() => {
-    let dropDown = document.querySelectorAll('.dropdown-trigger');
+    let dropDown = document.querySelectorAll(".dropdown-trigger");
     M.Dropdown.init(dropDown, {
       coverTrigger: false
     });
   });
 
-
   const setLocation = key => {
     const loc = locations[key];
-    dispatch({ type: CHANGE_CITY, payload: loc })
+    dispatch({ type: CHANGE_CITY, payload: loc });
     setCurrentLocation(loc);
-    let displayLoc = (loc.length > 8) ? loc.substr(0, 7) + '..' : loc;
-    document.querySelector('#currentLocation').innerText = displayLoc;
+    let displayLoc = loc.length > 8 ? loc.substr(0, 7) + ".." : loc;
+    document.querySelector("#currentLocation").innerText = displayLoc;
   };
   const [searchTerm, setSearchTerm] = useState("");
   const updateState = event => {
@@ -65,10 +63,10 @@ const MainMenu = props => {
                       value={searchTerm}
                       onChange={updateState}
                     />
-                    <Link to={`/category/bike?searchTerm=${searchTerm}&city=${currentLocation}`}>
-                      <button
-                        className="btn search-label-btn"
-                        type="submit">
+                    <Link
+                      to={`/category/bike?searchTerm=${searchTerm}&city=${currentLocation}`}
+                    >
+                      <button className="btn search-label-btn" type="submit">
                         <img src={searchIcon} height="25" alt="" />
                       </button>
                     </Link>
@@ -77,22 +75,40 @@ const MainMenu = props => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={2} sm={2} md={2} lg={2} className="location-btn-container">
-            <a className='dropdown-trigger' data-target='dropdown1'>
+          <Grid
+            item
+            xs={2}
+            sm={2}
+            md={2}
+            lg={2}
+            className="location-btn-container"
+          >
+            <a className="dropdown-trigger" data-target="dropdown1">
               <div className="location-btn">
                 <div className="icon-wrapper">
                   <img src={locationIcon} height="20" alt="" />
                 </div>
-                <span className="location-btn-text" id="currentLocation">{currentLocation}</span>
-                <img src={dropDown} height="11" className="dropdown-icon" alt="" />
+                <span className="location-btn-text" id="currentLocation">
+                  {currentLocation}
+                </span>
+                <img
+                  src={dropDown}
+                  height="11"
+                  className="dropdown-icon"
+                  alt=""
+                />
               </div>
             </a>
-            <ul id='dropdown1' className='dropdown-content'>
+            <ul id="dropdown1" className="dropdown-content">
               {locations.map((location, key) => {
                 if (location !== currentLocation) {
                   return (
                     <li key={key} onClick={() => setLocation(key)}>
-                      <a href="#!">{location}</a>
+                      <Link
+                        to={`/category/bike?searchTerm=${searchTerm}&city=${location}`}
+                      >
+                        {location}
+                      </Link>
                     </li>
                   );
                 }
@@ -100,9 +116,20 @@ const MainMenu = props => {
             </ul>
           </Grid>
         </Grid>
-        <Grid container component="div" direction="row" className="second-nav-wrapper row" justify="center">
+        <Grid
+          container
+          component="div"
+          direction="row"
+          className="second-nav-wrapper row"
+          justify="center"
+        >
           <Grid item xs={10} sm={10} md={10} lg={10}>
-            <Grid container component="div" direction="row" className="option-row">
+            <Grid
+              container
+              component="div"
+              direction="row"
+              className="option-row"
+            >
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <ul className="nav-options">
                   <li>
@@ -117,7 +144,7 @@ const MainMenu = props => {
                   <li>
                     <Link to="/becomefranchiseowner">
                       BECOME A FRANCHISE OWNER
-                      </Link>
+                    </Link>
                   </li>
                 </ul>
               </Grid>
@@ -125,12 +152,10 @@ const MainMenu = props => {
           </Grid>
         </Grid>
       </nav>
-    )
+    );
   } else {
-    return (
-      <MobNav />
-    )
+    return <MobNav />;
   }
-}
+};
 
 export default MainMenu;

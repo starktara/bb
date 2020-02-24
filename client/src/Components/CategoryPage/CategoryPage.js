@@ -34,7 +34,11 @@ const CategoryPage = props => {
       searchTerm = search.get("searchTerm") ? search.get("searchTerm") : "";
     }
     dispatch(actions.getVehicles(category, stateFilterData, searchTerm));
-  }, [props.history.location.search, props.match.params.category]);
+  }, [
+    props.history.location.search,
+    props.match.params.category,
+    selectedCity
+  ]);
 
   useEffect(() => {
     dispatch(actions.getPaginatedData(0, 9));
