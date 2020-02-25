@@ -98,7 +98,7 @@ const CategoryPage = props => {
   return (
     <div id="CategoryPage">
       <Header />
-      <MainMenu />
+      <MainMenu showLocationBtn="true" />
       <Grid
         container
         component="div"

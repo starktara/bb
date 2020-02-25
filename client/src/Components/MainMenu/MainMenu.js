@@ -41,6 +41,40 @@ const MainMenu = props => {
     setSearchTerm(event.target.value);
   };
 
+  const locationBtn =
+    props.showLocationBtn == undefined ? (
+      <div>
+        <a className="dropdown-trigger" data-target="dropdown1">
+          <div className="location-btn">
+            <div className="icon-wrapper">
+              <img src={locationIcon} height="20" alt="" />
+            </div>
+            <span className="location-btn-text" id="currentLocation">
+              {currentLocation}
+            </span>
+            <img src={dropDown} height="11" className="dropdown-icon" alt="" />
+          </div>
+        </a>
+        <ul id="dropdown1" className="dropdown-content">
+          {locations.map((location, key) => {
+            if (location !== currentLocation) {
+              return (
+                <li key={key} onClick={() => setLocation(key)}>
+                  <Link
+                    to={`/category/bike?searchTerm=${searchTerm}&city=${location}`}
+                  >
+                    {location}
+                  </Link>
+                </li>
+              );
+            }
+          })}
+        </ul>
+      </div>
+    ) : (
+      <div></div>
+    );
+
   if (matches) {
     return (
       <nav className="nav-extended nav-color sticky-nav">
@@ -83,37 +117,7 @@ const MainMenu = props => {
             lg={2}
             className="location-btn-container"
           >
-            <a className="dropdown-trigger" data-target="dropdown1">
-              <div className="location-btn">
-                <div className="icon-wrapper">
-                  <img src={locationIcon} height="20" alt="" />
-                </div>
-                <span className="location-btn-text" id="currentLocation">
-                  {currentLocation}
-                </span>
-                <img
-                  src={dropDown}
-                  height="11"
-                  className="dropdown-icon"
-                  alt=""
-                />
-              </div>
-            </a>
-            <ul id="dropdown1" className="dropdown-content">
-              {locations.map((location, key) => {
-                if (location !== currentLocation) {
-                  return (
-                    <li key={key} onClick={() => setLocation(key)}>
-                      <Link
-                        to={`/category/bike?searchTerm=${searchTerm}&city=${location}`}
-                      >
-                        {location}
-                      </Link>
-                    </li>
-                  );
-                }
-              })}
-            </ul>
+            {locationBtn}
           </Grid>
         </Grid>
         <Grid

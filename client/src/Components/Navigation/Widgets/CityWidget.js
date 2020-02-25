@@ -1,28 +1,48 @@
-import React, { useState } from "react";
-import { connect, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { connect, useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../store/actions/index";
+import { withStyles } from "@material-ui/core/styles";
 
-const CityWidget = (props) => {
+const BBRadio = withStyles({
+  root: {
+    "&$checked": {
+      color: "#e92d2c"
+    }
+  },
+  checked: {}
+})(props => <Radio {...props} />);
+
+const CityWidget = props => {
+  const { selectedCity } = useSelector(state => state.vehicleDetails);
   const [searchTerm, setSearchTerm] = useState("");
+  const [city, setCity] = useState("");
   const updateState = event => {
     setSearchTerm(event.target.value);
+    setCity(searchTerm);
   };
 
-  const searchCity = (event) => {
+  useEffect(() => {
+    setCity(selectedCity);
+  }, []);
+
+  const searchCity = event => {
     event.preventDefault();
     let category = props.category;
     let filterData = props.filter;
     filterData.city = `${searchTerm}*`;
     props.cityFilter(category, filterData);
-  }
+  };
 
-  const searchClick = (clickValue) => {
+  const searchClick = clickValue => {
     let category = props.category;
     let filterData = props.filter;
-    filterData.city = `${clickValue}*`;
+    setCity(clickValue.target.value);
+    filterData.city = `${clickValue.target.value}*`;
     props.cityFilter(category, filterData);
-  }
-
+  };
 
   return (
     <div className="CityWidget">
@@ -52,17 +72,34 @@ const CityWidget = (props) => {
             </button>
           </form>
         </div>
-        <ul className="cat-list">
-          <li>
-            <a href="#" onClick={() => searchClick('aluva')}>Aluva</a>
-          </li>
-          <li>
-            <a href="javascript:void" onClick={() => searchClick('kolkata')}>Kolkata</a>
-          </li>
-          <li>
-            <a href="javascript:void" onClick={() => searchClick('rajahmundry')}>Rajahmundry</a>
-          </li>
-        </ul>
+        <RadioGroup aria-label="gender" name="city" onChange={searchClick}>
+          <ul className="cat-list">
+            <li>
+              <FormControlLabel
+                value="Aluva"
+                control={<BBRadio />}
+                label="Aluva"
+                checked={city === "Aluva"}
+              />
+            </li>
+            <li>
+              <FormControlLabel
+                value="Kolkata"
+                control={<BBRadio />}
+                label="Kolkata"
+                checked={city === "Kolkata"}
+              />
+            </li>
+            <li>
+              <FormControlLabel
+                value="Rajahmundry"
+                control={<BBRadio />}
+                label="Rajahmundry"
+                checked={city === "Rajahmundry"}
+              />
+            </li>
+          </ul>
+        </RadioGroup>
       </div>
     </div>
   );
@@ -81,7 +118,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CityWidget);
+export default connect(mapStateToProps, mapDispatchToProps)(CityWidget);
