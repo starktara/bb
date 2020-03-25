@@ -581,7 +581,7 @@ router.get("/uploadLocations", (req, res) => {
     const dataset = [
       {
         id: 1,
-        name: "Jkb – Bike Bazaar",
+        name: "Jkb – BikeBazaar",
         city: "Aluva",
         state: "Kerela",
         locality: "Building No. XVII – 27&28 , Pullinchode, Aluva - 683101",

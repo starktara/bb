@@ -46,13 +46,13 @@ const MainMenu = props => {
       <div>
         <a className="dropdown-trigger" data-target="dropdown1">
           <div className="location-btn">
-            <div className="icon-wrapper">
+            <div className="icon-wrapper" style={{'margin-left': -20}}>
               <img src={locationIcon} height="20" alt="" />
             </div>
-            <span className="location-btn-text" id="currentLocation">
+            <span className="location-btn-text" id="currentLocation" style={{'margin-right': 20}}>
               {currentLocation}
             </span>
-            <img src={dropDown} height="11" className="dropdown-icon" alt="" />
+            <img src={dropDown} style={{'margin-right': -20, 'marginLeft': 25}}height="11" className="dropdown-icon" alt="" />
           </div>
         </a>
         <ul id="dropdown1" className="dropdown-content">

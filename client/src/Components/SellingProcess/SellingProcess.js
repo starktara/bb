@@ -31,10 +31,11 @@ const useStyles = makeStyles(theme => ({
       subHeading:{
         fontSize: 19,
         fontWeight: 600,
-        lineHeight: '2em'
+        lineHeight: '1.5em'
       },
       text:{
-        fontSize: 15
+        fontSize: 15,
+        lineHeight: '1.5em'
       }
 }));
 

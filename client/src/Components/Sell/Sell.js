@@ -716,15 +716,16 @@ const Sell = props => {
                           <Grid container component="div" direction="row" justify="space-evenly">
                             <Grid item xs={11} sm={11} md={11} lg={11}>
                               <label htmlFor="image">
-                                <span className={classes.label}> Upload images </span>
+                                <span className={classes.label}> Upload images </span>&nbsp;&nbsp;(Images should be in jpeg, jpg or png formats only)
                               </label>
+                              <br />
                               <input 
                                title=""
                                className="form-control transparent" 
                                type="file"
                                onChange={(event)=>selectFiles(event, formData)} 
                                multiple
-                               /> 
+                               />
                                <br />
                                { formData.image.message? <p className="text-info">{formData.image.message}</p>: ''}
                                { formData.image.imageNames.map((name, _i) => (
