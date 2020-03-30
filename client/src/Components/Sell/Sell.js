@@ -332,7 +332,7 @@ const Sell = props => {
     for (let i = 0; i < event.target.files.length; i++) {
       images.push(event.target.files.item(i));
     }
-    images = images.filter(image => image.name.match(/\.(jpg|jpeg|png)$/));
+    images = images.filter(image => image.name.match(/\.(jpg|jpeg|png|tiff)$/));
     if(images.length > 3){
       images = images.slice(images.length-3, images.length);
     }
@@ -716,7 +716,7 @@ const Sell = props => {
                           <Grid container component="div" direction="row" justify="space-evenly">
                             <Grid item xs={11} sm={11} md={11} lg={11}>
                               <label htmlFor="image">
-                                <span className={classes.label}> Upload images </span>&nbsp;&nbsp;(Images should be in jpeg, jpg or png formats only)
+                                <span className={classes.label}> Upload images </span>&nbsp;&nbsp;(Images should be in jpeg, png or tiff formats only)
                               </label>
                               <br />
                               <input 
