@@ -165,7 +165,7 @@ const About = (props) => {
                             </p>
                         </Grid>
                     </Grid>
-                        {visionCard}
+                        {/* {visionCard} */}
                     </Paper>
                 </Grid>
             </Grid>
