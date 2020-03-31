@@ -172,7 +172,7 @@ router.post("/insertFranchiseRequest", (req, res) => {
         </tr>
       </table>
     `;
-    const sendToEmail = 'franchisequery@bikebazaar.com'; //email to send alerts to
+    const sendToEmail = 'rahul.khedkar@bikebazaar.com'; //email to send alerts to
     
     mailer(output, 'Franchise Request', sendToEmail).catch(console.error);
 
@@ -258,7 +258,7 @@ router.post("/insertSellrequest",(req,res) => {
       </table>
     `;
     //const sendToEmail = 'inspection@bikebazaar.com'; //email to send alerts to
-    const sendToEmail = 'ankit@tekonika.co';
+    const sendToEmail = 'rahul.khedkar@bikebazaar.com';
     mailer(output, 'Appointment Booked', sendToEmail).catch(console.error);
 
     const body = dataset.flatMap(doc => [

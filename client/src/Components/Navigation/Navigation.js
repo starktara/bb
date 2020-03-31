@@ -27,7 +27,7 @@ const Navigation = () => {
         <BrandWidget
           brands={BRANDS}
         />
-        <YearWidget startYear={2004} endYear={2019} />
+        <YearWidget startYear={2005} endYear={2020} />
         <KmWidget />
       </div>
     </Grid>

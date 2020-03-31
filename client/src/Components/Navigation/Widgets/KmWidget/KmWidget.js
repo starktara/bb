@@ -43,14 +43,14 @@ class KmWidget extends Component {
         </h3>
         <div className="WidgetBody">
           <div className="MinMaxRange">
-            <div className="MinRange">0 KM</div>
+            <div className="MinRange">5000 KM</div>
             <div className="MaxRange">1,00,000 KMs</div>
             <br className="clr" />
           </div>
           <Slider
             value={this.state.slideValue}
             onChange={this.handleChange}
-            min={0}
+            min={5000}
             max={100000}
             step={5000}
             tooltip={false}
