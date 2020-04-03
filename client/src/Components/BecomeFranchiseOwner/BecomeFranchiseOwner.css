@@ -9,7 +9,7 @@
   color: #232c2b;
 }
 .about-bb {
-  margin: 20px 0px !important;
+  margin: 0px 0px !important;
   font-size: 16px;
   letter-spacing: 0.53px;
   line-height: 26px;
@@ -22,13 +22,14 @@
   color: #ff0000;
   font-size: 34px;
   font-weight: bold;
+  margin-bottom: 20px;
 }
 .paper {
   border-radius: 4px;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
   padding: 15px 20px;
-  margin: 0 0px 40px 0;
+  margin: 0 0px 0px 0;
 }
 .franchiseAdvantage {
   background-color: #e5e5e5;
@@ -203,7 +204,10 @@
 .fieldname{
   font-size: 15px;
 }
-#paper::after {
+.imageMobile {
+  max-width: 300px;
+}
+/* #paper::after {
   content: "";
   background: url(/static/media/Img_001.dec436e4.svg) no-repeat;
   opacity: 0.5;
@@ -228,7 +232,7 @@
   z-index: 1;
   height: 1000px;
   background-size: 375px;
-}
+} */
 
 .advantageArrowMobile {
   font-size: 14px !important;

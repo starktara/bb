@@ -8,6 +8,7 @@ h2 {
   background-color: #ffffff;
   padding: 15px 20px;
   margin: 0 0px 40px 0;
+  min-height: 150px;
 }
 .pageDtl ul {
   list-style: none;

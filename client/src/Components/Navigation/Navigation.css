@@ -137,9 +137,12 @@
   z-index: 0;
   margin-top: 3px;
 }
-[type="checkbox"].filled-in:checked + span:not(.lever):after {
+[type="checkbox"].filled-in:checked + span:not(.lever)::after {
   border: 1px solid #ff0000 !important;
   background-color: #ff0000;
+  background-image: url("../../assets/icons/tick.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
   height: 18px;
   width: 18px;
   margin-top: 3px;
