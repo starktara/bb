@@ -157,8 +157,10 @@ const VehicleData = (props) => {
           });
           setSuccessSubmit(true);
       };
+  
 
     useEffect(() => {
+      console.log("props.data.images", props.data)
       let vehicleId = {
         ...formData,
         "vehicleid": {
@@ -168,36 +170,36 @@ const VehicleData = (props) => {
         }
       };
       setFormData(vehicleId);
-        setSliderImages(props.data.images);
-        var ul = document.querySelector('.thumbs');
-        ul.innerHTML = '';
-        for(var i=0;i<props.data.images.length;i++){
-            var li = document.createElement('li');
-            li.classList = 'thumb';
-            li.role = 'button';
-            li.tabIndex = 0;
-            var img = document.createElement('img');
-            img.src = vehicleImagePath + props.data.images[i];
-            li.appendChild(img);
-            ul.appendChild(li);
-        }
+      setSliderImages(props.data.images);
+      // var ul = document.querySelector('.thumbs');
+      // ul.innerHTML = '';
+      // for(var i=0;i<props.data.images.length;i++){
+      //   var li = document.createElement('li');
+      //   li.classList = 'thumb';
+      //   li.role = 'button';
+      //   li.tabIndex = 0;
+      //   var img = document.createElement('img');
+      //   img.src = vehicleImagePath + props.data.images[i];
+      //   li.appendChild(img);
+      //   ul.appendChild(li);
+      // }
     }, [props.data.images]);
     
     return( 
         <Grid container component="div" direction="row">
         {tooltip}
-             <Grid item xs={12} md={12} sm={12} lg={6} className="vehicleGalSec">
-                <div className="vehicleGal">
-                    <Carousel dynamicHeight={true}>
-                        {
-                            sliderImages.map((image,key)=>{
-                                return <div key={key}>
-                                <img src={vehicleImagePath+image} alt=""/>
-                            </div>
-                            })
-                        }
-                    </Carousel>
-                </div>
+            <Grid item xs={12} md={12} sm={12} lg={6} className="vehicleGalSec">
+              <div className="vehicleGal">
+                <Carousel dynamicHeight={true} showThumbs={true} key={sliderImages[0]} useKeyboardArrows={true}>
+                    {
+                      sliderImages.map((image,key)=>{
+                          return <div key={key}>
+                                    <img src={vehicleImagePath+image} alt=""/>
+                                </div>
+                      })
+                    }
+                </Carousel>
+              </div>
             </Grid>
             <Grid item xs={12} md={12} sm={12} lg={6}>
                 <div className="vehicleDetails">

@@ -1,3 +1,23 @@
 .carousel .thumb img {
   height: 40px;
+  transition: transform .5s ease;
+}
+
+.carousel .thumb:hover {
+  border: none !important;
+}
+
+.carousel .thumb:hover img {
+  height: 55px;
+  transform: scale(1.5);
+}
+
+.carousel .thumb.selected img{
+  height: 55px;
+  transform: scale(1.5);
+  border: none !important;
+}
+
+.carousel .thumb{
+  border: none !important;
 }
