@@ -100,7 +100,13 @@ router.get("/getCategoryById", (req, res) => {
         query: {
           bool: {
             must: mustArray,
-            should: shouldArray
+            filter: [
+              {
+                bool: {
+                  should: shouldArray
+                }
+              }
+            ]            
           }
         },
         sort: [sortKey]
