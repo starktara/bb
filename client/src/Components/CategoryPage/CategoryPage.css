@@ -238,6 +238,10 @@ form {
   border-radius: 4px;
   font-weight: bold;
 }
+.vehicleDetails .PriceSec span.save strong { 
+  font-family: RupeeForadian; 
+  font-size: 21px; 
+}
 
 .vehicleDetails .ProductDetail {
   padding: 25px;

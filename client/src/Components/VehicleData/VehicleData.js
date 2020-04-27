@@ -8,7 +8,7 @@ import Tooltip from "../UI/Tooltip/Tooltip";
 import axios from "axios";
 import isEmpty from "validator/lib/isEmpty";
 import isAlpha from "validator/lib/isAlpha";
-import isEmail from "validator/lib/isEmail";
+import isEmail from "validator/lib/isEmail"; 
 import isMobilePhone from "validator/lib/isMobilePhone";
 
 import "./VehicleData.css";
@@ -100,10 +100,12 @@ const VehicleData = (props) => {
       );
 
     const vehicleImagePath = '../../vehicles/';
-    var discount = null;
+    let discount = null;
+    let discountAmt = 0;
 
     if(props.data.discount){  
-        discount = <span className="save">Save {props.data.discount}%</span>
+        discountAmt = props.data.discount;
+        discount = <span className="save">Save <strong>`</strong>{props.data.discount}</span>
     }
 
     const getStoreDetails = () =>{
@@ -204,8 +206,8 @@ const VehicleData = (props) => {
             <Grid item xs={12} md={12} sm={12} lg={6}>
                 <div className="vehicleDetails">
                     <div className="PriceSec">
-                        <p className="price"><strong>`</strong>{props.data.price}</p>
-                        <span className="del"><strong>`</strong>{props.data.price}</span>
+                        <p className="price"><strong>`</strong>{props.data.price - discountAmt}</p>
+                        {discount && <span className="del"><strong>`</strong>{props.data.price}</span>}
                         {discount}
                     </div>
                     <div className="ProductDetail">
