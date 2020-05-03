@@ -45,14 +45,14 @@ const MainMenu = props => {
     props.showLocationBtn == undefined ? (
       <div> 
         <a className="dropdown-trigger" data-target="dropdown1">
-          <div className="location-btn">
+          <div className="location-btn" style={{"display": "flex", "justifyContent": "space-around", "alignItems": "flex-start"}}>
             <div className="icon-wrapper">
               <img src={locationIcon} height="20" alt="" />
             </div>
-            <span className="location-btn-text" id="currentLocation">
+            <span style={{"marginLeft":"-20px"}} className="location-btn-text" id="currentLocation">
               {currentLocation}
             </span>
-            <img src={dropDown} style={{'marginLeft': 25}}height="11" className="dropdown-icon" alt="" />
+            <img src={dropDown} height="11" className="dropdown-icon" alt="" />
           </div>
         </a>
         <ul id="dropdown1" className="dropdown-content">

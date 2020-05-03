@@ -19,13 +19,13 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   mapContainer: {
-    width: 372,
+    width: "100%",
     height: 400
   },
-  mapContainerMobile: {
-    width: 254,
-    height: 400 
-  }
+  // mapContainerMobile: {
+  //   width: "100%",
+  //   height: 400 
+  // }
 }));
 
 const mapProps = {
@@ -170,7 +170,7 @@ const LocateStore = props => {
               <div className="locationAddress">
                 {thisLocation.address}
               </div>
-              <div className={(matches) ? classes.mapContainer : classes.mapContainerMobile}>
+              <div className={classes.mapContainer}>
                 <GoogleMap
                   center={thisLocation.coordinates}
                   zoom={mapProps.zoom}
@@ -190,7 +190,7 @@ const LocateStore = props => {
                 <div className="locationAddress">
                   {thisLocation.address}
                 </div>
-                <div className={(matches) ? classes.mapContainer : classes.mapContainerMobile}>
+                <div className={classes.mapContainer}>
                   <GoogleMap
                     center={thisLocation.coordinates}
                     zoom={mapProps.zoom}
