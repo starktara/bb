@@ -17,6 +17,8 @@ import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
 import TermsAndConditions from './Components/TermsAndConditions/TermsAndConditions';
 import AdminListPage from './Components/AdminListPage/AdminListPage';
 import AdminUpload from './Components/AdminUpload/AdminUpload';
+import BlogPostHome from './Components/Blog/BlogPostHome'
+import BlogPost from './Components/Blog/BlogPost'
 
 const App = () => {
 
@@ -38,6 +40,8 @@ const App = () => {
             <Route path="/howitworks" component={HowItWorks} />
             <Route path="/privacypolicy" component={PrivacyPolicy} />
             <Route path="/termsandconditions" component={TermsAndConditions} />
+            <Route exact path='/blog/:id' component={BlogPost} />   
+            <Route exact path='/blog' component={BlogPostHome} /> 
         </Switch>
     );
 }

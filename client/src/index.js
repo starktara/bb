@@ -11,6 +11,7 @@ import authReducer from './store/reducers/auth';
 import errorReducer from  "./store/reducers/errorReducer"
 import  vehicleDetailsReducer from "./store/reducers/vehicleDetails";
 import  storeDetailsReducer from "./store/reducers/storeReducer";
+import blogReducer from "./store/reducers/blogReducer";
 
 const composeEnhancers = compose;
 
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   auth: authReducer,
   errors: errorReducer,
   vehicleDetails: vehicleDetailsReducer,
-  storeDetails: storeDetailsReducer
+  storeDetails: storeDetailsReducer,
+  blogDetails: blogReducer
 });
 
 

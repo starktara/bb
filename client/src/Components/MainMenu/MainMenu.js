@@ -150,6 +150,9 @@ const MainMenu = props => {
                       BECOME A FRANCHISE OWNER
                     </Link>
                   </li>
+                  <li>
+                    <Link to="/blog">BLOG</Link>
+                  </li>
                 </ul>
               </Grid>
             </Grid>
