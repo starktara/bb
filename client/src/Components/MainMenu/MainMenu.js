@@ -4,7 +4,6 @@ import searchIcon from "../../assets/search-icon.svg";
 import locationIcon from "../../assets/location-icon.svg";
 import dropDown from "../../assets/drop-down.svg";
 import logoPng from "../../assets/logo.png";
-import logo from "../../assets/logo.svg";
 import Grid from "@material-ui/core/Grid";
 import M from "materialize-css";
 import "./MainMenu.css";
@@ -13,6 +12,66 @@ import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useSelector, useDispatch } from "react-redux";
 import { CHANGE_CITY } from "../../store/actions/actionTypes";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
+const BuyButton = () => {
+  const [anchorEl, setAnchorEl] = useState();
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  return(
+    <li>
+      <span className="buy-dropdown-text" onClick={handleClick}>
+        BUY
+        <ExpandMoreIcon className="buy-dropdown-icon" />
+      </span>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+        getContentAnchorEl={null}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        transformOrigin={{ vertical: "top", horizontal: "left" }}
+        MenuListProps={{ onMouseLeave: handleClose }}
+        PaperProps={{
+          style: {
+            backgroundColor: "white",
+            color: "black",
+            borderRadius: 0,
+            fontSize: 16,
+            width: 200,
+          },
+        }}
+      >
+      <Link to={"/category/bike"}>
+        <MenuItem onClick={handleClose} >
+          Motorcycle
+        </MenuItem>
+      </Link>
+      <Link to={"/category/scooter"}>
+        <MenuItem onClick={handleClose} >
+          Scooter
+        </MenuItem>
+      </Link>
+      <Link to={"/category/high_end_bike"}>
+        <MenuItem onClick={handleClose} >
+          High-End Motorcycle
+        </MenuItem>
+      </Link>
+      </Menu>
+    </li>
+  )
+};
 
 const MainMenu = props => {
   const dispatch = useDispatch();
@@ -136,9 +195,7 @@ const MainMenu = props => {
             >
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <ul className="nav-options">
-                  <li>
-                    <Link to="/category/bike">BUY</Link>
-                  </li>
+                  <BuyButton />
                   <li>
                     <Link to="/sell">SELL</Link>
                   </li>
