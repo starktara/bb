@@ -23,3 +23,10 @@
     font-family: inherit !important;
     color: red !important;
 }
+
+.dd-city-list {
+    font-size: 16px;
+    display: block;
+    line-height: 22px;
+    padding: 14px 16px;
+}

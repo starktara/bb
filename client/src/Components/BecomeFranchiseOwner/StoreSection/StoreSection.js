@@ -39,7 +39,7 @@ const StoreSection = () => {
                     <div className="StoreCard">
                         <img src={jkbIcon} alt="" />
                         <div className="detail">
-                            <h3>BikeBazaar, JKB Motors</h3>
+                            <h3>BikeBazaar – JKB Motors, Aluva</h3>
                             <p className="address">
                                 Jkb - BikeBazaar, Near JKB Bajaj,Pulinchode Jn. Bypass,
                                 Aluva - 683101, Kerala, India
@@ -51,7 +51,7 @@ const StoreSection = () => {
                     <div className="StoreCard">
                         <img src={mvcIcon} alt="" />
                         <div className="detail">
-                            <h3>BikeBazaar, MCV Wheels</h3>
+                            <h3>BikeBazaar – MCV Wheels, Rajahmundry</h3>
                             <p className="address">
                                 D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry - 533103, Andhra Pradesh, India.
                             </p>

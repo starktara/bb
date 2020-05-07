@@ -4,6 +4,7 @@ import searchIcon from "../../assets/search-icon.svg";
 import locationIcon from "../../assets/location-icon.svg";
 import dropDown from "../../assets/drop-down.svg";
 import logoPng from "../../assets/logo.png";
+import bikeBazaarLogo from "../../assets/bikeBazaarLogo.svg";
 import Grid from "@material-ui/core/Grid";
 import M from "materialize-css";
 import "./MainMenu.css";
@@ -87,13 +88,17 @@ const MainMenu = props => {
       coverTrigger: false
     });
   });
-
   const setLocation = key => {
     const loc = locations[key];
+    console.log("jerherjejrehre", loc)
     dispatch({ type: CHANGE_CITY, payload: loc });
     setCurrentLocation(loc);
     let displayLoc = loc.length > 8 ? loc.substr(0, 7) + ".." : loc;
     document.querySelector("#currentLocation").innerText = displayLoc;
+    window.scrollTo({
+      top: 500,
+      behavior: 'smooth'
+    });
   };
   const [searchTerm, setSearchTerm] = useState("");
   const updateState = event => {
@@ -118,12 +123,13 @@ const MainMenu = props => {
           {locations.map((location, key) => {
             if (location !== currentLocation) {
               return (
-                <li key={key} onClick={() => setLocation(key)}>
-                  <Link
+                <li className="dd-city-list" key={key} onClick={() => setLocation(key)}>
+                  {/* <Link
                     to={`/category/bike?searchTerm=${searchTerm}&city=${location}`}
                   >
                     {location}
-                  </Link>
+                  </Link> */}
+                  {location}
                 </li>
               );
             }
@@ -140,7 +146,7 @@ const MainMenu = props => {
         <Grid container component="div" direction="row" className="nav-wrapper">
           <Grid item xs={2} sm={2} md={2} lg={2} className="header-title">
             <Link to="/">
-              <img src={logoPng} height="25" id="logoImg" alt="" />
+              <img src={bikeBazaarLogo} height="25" id="logoImg" alt="" />
             </Link>
           </Grid>
           <Grid item xs={8} sm={8} md={8} lg={8}>
