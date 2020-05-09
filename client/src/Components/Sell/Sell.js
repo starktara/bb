@@ -262,7 +262,7 @@ const Sell = props => {
     }
   });
 
-  // const [showImage, setShowImage] = useState([]);
+  const [previewImage, setPreviewImage] = useState([]);
 
   const [successSubmit, setSuccessSubmit] = useState(false);
 
@@ -289,29 +289,7 @@ const Sell = props => {
     />
   );
 
-//   const readURI = (e) => {
-//     if (e.target.files) {
-//         const files = Array.from(e.target.files);
-//         Promise.all(files.map(file => {
-//             return (new Promise((resolve,reject) => {
-//                 const reader = new FileReader();
-//                 reader.addEventListener('load', (ev) => {
-//                   resolve(ev.target.result);
-//                 });
-//                 reader.addEventListener('error', reject);
-//                 reader.readAsDataURL(file);
-//             }));
-//         }))
-//         .then(images => {
-//             setShowImage([...showImage, images]);
-//         }, error => {
-//             console.error(error);
-//         });
-//     }
-// }
-
-  const removeImageHandler = (i, formData) => {
-    const copyData = formData;
+  const removeImageHandler = (i) => {
     let imgs = formData.image.images;
     imgs.splice(i, 1);
     let imgNames = imgs.map(img => img.name);
@@ -327,7 +305,6 @@ const Sell = props => {
   }
 
   const selectFiles = (event, formData) => {
-    // readURI(event);
     let images = formData.image.images;
     for (let i = 0; i < event.target.files.length; i++) {
       images.push(event.target.files.item(i));
@@ -336,6 +313,7 @@ const Sell = props => {
     if(images.length > 3){
       images = images.slice(images.length-3, images.length);
     }
+    setPreviewImage(images);
     let imgNames = images.map(image => image.name);
     let message = `${images.length} valid image(s) selected`;
     setFormData({
@@ -726,14 +704,16 @@ const Sell = props => {
                                onChange={(event)=>selectFiles(event, formData)} 
                                multiple
                                />
-                               <br />
-                               { formData.image.message? <p className="text-info">{formData.image.message}</p>: ''}
-                               { formData.image.imageNames.map((name, _i) => (
+                              <br />
+                              { formData.image.message? <p className="text-info">{formData.image.message}</p>: ''}
+                              <div className={matches ? "preview-image-container" : "preview-image-container-mobile"}>
+                                {previewImage.map((file, _i)=>(
                                   <div key={_i} className="image-preview">
-                                    <li>{name}</li>
-                                    <DeleteIcon className="delete-icon" onClick={() => removeImageHandler(_i, formData)} />
+                                    <img src={URL.createObjectURL(file)} width={200} height={150} />
+                                    <span title="Remove image"><DeleteIcon className="delete-icon" onClick={() => removeImageHandler(_i)} /></span>
                                   </div>
-                               ))}
+                                  ))}
+                              </div>  
                             </Grid> 
                           </Grid>
                         </Grid>

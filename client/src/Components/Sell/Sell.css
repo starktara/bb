@@ -63,6 +63,20 @@ label{
 }
 .image-preview {
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+  border: 1px solid #d1d1d1;
+}
+.preview-image-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.preview-image-container-mobile {
+  display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }

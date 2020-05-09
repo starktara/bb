@@ -36,6 +36,9 @@ const Homepage = () => {
     setSearchTerm(event.target.value);
   };
   const [sliderState, changeSlider] = useState(null);
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, []);
 
   const initCar = direction => {
     if (sliderState == null) {

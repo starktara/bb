@@ -2,3 +2,31 @@
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
+
+.buy-dropdown-text {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.02px;
+    cursor: pointer;
+}
+
+.buy-dropdown-icon {
+    margin-left: 5px;
+    color: white;
+    font-size: 2rem !important;
+}
+
+.MuiMenuItem-root {
+    font-weight: 600 !important;
+    font-family: inherit !important;
+    color: red !important;
+}
+
+.dd-city-list {
+    font-size: 16px;
+    display: block;
+    line-height: 22px;
+    padding: 14px 16px;
+}

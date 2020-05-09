@@ -49,8 +49,8 @@ const useStyles = makeStyles(theme => ({
     },
     advantageContainer:{
         width: 1200,
-        margin: '40px 40px 0px 40px',
-        padding: 40
+        margin: '40px auto',
+        padding: '40px'
     },
     mb100: {
         marginBottom: '100px'
@@ -117,8 +117,8 @@ const HowItWorks = props => {
                     </Grid>
                     </Paper>
                 </Grid>
+                <VehicleAdvantage continerStyle={classes.advantageContainer}/>
             </Grid>
-            <VehicleAdvantage continerStyle={classes.advantageContainer}/>
             <Footer />
         </div>
     );

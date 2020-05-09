@@ -424,7 +424,7 @@ const Contact = props => {
                     </Grid>
                     <Grid container component="div" direction="row" className={classes.banner}>
                       <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
-                        <button type="button" class={classes.submit+' btn'} onClick={submitForm}>Sell Your Bike</button>
+                        <button type="button" class={classes.submit+' btn'} onClick={submitForm}>Share</button>
                       </Grid>
                       </Grid>
                   </form>

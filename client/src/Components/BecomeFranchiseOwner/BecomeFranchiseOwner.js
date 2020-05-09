@@ -300,22 +300,26 @@ const BecomeFranchiseOwner = props => {
                     For the buyer we ensure quality and make the process smooth by offering<br /><span className={classes.bold}>"Free 6 Months' Warranty"</span>, <span className={classes.bold}>"Certified Two-Wheelers"</span>, <span className={classes.bold}>"Low Cost EMI"</span>,<br /><span className={classes.bold}>"Hassle-Free Document Transfer"</span> and more.
                     <br />
                     <br />
-                    We are building a hybrid model (Mix of Online and Offline) to bring structure to this<br />domain and ensure a great and hassle-free experience for our Customers.
+                    We are building a hybrid model (Mix of Online and Offline) to bring structure<br />to this domain and ensure a great and hassle-free experience for our<br />Customers.
                     <br />
                     <br />
+                    And we are offering a reliable and hassle-free way to buy and sell any Pre-Owned<br />Two-Wheeler, stakeholders would rely on BikeBazaar for their purchasing or<br />selling decisions regarding their vehicles.
+                    <br />
+                    <br />
+                    It's why becoming a Franchise Partner of BikeBazaar provides you great business opportunities.
                   </p>
                 </Grid>
                 <Grid className={classes.item2} xs={12} sm={12} md={6} lg={5}>
                   <img src={storeImage} className={(matches) ? "" : "imageMobile"}/>
                 </Grid>
-                <Grid className={classes.item3} xs={12} sm={12} md={12} lg={12}>
+                {/* <Grid className={classes.item3} xs={12} sm={12} md={12} lg={12}>
                   <p className="about-bb">
                     And we are offering a reliable and hassle-free way to buy and sell any Pre-Owned Two-Wheeler, stakeholders would rely on BikeBazaar for their purchasing or selling decisions regarding their vehicles.
                     <br />
                     <br />
                     It's why becoming a Franchise Partner of BikeBazaar provides you great business opportunities.
                   </p>
-                </Grid>
+                </Grid> */}
                 
               </Grid>
             </Grid>

@@ -14,9 +14,13 @@ import * as actions from "../../store/actions/index";
 import Spinner from "../../Components/UI/Spinner/Spinner";
 import { Menu } from "../../shared/utility";
 import categoryData from "../../shared/mappings/category_data";
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const CategoryPage = props => {
   const dispatch = useDispatch();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   const { vehicles, filter, loading, currentData, selectedCity } = useSelector(
     state => state.vehicleDetails
   );
@@ -26,6 +30,9 @@ const CategoryPage = props => {
     ...filter,
     city: selectedCity
   };
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, []);
 
   useEffect(() => {
     category = categoryData[props.match.params.category].id;
@@ -123,7 +130,7 @@ const CategoryPage = props => {
               md={12}
               sm={12}
               lg={9}
-              className="ProductListSec"
+              className={matches ? "ProductListSec" : "ProductListSec Mob"}
             >
               <SortDropDown
                 title="Sort by"
