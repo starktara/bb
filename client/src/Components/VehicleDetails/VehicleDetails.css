@@ -15,7 +15,7 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .padL0 { padding-left:0!important;}
 
 .wapper { width: 1200px; margin:40px auto;}
-.wapper .pageDtl { border-radius: 4px; box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2); background-color: #ffffff; padding: 15px 20px; margin: 0 14px 40px 0; }
+.wapper .pageDtl { border-radius: 4px; box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2); background-color: #ffffff; padding: 15px 20px; margin: 0 0 40px 0; }
 .wapper .pageDtl ul { list-style: none; margin: 0 0 24px; }
 .wapper .pageDtl ul li:first-child { background:none; display: inline-block; padding:0; }
 .wapper .pageDtl ul li {  display: inline-block; background: url(../../assets/images/icons/right.svg) 0 7px no-repeat; background-size: 18px 10px; padding:0 0 0 20px;  }
@@ -139,7 +139,7 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .ProductForm .form-group input.email { background:#e9eaea url(../../assets/images/icons/email.png) 382px 9px no-repeat; }
 .ProductForm .form-group .btn { background: #ff0000; padding: 6px 30px; border-radius: 24px; height: 48px; font-size: 20px; font-weight: bold; text-transform: capitalize; box-shadow: none; margin-left: 10px; width: 236px;}
 
-.vehicleSummarySec, .vehicleReportSec { padding: 50px 12px 0 0!important; }
+.vehicleSummarySec, .vehicleReportSec { padding: 50px 0 0 0!important; }
 .vehicleSummary, .vehicleReport { box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17); background-color: #ffffff; border-radius: 5px; padding:40px; }
 .vehicleSummary h3 { font-size: 24px; color: #fe0000; font-weight: bold; margin-bottom: 15px; }
 .vehicleSummary h4 { font-size: 18px; color: #232c2b; font-weight: bold; }
@@ -150,7 +150,7 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .vehicleReport h2, .vehicleAdvantage h2 { font-size: 36px; color: #fe0000; font-weight: bold; margin-bottom: 15px; }
 .vehicleReport p { font-size: 18px; color: #232c2b; }
 
-.vehicleAdvantageSec { background-color: #e5e5e5; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);}
+.vehicleAdvantageSec { background-color: #e5e5e5; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3); }
 .vehicleAdvantage h2 { color: #232c2b; }
 .vehicleAdvantage .advantageSec { padding: 0 0; }
 .vehicleAdvantage .advantageSec .advantage { padding: 10px 0; }

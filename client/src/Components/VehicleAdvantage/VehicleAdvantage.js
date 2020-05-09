@@ -118,7 +118,7 @@ const VehicleAdvantage = (props) => {
             </Grid>
           </Grid>
 
-
+          {advRight2}
           <Grid container component="div" direction="row" className={"advantage "+paddingClass}>
             <Grid item xs={12} sm={12} md={2} lg={2}>
               <div className="advantageIconLeft">

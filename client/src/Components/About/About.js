@@ -65,8 +65,8 @@ const useStyles = makeStyles(theme => ({
     },
     advantageContainer:{
         width: 1200,
-        margin: '40px 40px 0px 40px',
-        padding: 40
+        margin: '40px auto',
+        padding: '40px'
     },
     ml50: {
         marginLeft: '50px'
