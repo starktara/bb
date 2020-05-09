@@ -66,11 +66,11 @@ const BlogPostHome = (props) => {
   // Blog Post Preview Div
   let blogPostPreviewDiv;
   if (error === true){
-    blogPostPreviewDiv = <div className="locateDropdownCard"><p style={{ textAlign: "center" }}>Something went wrong!</p></div>;
+    blogPostPreviewDiv = <div className="locateDropdownCard marginRight0"><p style={{ textAlign: "center" }}>Something went wrong!</p></div>;
   } else if (error === false && isLoading === false) {
     blogPostPreviewDiv = blogPosts.map(post => {
       return (
-        <div className="locateDropdownCard marginBottom40px paddingBottom1px">
+        <div className="locateDropdownCard marginRight0 marginBottom40px paddingBottom1px">
           <div className="row">
             <BlogPostPreview
               key={post.id}
@@ -83,7 +83,7 @@ const BlogPostHome = (props) => {
       );
     });
   } else {
-    blogPostPreviewDiv = <div className="locateDropdownCard"><p style={{ textAlign: "center" }}>Loading Blog Posts!</p></div>;
+    blogPostPreviewDiv = <div className="locateDropdownCard marginRight0"><p style={{ textAlign: "center" }}>Loading Blog Posts!</p></div>;
   }
 
   // Pagination Element
@@ -113,7 +113,7 @@ const BlogPostHome = (props) => {
     <>
       <Banner
         navigation="Blog"
-        heading="Bike Bazaar Blogs"
+        heading="BikeBazaar Blogs"
         text=""
         path={props.location.pathname}
       />
