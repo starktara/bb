@@ -11,7 +11,7 @@ import "./MainMenu.css";
 import MobNav from "../MobileNav/MobNav";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, connect, useDispatch } from "react-redux";
 import { CHANGE_CITY } from "../../store/actions/actionTypes";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -25,6 +25,7 @@ const BuyButton = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const selectedCity = useSelector(state => state.vehicleDetails.selectedCity);
   return(
     <li>
       <span className="buy-dropdown-text" onClick={handleClick}>
@@ -54,17 +55,17 @@ const BuyButton = () => {
           },
         }}
       >
-      <Link to={"/category/bike"}>
+      <Link to={`/category/bike`}>
         <MenuItem onClick={handleClose} >
           Motorcycle
         </MenuItem>
       </Link>
-      <Link to={"/category/scooter"}>
+      <Link to={`/category/scooter`}>
         <MenuItem onClick={handleClose} >
           Scooter
         </MenuItem>
       </Link>
-      <Link to={"/category/high_end_bike"}>
+      <Link to={`/category/high_end_bike`}>
         <MenuItem onClick={handleClose} >
           High-End Motorcycle
         </MenuItem>
@@ -76,12 +77,11 @@ const BuyButton = () => {
 
 const MainMenu = props => {
   const dispatch = useDispatch();
-
+  const selectedCity = useSelector(state => state.vehicleDetails.selectedCity);
+  const [currentLocation, setCurrentLocation] = useState(selectedCity);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
-  const selectedCity = useSelector(state => state.vehicleDetails.selectedCity);
   const [locations] = useState(["Aluva", "Kolkata", "Rajahmundry"]);
-  const [currentLocation, setCurrentLocation] = useState(selectedCity);
   useEffect(() => {
     let dropDown = document.querySelectorAll(".dropdown-trigger");
     M.Dropdown.init(dropDown, {

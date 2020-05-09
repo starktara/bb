@@ -30,6 +30,9 @@ const CategoryPage = props => {
     ...filter,
     city: selectedCity
   };
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, []);
 
   useEffect(() => {
     category = categoryData[props.match.params.category].id;
