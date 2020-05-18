@@ -26,7 +26,7 @@ const CategoryPage = props => {
   );
   var category;
   var searchTerm;
-  const stateFilterData = {
+  var stateFilterData = {
     ...filter,
     city: selectedCity
   };
@@ -39,6 +39,13 @@ const CategoryPage = props => {
     if (props.history.location.search.trim() !== "") {
       const search = new URLSearchParams(props.history.location.search);
       searchTerm = search.get("searchTerm") ? search.get("searchTerm") : "";
+    }
+    if(props.location.state) {
+      stateFilterData = {
+        ...stateFilterData,
+        storeId: props.location.state.storeId
+      };
+      searchTerm = "";
     }
     dispatch(actions.getVehicles(category, stateFilterData, searchTerm));
   }, [

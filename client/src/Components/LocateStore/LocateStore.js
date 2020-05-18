@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import "./LocateStore.css";
 import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
@@ -16,6 +16,8 @@ import * as actions from "../../store/actions/index";
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { makeStyles } from "@material-ui/core/styles";
+import { CHANGE_CITY } from "../../store/actions/actionTypes";
+
 
 const useStyles = makeStyles(theme => ({
   mapContainer: {
@@ -37,12 +39,28 @@ const mapProps = {
 };
 
 const LocateStore = props => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   let [singleStore, setSingleScore] = useState(false);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
   const dropDownClass = (matches) ? 'custom-drop' : 'custom-drop-mobile';
   const cityIconHeight = (matches) ? '28.3' : '20.3';
+  const { filter } = useSelector(
+    state => state.vehicleDetails
+  );
+
+  const handleStoreClick = (clickedStore) => {
+    const storeFilter = {
+      ...filter,
+      storeId: clickedStore.storeId
+    };
+    console.log("Store:", clickedStore.storeId);
+    // dispatch(actions.getVehiclesByStore(store, null, null, null));
+    dispatch(actions.getVehicles( 1, storeFilter, null));
+    dispatch({ type: CHANGE_CITY, payload: clickedStore.city});
+    props.history.push('/category/bike', {storeId: clickedStore.storeId});
+  }
 
   const [mapLocations] = useState([
     {
@@ -52,7 +70,8 @@ const LocateStore = props => {
       coordinates: {
         lat: 10.100809,
         lng: 76.348984
-      }
+      },
+      storeId: 1
     },
     {
       city: "Rajahmundry",
@@ -62,7 +81,8 @@ const LocateStore = props => {
       coordinates: {
         lat: 16.999954,
         lng: 81.786184
-      }
+      },
+      storeId: 3
     }
 
   ]);
@@ -99,9 +119,11 @@ const LocateStore = props => {
   var locationCards = (
     <div className="col s12 m12 flex-center" key={1}>
       <div className="locationCard">
-        <h5>{mapLocations[0].locationName}</h5>
-        <div className="locationAddress">
-          {mapLocations[0].address}
+        <div style={{"cursor":"pointer"}} onClick={() => handleStoreClick(mapLocations[0])}>
+          <h5>{mapLocations[0].locationName}</h5>
+          <div className="locationAddress">
+            {mapLocations[0].address}
+          </div>
         </div>
         <div className="mapContainer">
           <GoogleMap
@@ -166,9 +188,11 @@ const LocateStore = props => {
         return (
           <Grid item xs={12} sm={12} md={4} lg={4} key={key}>
             <div className="locationCard">
-              <h5>{thisLocation.locationName}</h5>
-              <div className="locationAddress">
-                {thisLocation.address}
+              <div style={{"cursor":"pointer"}} onClick={()=>handleStoreClick(thisLocation)}>
+                <h5>{thisLocation.locationName}</h5>
+                <div className="locationAddress">
+                  {thisLocation.address}
+                </div>
               </div>
               <div className={classes.mapContainer}>
                 <GoogleMap
@@ -186,9 +210,11 @@ const LocateStore = props => {
   
             <Grid item xs={12} sm={12} md={4} lg={4} key={key}>
               <div className="locationCard">
-                <h5>{thisLocation.locationName}</h5>
-                <div className="locationAddress">
-                  {thisLocation.address}
+                <div style={{"cursor":"pointer"}} onClick={()=>handleStoreClick(thisLocation)}>
+                  <h5>{thisLocation.locationName}</h5>
+                  <div className="locationAddress">
+                    {thisLocation.address}
+                  </div>
                 </div>
                 <div className={classes.mapContainer}>
                   <GoogleMap
