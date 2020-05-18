@@ -3,9 +3,9 @@ body {
   overflow-x: hidden;
 }
 .heading {
-  font-size: 43px;
+  font-size: 32px;
   font-weight: 600;
-  margin-bottom: 90px;
+  margin-bottom: 150px;
   padding-left: 37px;
   margin-top: 34px;
 }
@@ -47,8 +47,8 @@ body {
   background-size: 1350px 480px !important; 
 } */
 .slides h4 {
-  font-size: 32px;
-  letter-spacing: 2px;
+  font-size: 24px;
+  letter-spacing: 1.5px;
   padding-left: 37px;
   margin: 15px 0px;
 }
@@ -65,11 +65,11 @@ body {
 }
 .section-2,
 section-3 {
-  padding: 50px 0px 100px 0px;
+  padding: 25px 0px 50px 0px;
 }
 .section-2 h3 {
   padding-bottom: 15px;
-  font-size: 36px;
+  font-size: 24px;
   font-weight: 800;
   color: #232c2b;
 }
@@ -77,10 +77,10 @@ section-3 {
   margin-bottom: 72px;
 }
 .section-3 h3 {
-  padding-top: 43.8px;
+  padding-top: 30px;
   padding-bottom: 15px;
   font-weight: 800;
-  font-size: 36px;
+  font-size: 24px;
   color: #232c2b;
 }
 .section-3-heading {
@@ -90,13 +90,13 @@ section-3 {
   color: #232c2b;
   font-weight: bold;
   white-space: nowrap;
-  font-size: 23px;
+  font-size: 18px;
 }
 .section-3 h5 {
   color: #e92d2c;
   font-weight: bold;
   white-space: pre-line;
-  font-size: 23px;
+  font-size: px;
 }
 .section-3 {
   background-color: #f5f5f5;
@@ -109,7 +109,7 @@ section-3 {
   padding-bottom: 15px;
   font-size: 36px;
   font-weight: 800;
-  letter-spacing: 2.37px;
+  letter-spacing: 2.7px;
 }
 .spacing {
   padding-top: 40px;
@@ -179,8 +179,8 @@ i.icon-black {
   padding-bottom: 0px !important;
 }
 .tick-icon {
-  width: 1.65% !important;
-  height: 3.67% !important;
+  width: 1.1% !important;
+  height: 3% !important;
 }
 #topNav {
   height: 44px;

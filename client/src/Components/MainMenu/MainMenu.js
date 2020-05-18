@@ -153,7 +153,7 @@ const MainMenu = props => {
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <form id="searchForm" className="input-field">
-                  <div className="search-container">
+                  <div style={{"width": "420px", "marginLeft": "40px"}} className="search-container">
                     <input
                       id="searchField"
                       type="text"

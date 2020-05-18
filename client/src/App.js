@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Homepage from './Components/Homepage/Homepage';
-import TestHomePage from './Components/Homepage/TestHomePage';
 import CategoryPage from './Components/CategoryPage/CategoryPage';
 import LocateStore from './Components/LocateStore/LocateStore';
 import VehicleDetails from './Components/VehicleDetails/VehicleDetails';
@@ -26,7 +25,6 @@ const App = () => {
     return (
         <Switch>
             <Route exact path='/' component={Homepage} />
-            <Route exact path='/testhome' component={TestHomePage} />
             <Route exact path='/admin/list' component={AdminListPage} />
             <Route exact path='/admin/upload' component={AdminUpload} />
             <Route exact path='/category/:category' component={CategoryPage} />
