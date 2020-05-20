@@ -10,5 +10,9 @@ export const BRANDS = [
     'Kawasaki',
     'Benelli',
     'TVS',
-    'Mahindra'
+    'Mahindra',
+    'Triumph',
+    'BMW Motorcycle',
+    'Ducati',
+    'Hyousung',
 ];
