@@ -40,7 +40,7 @@ const BlogPostHome = (props) => {
       async function fetchData() {
         const result = await axios
           .get(
-            "http://localhost/wordpress/index.php/wp-json/wp/v2/posts?page=" +
+            "https://localhost/wordpress/index.php/wp-json/wp/v2/posts?page=" +
               props.currentPageNumber
           )
           .then(response => {

@@ -36,7 +36,7 @@ const Blog = props => {
     async function fetchData() {
       const result = await axios
         .get(
-			"http://localhost/wordpress/index.php/wp-json/wp/v2/posts/" + blogId
+			"https://localhost/wordpress/index.php/wp-json/wp/v2/posts/" + blogId
         )
         .then(response => {
           setBlogPostData(response.data);
