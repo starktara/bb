@@ -84,64 +84,73 @@ const BlogPostHome = (props) => {
 
   // Pagination Element
   let paginationElement = "";
-  if (error === false && props.isLoading === false) {
-    paginationElement = (
-      <div className="paginationDiv">
-        <ul className="pagination">
-          {props.currentPageNumber === 1 ? (
-            <li className="disabled waves-effect">
-              <i className="material-icons">chevron_left</i>
-            </li>
-          ) : (
-            <li
-              onClick={() => {
-                props.onSetCurrentPage(parseInt(props.currentPageNumber) - 1);
-              }}
-              className="disabled waves-effect"
-            >
-              <i className="material-icons">chevron_left</i>
-            </li>
-          )}
-          {pageNumbersArray.map((pageNumber) => {
-            return pageNumber == props.currentPageNumber ? (
-              <li
-                onClick={() => {
-                  props.onSetCurrentPage(pageNumber);
-                }}
-                className="active"
-              >
-                <a>{pageNumber}</a>
+  if (
+    props &&
+    props.blogs &&
+    props.blogs.data &&
+    Object.values(props.blogs.data)[0]["totalPagesInBlog"] > 1
+  ) {
+    if (error === false && props.isLoading === false) {
+      paginationElement = (
+        <div className="paginationDiv">
+          <ul className="pagination">
+            {props.currentPageNumber === 1 ? (
+              <li className="disabled waves-effect">
+                <i className="material-icons">chevron_left</i>
               </li>
             ) : (
               <li
                 onClick={() => {
-                  props.onSetCurrentPage(pageNumber);
+                  props.onSetCurrentPage(parseInt(props.currentPageNumber) - 1);
                 }}
-                className="waves-effect"
+                className="disabled waves-effect"
               >
-                <a>{pageNumber}</a>
+                <i className="material-icons">chevron_left</i>
               </li>
-            );
-          })}
-          {props && props.blogs && props.blogs.data && props.currentPageNumber ===
-          Object.values(props.blogs.data)[0]["totalPagesInBlog"] ? (
-            <li className="disabled waves-effect">
-              <i className="material-icons">chevron_right</i>
-            </li>
-          ) : (
-            <li
-              onClick={() => {
-                props.onSetCurrentPage(parseInt(props.currentPageNumber) + 1);
-              }}
-              className="disabled waves-effect"
-            >
-              <i className="material-icons">chevron_right</i>
-            </li>
-          )}
-          }
-        </ul>
-      </div>
-    );
+            )}
+            {pageNumbersArray.map((pageNumber) => {
+              return pageNumber == props.currentPageNumber ? (
+                <li
+                  onClick={() => {
+                    props.onSetCurrentPage(pageNumber);
+                  }}
+                  className="active"
+                >
+                  <a>{pageNumber}</a>
+                </li>
+              ) : (
+                <li
+                  onClick={() => {
+                    props.onSetCurrentPage(pageNumber);
+                  }}
+                  className="waves-effect"
+                >
+                  <a>{pageNumber}</a>
+                </li>
+              );
+            })}
+            {props &&
+            props.blogs &&
+            props.blogs.data &&
+            props.currentPageNumber ===
+              Object.values(props.blogs.data)[0]["totalPagesInBlog"] ? (
+              <li className="disabled waves-effect">
+                <i className="material-icons">chevron_right</i>
+              </li>
+            ) : (
+              <li
+                onClick={() => {
+                  props.onSetCurrentPage(parseInt(props.currentPageNumber) + 1);
+                }}
+                className="disabled waves-effect"
+              >
+                <i className="material-icons">chevron_right</i>
+              </li>
+            )}
+          </ul>
+        </div>
+      );
+    }
   }
 
   // Blog Post Container
