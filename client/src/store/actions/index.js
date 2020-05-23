@@ -6,5 +6,9 @@ export {
 export {
   getStoreData
 } from "./storeActions";
+export {
+  getBlogsForThePage,
+  getBlogForTheBlogId
+} from "./blogActions";
 
 

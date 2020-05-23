@@ -6,23 +6,20 @@ import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import M from "materialize-css";
-import axios from "axios";
 import BlogPostPreview from "./BlogPostPreview";
 
-import * as actionTypes from '../../store/actions/actionTypes';
+import * as actionTypes from "../../store/actions/actionTypes";
+
+import * as actions from "../../store/actions/index";
 
 const BlogPostHome = (props) => {
-  const [blogPosts, setBlogPosts] = useState([]);
-  const [lastPageNumber, setLastPageNumber] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
-
   useEffect(() => {
     try {
       window.scroll({
         top: 70,
         left: 0,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     } catch (error) {
       window.scrollTo(0, 0);
@@ -36,76 +33,115 @@ const BlogPostHome = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     if (props.currentPageNumber !== null) {
-      setIsLoading(true);
       async function fetchData() {
-        const result = await axios
-          .get(
-            window.location.protocol+"//localhost/wordpress/index.php/wp-json/wp/v2/posts?page=" +
-              props.currentPageNumber
-          )
-          .then(response => {
-            setLastPageNumber(response.headers["x-wp-totalpages"]);
-            setBlogPosts(response.data);
-            setIsLoading(false);
-          })
-          .catch(error => {
-            setError(true);
-            setIsLoading(false);
-            console.log(error);
-          });
+        props.getBlogsForThePage(props.currentPageNumber);
       }
       fetchData();
     }
   }, [props.currentPageNumber]);
 
   let pageNumbersArray = [];
-  for (let i = 1; i <= lastPageNumber; i++) {
-    pageNumbersArray.push(i);
-  }
+  if (props.blogs)
+    for (
+      let i = 1;
+      i <= Object.values(props.blogs.data)[0]["totalPagesInBlog"];
+      i++
+    ) {
+      pageNumbersArray.push(i);
+    }
 
   // Blog Post Preview Div
   let blogPostPreviewDiv;
-  if (error === true){
-    blogPostPreviewDiv = <div className="locateDropdownCard marginRight0"><p style={{ textAlign: "center" }}>Something went wrong!</p></div>;
-  } else if (error === false && isLoading === false) {
-    blogPostPreviewDiv = blogPosts.map(post => {
-      return (
-        <div className="locateDropdownCard marginRight0 marginBottom40px paddingBottom1px">
-          <div className="row">
-            <BlogPostPreview
-              key={post.id}
-              postId={post.id}
-              title={post.title.rendered}
-              excerpt={post.excerpt.rendered}
-            />
+  if (error === true) {
+    blogPostPreviewDiv = (
+      <div className="locateDropdownCard marginRight0">
+        <p style={{ textAlign: "center" }}>Something went wrong!</p>
+      </div>
+    );
+  } else if (error === false && props.isLoading === false) {
+    if (props && props.blogs && props.blogs.data)
+      blogPostPreviewDiv = Object.values(props.blogs.data).map((post) => {
+        return (
+          <div className="locateDropdownCard marginRight0 marginBottom40px paddingBottom1px">
+            <div className="row">
+              <BlogPostPreview
+                key={post.id}
+                postId={post.id}
+                title={post.title.rendered}
+                excerpt={post.excerpt.rendered}
+              />
+            </div>
           </div>
-        </div>
-      );
-    });
+        );
+      });
   } else {
-    blogPostPreviewDiv = <div className="locateDropdownCard marginRight0"><p style={{ textAlign: "center" }}>Loading Blog Posts!</p></div>;
+    blogPostPreviewDiv = (
+      <div className="locateDropdownCard marginRight0">
+        <p style={{ textAlign: "center" }}>Loading Blog Posts!</p>
+      </div>
+    );
   }
 
   // Pagination Element
-  let paginationElement = '';
-  if(error === false && isLoading === false) {
-    paginationElement =  <div className='paginationDiv'>
-    <ul className="pagination">
-      {props.currentPageNumber === 1 ? (<li className="disabled waves-effect"><i className="material-icons">chevron_left</i></li>) : (<li onClick={() => {props.onSetCurrentPage(parseInt(props.currentPageNumber)-1)}} className="disabled waves-effect"><i className="material-icons">chevron_left</i></li>)}
-      {pageNumbersArray.map(pageNumber => {
-        return pageNumber == props.currentPageNumber ? (
-          <li onClick={() => {props.onSetCurrentPage(pageNumber)}} className="active">
-            <a>{pageNumber}</a>
-          </li>
-        ) : (
-          <li onClick={() => {props.onSetCurrentPage(pageNumber)}} className="waves-effect">
-            <a>{pageNumber}</a>
-          </li>
-        );
-      })}
-      {props.currentPageNumber === lastPageNumber ? (<li className="disabled waves-effect"><i className="material-icons">chevron_right</i></li>) : (<li onClick={() => {props.onSetCurrentPage(parseInt(props.currentPageNumber)+1)}} className="disabled waves-effect"><i className="material-icons">chevron_right</i></li>)}
-    </ul>
-  </div>
+  let paginationElement = "";
+  if (error === false && props.isLoading === false) {
+    paginationElement = (
+      <div className="paginationDiv">
+        <ul className="pagination">
+          {props.currentPageNumber === 1 ? (
+            <li className="disabled waves-effect">
+              <i className="material-icons">chevron_left</i>
+            </li>
+          ) : (
+            <li
+              onClick={() => {
+                props.onSetCurrentPage(parseInt(props.currentPageNumber) - 1);
+              }}
+              className="disabled waves-effect"
+            >
+              <i className="material-icons">chevron_left</i>
+            </li>
+          )}
+          {pageNumbersArray.map((pageNumber) => {
+            return pageNumber == props.currentPageNumber ? (
+              <li
+                onClick={() => {
+                  props.onSetCurrentPage(pageNumber);
+                }}
+                className="active"
+              >
+                <a>{pageNumber}</a>
+              </li>
+            ) : (
+              <li
+                onClick={() => {
+                  props.onSetCurrentPage(pageNumber);
+                }}
+                className="waves-effect"
+              >
+                <a>{pageNumber}</a>
+              </li>
+            );
+          })}
+          {props && props.blogs && props.blogs.data && props.currentPageNumber ===
+          Object.values(props.blogs.data)[0]["totalPagesInBlog"] ? (
+            <li className="disabled waves-effect">
+              <i className="material-icons">chevron_right</i>
+            </li>
+          ) : (
+            <li
+              onClick={() => {
+                props.onSetCurrentPage(parseInt(props.currentPageNumber) + 1);
+              }}
+              className="disabled waves-effect"
+            >
+              <i className="material-icons">chevron_right</i>
+            </li>
+          )}
+          }
+        </ul>
+      </div>
+    );
   }
 
   // Blog Post Container
@@ -142,14 +178,22 @@ const BlogPostHome = (props) => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    currentPageNumber: state.blogDetails.currentPageNumber
+    currentPageNumber: state.blogDetails.currentPageNumber,
+    blogs: state.blogDetails.blogs,
+    isLoading: state.blogDetails.isLoading,
   };
 };
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onSetCurrentPage: (currentPage) => dispatch({type: actionTypes.SET_CURRENT_PAGE, currentPageNumber: currentPage})
+    getBlogsForThePage: (pageNummber) =>
+      dispatch(actions.getBlogsForThePage(pageNummber)),
+    onSetCurrentPage: (currentPage) =>
+      dispatch({
+        type: actionTypes.SET_CURRENT_PAGE,
+        currentPageNumber: currentPage,
+      }),
   };
 };
 

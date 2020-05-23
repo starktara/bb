@@ -8,6 +8,7 @@ const categoryDetails = require("./apis/categoryDetails/categoryDetails");
 const leadDetail = require("./apis/leadDetail/leadDetail");
 const userDetail = require("./apis/userDetails/userDetails");
 const stores = require("./apis/stores/stores");
+const blogs = require("./apis/blogs/blogs")
 const passport = require("passport");
 const multer = require('multer');
 const cors = require('cors');
@@ -61,6 +62,7 @@ app.use("/apis/categoryDetails", categoryDetails);
 app.use("/apis/leadDetail", leadDetail);
 app.use("/apis/userDetail", userDetail);
 app.use("/apis/stores", stores);
+app.use("/apis/blogs", blogs);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === "production") {

@@ -5,11 +5,11 @@ import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import M from "materialize-css";
-import { useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
+import { connect } from "react-redux";
 import './BlogPost.css';
+
+import * as actions from "../../store/actions/index";
 
 const Blog = props => {
   const [blogPostData, setBlogPostData] = useState(null);
@@ -34,19 +34,23 @@ const Blog = props => {
   const blogId = props.match.params.id;
   useEffect(() => {
     async function fetchData() {
-      const result = await axios
-        .get(
-          window.location.protocol+"//localhost/wordpress/index.php/wp-json/wp/v2/posts/" + blogId
-        )
-        .then(response => {
-          setBlogPostData(response.data);
-          setIsLoading(false);
-        })
-        .catch(error => {
-          setError("true");
-          setIsLoading(false);
-          console.log(error);
-        });
+      // const result = await axios
+      //   .get(
+			// "http://localhost/wordpress/index.php/wp-json/wp/v2/posts/" + blogId
+      //   )
+      //   .then(response => {
+      //     setBlogPostData(response.data);
+      //     setIsLoading(false);
+      //   })
+      //   .catch(error => {
+      //     setError("true");
+      //     setIsLoading(false);
+      //     console.log(error);
+      //   });
+      props.getBlogForTheBlogId(blogId);
+      if (props.blog) {
+        setBlogPostData(props.blog.data);
+      }
     }
     fetchData();
   }, []);
@@ -56,27 +60,32 @@ var blogPostDiv = '';
 
 if (error === true){
   blogPostDiv = <p style={{ textAlign: "center" }}>Something went wrong!</p>;
-} else if (error === false && isLoading === false) {
+} else if (error === false && props.isLoading === false) {
+
+  if(props && props.blog && props.blog.data){
+    console.log(props.blog.data)
 	blogPostDiv = <div className="row">
 	<article className="Post">
 	  <div className="Info">
 		<div
 		  dangerouslySetInnerHTML={{
-			__html: (blogPostData.content.rendered).replace(/[\uE000-\uF8FF]/g, '')
+			__html: ( props && props.blog && props.blog.data && props.blog.data.content && props.blog.data.content.rendered)
 		  }}
 		/>
 	  </div>
 	</article>
   </div>
+}
 }else {
   blogPostDiv = <p style={{ textAlign: "center" }}>Loading Blog Posts!</p>;
 }
 
+if(props && props.blog && props.blog.data)
   blogPosts = (
     <>
       <Banner
         navigation="Blog"
-        heading={blogPostData && blogPostData.title && (blogPostData.title.rendered).replace(/[\uE000-\uF8FF]/g, '')}
+        heading={ props.blog.data &&  props.blog.data.title && ( props.blog.data.title.rendered).replace(/[\uE000-\uF8FF]/g, '')}
         text=""
         path="/blog"
       />
@@ -108,6 +117,17 @@ if (error === true){
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    blog: state.blogDetails.blog,
+    isLoading: state.blogDetails.isLoading,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getBlogForTheBlogId: (blogId) =>
+      dispatch(actions.getBlogForTheBlogId(blogId)),
+  };
+};
 
-
-export default (Blog);
+export default connect(mapStateToProps, mapDispatchToProps)(Blog);
