@@ -27,9 +27,10 @@ import hassleFreeDocTransfer from "../../assets/hassle_free_document_transfer.sv
 import M from "materialize-css";
 import Grid from "@material-ui/core/Grid";
 import * as CATEGORY from "../../shared/constants/category";
+import { CHANGE_CATEGORY } from "../../store/actions/actionTypes";
 import { HOMEPAGE_LOAD } from "../../store/actions/actionTypes"
 
-const Homepage = () => {
+const Homepage = (props) => {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const updateState = event => {
@@ -39,6 +40,15 @@ const Homepage = () => {
   useEffect(() => {
     window.scrollTo(0,0);
   }, []);
+
+  const handleCategoryClick = (category) => {
+    let category_id = 0;
+    if(category === "bike") category_id = 1;
+    else if (category === "scooter") category_id = 2;
+    else category_id = 3;
+    dispatch({ type: CHANGE_CATEGORY, payload: category_id });
+    props.history.push('/category/' + category);
+  }
 
   const initCar = direction => {
     if (sliderState == null) {
@@ -171,26 +181,20 @@ const Homepage = () => {
         </Grid>
         <Grid container component="div" direction="row">
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-            <div className="box-shadow center-align">
-              <Link to={"/category/" + CATEGORY.BIKE}>
-                <img alt="" src={bike2} height="170" width="290" />
-              </Link>
+            <div className="box-shadow center-align" onClick={() => handleCategoryClick(CATEGORY.BIKE)}>
+              <img alt="" src={bike2} height="170" width="290" />
               <h5>Motorcycle</h5>
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-            <div className="box-shadow center-align">
-              <Link to={"/category/" + CATEGORY.SCOOTER}>
-                <img alt="" src={scooter} height="170" width="290" />
-              </Link>
+            <div className="box-shadow center-align" onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}>
+              <img alt="" src={scooter} height="170" width="290" />
               <h5>Scooter</h5>
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-            <div className="box-shadow center-align">
-              <Link to={"/category/" + CATEGORY.HIGH_END_BIKE}>
-                <img alt="" src={bike} height="170" width="290" />
-              </Link>
+            <div className="box-shadow center-align" onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}>
+              <img alt="" src={bike} height="170" width="290" />
               <h5>High-End Motorcycle</h5>
             </div>
           </Grid>

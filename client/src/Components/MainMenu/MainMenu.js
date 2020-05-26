@@ -90,7 +90,6 @@ const MainMenu = props => {
   });
   const setLocation = key => {
     const loc = locations[key];
-    console.log("jerherjejrehre", loc)
     dispatch({ type: CHANGE_CITY, payload: loc });
     setCurrentLocation(loc);
     let displayLoc = loc.length > 8 ? loc.substr(0, 7) + ".." : loc;

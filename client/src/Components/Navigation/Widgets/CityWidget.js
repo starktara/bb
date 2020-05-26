@@ -18,7 +18,7 @@ const BBRadio = withStyles({
 
 const CityWidget = props => {
   const dispatch = useDispatch();
-  const { selectedCity } = useSelector(state => state.vehicleDetails);
+  const { selectedCity, category } = useSelector(state => state.vehicleDetails);
   const [searchTerm, setSearchTerm] = useState("");
   const [city, setCity] = useState("");
   const updateState = event => {
@@ -32,14 +32,14 @@ const CityWidget = props => {
 
   const searchCity = event => {
     event.preventDefault();
-    let category = props.category;
+    // let category = props.category;
     let filterData = props.filter;
     filterData.city = `${searchTerm}*`;
     props.cityFilter(category, filterData);
   };
 
   const searchClick = clickValue => {
-    let category = props.category;
+    // let category = props.category;
     let filterData = props.filter;
     setCity(clickValue.target.value);
     dispatch({ type: CHANGE_CITY, payload: clickValue.target.value });

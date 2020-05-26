@@ -8,7 +8,7 @@ const initialState = {
   currentPage: null,
   totalPages: null,
   vehicle: null,
-  category: null,
+  category: 1,
   selectedCity: "Aluva", //this will serve as city filter gets update on city widget
   filter: {
     sort: {
@@ -90,6 +90,15 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         selectedCity: action.payload
+      }
+      case actionTypes.CHANGE_CATEGORY:
+      console.log({
+        ...state,
+        category: action.payload
+      })
+      return {
+        ...state,
+        category: action.payload
       }
     default:
       return state;

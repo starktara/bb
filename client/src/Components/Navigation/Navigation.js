@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 
 import "./Navigation.css";
 import CityWidget from "./Widgets/CityWidget";
+import CategoryWidget from "./Widgets/CategoryWidget";
 import YearWidget from "./Widgets/YearWidget";
 import BudgetWidget from "./Widgets/BudgetWidget";
 import BrandWidget from "./Widgets/BrandWidget";
@@ -22,6 +23,7 @@ const Navigation = () => {
     >
       <h5>Filter by</h5>
       <div className="filterSec">
+        <CategoryWidget />
         <CityWidget />
         <BudgetWidget budget={[0, 15000, 25000, 35000, 45000, 55000, 100000]} />
         <BrandWidget

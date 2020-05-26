@@ -20,3 +20,5 @@ export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 
 export const BLOG_LIST = "BLOG_LIST"; 
 export const BLOG_BY_ID = "BLOG_BY_ID"; 
+
+export const CHANGE_CATEGORY = "CHANGE_CATEGORY";
