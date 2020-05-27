@@ -390,7 +390,7 @@ const BecomeFranchiseOwner = props => {
           </div>
         </Grid>
       </Grid>
-      <Grid container direction="row" justify="center" alignItems="center">
+      <Grid container direction="row" justify="center" alignItems="center"  style={{"marginBottom":"35px"}}>
         <Grid item xs={11} sm={11} md={11} lg={11}>
           <div className="paper">
             <Grid container component="div" direction="row">
