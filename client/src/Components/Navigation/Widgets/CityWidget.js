@@ -5,7 +5,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { connect, useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../store/actions/index";
 import { withStyles } from "@material-ui/core/styles";
-import { CHANGE_CITY } from "../../../store/actions/actionTypes";
+import { CHANGE_CITY, CHANGE_CATEGORY } from "../../../store/actions/actionTypes";
 
 const BBRadio = withStyles({
   root: {
@@ -43,6 +43,7 @@ const CityWidget = props => {
     let filterData = props.filter;
     setCity(clickValue.target.value);
     dispatch({ type: CHANGE_CITY, payload: clickValue.target.value });
+    dispatch({ type: CHANGE_CATEGORY, payload: category });
     filterData.city = `${clickValue.target.value}*`;
     props.cityFilter(category, filterData);
   };
