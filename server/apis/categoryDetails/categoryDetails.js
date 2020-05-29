@@ -57,7 +57,7 @@ router.get("/getCategoryById", (req, res) => {
       let budgetFilterLength = filterData.budget.length;
       var i = 1;
       for (let value of budget) {
-        let rangeArr = value ? value.split("-") : value == 0 ? ["1", "15000"] : ["100000", "115000"];
+        let rangeArr = value ? value.split("-") : value == 0 ? ["1", "15000"] : ["100000", "500000"];
         let gte = rangeArr[0];
         let lte = rangeArr[1];
         if (budgetFilterLength == 1) {
