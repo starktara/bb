@@ -43,7 +43,13 @@ const BudgetWidget = props => {
   budgetArray.push(
     <li key={props.budget.length - 1}>
       <label>
-        <input type="checkbox" className="filled-in" />
+        <input 
+          type="checkbox" 
+          className="filled-in" 
+          onClick={() => {
+            selectCheckbox()
+          }}
+        />
         <span>
           <strong>₹</strong> {props.budget[props.budget.length - 1] + 1} +
         </span>
