@@ -12,17 +12,22 @@ import MobNav from "../MobileNav/MobNav";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useSelector, connect, useDispatch } from "react-redux";
-import { CHANGE_CITY } from "../../store/actions/actionTypes";
+import { CHANGE_CITY, CHANGE_CATEGORY } from "../../store/actions/actionTypes";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const BuyButton = () => {
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleCategoryClose = (category) => {
+    dispatch({ type: CHANGE_CATEGORY, payload: category });
     setAnchorEl(null);
   };
   const selectedCity = useSelector(state => state.vehicleDetails.selectedCity);
@@ -56,17 +61,17 @@ const BuyButton = () => {
         }}
       >
       <Link to={`/category/bike`}>
-        <MenuItem onClick={handleClose} >
+        <MenuItem onClick={() => handleCategoryClose(1)} >
           Motorcycle
         </MenuItem>
       </Link>
       <Link to={`/category/scooter`}>
-        <MenuItem onClick={handleClose} >
+        <MenuItem onClick={() => handleCategoryClose(2)} >
           Scooter
         </MenuItem>
       </Link>
       <Link to={`/category/high_end_bike`}>
-        <MenuItem onClick={handleClose} >
+        <MenuItem onClick={() => handleCategoryClose(3)} >
           High-End Motorcycle
         </MenuItem>
       </Link>

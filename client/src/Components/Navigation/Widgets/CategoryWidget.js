@@ -21,9 +21,6 @@ const CategoryWidget = props => {
   const dispatch = useDispatch();
   const { category } = useSelector(state => state.vehicleDetails);
   const [selectedCategory, setSelectedCategory] = useState(category);
-  useEffect(() => {
-    setSelectedCategory(category);
-  }, [category]);
 
   const handleChange = clickValue => {
     let filterData = props.filter;
@@ -31,6 +28,17 @@ const CategoryWidget = props => {
     dispatch({ type: CHANGE_CATEGORY, payload: parseInt(clickValue.target.value) });
     props.cityFilter(parseInt(clickValue.target.value), filterData);
   }
+
+  const handleChange2 = categ => {
+    let filterData = props.filter;
+    setSelectedCategory(categ);
+    dispatch({ type: CHANGE_CATEGORY, payload: categ });
+    props.cityFilter(categ, filterData);
+  }
+
+  useEffect(() => {
+    handleChange2(category)
+  }, [category]);
 
   return (
     <div className="CityWidget">
