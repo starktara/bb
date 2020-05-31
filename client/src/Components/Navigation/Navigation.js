@@ -22,7 +22,7 @@ const Navigation = () => {
       className="filter"
     >
       <h5>Filter by</h5>
-      <div className="filterSec">
+      <div className="filterSec" style={{"marginBottom":"28px"}}>
         <CategoryWidget />
         <CityWidget />
         <BudgetWidget budget={[0, 15000, 25000, 35000, 45000, 55000, 100000]} />

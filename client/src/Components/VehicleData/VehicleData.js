@@ -191,7 +191,7 @@ const VehicleData = (props) => {
         <Grid container component="div" direction="row">
         {tooltip}
             <Grid item xs={12} md={12} sm={12} lg={6} className="vehicleGalSec">
-              <div className="vehicleGal">
+              <div className="vehicleGal" style={{"minHeight":"610px", "maxHeight":"610px"}}>
                 <Carousel dynamicHeight={true} showThumbs={true} key={sliderImages[0]} useKeyboardArrows={true}>
                     {
                       sliderImages.map((image,key)=>{
@@ -204,10 +204,10 @@ const VehicleData = (props) => {
               </div>
             </Grid>
             <Grid item xs={12} md={12} sm={12} lg={6}>
-                <div className="vehicleDetails">
+                <div className="vehicleDetails" style={{"minHeight":"610px", "borderRadius":"5px"}}>
                     <div className="PriceSec">
-                        <p className="price"><strong>`</strong>{props.data.price - discountAmt}</p>
-                        {discount && <span className="del"><strong>`</strong>{props.data.price}</span>}
+                        <p className="price"><strong>`</strong>  {props.data.price - discountAmt}</p>
+                        {discount && <span className="del"><strong>`</strong> {props.data.price}</span>}
                         {discount}
                     </div>
                     <div className="ProductDetail">
@@ -258,7 +258,7 @@ const VehicleData = (props) => {
                                     required/>
                                 </Grid>
                             </Grid>
-                            <Grid container component="div" direction="row" className="form-group" justify="flex-end">
+                            <Grid container component="div" direction="row" className="form-group" justify="center">
                                 <Grid item xs={9} sm={9} md={9} lg={9}>
                                 <label className="fieldname">
                                     <input type="checkbox" name="emi" className="filled-in" onClick={event =>
@@ -270,7 +270,7 @@ const VehicleData = (props) => {
                                 </Grid>
                             </Grid>
                             <Grid container component="div" direction="row" className="form-group" justify="center">
-                                <Grid item xs={4} sm={4} md={4} lg={4}>
+                                <Grid item xs={9} sm={9} md={9} lg={9}>
                                     <div className="form-group"><button type="button" className="btn" onClick = {submitForm}>Get Store Details</button></div>
                                 </Grid>
                             </Grid>

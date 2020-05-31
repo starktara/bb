@@ -16,11 +16,15 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { BRANDS } from '../../shared/mappings/brands';
 import { MODELS } from '../../shared/mappings/bike_models';
 import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(theme => ({
     body: {
         backgroundColor: '#f7f7f7'
-    }
+    },
+    banner: {
+        marginTop: theme.spacing(2)
+      },
 }));
 
 const CATEGORY = [
@@ -61,13 +65,17 @@ const VehicleDetails = (props) => {
     if(props.vehicle!=null){
         let name = (props.vehicle._source.model <= MODELS.length-1 && props.vehicle._source.brand <= BRANDS.length-1) ? BRANDS[props.vehicle._source.brand] + ' ' + MODELS[props.vehicle._source.model] : 'NA';
         vehicle =
-        <div className="wapper">
-            <Banner
-                navigation={CATEGORY[props.vehicle._source.category-1]}
-                heading={name}
-                text=""
-                path={props.location.pathname}
-            />
+        <div className="">
+            <Grid container component="div" direction="row" justify="center" alignItems="center">
+                <Grid item xs={12} sm={12} md={12} lg={12} className={classes.banner}>
+                <Banner
+                    navigation={CATEGORY[props.vehicle._source.category-1]}
+                    heading={name}
+                    text=""
+                    path={props.location.pathname}
+                />
+                </Grid>
+            </Grid>
             <VehicleData history ={props.history} data={props.vehicle._source}/>
             <VehicleMetaData />
             <br className="clr"/>
@@ -78,9 +86,13 @@ const VehicleDetails = (props) => {
         <div id="VehicleDetails" className={classes.body}>
             <Header />
             <MainMenu />
-                {vehicle}
-                <VehicleAdvantage continerStyle="advantageContainer"/>
-                <SimilarVehicles />
+            <Grid container component="div" direction="row" justify="center" alignItems="center">
+                <Grid item xs={11} sm={11} md={11} lg={11} className={classes.banner}>
+                    {vehicle}
+                    <VehicleAdvantage continerStyle="advantageContainer"/>
+                    <SimilarVehicles />
+                </Grid>
+            </Grid>
             <Footer />
         </div>
     );   

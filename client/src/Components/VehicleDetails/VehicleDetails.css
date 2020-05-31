@@ -134,9 +134,9 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .ProductForm .form-group input[type="text"] { background: #e9eaea; height: 40px; border-radius: 4px; box-shadow: none; border: none; box-sizing: border-box; color: #333; padding: 5px 10px; }
 .ProductForm .form-group input[type="text"]::placeholder { color: #666; }
 .ProductForm .form-group input[type="text"]:not(.browser-default):focus:not([readonly]) {box-shadow:none;}
-.ProductForm .form-group input.name { background:#e9eaea url(../../assets/images/icons/name.png) 382px 9px no-repeat; }
-.ProductForm .form-group input.contact { background:#e9eaea url(../../assets/images/icons/mobile.png) 382px 9px no-repeat; }
-.ProductForm .form-group input.email { background:#e9eaea url(../../assets/images/icons/email.png) 382px 9px no-repeat; }
+.ProductForm .form-group input.name { background:#e9eaea url(../../assets/images/icons/name.png) 430px 9px no-repeat; }
+.ProductForm .form-group input.phone { background:#e9eaea url(../../assets/images/icons/mobile.png) 432px 9px no-repeat; }
+.ProductForm .form-group input.email { background:#e9eaea url(../../assets/images/icons/email.png) 432px 9px no-repeat; }
 .ProductForm .form-group .btn { background: #ff0000; padding: 6px 30px; border-radius: 24px; height: 48px; font-size: 20px; font-weight: bold; text-transform: capitalize; box-shadow: none; margin-left: 10px; width: 236px;}
 
 .vehicleSummarySec, .vehicleReportSec { padding: 50px 0 0 0!important; }
