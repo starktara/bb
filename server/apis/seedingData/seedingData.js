@@ -34,7 +34,14 @@ router.get("/createbikeMapping", (req, res) => {
               cc: { type: "integer" },
               bhp: { type: "integer" },
               category: { type: "integer" },
-              mileage: { type: "integer" }
+              mileage: { type: "integer" },
+              addiitionalInfo1: { type: "text" },
+              addiitionalInfo2: { type: "text" },
+              addiitionalInfo3: { type: "text" },
+              addiitionalInfo4: { type: "text" },
+              addiitionalInfo5: { type: "text" },
+              addiitionalInfo6: { type: "text" },
+              addiitionalInfo7: { type: "text" },
             }
           }
         }
@@ -695,7 +702,14 @@ router.get("/sellBikeDetails", (req, res) => {
               category: { type: "integer" },
               mileage: { type: "integer" },
               address:{type:"text"},
-              mobile:{type:"integer"}
+              mobile:{type:"integer"},
+              addiitionalInfo1:{type:"text"},
+              addiitionalInfo2:{type:"text"},
+              addiitionalInfo3:{type:"text"},
+              addiitionalInfo4:{type:"text"},
+              addiitionalInfo5:{type:"text"},
+              addiitionalInfo6:{type:"text"},
+              addiitionalInfo7:{type:"text"},
             }
           }
         }
@@ -812,6 +826,13 @@ router.post("/adminVehiclesUpload", (req, res) => {
         mileage: parseInt(formData.mileage.value),
         images: formData.image.imageNames,
         mimage: formData.image.imageNames[0],
+        addiitionalInfo1: formData.addiitionalInfo1.value,
+        addiitionalInfo2: formData.addiitionalInfo2.value,
+        addiitionalInfo3: formData.addiitionalInfo3.value,
+        addiitionalInfo4: formData.addiitionalInfo4.value,
+        addiitionalInfo5: formData.addiitionalInfo5.value,
+        addiitionalInfo6: formData.addiitionalInfo6.value,
+        addiitionalInfo6: formData.addiitionalInfo6.value,
       }
     ]
     const body = dataset.flatMap(doc => [

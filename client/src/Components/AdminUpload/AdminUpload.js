@@ -10,6 +10,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import M from "materialize-css";
 import {BRANDS} from '../../shared/mappings/brands';
 import { MODELS } from '../../shared/mappings/bike_models';
+
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/index';
 const useStyles = makeStyles(theme => ({
   formError: {
     color: "red",
@@ -99,82 +102,139 @@ const AdminUpload = (props) => {
     name: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      optional: false
     },
     type: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      optional: false
     },
     brand: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      optional: false
     },
     storeId: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      optional: false
     },
     model: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      optional: false
     },
     regNumber: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      optional: false
     },
     descr: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      optional: false
     },
     price: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      optional: false
     },
     myear: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      optional: false
     },
     mmonth: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      optional: false
     },
     kmsdriven: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      optional: false
     },
     owner: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      optional: false
     },
     cc: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      optional: false
     },
     bhp: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      optional: false
     },
     mileage: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      optional: false
     },
     image: {
       images: [],
       imageNames: [],
       message: ""
+    },
+    addiitionalInfo1: {
+      value: "",
+      error: false,
+      errorMessage: "",
+      optional: true
+    },
+    addiitionalInfo2: {
+      value: "",
+      error: false,
+      errorMessage: "",
+      optional: true
+    },
+    addiitionalInfo3: {
+      value: "",
+      error: false,
+      errorMessage: "",
+      optional: true
+    },
+    addiitionalInfo4: {
+      value: "",
+      error: false,
+      errorMessage: "",
+      optional: true
+    },
+    addiitionalInfo5: {
+      value: "",
+      error: false,
+      errorMessage: "",
+      optional: true
+    },
+    addiitionalInfo6: {
+      value: "",
+      error: false,
+      errorMessage: "",
+      optional: true
+    },
+    addiitionalInfo7: {
+      value: "",
+      error: false,
+      errorMessage: "",
+      optional: true
     }
   });
   const [successSubmit, setSuccessSubmit] = useState(false);
@@ -230,18 +290,22 @@ const AdminUpload = (props) => {
     }).catch(err => alert(err.message));
   }
 
+  const skipValidation = ['addiitionalInfo1', 'addiitionalInfo2', 'addiitionalInfo3', 'addiitionalInfo4', 'addiitionalInfo5', 'addiitionalInfo6', 'addiitionalInfo7'];
+
   const validateAndUpdateFormdata = (event, formData) => {
       let targetValue = event.target.value;
       let targetName = event.target.name;
       let errorMessage = "";
       let error = false;
-      if (isEmpty(targetValue)) {
-        errorMessage = "This field is required";
-        error = true;
-      } else {
-        errorMessage = formValidator(targetName, targetValue);
-        if (errorMessage.length) {
+      if(!skipValidation.includes(targetName)){
+        if (isEmpty(targetValue)) {
+          errorMessage = "This field is required";
           error = true;
+        } else {
+          errorMessage = formValidator(targetName, targetValue);
+          if (errorMessage.length) {
+            error = true;
+          }
         }
       }
       setFormData({
@@ -272,8 +336,7 @@ const AdminUpload = (props) => {
       };
     }
     for(let prop in submitObj){
-      if(submitObj[prop].error || submitObj[prop].value===""){
-        console.log(submitObj);
+      if((!submitObj[prop].optional) && (submitObj[prop].error || submitObj[prop].value==="")){
         let message = (submitObj[prop].error) ? "Invalid form value for "+prop: "All Fields are Mandatory";
         formValid = false;
         setTooltipState({
@@ -304,12 +367,22 @@ const AdminUpload = (props) => {
     }
   };
   let instance = [];
+
+  const blogId = props.match.params.id;
+
+  useEffect(() => {
+  console.log(blogId)
+      if(blogId!==undefined){
+      props.getVehicleData(blogId);
+  }
+  }, []);
+             
   useEffect(() => {
     var elems = document.querySelectorAll("select");
     M.FormSelect.init(elems, {});
     instance = M.FormSelect.getInstance(elems);
   }, []);
-  
+
   return(
       <div className={classes.body}>
         {tooltip}
@@ -320,10 +393,13 @@ const AdminUpload = (props) => {
                 <label htmlFor="regNumber">
                   <span >Name:*</span>&nbsp;&nbsp;
                 </label>
-                <input type="text" name="name" id="name"
+                {(props && props.vehicle && props.vehicle._source) ? (<input type="text" name="name" id="name" value={props.vehicle._source.name}
                   onBlur={event =>
                     validateAndUpdateFormdata(event, formData)
-                  }/>
+                  }/>) : (<input type="text" name="name" id="name"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
                 {formData.name.error && (
                   <p className={classes.formError}>
                     {formData.name.errorMessage}
@@ -393,10 +469,15 @@ const AdminUpload = (props) => {
                 <label htmlFor="regNumber">
                   <span >Registration Number:*</span>&nbsp;&nbsp;
                 </label>
-                <input type="text" name="regNumber" id="regNumber"
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<input type="text" name="regNumber" id="regNumber" value={props.vehicle._source.regNumber}
                   onBlur={event =>
                     validateAndUpdateFormdata(event, formData)
-                  }/>
+                  }/>) : (<input type="text" name="regNumber" id="regNumber"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+
                 {formData.regNumber.error && (
                   <p className={classes.formError}>
                     {formData.regNumber.errorMessage}
@@ -407,10 +488,15 @@ const AdminUpload = (props) => {
                 <label htmlFor="descr">
                   <span >Description:*</span>&nbsp;&nbsp;
                 </label>
-                <input type="text" name="descr" id="descr"
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<input type="text" name="descr" id="descr" value={props.vehicle._source.descr}
                   onBlur={event =>
                     validateAndUpdateFormdata(event, formData)
-                  }/>
+                  }/>) : (<input type="text" name="descr" id="descr"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+
                 {formData.descr.error && (
                   <p className={classes.formError}>
                     {formData.descr.errorMessage}
@@ -421,10 +507,15 @@ const AdminUpload = (props) => {
                 <label htmlFor="price">
                   <span >Price:*</span>&nbsp;&nbsp;
                 </label>
-                <input type="number" name="price" id="price"
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<input type="text" name="price" id="price" value={props.vehicle._source.price}
                   onBlur={event =>
                     validateAndUpdateFormdata(event, formData)
-                  }/>
+                  }/>) : (<input type="text" name="price" id="price"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+
                 {formData.price.error && (
                   <p className={classes.formError}>
                     {formData.price.errorMessage}
@@ -435,10 +526,14 @@ const AdminUpload = (props) => {
                 <label htmlFor="myear">
                   <span >Manufacturing Year:*</span>&nbsp;&nbsp;
                 </label>
-                <input type="number" name="myear" id="myear"
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<input type="number" name="myear" id="myear" value={props.vehicle._source.myear}
                   onBlur={event =>
                     validateAndUpdateFormdata(event, formData)
-                  }/>
+                  }/>) : (<input type="number" name="myear" id="myear"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
                 {formData.myear.error && (
                   <p className={classes.formError}>
                     {formData.myear.errorMessage}
@@ -449,10 +544,15 @@ const AdminUpload = (props) => {
                 <label htmlFor="mmonth">
                   <span >Manufacturing Month:*</span>&nbsp;&nbsp;
                 </label>
-                <input type="number" name="mmonth" id="mmonth"
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<input type="number" name="mmonth" id="mmonth" value={props.vehicle._source.mmonth}
                   onBlur={event =>
                     validateAndUpdateFormdata(event, formData)
-                  }/>
+                  }/>) : (<input type="number" name="mmonth" id="mmonth"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+
                 {formData.mmonth.error && (
                   <p className={classes.formError}>
                     {formData.mmonth.errorMessage}
@@ -463,10 +563,15 @@ const AdminUpload = (props) => {
                 <label htmlFor="kmsdriven">
                   <span >Kms. Driven:*</span>&nbsp;&nbsp;
                 </label>
-                <input type="number" name="kmsdriven" id="kmsdriven"
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<input type="number" name="kmsdriven" id="kmsdriven" value={props.vehicle._source.kmdriven}
                   onBlur={event =>
                     validateAndUpdateFormdata(event, formData)
-                  }/>
+                  }/>) : (<input type="number" name="kmsdriven" id="kmsdriven"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+
                 {formData.kmsdriven.error && (
                   <p className={classes.formError}>
                     {formData.kmsdriven.errorMessage}
@@ -477,10 +582,15 @@ const AdminUpload = (props) => {
                 <label htmlFor="owner">
                   <span >Owner:*</span>&nbsp;&nbsp;
                 </label>
-                <input type="text" name="owner" id="owner"
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<input type="text" name="owner" id="owner" value={props.vehicle._source.owner}
                   onBlur={event =>
                     validateAndUpdateFormdata(event, formData)
-                  }/>
+                  }/>) : (<input type="text" name="owner" id="owner"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+
                 {formData.owner.error && (
                   <p className={classes.formError}>
                     {formData.owner.errorMessage}
@@ -491,10 +601,15 @@ const AdminUpload = (props) => {
                 <label htmlFor="cc">
                   <span >CC:*</span>&nbsp;&nbsp;
                 </label>
-                <input type="number" name="cc" id="cc"
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<input type="number" name="cc" id="cc" value={props.vehicle._source.cc}
                   onBlur={event =>
                     validateAndUpdateFormdata(event, formData)
-                  }/>
+                  }/>) : (<input type="number" name="cc" id="cc"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+
                 {formData.cc.error && (
                   <p className={classes.formError}>
                     {formData.cc.errorMessage}
@@ -505,10 +620,15 @@ const AdminUpload = (props) => {
                 <label htmlFor="bhp">
                   <span >BHP:*</span>&nbsp;&nbsp;
                 </label>
-                <input type="number" name="bhp" id="bhp"
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<input type="number" name="bhp" id="bhp" value={props.vehicle._source.bhp}
                   onBlur={event =>
                     validateAndUpdateFormdata(event, formData)
-                  }/>
+                  }/>) : (<input type="number" name="bhp" id="bhp"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+
                 {formData.bhp.error && (
                   <p className={classes.formError}>
                     {formData.bhp.errorMessage}
@@ -519,16 +639,154 @@ const AdminUpload = (props) => {
                 <label htmlFor="mileage">
                   <span >Mileage:*</span>&nbsp;&nbsp;
                 </label>
-                <input type="number" name="mileage" id="mileage"
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<input type="number" name="mileage" id="mileage" value={props.vehicle._source.mileage}
                   onBlur={event =>
                     validateAndUpdateFormdata(event, formData)
-                  }/>
+                  }/>) : (<input type="number" name="mileage" id="mileage"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+
                 {formData.mileage.error && (
                   <p className={classes.formError}>
                     {formData.mileage.errorMessage}
                   </p>
                 )}
               </Grid>
+              <Grid item xs={12} sm={12} md={11}  lg={11} className={classes.mb20}>
+                <label htmlFor="addiitionalInfo1">
+                  <span >Additional Info 1</span>&nbsp;&nbsp;
+                </label>
+                
+
+                {(props && props.vehicle && props.vehicle._source) ? (<textarea type="text" name="addiitionalInfo1" id="addiitionalInfo1" value={props.vehicle._source.addiitionalInfo1}
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>) : (<textarea type="text" name="addiitionalInfo1" id="addiitionalInfo1"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+                
+                {formData.name.error && (
+                  <p className={classes.formError}>
+                    {formData.addiitionalInfo1.errorMessage}
+                  </p>
+                )}
+            </Grid>
+            <Grid item xs={12} sm={12} md={11}  lg={11} className={classes.mb20}>
+                <label htmlFor="addiitionalInfo2">
+                  <span >Additional Info 2</span>&nbsp;&nbsp;
+                </label>
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<textarea type="text" name="addiitionalInfo2" id="addiitionalInfo2" value={props.vehicle._source.addiitionalInfo2}
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>) : (<textarea type="text" name="addiitionalInfo2" id="addiitionalInfo2"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+                
+                {formData.name.error && (
+                  <p className={classes.formError}>
+                    {formData.addiitionalInfo2.errorMessage}
+                  </p>
+                )}
+            </Grid>
+            <Grid item xs={12} sm={12} md={11}  lg={11} className={classes.mb20}>
+                <label htmlFor="addiitionalInfo3">
+                  <span >Additional Info 3</span>&nbsp;&nbsp;
+                </label>
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<textarea type="text" name="addiitionalInfo3" id="addiitionalInfo3" value={props.vehicle._source.addiitionalInfo3}
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>) : (<textarea type="text" name="addiitionalInfo3" id="addiitionalInfo3"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+               
+                {formData.name.error && (
+                  <p className={classes.formError}>
+                    {formData.addiitionalInfo3.errorMessage}
+                  </p>
+                )}
+            </Grid>
+            <Grid item xs={12} sm={12} md={11}  lg={11} className={classes.mb20}>
+                <label htmlFor="addiitionalInfo4">
+                  <span >Additional Info 4</span>&nbsp;&nbsp;
+                </label>
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<textarea type="text" name="addiitionalInfo4" id="addiitionalInfo4" value={props.vehicle._source.addiitionalInfo4}
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>) : (<textarea type="text" name="addiitionalInfo4" id="addiitionalInfo4"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+              
+                {formData.name.error && (
+                  <p className={classes.formError}>
+                    {formData.addiitionalInfo4.errorMessage}
+                  </p>
+                )}
+            </Grid>
+            <Grid item xs={12} sm={12} md={11}  lg={11} className={classes.mb20}>
+                <label htmlFor="addiitionalInfo5">
+                  <span >Additional Info 5  </span>&nbsp;&nbsp;
+                </label>
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<textarea type="text" name="addiitionalInfo5" id="addiitionalInfo5" value={props.vehicle._source.addiitionalInfo5}
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>) : (<textarea type="text" name="addiitionalInfo5" id="addiitionalInfo5"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+                
+                {formData.name.error && (
+                  <p className={classes.formError}>
+                    {formData.addiitionalInfo5.errorMessage}
+                  </p>
+                )}
+            </Grid>
+            <Grid item xs={12} sm={12} md={11}  lg={11} className={classes.mb20}>
+                <label htmlFor="addiitionalInfo6">
+                  <span >Additional Info 6</span>&nbsp;&nbsp;
+                </label>
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<textarea type="text" name="addiitionalInfo6" id="addiitionalInfo6" value={props.vehicle._source.addiitionalInfo6}
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>) : (<textarea type="text" name="addiitionalInfo6" id="addiitionalInfo6"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+                
+                {formData.name.error && (
+                  <p className={classes.formError}>
+                    {formData.addiitionalInfo6.errorMessage}
+                  </p>
+                )}
+            </Grid><Grid item xs={12} sm={12} md={11}  lg={11} className={classes.mb20}>
+                <label htmlFor="addiitionalInfo7">
+                  <span >Additional Info 7</span>&nbsp;&nbsp;
+                </label>
+                
+                {(props && props.vehicle && props.vehicle._source) ? (<textarea type="text" name="addiitionalInfo7" id="addiitionalInfo7" value={props.vehicle._source.addiitionalInfo7}
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>) : (<textarea type="text" name="addiitionalInfo7" id="addiitionalInfo7"
+                  onBlur={event =>
+                    validateAndUpdateFormdata(event, formData)
+                  }/>)}
+                
+                {formData.name.error && (
+                  <p className={classes.formError}>
+                    {formData.addiitionalInfo7.errorMessage}
+                  </p>
+                )}
+            </Grid>
               <Grid item xs={12} sm={12} md={10}  lg={10} className={classes.mt40}>
                 <label htmlFor="image">
                   <span className={classes.label}> Upload images </span>
@@ -552,4 +810,17 @@ const AdminUpload = (props) => {
   )
 }
 
-export default AdminUpload;
+
+const mapStateToProps = state => {
+  return {
+      vehicle: state.vehicleDetails.vehicle,
+      loading: state.vehicleDetails.loading
+  };
+}
+const mapDispatchToProps = dispatch => {
+  return {
+      getVehicleData: (vehicleid) => dispatch(actions.getVehicleData(vehicleid))
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(AdminUpload);

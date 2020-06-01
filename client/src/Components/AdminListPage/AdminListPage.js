@@ -5,6 +5,8 @@ import * as actions from "../../store/actions/index";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 
+import { Link } from "react-router-dom";
+
 const useStyles = makeStyles(theme => ({
   delete: {
     cursor: 'pointer'
@@ -36,6 +38,7 @@ const AdminListPage = (props) => {
         <td>{vehicle._source.name}</td>
         <td>{vehicle._source.myear}</td>
         <td>{vehicle._source.price}</td>
+        <tb><Link to={'/admin/edit/'+vehicle._id} className='btn btn-secondary ButtonColor float-right'>Edit Info</Link></tb>
         <td onClick={() => deleteVehicle(vehicle._id)} id={'id-'+vehicle._id} className={classes.delete}>Delete</td>
       </tr>
   ));
@@ -47,6 +50,7 @@ const AdminListPage = (props) => {
             <th>Name</th>
             <th>Year</th>
             <th>Price</th>
+            <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>

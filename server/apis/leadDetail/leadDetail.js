@@ -37,6 +37,13 @@ router.get("/createSellerDetail", (req, res) => {
               category: { type: "integer" },
               mileage: { type: "integer" },
               phone:{ type: "integer" },
+              addiitionalInfo1: { type: "text" },
+              addiitionalInfo2: { type: "text" },
+              addiitionalInfo3: { type: "text" },
+              addiitionalInfo4: { type: "text" },
+              addiitionalInfo5: { type: "text" },
+              addiitionalInfo6: { type: "text" },
+              addiitionalInfo7: { type: "text" },
             }
           }
         }
