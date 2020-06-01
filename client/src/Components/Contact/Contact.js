@@ -33,17 +33,21 @@ const useStyles = makeStyles(theme => ({
   formContainer: {
     marginTop: theme.spacing(1)
   },
-  paper: {
+  paper1: {
     padding: theme.spacing(3),
-    margin: theme.spacing(2),
+    marginRight: theme.spacing(1),
+    color: theme.palette.text.secondary,
+    height: "100%"
+  },
+  paper2: {
+    padding: theme.spacing(3),
+    marginLeft: theme.spacing(1),
     color: theme.palette.text.secondary,
     height: "100%"
   },
   mapContainer: {
     marginTop: theme.spacing(5),
     marginBottom: theme.spacing(5),
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2)
   },
   formError: {
     color: "red",
@@ -241,7 +245,7 @@ const Contact = props => {
           />
           <Grid container component="div" direction="row">
             <Grid item xs={12} sm={12} md={5} lg={5}>
-              <Paper className={classes.paper}>
+              <Paper className={classes.paper1}>
                 <div className="center-align">
                   <h5 className="contact-heading">Contact Us</h5>
                   <img src={headingLines} alt="" className="heading-line" />
@@ -278,7 +282,7 @@ const Contact = props => {
               </Paper>
             </Grid>
             <Grid item xs={12} sm={12} md={7} lg={7}>
-              <Paper className={classes.paper}>
+              <Paper className={classes.paper2}>
                 <div className="center-align">
                   <h5 className="contact-heading">Contact Form</h5>
                   <img src={headingLines} alt="" className="heading-line" />
