@@ -14,7 +14,13 @@ class KmWidget extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
-
+  componentDidUpdate(props) {
+    if(props.reset === 1) {
+      this.setState({
+        slideValue: 100000
+      });
+    }
+  }
   handleChange(event) {
     this.setState({
       slideValue: event
@@ -41,7 +47,8 @@ class KmWidget extends Component {
             Kilometers
           </a>
         </h3>
-        <div className="WidgetBody">
+        <div className="WidgetBody" 
+            id="km-slider">
           <div className="MinMaxRange">
             <div className="MinRange">5000 KM</div>
             <div className="MaxRange">1,00,000 KMs</div>
