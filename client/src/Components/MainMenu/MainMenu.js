@@ -16,6 +16,8 @@ import { CHANGE_CITY, CHANGE_CATEGORY } from "../../store/actions/actionTypes";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Autocomplete } from '@material-ui/lab';
+import TextField from '@material-ui/core/TextField';
 
 const BuyButton = () => {
   const dispatch = useDispatch();
@@ -105,9 +107,13 @@ const MainMenu = props => {
     });
   };
   const [searchTerm, setSearchTerm] = useState("");
-  const updateState = event => {
-    setSearchTerm(event.target.value);
-  };
+  // const updateState = event => {
+  //   setSearchTerm(event.target.value);
+  // };
+
+  const updateState = value => {
+    setSearchTerm(value);
+  }
 
   const locationBtn =
     props.showLocationBtn == undefined ? (
@@ -157,19 +163,28 @@ const MainMenu = props => {
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <form id="searchForm" className="input-field">
-                  <div style={{"width": "420px", "marginLeft": "40px"}} className="search-container">
-                    <input
+                  <div className="search-container-main">
+                    {/* <input
                       id="searchField"
                       type="text"
                       placeholder="Search Your Two-wheeler"
                       required
                       value={searchTerm}
                       onChange={updateState}
+                    /> */}
+                    <Autocomplete
+                      style={{width:'265px', 'height':'40px', margin:'0px', 'padding':'0px'}}
+                      id="searchField"
+                      freeSolo
+                      options={['Bike1','Bike2', 'Bike3','Bike4', 'Bike5']}
+                      renderInput={(params) => (
+                        <TextField placeholder=" Search Your Two-wheeler" onChange={updateState(params.inputProps.value)} {...params} style={{ paddingLeft:'10px !important', margin:'0px'}} label="" margin="normal" variant="outlined" />
+                      )}
                     />
                     <Link
                       to={`/category/bike?searchTerm=${searchTerm}&city=${currentLocation}`}
                     >
-                      <button className="btn search-label-btn" type="submit">
+                      <button style={{'marginTop':'1px'}} className="btn search-label-btn" type="submit">
                         <img src={searchIcon} height="25" alt="" />
                       </button>
                     </Link>

@@ -30,3 +30,16 @@
     line-height: 22px;
     padding: 14px 16px;
 }
+
+.MuiInputBase-root .MuiOutlinedInput-root .MuiAutocomplete-inputRoot .MuiInputBase-fullWidth .MuiInputBase-formControl .MuiInputBase-adornedEnd .MuiOutlinedInput-adornedEnd {
+    padding: 0 !important;
+}
+
+.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+    padding: 0 !important;
+}
+
+.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] .MuiAutocomplete-input {
+    padding: 0 0 0 10px !important;
+    margin: 0 !important;
+}

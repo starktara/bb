@@ -90,6 +90,14 @@ body{
 .search-container{
   padding-top: 15px; 
 }
+.search-container-main{
+  padding-top: 15px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
+  margin-left: 40px;
+}
 #searchForm{
   margin-bottom: 0px;
   margin-left: 65px;
