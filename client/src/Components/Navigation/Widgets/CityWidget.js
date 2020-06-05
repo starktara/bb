@@ -28,7 +28,7 @@ const CityWidget = props => {
 
   useEffect(() => {
     setCity(selectedCity);
-  }, []);
+  }, [selectedCity]);
 
   const searchCity = event => {
     event.preventDefault();

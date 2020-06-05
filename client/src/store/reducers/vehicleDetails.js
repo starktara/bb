@@ -83,19 +83,19 @@ const reducer = (state = initialState, action) => {
         }
       };
     case actionTypes.CHANGE_CITY:
-      console.log({
-        ...state,
-        selectedCity: action.payload
-      })
+      // console.log({
+      //   ...state,
+      //   selectedCity: action.payload
+      // })
       return {
         ...state,
         selectedCity: action.payload
       }
       case actionTypes.CHANGE_CATEGORY:
-      console.log({
-        ...state,
-        category: action.payload
-      })
+      // console.log({
+      //   ...state,
+      //   category: action.payload
+      // })
       return {
         ...state,
         category: action.payload

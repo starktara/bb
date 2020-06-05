@@ -85,6 +85,9 @@ const BuyButton = () => {
 const MainMenu = props => {
   const dispatch = useDispatch();
   const selectedCity = useSelector(state => state.vehicleDetails.selectedCity);
+  // const { filter, selectedCity, vehicles } = useSelector(
+  //   state => state.vehicleDetails
+  // );
   const [currentLocation, setCurrentLocation] = useState(selectedCity);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
@@ -97,14 +100,16 @@ const MainMenu = props => {
   });
   const setLocation = key => {
     const loc = locations[key];
-    dispatch({ type: CHANGE_CITY, payload: loc });
     setCurrentLocation(loc);
+    dispatch({ type: CHANGE_CITY, payload: loc });
     let displayLoc = loc.length > 8 ? loc.substr(0, 7) + ".." : loc;
     document.querySelector("#currentLocation").innerText = displayLoc;
-    window.scrollTo({
-      top: 500,
-      behavior: 'smooth'
-    });
+    if(window.location.pathname === "/" ) {
+      window.scrollTo({
+        top: 500,
+        behavior: 'smooth'
+      });
+    }
   };
   const [searchTerm, setSearchTerm] = useState("");
   // const updateState = event => {
@@ -115,9 +120,8 @@ const MainMenu = props => {
     setSearchTerm(value);
   }
 
-  const locationBtn =
-    props.showLocationBtn == undefined ? (
-      <div> 
+  const locationBtn = (
+    <div> 
         <a className="dropdown-trigger" data-target="dropdown1">
           <div className="location-btn" style={{"display": "flex", "justifyContent": "space-around", "alignItems": "flex-start"}}>
             <div className="icon-wrapper">
@@ -146,9 +150,42 @@ const MainMenu = props => {
           })}
         </ul>
       </div>
-    ) : (
-      <div></div>
-    );
+  )
+
+  // const locationBtn =
+  //   props.showLocationBtn == undefined ? (
+  //     <div> 
+  //       <a className="dropdown-trigger" data-target="dropdown1">
+  //         <div className="location-btn" style={{"display": "flex", "justifyContent": "space-around", "alignItems": "flex-start"}}>
+  //           <div className="icon-wrapper">
+  //             <img src={locationIcon} height="20" alt="" />
+  //           </div>
+  //           <span style={{"marginLeft":"-20px"}} className="location-btn-text" id="currentLocation">
+  //             {currentLocation}
+  //           </span>
+  //           <img src={dropDown} height="11" className="dropdown-icon" alt="" />
+  //         </div>
+  //       </a>
+  //       <ul id="dropdown1" className="dropdown-content">
+  //         {locations.map((location, key) => {
+  //           if (location !== currentLocation) {
+  //             return (
+  //               <li className="dd-city-list" key={key} onClick={() => setLocation(key)}>
+  //                 {/* <Link
+  //                   to={`/category/bike?searchTerm=${searchTerm}&city=${location}`}
+  //                 >
+  //                   {location}
+  //                 </Link> */}
+  //                 {location}
+  //               </li>
+  //             );
+  //           }
+  //         })}
+  //       </ul>
+  //     </div>
+  //   ) : (
+  //     <div></div>
+  //   );
 
   if (matches) {
     return (
