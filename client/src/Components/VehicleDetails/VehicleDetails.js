@@ -77,7 +77,7 @@ const VehicleDetails = (props) => {
                 </Grid>
             </Grid>
             <VehicleData history ={props.history} data={props.vehicle._source}/>
-            <VehicleMetaData />
+            <VehicleMetaData vehicleDetails = {props.vehicle._source}/>
             <br className="clr"/>
         </div>
     }

@@ -34,7 +34,14 @@ router.get("/createbikeMapping", (req, res) => {
               cc: { type: "integer" },
               bhp: { type: "integer" },
               category: { type: "integer" },
-              mileage: { type: "integer" }
+              mileage: { type: "integer" },
+              additionalInfo: { type: "string" },
+              bulletPoint1: { type: "string" },
+              bulletPoint2: { type: "string" },
+              bulletPoint3: { type: "string" },
+              bulletPoint4: { type: "string" },
+              bulletPoint5: { type: "string" },
+              bulletPoint6: { type: "string" }
             }
           }
         }
@@ -695,7 +702,14 @@ router.get("/sellBikeDetails", (req, res) => {
               category: { type: "integer" },
               mileage: { type: "integer" },
               address:{type:"text"},
-              mobile:{type:"integer"}
+              mobile:{type:"integer"},
+              additionalInfo: { type: "string" },
+              bulletPoint1: { type: "string" },
+              bulletPoint2: { type: "string" },
+              bulletPoint3: { type: "string" },
+              bulletPoint4: { type: "string" },
+              bulletPoint5: { type: "string" },
+              bulletPoint6: { type: "string" }
             }
           }
         }
@@ -812,6 +826,13 @@ router.post("/adminVehiclesUpload", (req, res) => {
         mileage: parseInt(formData.mileage.value),
         images: formData.image.imageNames,
         mimage: formData.image.imageNames[0],
+        additionalInfo: formData.additionalInfo.value,
+        bulletPoint1: formData.bulletPoint1.value,
+        bulletPoint2: formData.bulletPoint2.value,
+        bulletPoint3: formData.bulletPoint3.value,
+        bulletPoint4: formData.bulletPoint4.value,
+        bulletPoint5: formData.bulletPoint5.value,
+        bulletPoint6: formData.bulletPoint6.value
       }
     ]
     const body = dataset.flatMap(doc => [
