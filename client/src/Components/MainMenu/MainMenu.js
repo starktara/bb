@@ -9,7 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import M from "materialize-css";
 import "./MainMenu.css";
 import MobNav from "../MobileNav/MobNav";
-import { useTheme } from "@material-ui/core/styles";
+import { withStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useSelector, connect, useDispatch } from "react-redux";
 import { CHANGE_CITY, CHANGE_CATEGORY } from "../../store/actions/actionTypes";
@@ -33,7 +33,20 @@ const BuyButton = () => {
     dispatch({ type: CHANGE_CATEGORY, payload: category });
     setAnchorEl(null);
   };
-  const selectedCity = useSelector(state => state.vehicleDetails.selectedCity);
+
+  const StyledMenuItem = withStyles({
+    root: {
+      '&:hover': {
+        backgroundColor: 'white',
+        color: 'black'
+      },
+      color: 'white',
+      backgroundColor: 'black',
+      fontWeight: 600,
+      fontFamily: "inherit",
+    },
+  })(MenuItem);
+
   return(
     <li>
       <span className="buy-dropdown-text" onClick={handleClick}>
@@ -55,28 +68,24 @@ const BuyButton = () => {
         MenuListProps={{ onMouseLeave: handleClose }}
         PaperProps={{
           style: {
-            backgroundColor: "white",
-            color: "black",
-            borderRadius: 0,
-            fontSize: 16,
-            width: 200,
+            backgroundColor: "black",
           },
         }}
       >
       <Link to={`/category/bike`}>
-        <MenuItem onClick={() => handleCategoryClose(1)} >
+        <StyledMenuItem onClick={() => handleCategoryClose(1)} >
           Motorcycle
-        </MenuItem>
+        </StyledMenuItem>
       </Link>
       <Link to={`/category/scooter`}>
-        <MenuItem onClick={() => handleCategoryClose(2)} >
+        <StyledMenuItem onClick={() => handleCategoryClose(2)} >
           Scooter
-        </MenuItem>
+        </StyledMenuItem>
       </Link>
       <Link to={`/category/high_end_bike`}>
-        <MenuItem onClick={() => handleCategoryClose(3)} >
+        <StyledMenuItem onClick={() => handleCategoryClose(3)} >
           High-End Motorcycle
-        </MenuItem>
+        </StyledMenuItem>
       </Link>
       </Menu>
     </li>
@@ -146,11 +155,6 @@ const MainMenu = props => {
             if (location !== selectedCity) {
               return (
                 <li className="dd-city-list" key={key} onClick={() => setLocation(key)}>
-                  {/* <Link
-                    to={`/category/bike?searchTerm=${searchTerm}&city=${location}`}
-                  >
-                    {location}
-                  </Link> */}
                   {location}
                 </li>
               );
