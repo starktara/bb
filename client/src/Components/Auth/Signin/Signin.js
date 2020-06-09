@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Signin.css";
-import Header from "../../Header/Header";
+// import Header from "../../Header/Header";
 import MainMenu from "../../MainMenu/MainMenu";
 import Footer from "../../Footer/Footer";
 import { Link } from "react-router-dom";
@@ -217,7 +217,7 @@ const Signin = props => {
   return (
 
     <div id="Signin" className={classes.body}>
-      <Header />
+      {/* <Header /> */}
       <MainMenu />
       {tooltip}
 

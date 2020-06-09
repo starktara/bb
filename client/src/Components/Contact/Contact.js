@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Contact.css";
-import Header from "../Header/Header";
+// import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
@@ -263,7 +263,7 @@ const Contact = props => {
   return (
     <div id="Contact" className={classes.body}>
       {tooltip}
-      <Header />
+      {/* <Header /> */}
       <MainMenu />
       <Grid
         container

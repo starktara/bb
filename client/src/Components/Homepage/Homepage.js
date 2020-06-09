@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./Homepage.css";
-import Header from "../Header/Header";
+// import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import logo from "../../assets/logo.svg";
@@ -113,7 +113,7 @@ const Homepage = (props) => {
 
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <MainMenu />
       <div className="slider hide-on-small-only">
         <ul className="slides">
