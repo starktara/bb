@@ -12,16 +12,16 @@ router.get("/getCategoryById", (req, res) => {
 
     if (req.query.searchTerm !== "null") {
       if (req.query.searchTerm != "") {
-        mustArray.push({
-          // match_phrase: {
-          //   name: `${req.query.searchTerm}*`
-          // }
-          wildcard : {
-            name: {
-              value : `${req.query.searchTerm}*`
+        const searchWords = req.query.searchTerm.split(" ");
+        searchWords.map(searchword => {
+          mustArray.push({
+            wildcard : {
+              name: {
+                value : `${searchword}*`
+              }
             }
-          }
-        });
+          });
+        })
       }
     } else {
       mustArray.push({
