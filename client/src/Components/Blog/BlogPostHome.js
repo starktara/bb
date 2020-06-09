@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
-import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
@@ -169,7 +168,6 @@ const BlogPostHome = (props) => {
 
   return (
     <div id="Blog">
-      <Header />
       <MainMenu />
       <Grid
         container

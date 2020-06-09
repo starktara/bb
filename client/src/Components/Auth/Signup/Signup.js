@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Signup.css";
-import Header from "../../Header/Header";
 import MainMenu from "../../MainMenu/MainMenu";
 import Footer from "../../Footer/Footer";
 import { Link, Redirect } from "react-router-dom";
@@ -254,7 +253,6 @@ const Signup = props => {
 
   return (
     <div id="signup" className={classes.body}>
-      <Header />
       <MainMenu />
       {tooltip}
       <Grid

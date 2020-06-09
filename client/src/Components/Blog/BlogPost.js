@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
-import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
@@ -97,7 +96,6 @@ if(props && props.blog && props.blog.data)
 
   return (
     <div id="Blog">
-      <Header />
       <MainMenu />
       <Grid
         container

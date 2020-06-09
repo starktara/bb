@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { connect, useDispatch, useSelector } from "react-redux";
 import "./LocateStore.css";
-import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
@@ -234,7 +233,6 @@ const LocateStore = props => {
 
   return (
     <div id="LocateStore">
-      <Header />
       <MainMenu />
       <Grid container component="div" direction="row" justify="center" className="mtop40">
         <Grid item xs={11} md={11} sm={11} lg={11}>

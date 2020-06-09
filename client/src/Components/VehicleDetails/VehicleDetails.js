@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import './VehicleDetails.css';
-import Header from '../Header/Header';
 import MainMenu from '../MainMenu/MainMenu';
 import Footer from '../Footer/Footer';
 import VehicleData from '../VehicleData/VehicleData';
@@ -84,7 +83,6 @@ const VehicleDetails = (props) => {
 
     return (
         <div id="VehicleDetails" className={classes.body}>
-            <Header />
             <MainMenu />
             <Grid container component="div" direction="row" justify="center" alignItems="center">
                 <Grid item xs={11} sm={11} md={11} lg={11} className={classes.banner}>
