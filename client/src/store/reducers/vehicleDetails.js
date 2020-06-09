@@ -3,6 +3,7 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   vehicles: [],
+  vehicleNames: [],
   loading: true,
   currentData: [],
   currentPage: null,
@@ -33,6 +34,13 @@ const vehicles = (state, action) => {
   });
 };
 
+const vehiclesNames = (state, action) => {
+  return updateObject(state, {
+    loading: false,
+    vehicleNames: action.vehicleNames
+  });
+};
+
 const getPaginatedData = (state, action) => {
   const currentData = state.vehicles.slice(
     action.offset,
@@ -59,9 +67,12 @@ const reducer = (state = initialState, action) => {
       return getPaginatedData(state, action);
     case actionTypes.GET_VEHICLE_DATA:
       return getVehicleData(state, action);
+    case actionTypes.GET_VEHICLE_NAMES: 
+      return vehiclesNames(state, action);
     case actionTypes.HOMEPAGE_LOAD:
       return {
         vehicles: [],
+        vehicleNames: [],
         loading: true,
         currentData: [],
         currentPage: null,
@@ -74,7 +85,7 @@ const reducer = (state = initialState, action) => {
             column: null,
             order: null
           },
-          city: null,
+          city: "Aluva",
           myear: [],
           budget: [],
           brand: [],
@@ -83,13 +94,12 @@ const reducer = (state = initialState, action) => {
         }
       };
     case actionTypes.CHANGE_CITY:
-      // console.log({
-      //   ...state,
-      //   selectedCity: action.payload
-      // })
+      const updatedFilter = state.filter;
+      updatedFilter.city = action.payload;
       return {
         ...state,
-        selectedCity: action.payload
+        selectedCity: action.payload,
+        filter: updatedFilter
       }
       case actionTypes.CHANGE_CATEGORY:
       // console.log({

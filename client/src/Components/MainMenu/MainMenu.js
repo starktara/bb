@@ -18,6 +18,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Autocomplete } from '@material-ui/lab';
 import TextField from '@material-ui/core/TextField';
+import * as actions from "../../store/actions/index";
 
 const BuyButton = () => {
   const dispatch = useDispatch();
@@ -84,10 +85,9 @@ const BuyButton = () => {
 
 const MainMenu = props => {
   const dispatch = useDispatch();
-  const selectedCity = useSelector(state => state.vehicleDetails.selectedCity);
-  // const { filter, selectedCity, vehicles } = useSelector(
-  //   state => state.vehicleDetails
-  // );
+  const { category, filter, vehicleNames, selectedCity } = useSelector(
+    state => state.vehicleDetails
+  );
   const [currentLocation, setCurrentLocation] = useState(selectedCity);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
@@ -112,10 +112,18 @@ const MainMenu = props => {
     }
   };
   const [searchTerm, setSearchTerm] = useState("");
-  // const updateState = event => {
-  //   setSearchTerm(event.target.value);
-  // };
 
+  useEffect(() => {
+    const filterData = {
+      ...filter,
+      city: selectedCity
+    }
+    if(searchTerm.length > 2)
+      setTimeout(() => {
+        dispatch(actions.getVehiclesNames(category, filterData, searchTerm));
+      }, 10);
+  }, [searchTerm, selectedCity]);
+  
   const updateState = value => {
     setSearchTerm(value);
   }
@@ -128,14 +136,14 @@ const MainMenu = props => {
               <img src={locationIcon} height="20" alt="" />
             </div>
             <span style={{"marginLeft":"-20px"}} className="location-btn-text" id="currentLocation">
-              {currentLocation}
+              {selectedCity}
             </span>
             <img src={dropDown} height="11" className="dropdown-icon" alt="" />
           </div>
         </a>
         <ul id="dropdown1" className="dropdown-content">
           {locations.map((location, key) => {
-            if (location !== currentLocation) {
+            if (location !== selectedCity) {
               return (
                 <li className="dd-city-list" key={key} onClick={() => setLocation(key)}>
                   {/* <Link
@@ -213,9 +221,9 @@ const MainMenu = props => {
                       style={{width:'265px', 'height':'40px', margin:'0px', 'padding':'0px'}}
                       id="searchField"
                       freeSolo
-                      options={['Bike1','Bike2', 'Bike3','Bike4', 'Bike5']}
+                      options={vehicleNames}
                       renderInput={(params) => (
-                        <TextField placeholder=" Search Your Two-wheeler" onChange={updateState(params.inputProps.value)} {...params} style={{ paddingLeft:'10px !important', margin:'0px'}} label="" margin="normal" variant="outlined" />
+                        <TextField placeholder="Search Your Two-wheeler" onChange={updateState(params.inputProps.value)} {...params} style={{ paddingLeft:'10px !important', margin:'0px'}} label="" margin="normal" variant="outlined" />
                       )}
                     />
                     <Link
