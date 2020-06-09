@@ -5,6 +5,7 @@ const keys = require("../../config/keys");
 const router = express.Router();
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
+const  mailer = require('../../helper/mailer');
 
 router.get("/createUser", (req, res) => {
   async function run() {
@@ -210,6 +211,57 @@ router.post("/login", (req, res) => {
     });
   }
   loginUser().catch(console.log);
+});
+
+router.post("/contactUs", (req, res) => {
+  // res.send("success");
+  let formData = req.body;
+  async function contact () {
+    const dataset = [
+      {
+        name: formData.name.value,
+        mobile: formData.mobile.value,
+        email: formData.email.value,
+        interestedIn: formData.interestedIn,
+        query: formData.query.value
+      }
+    ];
+    const data = dataset[0];
+    const dateTime = new Date();
+    const output = `
+      <h3>Details from Contact Us page</h3>
+      <table border='1' style='width:100%'>
+        <tr>
+          <td> Name </td>
+          <td> ${data.name} </td>
+        </tr>
+        <tr>
+          <td> Mobile No. </td>
+          <td> ${data.mobile} </td>
+        </tr>
+        <tr>
+          <td> Email </td>
+          <td> ${data.email} </td>
+        </tr>
+        <tr>
+          <td> Query </td>
+          <td> ${data.query} </td>
+        </tr>
+        <tr>
+          <td> Date </td>
+          <td> ${dateTime} </td>
+        </tr>
+      </table>
+    `;
+    const subject = data.interestedIn;
+
+    const sendToEmail = 'rahul.khedkar@bikebazaar.com';
+    mailer(output, subject, sendToEmail)
+    .then(resp => res.send(resp))
+    .catch(console.error);
+
+  }
+  contact().catch(console.log);
 });
 
 module.exports = router;

@@ -6,7 +6,11 @@ import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from '@material-ui/core/FormControl';
 import GoogleMap from "../GoogleMap/GoogleMap";
 import headingLines from "../../assets/heading-lines.svg";
 import facebookIcon from "../../assets/icons/social_media/Facebook.svg";
@@ -22,6 +26,16 @@ import isEmail from "validator/lib/isEmail";
 import isMobilePhone from "validator/lib/isMobilePhone";
 import isAlphaNumeric from "validator/lib/isAlphanumeric";
 import Tooltip from "../UI/Tooltip/Tooltip";
+import axios from "axios";
+
+const BBRadio = withStyles({
+  root: {
+    "&$checked": {
+      color: "#e92d2c"
+    }
+  },
+  checked: {}
+})(props => <Radio {...props} />);
 
 const useStyles = makeStyles(theme => ({
   body: {
@@ -127,7 +141,7 @@ const Contact = props => {
       errorMessage: ""
     },
     interestedIn: {
-      value: "",
+      value: "Buy",
       error: false,
       errorMessage: ""
     },
@@ -184,14 +198,12 @@ const Contact = props => {
       handleClose={handleClose}
     />
   );
-  
 
   const submitForm = async(event) => {
     event.preventDefault();
     const formDataCopy = formData;
     let errorFlag = false;
     Object.entries(formData).forEach(data => {
-      console.log(data);
       let targetValue = data[1].value;
       let targetName = data[0];
       let errorMessage = "";
@@ -205,23 +217,47 @@ const Contact = props => {
       if (error) {
         errorFlag = true;
       }
-      formDataCopy[targetName].errorMessage = errorMessage;
-      formDataCopy[targetName].error = error;
+      if(targetName !== "interestedIn" ) {
+        formDataCopy[targetName].errorMessage = errorMessage;
+        formDataCopy[targetName].error = error;
+      }
     });
     if(!errorFlag) {
       // incomplete functionality
-      console.log("Form submit");
-      setTooltipState({
-        open: true,
-        message: "Your details have been saved",
-        variant: "success"
-      });
+      axios
+        .post("/apis/userDetail/contactUs", formData)
+        .then(response => {
+          console.log("resp: ", response)
+          setTooltipState({
+            open: true,
+            message: "Your details have been saved",
+            variant: "success"
+          });
+        })
+        .catch(err => {
+          console.log(err);
+          setTooltipState({
+            open: true,
+            message: "Something went wrong, please try later.",
+            variant: "error"
+          });
+        });
     } else {
       setFormData({
         ...formData,
         formDataCopy
       });
     }
+  };
+
+  const [interest, setInterest] = React.useState('Buy');
+
+  const handleChange = (event) => {
+    setInterest(event.target.value);
+    setFormData({
+      ...formData,
+      interestedIn: event.target.value
+    })
   };
 
   return (
@@ -364,41 +400,15 @@ const Contact = props => {
                     </Grid>
                     <Grid container component="div" direction="row" className="interest-container">
                       <Grid item xs={12} sm={12} md={12} lg={12} className={classes.banner}>
-                        <p><span className={classes.label}>Interested In:*</span></p>
-                        <Grid container component="div" direction="row">
-                            <Grid item xs={6} sm={6} md={3} lg={3}>
-                              <span>
-                                <label>
-                                  <input name="interest" type="radio" value="buy" checked/>
-                                  <span>Buy</span>
-                                </label>
-                              </span>
-                            </Grid>
-                            <Grid item xs={6} sm={6} md={3} lg={3}>
-                              <span>
-                                <label>
-                                  <input name="interest" type="radio" value="sell" />
-                                  <span>Sell</span>
-                                </label>
-                              </span>
-                            </Grid>
-                            <Grid item xs={6} sm={6} md={3} lg={3}>
-                              <span>
-                                <label>
-                                  <input name="interest" type="radio" value="franchise"/>
-                                  <span>Franchise</span>
-                                </label>
-                              </span>
-                            </Grid>
-                            <Grid item xs={6} sm={6} md={3} lg={3}>
-                              <span>
-                                <label>
-                                  <input name="interest" type="radio" value="other" />
-                                  <span>Other</span>
-                                </label>
-                              </span>
-                            </Grid>
-                        </Grid>
+                      <p><span className={classes.label}>Interested In:*</span></p>
+                      <FormControl component="fieldset" style={{width: "100%"}}>
+                        <RadioGroup row aria-label="interest" name="interestedIn" value={interest} onChange={handleChange} style={{width:"100%", display: "flex", justifyContent:"space-between"}}>
+                          <FormControlLabel value="Buy" control={<BBRadio />} label="Buy" />
+                          <FormControlLabel value="Sell" control={<BBRadio />} label="Sell" />
+                          <FormControlLabel value="Franchise" control={<BBRadio />} label="Franchise" />
+                          <FormControlLabel value="other" control={<BBRadio />} label="Other" />
+                        </RadioGroup>
+                      </FormControl>
                       </Grid>
                     </Grid>
                     <Grid container component="div" direction="row" className={classes.banner}>
@@ -428,7 +438,7 @@ const Contact = props => {
                     </Grid>
                     <Grid container component="div" direction="row" className={classes.banner}>
                       <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
-                        <button type="button" class={classes.submit+' btn'} onClick={submitForm}>Share</button>
+                        <button type="button" className={classes.submit+' btn'} onClick={submitForm}>Share</button>
                       </Grid>
                       </Grid>
                   </form>
