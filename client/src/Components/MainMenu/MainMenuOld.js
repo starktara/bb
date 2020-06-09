@@ -4,7 +4,7 @@ import searchIcon from "../../assets/search-icon.svg";
 import locationIcon from "../../assets/location-icon.svg";
 import dropDown from "../../assets/drop-down.svg";
 import logoPng from "../../assets/logo.png";
-import bikeBazaarLogo from "../../assets/BikeB-logo.png";
+import bikeBazaarLogo from "../../assets/bikeBazaarLogo.svg";
 import Grid from "@material-ui/core/Grid";
 import M from "materialize-css";
 import "./MainMenu.css";
@@ -164,70 +164,129 @@ const MainMenu = props => {
       </div>
   )
 
+  // const locationBtn =
+  //   props.showLocationBtn == undefined ? (
+  //     <div> 
+  //       <a className="dropdown-trigger" data-target="dropdown1">
+  //         <div className="location-btn" style={{"display": "flex", "justifyContent": "space-around", "alignItems": "flex-start"}}>
+  //           <div className="icon-wrapper">
+  //             <img src={locationIcon} height="20" alt="" />
+  //           </div>
+  //           <span style={{"marginLeft":"-20px"}} className="location-btn-text" id="currentLocation">
+  //             {currentLocation}
+  //           </span>
+  //           <img src={dropDown} height="11" className="dropdown-icon" alt="" />
+  //         </div>
+  //       </a>
+  //       <ul id="dropdown1" className="dropdown-content">
+  //         {locations.map((location, key) => {
+  //           if (location !== currentLocation) {
+  //             return (
+  //               <li className="dd-city-list" key={key} onClick={() => setLocation(key)}>
+  //                 {/* <Link
+  //                   to={`/category/bike?searchTerm=${searchTerm}&city=${location}`}
+  //                 >
+  //                   {location}
+  //                 </Link> */}
+  //                 {location}
+  //               </li>
+  //             );
+  //           }
+  //         })}
+  //       </ul>
+  //     </div>
+  //   ) : (
+  //     <div></div>
+  //   );
+
   if (matches) {
     return (
       <nav className="nav-extended nav-color sticky-nav">
-        <Grid container component="div" direction="row" className="nav-wrapper" style={{display:"flex", alignItems:"center"}}>
+        <Grid container component="div" direction="row" className="nav-wrapper">
           <Grid item xs={2} sm={2} md={2} lg={2} className="header-title">
             <Link to="/">
               <img src={bikeBazaarLogo} height="25" id="logoImg" alt="" />
             </Link>
           </Grid>
-          <Grid item xs={1} sm={1} md={1} lg={1}></Grid>
-          <Grid item xs={6} sm={6} md={6} lg={6} style={{paddingTop:"5px", paddingBottom:"5px"}}>
+          <Grid item xs={8} sm={8} md={8} lg={8}>
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <form id="searchForm" className="input-field">
-                  <Grid container component="div" className="search-container-main" direction="row">
-                    <Grid item xs={10} sm={10} md={10} lg={10}>
-                      <Autocomplete
-                        // style={{width: '100%'}}
-                        id="searchField"
-                        freeSolo
-                        options={vehicleNames}
-                        renderInput={(params) => (
-                          <TextField placeholder="Search Your Two-wheeler" onChange={updateState(params.inputProps.value)} {...params} style={{ paddingLeft:'10px !important', margin:'0px'}} label="" margin="normal" variant="outlined" />
-                        )}
-                      />
-                    </Grid>
-                    <Grid item xs={2} sm={2} md={2} lg={2}>
-                      <Link
-                        to={`/category/bike?searchTerm=${searchTerm}&city=${currentLocation}`}
-                      >
-                        <button style={{'marginTop':'1px', width:'100%'}} className="btn search-label-btn" type="submit">
-                          <img src={searchIcon} height="25" alt="" />
-                        </button>
-                      </Link>
-                    </Grid>
-                  </Grid>
+                  <div className="search-container-main">
+                    {/* <input
+                      id="searchField"
+                      type="text"
+                      placeholder="Search Your Two-wheeler"
+                      required
+                      value={searchTerm}
+                      onChange={updateState}
+                    /> */}
+                    <Autocomplete
+                      style={{width:'265px', 'height':'40px', margin:'0px', 'padding':'0px'}}
+                      id="searchField"
+                      freeSolo
+                      options={vehicleNames}
+                      renderInput={(params) => (
+                        <TextField placeholder="Search Your Two-wheeler" onChange={updateState(params.inputProps.value)} {...params} style={{ paddingLeft:'10px !important', margin:'0px'}} label="" margin="normal" variant="outlined" />
+                      )}
+                    />
+                    <Link
+                      to={`/category/bike?searchTerm=${searchTerm}&city=${currentLocation}`}
+                    >
+                      <button style={{'marginTop':'1px'}} className="btn search-label-btn" type="submit">
+                        <img src={searchIcon} height="25" alt="" />
+                      </button>
+                    </Link>
+                  </div>
                 </form>
               </Grid>
             </Grid>
-            <Grid container component="div" direction="row" >
-              <Grid item xs={12} sm={12} md={12} lg={12} style={{display: "flex", justifyContent:"center"}}>
-                  <ul className="nav-options">
-                    <BuyButton />
-                    <li>
-                      <Link to="/sell">SELL</Link>
-                    </li>
-                    <li>
-                      <Link to="/vehicledetails/locate-store">LOCATE STORE</Link>
-                    </li>
-                    {/* <li>
-                      <Link to="/becomefranchiseowner">
-                        BECOME A FRANCHISE OWNER
-                      </Link>
-                    </li> */}
-                    <li>
-                      <Link to="/blog">BLOG</Link>
-                    </li>
-                  </ul>
-                </Grid>
-            </Grid>
           </Grid>
-          <Grid item xs={1} sm={1} md={1} lg={1}></Grid>
-          <Grid item xs={2} sm={2} md={2} lg={2} className="location-btn-container">
+          <Grid
+            item
+            xs={2}
+            sm={2}
+            md={2}
+            lg={2}
+            className="location-btn-container"
+          >
             {locationBtn}
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          component="div"
+          direction="row"
+          className="second-nav-wrapper row"
+          justify="center"
+        >
+          <Grid item xs={10} sm={10} md={10} lg={10}>
+            <Grid
+              container
+              component="div"
+              direction="row"
+              className="option-row"
+            >
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <ul className="nav-options">
+                  <BuyButton />
+                  <li>
+                    <Link to="/sell">SELL</Link>
+                  </li>
+                  <li>
+                    <Link to="/vehicledetails/locate-store">LOCATE STORE</Link>
+                  </li>
+                  <li>
+                    <Link to="/becomefranchiseowner">
+                      BECOME A FRANCHISE OWNER
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/blog">BLOG</Link>
+                  </li>
+                </ul>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </nav>
