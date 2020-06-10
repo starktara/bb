@@ -36,12 +36,12 @@ router.get("/createbikeMapping", (req, res) => {
               category: { type: "integer" },
               mileage: { type: "integer" },
               additionalInfo: { type: "string" },
-              bulletPoint1: { type: "string" },
-              bulletPoint2: { type: "string" },
-              bulletPoint3: { type: "string" },
-              bulletPoint4: { type: "string" },
-              bulletPoint5: { type: "string" },
-              bulletPoint6: { type: "string" }
+              bulletInfo1: { type: "string" },
+              bulletInfo2: { type: "string" },
+              bulletInfo3: { type: "string" },
+              bulletInfo4: { type: "string" },
+              bulletInfo5: { type: "string" },
+              bulletInfo6: { type: "string" }
             }
           }
         }
@@ -704,12 +704,12 @@ router.get("/sellBikeDetails", (req, res) => {
               address:{type:"text"},
               mobile:{type:"integer"},
               additionalInfo: { type: "string" },
-              bulletPoint1: { type: "string" },
-              bulletPoint2: { type: "string" },
-              bulletPoint3: { type: "string" },
-              bulletPoint4: { type: "string" },
-              bulletPoint5: { type: "string" },
-              bulletPoint6: { type: "string" }
+              bulletInfo1: { type: "string" },
+              bulletInfo2: { type: "string" },
+              bulletInfo3: { type: "string" },
+              bulletInfo4: { type: "string" },
+              bulletInfo5: { type: "string" },
+              bulletInfo6: { type: "string" }
             }
           }
         }
@@ -784,6 +784,64 @@ router.post("/deleteVehicle", (req, res) => {
   }
   deleteBike().catch(console.log);
 });
+
+router.post("/adminVehiclesUpdate", (req, res) => {
+  let data = req.body;
+  async function updateBike() {
+    const dataset = [
+      {
+        name: data.submitObj.name.value,
+        type: parseInt(data.submitObj.type.value),
+        brand: parseInt(data.submitObj.brand.value),
+        storeId: parseInt(data.submitObj.storeId.value),
+        location: data.submitObj.location.value,
+        model: parseInt(data.submitObj.model.value),
+        regnumber: data.submitObj.regnumber.value,
+        descr: data.submitObj.descr.value,
+        price: parseInt(data.submitObj.price.value),
+        state: data.submitObj.state.value,
+        city: data.submitObj.city.value,
+        loc: data.submitObj.loc.value,
+        myear: parseInt(data.submitObj.myear.value),
+        mmonth: parseInt(data.submitObj.mmonth.value),
+        kmdriven: parseInt(data.submitObj.kmdriven.value),
+        owner: parseInt(data.submitObj.owner.value),
+        cc: parseInt(data.submitObj.cc.value),
+        bhp: parseInt(data.submitObj.bhp.value),
+        category: parseInt(data.submitObj.type.value),
+        mileage: parseInt(data.submitObj.mileage.value),
+        images: data.submitObj.image.imageNames,
+        mimage: data.submitObj.image.imageNames[0],
+        additionalInfo: data.submitObj.additionalInfo.value,
+        bulletInfo1: data.submitObj.bulletInfo1.value,
+        bulletInfo2: data.submitObj.bulletInfo2.value,
+        bulletInfo3: data.submitObj.bulletInfo3.value,
+        bulletInfo4: data.submitObj.bulletInfo4.value,
+        bulletInfo5: data.submitObj.bulletInfo5.value,
+        bulletInfo6: data.submitObj.bulletInfo6.value
+      }
+    ]
+    console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
+    console.log(dataset);
+    console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
+    const { body } = await client.update({
+      index: "bike-details",
+       type: { _type: "_doc" } ,
+      id: data.vehicleId,
+      body:{
+        doc: dataset
+      }
+    });
+    const { bodyU } = await client.get({
+      index: 'bike-details',
+      id: data.vehicleId
+    })
+  
+    res.send(body);
+  }
+  updateBike().catch(console.log);
+});
+
 router.post("/adminVehiclesUpload", (req, res) => {
   let formData = req.body;
   console.log(formData);
@@ -810,7 +868,7 @@ router.post("/adminVehiclesUpload", (req, res) => {
         storeId: parseInt(formData.storeId.value),
         location: storeDetails.location,
         model: parseInt(formData.model.value),
-        regNumber: formData.regNumber.value,
+        regnumber: formData.regnumber.value,
         descr: formData.descr.value,
         price: parseInt(formData.price.value),
         state: storeDetails.state,
@@ -818,7 +876,7 @@ router.post("/adminVehiclesUpload", (req, res) => {
         loc: storeDetails.city,
         myear: parseInt(formData.myear.value),
         mmonth: parseInt(formData.mmonth.value),
-        kmdriven: parseInt(formData.kmsdriven.value),
+        kmdriven: parseInt(formData.kmdriven.value),
         owner: parseInt(formData.owner.value),
         cc: parseInt(formData.cc.value),
         bhp: parseInt(formData.bhp.value),
@@ -827,12 +885,12 @@ router.post("/adminVehiclesUpload", (req, res) => {
         images: formData.image.imageNames,
         mimage: formData.image.imageNames[0],
         additionalInfo: formData.additionalInfo.value,
-        bulletPoint1: formData.bulletPoint1.value,
-        bulletPoint2: formData.bulletPoint2.value,
-        bulletPoint3: formData.bulletPoint3.value,
-        bulletPoint4: formData.bulletPoint4.value,
-        bulletPoint5: formData.bulletPoint5.value,
-        bulletPoint6: formData.bulletPoint6.value
+        bulletInfo1: formData.bulletInfo1.value,
+        bulletInfo2: formData.bulletInfo2.value,
+        bulletInfo3: formData.bulletInfo3.value,
+        bulletInfo4: formData.bulletInfo4.value,
+        bulletInfo5: formData.bulletInfo5.value,
+        bulletInfo6: formData.bulletInfo6.value
       }
     ]
     const body = dataset.flatMap(doc => [

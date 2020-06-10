@@ -38,12 +38,12 @@ router.get("/createSellerDetail", (req, res) => {
               mileage: { type: "integer" },
               phone: { type: "integer" },
               additionalInfo: { type: "text" },
-              bulletPoint1: { type: "text" },
-              bulletPoint2: { type: "text" },
-              bulletPoint3: { type: "text" },
-              bulletPoint4: { type: "text" },
-              bulletPoint5: { type: "text" },
-              bulletPoint6: { type: "text" },
+              bulletInfo1: { type: "text" },
+              bulletInfo2: { type: "text" },
+              bulletInfo3: { type: "text" },
+              bulletInfo4: { type: "text" },
+              bulletInfo5: { type: "text" },
+              bulletInfo6: { type: "text" },
             }
           }
         }
