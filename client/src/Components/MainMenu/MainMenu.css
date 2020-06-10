@@ -43,9 +43,9 @@
     letter-spacing: 0.02;
     border: 0px !important;
 }
-.phone-number-ham {
+.phone-number-ham>a {
     color: white;
 }
-.phone-number-ham:hover {
+.phone-number-ham:hover >a {
     color: black;
 }

@@ -259,9 +259,9 @@ const HamburgerDropdown = () => {
         </StyledMenuItem>
       </Link>
       <br />
-      <StyledMenuItem >
+      <StyledMenuItem  className="phone-number-ham">
         <img src={callIcon}  alt="" style={{marginRight:"10px"}} />
-        <a target="_blank" href="tel:+9607993434" className="phone-number-ham ">
+        <a target="_blank" href="tel:+9607993434">
           9607993434
         </a>
       </StyledMenuItem>
