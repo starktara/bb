@@ -184,19 +184,19 @@ const Homepage = (props) => {
         </Grid>
         <Grid container component="div" direction="row">
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-            <div className="box-shadow center-align" onClick={() => handleCategoryClick(CATEGORY.BIKE)}>
+            <div className="box-shadow center-align" style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.BIKE)}>
               <img alt="" src={bikeGIF} height="170" width="290" />
               <h5>Motorcycle</h5>
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-            <div className="box-shadow center-align" onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}>
+            <div className="box-shadow center-align" style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}>
               <img alt="" src={scooterGIF} height="170" width="290" />
               <h5>Scooter</h5>
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-            <div className="box-shadow center-align" onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}>
+            <div className="box-shadow center-align" style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}>
               <img alt="" src={highEndBikeGIF} height="170" width="290" />
               <h5>High-End Motorcycle</h5>
             </div>
