@@ -8,6 +8,9 @@ import Footer from "../Footer/Footer";
 import logo from "../../assets/logo.svg";
 import searchIcon from "../../assets/search-icon.svg";
 import locationIcon from "../../assets/location-icon.svg";
+import bikeGIF from "../../assets/Motorcycle-GIF.gif";
+import scooterGIF from "../../assets/Scooter-GIF.gif";
+import highEndBikeGIF from "../../assets/High-End-Motorcycle-GIF.gif";
 // import sliderImg from "../../assets/main-img.png";
 import bannerImg from "../../assets/banner.png";
 import headingLines from "../../assets/heading-lines.svg";
@@ -182,19 +185,19 @@ const Homepage = (props) => {
         <Grid container component="div" direction="row">
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
             <div className="box-shadow center-align" onClick={() => handleCategoryClick(CATEGORY.BIKE)}>
-              <img alt="" src={bike2} height="170" width="290" />
+              <img alt="" src={bikeGIF} height="170" width="290" />
               <h5>Motorcycle</h5>
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
             <div className="box-shadow center-align" onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}>
-              <img alt="" src={scooter} height="170" width="290" />
+              <img alt="" src={scooterGIF} height="170" width="290" />
               <h5>Scooter</h5>
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
             <div className="box-shadow center-align" onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}>
-              <img alt="" src={bike} height="170" width="290" />
+              <img alt="" src={highEndBikeGIF} height="170" width="290" />
               <h5>High-End Motorcycle</h5>
             </div>
           </Grid>
