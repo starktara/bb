@@ -149,9 +149,10 @@ i.icon-black {
   font-size: 16px;
   line-height: 35px;
   letter-spacing: 0.47px;
-  font-weight: normal;
+  font-weight: 400;
   padding: 0px 75px;
   text-align: center;
+  margin-bottom: 25px;
 }
 .footer {
   min-height: 208px;
@@ -250,9 +251,9 @@ i.icon-black {
 }
 #clientName {
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   letter-spacing: 0.71px;
-  margin-top: 45px;
+  margin-bottom: 25px;
 }
 .carousel-search-container {
   width: 499px;
