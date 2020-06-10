@@ -19,11 +19,11 @@ import monthWarranty from "../../assets/6_month_warranty.svg";
 import buyerProtection from "../../assets/buyer_protection.svg";
 import lowCostEmi from "../../assets/low_cost_emi.svg";
 import hassleFreeDocTransfer from "../../assets/hassle_free_document_transfer.svg";
-// import testimonial1 from "../../assets/testimonial-image-1.png";
-// import testimonial2 from "../../assets/testimonial-image-2.png";
-// import testimonial3 from "../../assets/testimonial-image-3.png";
-// import testimonial4 from "../../assets/testimonial-image-4.png";
-// import testimonial5 from "../../assets/testimonial-image-5.png";
+import testimonial1 from "../../assets/testimonial-image-1.png";
+import testimonial2 from "../../assets/testimonial-image-2.png";
+import testimonial3 from "../../assets/testimonial-image-3.png";
+import testimonial4 from "../../assets/testimonial-image-4.png";
+import testimonial5 from "../../assets/testimonial-image-5.png";
 import M from "materialize-css";
 import Grid from "@material-ui/core/Grid";
 import * as CATEGORY from "../../shared/constants/category";
@@ -53,7 +53,7 @@ const Homepage = (props) => {
   const initCar = direction => {
     if (sliderState == null) {
       var instance;
-      const testiminialMessages = [
+      const testimonialMessages = [
         {
           name: "Jai Kumar",
           message:
@@ -86,8 +86,8 @@ const Homepage = (props) => {
         dist: -200,
         onCycleTo: function (data) {
           let index = data.getAttribute("index");
-          let message = testiminialMessages[index].message;
-          let name = testiminialMessages[index].name;
+          let message = testimonialMessages[index].message;
+          let name = testimonialMessages[index].name;
           document.querySelector("#clientName").innerText = name;
           document.querySelector("#testimonialMessage").innerText = message;
         }
@@ -300,7 +300,7 @@ const Homepage = (props) => {
           </Grid>
         </Grid>
       </div>
-      {/* <div className="section-4">
+      <div className="section-4">
         <Grid
           container
           component="div"
@@ -366,7 +366,7 @@ const Homepage = (props) => {
             <div id="testimonialMessage"></div>
           </Grid>
         </Grid>
-      </div> */}
+      </div>
       <Footer />
     </div>
   );
