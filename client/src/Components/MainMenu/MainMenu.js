@@ -14,6 +14,7 @@ import faceBookIcon from '../../assets/facebook-icon.svg';
 import twitterIcon from '../../assets/twitter-icon.svg';
 import linkedinIcon from '../../assets/linkedin-icon.svg';
 import instagramIcon from '../../assets/instagram-icon.svg';
+import selectedTyre from '../../assets/SelectedPageTyre.svg';
 import Grid from "@material-ui/core/Grid";
 import M from "materialize-css";
 import "./MainMenu.css";
@@ -33,15 +34,14 @@ const StyledMenuItem = withStyles({
   root: {
     '&:hover': {
       backgroundColor: 'white',
-      color: 'black'
+      color: 'black',
+      fontWeight: 700
     },
     color: 'white',
     backgroundColor: 'black',
-    fontWeight: 600,
+    fontWeight: 500,
+    fontSize:18,
     fontFamily: "inherit",
-    '&a': {
-      color: 'white'
-    }
   },
 })(MenuItem);
 
@@ -114,7 +114,7 @@ const PersonDropdown = () => {
   };
   return (
     <>
-    <img aria-controls="person-menu" aria-haspopup="true" onClick={handleClick} src={personLogo}  alt="" />
+    <img className="menu-icons" aria-controls="person-menu" aria-haspopup="true" onClick={handleClick} src={personLogo}  alt="" />
     <Menu
       id="person-menu"
       anchorEl={anchorEl}
@@ -171,7 +171,7 @@ const LocationDropDown = () => {
   }
   return (
     <>
-    <img aria-controls="location-menu" aria-haspopup="true" onClick={handleClick} src={locationLogo}  alt="" />
+    <img className="menu-icons" aria-controls="location-menu" aria-haspopup="true" onClick={handleClick} src={locationLogo}  alt="" />
     <Menu
       id="location-menu"
       anchorEl={anchorEl}
@@ -215,7 +215,7 @@ const HamburgerDropdown = () => {
   };
   return (
     <>
-    <img aria-controls="hamburger-menu" aria-haspopup="true" onClick={handleClick} src={hamburgerIcon}  alt="" />
+    <img className="menu-icons" aria-controls="hamburger-menu" aria-haspopup="true" onClick={handleClick} src={hamburgerIcon}  alt="" />
     <Menu
       id="hamburger-menu"
       anchorEl={anchorEl}
@@ -224,7 +224,7 @@ const HamburgerDropdown = () => {
       onClose={handleClose}
       getContentAnchorEl={null}
       anchorOrigin={{
-        vertical: "bottom",
+        vertical: "top",
         horizontal: "left",
       }}
       transformOrigin={{ vertical: "top", horizontal: "left" }}
@@ -232,64 +232,71 @@ const HamburgerDropdown = () => {
       PaperProps={{
         style: {
           backgroundColor: "black",
+          width:'380px'
         },
       }}
     >
       <MenuItem style={{display:'flex', justifyContent:'flex-end'}}>
-        <img onClick={handleClose} src={closeIcon} height="20"  alt="" style={{marginRight:"10px"}} />
+        <img className="icon-img" onClick={handleClose} src={closeIcon} height="25"  alt="" />
       </MenuItem>
       <Link to={`/about`}>
-        <StyledMenuItem >
-          About
+        <StyledMenuItem>
+          <img className="icon-img" src={selectedTyre} height="25" alt="" />
+          <span style={{lineHeight:'34px'}}>About</span>
         </StyledMenuItem>
       </Link>
       <Link to={`/howitworks`}>
-        <StyledMenuItem >
-          How It Works
+        <StyledMenuItem>
+          <img className="icon-img" src={selectedTyre} height="25" alt="" />
+          <span style={{lineHeight:'34px'}}>How It Works</span>
         </StyledMenuItem>
       </Link>
       <Link to={`/becomefranchiseowner`}>
-        <StyledMenuItem >
-          Become A Franchise Owner
+        <StyledMenuItem>
+          <img className="icon-img" src={selectedTyre} height="25" alt=""  />
+          <span style={{lineHeight:'34px'}}>Become A Franchise Owner</span>
         </StyledMenuItem>
       </Link>
       <Link to={`/contact`}>
-        <StyledMenuItem >
-          Contact Us
+        <StyledMenuItem style={{marginBottom:'20px'}}>
+          <img className="icon-img" src={selectedTyre} height="25" alt=""  />
+          <span style={{lineHeight:'34px'}}>Contact Us</span>
         </StyledMenuItem>
       </Link>
       <br />
-      <StyledMenuItem  className="phone-number-ham">
-        <img src={callIcon}  alt="" style={{marginRight:"10px"}} />
-        <a target="_blank" href="tel:+9607993434">
+      <StyledMenuItem className="phone-number-ham">
+        <img className="icon-img" src={selectedTyre} height="25" alt=""  />
+        <img className="icon-img" src={callIcon}  alt=""  />
+        <a target="_blank" href="tel:+9607993434" style={{marginRight:'10px', fontWeight:'700', fontSize:'16px'}}>
           9607993434
         </a>
       </StyledMenuItem>
       <Link to={`/help`}>
-        <StyledMenuItem >
-        <img src={messageIcon}  alt="" style={{marginRight:"10px"}} />
-          connect@bikebazaar.com
+        <StyledMenuItem>
+          <img className="icon-img" src={selectedTyre} height="25" alt=""  />
+          <img className="icon-img" src={messageIcon}  alt=""  />
+          <span style={{marginRight:'10px', fontWeight:'700', fontSize:'16px'}}>connect@bikebazaar.com</span>
         </StyledMenuItem>
       </Link>
-      <hr style={{margin:'20px 30px 10px 20px'}} />
-      <MenuItem >
+      <hr className="small-hr" />
+      <MenuItem>
         <Link to='/facebook'>
-          <img src={faceBookIcon}  alt="" style={{marginLeft:'10px', marginRight:"15px"}} />
+          <img className="social-icon-img" src={faceBookIcon}  alt="" style={{marginLeft:'35px'}} />
         </Link>
         <Link to='/twitter'>
-          <img src={twitterIcon}  alt="" style={{marginRight:"15px"}} />
+          <img className="social-icon-img" src={twitterIcon}  alt="" />
         </Link>
         <Link to='/linkedin'>
-          <img src={linkedinIcon}  alt="" style={{marginRight:"15px"}} />
+          <img className="social-icon-img" src={linkedinIcon}  alt="" />
         </Link>
         <Link to='/instagram'>
-          <img src={instagramIcon}  alt="" style={{marginRight:"15px"}} />
+          <img className="social-icon-img" src={instagramIcon}  alt="" />
         </Link>
       </MenuItem>
       <br />
       <Link to={`/copyright`}>
-        <StyledMenuItem style={{fontSize:'12px'}} >
-          © 2019 BikeBazaar. All rights reserved.
+        <StyledMenuItem style={{marginTop:'20px'}} >
+          <span style={{marginLeft:'25px', fontSize:'12px'}}>© 2019 BikeBazaar. All rights reserved.</span>
         </StyledMenuItem>
       </Link>
       <br />
@@ -396,12 +403,12 @@ const MainMenu = props => {
               </Grid>
             </Grid>
             <Grid container component="div" direction="row">
-              <Grid item xs={3} sm={3} md={3} lg={3}>
-                <img src={callIcon}  alt="" />
-              </Grid>
               <Grid item xs={9} sm={9} md={9} lg={9}>
                 <a target="_blank" href="tel:+9607993434" className="phone-number">
-                  9607993434
+                  <div className="phone-number-container">
+                    <img className="icon-img" src={callIcon}  alt="" />
+                    9607993434
+                  </div>
                 </a>
             </Grid>
           </Grid>

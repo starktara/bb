@@ -49,3 +49,21 @@
 .phone-number-ham:hover >a {
     color: black;
 }
+.icon-img {
+    margin-right: 10px;
+    cursor: pointer;
+}
+.social-icon-img {
+    margin-right: 15px;
+}
+.menu-icons{
+    cursor: pointer;
+}
+.phone-number-container{
+    display: flex;
+    justify-content: space-between;
+}
+.small-hr {
+    margin: 30px 0 10px 50px;
+    width: 120px;
+}
