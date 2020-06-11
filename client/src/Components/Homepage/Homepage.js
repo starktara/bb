@@ -58,29 +58,19 @@ const Homepage = (props) => {
       var instance;
       const testimonialMessages = [
         {
-          name: "Jai Kumar",
+          name: "Hari Raj",
           message:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            "If anyone is looking for a pre owned bikes/scooty then bike bazaar is the right place to go... Awesome experience from team bike bazaar... Especially Subhojit and sandeep helped me a lot to find out the best vehicle which i was exactly looking for...i will always recommend bike bazaar..thankyou team??"
         },
         {
-          name: "Jimi Hendrix",
+          name: "Md Aquiluzzaman",
           message:
-            "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            "Wonderful experience from Bike Bazaar. All paper work done in front of me. Transparency at it's peak. Condition of the bike is absolutely fabulous. Also available at EMI which is quite impossible but Bike Bazaar did it. Also delivered the bike in one day. Absolutely beautiful experience. Recommend Bike Bazaar to everyone, they won't ever disappoint. I bet. Go for it."
         },
         {
-          name: "Placeholder",
+          name: "Azhar Mirza",
           message:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-        },
-        {
-          name: "David Gilmour",
-          message:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        },
-        {
-          name: "Name",
-          message:
-            "Et tortor consequat id porta. Risus at ultrices mi tempus imperdiet. Natoque penatibus et magnis dis parturient montes nascetur. Elit at imperdiet dui accumsan sit. Euismod nisi porta lorem mollis aliquam ut porttitor. Adipiscing bibendum est ultricies integer quis auctor. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec. Semper risus in hendrerit gravida rutrum quisque non tellus. Tellus elementum sagittis vitae et. Quis hendrerit dolor magna eget est lorem ipsum."
+            "Selling a pre-owned bikes is an extensive and uncertain process. One is never sure of their bike's real market value. Listing online leads to more time consumption, multiple calls, random meetings, price haggling etc. BikeBazaar makes selling a bike an easy, fair and quick experience.it offer an efficient and reliable way to bike owners to sell their bikes at the best price."
         }
       ];
       let carouselOptions = {
@@ -333,18 +323,18 @@ const Homepage = (props) => {
               <a className="carousel-item" href="#one!" index="0">
                 <img alt="" className="circle" src={testimonial1} />
               </a>
-              <a className="carousel-item" href="#two!" index="1">
+              {/* <a className="carousel-item" href="#two!" index="1">
                 <img alt="" className="circle" src={testimonial2} />
-              </a>
-              <a className="carousel-item" href="#three!" index="2">
+              </a> */}
+              <a className="carousel-item" href="#two!" index="1">
                 <img alt="" className="circle" src={testimonial3} />
               </a>
-              <a className="carousel-item" href="#four!" index="3">
+              <a className="carousel-item" href="#three!" index="2">
                 <img alt="" className="circle" src={testimonial4} />
               </a>
-              <a className="carousel-item" href="#five!" index="4">
+              {/* <a className="carousel-item" href="#five!" index="4">
                 <img alt="" className="circle" src={testimonial5} />
-              </a>
+              </a> */}
             </div>
           </Grid>
           <Grid item xs={1} sm={1} md={1} lg={1}>
