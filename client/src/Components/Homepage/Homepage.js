@@ -1,37 +1,40 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./Homepage.css";
 // import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import logo from "../../assets/logo.svg";
-import searchIcon from "../../assets/search-icon.svg";
-import locationIcon from "../../assets/location-icon.svg";
+// import searchIcon from "../../assets/search-icon.svg";
+// import locationIcon from "../../assets/location-icon.svg";
 import bikeGIF from "../../assets/Motorcycle-GIF.gif";
 import scooterGIF from "../../assets/Scooter-GIF.gif";
 import highEndBikeGIF from "../../assets/High-End-Motorcycle-GIF.gif";
 // import sliderImg from "../../assets/main-img.png";
 import bannerImg from "../../assets/banner.png";
 import headingLines from "../../assets/heading-lines.svg";
-import bike2 from "../../assets/bike-icon.svg";
-import scooter from "../..//assets/scooter-icon.svg";
-import bike from "../../assets/high-end-bike-icon.svg";
+// import bike2 from "../../assets/bike-icon.svg";
+// import scooter from "../..//assets/scooter-icon.svg";
+// import bike from "../../assets/high-end-bike-icon.svg";
 import certifiedAutoExperts from "../../assets/certified_by_auto_experts.svg";
 import monthWarranty from "../../assets/6_month_warranty.svg";
 import buyerProtection from "../../assets/buyer_protection.svg";
 import lowCostEmi from "../../assets/low_cost_emi.svg";
 import hassleFreeDocTransfer from "../../assets/hassle_free_document_transfer.svg";
-import testimonial1 from "../../assets/testimonial-image-1.png";
-import testimonial2 from "../../assets/testimonial-image-2.png";
-import testimonial3 from "../../assets/testimonial-image-3.png";
-import testimonial4 from "../../assets/testimonial-image-4.png";
-import testimonial5 from "../../assets/testimonial-image-5.png";
+// import testimonial1 from "../../assets/testimonial-image-1.png";
+// import testimonial2 from "../../assets/testimonial-image-2.png";
+// import testimonial3 from "../../assets/testimonial-image-3.png";
+// import testimonial4 from "../../assets/testimonial-image-4.png";
+// import testimonial5 from "../../assets/testimonial-image-5.png";
+import testimonial_hari from "../../assets/Hari_Raj.png";
+import testimonial_md from "../../assets/Md_Aquiluzzaman.png";
+import testimonial_azhar from "../../assets/Azhar_Mirza.png";
 import M from "materialize-css";
 import Grid from "@material-ui/core/Grid";
 import * as CATEGORY from "../../shared/constants/category";
 import { CHANGE_CATEGORY } from "../../store/actions/actionTypes";
-import { HOMEPAGE_LOAD } from "../../store/actions/actionTypes"
+// import { HOMEPAGE_LOAD } from "../../store/actions/actionTypes"
 
 const Homepage = (props) => {
   const dispatch = useDispatch();
@@ -321,16 +324,16 @@ const Homepage = (props) => {
           <Grid item xs={10} sm={10} md={10} lg={10} className="center-align">
             <div className="carousel">
               <a className="carousel-item" href="#one!" index="0">
-                <img alt="" className="circle" src={testimonial1} />
+                <img alt="" className="circle" src={testimonial_hari} />
               </a>
               {/* <a className="carousel-item" href="#two!" index="1">
                 <img alt="" className="circle" src={testimonial2} />
               </a> */}
               <a className="carousel-item" href="#two!" index="1">
-                <img alt="" className="circle" src={testimonial3} />
+                <img alt="" className="circle" src={testimonial_md} />
               </a>
               <a className="carousel-item" href="#three!" index="2">
-                <img alt="" className="circle" src={testimonial4} />
+                <img alt="" className="circle" src={testimonial_azhar} />
               </a>
               {/* <a className="carousel-item" href="#five!" index="4">
                 <img alt="" className="circle" src={testimonial5} />
