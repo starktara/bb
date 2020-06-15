@@ -331,7 +331,7 @@ const Sell = props => {
       const data = new FormData();
       data.append("image", image, image.name);
       
-      return axios.post('/upload', data)
+      return axios.post('/apis/leadDetail/tempUpload', data)
       .then(response => {})
     });
     axios.all(uploaders).then(() => {
