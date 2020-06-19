@@ -788,7 +788,7 @@ router.post("/deleteVehicle", (req, res) => {
 router.post("/adminVehiclesUpdate", (req, res) => {
   let data = req.body;
   async function updateBike() {
-    const dataset = [
+    const dataset = 
       {
         name: data.submitObj.name.value,
         type: parseInt(data.submitObj.type.value),
@@ -819,14 +819,9 @@ router.post("/adminVehiclesUpdate", (req, res) => {
         bulletInfo4: data.submitObj.bulletInfo4.value,
         bulletInfo5: data.submitObj.bulletInfo5.value,
         bulletInfo6: data.submitObj.bulletInfo6.value
-      }
-    ]
-    console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
-    console.log(dataset);
-    console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
+      };
     const { body } = await client.update({
       index: "bike-details",
-       type: { _type: "_doc" } ,
       id: data.vehicleId,
       body:{
         doc: dataset
@@ -839,7 +834,7 @@ router.post("/adminVehiclesUpdate", (req, res) => {
   
     res.send(body);
   }
-  updateBike().catch(console.log);
+  updateBike().catch((err)=> console.log(err.meta.body.error, true, 10, true));
 });
 
 router.post("/adminVehiclesUpload", (req, res) => {

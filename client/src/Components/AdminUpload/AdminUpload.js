@@ -9,6 +9,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import M from "materialize-css";
 import { BRANDS } from "../../shared/mappings/brands";
 import { MODELS } from "../../shared/mappings/bike_models";
+import Select from 'react-select'
+import ImageUploadDisplay from './ImageUploadDisplay';
+
 const useStyles = makeStyles((theme) => ({
   formError: {
     color: "red",
@@ -94,85 +97,86 @@ const formValidator = (name, value) => {
     }
   }
 };
+
 const AdminUpload = (props) => {
   const classes = useStyles();
   const [formData, setFormData] = useState({
     name: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "1",
       optional: false,
     },
     type: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "2",
       optional: false,
     },
     brand: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "3",
       optional: false,
     },
     storeId: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "4",
       optional: false,
     },
     model: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "5",
       optional: false,
     },
     regnumber: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "6",
       optional: false,
     },
     descr: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "7",
       optional: false,
     },
     price: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "8",
       optional: false,
     },
     myear: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "9",
       optional: false,
     },
     mmonth: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "10",
       optional: false,
     },
     kmdriven: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "11",
       optional: false,
     },
     owner: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "12",
       optional: false,
     },
     cc: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "13",
       optional: false,
     },
     bhp: {
@@ -184,7 +188,7 @@ const AdminUpload = (props) => {
     mileage: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "14",
       optional: false,
     },
     image: {
@@ -195,53 +199,57 @@ const AdminUpload = (props) => {
     additionalInfo: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "15",
       optional: true,
     },
     bulletInfo1: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "16",
       optional: true,
     },
     bulletInfo2: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "17",
       optional: true,
     },
     bulletInfo3: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "18",
       optional: true,
     },
     bulletInfo4: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "19",
       optional: true,
     },
     bulletInfo5: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "20",
       optional: true,
     },
     bulletInfo6: {
       value: "",
       error: false,
-      errorMessage: "",
+      errorMessage: "21",
       optional: true,
     },
   });
   const [successSubmit, setSuccessSubmit] = useState(false);
-
   const [tooltipState, setTooltipState] = useState({
     open: false,
     message: "",
     variant: "error",
   });
+  const [populatedTypeObject, setPopulatedTypeObject] = useState(null);
+  const [populatedBrandObject, setPopulatedBrandObject] = useState(null);
+  const [populatedStoreObject, setPopulatedStoreObject] = useState(null);
+  const [populatedModelObject, setPopulatedModelObject] = useState(null);
+
   const handleClose = () => {
     setTooltipState({
       open: false,
@@ -249,6 +257,7 @@ const AdminUpload = (props) => {
       variant: "success",
     });
   };
+
   const tooltip = (
     <Tooltip
       open={tooltipState.open}
@@ -349,7 +358,7 @@ const AdminUpload = (props) => {
     }
     for (let prop in submitObj) {
       if (
-        !submitObj[prop].optional &&
+        (submitObj[prop].optional == false) &&
         (submitObj[prop].error || submitObj[prop].value === "")
       ) {
         let message = submitObj[prop].error
@@ -368,7 +377,7 @@ const AdminUpload = (props) => {
       axios
         .post("/apis/seedData/adminVehiclesUpload", submitObj)
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           if (response.status === 200) {
             setTooltipState({
               open: true,
@@ -383,19 +392,6 @@ const AdminUpload = (props) => {
       setSuccessSubmit(true);
     }
   };
-
-  const deleteVehicle = (id) => {
-    const formData = {
-      id: id
-    };
-    axios.post('/apis/seedData/deleteVehicle', formData)
-      .then(response => {
-        if(response.status===200){
-          let td = document.querySelector('#id-'+id);
-          td.parentElement.remove();
-        }
-      })
-  }
 
   const updateSubmitForm = async (id) => {
     let formValid = true;
@@ -416,7 +412,7 @@ const AdminUpload = (props) => {
     }
     for (let prop in submitObj) {
       if (
-        !submitObj[prop].optional &&
+        (submitObj[prop].optional == false) &&
         (submitObj[prop].error || submitObj[prop].value === "")
       ) {
         let message = submitObj[prop].error
@@ -430,12 +426,12 @@ const AdminUpload = (props) => {
         });
       }
     }
-    
+
     let submitUpdateObj = {
       submitObj: submitObj,
-      vehicleId: id
+      vehicleId: id,
     };
-    
+
     if (formValid) {
       uploadImages(formData);
       axios
@@ -455,6 +451,7 @@ const AdminUpload = (props) => {
       setSuccessSubmit(true);
     }
   };
+
   let instance = [];
   useEffect(() => {
     var elems = document.querySelectorAll("select");
@@ -462,8 +459,10 @@ const AdminUpload = (props) => {
     instance = M.FormSelect.getInstance(elems);
   }, []);
 
+// get vehicle id from url
   const vehicleId = props.match.params.id;
 
+// fetch vehicle details using vehicle id and set formData
   useEffect(() => {
     if (vehicleId !== undefined) {
       const getVehicleData = (vehicleId) => {
@@ -471,9 +470,9 @@ const AdminUpload = (props) => {
         axios
           .get(url)
           .then((response) => {
-            console.log(response);
             const vehicleData = response.data[0]._source;
             const objectArray = Object.entries(vehicleData);
+            // console.log(vehicleData);
             let vehicleDataObj = formData;
             objectArray.forEach(([key, value]) => {
               vehicleDataObj = {
@@ -485,7 +484,8 @@ const AdminUpload = (props) => {
                 },
               };
             });
-            setFormData(vehicleDataObj);
+            if(vehicleData !== null)
+              setFormData(vehicleDataObj);
           })
           .catch((err) => {
             console.log(err);
@@ -495,6 +495,7 @@ const AdminUpload = (props) => {
     }
   }, []);
 
+// update state through form input field
   const updateFormFieldHandler = (event, formData) => {
     let targetValue = event.target.value;
     let targetName = event.target.name;
@@ -504,9 +505,63 @@ const AdminUpload = (props) => {
         value: targetValue,
       },
     };
-
     setFormData(vehicleDataObj);
   };
+
+  const typeOptions = [
+    { value: '1', label: 'Bike' },
+    { value: '2', label: 'Scooter' },
+    { value: '3', label: 'High-end Bike' }
+  ];
+
+  const storeOptions = [
+    { value: '1', label: 'BikeBazaar, Aluva, Kerela' },
+    { value: '2', label: 'BikeBazaar, MCV Wheels' },
+    { value: '3', label: 'BikeBazaar, Rajahmundry' }
+  ];
+
+  const brandOptions = BRANDS.map((key, value)=>{
+    return (
+      {value: value, label: key}
+    )
+  })
+
+  // set dropdown select state value
+  const populateDropdown = (dropdownObject, searchFor, populatedObjectName) => {
+    dropdownObject.find((key, value)=>{
+      if(value==searchFor){
+        if(populatedObjectName=='type'){
+          setPopulatedTypeObject(key)
+        } if(populatedObjectName=='brand'){
+          setPopulatedBrandObject({value: value,  label: key})
+        } if(populatedObjectName=='store'){
+          setPopulatedStoreObject(key)
+        } if(populatedObjectName=='model'){
+          setPopulatedModelObject({value: value,  label: key})
+        }
+  } ;
+  })
+};
+// console.log(JSON.stringify(formData.images.[value]))
+const [sliderImages, setSliderImages] = useState(formData.images);
+
+
+useEffect(() => {
+if(formData.type.value){
+  populateDropdown(typeOptions, formData.type.value,'type');
+}
+if(formData.brand.value){
+  populateDropdown(BRANDS, formData.brand.value,'brand');
+}
+if(formData.storeId.value){
+  populateDropdown(storeOptions, formData.storeId.value,'store');
+}
+if(formData.model.value){
+  populateDropdown(MODELS, formData.model.value,'model');
+} 
+setSliderImages(formData.images);
+}, [formData]);
+
 
   return (
     <div className={classes.body}>
@@ -535,84 +590,34 @@ const AdminUpload = (props) => {
             )}
           </Grid>
           {/* <Grid item xs={12} sm={12} md={5}  lg={5}></Grid> */}
-          <Grid item xs={12} sm={12} md={5} lg={5}>
-            <div>
-              <label>Type</label>
-              <select value={formData.type.value} name="type">
-                {!formData.type.value ? null : (
-                  <option value="" defaultValue>
-                    Choose the Type
-                  </option>
-                )}
-                <option
-                  value="1"
-                  onClick={(event) =>
-                    validateAndUpdateFormdata(event, formData)
-                  }
-                >
-                  Bike
-                </option>
-                <option value="2">Scooter</option>
-                <option value="3">High-end Bike</option>
-              </select>
-            </div>
-          </Grid>
+          <Grid item xs={12} sm={12} md={5}  lg={5}>
+                <div>
+                  <label>Type</label>
+                  <Select options={populatedTypeObject} />
+                </div>
+              </Grid>
           <Grid item xs={12} sm={12} md={5} lg={5}>
             <div>
               <label>Brand</label>
-              <select value={formData.brand.value} name="brand">
-                {!formData.brand.value ? null : (
-                  <option value="" defaultValue>
-                    Choose the Brand
-                  </option>
-                )}
-                {BRANDS.map((key, value) => {
-                  return (
-                    <option key={value} value={value}>
-                      {key}
-                    </option>
-                  );
-                })}
-              </select>
+              {/* {(populatedBrandObject !== null) ? (console.log({value: populatedBrandObject.value, label:populatedBrandObject.label})) : (console.log('LOLOLOL'))}
+              {console.log(brandOptions[4])}
+
+              {(populatedBrandObject !== null) ? (<Select options={brandOptions}  defaultValue={populatedBrandObject}/>) : (<Select options={brandOptions}  defaultValue={brandOptions[1]}/>)} */}
+
+              {/* <Select options={brandOptions}  defaultValue={{value: 4, label: "Honda"}}/> */}
+              {/* <Select options={brandOptions}  defaultValue={{value: populatedBrandObject.value, label:populatedBrandObject.label}}/> */}
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={5} lg={5}>
             <div>
               <label>Store</label>
-              <select value={formData.storeId.value} name="storeId">
-                {!formData.storeId.value ? null : (
-                  <option value="" defaultValue>
-                    Choose the Store
-                  </option>
-                )}
-                <option value="1">BikeBazaar, Aluva, Kerela</option>
-                <option value="2">BikeBazaar, MCV Wheels</option>
-                <option value="3">BikeBazaar, Rajahmundry</option>
-                {formData.storeId.error && (
-                  <p className={classes.formError}>
-                    {formData.storeId.errorMessage}
-                  </p>
-                )}
-              </select>
+              <Select options={populatedStoreObject} />
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={5} lg={5}>
             <div>
               <label>Model</label>
-              <select value={formData.model.value} name="model">
-                {!formData.model.value ? null : (
-                  <option value="" defaultValue>
-                    Choose the Model
-                  </option>
-                )}
-                {MODELS.map((key, value) => {
-                  return (
-                    <option key={value} value={value}>
-                      {key}
-                    </option>
-                  );
-                })}
-              </select>
+              <Select options={populatedModelObject} />
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={5} lg={5}>
@@ -787,7 +792,7 @@ const AdminUpload = (props) => {
             <label htmlFor="additionalInfo">
               <span>Additional Information:</span>&nbsp;&nbsp;
             </label>
-            <textArea
+            <input
               value={formData.additionalInfo.value}
               onChange={(event) => updateFormFieldHandler(event, formData)}
               type="text"
@@ -909,26 +914,45 @@ const AdminUpload = (props) => {
               </p>
             )}
           </Grid>
+          {/* <ImageUploadDisplay images={sliderImages} /> */}
           <Grid item xs={12} sm={12} md={10} lg={10} className={classes.mt40}>
             <label htmlFor="image">
               <span className={classes.label}> Upload images </span>
             </label>
+            
             <input
               className="form-control"
               type="file"
               onChange={(event) => selectFiles(event, formData)}
               multiple
             />
-            {formData.image.message ? (
+            {/* {formData.image.message ? (
               <p className="text-info">{formData.image.message}</p>
             ) : (
               ""
-            )}
+            )} */}
+              {/* {
+                      sliderImages.map((image,key)=>{
+                          return <div key={key}>
+                                    <img src={vehicleImagePath+image} alt=""/>
+                                </div>
+                      })
+                    } */}
+                   {/* <img src={vehicleImagePath+sliderImages} alt=""/>   */}
+
+                      {/* {(sliderImages !== null && (sliderImages['value'] !== undefined) ) ? (console.log(sliderImages)) : (console.log('LOLOLOL'))} */}
+
+                   {/* {!null(sliderImages) ? (console.log(sliderImages)) : (<div></div>)} */}
           </Grid>
         </Grid>
         <div className="center-align">
           {vehicleId !== undefined ? (
-            <button type="button" className="btn" onClick={() => updateSubmitForm(vehicleId)} id={'id-'+vehicleId}>
+            <button
+              type="button"
+              className="btn"
+              onClick={() => updateSubmitForm(vehicleId)}
+              id={"id-" + vehicleId}
+            >
               Update Vehicle
             </button>
           ) : (
