@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import { useSelector, useDispatch } from "react-redux";
 import "./CategoryPage.css";
-import Header from "../Header/Header";
+// import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
@@ -111,7 +111,7 @@ const CategoryPage = props => {
     "Motorcycles are available at easy EMI starting at ₹2,000*. Your  dream bike is not a distant dream now.";
   return (
     <div id="CategoryPage">
-      <Header />
+      {/* <Header /> */}
       <MainMenu showLocationBtn="true" />
       <Grid
         container

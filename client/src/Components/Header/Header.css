@@ -48,7 +48,6 @@ body{
 }
 .search-label-btn{
   background: #232b2b;
-  margin-left: -86px;
   padding-top: 7px;
   height: 41px;
   margin-top: -4px;
@@ -67,6 +66,11 @@ body{
   border-radius: 5px;
   height: 40px;
   padding-left: 20px;
+}
+.nav-options {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
  .nav-options li{
   text-align: center;
@@ -95,12 +99,16 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 350px;
-  margin-left: 40px;
+  /* width: 350px; */
+  /* width: 588px; */
+  /* margin-left: 40px; */
 }
+/* .search-container-main>div {
+  width: 447px;
+} */
 #searchForm{
   margin-bottom: 0px;
-  margin-left: 65px;
+  /* margin-left: 65px; */
 }
 #searchForm input::placeholder {
   color: black;

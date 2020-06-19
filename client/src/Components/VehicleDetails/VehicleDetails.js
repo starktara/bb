@@ -84,7 +84,7 @@ const VehicleDetails = (props) => {
 
     return (
         <div id="VehicleDetails" className={classes.body}>
-            <Header />
+            {/* <Header /> */}
             <MainMenu />
             <Grid container component="div" direction="row" justify="center" alignItems="center">
                 <Grid item xs={11} sm={11} md={11} lg={11} className={classes.banner}>

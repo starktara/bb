@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./Homepage.css";
-import Header from "../Header/Header";
+// import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import logo from "../../assets/logo.svg";
-import searchIcon from "../../assets/search-icon.svg";
-import locationIcon from "../../assets/location-icon.svg";
+// import searchIcon from "../../assets/search-icon.svg";
+// import locationIcon from "../../assets/location-icon.svg";
+import bikeGIF from "../../assets/Motorcycle-GIF.gif";
+import scooterGIF from "../../assets/Scooter-GIF.gif";
+import highEndBikeGIF from "../../assets/High-End-Motorcycle-GIF.gif";
 // import sliderImg from "../../assets/main-img.png";
 import bannerImg from "../../assets/banner.png";
 import headingLines from "../../assets/heading-lines.svg";
-import bike2 from "../../assets/bike-icon.svg";
-import scooter from "../..//assets/scooter-icon.svg";
-import bike from "../../assets/high-end-bike-icon.svg";
+// import bike2 from "../../assets/bike-icon.svg";
+// import scooter from "../..//assets/scooter-icon.svg";
+// import bike from "../../assets/high-end-bike-icon.svg";
 import certifiedAutoExperts from "../../assets/certified_by_auto_experts.svg";
 import monthWarranty from "../../assets/6_month_warranty.svg";
 import buyerProtection from "../../assets/buyer_protection.svg";
@@ -24,11 +27,14 @@ import hassleFreeDocTransfer from "../../assets/hassle_free_document_transfer.sv
 // import testimonial3 from "../../assets/testimonial-image-3.png";
 // import testimonial4 from "../../assets/testimonial-image-4.png";
 // import testimonial5 from "../../assets/testimonial-image-5.png";
+import testimonial_hari from "../../assets/Hari_Raj.png";
+import testimonial_md from "../../assets/Md_Aquiluzzaman.png";
+import testimonial_azhar from "../../assets/Azhar_Mirza.png";
 import M from "materialize-css";
 import Grid from "@material-ui/core/Grid";
 import * as CATEGORY from "../../shared/constants/category";
 import { CHANGE_CATEGORY } from "../../store/actions/actionTypes";
-import { HOMEPAGE_LOAD } from "../../store/actions/actionTypes"
+// import { HOMEPAGE_LOAD } from "../../store/actions/actionTypes"
 
 const Homepage = (props) => {
   const dispatch = useDispatch();
@@ -53,31 +59,21 @@ const Homepage = (props) => {
   const initCar = direction => {
     if (sliderState == null) {
       var instance;
-      const testiminialMessages = [
+      const testimonialMessages = [
         {
-          name: "Jai Kumar",
+          name: "Hari Raj",
           message:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            "If anyone is looking for a pre owned bikes/scooty then bike bazaar is the right place to go... Awesome experience from team bike bazaar... Especially Subhojit and sandeep helped me a lot to find out the best vehicle which i was exactly looking for...i will always recommend bike bazaar..thankyou team??"
         },
         {
-          name: "Jimi Hendrix",
+          name: "Md Aquiluzzaman",
           message:
-            "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            "Wonderful experience from Bike Bazaar. All paper work done in front of me. Transparency at it's peak. Condition of the bike is absolutely fabulous. Also available at EMI which is quite impossible but Bike Bazaar did it. Also delivered the bike in one day. Absolutely beautiful experience. Recommend Bike Bazaar to everyone, they won't ever disappoint. I bet. Go for it."
         },
         {
-          name: "Buckethead",
+          name: "Azhar Mirza",
           message:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-        },
-        {
-          name: "David Gilmour",
-          message:
-            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English."
-        },
-        {
-          name: "Slash",
-          message:
-            "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful."
+            "Selling a pre-owned bikes is an extensive and uncertain process. One is never sure of their bike's real market value. Listing online leads to more time consumption, multiple calls, random meetings, price haggling etc. BikeBazaar makes selling a bike an easy, fair and quick experience.it offer an efficient and reliable way to bike owners to sell their bikes at the best price."
         }
       ];
       let carouselOptions = {
@@ -86,8 +82,8 @@ const Homepage = (props) => {
         dist: -200,
         onCycleTo: function (data) {
           let index = data.getAttribute("index");
-          let message = testiminialMessages[index].message;
-          let name = testiminialMessages[index].name;
+          let message = testimonialMessages[index].message;
+          let name = testimonialMessages[index].name;
           document.querySelector("#clientName").innerText = name;
           document.querySelector("#testimonialMessage").innerText = message;
         }
@@ -113,7 +109,7 @@ const Homepage = (props) => {
 
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <MainMenu />
       <div className="slider hide-on-small-only">
         <ul className="slides">
@@ -181,20 +177,20 @@ const Homepage = (props) => {
         </Grid>
         <Grid container component="div" direction="row">
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-            <div className="box-shadow center-align" onClick={() => handleCategoryClick(CATEGORY.BIKE)}>
-              <img alt="" src={bike2} height="170" width="290" />
+            <div className="box-shadow center-align" style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.BIKE)}>
+              <img alt="" src={bikeGIF} height="170" width="290" />
               <h5>Motorcycle</h5>
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-            <div className="box-shadow center-align" onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}>
-              <img alt="" src={scooter} height="170" width="290" />
+            <div className="box-shadow center-align" style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}>
+              <img alt="" src={scooterGIF} height="170" width="290" />
               <h5>Scooter</h5>
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-            <div className="box-shadow center-align" onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}>
-              <img alt="" src={bike} height="170" width="290" />
+            <div className="box-shadow center-align" style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}>
+              <img alt="" src={highEndBikeGIF} height="170" width="290" />
               <h5>High-End Motorcycle</h5>
             </div>
           </Grid>
@@ -300,7 +296,7 @@ const Homepage = (props) => {
           </Grid>
         </Grid>
       </div>
-      {/* <div className="section-4">
+      <div className="section-4">
         <Grid
           container
           component="div"
@@ -328,20 +324,20 @@ const Homepage = (props) => {
           <Grid item xs={10} sm={10} md={10} lg={10} className="center-align">
             <div className="carousel">
               <a className="carousel-item" href="#one!" index="0">
-                <img alt="" className="circle" src={testimonial1} />
+                <img alt="" className="circle" src={testimonial_hari} />
               </a>
-              <a className="carousel-item" href="#two!" index="1">
+              {/* <a className="carousel-item" href="#two!" index="1">
                 <img alt="" className="circle" src={testimonial2} />
+              </a> */}
+              <a className="carousel-item" href="#two!" index="1">
+                <img alt="" className="circle" src={testimonial_md} />
               </a>
               <a className="carousel-item" href="#three!" index="2">
-                <img alt="" className="circle" src={testimonial3} />
+                <img alt="" className="circle" src={testimonial_azhar} />
               </a>
-              <a className="carousel-item" href="#four!" index="3">
-                <img alt="" className="circle" src={testimonial4} />
-              </a>
-              <a className="carousel-item" href="#five!" index="4">
+              {/* <a className="carousel-item" href="#five!" index="4">
                 <img alt="" className="circle" src={testimonial5} />
-              </a>
+              </a> */}
             </div>
           </Grid>
           <Grid item xs={1} sm={1} md={1} lg={1}>
@@ -366,7 +362,7 @@ const Homepage = (props) => {
             <div id="testimonialMessage"></div>
           </Grid>
         </Grid>
-      </div> */}
+      </div>
       <Footer />
     </div>
   );

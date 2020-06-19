@@ -24,6 +24,13 @@ export const vehicleData = (vehicle) => {
     };
 };
 
+export const vehicleNames = (names) => {
+    return {
+        type: actionTypes.GET_VEHICLE_NAMES,
+        vehicleNames: names
+    };
+};
+
 export const apiFail = (error) => {
     return {
         type: actionTypes.API_FAIL,
@@ -70,3 +77,17 @@ export const getPaginatedData = (offset, pageLimit) => {
         pageLimit
     }
 }
+
+export const getVehiclesNames = (category, filterData, searchTerm) => {
+    const url = "/apis/categoryDetails/getCategoryById?category=" + category + "&filterData=" + JSON.stringify(filterData) + "&searchTerm=" + searchTerm;
+    return dispatch => {
+        axios.get(url)
+            .then(response => {
+                const names = response.data.map(bike => bike._source.name);
+                dispatch(vehicleNames(names))
+            })
+            .catch(err => {
+                dispatch(apiFail(err));
+            });
+    };
+};

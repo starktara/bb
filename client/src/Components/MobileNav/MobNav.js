@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./MobileNav.css";
 import { Link } from "react-router-dom";
 import logoPng from "../../assets/logo.png";
 import { makeStyles } from "@material-ui/core/styles";
 import userIcon from "../../assets/icons/user-icon.svg";
 import searchIcon from "../../assets/icons/search-icon.svg";
+import * as actions from "../../store/actions/index";
+import { Autocomplete } from '@material-ui/lab';
+import TextField from '@material-ui/core/TextField';
+import { useSelector, useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   searchIcon: {
@@ -20,9 +24,25 @@ const useStyles = makeStyles((theme) => ({
 const MobNav = () => {
   const classes = useStyles();
   const [searchTerm, setSearchTerm] = useState("");
-  const updateState = (event) => {
-    setSearchTerm(event.target.value);
-  };
+  const dispatch = useDispatch();
+  const { category, filter, vehicleNames, selectedCity } = useSelector(
+    state => state.vehicleDetails
+  );
+  useEffect(() => {
+    const filterData = {
+      ...filter,
+      city: selectedCity
+    }
+    if(searchTerm.length > 2)
+      setTimeout(() => {
+        dispatch(actions.getVehiclesNames(category, filterData, searchTerm));
+      }, 10);
+  }, [searchTerm, selectedCity]);
+
+  const updateState = value => {
+    setSearchTerm(value);
+  }
+
   return (
     <nav className="BBMNav" role="navigation">
       <div id="BBMmenuToggle">
@@ -60,13 +80,17 @@ const MobNav = () => {
         <Link to={`/category/bike?searchTerm=${searchTerm}&city=Aluva`}>
           <img src={searchIcon} className={classes.searchIcon} alt="" />
         </Link>
-        <input
+        <Autocomplete
+          id="searchField"
           className="BBMsearchField"
-          type="text"
-          placeholder="Search Your Two-wheeler"
-          value={searchTerm}
-          onChange={updateState}
+          style={{height:'100%'}}
+          freeSolo
+          options={vehicleNames}
+          renderInput={(params) => (
+            <TextField placeholder="Search Your Two-wheeler" onChange={updateState(params.inputProps.value)} {...params} style={{ paddingLeft:'10px !important', margin:'0px'}} label="" margin="normal" variant="outlined" />
+          )}
         />
+
       </div>
     </nav>
   );

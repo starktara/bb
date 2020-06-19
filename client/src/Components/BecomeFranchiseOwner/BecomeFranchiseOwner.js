@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import "./BecomeFranchiseOwner.css";
-import Header from "../Header/Header";
+// import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
@@ -277,7 +277,7 @@ const BecomeFranchiseOwner = props => {
   return (
     <div id="BecomeFranchiseOwner" className={classes.root}>
       {tooltip}
-      <Header />
+      {/* <Header /> */}
       <MainMenu />
       <Grid container component="div" direction="row" justify="center" alignItems="center">
         <Grid item xs={11} sm={11} md={11} lg={11} className={classes.banner}>

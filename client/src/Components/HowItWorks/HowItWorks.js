@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Header from "../Header/Header";
+// import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
@@ -72,7 +72,7 @@ const HowItWorks = props => {
       },[])
     return (
         <div id="HowItWorks" className={classes.body}>
-            <Header />
+            {/* <Header /> */}
             <MainMenu />
             <Grid container component="div" direction="row" justify="center" alignItems="center">
                 <Grid item xs={11} sm={11} md={11} lg={11} className={classes.banner}>

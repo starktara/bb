@@ -18,12 +18,6 @@
     font-size: 2rem !important;
 }
 
-.MuiMenuItem-root {
-    font-weight: 600 !important;
-    font-family: inherit !important;
-    color: red !important;
-}
-
 .dd-city-list {
     font-size: 16px;
     display: block;
@@ -42,4 +36,34 @@
 .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] .MuiAutocomplete-input {
     padding: 0 0 0 10px !important;
     margin: 0 !important;
+}
+.phone-number {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02;
+    border: 0px !important;
+}
+.phone-number-ham>a {
+    color: white;
+}
+.phone-number-ham:hover >a {
+    color: black;
+}
+.icon-img {
+    margin-right: 10px;
+    cursor: pointer;
+}
+.social-icon-img {
+    margin-right: 15px;
+}
+.menu-icons{
+    cursor: pointer;
+}
+.phone-number-container{
+    display: flex;
+    justify-content: space-between;
+}
+.small-hr {
+    margin: 30px 0 10px 50px;
+    width: 120px;
 }

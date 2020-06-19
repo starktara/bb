@@ -3,13 +3,23 @@ import { Link } from "react-router-dom";
 import searchIcon from "../../assets/search-icon.svg";
 import locationIcon from "../../assets/location-icon.svg";
 import dropDown from "../../assets/drop-down.svg";
-import logoPng from "../../assets/logo.png";
-import bikeBazaarLogo from "../../assets/bikeBazaarLogo.svg";
+import bikeBazaarLogo from "../../assets/BikeB-logo.png";
+import personLogo from "../../assets/Person.png";
+import locationLogo from "../../assets/Location_Icon.png";
+import hamburgerIcon from "../../assets/Hamburger_Icon.png";
+import callIcon from "../../assets/Call.png";
+import messageIcon from "../../assets/message.png";
+import closeIcon from "../../assets/Close.png";
+import faceBookIcon from '../../assets/facebook-icon.svg';
+import twitterIcon from '../../assets/twitter-icon.svg';
+import linkedinIcon from '../../assets/linkedin-icon.svg';
+import instagramIcon from '../../assets/instagram-icon.svg';
+import selectedTyre from '../../assets/SelectedPageTyre.svg';
 import Grid from "@material-ui/core/Grid";
 import M from "materialize-css";
 import "./MainMenu.css";
 import MobNav from "../MobileNav/MobNav";
-import { useTheme } from "@material-ui/core/styles";
+import { withStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useSelector, connect, useDispatch } from "react-redux";
 import { CHANGE_CITY, CHANGE_CATEGORY } from "../../store/actions/actionTypes";
@@ -18,6 +28,22 @@ import MenuItem from "@material-ui/core/MenuItem";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Autocomplete } from '@material-ui/lab';
 import TextField from '@material-ui/core/TextField';
+import * as actions from "../../store/actions/index";
+
+const StyledMenuItem = withStyles({
+  root: {
+    '&:hover': {
+      backgroundColor: 'white',
+      color: 'black',
+      fontWeight: 700
+    },
+    color: 'white',
+    backgroundColor: 'black',
+    fontWeight: 500,
+    fontSize:18,
+    fontFamily: "inherit",
+  },
+})(MenuItem);
 
 const BuyButton = () => {
   const dispatch = useDispatch();
@@ -32,7 +58,7 @@ const BuyButton = () => {
     dispatch({ type: CHANGE_CATEGORY, payload: category });
     setAnchorEl(null);
   };
-  const selectedCity = useSelector(state => state.vehicleDetails.selectedCity);
+
   return(
     <li>
       <span className="buy-dropdown-text" onClick={handleClick}>
@@ -54,227 +80,338 @@ const BuyButton = () => {
         MenuListProps={{ onMouseLeave: handleClose }}
         PaperProps={{
           style: {
-            backgroundColor: "white",
-            color: "black",
-            borderRadius: 0,
-            fontSize: 16,
-            width: 200,
+            backgroundColor: "black",
           },
         }}
       >
       <Link to={`/category/bike`}>
-        <MenuItem onClick={() => handleCategoryClose(1)} >
+        <StyledMenuItem onClick={() => handleCategoryClose(1)} >
           Motorcycle
-        </MenuItem>
+        </StyledMenuItem>
       </Link>
       <Link to={`/category/scooter`}>
-        <MenuItem onClick={() => handleCategoryClose(2)} >
+        <StyledMenuItem onClick={() => handleCategoryClose(2)} >
           Scooter
-        </MenuItem>
+        </StyledMenuItem>
       </Link>
       <Link to={`/category/high_end_bike`}>
-        <MenuItem onClick={() => handleCategoryClose(3)} >
+        <StyledMenuItem onClick={() => handleCategoryClose(3)} >
           High-End Motorcycle
-        </MenuItem>
+        </StyledMenuItem>
       </Link>
       </Menu>
     </li>
   )
 };
 
-const MainMenu = props => {
+const PersonDropdown = () => {
+  const [anchorEl, setAnchorEl] = useState();
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  return (
+    <>
+    <img className="menu-icons" aria-controls="person-menu" aria-haspopup="true" onClick={handleClick} src={personLogo}  alt="" />
+    <Menu
+      id="person-menu"
+      anchorEl={anchorEl}
+      keepMounted
+      open={Boolean(anchorEl)}
+      onClose={handleClose}
+      getContentAnchorEl={null}
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "left",
+      }}
+      transformOrigin={{ vertical: "top", horizontal: "left" }}
+      MenuListProps={{ onMouseLeave: handleClose }}
+      PaperProps={{
+        style: {
+          backgroundColor: "black",
+        },
+      }}
+    >
+      <Link to={`/signin`}>
+        <StyledMenuItem >
+          Sign In
+        </StyledMenuItem>
+      </Link>
+      <Link to={`/signup`}>
+        <StyledMenuItem >
+          Sign Up
+        </StyledMenuItem>
+      </Link>
+    </Menu>
+    </>
+  );
+}
+
+const LocationDropDown = () => {
   const dispatch = useDispatch();
-  const selectedCity = useSelector(state => state.vehicleDetails.selectedCity);
-  // const { filter, selectedCity, vehicles } = useSelector(
-  //   state => state.vehicleDetails
-  // );
-  const [currentLocation, setCurrentLocation] = useState(selectedCity);
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("sm"));
-  const [locations] = useState(["Aluva", "Kolkata", "Rajahmundry"]);
-  useEffect(() => {
-    let dropDown = document.querySelectorAll(".dropdown-trigger");
-    M.Dropdown.init(dropDown, {
-      coverTrigger: false
-    });
-  });
-  const setLocation = key => {
-    const loc = locations[key];
-    setCurrentLocation(loc);
-    dispatch({ type: CHANGE_CITY, payload: loc });
-    let displayLoc = loc.length > 8 ? loc.substr(0, 7) + ".." : loc;
-    document.querySelector("#currentLocation").innerText = displayLoc;
+  const [anchorEl, setAnchorEl] = useState();
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleCityChange = (value) => {
+    console.log(value)
+    dispatch({ type: CHANGE_CITY, payload: value });
+    handleClose();
     if(window.location.pathname === "/" ) {
       window.scrollTo({
         top: 500,
         behavior: 'smooth'
       });
     }
-  };
-  const [searchTerm, setSearchTerm] = useState("");
-  // const updateState = event => {
-  //   setSearchTerm(event.target.value);
-  // };
+  }
+  return (
+    <>
+    <img className="menu-icons" aria-controls="location-menu" aria-haspopup="true" onClick={handleClick} src={locationLogo}  alt="" />
+    <Menu
+      id="location-menu"
+      anchorEl={anchorEl}
+      keepMounted
+      open={Boolean(anchorEl)}
+      onClose={handleClose}
+      getContentAnchorEl={null}
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "left",
+      }}
+      transformOrigin={{ vertical: "top", horizontal: "center" }}
+      MenuListProps={{ onMouseLeave: handleClose }}
+      PaperProps={{
+        style: {
+          backgroundColor: "black",
+        },
+      }}
+    >
+      <StyledMenuItem onClick={() => handleCityChange("Aluva")}>
+        Aluva
+      </StyledMenuItem>
+      <StyledMenuItem onClick={() => handleCityChange("Kolkata")}>
+        Kolkata
+      </StyledMenuItem>
+      <StyledMenuItem onClick={() => handleCityChange("Rajahmundry")}>
+        Rajahmundry
+      </StyledMenuItem>
+    </Menu>
+    </>
+  );
+}
 
+const HamburgerDropdown = () => {
+  const [anchorEl, setAnchorEl] = useState();
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  return (
+    <>
+    <img className="menu-icons" aria-controls="hamburger-menu" aria-haspopup="true" onClick={handleClick} src={hamburgerIcon}  alt="" />
+    <Menu
+      id="hamburger-menu"
+      anchorEl={anchorEl}
+      keepMounted
+      open={Boolean(anchorEl)}
+      onClose={handleClose}
+      getContentAnchorEl={null}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "left",
+      }}
+      transformOrigin={{ vertical: "top", horizontal: "left" }}
+      MenuListProps={{ onMouseLeave: handleClose }}
+      PaperProps={{
+        style: {
+          backgroundColor: "black",
+          width:'380px'
+        },
+      }}
+    >
+      <MenuItem style={{display:'flex', justifyContent:'flex-end'}}>
+        <img className="icon-img" onClick={handleClose} src={closeIcon} height="25"  alt="" />
+      </MenuItem>
+      <Link to={`/about`}>
+        <StyledMenuItem>
+          <img className="icon-img" src={selectedTyre} height="25" alt="" />
+          <span style={{lineHeight:'34px'}}>About</span>
+        </StyledMenuItem>
+      </Link>
+      <Link to={`/howitworks`}>
+        <StyledMenuItem>
+          <img className="icon-img" src={selectedTyre} height="25" alt="" />
+          <span style={{lineHeight:'34px'}}>How It Works</span>
+        </StyledMenuItem>
+      </Link>
+      <Link to={`/becomefranchiseowner`}>
+        <StyledMenuItem>
+          <img className="icon-img" src={selectedTyre} height="25" alt=""  />
+          <span style={{lineHeight:'34px'}}>Become A Franchise Owner</span>
+        </StyledMenuItem>
+      </Link>
+      <Link to={`/contact`}>
+        <StyledMenuItem style={{marginBottom:'20px'}}>
+          <img className="icon-img" src={selectedTyre} height="25" alt=""  />
+          <span style={{lineHeight:'34px'}}>Contact Us</span>
+        </StyledMenuItem>
+      </Link>
+      <br />
+      <StyledMenuItem className="phone-number-ham">
+        <img className="icon-img" src={selectedTyre} height="25" alt=""  />
+        <img className="icon-img" src={callIcon}  alt=""  />
+        <a target="_blank" href="tel:+9607993434" style={{marginRight:'10px', fontWeight:'700', fontSize:'16px'}}>
+          9607993434
+        </a>
+      </StyledMenuItem>
+      <Link to={`/help`}>
+        <StyledMenuItem>
+          <img className="icon-img" src={selectedTyre} height="25" alt=""  />
+          <img className="icon-img" src={messageIcon}  alt=""  />
+          <span style={{marginRight:'10px', fontWeight:'700', fontSize:'16px'}}>connect@bikebazaar.com</span>
+        </StyledMenuItem>
+      </Link>
+      <hr className="small-hr" />
+      <MenuItem>
+        <Link to='/facebook'>
+          <img className="social-icon-img" src={faceBookIcon}  alt="" style={{marginLeft:'35px'}} />
+        </Link>
+        <Link to='/twitter'>
+          <img className="social-icon-img" src={twitterIcon}  alt="" />
+        </Link>
+        <Link to='/linkedin'>
+          <img className="social-icon-img" src={linkedinIcon}  alt="" />
+        </Link>
+        <Link to='/instagram'>
+          <img className="social-icon-img" src={instagramIcon}  alt="" />
+        </Link>
+      </MenuItem>
+      <br />
+      <Link to={`/copyright`}>
+        <StyledMenuItem style={{marginTop:'20px'}} >
+          <span style={{marginLeft:'25px', fontSize:'12px'}}>© 2019 BikeBazaar. All rights reserved.</span>
+        </StyledMenuItem>
+      </Link>
+      <br />
+    </Menu>
+    </>
+  );
+}
+
+const MainMenu = props => {
+  const dispatch = useDispatch();
+  const { category, filter, vehicleNames, selectedCity } = useSelector(
+    state => state.vehicleDetails
+  );
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("md"));
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    const filterData = {
+      ...filter,
+      city: selectedCity
+    }
+    if(searchTerm.length > 2)
+      setTimeout(() => {
+        dispatch(actions.getVehiclesNames(category, filterData, searchTerm));
+      }, 10);
+  }, [searchTerm, selectedCity]);
+  
   const updateState = value => {
     setSearchTerm(value);
   }
 
-  const locationBtn = (
-    <div> 
-        <a className="dropdown-trigger" data-target="dropdown1">
-          <div className="location-btn" style={{"display": "flex", "justifyContent": "space-around", "alignItems": "flex-start"}}>
-            <div className="icon-wrapper">
-              <img src={locationIcon} height="20" alt="" />
-            </div>
-            <span style={{"marginLeft":"-20px"}} className="location-btn-text" id="currentLocation">
-              {currentLocation}
-            </span>
-            <img src={dropDown} height="11" className="dropdown-icon" alt="" />
-          </div>
-        </a>
-        <ul id="dropdown1" className="dropdown-content">
-          {locations.map((location, key) => {
-            if (location !== currentLocation) {
-              return (
-                <li className="dd-city-list" key={key} onClick={() => setLocation(key)}>
-                  {/* <Link
-                    to={`/category/bike?searchTerm=${searchTerm}&city=${location}`}
-                  >
-                    {location}
-                  </Link> */}
-                  {location}
-                </li>
-              );
-            }
-          })}
-        </ul>
-      </div>
-  )
-
-  // const locationBtn =
-  //   props.showLocationBtn == undefined ? (
-  //     <div> 
-  //       <a className="dropdown-trigger" data-target="dropdown1">
-  //         <div className="location-btn" style={{"display": "flex", "justifyContent": "space-around", "alignItems": "flex-start"}}>
-  //           <div className="icon-wrapper">
-  //             <img src={locationIcon} height="20" alt="" />
-  //           </div>
-  //           <span style={{"marginLeft":"-20px"}} className="location-btn-text" id="currentLocation">
-  //             {currentLocation}
-  //           </span>
-  //           <img src={dropDown} height="11" className="dropdown-icon" alt="" />
-  //         </div>
-  //       </a>
-  //       <ul id="dropdown1" className="dropdown-content">
-  //         {locations.map((location, key) => {
-  //           if (location !== currentLocation) {
-  //             return (
-  //               <li className="dd-city-list" key={key} onClick={() => setLocation(key)}>
-  //                 {/* <Link
-  //                   to={`/category/bike?searchTerm=${searchTerm}&city=${location}`}
-  //                 >
-  //                   {location}
-  //                 </Link> */}
-  //                 {location}
-  //               </li>
-  //             );
-  //           }
-  //         })}
-  //       </ul>
-  //     </div>
-  //   ) : (
-  //     <div></div>
-  //   );
-
   if (matches) {
     return (
       <nav className="nav-extended nav-color sticky-nav">
-        <Grid container component="div" direction="row" className="nav-wrapper">
+        <Grid container component="div" direction="row" className="nav-wrapper" style={{display:"flex", alignItems:"center"}}>
           <Grid item xs={2} sm={2} md={2} lg={2} className="header-title">
             <Link to="/">
               <img src={bikeBazaarLogo} height="25" id="logoImg" alt="" />
             </Link>
           </Grid>
-          <Grid item xs={8} sm={8} md={8} lg={8}>
+          <Grid item xs={1} sm={1} md={1} lg={1}></Grid>
+          <Grid item xs={6} sm={6} md={6} lg={6} style={{paddingTop:"5px", paddingBottom:"5px"}}>
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <form id="searchForm" className="input-field">
-                  <div className="search-container-main">
-                    {/* <input
-                      id="searchField"
-                      type="text"
-                      placeholder="Search Your Two-wheeler"
-                      required
-                      value={searchTerm}
-                      onChange={updateState}
-                    /> */}
-                    <Autocomplete
-                      style={{width:'265px', 'height':'40px', margin:'0px', 'padding':'0px'}}
-                      id="searchField"
-                      freeSolo
-                      options={['Bike1','Bike2', 'Bike3','Bike4', 'Bike5']}
-                      renderInput={(params) => (
-                        <TextField placeholder=" Search Your Two-wheeler" onChange={updateState(params.inputProps.value)} {...params} style={{ paddingLeft:'10px !important', margin:'0px'}} label="" margin="normal" variant="outlined" />
-                      )}
-                    />
-                    <Link
-                      to={`/category/bike?searchTerm=${searchTerm}&city=${currentLocation}`}
-                    >
-                      <button style={{'marginTop':'1px'}} className="btn search-label-btn" type="submit">
-                        <img src={searchIcon} height="25" alt="" />
-                      </button>
-                    </Link>
-                  </div>
+                  <Grid container component="div" className="search-container-main" direction="row">
+                    <Grid item xs={10} sm={10} md={10} lg={10}>
+                      <Autocomplete
+                        id="searchField"
+                        freeSolo
+                        options={vehicleNames}
+                        renderInput={(params) => (
+                          <TextField placeholder="Search Your Two-wheeler" onChange={updateState(params.inputProps.value)} {...params} style={{ paddingLeft:'10px !important', margin:'0px'}} label="" margin="normal" variant="outlined" />
+                        )}
+                      />
+                    </Grid>
+                    <Grid item xs={2} sm={2} md={2} lg={2}>
+                      <Link
+                        to={`/category/bike?searchTerm=${searchTerm}&city=${selectedCity}`}
+                      >
+                        <button style={{'marginTop':'1px', width:'100%'}} className="btn search-label-btn" type="submit">
+                          <img src={searchIcon} height="25" alt="" />
+                        </button>
+                      </Link>
+                    </Grid>
+                  </Grid>
                 </form>
               </Grid>
             </Grid>
+            <Grid container component="div" direction="row" >
+              <Grid item xs={12} sm={12} md={12} lg={12} style={{display: "flex", justifyContent:"center"}}>
+                  <ul className="nav-options">
+                    <BuyButton />
+                    <li>
+                      <Link to="/sell">SELL</Link>
+                    </li>
+                    <li>
+                      <Link to="/vehicledetails/locate-store">LOCATE STORE</Link>
+                    </li>
+                    {/* <li>
+                      <Link to="/becomefranchiseowner">
+                        BECOME A FRANCHISE OWNER
+                      </Link>
+                    </li> */}
+                    <li>
+                      <Link to="/blog">BLOG</Link>
+                    </li>
+                  </ul>
+                </Grid>
+            </Grid>
           </Grid>
-          <Grid
-            item
-            xs={2}
-            sm={2}
-            md={2}
-            lg={2}
-            className="location-btn-container"
-          >
-            {locationBtn}
-          </Grid>
-        </Grid>
-        <Grid
-          container
-          component="div"
-          direction="row"
-          className="second-nav-wrapper row"
-          justify="center"
-        >
-          <Grid item xs={10} sm={10} md={10} lg={10}>
-            <Grid
-              container
-              component="div"
-              direction="row"
-              className="option-row"
-            >
-              <Grid item xs={12} sm={12} md={12} lg={12}>
-                <ul className="nav-options">
-                  <BuyButton />
-                  <li>
-                    <Link to="/sell">SELL</Link>
-                  </li>
-                  <li>
-                    <Link to="/vehicledetails/locate-store">LOCATE STORE</Link>
-                  </li>
-                  <li>
-                    <Link to="/becomefranchiseowner">
-                      BECOME A FRANCHISE OWNER
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/blog">BLOG</Link>
-                  </li>
-                </ul>
+          <Grid item xs={1} sm={1} md={1} lg={1}></Grid>
+          <Grid item xs={2} sm={2} md={2} lg={2} className="location-btn-container">
+            <Grid container component="div" direction="row" style={{paddingTop:'15px', display:'flex', alignItems:'center'}}>
+              <Grid item xs={4} sm={4} md={4} lg={4}>
+                <PersonDropdown />
+              </Grid>
+              <Grid item xs={4} sm={4} md={4} lg={4}>
+                <LocationDropDown />
+              </Grid>
+              <Grid item xs={4} sm={4} md={4} lg={4}>
+                <HamburgerDropdown />
               </Grid>
             </Grid>
+            <Grid container component="div" direction="row">
+              <Grid item xs={9} sm={9} md={9} lg={9}>
+                <a target="_blank" href="tel:+9607993434" className="phone-number">
+                  <div className="phone-number-container">
+                    <img className="icon-img" src={callIcon}  alt="" />
+                    9607993434
+                  </div>
+                </a>
+            </Grid>
+          </Grid>
           </Grid>
         </Grid>
       </nav>

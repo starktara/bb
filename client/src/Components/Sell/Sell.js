@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import "./Sell.css";
-import Header from "../Header/Header";
+// import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
@@ -331,7 +331,7 @@ const Sell = props => {
       const data = new FormData();
       data.append("image", image, image.name);
       
-      return axios.post('/upload', data)
+      return axios.post('/apis/leadDetail/tempUpload', data)
       .then(response => {})
     });
     axios.all(uploaders).then(() => {
@@ -452,7 +452,7 @@ const Sell = props => {
 
   return (
     <div id="Sell" className={classes.body}>
-      <Header />
+      {/* <Header /> */}
       <MainMenu />
       {tooltip}
       <Grid container component="div" direction="row" justify="center">

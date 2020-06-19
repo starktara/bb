@@ -117,12 +117,12 @@ nav.BBMNav {
   width: 100% !important;
   /* background: #fff url("../../assets/icons/search-icon.svg") 15px 13px no-repeat !important; */
   background: #fff !important;
-  height: 48px !important;
+  height: 40px !important;
   padding-left: 45px !important;
   box-shadow: none !important;
   border: none !important;
   box-sizing: border-box !important;
-  border-radius: 2px !important;
+  border-radius: 1px !important;
   font-size: 14px !important;
 }
 span::before{
