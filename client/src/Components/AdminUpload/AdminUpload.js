@@ -9,8 +9,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import M from "materialize-css";
 import { BRANDS } from "../../shared/mappings/brands";
 import { MODELS } from "../../shared/mappings/bike_models";
-import Select from 'react-select'
-import ImageUploadDisplay from './ImageUploadDisplay';
+
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import DeleteIcon from "@material-ui/icons/Delete";
+
+import ImageUploadDisplay from "./ImageUploadDisplay";
+import DropdownComponent from "./DropdownComponent";
 
 const useStyles = makeStyles((theme) => ({
   formError: {
@@ -245,11 +250,11 @@ const AdminUpload = (props) => {
     message: "",
     variant: "error",
   });
+  const [previewImages, setPreviewImages] = useState([]);
   const [populatedTypeObject, setPopulatedTypeObject] = useState(null);
   const [populatedBrandObject, setPopulatedBrandObject] = useState(null);
   const [populatedStoreObject, setPopulatedStoreObject] = useState(null);
   const [populatedModelObject, setPopulatedModelObject] = useState(null);
-
   const handleClose = () => {
     setTooltipState({
       open: false,
@@ -267,25 +272,51 @@ const AdminUpload = (props) => {
     />
   );
 
-  const selectFiles = (event, formData) => {
-    let images = [];
-    for (var i = 0; i < event.target.files.length && i < 3; i++) {
-      images[i] = event.target.files.item(i);
-    }
-    images = images.filter((image) => image.name.match(/\.(jpg|jpeg|png)$/));
-    let imgNames = images.map((image) => image.name.replace(/ /g, ""));
-    let message = `${images.length} valid image(s) selected`;
-
+  const removeImageHandler = (i) => {
+    let imgs = formData.image.images;
+    imgs.splice(i, 1);
+    let imgNames = imgs.map((img) => img.name);
+    let msg = `${imgs.length} valid image(s) selected`;
     setFormData({
       ...formData,
       image: {
-        images: images,
+        images: imgs,
+        imageNames: imgNames,
+        message: msg,
+      },
+    });
+  };
+  // let images = [];
+//  const updatePreviewImage = (imageArr) => {
+    
+//     imageArr.map((im)=> imageArr.push(im))
+//     setPreviewImage(imageArr)
+//   }
+
+  const selectFiles = (event, formData) => {
+   
+    for (var i = 0; i < event.target.files.length && i < 3; i++) {
+      // previewImages[i] = event.target.files.item(i);
+      let previewImagesCopy = previewImages;
+      previewImagesCopy.push(event.target.files.item(i));
+      setPreviewImages(previewImagesCopy);
+    }
+    let filteredPreviewImages = previewImages.filter((image) => image.name.match(/\.(jpg|jpeg|png)$/));
+    let imgNames = filteredPreviewImages.map((image) => image.name.replace(/ /g, ""));
+    let message = `${filteredPreviewImages.length} valid image(s) selected`;
+    // updatePreviewImage(filteredPreviewImages);
+    console.log('#####');
+    console.log(filteredPreviewImages);
+    console.log('#####');
+    setFormData({
+      ...formData,
+      image: {
+        images: filteredPreviewImages,
         imageNames: imgNames,
         message: message,
       },
     });
   };
-
   const uploadImages = (formData) => {
     const uploaders = formData.image.images.map((image) => {
       const data = new FormData();
@@ -358,7 +389,7 @@ const AdminUpload = (props) => {
     }
     for (let prop in submitObj) {
       if (
-        (submitObj[prop].optional == false) &&
+        submitObj[prop].optional == false &&
         (submitObj[prop].error || submitObj[prop].value === "")
       ) {
         let message = submitObj[prop].error
@@ -377,7 +408,6 @@ const AdminUpload = (props) => {
       axios
         .post("/apis/seedData/adminVehiclesUpload", submitObj)
         .then((response) => {
-          // console.log(response);
           if (response.status === 200) {
             setTooltipState({
               open: true,
@@ -412,7 +442,7 @@ const AdminUpload = (props) => {
     }
     for (let prop in submitObj) {
       if (
-        (submitObj[prop].optional == false) &&
+        submitObj[prop].optional == false &&
         (submitObj[prop].error || submitObj[prop].value === "")
       ) {
         let message = submitObj[prop].error
@@ -459,10 +489,12 @@ const AdminUpload = (props) => {
     instance = M.FormSelect.getInstance(elems);
   }, []);
 
-// get vehicle id from url
+  // get vehicle id from url
   const vehicleId = props.match.params.id;
 
-// fetch vehicle details using vehicle id and set formData
+
+  let initialImages = [];
+  // fetch vehicle details using vehicle id and set formData
   useEffect(() => {
     if (vehicleId !== undefined) {
       const getVehicleData = (vehicleId) => {
@@ -472,8 +504,8 @@ const AdminUpload = (props) => {
           .then((response) => {
             const vehicleData = response.data[0]._source;
             const objectArray = Object.entries(vehicleData);
-            // console.log(vehicleData);
             let vehicleDataObj = formData;
+            console.log(vehicleData);
             objectArray.forEach(([key, value]) => {
               vehicleDataObj = {
                 ...vehicleDataObj,
@@ -484,18 +516,43 @@ const AdminUpload = (props) => {
                 },
               };
             });
-            if(vehicleData !== null)
+            if (vehicleData !== null) {
               setFormData(vehicleDataObj);
+
+              // <img className="rupees" src={require("../../assets/icons/rupee-indian-red.svg")} alt=""/>{props.cost}
+              vehicleData.images.map((image)=>{
+                initialImages.push({
+                  imgPath: image,
+                  saved: true
+                })
+              })
+              //
+            }
           })
           .catch((err) => {
             console.log(err);
           });
       };
       getVehicleData(vehicleId);
+
+      console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+      console.log(initialImages)
+      setPreviewImages(initialImages);
     }
   }, []);
 
-// update state through form input field
+
+
+
+  // fetch vehicle details using vehicle id and set formData
+  useEffect(() => {
+    console.log('++++++++++++++++++++++++++++++++++++++++++++++')
+    console.log(Object.values(previewImages)) 
+    console.log('++++++++++++++++++++++++++++++++++++++++++++++')
+  }, formData);
+
+
+  // update state through form input field
   const updateFormFieldHandler = (event, formData) => {
     let targetValue = event.target.value;
     let targetName = event.target.name;
@@ -509,59 +566,65 @@ const AdminUpload = (props) => {
   };
 
   const typeOptions = [
-    { value: '1', label: 'Bike' },
-    { value: '2', label: 'Scooter' },
-    { value: '3', label: 'High-end Bike' }
+    { value: "1", label: "Bike" },
+    { value: "2", label: "Scooter" },
+    { value: "3", label: "High-end Bike" },
   ];
 
   const storeOptions = [
-    { value: '1', label: 'BikeBazaar, Aluva, Kerela' },
-    { value: '2', label: 'BikeBazaar, MCV Wheels' },
-    { value: '3', label: 'BikeBazaar, Rajahmundry' }
+    { value: "1", label: "BikeBazaar, Aluva, Kerela" },
+    { value: "2", label: "BikeBazaar, MCV Wheels" },
+    { value: "3", label: "BikeBazaar, Rajahmundry" },
   ];
 
-  const brandOptions = BRANDS.map((key, value)=>{
-    return (
-      {value: value, label: key}
-    )
-  })
+  const brandOptions = BRANDS.map((key, value) => {
+    return { value: value, label: key };
+  });
+
+  const modelOptions = MODELS.map((key, value) => {
+    return { value: value, label: key };
+  });
+
 
   // set dropdown select state value
   const populateDropdown = (dropdownObject, searchFor, populatedObjectName) => {
-    dropdownObject.find((key, value)=>{
-      if(value==searchFor){
-        if(populatedObjectName=='type'){
-          setPopulatedTypeObject(key)
-        } if(populatedObjectName=='brand'){
-          setPopulatedBrandObject({value: value,  label: key})
-        } if(populatedObjectName=='store'){
-          setPopulatedStoreObject(key)
-        } if(populatedObjectName=='model'){
-          setPopulatedModelObject({value: value,  label: key})
+    dropdownObject.find((key, value) => {
+      if (value == searchFor) {
+        if (populatedObjectName == "type") {
+          setPopulatedTypeObject(key);
         }
-  } ;
-  })
-};
-// console.log(JSON.stringify(formData.images.[value]))
-const [sliderImages, setSliderImages] = useState(formData.images);
+        if (populatedObjectName == "brand") {
+          setPopulatedBrandObject({ value: value, label: key });
+        }
+        if (populatedObjectName == "store") {
+          setPopulatedStoreObject(key);
+        }
+        if (populatedObjectName == "model") {
+          setPopulatedModelObject({ value: value, label: key });
+        }
+      }
+    });
+  };
+  const [sliderImages, setSliderImages] = useState(formData.images);
 
+  useEffect(() => {
+    if (formData.type.value) {
+      populateDropdown(typeOptions, formData.type.value, "type");
+    }
+    if (formData.brand.value) {
+      populateDropdown(BRANDS, formData.brand.value, "brand");
+    }
+    if (formData.storeId.value) {
+      populateDropdown(storeOptions, formData.storeId.value, "store");
+    }
+    if (formData.model.value) {
+      populateDropdown(MODELS, formData.model.value, "model");
+    }
+    setSliderImages(formData.images);
+  }, [formData]);
 
-useEffect(() => {
-if(formData.type.value){
-  populateDropdown(typeOptions, formData.type.value,'type');
-}
-if(formData.brand.value){
-  populateDropdown(BRANDS, formData.brand.value,'brand');
-}
-if(formData.storeId.value){
-  populateDropdown(storeOptions, formData.storeId.value,'store');
-}
-if(formData.model.value){
-  populateDropdown(MODELS, formData.model.value,'model');
-} 
-setSliderImages(formData.images);
-}, [formData]);
-
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
   return (
     <div className={classes.body}>
@@ -589,35 +652,41 @@ setSliderImages(formData.images);
               <p className={classes.formError}>{formData.name.errorMessage}</p>
             )}
           </Grid>
-          {/* <Grid item xs={12} sm={12} md={5}  lg={5}></Grid> */}
-          <Grid item xs={12} sm={12} md={5}  lg={5}>
-                <div>
-                  <label>Type</label>
-                  <Select options={populatedTypeObject} />
-                </div>
-              </Grid>
           <Grid item xs={12} sm={12} md={5} lg={5}>
             <div>
-              <label>Brand</label>
-              {/* {(populatedBrandObject !== null) ? (console.log({value: populatedBrandObject.value, label:populatedBrandObject.label})) : (console.log('LOLOLOL'))}
-              {console.log(brandOptions[4])}
-
-              {(populatedBrandObject !== null) ? (<Select options={brandOptions}  defaultValue={populatedBrandObject}/>) : (<Select options={brandOptions}  defaultValue={brandOptions[1]}/>)} */}
-
-              {/* <Select options={brandOptions}  defaultValue={{value: 4, label: "Honda"}}/> */}
-              {/* <Select options={brandOptions}  defaultValue={{value: populatedBrandObject.value, label:populatedBrandObject.label}}/> */}
+              <DropdownComponent
+                labelName="Type"
+                optionsObject={typeOptions}
+                populatedObject={ populatedTypeObject}
+                
+              />
             </div>
-          </Grid>
+          </Grid>{" "}
           <Grid item xs={12} sm={12} md={5} lg={5}>
             <div>
-              <label>Store</label>
-              <Select options={populatedStoreObject} />
+              <DropdownComponent
+                labelName="Brand"
+                optionsObject={brandOptions}
+                populatedObject={populatedBrandObject}
+              />
             </div>
-          </Grid>
+          </Grid>{" "}
           <Grid item xs={12} sm={12} md={5} lg={5}>
             <div>
-              <label>Model</label>
-              <Select options={populatedModelObject} />
+              <DropdownComponent
+                labelName="Store"
+                optionsObject={storeOptions}
+                populatedObject={populatedStoreObject}
+              />
+            </div>
+          </Grid>{" "}
+          <Grid item xs={12} sm={12} md={5} lg={5}>
+            <div>
+              <DropdownComponent
+                labelName="Model"
+                optionsObject={modelOptions}
+                populatedObject={populatedModelObject}
+              />
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={5} lg={5}>
@@ -919,30 +988,51 @@ setSliderImages(formData.images);
             <label htmlFor="image">
               <span className={classes.label}> Upload images </span>
             </label>
-            
+
             <input
               className="form-control"
               type="file"
               onChange={(event) => selectFiles(event, formData)}
               multiple
             />
+            <br />
             {/* {formData.image.message ? (
               <p className="text-info">{formData.image.message}</p>
             ) : (
               ""
             )} */}
-              {/* {
-                      sliderImages.map((image,key)=>{
-                          return <div key={key}>
-                                    <img src={vehicleImagePath+image} alt=""/>
-                                </div>
-                      })
-                    } */}
-                   {/* <img src={vehicleImagePath+sliderImages} alt=""/>   */}
+            <div
+              className={
+                matches
+                  ? "preview-image-container"
+                  : "preview-image-container-mobile"
+              }
+            >
+              {/* {previewImages.map((file, _i) => (
+                <div key={_i} className="image-preview">
+                  <img
+                    src={URL.createObjectURL(file)}
+                    width={200}
+                    height={150}
+                  />
+                  <span title="Remove image">
+                    <DeleteIcon
+                      className="delete-icon"
+                      onClick={() => removeImageHandler(_i)}
+                    />
+                  </span>
+                </div>
+              ))} */}
 
-                      {/* {(sliderImages !== null && (sliderImages['value'] !== undefined) ) ? (console.log(sliderImages)) : (console.log('LOLOLOL'))} */}
 
-                   {/* {!null(sliderImages) ? (console.log(sliderImages)) : (<div></div>)} */}
+
+              {/* {previewImage.map((file, _i) =>
+                console.log(URL.createObjectURL(file))
+              )} */}
+
+
+
+            </div>
           </Grid>
         </Grid>
         <div className="center-align">

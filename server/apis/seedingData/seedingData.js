@@ -820,6 +820,9 @@ router.post("/adminVehiclesUpdate", (req, res) => {
         bulletInfo5: data.submitObj.bulletInfo5.value,
         bulletInfo6: data.submitObj.bulletInfo6.value
       };
+    console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
+    console.log(dataset);
+    console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
     const { body } = await client.update({
       index: "bike-details",
       id: data.vehicleId,
