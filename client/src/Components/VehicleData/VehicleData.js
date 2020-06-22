@@ -10,6 +10,7 @@ import isEmpty from "validator/lib/isEmpty";
 import isAlpha from "validator/lib/isAlpha";
 import isEmail from "validator/lib/isEmail"; 
 import isMobilePhone from "validator/lib/isMobilePhone";
+import '../Card/watermark.css';
 
 import "./VehicleData.css";
 
@@ -195,7 +196,7 @@ const VehicleData = (props) => {
                 <Carousel dynamicHeight={true} showThumbs={true} key={sliderImages[0]} useKeyboardArrows={true}>
                     {
                       sliderImages.map((image,key)=>{
-                          return <div key={key}>
+                          return <div key={key} className="watermarked watermarkedCarousel">
                                     <img src={vehicleImagePath+image} alt=""/>
                                 </div>
                       })

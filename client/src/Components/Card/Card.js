@@ -1,6 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { Link } from 'react-router-dom';
+import './watermark.css';
 
 const Card = props => {
 
@@ -9,7 +10,7 @@ const Card = props => {
     <Grid item component="div" lg={4} md={6} sm={12} xs={12} className="Prod">
       <Link to={'/vehicledetails/'+props.vehicleid}>
         <div className="Product">
-          <div className="Product-image-container">
+          <div className="Product-image-container watermarked watermarkedCard">
             <img src={vehicleImagePath+props.image} height="230" alt="" />
           </div>
           <div className="detail">
