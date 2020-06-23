@@ -12,25 +12,26 @@ const DropdownComponent = (props) => {
     }
   }
 
-  let dropdownDiv = <div>WHAT</div>;
-  useEffect(() => {
+  let dropdownDiv;
+  // useEffect(() => {
     if (props.populatedObject) {
-      console.log("IFIFIFIFIFIFIFIFIFIFIFIF");
+  //     console.log("IFIFIFIFIFIFIFIFIFIFIFIF");
       dropdownDiv = (
-        <div>OK</div>
-        // <Select
-        //   options={props.optionsObject}
-        //   defaultValue={searchOptionsObject(
-        //     props.populatedObject.value,
-        //     props.optionsObject
-        //   )}
-        // />
+        // <div>OK</div>
+        <Select
+          options={props.optionsObject}
+          defaultValue={searchOptionsObject(
+            props.populatedObject.value,
+            props.optionsObject
+          )}
+        />
       );
-    } else {
-      console.log("ELSEELSEELSEELSEELSEELSEELSE");
-      dropdownDiv = <Select options={props.optionsObject} />;
     }
-  }, props.populatedObject);
+  //  else {
+  //     console.log("ELSEELSEELSEELSEELSEELSEELSE");
+  //     dropdownDiv = <Select options={props.optionsObject} />;
+  //   }
+  // }, props.populatedObject);
 
   return (
     <Grid container component="div" direction="row">
