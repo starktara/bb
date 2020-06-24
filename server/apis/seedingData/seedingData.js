@@ -41,7 +41,8 @@ router.get("/createbikeMapping", (req, res) => {
               bulletInfo3: { type: "string" },
               bulletInfo4: { type: "string" },
               bulletInfo5: { type: "string" },
-              bulletInfo6: { type: "string" }
+              bulletInfo6: { type: "string" },
+              sold: { type: "string" }
             }
           }
         }
@@ -709,7 +710,8 @@ router.get("/sellBikeDetails", (req, res) => {
               bulletInfo3: { type: "string" },
               bulletInfo4: { type: "string" },
               bulletInfo5: { type: "string" },
-              bulletInfo6: { type: "string" }
+              bulletInfo6: { type: "string" },
+              sold: { type: "string" }
             }
           }
         }
@@ -818,7 +820,8 @@ router.post("/adminVehiclesUpdate", (req, res) => {
         bulletInfo3: data.submitObj.bulletInfo3.value,
         bulletInfo4: data.submitObj.bulletInfo4.value,
         bulletInfo5: data.submitObj.bulletInfo5.value,
-        bulletInfo6: data.submitObj.bulletInfo6.value
+        bulletInfo6: data.submitObj.bulletInfo6.value,
+        sold: data.submitObj.sold.value
       };
     console.log(dataset);
     const { body } = await client.update({
@@ -886,7 +889,8 @@ router.post("/adminVehiclesUpload", (req, res) => {
         bulletInfo3: formData.bulletInfo3.value,
         bulletInfo4: formData.bulletInfo4.value,
         bulletInfo5: formData.bulletInfo5.value,
-        bulletInfo6: formData.bulletInfo6.value
+        bulletInfo6: formData.bulletInfo6.value,
+        sold: data.submitObj.sold.value
       }
     ]
     const body = dataset.flatMap(doc => [

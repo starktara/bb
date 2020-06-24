@@ -3,7 +3,6 @@ const router = express.Router();
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
 const  mailer = require('../../helper/mailer');
-const multer = require('multer');
 
 
 //details of seller and bike from sell page
@@ -37,7 +36,15 @@ router.get("/createSellerDetail", (req, res) => {
               bhp: { type: "integer" },
               category: { type: "integer" },
               mileage: { type: "integer" },
-              phone:{ type: "integer" },
+              phone: { type: "integer" },
+              additionalInfo: { type: "text" },
+              bulletInfo1: { type: "text" },
+              bulletInfo2: { type: "text" },
+              bulletInfo3: { type: "text" },
+              bulletInfo4: { type: "text" },
+              bulletInfo5: { type: "text" },
+              bulletInfo6: { type: "text" },
+              sold: { type: "string" },
             }
           }
         }
@@ -171,13 +178,10 @@ router.post("/insertFranchiseRequest", (req, res) => {
           <td> Pincode </td>
           <td> ${data.pincode} </td>
         </tr>
-        <tr>
-          <td> Date </td>
-          <td> ${new Date()} </td>
-        </tr>
       </table>
     `;
     const sendToEmail = 'rahul.khedkar@bikebazaar.com'; //email to send alerts to
+    
     mailer(output, 'Franchise Request', sendToEmail).catch(console.error);
 
     const body = dataset.flatMap(doc => [
@@ -221,15 +225,10 @@ router.post("/insertSellrequest",(req,res) => {
         model: formData.model.value,
         kmsdriven: formData.kmsdriven.value,
         manufactureYear: formData.yom.value,
-        images: formData.image.imageNames
+        images: formData.image.imageNames.toString()
       }
     ];
     const data = dataset[0];
-    const attachmentImages = data.images.map(img => {
-      return ({
-        path: "../client/public/tempVehicles/" + img
-      });
-    });
     const output = `
       <table border='1' style='width:100%'>
         <tr>
@@ -264,15 +263,11 @@ router.post("/insertSellrequest",(req,res) => {
           <td> Year of Manufacture </td>
           <td> ${data.manufactureYear} </td>
         </tr>
-        <tr>
-          <td> Date </td>
-          <td> ${new Date()} </td>
-        </tr>
       </table>
     `;
     //const sendToEmail = 'inspection@bikebazaar.com'; //email to send alerts to
     const sendToEmail = 'rahul.khedkar@bikebazaar.com';
-    mailer(output, 'Appointment Booked', sendToEmail, attachmentImages).catch(console.error);
+    mailer(output, 'Appointment Booked', sendToEmail).catch(console.error);
 
     const body = dataset.flatMap(doc => [
       { index: { _index: "sellerdetails" } },
@@ -337,10 +332,6 @@ router.post("/insertBuyRequest", (req, res) => {
           <td> Email Id </td>
           <td> ${formData.email.value} </td>
         </tr>
-        <tr>
-          <td> Date </td>
-          <td> ${new Date()} </td>
-        </tr>
       </table>
     `;
     const sendToEmail = 'onlinesales@bikebazaar.com'; //email to send alerts to
@@ -366,25 +357,6 @@ router.post("/insertBuyRequest", (req, res) => {
     res.send("successfully inserted");
   }
   upload().catch(console.log);
-});
-
-let storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, '../client/public/tempVehicles')
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname)
-  }
-});
-const upload = multer({ storage });
-
-router.post('/tempUpload', upload.single('image'), (req, res) => {
-  if (req.file)
-    res.json({
-      imageUrl: `../../../client/public/tempVehicles/${req.file.filename}`
-    });
-  else
-    res.status("409").json("No Files to Upload.")
 });
 
 module.exports = router;
