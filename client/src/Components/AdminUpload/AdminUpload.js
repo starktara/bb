@@ -12,10 +12,10 @@ import { MODELS } from "../../shared/mappings/bike_models";
 
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import DeleteIcon from "@material-ui/icons/Delete";
 
-import ImageUploadDisplay from "./ImageUploadDisplay";
-import DropdownComponent from "./DropdownComponent";
+import DropdownComponentUpload from "./DropdownComponentUpload";
+
+import DropdownComponentUpdate from "./DropdownComponentUpdate";
 
 const useStyles = makeStyles((theme) => ({
   formError: {
@@ -250,7 +250,7 @@ const AdminUpload = (props) => {
     message: "",
     variant: "error",
   });
-  const [previewImages, setPreviewImages] = useState([]);
+
   const [populatedTypeObject, setPopulatedTypeObject] = useState(null);
   const [populatedBrandObject, setPopulatedBrandObject] = useState(null);
   const [populatedStoreObject, setPopulatedStoreObject] = useState(null);
@@ -272,51 +272,25 @@ const AdminUpload = (props) => {
     />
   );
 
-  const removeImageHandler = (i) => {
-    let imgs = formData.image.images;
-    imgs.splice(i, 1);
-    let imgNames = imgs.map((img) => img.name);
-    let msg = `${imgs.length} valid image(s) selected`;
-    setFormData({
-      ...formData,
-      image: {
-        images: imgs,
-        imageNames: imgNames,
-        message: msg,
-      },
-    });
-  };
-  // let images = [];
-//  const updatePreviewImage = (imageArr) => {
-    
-//     imageArr.map((im)=> imageArr.push(im))
-//     setPreviewImage(imageArr)
-//   }
-
   const selectFiles = (event, formData) => {
-   
+    let images = [];
     for (var i = 0; i < event.target.files.length && i < 3; i++) {
-      // previewImages[i] = event.target.files.item(i);
-      let previewImagesCopy = previewImages;
-      previewImagesCopy.push(event.target.files.item(i));
-      setPreviewImages(previewImagesCopy);
+      images[i] = event.target.files.item(i);
     }
-    let filteredPreviewImages = previewImages.filter((image) => image.name.match(/\.(jpg|jpeg|png)$/));
-    let imgNames = filteredPreviewImages.map((image) => image.name.replace(/ /g, ""));
-    let message = `${filteredPreviewImages.length} valid image(s) selected`;
-    // updatePreviewImage(filteredPreviewImages);
-    console.log('#####');
-    console.log(filteredPreviewImages);
-    console.log('#####');
+    images = images.filter((image) => image.name.match(/\.(jpg|jpeg|png)$/));
+    let imgNames = images.map((image) => image.name.replace(/ /g, ""));
+    let message = `${images.length} valid image(s) selected`;
+
     setFormData({
       ...formData,
       image: {
-        images: filteredPreviewImages,
+        images: images,
         imageNames: imgNames,
         message: message,
       },
     });
   };
+
   const uploadImages = (formData) => {
     const uploaders = formData.image.images.map((image) => {
       const data = new FormData();
@@ -370,6 +344,129 @@ const AdminUpload = (props) => {
     });
   };
 
+  const validateAndUpdateTypeDropDown = (event) => {
+    let targetValue = event.value;
+    let targetName = "type";
+    let errorMessage = "";
+    let error = false;
+    if (!skipValidation.includes(targetName)) {
+      if (isEmpty(targetValue)) {
+        errorMessage = "This field is required";
+        error = true;
+      } else {
+        errorMessage = formValidator(targetName, targetValue);
+        if (errorMessage.length) {
+          error = true;
+        } else {
+          errorMessage = formValidator(targetName, targetValue);
+          if (errorMessage.length) {
+            error = true;
+          }
+        }
+      }
+    }
+    setFormData({
+      ...formData,
+      ["type"]: {
+        value: targetValue,
+        error: error,
+        errorMessage: errorMessage,
+      },
+    });
+  };
+
+  const validateAndUpdateBrandDropDown = (event) => {
+    let targetValue = event.value.toString();
+    let targetName = "brand";
+    let errorMessage = "";
+    let error = false;
+    if (!skipValidation.includes(targetName)) {
+      if (isEmpty(targetValue)) {
+        errorMessage = "This field is required";
+        error = true;
+      } else {
+        errorMessage = formValidator(targetName, targetValue);
+        if (errorMessage.length) {
+          error = true;
+        } else {
+          errorMessage = formValidator(targetName, targetValue);
+          if (errorMessage.length) {
+            error = true;
+          }
+        }
+      }
+    }
+    setFormData({
+      ...formData,
+      ["brand"]: {
+        value: targetValue,
+        error: error,
+        errorMessage: errorMessage,
+      },
+    });
+  };
+
+  const validateAndUpdateStoreIdDropDown = (event) => {
+    let targetValue = event.value;
+    let targetName = "storeId";
+    let errorMessage = "";
+    let error = false;
+    if (!skipValidation.includes(targetName)) {
+      if (isEmpty(targetValue)) {
+        errorMessage = "This field is required";
+        error = true;
+      } else {
+        errorMessage = formValidator(targetName, targetValue);
+        if (errorMessage.length) {
+          error = true;
+        } else {
+          errorMessage = formValidator(targetName, targetValue);
+          if (errorMessage.length) {
+            error = true;
+          }
+        }
+      }
+    }
+    setFormData({
+      ...formData,
+      ["storeId"]: {
+        value: targetValue,
+        error: error,
+        errorMessage: errorMessage,
+      },
+    });
+  };
+
+  const validateAndUpdateModelDropDown = (event) => {
+    let targetValue = event.value.toString();
+    let targetName = "model";
+    let errorMessage = "";
+    let error = false;
+    if (!skipValidation.includes(targetName)) {
+      if (isEmpty(targetValue)) {
+        errorMessage = "This field is required";
+        error = true;
+      } else {
+        errorMessage = formValidator(targetName, targetValue);
+        if (errorMessage.length) {
+          error = true;
+        } else {
+          errorMessage = formValidator(targetName, targetValue);
+          if (errorMessage.length) {
+            error = true;
+          }
+        }
+      }
+    }
+    setFormData({
+      ...formData,
+      ["model"]: {
+        value: targetValue,
+        error: error,
+        errorMessage: errorMessage,
+      },
+    });
+  };
   const submitForm = async (event) => {
     let formValid = true;
     let elems = document.querySelectorAll("select");
@@ -482,6 +579,26 @@ const AdminUpload = (props) => {
     }
   };
 
+  const typeOptions = [
+    { value: "1", label: "Bike" },
+    { value: "2", label: "Scooter" },
+    { value: "3", label: "High-end Bike" },
+  ];
+
+  const storeOptions = [
+    { value: "1", label: "BikeBazaar, Aluva, Kerela" },
+    { value: "2", label: "BikeBazaar, MCV Wheels" },
+    { value: "3", label: "BikeBazaar, Rajahmundry" },
+  ];
+
+  const brandOptions = BRANDS.map((key, value) => {
+    return { value: value, label: key };
+  });
+
+  const modelOptions = MODELS.map((key, value) => {
+    return { value: value, label: key };
+  });
+
   let instance = [];
   useEffect(() => {
     var elems = document.querySelectorAll("select");
@@ -492,8 +609,6 @@ const AdminUpload = (props) => {
   // get vehicle id from url
   const vehicleId = props.match.params.id;
 
-
-  let initialImages = [];
   // fetch vehicle details using vehicle id and set formData
   useEffect(() => {
     if (vehicleId !== undefined) {
@@ -518,15 +633,14 @@ const AdminUpload = (props) => {
             });
             if (vehicleData !== null) {
               setFormData(vehicleDataObj);
-
-              // <img className="rupees" src={require("../../assets/icons/rupee-indian-red.svg")} alt=""/>{props.cost}
-              vehicleData.images.map((image)=>{
-                initialImages.push({
-                  imgPath: image,
-                  saved: true
-                })
-              })
-              //
+              populateDropdown(typeOptions, vehicleDataObj.type.value, "type");
+              populateDropdown(BRANDS, vehicleDataObj.brand.value, "brand");
+              populateDropdown(
+                storeOptions,
+                vehicleDataObj.storeId.value,
+                "store"
+              );
+              populateDropdown(MODELS, vehicleDataObj.model.value, "model");
             }
           })
           .catch((err) => {
@@ -534,23 +648,8 @@ const AdminUpload = (props) => {
           });
       };
       getVehicleData(vehicleId);
-
-      console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-      console.log(initialImages)
-      setPreviewImages(initialImages);
     }
   }, []);
-
-
-
-
-  // fetch vehicle details using vehicle id and set formData
-  useEffect(() => {
-    console.log('++++++++++++++++++++++++++++++++++++++++++++++')
-    console.log(Object.values(previewImages)) 
-    console.log('++++++++++++++++++++++++++++++++++++++++++++++')
-  }, formData);
-
 
   // update state through form input field
   const updateFormFieldHandler = (event, formData) => {
@@ -565,63 +664,29 @@ const AdminUpload = (props) => {
     setFormData(vehicleDataObj);
   };
 
-  const typeOptions = [
-    { value: "1", label: "Bike" },
-    { value: "2", label: "Scooter" },
-    { value: "3", label: "High-end Bike" },
-  ];
-
-  const storeOptions = [
-    { value: "1", label: "BikeBazaar, Aluva, Kerela" },
-    { value: "2", label: "BikeBazaar, MCV Wheels" },
-    { value: "3", label: "BikeBazaar, Rajahmundry" },
-  ];
-
-  const brandOptions = BRANDS.map((key, value) => {
-    return { value: value, label: key };
-  });
-
-  const modelOptions = MODELS.map((key, value) => {
-    return { value: value, label: key };
-  });
-
-
   // set dropdown select state value
   const populateDropdown = (dropdownObject, searchFor, populatedObjectName) => {
     dropdownObject.find((key, value) => {
       if (value == searchFor) {
-        if (populatedObjectName == "type") {
-          setPopulatedTypeObject(key);
-        }
         if (populatedObjectName == "brand") {
           setPopulatedBrandObject({ value: value, label: key });
-        }
-        if (populatedObjectName == "store") {
-          setPopulatedStoreObject(key);
         }
         if (populatedObjectName == "model") {
           setPopulatedModelObject({ value: value, label: key });
         }
       }
+      if (populatedObjectName == "type") {
+        if (value + 1 == searchFor) {
+          setPopulatedTypeObject(key);
+        }
+      }
+      if (populatedObjectName == "store") {
+        if (value + 1 == searchFor) {
+          setPopulatedStoreObject(key);
+        }
+      }
     });
   };
-  const [sliderImages, setSliderImages] = useState(formData.images);
-
-  useEffect(() => {
-    if (formData.type.value) {
-      populateDropdown(typeOptions, formData.type.value, "type");
-    }
-    if (formData.brand.value) {
-      populateDropdown(BRANDS, formData.brand.value, "brand");
-    }
-    if (formData.storeId.value) {
-      populateDropdown(storeOptions, formData.storeId.value, "store");
-    }
-    if (formData.model.value) {
-      populateDropdown(MODELS, formData.model.value, "model");
-    }
-    setSliderImages(formData.images);
-  }, [formData]);
 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
@@ -654,39 +719,74 @@ const AdminUpload = (props) => {
           </Grid>
           <Grid item xs={12} sm={12} md={5} lg={5}>
             <div>
-              <DropdownComponent
-                labelName="Type"
-                optionsObject={typeOptions}
-                populatedObject={ populatedTypeObject}
-                
-              />
+              {vehicleId == undefined ? (
+                <DropdownComponentUpload
+                  labelName="Type"
+                  optionsObject={typeOptions}
+                  onClickFunction={validateAndUpdateTypeDropDown}
+                />
+              ) : (
+                <DropdownComponentUpdate
+                  labelName="Type"
+                  optionsObject={typeOptions}
+                  populatedObject={populatedTypeObject}
+                  onClickFunction={validateAndUpdateTypeDropDown}
+                />
+              )}
             </div>
           </Grid>{" "}
           <Grid item xs={12} sm={12} md={5} lg={5}>
             <div>
-              <DropdownComponent
-                labelName="Brand"
-                optionsObject={brandOptions}
-                populatedObject={populatedBrandObject}
-              />
+              {vehicleId == undefined ? (
+                <DropdownComponentUpload
+                  labelName="Brand"
+                  optionsObject={brandOptions}
+                  onClickFunction={validateAndUpdateBrandDropDown}
+                />
+              ) : (
+                <DropdownComponentUpdate
+                  labelName="Brand"
+                  optionsObject={brandOptions}
+                  populatedObject={populatedBrandObject}
+                  onClickFunction={validateAndUpdateBrandDropDown}
+                />
+              )}
             </div>
           </Grid>{" "}
           <Grid item xs={12} sm={12} md={5} lg={5}>
             <div>
-              <DropdownComponent
-                labelName="Store"
-                optionsObject={storeOptions}
-                populatedObject={populatedStoreObject}
-              />
+              {vehicleId == undefined ? (
+                <DropdownComponentUpload
+                  labelName="Store"
+                  optionsObject={storeOptions}
+                  onClickFunction={validateAndUpdateStoreIdDropDown}
+                />
+              ) : (
+                <DropdownComponentUpdate
+                  labelName="Store"
+                  optionsObject={storeOptions}
+                  populatedObject={populatedStoreObject}
+                  onClickFunction={validateAndUpdateStoreIdDropDown}
+                />
+              )}
             </div>
           </Grid>{" "}
           <Grid item xs={12} sm={12} md={5} lg={5}>
             <div>
-              <DropdownComponent
-                labelName="Model"
-                optionsObject={modelOptions}
-                populatedObject={populatedModelObject}
-              />
+              {vehicleId == undefined ? (
+                <DropdownComponentUpload
+                  labelName="Model"
+                  optionsObject={modelOptions}
+                  onClickFunction={validateAndUpdateModelDropDown}
+                />
+              ) : (
+                <DropdownComponentUpdate
+                  labelName="Model"
+                  optionsObject={modelOptions}
+                  populatedObject={populatedModelObject}
+                  onClickFunction={validateAndUpdateModelDropDown}
+                />
+              )}
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={5} lg={5}>
@@ -983,57 +1083,24 @@ const AdminUpload = (props) => {
               </p>
             )}
           </Grid>
-          {/* <ImageUploadDisplay images={sliderImages} /> */}
-          <Grid item xs={12} sm={12} md={10} lg={10} className={classes.mt40}>
-            <label htmlFor="image">
-              <span className={classes.label}> Upload images </span>
-            </label>
-
-            <input
-              className="form-control"
-              type="file"
-              onChange={(event) => selectFiles(event, formData)}
-              multiple
-            />
-            <br />
-            {/* {formData.image.message ? (
-              <p className="text-info">{formData.image.message}</p>
-            ) : (
-              ""
-            )} */}
-            <div
-              className={
-                matches
-                  ? "preview-image-container"
-                  : "preview-image-container-mobile"
-              }
-            >
-              {/* {previewImages.map((file, _i) => (
-                <div key={_i} className="image-preview">
-                  <img
-                    src={URL.createObjectURL(file)}
-                    width={200}
-                    height={150}
-                  />
-                  <span title="Remove image">
-                    <DeleteIcon
-                      className="delete-icon"
-                      onClick={() => removeImageHandler(_i)}
-                    />
-                  </span>
-                </div>
-              ))} */}
-
-
-
-              {/* {previewImage.map((file, _i) =>
-                console.log(URL.createObjectURL(file))
-              )} */}
-
-
-
-            </div>
-          </Grid>
+          {vehicleId !== undefined ? null : (
+            <Grid item xs={12} sm={12} md={10} lg={10} className={classes.mt40}>
+              <label htmlFor="image">
+                <span className={classes.label}> Upload images </span>
+              </label>
+              <input
+                className="form-control"
+                type="file"
+                onChange={(event) => selectFiles(event, formData)}
+                multiple
+              />
+              {formData.image.message ? (
+                <p className="text-info">{formData.image.message}</p>
+              ) : (
+                ""
+              )}
+            </Grid>
+          )}
         </Grid>
         <div className="center-align">
           {vehicleId !== undefined ? (
