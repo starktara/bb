@@ -9,13 +9,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import M from "materialize-css";
 import { BRANDS } from "../../shared/mappings/brands";
 import { MODELS } from "../../shared/mappings/bike_models";
-
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-
 import DropdownComponentUpload from "./DropdownComponentUpload";
-
 import DropdownComponentUpdate from "./DropdownComponentUpdate";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
 
 const useStyles = makeStyles((theme) => ({
   formError: {
@@ -109,73 +110,73 @@ const AdminUpload = (props) => {
     name: {
       value: "",
       error: false,
-      errorMessage: "1",
+      errorMessage: "",
       optional: false,
     },
     type: {
       value: "",
       error: false,
-      errorMessage: "2",
+      errorMessage: "",
       optional: false,
     },
     brand: {
       value: "",
       error: false,
-      errorMessage: "3",
+      errorMessage: "",
       optional: false,
     },
     storeId: {
       value: "",
       error: false,
-      errorMessage: "4",
+      errorMessage: "",
       optional: false,
     },
     model: {
       value: "",
       error: false,
-      errorMessage: "5",
+      errorMessage: "",
       optional: false,
     },
     regnumber: {
       value: "",
       error: false,
-      errorMessage: "6",
+      errorMessage: "",
       optional: false,
     },
     descr: {
       value: "",
       error: false,
-      errorMessage: "7",
+      errorMessage: "",
       optional: false,
     },
     price: {
       value: "",
       error: false,
-      errorMessage: "8",
+      errorMessage: "",
       optional: false,
     },
     myear: {
       value: "",
       error: false,
-      errorMessage: "9",
+      errorMessage: "",
       optional: false,
     },
     mmonth: {
       value: "",
       error: false,
-      errorMessage: "10",
+      errorMessage: "",
       optional: false,
     },
     kmdriven: {
       value: "",
       error: false,
-      errorMessage: "11",
+      errorMessage: "",
       optional: false,
     },
     owner: {
       value: "",
       error: false,
-      errorMessage: "12",
+      errorMessage: "",
       optional: false,
     },
     cc: {
@@ -204,43 +205,49 @@ const AdminUpload = (props) => {
     additionalInfo: {
       value: "",
       error: false,
-      errorMessage: "15",
+      errorMessage: "",
       optional: true,
     },
     bulletInfo1: {
       value: "",
       error: false,
-      errorMessage: "16",
+      errorMessage: "",
       optional: true,
     },
     bulletInfo2: {
       value: "",
       error: false,
-      errorMessage: "17",
+      errorMessage: "",
       optional: true,
     },
     bulletInfo3: {
       value: "",
       error: false,
-      errorMessage: "18",
+      errorMessage: "",
       optional: true,
     },
     bulletInfo4: {
       value: "",
       error: false,
-      errorMessage: "19",
+      errorMessage: "",
       optional: true,
     },
     bulletInfo5: {
       value: "",
       error: false,
-      errorMessage: "20",
+      errorMessage: "",
       optional: true,
     },
     bulletInfo6: {
       value: "",
       error: false,
-      errorMessage: "21",
+      errorMessage: "",
+      optional: true,
+    },
+    sold: {
+      value: 'false',
+      error: false,
+      errorMessage: "",
       optional: true,
     },
   });
@@ -311,6 +318,7 @@ const AdminUpload = (props) => {
     "bulletInfo4",
     "bulletInfo5",
     "bulletInfo6",
+    "sold",
   ];
 
   const validateAndUpdateFormdata = (event, formData) => {
@@ -467,6 +475,39 @@ const AdminUpload = (props) => {
       },
     });
   };
+
+  const validateAndUpdateSoldFlag = (event) => {
+    let targetValue = event.target.value;
+    console.log(targetValue)
+    let targetName = "sold";
+    let errorMessage = "";
+    let error = false;
+    if (!skipValidation.includes(targetName)) {
+      if (isEmpty(targetValue)) {
+        errorMessage = "This field is required";
+        error = true;
+      } else {
+        errorMessage = formValidator(targetName, targetValue);
+        if (errorMessage.length) {
+          error = true;
+        } else {
+          errorMessage = formValidator(targetName, targetValue);
+          if (errorMessage.length) {
+            error = true;
+          }
+        }
+      }
+    }
+    setFormData({
+      ...formData,
+      ["sold"]: {
+        value: targetValue,
+        error: error,
+        errorMessage: errorMessage,
+      },
+    });
+  };
+
   const submitForm = async (event) => {
     let formValid = true;
     let elems = document.querySelectorAll("select");
@@ -1082,6 +1123,33 @@ const AdminUpload = (props) => {
                 {formData.bulletInfo6.errorMessage}
               </p>
             )}
+          </Grid>
+          <Grid item xs={12} sm={12} md={11} lg={11} className={classes.mb20}>
+            <label htmlFor="bulletInfo6">
+              <span>Sold:</span>&nbsp;&nbsp;
+            </label>
+            <FormControl component="fieldset">
+              <RadioGroup
+                row
+                aria-label="position"
+                name="position"
+                defaultValue='false'
+                onChange={(event) => validateAndUpdateSoldFlag(event, formData)}
+              >
+                <FormControlLabel
+                  value='false'
+                  control={<Radio />}
+                  label="Up for sale"
+                  labelPlacement="bottom"
+                />
+                <FormControlLabel
+                  value='true'
+                  control={<Radio />}
+                  label="Sold"
+                  labelPlacement="bottom"
+                />
+              </RadioGroup>
+            </FormControl>
           </Grid>
           {vehicleId !== undefined ? null : (
             <Grid item xs={12} sm={12} md={10} lg={10} className={classes.mt40}>

@@ -64,11 +64,13 @@ const CategoryPage = props => {
     dispatch(actions.getPaginatedData(offset, pageLimit));
   };
 
+
   let renderedVehicles = <Spinner />;
   let paginations = "";
   let containerClass = "";
   if (vehicles.length && currentData[0] != "NA") {
     renderedVehicles = currentData.map((vehicle, index) => (
+      
       <Card
         key={index}
         year={vehicle._source.myear}
@@ -79,6 +81,7 @@ const CategoryPage = props => {
         cost={vehicle._source.price}
         vehicleid={vehicle._id}
         image={vehicle._source.mimage}
+        sold={vehicle._source.sold}
       />
     ));
     containerClass = vehicles.length > 9 ? "cardContainer" : "";
