@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
 //Require route files
+const bulkUpload=require("./apis/bulkUpload/bulkUpload");
 const seedData = require("./apis/seedingData/seedingData");
 const categoryDetails = require("./apis/categoryDetails/categoryDetails");
 const leadDetail = require("./apis/leadDetail/leadDetail");
@@ -57,6 +58,8 @@ app.use(function (req, res, next) {
   next();
 });
 
+
+app.use("/apis/bulkUpload",bulkUpload);
 app.use("/apis/seedData", seedData);
 app.use("/apis/categoryDetails", categoryDetails);
 app.use("/apis/leadDetail", leadDetail);

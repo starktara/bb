@@ -1,0 +1,2 @@
+1) Always put the name of the excel file Records.xlsx with the same format extension.
+2) Follow the following structure for the upload

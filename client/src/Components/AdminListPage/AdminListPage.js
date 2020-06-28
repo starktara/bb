@@ -4,6 +4,9 @@ import Spinner from "../../Components/UI/Spinner/Spinner";
 import * as actions from "../../store/actions/index";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button';
+import BulkUpload from "../BulkUpload/BulkUpload";
 
 const useStyles = makeStyles(theme => ({
   delete: {
@@ -54,7 +57,8 @@ const AdminListPage = (props) => {
         {vehicles}
         </tbody>
       </table>
-      <button><a href='/admin/upload'>Upload Bikes</a></button>
+      <Button className="btn " component={Link} to="./upload"> Upload Vehicle</Button>
+      <Button className="btn" component={Link} to="./BulkUpload">Bulk Upload vehicles</Button>
     </>
   )
 }

@@ -10,6 +10,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import M from "materialize-css";
 import {BRANDS} from '../../shared/mappings/brands';
 import { MODELS } from '../../shared/mappings/bike_models';
+import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button';
+import BulkUpload from "../BulkUpload/BulkUpload";
+
 const useStyles = makeStyles(theme => ({
   formError: {
     color: "red",
@@ -546,6 +550,8 @@ const AdminUpload = (props) => {
               <button type="button" className="btn" onClick={submitForm} >
                 Upload Vehicle
               </button>
+              
+              <Button className="btn" component={Link} to="./BulkUpload">Bulk Upload vehicles</Button>
             </div>
           </form>
       </div>

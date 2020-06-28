@@ -19,11 +19,14 @@ import AdminListPage from './Components/AdminListPage/AdminListPage';
 import AdminUpload from './Components/AdminUpload/AdminUpload';
 import BlogPostHome from './Components/Blog/BlogPostHome'
 import BlogPost from './Components/Blog/BlogPost'
+import BulkUpload from "./Components/BulkUpload/BulkUpload";
+
 
 const App = () => {
 
     return (
         <Switch>
+            <Route exact path="/admin/BulkUpload" component={BulkUpload}/>
             <Route exact path='/' component={Homepage} />
             <Route exact path='/admin/list' component={AdminListPage} />
             <Route exact path='/admin/upload' component={AdminUpload} />
