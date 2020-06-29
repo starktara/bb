@@ -18,7 +18,6 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import DeleteIcon from "@material-ui/icons/Delete";
-import ImageUploadDisplay from "./ImageUploadDisplay";
 
 const useStyles = makeStyles((theme) => ({
   formError: {
@@ -573,6 +572,7 @@ const AdminUpload = (props) => {
         .post("/apis/seedData/adminVehiclesUpload", submitObj)
         .then((response) => {
           if (response.status === 200) {
+            window.location = '/admin/list';
             setTooltipState({
               open: true,
               message: "Your details have been saved",
@@ -632,6 +632,7 @@ const AdminUpload = (props) => {
         .post("/apis/seedData/adminVehiclesUpdate", submitUpdateObj)
         .then((response) => {
           if (response.status === 200) {
+            window.location = '/admin/list';
             setTooltipState({
               open: true,
               message: "Your details have been saved",
@@ -1186,7 +1187,7 @@ const AdminUpload = (props) => {
                 row
                 aria-label="position"
                 name="position"
-                defaultValue="false"
+                defaultValue={formData.sold.value}
                 onChange={(event) => validateAndUpdateSoldFlag(event, formData)}
               >
                 <FormControlLabel

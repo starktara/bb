@@ -890,7 +890,7 @@ router.post("/adminVehiclesUpload", (req, res) => {
         bulletInfo4: formData.bulletInfo4.value,
         bulletInfo5: formData.bulletInfo5.value,
         bulletInfo6: formData.bulletInfo6.value,
-        sold: data.submitObj.sold.value
+        sold: formData.sold.value
       }
     ]
     const body = dataset.flatMap(doc => [
