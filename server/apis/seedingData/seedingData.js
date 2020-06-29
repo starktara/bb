@@ -812,8 +812,8 @@ router.post("/adminVehiclesUpdate", (req, res) => {
         bhp: parseInt(data.submitObj.bhp.value),
         category: parseInt(data.submitObj.type.value),
         mileage: parseInt(data.submitObj.mileage.value),
-        // images: data.submitObj.image.imageNames,
-        // mimage: data.submitObj.image.imageNames[0],
+        images: data.submitObj.image.imageNames,
+        mimage: data.submitObj.image.imageNames[0],
         additionalInfo: data.submitObj.additionalInfo.value,
         bulletInfo1: data.submitObj.bulletInfo1.value,
         bulletInfo2: data.submitObj.bulletInfo2.value,
@@ -890,7 +890,7 @@ router.post("/adminVehiclesUpload", (req, res) => {
         bulletInfo4: formData.bulletInfo4.value,
         bulletInfo5: formData.bulletInfo5.value,
         bulletInfo6: formData.bulletInfo6.value,
-        sold: data.submitObj.sold.value
+        sold: formData.sold.value
       }
     ]
     const body = dataset.flatMap(doc => [
