@@ -17,6 +17,8 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
+import DeleteIcon from "@material-ui/icons/Delete";
+import ImageUploadDisplay from "./ImageUploadDisplay";
 
 const useStyles = makeStyles((theme) => ({
   formError: {
@@ -245,7 +247,7 @@ const AdminUpload = (props) => {
       optional: true,
     },
     sold: {
-      value: 'false',
+      value: "false",
       error: false,
       errorMessage: "",
       optional: true,
@@ -262,6 +264,25 @@ const AdminUpload = (props) => {
   const [populatedBrandObject, setPopulatedBrandObject] = useState(null);
   const [populatedStoreObject, setPopulatedStoreObject] = useState(null);
   const [populatedModelObject, setPopulatedModelObject] = useState(null);
+  const [sliderImages, setSliderImages] = useState(null);
+  const [previewImages, setPreviewImages] = useState([]);
+
+  const removeImageHandler = (i) => {
+    let imgs = formData.image.images;
+    imgs.splice(i, 1);
+    previewImages.splice(i, 1);
+    let imgNames = imgs.map((img) => img.name);
+    let msg = `${imgs.length} valid image(s) selected`;
+    setFormData({
+      ...formData,
+      image: {
+        images: imgs,
+        imageNames: imgNames,
+        message: msg,
+      },
+    });
+  };
+
   const handleClose = () => {
     setTooltipState({
       open: false,
@@ -280,18 +301,22 @@ const AdminUpload = (props) => {
   );
 
   const selectFiles = (event, formData) => {
-    let images = [];
     for (var i = 0; i < event.target.files.length && i < 3; i++) {
-      images[i] = event.target.files.item(i);
+      let previewImagesCopy = previewImages;
+      previewImagesCopy.push(event.target.files.item(i));
+      setPreviewImages(previewImagesCopy);
     }
-    images = images.filter((image) => image.name.match(/\.(jpg|jpeg|png)$/));
-    let imgNames = images.map((image) => image.name.replace(/ /g, ""));
-    let message = `${images.length} valid image(s) selected`;
-
+    let filteredPreviewImages = previewImages.filter((image) =>
+      image.name.match(/\.(jpg|jpeg|png)$/)
+    );
+    let imgNames = filteredPreviewImages.map((image) =>
+      image.name.replace(/ /g, "")
+    );
+    let message = `${filteredPreviewImages.length} valid image(s) selected`;
     setFormData({
       ...formData,
       image: {
-        images: images,
+        images: filteredPreviewImages,
         imageNames: imgNames,
         message: message,
       },
@@ -301,8 +326,10 @@ const AdminUpload = (props) => {
   const uploadImages = (formData) => {
     const uploaders = formData.image.images.map((image) => {
       const data = new FormData();
-      data.append("image", image, image.name.replace(/ /g, ""));
-      return axios.post("/upload", data).then((response) => {});
+      if (image.saved == undefined) {
+        data.append("image", image, image.name.replace(/ /g, ""));
+        return axios.post("/upload", data).then((response) => {});
+      }
     });
     axios
       .all(uploaders)
@@ -478,7 +505,6 @@ const AdminUpload = (props) => {
 
   const validateAndUpdateSoldFlag = (event) => {
     let targetValue = event.target.value;
-    console.log(targetValue)
     let targetName = "sold";
     let errorMessage = "";
     let error = false;
@@ -650,6 +676,9 @@ const AdminUpload = (props) => {
   // get vehicle id from url
   const vehicleId = props.match.params.id;
 
+  let initialImages = [];
+  const vehicleImagePath = "../../vehicles/";
+
   // fetch vehicle details using vehicle id and set formData
   useEffect(() => {
     if (vehicleId !== undefined) {
@@ -661,7 +690,6 @@ const AdminUpload = (props) => {
             const vehicleData = response.data[0]._source;
             const objectArray = Object.entries(vehicleData);
             let vehicleDataObj = formData;
-            console.log(vehicleData);
             objectArray.forEach(([key, value]) => {
               vehicleDataObj = {
                 ...vehicleDataObj,
@@ -682,6 +710,30 @@ const AdminUpload = (props) => {
                 "store"
               );
               populateDropdown(MODELS, vehicleDataObj.model.value, "model");
+              vehicleData.images.map((image) => {
+                initialImages.push({
+                  name: image,
+                  saved: true,
+                });
+              });
+              setSliderImages(vehicleDataObj.images.value);
+
+              let filteredPreviewImages = initialImages.filter((image) =>
+                image.name.match(/\.(jpg|jpeg|png)$/)
+              );
+
+              let imgNames = filteredPreviewImages.map((image) =>
+                image.name.replace(/ /g, "")
+              );
+              let message = `${filteredPreviewImages.length} valid image(s) selected`;
+              setFormData({
+                ...vehicleDataObj,
+                image: {
+                  images: filteredPreviewImages,
+                  imageNames: imgNames,
+                  message: message,
+                },
+              });
             }
           })
           .catch((err) => {
@@ -689,6 +741,7 @@ const AdminUpload = (props) => {
           });
       };
       getVehicleData(vehicleId);
+      setPreviewImages(initialImages);
     }
   }, []);
 
@@ -1133,17 +1186,17 @@ const AdminUpload = (props) => {
                 row
                 aria-label="position"
                 name="position"
-                defaultValue='false'
+                defaultValue="false"
                 onChange={(event) => validateAndUpdateSoldFlag(event, formData)}
               >
                 <FormControlLabel
-                  value='false'
+                  value="false"
                   control={<Radio />}
                   label="Up for sale"
                   labelPlacement="bottom"
                 />
                 <FormControlLabel
-                  value='true'
+                  value="true"
                   control={<Radio />}
                   label="Sold"
                   labelPlacement="bottom"
@@ -1151,24 +1204,58 @@ const AdminUpload = (props) => {
               </RadioGroup>
             </FormControl>
           </Grid>
-          {vehicleId !== undefined ? null : (
-            <Grid item xs={12} sm={12} md={10} lg={10} className={classes.mt40}>
-              <label htmlFor="image">
-                <span className={classes.label}> Upload images </span>
-              </label>
-              <input
-                className="form-control"
-                type="file"
-                onChange={(event) => selectFiles(event, formData)}
-                multiple
-              />
-              {formData.image.message ? (
-                <p className="text-info">{formData.image.message}</p>
-              ) : (
-                ""
-              )}
-            </Grid>
-          )}
+          <Grid item xs={12} sm={12} md={10} lg={10} className={classes.mt40}>
+            <label htmlFor="image">
+              <span className={classes.label}> Upload images </span>
+            </label>
+            <input
+              className="form-control"
+              type="file"
+              onChange={(event) => selectFiles(event, formData)}
+              multiple
+            />
+
+            {formData.image.message ? (
+              <p className="text-info">{formData.image.message}</p>
+            ) : (
+              ""
+            )}
+
+            <br />
+
+            <div
+              className={
+                matches
+                  ? "preview-image-container"
+                  : "preview-image-container-mobile"
+              }
+            >
+              {previewImages.map((file, _i) => (
+                <div key={_i} className="image-preview">
+                  {file.saved !== undefined ? (
+                    <img
+                      src={vehicleImagePath + file.name}
+                      width={200}
+                      height={150}
+                    />
+                  ) : (
+                    <img
+                      src={URL.createObjectURL(file)}
+                      width={200}
+                      height={150}
+                    />
+                  )}
+
+                  <span title="Remove image">
+                    <DeleteIcon
+                      className="delete-icon"
+                      onClick={() => removeImageHandler(_i)}
+                    />
+                  </span>
+                </div>
+              ))}
+            </div>
+          </Grid>
         </Grid>
         <div className="center-align">
           {vehicleId !== undefined ? (
