@@ -3,7 +3,7 @@ const router = express.Router();
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
 const  mailer = require('../../helper/mailer');
-
+const multer = require('multer');
 
 //details of seller and bike from sell page
 router.get("/createSellerDetail", (req, res) => {
@@ -225,10 +225,15 @@ router.post("/insertSellrequest",(req,res) => {
         model: formData.model.value,
         kmsdriven: formData.kmsdriven.value,
         manufactureYear: formData.yom.value,
-        images: formData.image.imageNames.toString()
+        images: formData.image.imageNames
       }
     ];
     const data = dataset[0];
+    const attachmentImages = data.images.map(img => {
+      return ({
+        path: "../server/public/tempImages/" + img
+      });
+    });
     const output = `
       <table border='1' style='width:100%'>
         <tr>
@@ -263,11 +268,16 @@ router.post("/insertSellrequest",(req,res) => {
           <td> Year of Manufacture </td>
           <td> ${data.manufactureYear} </td>
         </tr>
+        <tr>
+          <td> Date </td>
+          <td> ${new Date()} </td>
+        </tr>
       </table>
     `;
     //const sendToEmail = 'inspection@bikebazaar.com'; //email to send alerts to
-    const sendToEmail = 'rahul.khedkar@bikebazaar.com';
-    mailer(output, 'Appointment Booked', sendToEmail).catch(console.error);
+    // const sendToEmail = 'rahul.khedkar@bikebazaar.com';
+    const sendToEmail = 'ankit@tekonika.co';
+    mailer(output, 'Appointment Booked', sendToEmail, attachmentImages).catch(console.error);
 
     const body = dataset.flatMap(doc => [
       { index: { _index: "sellerdetails" } },
@@ -357,6 +367,25 @@ router.post("/insertBuyRequest", (req, res) => {
     res.send("successfully inserted");
   }
   upload().catch(console.log);
+});
+
+let storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, '../server/public/tempImages')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname)
+  }
+});
+const upload = multer({ storage });
+
+router.post('/tempUpload', upload.single('image'), (req, res) => {
+  if (req.file)
+    res.json({
+      imageUrl: `../../public/tempImages/${req.file.filename}`
+    });
+  else
+    res.status("409").json("No Files to Upload.")
 });
 
 module.exports = router;

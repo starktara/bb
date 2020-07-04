@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer');
+const fs = require('fs');
 
-async function mailer(output, subject, sendTo, attach = []) {      
+async function mailer(output, subject, sendTo, attach = []) { 
     let transporter = nodemailer.createTransport({
       host: "smtp.office365.com",
       port: 587,
@@ -11,17 +12,27 @@ async function mailer(output, subject, sendTo, attach = []) {
       }
     });
 
-    let info = await transporter.sendMail({
+    transporter.sendMail({
       from: '"Trial" <webadmin@bikebazaar.com>', // sender address
       to: sendTo, 
       subject: subject, // Subject line
       text: '', // plain text body
       html: output, // html body
       attachments: attach
+    }, (err, info) => {
+      if(!err){
+        console.log("Message sent: %s", info.messageId);
+        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        attach.forEach(img => {
+          fs.unlink(img.path, (err) => {
+            if(err) throw err;
+            console.log("deleted");
+          })
+        })
+      } else{
+        console.log("Error: ", err);
+      }
     });
-  
-    console.log("Message sent: %s", info.messageId);
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
   }
 
  module.exports = mailer;
