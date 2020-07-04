@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import searchIcon from "../../assets/search-icon.svg";
-import locationIcon from "../../assets/location-icon.svg";
-import dropDown from "../../assets/drop-down.svg";
 import bikeBazaarLogo from "../../assets/BikeB-logo.png";
 import personLogo from "../../assets/Person.png";
 import locationLogo from "../../assets/Location_Icon.png";
 import hamburgerIcon from "../../assets/Hamburger_Icon.png";
-import callIcon from "../../assets/Call.png";
+// import callIcon from "../../assets/Call.png";
+import callIcon from "../../assets/Phone.svg";
 import messageIcon from "../../assets/message.png";
 import closeIcon from "../../assets/Close.png";
 import faceBookIcon from '../../assets/facebook-icon.svg';
@@ -134,7 +133,7 @@ const PersonDropdown = () => {
         },
       }}
     >
-      <Link to={`/signin`}>
+      {/* <Link to={`/signin`}>
         <StyledMenuItem >
           Sign In
         </StyledMenuItem>
@@ -143,7 +142,13 @@ const PersonDropdown = () => {
         <StyledMenuItem >
           Sign Up
         </StyledMenuItem>
-      </Link>
+      </Link> */}
+      <StyledMenuItem >
+        Sign In
+      </StyledMenuItem>
+      <StyledMenuItem >
+        Sign Up
+      </StyledMenuItem>
     </Menu>
     </>
   );
@@ -225,14 +230,15 @@ const HamburgerDropdown = () => {
       getContentAnchorEl={null}
       anchorOrigin={{
         vertical: "top",
-        horizontal: "left",
+        horizontal: "right",
       }}
       transformOrigin={{ vertical: "top", horizontal: "left" }}
       MenuListProps={{ onMouseLeave: handleClose }}
       PaperProps={{
         style: {
           backgroundColor: "black",
-          width:'380px'
+          width:'380px',
+          marginTop: '-16px'
         },
       }}
     >
@@ -266,7 +272,7 @@ const HamburgerDropdown = () => {
       <br />
       <StyledMenuItem className="phone-number-ham">
         <img className="icon-img" src={selectedTyre} height="25" alt=""  />
-        <img className="icon-img" src={callIcon}  alt=""  />
+        <img className="icon-img" src={callIcon} height="25" alt=""  />
         <a target="_blank" href="tel:+9607993434" style={{marginRight:'10px', fontWeight:'700', fontSize:'16px'}}>
           9607993434
         </a>
@@ -332,14 +338,14 @@ const MainMenu = props => {
   if (matches) {
     return (
       <nav className="nav-extended nav-color sticky-nav">
-        <Grid container component="div" direction="row" className="nav-wrapper" style={{display:"flex", alignItems:"center"}}>
+        <Grid container component="div" direction="row" className="nav-wrapper" style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
           <Grid item xs={2} sm={2} md={2} lg={2} className="header-title">
             <Link to="/">
               <img src={bikeBazaarLogo} height="25" id="logoImg" alt="" />
             </Link>
           </Grid>
           <Grid item xs={1} sm={1} md={1} lg={1}></Grid>
-          <Grid item xs={6} sm={6} md={6} lg={6} style={{paddingTop:"5px", paddingBottom:"5px"}}>
+          <Grid item xs={6} sm={6} md={6} lg={6}>
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <form id="searchForm" className="input-field">
@@ -347,6 +353,7 @@ const MainMenu = props => {
                     <Grid item xs={10} sm={10} md={10} lg={10}>
                       <Autocomplete
                         id="searchField"
+                        style={{border: "none !important"}}
                         freeSolo
                         options={vehicleNames}
                         renderInput={(params) => (
@@ -391,7 +398,7 @@ const MainMenu = props => {
           </Grid>
           <Grid item xs={1} sm={1} md={1} lg={1}></Grid>
           <Grid item xs={2} sm={2} md={2} lg={2} className="location-btn-container">
-            <Grid container component="div" direction="row" style={{paddingTop:'15px', display:'flex', alignItems:'center'}}>
+            <Grid container component="div" direction="row" style={{paddingTop:'5px', display:'flex', alignItems:'center'}}>
               <Grid item xs={4} sm={4} md={4} lg={4}>
                 <PersonDropdown />
               </Grid>
@@ -406,7 +413,7 @@ const MainMenu = props => {
               <Grid item xs={9} sm={9} md={9} lg={9}>
                 <a target="_blank" href="tel:+9607993434" className="phone-number">
                   <div className="phone-number-container">
-                    <img className="icon-img" src={callIcon}  alt="" />
+                    <img className="icon-img" src={callIcon} height="25"  alt="" />
                     9607993434
                   </div>
                 </a>

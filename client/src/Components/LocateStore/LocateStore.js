@@ -66,7 +66,7 @@ const LocateStore = props => {
     {
       city: "Aluva",
       locationName: "BikeBazaar – JKB Motors, Aluva",
-      address: "Jkb – BikeBazaar, Near JKB Bajaj, Pulinchode Jn. Bypass, Aluva – 683101, Kerala, India",
+      address: "Jkb – BikeBazaar, Near JKB Bajaj , Pulinchode Jn. Bypass, Aluva – 683101, Kerala, India",
       coordinates: {
         lat: 10.100809,
         lng: 76.348984
@@ -186,8 +186,8 @@ const LocateStore = props => {
     locationCards = mapLocations.map((thisLocation, key) => {
       if(searchedLocation===null){
         return (
-          <Grid item xs={12} sm={12} md={4} lg={4} key={key}>
-            <div className="locationCard">
+          <Grid item xs={12} sm={12} md={6} lg={5} xl={4} key={key}>
+            <div className="locationCard" style={{marginRight:"10px", marginBottom: "10px"}}>
               <div style={{"cursor":"pointer"}} onClick={()=>handleStoreClick(thisLocation)}>
                 <h5>{thisLocation.locationName}</h5>
                 <div className="locationAddress">
@@ -208,8 +208,8 @@ const LocateStore = props => {
         if(thisLocation.city===searchedLocation){
           return (
   
-            <Grid item xs={12} sm={12} md={4} lg={4} key={key}>
-              <div className="locationCard">
+            <Grid item xs={12} sm={12} md={6} lg={5} xl={4} key={key}>
+              <div className="locationCard" style={{marginRight:"10px", marginBottom: "10px"}}>
                 <div style={{"cursor":"pointer"}} onClick={()=>handleStoreClick(thisLocation)}>
                   <h5>{thisLocation.locationName}</h5>
                   <div className="locationAddress">

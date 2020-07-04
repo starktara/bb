@@ -6,27 +6,19 @@ import "./Homepage.css";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import logo from "../../assets/logo.svg";
-// import searchIcon from "../../assets/search-icon.svg";
-// import locationIcon from "../../assets/location-icon.svg";
 import bikeGIF from "../../assets/Motorcycle-GIF.gif";
 import scooterGIF from "../../assets/Scooter-GIF.gif";
 import highEndBikeGIF from "../../assets/High-End-Motorcycle-GIF.gif";
-// import sliderImg from "../../assets/main-img.png";
 import bannerImg from "../../assets/banner.png";
 import headingLines from "../../assets/heading-lines.svg";
-// import bike2 from "../../assets/bike-icon.svg";
-// import scooter from "../..//assets/scooter-icon.svg";
-// import bike from "../../assets/high-end-bike-icon.svg";
+import bikeStill from "../../assets/bike-icon.svg";
+import scooterStill from "../..//assets/scooter-icon.svg";
+import highEndStill from "../../assets/high-end-bike-icon.svg";
 import certifiedAutoExperts from "../../assets/certified_by_auto_experts.svg";
 import monthWarranty from "../../assets/6_month_warranty.svg";
 import buyerProtection from "../../assets/buyer_protection.svg";
 import lowCostEmi from "../../assets/low_cost_emi.svg";
 import hassleFreeDocTransfer from "../../assets/hassle_free_document_transfer.svg";
-// import testimonial1 from "../../assets/testimonial-image-1.png";
-// import testimonial2 from "../../assets/testimonial-image-2.png";
-// import testimonial3 from "../../assets/testimonial-image-3.png";
-// import testimonial4 from "../../assets/testimonial-image-4.png";
-// import testimonial5 from "../../assets/testimonial-image-5.png";
 import testimonial_hari from "../../assets/Hari_Raj.png";
 import testimonial_md from "../../assets/Md_Aquiluzzaman.png";
 import testimonial_azhar from "../../assets/Azhar_Mirza.png";
@@ -39,6 +31,9 @@ import { CHANGE_CATEGORY } from "../../store/actions/actionTypes";
 const Homepage = (props) => {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
+  const [bikeHover, setBikeHover] = useState(false);
+  const [scooterHover, setScooterHover] = useState(false);
+  const [highEndBikeHover, setHighEndBikeHover] = useState(false);
   const updateState = event => {
     setSearchTerm(event.target.value);
   };
@@ -176,21 +171,21 @@ const Homepage = (props) => {
           </Grid>
         </Grid>
         <Grid container component="div" direction="row">
-          <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+          <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center" onMouseEnter={() => setBikeHover(true)} onMouseLeave={() => setBikeHover(false)}>
             <div className="box-shadow center-align" style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.BIKE)}>
-              <img alt="" src={bikeGIF} height="170" width="290" />
+              <img alt="" src={bikeHover ? bikeStill : bikeGIF} height="170" width="290"/>
               <h5>Motorcycle</h5>
             </div>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+          <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center" onMouseEnter={() => setScooterHover(true)} onMouseLeave={() => setScooterHover(false)}>
             <div className="box-shadow center-align" style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}>
-              <img alt="" src={scooterGIF} height="170" width="290" />
+              <img alt="" src={scooterHover ? scooterStill : scooterGIF} height="170" width="290" />
               <h5>Scooter</h5>
             </div>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+          <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center" onMouseEnter={() => setHighEndBikeHover(true)} onMouseLeave={() => setHighEndBikeHover(false)}>
             <div className="box-shadow center-align" style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}>
-              <img alt="" src={highEndBikeGIF} height="170" width="290" />
+              <img alt="" src={highEndBikeHover ? highEndStill : highEndBikeGIF} height="170" width="290" />
               <h5>High-End Motorcycle</h5>
             </div>
           </Grid>
@@ -302,6 +297,7 @@ const Homepage = (props) => {
           component="div"
           direction="row"
           className="row center-align"
+          style={{marginBottom: "0px"}}
         >
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <h3>TESTIMONIALS</h3>
@@ -322,17 +318,17 @@ const Homepage = (props) => {
             </div>
           </Grid>
           <Grid item xs={10} sm={10} md={10} lg={10} className="center-align">
-            <div className="carousel">
-              <a className="carousel-item" href="#one!" index="0">
+            <div className="carousel" style={{minHeight: "300px"}}>
+              <a className="carousel-item" href="#one!" index="0" style={{marginTop: "-10px"}}>
                 <img alt="" className="circle" src={testimonial_hari} />
               </a>
               {/* <a className="carousel-item" href="#two!" index="1">
                 <img alt="" className="circle" src={testimonial2} />
               </a> */}
-              <a className="carousel-item" href="#two!" index="1">
+              <a className="carousel-item" href="#two!" index="1" style={{marginTop: "-10px"}}>
                 <img alt="" className="circle" src={testimonial_md} />
               </a>
-              <a className="carousel-item" href="#three!" index="2">
+              <a className="carousel-item" href="#three!" index="2" style={{marginTop: "-10px"}}>
                 <img alt="" className="circle" src={testimonial_azhar} />
               </a>
               {/* <a className="carousel-item" href="#five!" index="4">
