@@ -143,7 +143,7 @@ const BecomeFranchiseOwner = props => {
   useEffect(() => {
     try {
       window.scroll({
-        top: 70,
+        top: 0,
         left: 0,
         behavior: 'smooth',
       });

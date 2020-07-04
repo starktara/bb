@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 // import Header from '../Header/Header';
 import MainMenu from '../MainMenu/MainMenu';
 import Footer from '../Footer/Footer';
@@ -52,6 +52,17 @@ const useStyle = makeStyles(theme =>({
 const TermsAndConditions = props => {
 
     const classes = useStyle();
+    useEffect(() => {
+        try {
+            window.scroll({
+              top: 0,
+              left: 0,
+              behavior: 'smooth',
+            });
+          } catch (error) {
+            window.scrollTo(0, 0);
+          }
+    })
 
     return (
         <div id="TermsAndConditions" className={classes.body}>
