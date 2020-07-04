@@ -56,7 +56,7 @@ const Navigation = (props) => {
         <h5>Filter by</h5>
         <h5 onClick={clearAllFilters} style={{cursor:'pointer'}}>Clear All Filters</h5>
       </div>
-      <div className="filterSec" style={{"marginBottom":"28px"}}>
+      <div className="filterSec" style={{"marginBottom":"35px"}}>
         <CategoryWidget />
         <CityWidget />
         <BudgetWidget clear={1} budget={[0, 15000, 25000, 35000, 45000, 55000, 100000]} />

@@ -55,11 +55,12 @@ const CategoryPage = props => {
   ]);
 
   useEffect(() => {
-    dispatch(actions.getPaginatedData(0, 9));
+    dispatch(actions.getPaginatedData(0, 12));
   }, [vehicles]);
 
   const onPageChanged = paginationData => {
     const { currentPage, totalPages, pageLimit } = paginationData;
+    console.log("najsbdsjdsdfsdf : : ", paginationData)
     const offset = (currentPage - 1) * pageLimit;
     dispatch(actions.getPaginatedData(offset, pageLimit));
   };
@@ -84,12 +85,12 @@ const CategoryPage = props => {
         sold={vehicle._source.sold}
       />
     ));
-    containerClass = vehicles.length > 9 ? "cardContainer" : "";
+    containerClass = vehicles.length > 12 ? "cardContainer" : "";
     const totalRecords = Object.keys(vehicles).length;
     paginations = (
       <Pagination
         totalRecords={totalRecords}
-        pageLimit={9}
+        pageLimit={12}
         pageNeighbours={1}
         onPageChanged={onPageChanged}
       />
