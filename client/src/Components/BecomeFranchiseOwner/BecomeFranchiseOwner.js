@@ -30,6 +30,7 @@ import isMobilePhone from "validator/lib/isMobilePhone";
 import isNumeric from "validator/lib/isNumeric";
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Modal from '@material-ui/core/Modal';
 
 const formValidator = (name, value) => {
   switch (name) {
@@ -126,6 +127,26 @@ const useStyles = makeStyles(theme => ({
       order: 3,
     },
   },
+  modalBoxSuccess: {
+    position: 'absolute',
+    width: '80%',
+    backgroundColor: 'green',
+    color: 'white',
+    border: '0 solid #fff',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    outline: 0
+  },
+  modalBoxErr: {
+    position: 'absolute',
+    width: '80%',
+    backgroundColor: 'orange',
+    color: 'white',
+    border: '0 solid #fff',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    outline: 0
+  }
 }));
 
 const BecomeFranchiseOwner = props => {
@@ -187,27 +208,47 @@ const BecomeFranchiseOwner = props => {
   });
 
 
-  const [tooltipState, setTooltipState] = useState({
-    open: false,
-    message: "",
-    variant: "error"
-  });
+  // const [tooltipState, setTooltipState] = useState({
+  //   open: false,
+  //   message: "",
+  //   variant: "error"
+  // });
 
-  const handleClose = () => {
-    setTooltipState({
-      open: false,
-      message: "",
-      variant: "success"
-    });
+  // const handleClose = () => {
+  //   setTooltipState({
+  //     open: false,
+  //     message: "",
+  //     variant: "success"
+  //   });
+  // };
+
+  const [success, setSuccess] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const handleModalClose = () => {
+    setOpen(false);
   };
-
+  const [modalMesg, setModalMesg] = React.useState(
+    ""
+  )
+  
   const tooltip = (
-    <Tooltip
-      open={tooltipState.open}
-      message={tooltipState.message}
-      variant={tooltipState.variant}
-      handleClose={handleClose}
-    />
+    // <Tooltip
+    //   open={tooltipState.open}
+    //   message={tooltipState.message}
+    //   variant={tooltipState.variant}
+    //   handleClose={handleClose}
+    // />
+    <Modal
+      style={{display: 'flex', justifyContent: 'center', alignItems: 'center', border: 'none'}}
+      open={open}
+      onClose={handleModalClose}
+      aria-labelledby="simple-modal-title"
+      aria-describedby="simple-modal-description"
+    >
+      <div className={success ? classes.modalBoxSuccess : classes.modalBoxErr}>
+        <h4>{modalMesg}</h4>
+      </div>
+    </Modal>
   );
 
   const updateFormdata = (event, formData) => {
@@ -257,16 +298,23 @@ const BecomeFranchiseOwner = props => {
     if(!errorFlag) {
       axios
       .post("/apis/leadDetail/insertFranchiseRequest", formData)
-      .then(response => {})
+      .then(response => {
+        setSuccess(true);
+        setOpen(true);
+        setModalMesg("Thank you for sharing your details. We will get back to you soon to resolve all your queries.")
+      })
       .catch(err => {
         console.log(err);
+        setSuccess(false);
+        setOpen(true);
+        setModalMesg("Something went wrong, please try later.")
       });
 
-      setTooltipState({
-        open: true,
-        message: "Your details have been saved",
-        variant: "success"
-      });
+      // setTooltipState({
+      //   open: true,
+      //   message: "Your details have been saved",
+      //   variant: "success"
+      // });
     } else {
       setFormData({
         ...formData,
