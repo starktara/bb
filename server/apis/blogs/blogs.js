@@ -5,7 +5,7 @@ const axios = require("axios");
 router.get("/getBlogsByPage", async (req, res) => {
   async function getBlogsByPageNumber() {
     const result = await axios.get(
-      "http://localhost/wordpress/index.php/wp-json/wp/v2/posts?page=" +
+      "http://localhost:8080/wordpress/index.php/wp-json/wp/v2/posts?page=" +
         req.query.pageNumber
     );
 
@@ -23,7 +23,7 @@ router.get("/getBlogsByPage", async (req, res) => {
 router.get("/getBlogByBlogId", async (req, res) => {
   async function getBlogById() {
     const result = await axios.get(
-      "http://localhost/wordpress/index.php/wp-json/wp/v2/posts/" +
+      "http://localhost:8080/wordpress/index.php/wp-json/wp/v2/posts/" +
         req.query.blogId
     );
 
