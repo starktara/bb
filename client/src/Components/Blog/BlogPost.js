@@ -58,6 +58,15 @@ const Blog = props => {
 var blogPosts = "";
 var blogPostDiv = '';
 
+var blogContent = '';
+// http:\/\/10.10.47.111:8080\/blogs\/wp-content\/uploads
+if(props && props.blog && props.blog.data && props.blog.data.content && props.blog.data.content.rendered)
+{
+  blogContent = props.blog.data.content.rendered;
+  let finalBlogContent = blogContent.replace('http:\/\/10.10.47.111:8080\/blogs\/wp-content\/uploads', 'https:\/\/bikebazaar.com\/blogs\/wp-content\/uploads')
+}
+
+
 if (error === true){
   blogPostDiv = <p style={{ textAlign: "center" }}>Something went wrong!</p>;
 } else if (error === false && props.isLoading === false) {
@@ -69,7 +78,7 @@ if (error === true){
 	  <div className="Info">
 		<div
 		  dangerouslySetInnerHTML={{
-			__html: ( props && props.blog && props.blog.data && props.blog.data.content && props.blog.data.content.rendered)
+			__html: ( finalBlogContent)
 		  }}
 		/>
 	  </div>
