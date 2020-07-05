@@ -178,6 +178,10 @@ router.post("/insertFranchiseRequest", (req, res) => {
           <td> Pincode </td>
           <td> ${data.pincode} </td>
         </tr>
+        <tr>
+          <td> Date </td>
+          <td> ${new Date()} </td>
+        </tr>
       </table>
     `;
     const sendToEmail = 'rahul.khedkar@bikebazaar.com'; //email to send alerts to
@@ -341,6 +345,10 @@ router.post("/insertBuyRequest", (req, res) => {
         <tr>
           <td> Email Id </td>
           <td> ${formData.email.value} </td>
+        </tr>
+        <tr>
+          <td> Date </td>
+          <td> ${new Date()} </td>
         </tr>
       </table>
     `;
