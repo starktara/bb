@@ -57,6 +57,17 @@ const Blog = props => {
 
 var blogPosts = "";
 var blogPostDiv = '';
+let finalBlogContent = '';
+
+var blogContent = '';
+if(props && props.blog && props.blog.data && props.blog.data.content && props.blog.data.content.rendered)
+{
+  blogContent = props.blog.data.content.rendered;
+  let replaceThis = 'http:\/\/10.10.47.111:8080\/blogs\/wp-content\/uploads';
+  let rep = new RegExp(replaceThis, 'g');
+  finalBlogContent = blogContent.replace(rep, 'https:\/\/bikebazaar.com\/blogs\/wp-content\/uploads')
+}
+
 
 if (error === true){
   blogPostDiv = <p style={{ textAlign: "center" }}>Something went wrong!</p>;
@@ -69,7 +80,7 @@ if (error === true){
 	  <div className="Info">
 		<div
 		  dangerouslySetInnerHTML={{
-			__html: ( props && props.blog && props.blog.data && props.blog.data.content && props.blog.data.content.rendered)
+			__html: ( finalBlogContent)
 		  }}
 		/>
 	  </div>
