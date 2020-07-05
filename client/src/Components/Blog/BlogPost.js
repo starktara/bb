@@ -60,11 +60,12 @@ var blogPostDiv = '';
 let finalBlogContent = '';
 
 var blogContent = '';
-// http:\/\/10.10.47.111:8080\/blogs\/wp-content\/uploads
 if(props && props.blog && props.blog.data && props.blog.data.content && props.blog.data.content.rendered)
 {
   blogContent = props.blog.data.content.rendered;
-  finalBlogContent = blogContent.replace('http:\/\/10.10.47.111:8080\/blogs\/wp-content\/uploads', 'https:\/\/bikebazaar.com\/blogs\/wp-content\/uploads')
+  let replaceThis = 'http:\/\/10.10.47.111:8080\/blogs\/wp-content\/uploads';
+  let rep = new RegExp(replaceThis, 'g');
+  finalBlogContent = blogContent.replace(rep, 'https:\/\/bikebazaar.com\/blogs\/wp-content\/uploads')
 }
 
 
