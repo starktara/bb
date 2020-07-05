@@ -301,7 +301,7 @@ const BecomeFranchiseOwner = props => {
       .then(response => {
         setSuccess(true);
         setOpen(true);
-        setModalMesg("Thank you for sharing your details. We will get back to you soon to resolve all your queries.")
+        setModalMesg("Thanks for sharing your details. We will get back to you shortly.")
       })
       .catch(err => {
         console.log(err);

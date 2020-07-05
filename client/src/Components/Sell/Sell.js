@@ -306,7 +306,7 @@ const Sell = props => {
     setOpen(false);
   };
   const [modalMesg, setModalMesg] = React.useState(
-    "Thank you. Your details have been saved. We will get back to you soon to resolve all your queries."
+    "Thank you. Your details have been saved. We will get back to you shortly."
   )
 
   const tooltip = (
