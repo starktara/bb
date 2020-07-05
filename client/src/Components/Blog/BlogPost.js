@@ -57,13 +57,14 @@ const Blog = props => {
 
 var blogPosts = "";
 var blogPostDiv = '';
+let finalBlogContent = '';
 
 var blogContent = '';
 // http:\/\/10.10.47.111:8080\/blogs\/wp-content\/uploads
 if(props && props.blog && props.blog.data && props.blog.data.content && props.blog.data.content.rendered)
 {
   blogContent = props.blog.data.content.rendered;
-  let finalBlogContent = blogContent.replace('http:\/\/10.10.47.111:8080\/blogs\/wp-content\/uploads', 'https:\/\/bikebazaar.com\/blogs\/wp-content\/uploads')
+  finalBlogContent = blogContent.replace('http:\/\/10.10.47.111:8080\/blogs\/wp-content\/uploads', 'https:\/\/bikebazaar.com\/blogs\/wp-content\/uploads')
 }
 
 
