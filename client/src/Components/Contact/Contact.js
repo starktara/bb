@@ -29,6 +29,7 @@ import isAscii from "validator/lib/isAscii";
 // import Tooltip from "../UI/Tooltip/Tooltip";
 import axios from "axios";
 import Modal from '@material-ui/core/Modal';
+import closeIcon from "../../assets/Close.png";
 
 const BBRadio = withStyles({
   root: {
@@ -88,23 +89,29 @@ const useStyles = makeStyles(theme => ({
   },
   modalBoxSuccess: {
     position: 'absolute',
-    width: '80%',
+    width: '60%',
     backgroundColor: 'green',
     color: 'white',
     border: '0 solid #fff',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    outline: 0
+    outline: 0,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start'
   },
   modalBoxErr: {
     position: 'absolute',
-    width: '80%',
+    width: '60%',
     backgroundColor: 'orange',
     color: 'white',
     border: '0 solid #fff',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    outline: 0
+    outline: 0,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start'
   }
 }));
 
@@ -237,6 +244,7 @@ const Contact = props => {
     >
       <div className={success ? classes.modalBoxSuccess : classes.modalBoxErr}>
         <h4>{modalMesg}</h4>
+        <img style={{marginLeft: '10px', cursor: 'pointer'}} onClick={handleModalClose} src={closeIcon} height="20"  alt="" />
       </div>
     </Modal>
   );
