@@ -306,7 +306,7 @@ const Sell = props => {
     setOpen(false);
   };
   const [modalMesg, setModalMesg] = React.useState(
-    "Thank you. Your details have been saved. We will get back to you shortly."
+    ""
   )
 
   const tooltip = (
@@ -366,15 +366,28 @@ const Sell = props => {
     });
   }
 
-  const uploadImages = (formData) => {
-    const uploaders = formData.image.images.map(image => {
+  const uploadImagesAndEmail = (formData) => {
+    const uploadImgs = formData.image.images.map(image => {
       const data = new FormData();
       data.append("image", image, image.name);
       
       return axios.post('/apis/leadDetail/tempUpload', data)
       .then(response => {})
     });
-    axios.all(uploaders).then(() => {
+    axios.all(uploadImgs).then(() => {
+      axios
+      .post("/apis/leadDetail/insertSellrequest", formData)
+      .then(response => {
+        setSuccessSubmit(true);
+        setOpen(true);
+        setModalMesg("Thank you. Your details have been saved. We will get back to you shortly.");
+      })
+      .catch(err => {
+        console.log(err);
+        setSuccessSubmit(false);
+        setOpen(true);
+        setModalMesg("Something went wrong, please try later.");
+      })
     }).catch(err => alert(err.message));
   }
 
@@ -449,25 +462,7 @@ const Sell = props => {
       }      
     });
     if(!errorFlag) {
-      uploadImages(formData);
-      axios
-      .post("/apis/leadDetail/insertSellrequest", formData)
-      .then(response => {
-        // setTooltipState({
-        //   open: true,
-        //   message: "Your details have been saved",
-        //   variant: "success"
-        // });
-        setSuccessSubmit(true);
-        setOpen(true);
-        setModalMesg("Thank you. Your details have been saved. We will get back to you soon to resolve all your queries.");
-      })
-      .catch(err => {
-        console.log(err);
-        setSuccessSubmit(false);
-        setOpen(true);
-        setModalMesg("Something went wrong, please try later.");
-      })
+      uploadImagesAndEmail(formData);
     } else {
       setFormData({
         ...formData,
