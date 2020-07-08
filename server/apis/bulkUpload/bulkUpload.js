@@ -3,16 +3,19 @@ const express = require("express");
 const router = express.Router();
 const Admzip = require("adm-zip");
 const xlsxj = require("xlsx-to-json");
-const fs=require('fs');
-const glob=require('glob');
+const fs = require("fs");
+const { Client } = require("@elastic/elasticsearch");
+const client = new Client({ node: "http://localhost:9200" });
+// const glob = require("glob");
 
 //excelSheet's JSON data
-const data = require("../../Bulk/BulkDataJSON/Bulkexceldata.json");
+let data = require("../../Bulk/BulkDataJSON/Bulkexceldata.json");
+//keys for the searching
+let keys = [];
 
 //global fileName variable
 var fileName = null;
-
-var images=null;
+var images = null;
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -26,88 +29,19 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.post("/Upload", upload.single("file"), function (req, res) {
+  res.sendStatus(200);
+
   fileName = req.file.filename;
 
   console.log(fileName);
 
   const meta = req.body;
 
-  async function asyncCall() {
-    try {
-      const zip = new Admzip(`./public/${fileName}`);
-      //extracting the file to the folder
-      zip.extractAllTo(
-        /*target path*/ "./Bulk/BulkUploadFiles",
-        /*overwrite*/ true
-      );
-      //reading the xlsx file
-      xlsxj(
-        {
-          input: "./Bulk/BulkUploadFiles/Records.xlsx",
-          output: "./Bulk/BulkDataJSON/Bulkexceldata.json",
-        },
-        function (err, result) {
-          if (err) {
-            console.log(err);
-          } else {
-            //getting the excel's json format into a variable
-            const excelJSON = result;
-            console.log(excelJSON);
-          }
-        }
-      );
-
-      //glob for the getting the images recursively
-
-      const getDirectories = function (src, callback) {
-        glob(src + '/**/*', callback);
-      };
-      getDirectories('./Bulk/BulkUploadFiles/images', function (err, res) {
-        if (err) {
-          console.log('Error', err);
-        } else {
-          
-          images=res;
-          console.log(typeof(images));
-          console.log(images);
-        }
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  asyncCall();
-});
-
-router.post("/uploadBikes", (req, res) => {
   async function upload() {
-    const dataset = [
-      {
-        id: 1,
-        name: "Activa",
-        type: 2,
-        model: 16,
-        brand: 4,
-        regnumber: "",
-        descr: "",
-        price: 42000,
-        state: "Kerela",
-        city: "Aluva",
-        loc: "Pullinchode",
-        location: { lat: 10.100914, lon: 76.348984 },
-        myear: 2016,
-        mmonth: 0,
-        kmdriven: 21230,
-        images: ["Img-M1-1.jpg", "Img-M1-2.jpg", "Img-M1-3.jpg"],
-        mimage: "Img-M1-1.jpg",
-        owner: 1,
-        cc: 100,
-        bhp: 8,
-        category: 2,
-        mileage: 60,
-        storeId: 1,
-      },
-    ];
+    const dataset = [...data];
+    Object.keys(dataset).map(function (object) {
+      dataset[object]["location"] = { lat: 10.100914, lon: 76.348984 };
+    });
     const body = dataset.flatMap((doc) => [
       { index: { _index: "bike-details" } },
       doc,
@@ -141,8 +75,51 @@ router.post("/uploadBikes", (req, res) => {
     res.json({
       msg: "Data Seeded",
     });
+    upload().catch(console.log);
   }
-  upload().catch(console.log);
+
+  async function getJSONdata() {
+    //getting the name key from the json array
+    try {
+      const cpydata = [...data];
+      keys = cpydata.map((item) => ({ name: item.name }));
+      console.log(keys);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async function asyncCall() {
+    try {
+      const zip = new Admzip(`./public/${fileName}`);
+      //extracting the file to the folder
+      zip.extractAllTo(
+        /*target path*/ "./Bulk/BulkUploadFiles",
+        /*overwrite*/ true
+      );
+      //reading the xlsx file
+      xlsxj(
+        {
+          input: "./Bulk/BulkUploadFiles/Records.xlsx",
+          output: "./Bulk/BulkDataJSON/Bulkexceldata.json",
+        },
+        function (err, result) {
+          if (err) {
+            console.log(err);
+          } else {
+            //getting the excel's json format into a variable
+            const excelJSON = result;
+            console.log(excelJSON);
+          }
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  asyncCall();
+  getJSONdata();
+  upload();
 });
 
 module.exports = router;
