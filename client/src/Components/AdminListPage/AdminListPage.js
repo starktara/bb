@@ -14,8 +14,13 @@ const useStyles = makeStyles(theme => ({
 
 const AdminListPage = (props) => {
   const classes = useStyles();
+  const loggedIn = false;
   useEffect( () => {
-    props.getVehicles(null, null);
+    if(loggedIn){
+      props.getVehicles(null, null);
+    } else{
+      props.history.push("/admin")
+    }
   }, []);
 
   const deleteVehicle = (id) => {

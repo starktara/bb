@@ -17,6 +17,7 @@ import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
 import TermsAndConditions from './Components/TermsAndConditions/TermsAndConditions';
 import AdminListPage from './Components/AdminListPage/AdminListPage';
 import AdminUpload from './Components/AdminUpload/AdminUpload';
+import AdminLogin from './Components/AdminLogin/AdminLogin';
 import BlogPostHome from './Components/Blog/BlogPostHome'
 import BlogPost from './Components/Blog/BlogPost'
 
@@ -27,6 +28,7 @@ const App = () => {
             <Route exact path='/' component={Homepage} />
             <Route exact path='/admin/edit/:id' component={AdminUpload} />
             <Route exact path='/admin/list' component={AdminListPage} />
+            <Route exact path='/admin' component={AdminLogin} />
             <Route exact path='/admin/upload' component={AdminUpload} />
             <Route exact path='/category/:category' component={CategoryPage} />
             <Route path='/vehicledetails/locate-store' component={LocateStore} />

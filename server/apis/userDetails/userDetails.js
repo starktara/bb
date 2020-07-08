@@ -39,8 +39,9 @@ router.get("/createUser", (req, res) => {
       phone: '0000000000',
       interests: 'NA',
       userName: 'root',
-      password: 'root'
+      password: bcrypt.hashSync('root', 10)
     }];
+
     const body = dataset.flatMap(doc => [
       { index: { _index: "user-detail" } },
       doc
@@ -139,7 +140,6 @@ router.post("/login", (req, res) => {
   async function loginUser() {
     const email = req.body.loginid;
     const password = req.body.password;
-    console.log(email);
     const userName = await client.search({
       index: "user-detail",
       body: {
@@ -147,7 +147,7 @@ router.post("/login", (req, res) => {
         size: 1,
         query: {
           match_phrase: {
-            userName: email.value
+            userName: email
           }
         }
       }
@@ -160,7 +160,7 @@ router.post("/login", (req, res) => {
         size: 1,
         query: {
           match_phrase: {
-            email: email.value
+            email: email
           }
         }
       }
@@ -176,7 +176,7 @@ router.post("/login", (req, res) => {
         ? userName.body.hits.hits[0]._source.password
         : emailId.body.hits.hits[0]._source.password;
     //Check password
-    bcrypt.compare(password.value, savedPassword).then(isMatch => {
+    bcrypt.compare(password, savedPassword).then(isMatch => {
       if (isMatch) {
         // Create JWT Payload
         const payload = {
@@ -208,6 +208,9 @@ router.post("/login", (req, res) => {
           .status(400)
           .json({ passwordincorrect: "Password incorrect" });
       }
+    })
+    .catch(err => {
+      console.log(err)
     });
   }
   loginUser().catch(console.log);
