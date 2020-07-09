@@ -235,7 +235,7 @@ router.post("/insertSellrequest",(req,res) => {
     const data = dataset[0];
     const attachmentImages = data.images.map(img => {
       return ({
-        path: "../server/public/tempImages/" + img
+        path: "../server/tempEmailImg/" + img
       });
     });
     const output = `
@@ -279,8 +279,7 @@ router.post("/insertSellrequest",(req,res) => {
       </table>
     `;
     //const sendToEmail = 'inspection@bikebazaar.com'; //email to send alerts to
-    // const sendToEmail = 'rahul.khedkar@bikebazaar.com';
-    const sendToEmail = 'ankit@tekonika.co';
+    const sendToEmail = 'rahul.khedkar@bikebazaar.com';
     mailer(output, 'Appointment Booked', sendToEmail, attachmentImages).catch(console.error);
 
     const body = dataset.flatMap(doc => [
@@ -379,7 +378,7 @@ router.post("/insertBuyRequest", (req, res) => {
 
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, '../server/public/tempImages')
+    cb(null, '../server/tempEmailImg')
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname)
@@ -390,7 +389,7 @@ const upload = multer({ storage });
 router.post('/tempUpload', upload.single('image'), (req, res) => {
   if (req.file)
     res.json({
-      imageUrl: `../../public/tempImages/${req.file.filename}`
+      imageUrl: `../tempEmailImg/${req.file.filename}`
     });
   else
     res.status("409").json("No Files to Upload.")
