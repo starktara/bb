@@ -17,10 +17,9 @@ class BulkUpload extends React.Component {
   onChangeHandler = (event) => {
     const files = event.target.files[0];
     console.log(files);
-      this.setState({
-        selectedFile: files,
-      });
-    
+    this.setState({
+      selectedFile: files,
+    });
   };
 
   onClickHandler = () => {
@@ -31,26 +30,23 @@ class BulkUpload extends React.Component {
       //toaster for the notification
       toast.error("Please Select the file");
     } else {
-      
-        data.append("file", this.state.selectedFile);
-        data.append('name',this.state.selectedFile.name);
+      data.append("file", this.state.selectedFile);
+      data.append("name", this.state.selectedFile.name);
 
-        console.log(data);
-        //accessing the backendapi
-        axios
-          .post("/apis/bulkUpload/Upload", data)
-          .then((res) => {
-            // then print response status
-            console.log(res.statusText);
-            toast.success("Upload successfull !! ");
-          })
-          .catch((err) => {
-            toast.error("upload fail");
-          });
-      
+      console.log(data);
+      //accessing the backendapi
+      axios
+        .post("/apis/bulkUpload/Upload", data)
+        .then((res) => {
+          // then print response status
+          console.log(res.statusText);
+          toast.success("Upload successfull !! ");
+        })
+        .catch((err) => {
+          toast.error("upload fail");
+        });
     }
   };
-
 
   render() {
     return (
@@ -72,7 +68,6 @@ class BulkUpload extends React.Component {
                 name="file"
                 accept=".zip,.rar,.7zip"
                 class="btn"
-                
                 onChange={this.onChangeHandler}
                 type="file"
                 class="form-control"
@@ -83,7 +78,6 @@ class BulkUpload extends React.Component {
           <button class="btn" onClick={this.onClickHandler}>
             Upload Files
           </button>
-
         </div>
       </div>
     );
