@@ -6,11 +6,11 @@ const xlsxj = require("xlsx-to-json");
 const fs = require("fs");
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
+// const glob = require("glob");
 
-//excelSheet's JSON data
-let data = require("../../Bulk/BulkDataJSON/Bulkexceldata.json");
 //global fileName variable
 var fileName = null;
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./public/");
@@ -19,26 +19,97 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + "-" + file.originalname);
   },
 });
+
 const upload = multer({ storage: storage });
 
-async function datasetUpload() {
-  var counter = 0;
-  let imgArr = data.map((item) => item.images);
-  console.log(imgArr);
-  Object.keys(data).forEach(function (object) {
-    let cpyImgArr = imgArr[counter];
-    data[object]["location"] = { lat: 10.100914, lon: 76.348984 };
-    data[object]["images"] = [cpyImgArr];
-    counter++;
-  });
+router.post("/Upload", upload.single("file"), function (req, res) {
+  if(req.file){
+    fileName = req.file.filename;
+    zipHelper();
+    res.sendStatus(200);
+  } else{
+    res.sendStatus(409);
+  }
+});
 
-  console.log(data);
-  const body = data.flatMap((doc) => [
+function zipHelper() {
+  try {
+    const zip = new Admzip(`./public/${fileName}`);
+    //extracting the file to the folder
+    zip.extractAllTo(
+      /*target path*/ "./Bulk/BulkUploadFiles",
+      /*overwrite*/ true
+    );
+    //reading the xlsx file
+    xlsxj(
+      {
+        input: "./Bulk/BulkUploadFiles/Records.xlsx",
+        output: null,
+      },
+      function (err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          dataUpload(result).then( () => {
+            removeDir ("../server/Bulk/BulkUploadFiles/images");
+            fs.unlink("../server/Bulk/BulkUploadFiles/Records.xlsx", (err) => {
+              if (err) {
+                throw err;
+              } else {
+                console.log("xlsx deleted");
+              }
+            });
+            fs.unlink(`../server/public/${fileName}`, (err) => {
+              if (err) {
+                throw err;
+              } else {
+                console.log("zip deleted")
+              }
+            });
+          }).catch(console.log);
+        }
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function dataUpload(data) {
+  const dataset = [...data];
+  const modifiedData = dataset.map( vehicle => ({
+    id: vehicle.id,
+    name: vehicle.name,
+    type: vehicle.type,
+    model: vehicle.model,
+    brand: vehicle.brand,
+    regnumber: vehicle.registrationNumber,
+    descr: vehicle.description,
+    price: vehicle.price,
+    state: vehicle.state,
+    city: vehicle.city,
+    loc: vehicle.location,
+    location: {lat : vehicle.latitude, lon: vehicle.longitude},
+    myear: vehicle.manufacturingYear,
+    mmonth: vehicle.manufacturingMonth,
+    kmdriven: vehicle.kmdriven,
+    images: vehicle.images.split(","),
+    mimage: vehicle.images.split(",")[0],
+    owner: vehicle.NumberOfOwner,
+    cc: vehicle.cc,
+    bhp: vehicle.bhp,
+    category: vehicle.category,
+    mileage: vehicle.mileage,
+    storeId: vehicle.storeId,
+  }))
+  console.log(modifiedData)
+  const body = modifiedData.flatMap((doc) => [
     { index: { _index: "bike-details" } },
     doc,
   ]);
 
   const { body: bulkResponse } = await client.bulk({ refresh: true, body });
+
   if (bulkResponse.errors) {
     const erroredDocuments = [];
     // The items array has the same order of the dataset we just indexed.
@@ -62,51 +133,28 @@ async function datasetUpload() {
   }
 
   const { body: count } = await client.count({ index: "bike-details" });
-  res.json({
-    msg: "Data Seeded",
-  });
-  upload().catch(console.log);
 }
 
-function asyncCall() {
-  try {
-    const zip = new Admzip(`./public/${fileName}`);
-    //extracting the file to the folder
-    zip.extractAllTo(
-      /*target path*/ "./Bulk/BulkUploadFiles",
-      /*overwrite*/ true
-    );
-    //reading the xlsx file
-    xlsxj(
-      {
-        input: "./Bulk/BulkUploadFiles/Records.xlsx",
-        output: "./Bulk/BulkDataJSON/Bulkexceldata.json",
-      },
-      function (err, result) {
-        if (err) {
-          console.log(err);
+const removeDir = function(path) {
+  if (fs.existsSync(path)) {
+    const files = fs.readdirSync(path)
+
+    if (files.length > 0) {
+      files.forEach(function(filename) {
+        if (fs.statSync(path + "/" + filename).isDirectory()) {
+          removeDir(path + "/" + filename)
         } else {
-          //getting the excel's json format into a variable
-          const excelJSON = result;
-          //console.log(excelJSON);
+          fs.unlinkSync(path + "/" + filename)
         }
-      }
-    );
-  } catch (error) {
-    console.log(error);
+      })
+      fs.rmdirSync(path)
+    } else {
+      fs.rmdirSync(path)
+    }
+    console.log("images deleted")
+  } else {
+    console.log("imgs not deleted.")
   }
 }
-
-router.post("/Upload", upload.single("file"), function (req, res) {
-  //farji functionality res.sendStatus(200);
-  fileName = req.file.filename;
-  console.log(fileName);
-  asyncCall();
-  datasetUpload();
-  fs.unlink("./Bulk/BulkDataJSON/BulkExceldata.json", function (err) {
-    if (err) throw err;
-    console.log("file deleted");
-  });
-});
 
 module.exports = router;
