@@ -24,6 +24,7 @@ const upload = multer({ storage: storage });
 async function datasetUpload() {
   var counter = 0;
   let imgArr = data.map((item) => item.images);
+  console.log(imgArr);
   Object.keys(data).forEach(function (object) {
     let cpyImgArr = imgArr[counter];
     data[object]["location"] = { lat: 10.100914, lon: 76.348984 };
@@ -102,6 +103,10 @@ router.post("/Upload", upload.single("file"), function (req, res) {
   console.log(fileName);
   asyncCall();
   datasetUpload();
+  fs.unlink("./Bulk/BulkDataJSON/BulkExceldata.json", function (err) {
+    if (err) throw err;
+    console.log("file deleted");
+  });
 });
 
 module.exports = router;
