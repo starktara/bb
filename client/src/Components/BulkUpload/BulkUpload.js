@@ -3,6 +3,8 @@ import "./BulkUpload.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import MainMenu from "../MainMenu/MainMenu";
+import Footer from "../Footer/Footer";
 
 class BulkUpload extends React.Component {
   constructor(props) {
@@ -50,6 +52,8 @@ class BulkUpload extends React.Component {
 
   render() {
     return (
+      <>
+      <MainMenu />
       <div
         style={{ textAlign: "center", justifyContent: "center", padding: 50 }}
         class="container"
@@ -80,6 +84,8 @@ class BulkUpload extends React.Component {
           </button>
         </div>
       </div>
+      <Footer />
+      </>
     );
   }
 }
