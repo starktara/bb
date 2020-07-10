@@ -102,7 +102,19 @@ async function dataUpload(data) {
     mileage: vehicle.mileage,
     storeId: vehicle.storeId,
   }))
-  console.log(modifiedData)
+  // console.log(modifiedData)
+  let imgArr = [];
+  modifiedData.forEach(vehicle => {
+    vehicle.images.forEach(img => {
+      imgArr.push({ path: "../server/Bulk/BulkUploadFiles/images/"+ vehicle.name + "/" + img, name: img})
+    })
+  })
+  imgArr.forEach(oldImage => {
+    fs.rename(oldImage.path, `../client/public/vehicles/${oldImage.name}`, () => {
+      console.log("Images moved");
+    })
+  })
+  // console.log(imgArr)
   const body = modifiedData.flatMap((doc) => [
     { index: { _index: "bike-details" } },
     doc,
