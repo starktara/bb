@@ -28,6 +28,7 @@ const App = () => {
         <Switch>
             <Route exact path="/admin/BulkUpload" component={BulkUpload}/>
             <Route exact path='/' component={Homepage} />
+            <Route exact path='/admin/edit/:id' component={AdminUpload} />
             <Route exact path='/admin/list' component={AdminListPage} />
             <Route exact path='/admin/upload' component={AdminUpload} />
             <Route exact path='/category/:category' component={CategoryPage} />

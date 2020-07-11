@@ -55,20 +55,23 @@ const CategoryPage = props => {
   ]);
 
   useEffect(() => {
-    dispatch(actions.getPaginatedData(0, 9));
+    dispatch(actions.getPaginatedData(0, 12));
   }, [vehicles]);
 
   const onPageChanged = paginationData => {
     const { currentPage, totalPages, pageLimit } = paginationData;
+    console.log("najsbdsjdsdfsdf : : ", paginationData)
     const offset = (currentPage - 1) * pageLimit;
     dispatch(actions.getPaginatedData(offset, pageLimit));
   };
+
 
   let renderedVehicles = <Spinner />;
   let paginations = "";
   let containerClass = "";
   if (vehicles.length && currentData[0] != "NA") {
     renderedVehicles = currentData.map((vehicle, index) => (
+      
       <Card
         key={index}
         year={vehicle._source.myear}
@@ -79,14 +82,15 @@ const CategoryPage = props => {
         cost={vehicle._source.price}
         vehicleid={vehicle._id}
         image={vehicle._source.mimage}
+        sold={vehicle._source.sold}
       />
     ));
-    containerClass = vehicles.length > 9 ? "cardContainer" : "";
+    containerClass = vehicles.length > 12 ? "cardContainer" : "";
     const totalRecords = Object.keys(vehicles).length;
     paginations = (
       <Pagination
         totalRecords={totalRecords}
-        pageLimit={9}
+        pageLimit={12}
         pageNeighbours={1}
         onPageChanged={onPageChanged}
       />

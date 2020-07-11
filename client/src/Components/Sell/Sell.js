@@ -12,18 +12,21 @@ import blackHeadingLines from '../../assets/black-heading-lines.svg';
 import stepsToSell from '../../assets/steps-to-sell.svg';
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
-import Tooltip from "../UI/Tooltip/Tooltip";
+// import Tooltip from "../UI/Tooltip/Tooltip";
 import axios from "axios";
 import isEmpty from "validator/lib/isEmpty";
 import isAlpha from "validator/lib/isAlpha";
 import isMobilePhone from "validator/lib/isMobilePhone";
 import isAlphaNumeric from "validator/lib/isAlphanumeric";
+import isAscii from "validator/lib/isAscii";
 import isNumeric from "validator/lib/isNumeric";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withTheme } from "@material-ui/core/styles";
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import stepsToSellMobile from '../../assets/steps_to_sell_ mobile.jpg';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Modal from '@material-ui/core/Modal';
+import closeIcon from "../../assets/Close.png";
 
 const useStyles = makeStyles(theme => ({
   body: {
@@ -145,6 +148,32 @@ const useStyles = makeStyles(theme => ({
     border: 'none',
     letterSpacing: '0.83px',
     color: 'white'
+  },
+  modalBoxSuccess: {
+    position: 'absolute',
+    width: '60%',
+    backgroundColor: 'green',
+    color: 'white',
+    border: '0 solid #fff',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    outline: 0,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start'
+  },
+  modalBoxErr: {
+    position: 'absolute',
+    width: '60%',
+    backgroundColor: 'orange',
+    color: 'white',
+    border: '0 solid #fff',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    outline: 0,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start'
   }
 }));
 
@@ -163,7 +192,7 @@ const formValidator = (name, value) => {
     }
     case "address": {
       const addressValue = value.replace(/ /g,'');
-      return !isAlphaNumeric(addressValue) ? "Enter valid address" : "";
+      return !isAscii(addressValue) || value.length > 100 ? "Enter valid address" : "";
     }
     case "make": {  
       const makeValue = value.replace(/ /g, '');
@@ -195,7 +224,7 @@ const Sell = props => {
   useEffect(() =>{
     try {
       window.scroll({
-        top: 70,
+        top: 0,
         left: 0,
         behavior: 'smooth',
       });
@@ -266,27 +295,46 @@ const Sell = props => {
 
   const [successSubmit, setSuccessSubmit] = useState(false);
 
-  const [tooltipState, setTooltipState] = useState({
-    open: false,
-    message: "",
-    variant: "error"
-  });
+  // const [tooltipState, setTooltipState] = useState({
+  //   open: false,
+  //   message: "",
+  //   variant: "error"
+  // });
 
-  const handleClose = () => {
-    setTooltipState({
-      open: false,
-      message: "",
-      variant: "success"
-    });
+  // const handleClose = () => {
+  //   setTooltipState({
+  //     open: false,
+  //     message: "",
+  //     variant: "success"
+  //   });
+  // };
+  const [open, setOpen] = React.useState(false);
+  const handleModalClose = () => {
+    setOpen(false);
   };
+  const [modalMesg, setModalMesg] = React.useState(
+    ""
+  )
 
   const tooltip = (
-    <Tooltip
-      open={tooltipState.open}
-      message={tooltipState.message}
-      variant={tooltipState.variant}
-      handleClose={handleClose}
-    />
+    // <Tooltip
+    //   open={tooltipState.open}
+    //   message={tooltipState.message}
+    //   variant={tooltipState.variant}
+    //   handleClose={handleClose}
+    // />
+    <Modal
+      style={{display: 'flex', justifyContent: 'center', alignItems: 'center', border: 'none'}}
+      open={open}
+      onClose={handleModalClose}
+      aria-labelledby="simple-modal-title"
+      aria-describedby="simple-modal-description"
+    >
+      <div className={successSubmit ? classes.modalBoxSuccess : classes.modalBoxErr}>
+        <h4>{modalMesg}</h4>
+        <img style={{marginLeft: '10px', cursor: 'pointer'}} onClick={handleModalClose} src={closeIcon} height="20"  alt="" />
+      </div>
+    </Modal>
   );
 
   const removeImageHandler = (i) => {
@@ -326,15 +374,28 @@ const Sell = props => {
     });
   }
 
-  const uploadImages = (formData) => {
-    const uploaders = formData.image.images.map(image => {
+  const uploadImagesAndEmail = (formData) => {
+    const uploadImgs = formData.image.images.map(image => {
       const data = new FormData();
       data.append("image", image, image.name);
       
       return axios.post('/apis/leadDetail/tempUpload', data)
       .then(response => {})
     });
-    axios.all(uploaders).then(() => {
+    axios.all(uploadImgs).then(() => {
+      axios
+      .post("/apis/leadDetail/insertSellrequest", formData)
+      .then(response => {
+        setSuccessSubmit(true);
+        setOpen(true);
+        setModalMesg("Thank you. Your details have been saved. We will get back to you shortly.");
+      })
+      .catch(err => {
+        console.log(err);
+        setSuccessSubmit(false);
+        setOpen(true);
+        setModalMesg("Something went wrong, please try later.");
+      })
     }).catch(err => alert(err.message));
   }
 
@@ -409,20 +470,7 @@ const Sell = props => {
       }      
     });
     if(!errorFlag) {
-      uploadImages(formData);
-      axios
-        .post("/apis/leadDetail/insertSellrequest", formData)
-        .then(response => {})
-        .catch(err => {
-          console.log(err);
-        });
-  
-      setTooltipState({
-        open: true,
-        message: "Your details have been saved",
-        variant: "success"
-      });
-      setSuccessSubmit(true);
+      uploadImagesAndEmail(formData);
     } else {
       setFormData({
         ...formData,
@@ -723,6 +771,9 @@ const Sell = props => {
                             <button type="button" className="btn" onClick={submitForm} >
                               Sell Your Vehicle
                             </button>
+                            {/* <button type="button" onClick={handleOpen}>
+                              Open Modal
+                            </button> */}
                           </div>
                         </Grid>
                       </Grid>

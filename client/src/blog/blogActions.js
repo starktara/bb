@@ -21,7 +21,7 @@ export const getAllBlogsForThePage = (pageNumber = null) => {
 export const getBlogPostForId = (blogId = null) => {
   let url;
   url =
-    "http://localhost/wordpress/index.php/wp-json/wp/v2/posts/" +
+    "http://localhost:8080/blogs/index.php/wp-json/wp/v2/posts/" +
     blogId;
 
   return (dispatch) => {

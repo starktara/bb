@@ -25,8 +25,11 @@ import isAlpha from "validator/lib/isAlpha";
 import isEmail from "validator/lib/isEmail";
 import isMobilePhone from "validator/lib/isMobilePhone";
 import isAlphaNumeric from "validator/lib/isAlphanumeric";
-import Tooltip from "../UI/Tooltip/Tooltip";
+import isAscii from "validator/lib/isAscii";
+// import Tooltip from "../UI/Tooltip/Tooltip";
 import axios from "axios";
+import Modal from '@material-ui/core/Modal';
+import closeIcon from "../../assets/Close.png";
 
 const BBRadio = withStyles({
   root: {
@@ -83,6 +86,32 @@ const useStyles = makeStyles(theme => ({
     boxShadow: 'none',
     marginLeft: 10,
     marginTop: 60
+  },
+  modalBoxSuccess: {
+    position: 'absolute',
+    width: '60%',
+    backgroundColor: 'green',
+    color: 'white',
+    border: '0 solid #fff',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    outline: 0,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start'
+  },
+  modalBoxErr: {
+    position: 'absolute',
+    width: '60%',
+    backgroundColor: 'orange',
+    color: 'white',
+    border: '0 solid #fff',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    outline: 0,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start'
   }
 }));
 
@@ -99,7 +128,7 @@ const formValidator = (name, value) => {
       return !isEmail(value) ? "Invalid Email Id" : "";
     }
     case "query": {
-      return !isAlphaNumeric(value)
+      return !isAscii(value)
         ? "Query must only have Alphanumeric Characters"
         : "";
     }
@@ -115,7 +144,7 @@ const Contact = props => {
   useEffect(() =>{
     try {
       window.scroll({
-        top: 70,
+        top: 0,
         left: 0,
         behavior: 'smooth',
       });
@@ -176,27 +205,48 @@ const Contact = props => {
     });
   };
 
-  const [tooltipState, setTooltipState] = useState({
-    open: false,
-    message: "",
-    variant: "error"
-  });
+  // const [tooltipState, setTooltipState] = useState({
+  //   open: false,
+  //   message: "",
+  //   variant: "error"
+  // });
   
-  const handleClose = () => {
-    setTooltipState({
-      open: false,
-      message: "",
-      variant: "success"
-    });
+  // const handleClose = () => {
+  //   setTooltipState({
+  //     open: false,
+  //     message: "",
+  //     variant: "success"
+  //   });
+  // };
+
+  const [success, setSuccess] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const handleModalClose = () => {
+    setOpen(false);
   };
+  const [modalMesg, setModalMesg] = React.useState(
+    ""
+  )
   
   const tooltip = (
-    <Tooltip
-      open={tooltipState.open}
-      message={tooltipState.message}
-      variant={tooltipState.variant}
-      handleClose={handleClose}
-    />
+    // <Tooltip
+    //   open={tooltipState.open}
+    //   message={tooltipState.message}
+    //   variant={tooltipState.variant}
+    //   handleClose={handleClose}
+    // />
+    <Modal
+      style={{display: 'flex', justifyContent: 'center', alignItems: 'center', border: 'none'}}
+      open={open}
+      onClose={handleModalClose}
+      aria-labelledby="simple-modal-title"
+      aria-describedby="simple-modal-description"
+    >
+      <div className={success ? classes.modalBoxSuccess : classes.modalBoxErr}>
+        <h4>{modalMesg}</h4>
+        <img style={{marginLeft: '10px', cursor: 'pointer'}} onClick={handleModalClose} src={closeIcon} height="20"  alt="" />
+      </div>
+    </Modal>
   );
 
   const submitForm = async(event) => {
@@ -223,24 +273,29 @@ const Contact = props => {
       }
     });
     if(!errorFlag) {
-      // incomplete functionality
       axios
         .post("/apis/userDetail/contactUs", formData)
         .then(response => {
           console.log("resp: ", response)
-          setTooltipState({
-            open: true,
-            message: "Your details have been saved",
-            variant: "success"
-          });
+          // setTooltipState({
+          //   open: true,
+          //   message: "Your details have been saved",
+          //   variant: "success"
+          // });
+          setSuccess(true);
+          setOpen(true);
+          setModalMesg("Thank you for sharing your details. We will get back to you soon to resolve all your queries.")
         })
         .catch(err => {
           console.log(err);
-          setTooltipState({
-            open: true,
-            message: "Something went wrong, please try later.",
-            variant: "error"
-          });
+          // setTooltipState({
+          //   open: true,
+          //   message: "Something went wrong, please try later.",
+          //   variant: "error"
+          // });
+          setSuccess(false);
+          setOpen(true);
+          setModalMesg("Something went wrong, please try later.")
         });
     } else {
       setFormData({

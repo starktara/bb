@@ -39,7 +39,7 @@ const VehicleDetails = (props) => {
     useEffect(() => {
         try {
             window.scroll({
-              top: 70,
+              top: 0,
               left: 0,
               behavior: 'smooth',
             });
@@ -77,7 +77,7 @@ const VehicleDetails = (props) => {
                 </Grid>
             </Grid>
             <VehicleData history ={props.history} data={props.vehicle._source}/>
-            <VehicleMetaData />
+            <VehicleMetaData vehicleDetails = {props.vehicle._source}/>
             <br className="clr"/>
         </div>
     }
