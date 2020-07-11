@@ -7,7 +7,7 @@ const VehicleMetaData = () => {
         <Grid container component="div" direction="row">
             <Grid item xs={12} md={12} sm={12} lg={12} className="vehicleSummarySec">
                 <div className="vehicleSummary">
-                    <h3>More details about the motorcycle</h3>
+                    <h3>More details about the Two-wheeler</h3>
                     <h4>Sub Heading</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     <br/>
