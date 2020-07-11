@@ -83,6 +83,7 @@ const CategoryPage = props => {
         vehicleid={vehicle._id}
         image={vehicle._source.mimage}
         sold={vehicle._source.sold}
+        discountPercent={vehicle._source.discountPercent}
       />
     ));
     containerClass = vehicles.length > 12 ? "cardContainer" : "";

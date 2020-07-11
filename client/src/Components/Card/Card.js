@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import "./watermark.css";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  del: {
+  marginLeft: '10px',
+  fontSize: '20px',
+  // color: 'lightgreen',
+  color: 'black',
+  textDecoration: 'line-through',
+  }
+}));
 
 const Card = (props) => {
+  const classes = useStyles();
   const vehicleImagePath = "../../vehicles/";
   return (
     <Grid item component="div" lg={4} md={6} sm={12} xs={12} className="Prod">
@@ -28,7 +40,8 @@ const Card = (props) => {
                 src={require("../../assets/icons/rupee-indian-red.svg")}
                 alt=""
               />
-              {props.cost}
+              {Math.ceil(props.cost - (props.cost * props.discountPercent / 100))}
+              {props.discountPercent && <span className={classes.del}><strong>` </strong> {props.cost}</span>}
             </p>
             <ul className="detailPoints">
               <li className="year">

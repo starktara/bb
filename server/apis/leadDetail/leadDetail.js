@@ -45,7 +45,7 @@ router.get("/createSellerDetail", (req, res) => {
               bulletInfo5: { type: "text" },
               bulletInfo6: { type: "text" },
               sold: { type: "string" },
-            }
+              discountPercent: {type: "float"}            }
           }
         }
       },

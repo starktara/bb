@@ -227,8 +227,9 @@ form {
   padding: 3px 15px;
 }
 .vehicleDetails .PriceSec span.del {
-  font-size: 20px;
-  color: #ff0000;
+  margin-left: 10px !important;
+  font-size: 24px !important;
+  color:lightgreen !important;
   text-decoration: line-through;
 }
 .vehicleDetails .PriceSec span.del strong {
