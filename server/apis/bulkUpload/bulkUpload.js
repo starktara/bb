@@ -76,11 +76,12 @@ function zipHelper() {
 }
 
 async function dataUpload(data) {
+  const latLon = [{lat: 10.100809, lon: 76.348984}, {lat: 22.5726, lon: 88.3639}, {lat: 16.999954, lon: 81.786184}]
   const dataset = [...data];
   const modifiedData = dataset.map( vehicle => ({
-    id: vehicle.id,
+    id: Date.now(),
     name: vehicle.name,
-    type: vehicle.type,
+    type: vehicle.category,
     model: vehicle.model,
     brand: vehicle.brand,
     regnumber: vehicle.registrationNumber,
@@ -89,7 +90,7 @@ async function dataUpload(data) {
     state: vehicle.state,
     city: vehicle.city,
     loc: vehicle.location,
-    location: {lat : vehicle.latitude, lon: vehicle.longitude},
+    location: latLon[vehicle.storeId-1],
     myear: vehicle.manufacturingYear,
     mmonth: vehicle.manufacturingMonth,
     kmdriven: vehicle.kmdriven,
