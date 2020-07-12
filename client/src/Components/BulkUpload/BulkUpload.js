@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     width: "60%",
     height:"70%",
-    backgroundColor: "red",
-    color: "white",
+    backgroundColor: "white",
+    color: "black",
     border: "0 solid #fff",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
@@ -76,31 +76,30 @@ const classes = useStyles();
       <MainMenu />
       <div
         style={{ textAlign: "center", justifyContent: "center", padding: 50 }}
-        class="container"
+        className="container"
       >
-        <div class="col-md-6">
+        <div className="col-md-6">
           <p style={{ fontSize: 40, fontWeight: "bold", marginBottom: '10px' }}> Bulk Upload Menu</p>
-          <img src={questionIcon} height={25} style={{cursor: 'pointer'}} onClick={()=>setOpen(true)}/>
+          <img title="Instructions for Bulk Upload" src={questionIcon} height={25} style={{cursor: 'pointer'}} onClick={()=>setOpen(true)}/>
           {/**react toaster file */}
 
-          <React.Fragment class="form-group">
+          <React.Fragment className="form-group">
             <ToastContainer />
           </React.Fragment>
 
           <form enctype="multipart/form-data" method="post">
-            <div class="form-group files">
+            <div className="form-group files">
               <input
                 name="file"
                 accept=".zip,.rar,.7zip"
-                class="btn"
+                className="form-control"
                 onChange={onChangeHandler}
                 type="file"
-                class="form-control"
               />
             </div>
           </form>
 
-          <button class="btn" onClick={onClickHandler}>
+          <button className="btn" onClick={onClickHandler}>
             Upload Files
           </button>
         </div>
@@ -120,7 +119,7 @@ const classes = useStyles();
           aria-describedby="simple-modal-description"
         >
           <div className={classes.modalBoxSuccess}>
-            <h4>Instructions for Bulk Upload</h4>
+            <h4 style={{color: 'red'}}>Instructions for Bulk Upload</h4>
             <p style={{marginTop: '0px', marginLeft:'10px '}}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dictum purus eu ligula convallis varius. In tristique, ex sed porta ornare, enim mi congue est, sit amet ultricies purus tellus a lectus. Duis mauris urna, suscipit in venenatis non, euismod vel orci. Cras eu nulla non dui tincidunt iaculis quis non ante. Nulla imperdiet neque et dui tempor, eu congue neque vulputate. Vivamus ac imperdiet elit, sit amet mattis enim. Etiam ut urna placerat, gravida neque vel, imperdiet sapien. Praesent purus augue, posuere et sollicitudin id, condimentum sit amet nulla. Aenean vehicula felis nec varius pellentesque. Cras sed volutpat mi, ut eleifend tellus. Phasellus at tincidunt eros, ac malesuada augue. Donec faucibus eleifend orci, quis consequat ipsum tempor ut. Aliquam cursus consequat purus, ut volutpat nunc condimentum eget. Nullam sed convallis velit.
 
@@ -132,13 +131,11 @@ Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculu
 
 Nulla facilisi. In hac habitasse platea dictumst. Nullam in rhoncus diam. Etiam sit amet suscipit felis. Nullam commodo diam turpis, nec commodo dui luctus a. Proin a tempor ligula. Vestibulum sed maximus augue, in mollis leo. Sed nec vehicula augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur, erat id pellentesque feugiat, nulla nisl semper nulla, nec sagittis est nibh vel augue. In scelerisque tellus a dignissim varius. Phasellus sem libero, bibendum ac nunc eget, ornare pharetra est. Fusce cursus justo ac orci bibendum vulputate. Donec eu ultrices ipsum, at finibus ligula. Aliquam bibendum fermentum aliquam.
             </p>
-            <img
-              style={{ marginLeft: "10px", marginTop: '-10px', cursor: "pointer" }}
+            <span
+              style={{ marginLeft: "10px", marginTop: '-5px', cursor: "pointer", color: 'red', fontSize: '24px', fontWeight: '700' }}
               onClick={handleModalClose}
               src={closeIcon}
-              height="20"
-              alt=""
-            />
+            ><strong>X</strong></span>
             </div>
         </Modal>
       </div>
