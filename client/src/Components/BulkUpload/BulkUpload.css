@@ -43,3 +43,7 @@
     text-transform: capitalize;
     text-align: center;
 }
+
+ul.bulkModalTextList {
+    list-style-type: circle;
+}

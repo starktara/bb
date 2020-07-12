@@ -85,7 +85,7 @@ async function dataUpload(data) {
     model: parseInt(vehicle.model),
     brand: parseInt(vehicle.brand),
     regnumber: vehicle.registrationNumber,
-    descr: vehicle.description,
+    descr: "",
     price: parseInt(vehicle.price),
     state: vehicle.state,
     city: vehicle.city,
