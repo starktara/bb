@@ -233,6 +233,7 @@ const BecomeFranchiseOwner = props => {
   const [open, setOpen] = React.useState(false);
   const handleModalClose = () => {
     setOpen(false);
+    props.history.go(0);
   };
   const [modalMesg, setModalMesg] = React.useState(
     ""
@@ -346,10 +347,10 @@ const BecomeFranchiseOwner = props => {
           <div className="paper">
             <Grid container direction="row" justify="center" alignItems="center">
               <Grid container direction="row" justify="space-between" alignItems="center">
-                <Grid xs={12} sm={12} md={12} lg={12}>
+                <Grid item xs={12} sm={12} md={12} lg={12}>
                   <h4 className="redhead">About BikeBazaar</h4>
                 </Grid>
-                <Grid className={classes.item1} xs={12} sm={12} md={6} lg={7}>
+                <Grid item className={classes.item1} xs={12} sm={12} md={6} lg={7}>
                   <p  className="about-bb">
                     BikeBazaar aims to provide a hassle-free experience to anyone looking to<br />buy/sell a pre-owned two-wheeler with the help of technology & team of<br />experts.
                     <br />
@@ -366,7 +367,7 @@ const BecomeFranchiseOwner = props => {
                     It's why becoming a Franchise Partner of BikeBazaar provides you great business opportunities.
                   </p>
                 </Grid>
-                <Grid className={classes.item2} xs={12} sm={12} md={6} lg={5}>
+                <Grid item className={classes.item2} xs={12} sm={12} md={6} lg={5}>
                   <img src={BikeBazaarStore} width="500px" className={(matches) ? "" : "imageMobile"}/>
                 </Grid>                
               </Grid>

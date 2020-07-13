@@ -223,6 +223,7 @@ const Contact = props => {
   const [open, setOpen] = React.useState(false);
   const handleModalClose = () => {
     setOpen(false);
+    props.history.go(0);
   };
   const [modalMesg, setModalMesg] = React.useState(
     ""
@@ -276,7 +277,7 @@ const Contact = props => {
       axios
         .post("/apis/userDetail/contactUs", formData)
         .then(response => {
-          console.log("resp: ", response)
+          // console.log("resp: ", response)
           // setTooltipState({
           //   open: true,
           //   message: "Your details have been saved",
@@ -284,7 +285,7 @@ const Contact = props => {
           // });
           setSuccess(true);
           setOpen(true);
-          setModalMesg("Thank you for sharing your details. We will get back to you soon to resolve all your queries.")
+          setModalMesg("Thank you for sharing your details. We'll get back to you soon to answer your queries.")
         })
         .catch(err => {
           console.log(err);

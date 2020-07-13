@@ -199,7 +199,7 @@ const formValidator = (name, value) => {
       return !isAlpha(makeValue) ? "Make must conatin only aplhabets" : "";
     }
     case "model": {
-      return !isAlphaNumeric(value) ? "Model must be alphanumeric" : "";
+      return !isAscii(value) ? "Enter valid Model" : "";
     }
     case "variant":{
       return !isAlphaNumeric(value) ? "Variant must be alphanumric" : "";
@@ -311,6 +311,7 @@ const Sell = props => {
   const [open, setOpen] = React.useState(false);
   const handleModalClose = () => {
     setOpen(false);
+    props.history.go(0);
   };
   const [modalMesg, setModalMesg] = React.useState(
     ""
@@ -432,7 +433,6 @@ const Sell = props => {
       errorMessage = "";
       error = false;
     } else {
-      console.log(targetName, targetValue);
       errorMessage = formValidator(targetName, targetValue);
       if (errorMessage.length) {
         error = true;
