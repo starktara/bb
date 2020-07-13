@@ -16,13 +16,8 @@ const useStyles = makeStyles(theme => ({
 
 const AdminListPage = (props) => {
   const classes = useStyles();
-  const loggedIn = false;
-  useEffect( () => {
-    if(loggedIn){
-      props.getVehicles(null, null);
-    } else{
-      props.history.push("/admin")
-    }
+  useEffect(() => {
+    props.getVehicles(null, null);
   }, []);
 
   const deleteVehicle = (id) => {
@@ -31,39 +26,45 @@ const AdminListPage = (props) => {
     };
     axios.post('/apis/seedData/deleteVehicle', formData)
       .then(response => {
-        if(response.status===200){
-          let td = document.querySelector('#id-'+id);
+        if (response.status === 200) {
+          let td = document.querySelector('#id-' + id);
           td.parentElement.remove();
         }
       })
   }
-   console.log(props);
+  console.log(props);
   let vehicles = <Spinner />
-  vehicles = props.vehicles.map((vehicle, index) => (
+  if (props.vehicles[0] !== "NA") {
+    vehicles = props.vehicles.map((vehicle, index) => (
       <tr key={index}>
         <td>{vehicle._source.name}</td>
         <td>{vehicle._source.myear}</td>
         <td>{vehicle._source.price}</td>
-        <tb><Link to={'/admin/edit/'+vehicle._id} className='btn btn-secondary ButtonVoolor float-right'>Edit Info</Link></tb>
-        <td onClick={() => deleteVehicle(vehicle._id)} id={'id-'+vehicle._id} className={classes.delete}>Delete</td>
+        <tb><Link to={'/admin/edit/' + vehicle._id} className='btn btn-secondary ButtonVoolor float-right'>Edit Info</Link></tb>
+        <td onClick={() => deleteVehicle(vehicle._id)} id={'id-' + vehicle._id} className={classes.delete}>Delete</td>
       </tr>
-  ));
-  return(
+    ));
+  }
+  return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Year</th>
-            <th>Price</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-        {vehicles}
-        </tbody>
-      </table>
+      {props.vehicles[0] !== 'NA' ?
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Year</th>
+              <th>Price</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {vehicles}
+          </tbody>
+        </table>
+        :
+        <h6 style={{ margin: '20px' }}>No vehicles in DB yet!</h6>
+      }
       <Button className="btn " component={Link} to="./upload"> Upload Vehicle</Button>
       <Button className="btn" component={Link} to="./BulkUpload">Bulk Upload vehicles</Button>
     </>
@@ -80,15 +81,15 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-      getVehicles: vehicleCategory =>
-        dispatch(actions.getVehicles(vehicleCategory)),
-      getPaginatedData: (offset, pagelimit) =>
-        dispatch(actions.getPaginatedData(offset, pagelimit))
-    };
+  return {
+    getVehicles: vehicleCategory =>
+      dispatch(actions.getVehicles(vehicleCategory)),
+    getPaginatedData: (offset, pagelimit) =>
+      dispatch(actions.getPaginatedData(offset, pagelimit))
+  };
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(AdminListPage);
+  mapStateToProps,
+  mapDispatchToProps
+)(AdminListPage);
