@@ -44,6 +44,28 @@ const StyledMenuItem = withStyles({
   },
 })(MenuItem);
 
+const StyledTextField = withStyles({
+  root: {
+    "& label.Mui-focused": {
+      color: "transparent"
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "transparent"
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "transparent"
+      },
+      "&:hover fieldset": {
+        borderColor: "transparent"
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "transparent"
+      }
+    }
+  }
+})(TextField);
+
 const BuyButton = () => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState();
@@ -357,7 +379,15 @@ const MainMenu = props => {
                         freeSolo
                         options={vehicleNames}
                         renderInput={(params) => (
-                          <TextField placeholder="Search Your Two-wheeler" onChange={updateState(params.inputProps.value)} {...params} style={{ paddingLeft:'10px !important', margin:'0px'}} label="" margin="normal" variant="outlined" />
+                          <StyledTextField 
+                            placeholder="Search Your Two-wheeler" 
+                            onChange={updateState(params.inputProps.value)} 
+                            {...params} 
+                            style={{ paddingLeft:'10px !important', margin:'0px'}} 
+                            label="" 
+                            margin="normal" 
+                            variant="outlined" 
+                          />
                         )}
                       />
                     </Grid>
@@ -378,18 +408,13 @@ const MainMenu = props => {
               <Grid item xs={12} sm={12} md={12} lg={12} style={{display: "flex", justifyContent:"center"}}>
                   <ul className="nav-options">
                     <BuyButton />
-                    <li>
+                    <li style={{paddingTop: '1px'}}> 
                       <Link to="/sell">SELL</Link>
                     </li>
-                    <li>
+                    <li style={{paddingTop: '1px'}}> 
                       <Link to="/vehicledetails/locate-store">LOCATE STORE</Link>
                     </li>
-                    {/* <li>
-                      <Link to="/becomefranchiseowner">
-                        BECOME A FRANCHISE OWNER
-                      </Link>
-                    </li> */}
-                    <li>
+                    <li style={{paddingTop: '1px'}}> 
                       <Link to="/blog">BLOG</Link>
                     </li>
                   </ul>

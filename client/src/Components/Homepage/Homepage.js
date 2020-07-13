@@ -73,7 +73,7 @@ const Homepage = (props) => {
       ];
       let carouselOptions = {
         shift: -150,
-        padding: 800,
+        padding: 600,
         dist: -200,
         onCycleTo: function (data) {
           let index = data.getAttribute("index");
