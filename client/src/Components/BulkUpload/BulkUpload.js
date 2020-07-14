@@ -3,21 +3,23 @@ import "./BulkUpload.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import MainMenu from "../MainMenu/MainMenu";
+
 import Footer from "../Footer/Footer";
 import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core";
 import questionIcon from "../../assets/questionIcon.png";
 import closeIcon from "../../assets/Close.png";
 import ModalText from "./BulkUploadModalText";
+import Header from "../AdminSection/AdminHeader";
+import AdminHeader from "../AdminSection/AdminHeader";
 
 const useStyles = makeStyles((theme) => ({
   modalBoxSuccess: {
-   "overflow-y":"scroll",
-   "overflow-x":"hidden",
+    "overflow-y": "scroll",
+    "overflow-x": "hidden",
     position: "absolute",
     width: "60%",
-    height:"70%",
+    height: "75%",
     backgroundColor: "white",
     color: "black",
     border: "0 solid #fff",
@@ -31,8 +33,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const BulkUpload = () => {
-  
-const classes = useStyles();
+
+  const classes = useStyles();
   const [selectedFile, setSelectedFile] = React.useState(null);
   const [open, setOpen] = React.useState(false);
   const handleModalClose = () => {
@@ -74,14 +76,17 @@ const classes = useStyles();
 
   return (
     <>
-      <MainMenu />
+      <AdminHeader />
       <div
         style={{ textAlign: "center", justifyContent: "center", padding: 50 }}
         className="container"
       >
         <div className="col-md-6">
           <p style={{ fontSize: 40, fontWeight: "bold", marginBottom: '10px' }}> Bulk Upload Menu</p>
-          <img title="Instructions for Bulk Upload" src={questionIcon} height={25} style={{cursor: 'pointer'}} onClick={()=>setOpen(true)}/>
+          <img title="Instructions for Bulk Upload"
+            src={questionIcon}
+            height={25}
+            style={{ cursor: 'pointer' }} onClick={() => setOpen(true)} />
           {/**react toaster file */}
 
           <React.Fragment className="form-group">
@@ -104,9 +109,6 @@ const classes = useStyles();
             Upload Files
           </button>
         </div>
-
-        {/*modal*/}
-
         <Modal
           style={{
             display: "flex",
@@ -120,8 +122,8 @@ const classes = useStyles();
           aria-describedby="simple-modal-description"
         >
           <div className={classes.modalBoxSuccess}>
-            <h4 style={{color: 'red'}}>Instructions for Bulk Upload</h4>
-            <div style={{marginTop: '0px', marginLeft:'10px '}}>
+            <h4 style={{ color: 'red' }}>Instructions for Bulk Upload</h4>
+            <div style={{ marginTop: '0px', marginLeft: '10px ' }}>
               {ModalText()}
             </div>
             <span
@@ -129,7 +131,7 @@ const classes = useStyles();
               onClick={handleModalClose}
               src={closeIcon}
             ><strong>X</strong></span>
-            </div>
+          </div>
         </Modal>
       </div>
       <Footer />

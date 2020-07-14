@@ -21,12 +21,15 @@ import AdminLogin from './Components/AdminLogin/AdminLogin';
 import BlogPostHome from './Components/Blog/BlogPostHome'
 import BlogPost from './Components/Blog/BlogPost'
 import BulkUpload from "./Components/BulkUpload/BulkUpload";
-
+import AdminSignIn from "./Components/AdminSection/AdminSignIn";
+import AdminHomePage from "./Components/AdminSection/AdminHomePage";
 
 const App = () => {
 
     return (
         <Switch>
+            <Route exact path="/admin/AdminSignIn" component={AdminSignIn}/>
+            <Route exact path="/admin/AdminHomePage" component={AdminHomePage}/>
             <Route exact path="/admin/BulkUpload" component={BulkUpload}/>
             <Route exact path='/' component={Homepage} />
             <Route exact path='/admin/edit/:id' component={AdminUpload} />
