@@ -34,20 +34,23 @@ const AdminSignIn = () => {
         textAlign="center"
         style={{ width: 940, height: 504 }}
       >
-        <MaterialUiContainer   style={{ padding: 40 ,textAlign:'center'}}>
+        <MaterialUiContainer style={{ padding: "10%",marginLeft:'5%', justifyContent:'center',textAlign: "center" }}>
           <form className={classes.root} noValidate autoComplete="off">
-            <MaterialUiGrid >
-              <span style={{ fontWeight: "bold" }}><label>Username</label></span>
+            <MaterialUiGrid style={{display:'flex',textAlign:'center',alignItems:'center'}}>
+              <span style={{ fontWeight: "bold" }}>
+                <label>Username</label>
+              </span>
               <TextField
                 id="outlined-password-input"
                 label="User Name"
                 variant="outlined"
               />
-            
             </MaterialUiGrid>
 
-            <MaterialUiGrid >
-              <span style={{ fontWeight: "bold" }}><label>Password</label></span>
+            <MaterialUiGrid style={{display:'flex',alignItems:'center',marginLeft:'0.5%'}}>
+              <span style={{ fontWeight: "bold" }}>
+                <label>Password</label>
+              </span>
               <TextField
                 id="outlined-password-input"
                 label="Password"
@@ -57,7 +60,7 @@ const AdminSignIn = () => {
               />
             </MaterialUiGrid>
 
-            <MaterialUiGrid>
+            <MaterialUiGrid >
               <button className="btn">Submit</button>
             </MaterialUiGrid>
           </form>

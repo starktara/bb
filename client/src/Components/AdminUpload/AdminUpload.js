@@ -21,6 +21,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import DeleteIcon from "@material-ui/icons/Delete";
+import AdminInnerHeader from "../AdminSection/AdminInnerHeader";
 
 const useStyles = makeStyles((theme) => ({
   formError: {
@@ -799,7 +800,10 @@ const AdminUpload = (props) => {
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
   return (
+    <>
+    <AdminInnerHeader/>
     <div className={classes.body}>
+     
       {tooltip}
       {vehicleId !== undefined ? (
         <h4 className={classes.heading}>Update Vehicle Details</h4>
@@ -1319,6 +1323,7 @@ const AdminUpload = (props) => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 

@@ -11,7 +11,7 @@ import questionIcon from "../../assets/questionIcon.png";
 import closeIcon from "../../assets/Close.png";
 import ModalText from "./BulkUploadModalText";
 import Header from "../AdminSection/AdminHeader";
-import AdminHeader from "../AdminSection/AdminHeader";
+import AdminInnerHeader from "../AdminSection/AdminInnerHeader";
 
 const useStyles = makeStyles((theme) => ({
   modalBoxSuccess: {
@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const BulkUpload = () => {
-
   const classes = useStyles();
   const [selectedFile, setSelectedFile] = React.useState(null);
   const [open, setOpen] = React.useState(false);
@@ -76,17 +75,23 @@ const BulkUpload = () => {
 
   return (
     <>
-      <AdminHeader />
+      <AdminInnerHeader />
       <div
         style={{ textAlign: "center", justifyContent: "center", padding: 50 }}
         className="container"
       >
         <div className="col-md-6">
-          <p style={{ fontSize: 40, fontWeight: "bold", marginBottom: '10px' }}> Bulk Upload Menu</p>
-          <img title="Instructions for Bulk Upload"
+          <p style={{ fontSize: 40, fontWeight: "bold", marginBottom: "10px" }}>
+            {" "}
+            Bulk Upload Menu
+          </p>
+          <img
+            title="Instructions for Bulk Upload"
             src={questionIcon}
             height={25}
-            style={{ cursor: 'pointer' }} onClick={() => setOpen(true)} />
+            style={{ cursor: "pointer" }}
+            onClick={() => setOpen(true)}
+          />
           {/**react toaster file */}
 
           <React.Fragment className="form-group">
@@ -122,15 +127,24 @@ const BulkUpload = () => {
           aria-describedby="simple-modal-description"
         >
           <div className={classes.modalBoxSuccess}>
-            <h4 style={{ color: 'red' }}>Instructions for Bulk Upload</h4>
-            <div style={{ marginTop: '0px', marginLeft: '10px ' }}>
+            <h4 style={{ color: "red" }}>Instructions for Bulk Upload</h4>
+            <div style={{ marginTop: "0px", marginLeft: "10px " }}>
               {ModalText()}
             </div>
             <span
-              style={{ marginLeft: "10px", marginTop: '-5px', cursor: "pointer", color: 'red', fontSize: '24px', fontWeight: '700' }}
+              style={{
+                marginLeft: "10px",
+                marginTop: "-5px",
+                cursor: "pointer",
+                color: "red",
+                fontSize: "24px",
+                fontWeight: "700",
+              }}
               onClick={handleModalClose}
               src={closeIcon}
-            ><strong>X</strong></span>
+            >
+              <strong>X</strong>
+            </span>
           </div>
         </Modal>
       </div>

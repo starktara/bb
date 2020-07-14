@@ -28,8 +28,8 @@ const App = () => {
 
     return (
         <Switch>
-            <Route exact path="/admin/AdminSignIn" component={AdminSignIn}/>
-            <Route exact path="/admin/AdminHomePage" component={AdminHomePage}/>
+            <Route exact path="/admin/SignIn" component={AdminSignIn}/>
+            <Route exact path="/admin/HomePage" component={AdminHomePage}/>
             <Route exact path="/admin/BulkUpload" component={BulkUpload}/>
             <Route exact path='/' component={Homepage} />
             <Route exact path='/admin/edit/:id' component={AdminUpload} />
