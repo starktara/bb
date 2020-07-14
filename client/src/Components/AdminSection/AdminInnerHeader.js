@@ -1,12 +1,16 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 import bikeBazaarLogo from "../../assets/BikeB-logo.png";
-
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import {Link} from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -17,30 +21,72 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-  appBar:{
-    height:80,
-    padding:11,
-    backgroundColor:'red'
-  }
+  appBar: {
+    height: 80,
+    padding: 11,
+    backgroundColor: "red",
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 150,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+  menuItem: {
+    color: "black",
+  },
 }));
 
- const AdminInnerHeader=()=> {
+const AdminInnerHeader = () => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
-        <Typography variant="h6" className={classes.title}>
-            <img height="25" src={bikeBazaarLogo}/>
-            <span style={{fontWeight:'bold'}}>Admin</span>
+          <Typography
+            style={{
+              display: "flex",
+              alignItems: "center",
+            }}
+            variant="h6"
+            className={classes.title}
+          >
+            <img height="25" src={bikeBazaarLogo} />
+            <span style={{ fontWeight: "bold" }}>Admin</span>
+            <FormControl className={classes.formControl}>
+              <InputLabel
+                style={{ color: "white" }}
+                id="demo-simple-select-label"
+              >
+                Select Options
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                // value={route}
+                // onChange={handleChange}
+                style={{color:"white"}}
+              >
+                <MenuItem className={classes.menuItem} >
+                  <Link to={"/admin/list"}>Edit Two Wheelers</Link>
+                </MenuItem>
+                <MenuItem className={classes.menuItem} >
+                 <Link to={"/admin/bulkUpload"}> Bulk Upload</Link>
+                </MenuItem>
+                <MenuItem className={classes.menuItem} >
+                 <Link to={"/admin/upload"}>Single Two-wheelers upload</Link>
+                </MenuItem>
+              </Select>
+            </FormControl>
           </Typography>
-        
+
           <Button color="inherit">Logout</Button>
         </Toolbar>
       </AppBar>
     </div>
   );
-}
+};
 
 export default AdminInnerHeader;
