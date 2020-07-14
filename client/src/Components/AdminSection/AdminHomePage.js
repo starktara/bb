@@ -1,5 +1,5 @@
 import React from "react";
-import AdminInnerHeader from "./AdminInnerHeader";
+import AdminHeader from "./AdminHeader";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import { Container as MaterialUiContainer, Button } from "@material-ui/core/";
@@ -28,7 +28,7 @@ const AdminHomePage = () => {
 
   return (
     <>
-      <AdminInnerHeader />
+      <AdminHeader />
 
       <Box
         className={classes.AdminArea}
