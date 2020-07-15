@@ -49,7 +49,7 @@ const AdminHomePage = () => {
                 borderRadius: "5px",
                 margin: "5%",
                 cursor: "pointer",
-                padding:"10px"
+                padding: "10px",
               }}
               className={classes.border}
             >
@@ -58,15 +58,15 @@ const AdminHomePage = () => {
           </MaterialUiGrid>
 
           <MaterialUiGrid onClick={() => handleClick("/admin/BulkUpload")}>
-            <h5 
+            <h5
               style={{
-                height:"5%",
+                height: "5%",
                 color: "red",
                 border: "1px solid red",
                 borderRadius: "5px",
                 margin: "5%",
                 cursor: "pointer",
-                padding:"10px"
+                padding: "10px",
               }}
               className={classes.border}
             >
@@ -81,7 +81,7 @@ const AdminHomePage = () => {
                 borderRadius: "5px",
                 margin: "5%",
                 cursor: "pointer",
-                padding:"10px"
+                padding: "10px",
               }}
               className={classes.border}
             >

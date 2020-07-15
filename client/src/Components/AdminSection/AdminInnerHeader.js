@@ -10,7 +10,10 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -38,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
+
 const AdminInnerHeader = () => {
   const classes = useStyles();
 
@@ -60,29 +66,29 @@ const AdminInnerHeader = () => {
                 style={{ color: "white" }}
                 id="demo-simple-select-label"
               >
-                Select Options
+                Move to other area
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 // value={route}
                 // onChange={handleChange}
-                style={{color:"white"}}
+                style={{ color: "white" }}
               >
-                <MenuItem className={classes.menuItem} >
+                <MenuItem className={classes.menuItem}>
                   <Link to={"/admin/list"}>Edit Two Wheelers</Link>
                 </MenuItem>
-                <MenuItem className={classes.menuItem} >
-                 <Link to={"/admin/bulkUpload"}> Bulk Upload</Link>
+                <MenuItem className={classes.menuItem}>
+                  <Link to={"/admin/bulkUpload"}> Bulk Upload</Link>
                 </MenuItem>
-                <MenuItem className={classes.menuItem} >
-                 <Link to={"/admin/upload"}>Single Two-wheelers upload</Link>
+                <MenuItem className={classes.menuItem}>
+                  <Link to={"/admin/upload"}>Single Two-wheelers upload</Link>
                 </MenuItem>
               </Select>
             </FormControl>
           </Typography>
 
-          <Button color="inherit">Logout</Button>
+          <p style={{cursor:'pointer'}}color="inherit">Logout</p>
         </Toolbar>
       </AppBar>
     </div>

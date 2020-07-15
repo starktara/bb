@@ -5,6 +5,7 @@ import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import { Container as MaterialUiContainer, Button } from "@material-ui/core/";
 import { Grid as MaterialUiGrid } from "@material-ui/core/";
+import "./AdminSignIn.css";
 
 const useStyles = makeStyles((theme) => ({
   AdminArea: {
@@ -61,7 +62,7 @@ const AdminSignIn = () => {
             </MaterialUiGrid>
 
             <MaterialUiGrid >
-              <button className="btn">Submit</button>
+            <button className="submit-btn btn">Login</button>
             </MaterialUiGrid>
           </form>
         </MaterialUiContainer>

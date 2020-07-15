@@ -3,14 +3,12 @@ import "./BulkUpload.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import Footer from "../Footer/Footer";
 import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core";
 import questionIcon from "../../assets/questionIcon.png";
 import closeIcon from "../../assets/Close.png";
 import ModalText from "./BulkUploadModalText";
-import Header from "../AdminSection/AdminHeader";
 import AdminInnerHeader from "../AdminSection/AdminInnerHeader";
 
 const useStyles = makeStyles((theme) => ({

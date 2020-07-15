@@ -1,0 +1,13 @@
+.submit-btn {
+    margin-top: 10px;
+    position: relative;
+    background: #eb2c2d;
+    border-radius: 25;
+    height: 48;
+    font-size: 20;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: none;
+    width: 40%;
+    margin-left: -10%;
+}
