@@ -11,5 +11,7 @@ export {
   getBlogsForThePage,
   getBlogForTheBlogId
 } from "./blogActions";
-
-
+export {
+  loginUser,
+  logoutUser
+} from "./authActions";

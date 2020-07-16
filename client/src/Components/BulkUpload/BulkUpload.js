@@ -83,20 +83,24 @@ const BulkUpload = () => {
             {" "}
             Bulk Upload Menu
           </p>
-          <img
-            title="Instructions for Bulk Upload"
-            src={questionIcon}
-            height={25}
-            style={{ cursor: "pointer" }}
+          <div 
+            style={{display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer'}} 
             onClick={() => setOpen(true)}
-          />
+            title="Instructions for Bulk Upload"
+          >
+            <span style={{marginRight: '10px'}}>Instructions for Bulk Upload</span>
+            <img
+              src={questionIcon}
+              height={25}
+            />
+          </div>
           {/**react toaster file */}
 
-          <React.Fragment className="form-group">
+          <div className="form-group">
             <ToastContainer />
-          </React.Fragment>
+          </div>
 
-          <form enctype="multipart/form-data" method="post">
+          <form encType="multipart/form-data" method="post">
             <div className="form-group files">
               <input
                 name="file"
