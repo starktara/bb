@@ -109,7 +109,7 @@ async function dataUpload(data) {
   let imgArr = [];
   modifiedData.forEach(vehicle => {
     vehicle.images.forEach(img => {
-      imgArr.push({ path: "../server/Bulk/BulkUploadFiles/images/"+ vehicle.name + "/" + img, name: img})
+      imgArr.push({ path: "../server/Bulk/BulkUploadFiles/images/"+ vehicle.regnumber + "/" + img, name: img})
     })
   })
   imgArr.forEach(oldImage => {
