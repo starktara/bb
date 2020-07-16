@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import bikeBazaarLogo from "../../assets/BikeB-logo.png";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { Link } from "react-router-dom";
 import * as actions from "../../store/actions/index";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useHistory, useLocation } from "react-router-dom";
 import Logout from "../../assets/LogOut.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -54,13 +52,22 @@ const AdminInnerHeader = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
 
   const handleLogout = () => {
     dispatch(actions.logoutUser())
     history.push("/admin/signin")
   }
 
- 
+  const [dropdownTitle, setDropdownTitle] = useState("");
+
+  useEffect(() => {
+    const path = location.pathname;
+    if (path === "/admin/upload") setDropdownTitle("Single Two Wheeler Upload")
+    if (path === "/admin/list") setDropdownTitle("Edit Two wheeler")
+    if (path === "/admin/BulkUpload") setDropdownTitle("Bulk Upload")
+  }, []);
+
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} position="static">
@@ -80,24 +87,22 @@ const AdminInnerHeader = () => {
                 style={{
                   color: "white",
                   fontWeight: "bold",
-                  letterSpacing: "5px",
-                  wordSpacing:'8px'
+                  letterSpacing: "2px",
+                  wordSpacing: '8px'
                 }}
-                id="demo-simple-select-label"
+                id="dropdown-admin-header"
               >
-                <span style={{ fontSize: "20px" }}>Edit Two Wheeler</span>
+                <span style={{ fontSize: "20px" }}>{dropdownTitle}</span>
               </InputLabel>
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                // value={content}
-                // onChange={setContent}
+                labelId="dropdown-admin-header"
+                id="admin-header-select"
               >
                 <br />
-                <Link to={`/admin/bulkUpload`} className={classes.MenuItem}>
+                <Link to={`/admin/BulkUpload`} className={classes.MenuItem}>
                   <span>Bulk Upload</span>
                 </Link>
-                <Link  to={`/admin/list`} className={classes.MenuItem}>
+                <Link to={`/admin/list`} className={classes.MenuItem}>
                   <span>Edit Two wheeler</span>
                 </Link>
 
@@ -109,9 +114,9 @@ const AdminInnerHeader = () => {
               </Select>
             </FormControl>
           </Typography>
-          <>  
-            <img src={Logout}/>
-            <span style={{ cursor: "pointer",fontSize:"20px",fontWeight:"bold" }} onClick={handleLogout} color="inherit">
+          <>
+            <img src={Logout} />
+            <span style={{ cursor: "pointer", fontSize: "20px", fontWeight: "bold" }} onClick={handleLogout} color="inherit">
               Logout
             </span>
           </>

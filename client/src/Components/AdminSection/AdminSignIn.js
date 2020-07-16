@@ -67,13 +67,9 @@ const AdminSignIn = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector(state => state.auth);
-  console.log("user.is auth signin : ", user)
   if(user.isAuthenticated === true){
     history.push("/admin/homepage")
   }
-  // useEffect(() => {
-  //   history.push("/admin/homepage")
-  // }, [user])
   const [formData, setFormData] = useState({
     loginid: "",
     password: ""
@@ -85,10 +81,6 @@ const AdminSignIn = () => {
     setTimeout(() => {
       history.push("/admin/homepage")
     }, 1000);
-  }
-
-  const handleLogout = () => {
-    // dispatch(actions.logoutUser())
   }
 
   const handleChange = (e) => {
@@ -115,7 +107,7 @@ const AdminSignIn = () => {
           <form className={classes.root} noValidate onSubmit={handleLogin} autoComplete="off">
             <MaterialUiGrid style={{display:'flex',textAlign:'center',alignItems:'center'}}>
               <label className={classes.fieldname} htmlFor="loginid">
-                UserName :
+                UserName
               </label>
               <StyledTextField
                 className={classes.margin}
@@ -129,7 +121,7 @@ const AdminSignIn = () => {
 
             <MaterialUiGrid style={{display:'flex',alignItems:'center',marginLeft:'0.5%'}}>
               <label className={classes.fieldname} htmlFor="password">
-                Password :
+                Password
               </label>
               <StyledTextField
                 type="password"
@@ -142,8 +134,6 @@ const AdminSignIn = () => {
 
             <button className="submit-btn btn">Login</button>
           </form>
-
-          <button className="submit-btn btn" onClick={handleLogout}>out</button>
         </MaterialUiContainer>
       </Box>
     </>

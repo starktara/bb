@@ -4,11 +4,10 @@ import { useSelector } from "react-redux";
 
 const PrivateRoute = ({component: Component, ...rest}) => {
     const user = useSelector(state => state.auth)
-    console.log("jjerjerjerje: ", user.isAuthenticated)
     return (
 
-        // Show the component only when the user is logged in
-        // Otherwise, redirect the user to /signin page
+        // Show the component only when the admin is logged in
+        // Otherwise, redirect the user to admin/signin page
         <Route {...rest} render={props => (
             user.isAuthenticated ?
                 <Component {...props} />
