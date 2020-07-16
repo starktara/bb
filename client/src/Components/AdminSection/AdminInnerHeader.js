@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import * as actions from "../../store/actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import Logout from "../../assets/LogOut.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,13 +33,20 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 150,
+    minWidth: 410,
+    marginLeft: "22%",
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
-  menuItem: {
+  MenuItem: {
+    padding: 20,
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
     color: "black",
+    fontWeight: "bold",
+    textDecoration: "none",
   },
 }));
 
@@ -52,6 +60,7 @@ const AdminInnerHeader = () => {
     history.push("/admin/signin")
   }
 
+ 
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} position="static">
@@ -68,32 +77,44 @@ const AdminInnerHeader = () => {
             <span style={{ fontWeight: "bold" }}>Admin</span>
             <FormControl className={classes.formControl}>
               <InputLabel
-                style={{ color: "white" }}
+                style={{
+                  color: "white",
+                  fontWeight: "bold",
+                  letterSpacing: "5px",
+                  wordSpacing:'8px'
+                }}
                 id="demo-simple-select-label"
               >
-                Move to other area
+                <span style={{ fontSize: "20px" }}>Edit Two Wheeler</span>
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                // value={route}
-                // onChange={handleChange}
-                style={{ color: "white" }}
+                // value={content}
+                // onChange={setContent}
               >
-                <MenuItem className={classes.menuItem}>
-                  <Link to={"/admin/list"}>Edit Two Wheelers</Link>
-                </MenuItem>
-                <MenuItem className={classes.menuItem}>
-                  <Link to={"/admin/bulkUpload"}> Bulk Upload</Link>
-                </MenuItem>
-                <MenuItem className={classes.menuItem}>
-                  <Link to={"/admin/upload"}>Single Two-wheelers upload</Link>
-                </MenuItem>
+                <br />
+                <Link to={`/admin/bulkUpload`} className={classes.MenuItem}>
+                  <span>Bulk Upload</span>
+                </Link>
+                <Link  to={`/admin/list`} className={classes.MenuItem}>
+                  <span>Edit Two wheeler</span>
+                </Link>
+
+                <Link to={`/admin/upload`} className={classes.MenuItem}>
+                  <span>Single Two Wheeler Upload</span>
+                </Link>
+
+                <br />
               </Select>
             </FormControl>
           </Typography>
-
-          <p style={{cursor:'pointer'}} onClick={handleLogout} color="inherit">Logout</p>
+          <>  
+            <img src={Logout}/>
+            <span style={{ cursor: "pointer",fontSize:"20px",fontWeight:"bold" }} onClick={handleLogout} color="inherit">
+              Logout
+            </span>
+          </>
         </Toolbar>
       </AppBar>
     </div>
