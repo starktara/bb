@@ -23,11 +23,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.post("/Upload", upload.single("file"), function (req, res) {
-  if(req.file){
+  if (req.file) {
     fileName = req.file.filename;
     zipHelper();
     res.sendStatus(200);
-  } else{
+  } else {
     res.sendStatus(409);
   }
 });
@@ -50,23 +50,28 @@ function zipHelper() {
         if (err) {
           console.log(err);
         } else {
-          dataUpload(result).then( () => {
-            removeDir ("../server/Bulk/BulkUploadFiles/images");
-            fs.unlink("../server/Bulk/BulkUploadFiles/Records.xlsx", (err) => {
-              if (err) {
-                throw err;
-              } else {
-                console.log("xlsx deleted");
-              }
-            });
-            fs.unlink(`../server/public/${fileName}`, (err) => {
-              if (err) {
-                throw err;
-              } else {
-                console.log("zip deleted")
-              }
-            });
-          }).catch(console.log);
+          dataUpload(result)
+            .then(() => {
+              removeDir("../server/Bulk/BulkUploadFiles/images");
+              fs.unlink(
+                "../server/Bulk/BulkUploadFiles/Records.xlsx",
+                (err) => {
+                  if (err) {
+                    throw err;
+                  } else {
+                    console.log("xlsx deleted");
+                  }
+                }
+              );
+              fs.unlink(`../server/public/${fileName}`, (err) => {
+                if (err) {
+                  throw err;
+                } else {
+                  console.log("zip deleted");
+                }
+              });
+            })
+            .catch(console.log);
         }
       }
     );
@@ -76,9 +81,13 @@ function zipHelper() {
 }
 
 async function dataUpload(data) {
-  const latLon = [{lat: 10.100809, lon: 76.348984}, {lat: 22.5726, lon: 88.3639}, {lat: 16.999954, lon: 81.786184}]
+  const latLon = [
+    { lat: 10.100809, lon: 76.348984 },
+    { lat: 22.5726, lon: 88.3639 },
+    { lat: 16.999954, lon: 81.786184 },
+  ];
   const dataset = [...data];
-  const modifiedData = dataset.map( vehicle => ({
+  const modifiedData = dataset.map((vehicle) => ({
     id: Date.now(),
     name: vehicle.name,
     type: parseInt(vehicle.category),
@@ -90,7 +99,7 @@ async function dataUpload(data) {
     state: vehicle.state,
     city: vehicle.city,
     loc: vehicle.location,
-    location: latLon[vehicle.storeId-1],
+    location: latLon[vehicle.storeId - 1],
     myear: parseInt(vehicle.manufacturingYear),
     mmonth: parseInt(vehicle.manufacturingMonth),
     kmdriven: parseInt(vehicle.kmdriven),
@@ -104,19 +113,27 @@ async function dataUpload(data) {
     storeId: parseInt(vehicle.storeId),
     sold: "false",
     discountPercent: parseFloat(vehicle.discountPercent),
-  }))
+  }));
   // console.log(modifiedData)
   let imgArr = [];
-  modifiedData.forEach(vehicle => {
-    vehicle.images.forEach(img => {
-      imgArr.push({ path: "../server/Bulk/BulkUploadFiles/images/"+ vehicle.name + "/" + img, name: img})
-    })
-  })
-  imgArr.forEach(oldImage => {
-    fs.rename(oldImage.path, `../client/public/vehicles/${oldImage.name}`, () => {
-      console.log("Images moved");
-    })
-  })
+  modifiedData.forEach((vehicle) => {
+    vehicle.images.forEach((img) => {
+      imgArr.push({
+        path:
+          "../server/Bulk/BulkUploadFiles/images/" + vehicle.regnumber + "/" + img,
+        name: img,
+      });
+    });
+  });
+  imgArr.forEach((oldImage) => {
+    fs.rename(
+      oldImage.path,
+      `../client/public/vehicles/${oldImage.name}`,
+      () => {
+        console.log("Images moved");
+      }
+    );
+  });
   // console.log(imgArr)
   const body = modifiedData.flatMap((doc) => [
     { index: { _index: "bike-details" } },
@@ -150,26 +167,26 @@ async function dataUpload(data) {
   const { body: count } = await client.count({ index: "bike-details" });
 }
 
-const removeDir = function(path) {
+const removeDir = function (path) {
   if (fs.existsSync(path)) {
-    const files = fs.readdirSync(path)
+    const files = fs.readdirSync(path);
 
     if (files.length > 0) {
-      files.forEach(function(filename) {
+      files.forEach(function (filename) {
         if (fs.statSync(path + "/" + filename).isDirectory()) {
-          removeDir(path + "/" + filename)
+          removeDir(path + "/" + filename);
         } else {
-          fs.unlinkSync(path + "/" + filename)
+          fs.unlinkSync(path + "/" + filename);
         }
-      })
-      fs.rmdirSync(path)
+      });
+      fs.rmdirSync(path);
     } else {
-      fs.rmdirSync(path)
+      fs.rmdirSync(path);
     }
-    console.log("images deleted")
+    console.log("images deleted");
   } else {
-    console.log("imgs not deleted.")
+    console.log("imgs not deleted.");
   }
-}
+};
 
 module.exports = router;
