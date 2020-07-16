@@ -11,3 +11,9 @@
     width: 40%;
     margin-left: -10%;
 }
+.MuiOutlinedInput-root {
+    padding: 0 5px 0 5px !important;
+}
+.MuiOutlinedInput-root {
+    border-radius: 5px !important;
+}

@@ -11,8 +11,9 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { Link } from "react-router-dom";
-
-
+import * as actions from "../../store/actions/index";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,11 +42,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
-
 const AdminInnerHeader = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleLogout = () => {
+    dispatch(actions.logoutUser())
+    history.push("/admin/signin")
+  }
 
   return (
     <div className={classes.root}>
@@ -88,7 +93,7 @@ const AdminInnerHeader = () => {
             </FormControl>
           </Typography>
 
-          <p style={{cursor:'pointer'}}color="inherit">Logout</p>
+          <p style={{cursor:'pointer'}} onClick={handleLogout} color="inherit">Logout</p>
         </Toolbar>
       </AppBar>
     </div>

@@ -92,11 +92,11 @@ const BulkUpload = () => {
           />
           {/**react toaster file */}
 
-          <React.Fragment className="form-group">
+          <div className="form-group">
             <ToastContainer />
-          </React.Fragment>
+          </div>
 
-          <form enctype="multipart/form-data" method="post">
+          <form encType="multipart/form-data" method="post">
             <div className="form-group files">
               <input
                 name="file"
