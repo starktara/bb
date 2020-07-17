@@ -7,9 +7,9 @@ const VehicleMetaData = (props) => {
         <Grid container component="div" direction="row">
             <Grid item xs={12} md={12} sm={12} lg={12} className="vehicleSummarySec">
                 <div className="vehicleSummary">
-                    <h3>More details about the motorcycle</h3>
+                    <h3>More details about the Two-wheeler</h3>
                     <h4>Additional Information</h4>
-    {props.vehicleDetails.additionalInfo ? <p>{props.vehicleDetails.additionalInfo}</p> : null}
+                    {props.vehicleDetails.additionalInfo ? <p>{props.vehicleDetails.additionalInfo}</p> : null}
                     <br/>
                     <h4>Key Information</h4>
                     <ul className="list">

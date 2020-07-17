@@ -7,8 +7,11 @@ import axios from "axios";
 import Tooltip from "../UI/Tooltip/Tooltip";
 import { makeStyles } from "@material-ui/core/styles";
 import M from "materialize-css";
-import { BRANDS } from "../../shared/mappings/brands";
-import { MODELS } from "../../shared/mappings/bike_models";
+import {BRANDS} from '../../shared/mappings/brands';
+import { MODELS } from '../../shared/mappings/bike_models';
+import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button';
+import BulkUpload from "../BulkUpload/BulkUpload";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import DropdownComponentUpload from "./DropdownComponentUpload";
@@ -18,6 +21,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import DeleteIcon from "@material-ui/icons/Delete";
+import AdminInnerHeader from "../AdminSection/AdminInnerHeader";
 
 const useStyles = makeStyles((theme) => ({
   formError: {
@@ -98,6 +102,9 @@ const formValidator = (name, value) => {
     }
     case "mileage": {
       return !isNumeric(value) ? "Mileage must be numeric" : "";
+    }
+    case "discountPercent": {
+      return !isNumeric(value) || parseFloat(value) > 100 || parseFloat(value) < 0 ? "Invalid Value for Discount" : ""
     }
     default: {
       return false;
@@ -247,6 +254,12 @@ const AdminUpload = (props) => {
     },
     sold: {
       value: "false",
+      error: false,
+      errorMessage: "",
+      optional: true,
+    },
+    discountPercent: {
+      value: "",
       error: false,
       errorMessage: "",
       optional: true,
@@ -787,7 +800,10 @@ const AdminUpload = (props) => {
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
   return (
+    <>
+    <AdminInnerHeader/>
     <div className={classes.body}>
+     
       {tooltip}
       {vehicleId !== undefined ? (
         <h4 className={classes.heading}>Update Vehicle Details</h4>
@@ -1179,31 +1195,62 @@ const AdminUpload = (props) => {
             )}
           </Grid>
           <Grid item xs={12} sm={12} md={11} lg={11} className={classes.mb20}>
-            <label htmlFor="bulletInfo6">
-              <span>Sold:</span>&nbsp;&nbsp;
-            </label>
-            <FormControl component="fieldset">
-              <RadioGroup
-                row
-                aria-label="position"
-                name="position"
-                defaultValue={formData.sold.value}
-                onChange={(event) => validateAndUpdateSoldFlag(event, formData)}
-              >
-                <FormControlLabel
-                  value="false"
-                  control={<Radio />}
-                  label="Up for sale"
-                  labelPlacement="bottom"
+            <Grid container component="div" direction="row" justify="space-evenly">
+              <Grid item xs={12} sm={12} md={4} lg={4}>
+                <label htmlFor="bulletInfo6">
+                  <span>Sold:</span>&nbsp;&nbsp;
+                </label>
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    row
+                    aria-label="position"
+                    name="position"
+                    defaultValue={formData.sold.value}
+                    onChange={(event) => validateAndUpdateSoldFlag(event, formData)}
+                  >
+                    <FormControlLabel
+                      value="false"
+                      control={<Radio />}
+                      label="Up for sale"
+                      labelPlacement="bottom"
+                    />
+                    <FormControlLabel
+                      value="true"
+                      control={<Radio />}
+                      label="Sold"
+                      labelPlacement="bottom"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={12} md={3} lg={3}>
+                <label htmlFor="discountPercent">
+                  <span>Discount Percent (%):</span>&nbsp;&nbsp;
+                </label>
+                <input
+                  value={formData.discountPercent.value}
+                  onChange={(event) => updateFormFieldHandler(event, formData)}
+                  type="text"
+                  name="discountPercent"
+                  id="discountPercent"
+                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
                 />
-                <FormControlLabel
-                  value="true"
-                  control={<Radio />}
-                  label="Sold"
-                  labelPlacement="bottom"
-                />
-              </RadioGroup>
-            </FormControl>
+                {formData.discountPercent.error && (
+                  <p className={classes.formError}>
+                    {formData.discountPercent.errorMessage}
+                  </p>
+                )}
+              </Grid>
+              <Grid item xs={12} sm={12} md={1} lg={1}></Grid>
+              <Grid item xs={12} sm={12} md={4} lg={4}>
+                <label htmlFor="discountedPrice">
+                  <span>Discounted Price:</span>&nbsp;&nbsp;
+                </label>
+                <p>
+                  {Math.ceil(formData.price.value - (formData.price.value * formData.discountPercent.value / 100))}
+                </p>
+              </Grid>
+            </Grid>
           </Grid>
           <Grid item xs={12} sm={12} md={10} lg={10} className={classes.mt40}>
             <label htmlFor="image">
@@ -1276,6 +1323,7 @@ const AdminUpload = (props) => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 

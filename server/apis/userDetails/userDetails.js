@@ -39,8 +39,9 @@ router.get("/createUser", (req, res) => {
       phone: '0000000000',
       interests: 'NA',
       userName: 'root',
-      password: 'root'
+      password: bcrypt.hashSync('root', 10)
     }];
+
     const body = dataset.flatMap(doc => [
       { index: { _index: "user-detail" } },
       doc
@@ -139,7 +140,6 @@ router.post("/login", (req, res) => {
   async function loginUser() {
     const email = req.body.loginid;
     const password = req.body.password;
-    console.log(email);
     const userName = await client.search({
       index: "user-detail",
       body: {
@@ -147,7 +147,7 @@ router.post("/login", (req, res) => {
         size: 1,
         query: {
           match_phrase: {
-            userName: email.value
+            userName: email
           }
         }
       }
@@ -160,7 +160,7 @@ router.post("/login", (req, res) => {
         size: 1,
         query: {
           match_phrase: {
-            email: email.value
+            email: email
           }
         }
       }
@@ -176,7 +176,7 @@ router.post("/login", (req, res) => {
         ? userName.body.hits.hits[0]._source.password
         : emailId.body.hits.hits[0]._source.password;
     //Check password
-    bcrypt.compare(password.value, savedPassword).then(isMatch => {
+    bcrypt.compare(password, savedPassword).then(isMatch => {
       if (isMatch) {
         // Create JWT Payload
         const payload = {
@@ -208,6 +208,9 @@ router.post("/login", (req, res) => {
           .status(400)
           .json({ passwordincorrect: "Password incorrect" });
       }
+    })
+    .catch(err => {
+      console.log(err)
     });
   }
   loginUser().catch(console.log);
@@ -262,6 +265,135 @@ router.post("/contactUs", (req, res) => {
 
   }
   contact().catch(console.log);
+});
+
+router.get("/createAdminUser", (req, res) => {
+  async function run() {
+    await client.indices.create(
+      {
+        index: "admin-user-detail",
+        body: {
+          mappings: {
+            properties: {
+              id: { type: "integer" },
+              name: { type: "text" },
+              phone: { type: "integer" },
+              userName: { type: "string" },
+              password: { type: "string" }
+            }
+          }
+        }
+      },
+      { ignore: [400] }
+    );
+  }
+  run().catch(console.log);
+  async function insertRoot(){
+    const dataset = [
+      {
+        name: 'bbAdmin1',
+        email: 'bbAdmin1@bikebazaar.com',
+        phone: '0000000000',
+        userName: 'bbAdmin1',
+        password: bcrypt.hashSync('bb1.root@2K20!', 10)
+      },
+      {
+        name: 'bbAdmin2',
+        email: 'bbAdmin2@bikebazaar.com',
+        phone: '0000000000',
+        userName: 'bbAdmin2',
+        password: bcrypt.hashSync('bb2.root@2K20!', 10)
+      }];
+
+    const body = dataset.flatMap(doc => [
+      { index: { _index: "admin-user-detail" } },
+      doc
+    ]);
+    const { body: bulkResponse } = await client.bulk({ refresh: true, body });
+    console.log(bulkResponse);
+  }
+  insertRoot().catch(console.log);
+  res.json({ msg: "Admin Created Sucessfully" });
+});
+
+router.post("/adminLogin", (req, res) => {
+  async function loginAdminUser() {
+    const email = req.body.loginid;
+    const password = req.body.password;
+    const userName = await client.search({
+      index: "admin-user-detail",
+      body: {
+        from: 0,
+        size: 1,
+        query: {
+          match_phrase: {
+            userName: email
+          }
+        }
+      }
+    });
+
+    const emailId = await client.search({
+      index: "admin-user-detail",
+      body: {
+        from: 0,
+        size: 1,
+        query: {
+          match_phrase: {
+            email: email
+          }
+        }
+      }
+    });
+    if (
+      emailId.body.hits.total.value == 0 &&
+      userName.body.hits.total.value == 0
+    ) {
+      return res.status(404).json({ error: "Username not found" });
+    }
+    let savedPassword =
+      emailId.body.hits.total.value == 0
+        ? userName.body.hits.hits[0]._source.password
+        : emailId.body.hits.hits[0]._source.password;
+    //Check password
+    bcrypt.compare(password, savedPassword).then(isMatch => {
+      if (isMatch) {
+        // Create JWT Payload
+        const payload = {
+          id:
+            emailId.body.hits.total.value == 0
+              ? userName.body.hits.hits[0]._id
+              : emailId.body.hits.hits[0]._id,
+          name:
+            emailId.body.hits.total.value == 0
+              ? userName.body.hits.hits[0]._source.name
+              : emailId.body.hits.hits[0]._source.name
+        };
+        // Sign token
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          {
+            expiresIn: 31556926 // 1 year in seconds
+          },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: "Bearer " + token
+            });
+          }
+        );
+      } else {
+        return res
+          .status(400)
+          .json({ error: "Password incorrect" });
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    });
+  }
+  loginAdminUser().catch(console.log);
 });
 
 module.exports = router;

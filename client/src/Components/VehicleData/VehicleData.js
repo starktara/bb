@@ -103,17 +103,18 @@ const VehicleData = (props) => {
   let discount = null;
   let discountAmt = 0;
 
-  if (props.data.discount) {
-    discountAmt = props.data.discount;
+  if (props.data.discountPercent) {
+    discountAmt = Math.ceil((props.data.discountPercent * props.data.price)/100);
     discount = (
+      <>
+      <span style={{color: 'black'}}>{props.data.discountPercent}% Off</span>
       <span className="save">
-        Save <strong>`</strong>
-        {props.data.discount}
+        Save <strong>` </strong>
+        {discountAmt}
       </span>
+      </>
     );
   }
-
-  const getStoreDetails = () => {};
 
   const updateFormdata = (event, formData) => {
     let targetName = event.target.name;
@@ -240,12 +241,12 @@ const VehicleData = (props) => {
           <div className="PriceSec">
             <p className="price">
               <strong>`</strong> {props.data.price - discountAmt}
+              {discount && (
+                <span className="del">
+                  <strong>` </strong> {props.data.price}
+                </span>
+              )}
             </p>
-            {discount && (
-              <span className="del">
-                <strong>`</strong> {props.data.price}
-              </span>
-            )}
             {discount}
           </div>
           <div className="ProductDetail">

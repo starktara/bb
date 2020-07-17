@@ -19,15 +19,22 @@ import AdminListPage from './Components/AdminListPage/AdminListPage';
 import AdminUpload from './Components/AdminUpload/AdminUpload';
 import BlogPostHome from './Components/Blog/BlogPostHome'
 import BlogPost from './Components/Blog/BlogPost'
+import BulkUpload from "./Components/BulkUpload/BulkUpload";
+import AdminSignIn from "./Components/AdminSection/AdminSignIn";
+import AdminHomePage from "./Components/AdminSection/AdminHomePage";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
 const App = () => {
 
     return (
         <Switch>
+            <Route exact path="/admin/SignIn" component={AdminSignIn}/>
+            <PrivateRoute exact path="/admin/HomePage" component={AdminHomePage}/>
+            <PrivateRoute exact path='/admin/edit/:id' component={AdminUpload} />
+            <PrivateRoute exact path='/admin/list' component={AdminListPage} />
+            <PrivateRoute exact path='/admin/upload' component={AdminUpload} />
+            <PrivateRoute exact path="/admin/BulkUpload" component={BulkUpload}/>
             <Route exact path='/' component={Homepage} />
-            <Route exact path='/admin/edit/:id' component={AdminUpload} />
-            <Route exact path='/admin/list' component={AdminListPage} />
-            <Route exact path='/admin/upload' component={AdminUpload} />
             <Route exact path='/category/:category' component={CategoryPage} />
             <Route path='/vehicledetails/locate-store' component={LocateStore} />
             <Route path='/vehicledetails/:vehicleid' component={VehicleDetails} />
