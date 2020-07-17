@@ -185,7 +185,6 @@ const Contact = props => {
   const validateAndUpdateFormdata = (event, formData) => {
     let targetValue = event.target.value;
     let targetName = event.target.name;
-    console.log("tagertnamr : ", targetName)
     let errorMessage = "";
     let error = false;
     if (isEmpty(targetValue)) {
@@ -358,16 +357,20 @@ const Contact = props => {
                   Maharashtra - 411045
                 </p>
                 <p className="sub-heading-black">Contact:</p>
-                <div className="mobile">
-                  <CallIcon style={{ fontSize: 23, color: grey[900] }} />
-                  &nbsp;&nbsp;&nbsp;
-                  <span>+91 9607993434</span>
-                </div>
-                <div className="mail">
-                  <EmailIcon style={{ fontSize: 23, color: grey[900] }} />
-                  &nbsp;&nbsp;&nbsp;
-                  <span>connect@bikebazaar.com</span>
-                </div>
+                <a target="_blank" href="tel:+91 9607993434" >
+                  <div className="mobile">
+                    <CallIcon style={{ fontSize: 23, color: grey[900] }} />
+                    &nbsp;&nbsp;&nbsp;
+                      <span style={{color:'black', opacity: '0.5'}}>+91 8956853498</span>
+                  </div>
+                </a>
+                <a target="_blank" href="mailto:connect@bikebazaar.com" >
+                  <div className="mail">
+                    <EmailIcon style={{ fontSize: 23, color: grey[900] }} />
+                    &nbsp;&nbsp;&nbsp;
+                    <span style={{color:'black', opacity: '0.5'}}>connect@bikebazaar.com</span>
+                  </div>
+                </a>
                 <p className="sub-heading-black">Follow Us On:</p>
                 <div className="social-media-links">
                   <img src={facebookIcon} alt="" height="22" />

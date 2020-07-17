@@ -296,7 +296,7 @@ const HamburgerDropdown = () => {
         <img className="icon-img" src={selectedTyre} height="25" alt=""  />
         <img className="icon-img" src={callIcon} height="25" alt=""  />
         <a target="_blank" href="tel:+9607993434" style={{marginRight:'10px', fontWeight:'700', fontSize:'16px'}}>
-          9607993434
+          8956853498
         </a>
       </StyledMenuItem>
       <Link to={`/help`}>
