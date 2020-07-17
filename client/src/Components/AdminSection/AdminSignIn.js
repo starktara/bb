@@ -67,6 +67,8 @@ const AdminSignIn = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector(state => state.auth);
+  const errors = useSelector(state => state.errors)
+  const [showError, setShowError] = useState(true);
   
   if(user.isAuthenticated === true){
     history.push("/admin/homepage")
@@ -78,10 +80,11 @@ const AdminSignIn = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(actions.loginUser(formData))
+    dispatch(actions.loginAdminUser(formData))
+    setShowError(true);
     setTimeout(() => {
-      history.push("/admin/homepage")
-    }, 1000);
+      setShowError(false);
+    }, 3000);
   }
 
   const handleChange = (e) => {
@@ -105,6 +108,7 @@ const AdminSignIn = () => {
         style={{ width: 940, height: 504 }}
       >
         <MaterialUiContainer style={{ padding: "10%",marginLeft:'5%', justifyContent:'center',textAlign: "center" }}>
+        {showError && <span style={{color:'red', fontWeight:'bold'}}>{errors.error}</span>}
           <form className={classes.root} noValidate onSubmit={handleLogin} autoComplete="off">
             <MaterialUiGrid style={{display:'flex',textAlign:'center',alignItems:'center'}}>
               <label className={classes.fieldname} htmlFor="loginid">

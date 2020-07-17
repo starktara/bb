@@ -20,7 +20,8 @@ const ModalText = () => {
         <h6 className={classes.heading}>How to Use the Bulk Upload Functioanlity:</h6>
         <ul>
             <li> - Name of the excel file will always remain Records.xlsx (with the same format extension - .xlsx).</li>
-            <li> - Only .zip (NOT .rar or .7z) files are supported for upload.</li>
+            <li> - Images for each bike are to be kept in folders named as the Registration NUmber of the bike. All these folders are to be placed inside an images folder in the zip.</li>
+            <li> - Only .zip (NOT .rar or .7z) files are supported for upload. Zip contains the above mentioned images folder and Records.xlsx file.</li>
             <li> - Follow the following excel structure for the upload</li>
         </ul>
         <br />

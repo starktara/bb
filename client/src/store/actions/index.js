@@ -13,5 +13,6 @@ export {
 } from "./blogActions";
 export {
   loginUser,
-  logoutUser
+  logoutUser,
+  loginAdminUser
 } from "./authActions";

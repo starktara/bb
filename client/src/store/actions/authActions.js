@@ -59,3 +59,23 @@ export const logoutUser = () => dispatch => {
   // Set current user to empty object {} which will set isAuthenticated to false
   dispatch(setCurrentUser());
 };
+
+export const loginAdminUser = userData => dispatch => {
+  axios
+    .post("/apis/userDetail/adminLogin", userData)
+    .then(res => {
+      console.log(res)
+      const { token } = res.data;
+      localStorage.setItem("jwtToken", token);
+      setAuthToken(token);
+      const decoded = jwt_decode(token);
+      dispatch(setCurrentUser(decoded));
+    })
+    .catch(err => {
+      console.log("here", err.response)
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
