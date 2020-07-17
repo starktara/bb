@@ -6,7 +6,6 @@ import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
-import BulkUpload from "../BulkUpload/BulkUpload";
 import AdminInnerHeader from "../AdminSection/AdminInnerHeader";
 
 const useStyles = makeStyles(theme => ({
@@ -41,6 +40,9 @@ const AdminListPage = (props) => {
         <td>{vehicle._source.name}</td>
         <td>{vehicle._source.myear}</td>
         <td>{vehicle._source.price}</td>
+        <td>{vehicle._source.loc}</td>
+        <td>{vehicle._source.regnumber}</td>
+        
         <tb><Link to={'/admin/edit/' + vehicle._id} className='btn btn-secondary ButtonVoolor float-right'>Edit Info</Link></tb>
         <td onClick={() => deleteVehicle(vehicle._id)} id={'id-' + vehicle._id} className={classes.delete}>Delete</td>
       </tr>
@@ -56,6 +58,8 @@ const AdminListPage = (props) => {
               <th>Name</th>
               <th>Year</th>
               <th>Price</th>
+              <th>Location</th>
+              <th>Registration Number</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>

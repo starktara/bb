@@ -49,8 +49,9 @@ const ModalText = () => {
         <br />
         <h6 className={classes.heading}>Limitations:</h6>
         <ul>
-            <li> - "More details about the Two-wheeler" section will not be added through the bulk upload functionality.</li>
-            <li> - Not for editing two-wheeler - please DONOT use to edit any existing two-wheeler details. This functionality is only meant for the purpose of adding new two-wheelers.</li>
+            <li> -"More details about the Two-wheeler" section will not be added through the bulk upload functionality.</li>
+            <li> -Not for editing two-wheeler - please DO NOT use to edit any existing two-wheeler details. This functionality is only meant for the purpose of adding new two-wheelers.</li>
+            <li> -If the particular bike details are already existing on the web app refrain from adding it again as it will create a duplicate entry</li>
         </ul>
     </>
 )};

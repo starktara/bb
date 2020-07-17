@@ -45,6 +45,34 @@ const BulkUpload = () => {
     setSelectedFile(files);
   };
 
+  // const templateDownloader = () => {
+  //   console.log("working");
+  //   axios
+  //     .get("/apis/bulkUpload/SampleTemplate")
+  //     .then((res) => {
+        
+  //       console.log(res.status);
+  //       console.log(res);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+  const templateDownloader = () => {
+		fetch('/apis/bulkUpload/SampleTemplate')
+			.then(response => {
+				response.blob().then(blob => {
+					let url = window.URL.createObjectURL(blob);
+					let a = document.createElement('a');
+					a.href = url;
+					a.download = 'SampleTemplate.xlsx';
+					a.click();
+				});
+		});
+	}
+	
+
   const onClickHandler = () => {
     const data = new FormData();
 
@@ -80,19 +108,23 @@ const BulkUpload = () => {
       >
         <div className="col-md-6">
           <p style={{ fontSize: 40, fontWeight: "bold", marginBottom: "10px" }}>
-            {" "}
             Bulk Upload Menu
           </p>
-          <div 
-            style={{display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer'}} 
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              marginBottom: "10px",
+            }}
             onClick={() => setOpen(true)}
             title="Instructions for Bulk Upload"
           >
-            <span style={{marginRight: '10px'}}>Instructions for Bulk Upload</span>
-            <img
-              src={questionIcon}
-              height={25}
-            />
+            <span style={{ marginRight: "10px" }}>
+              Instructions for Bulk Upload
+            </span>
+            <img src={questionIcon} height={25} />
           </div>
           {/**react toaster file */}
 
@@ -101,7 +133,7 @@ const BulkUpload = () => {
           </div>
 
           <form encType="multipart/form-data" method="post">
-            <div className="form-group files">
+            <div style={{marginBottom:'20px',marginTop:'20px'}}className="form-group files">
               <input
                 name="file"
                 accept=".zip,.rar,.7zip"
@@ -114,6 +146,13 @@ const BulkUpload = () => {
 
           <button className="btn" onClick={onClickHandler}>
             Upload Files
+          </button>
+          <button
+            onClick={templateDownloader}
+            style={{ marginLeft: "5px" }}
+            className="btn"
+          >
+            Download Sample Template
           </button>
         </div>
         <Modal
@@ -129,7 +168,7 @@ const BulkUpload = () => {
           aria-describedby="simple-modal-description"
         >
           <div className={classes.modalBoxSuccess}>
-            <h4 style={{ color: "red" }}>Instructions for Bulk Upload</h4>
+            <h4>Instructions for Bulk Upload</h4>
             <div style={{ marginTop: "0px", marginLeft: "10px " }}>
               {ModalText()}
             </div>
