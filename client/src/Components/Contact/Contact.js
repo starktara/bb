@@ -357,7 +357,7 @@ const Contact = props => {
                   Maharashtra - 411045
                 </p>
                 <p className="sub-heading-black">Contact:</p>
-                <a target="_blank" href="tel:+91 9607993434" >
+                <a target="_blank" href="tel:+91 8956853498" >
                   <div className="mobile">
                     <CallIcon style={{ fontSize: 23, color: grey[900] }} />
                     &nbsp;&nbsp;&nbsp;
