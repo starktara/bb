@@ -35,17 +35,20 @@ router.post("/Upload", upload.single("file"), function (req, res) {
 });
 
 router.get("/SampleTemplate", (req, res) => {
-  fs.readFile("./apis/bulkUpload/SampleTemplate/SampleTemplate.xlsx", (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.setHeader(
-        "Content-Type",
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-      );
-      res.send(data);
+  fs.readFile(
+    "./apis/bulkUpload/SampleTemplate/SampleTemplate.xlsx",
+    (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.setHeader(
+          "Content-Type",
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        );
+        res.send(data);
+      }
     }
-  });
+  );
 });
 
 function zipHelper() {

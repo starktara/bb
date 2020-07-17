@@ -80,8 +80,10 @@ const AdminInnerHeader = () => {
             variant="h6"
             className={classes.title}
           >
-            <img height="25" src={bikeBazaarLogo} />
-            <span style={{ fontWeight: "bold" }}>Admin</span>
+            <Link to="/admin/homepage">
+              <img height="25" src={bikeBazaarLogo} />
+            </Link>
+            <span style={{ fontWeight: "bold", marginTop: '12px' }}>Admin</span>
             <FormControl className={classes.formControl}>
               <InputLabel
                 style={{
