@@ -229,6 +229,7 @@ router.post("/insertSellrequest",(req,res) => {
         model: formData.model.value,
         kmsdriven: formData.kmsdriven.value,
         manufactureYear: formData.yom.value,
+        promocode: formData.promocode.value,
         images: formData.image.imageNames
       }
     ];
@@ -271,6 +272,10 @@ router.post("/insertSellrequest",(req,res) => {
         <tr>
           <td> Year of Manufacture </td>
           <td> ${data.manufactureYear} </td>
+        </tr>
+        <tr>
+          <td> Promocode </td>
+          <td> ${data.promocode} </td>
         </tr>
         <tr>
           <td> Date </td>

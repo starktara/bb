@@ -284,6 +284,11 @@ const Sell = props => {
       error: false,
       errorMessage: ""
     },
+    promocode: {
+      value: "",
+      error: false,
+      errorMessage: ""
+    },
     image: {
       images: [],
       imageNames: [],
@@ -457,7 +462,7 @@ const Sell = props => {
       let targetName = data[0];
       let errorMessage = "";
       let error = false;
-      if(targetName !== "image" && targetName !== "variant" && targetName !== "address" && targetName !== "kmsdriven"){
+      if(targetName !== "image" && targetName !== "variant" && targetName !== "address" && targetName !== "kmsdriven" && targetName !== "promocode"){
         if(targetValue === ""){
           errorMessage = "This field is required";
           error = true;
@@ -726,6 +731,29 @@ const Sell = props => {
                               {formData.kmsdriven.error && (
                                 <p className={classes.formError}>
                                   {formData.kmsdriven.errorMessage}
+                                </p>
+                              )}
+                            </Grid>
+                          </Grid>
+                          <Grid container component="div" direction="row">
+                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                              <label htmlFor="promocode">
+                                <span  className={classes.label}>Promocode:</span>&nbsp;&nbsp;(If applicable)
+                              </label>
+                              <input type="text" name="promocode" id="promocode"
+                                onBlur={event =>
+                                  updateFormdata(event, formData)
+                                }
+                                className={
+                                  formData.promocode.error
+                                    ? "invalid"
+                                    : formData.promocode.value
+                                    ? "valid"
+                                    : ""
+                                }/>
+                              {formData.promocode.error && (
+                                <p className={classes.formError}>
+                                  {formData.promocode.errorMessage}
                                 </p>
                               )}
                             </Grid>
