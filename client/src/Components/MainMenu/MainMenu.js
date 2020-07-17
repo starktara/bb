@@ -295,7 +295,7 @@ const HamburgerDropdown = () => {
       <StyledMenuItem className="phone-number-ham">
         <img className="icon-img" src={selectedTyre} height="25" alt=""  />
         <img className="icon-img" src={callIcon} height="25" alt=""  />
-        <a target="_blank" href="tel:+9607993434" style={{marginRight:'10px', fontWeight:'700', fontSize:'16px'}}>
+        <a target="_blank" href="tel:+8956853498" style={{marginRight:'10px', fontWeight:'700', fontSize:'16px'}}>
           8956853498
         </a>
       </StyledMenuItem>
@@ -436,10 +436,10 @@ const MainMenu = props => {
             </Grid>
             <Grid container component="div" direction="row">
               <Grid item xs={9} sm={9} md={9} lg={9}>
-                <a target="_blank" href="tel:+9607993434" className="phone-number">
+                <a target="_blank" href="tel:+8956853498" className="phone-number">
                   <div className="phone-number-container">
                     <img className="icon-img" src={callIcon} height="25"  alt="" />
-                    9607993434
+                    8956853498
                   </div>
                 </a>
             </Grid>
