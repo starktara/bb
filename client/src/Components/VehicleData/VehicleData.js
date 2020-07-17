@@ -4,6 +4,7 @@ import * as actions from "../../store/actions/index";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "../UI/Tooltip/Tooltip";
 import axios from "axios";
 import isEmpty from "validator/lib/isEmpty";
@@ -11,8 +12,27 @@ import isAscii from "validator/lib/isAscii";
 import isEmail from "validator/lib/isEmail";
 import isNumeric from "validator/lib/isNumeric";
 import "../Card/watermark.css";
+import ImageGallery from 'react-image-gallery';
+import Modal from '@material-ui/core/Modal';
+import closeIcon from "../../assets/close-icon-black.png";
 
 import "./VehicleData.css";
+
+const useStyles = makeStyles(theme => ({
+  imagePopupModal: {
+    position: 'absolute',
+    width: '90%',
+    height: '100%',
+    backgroundColor: 'white',
+    border: '0 solid #fff',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(1),
+    outline: 0,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start'
+  },
+}))
 
 const formValidator = (name, value) => {
   switch (name) {
@@ -39,6 +59,33 @@ const formValidator = (name, value) => {
 };
 
 const VehicleData = (props) => {
+  const classes = useStyles();
+
+  const [openImgPopup, setOpenImgPopup] = React.useState(false);
+  const handleImgPopupClose = () => {
+    setOpenImgPopup(false);
+  };
+
+  const imgPopup = () => {
+    const images = sliderImages.map(image => ({
+      original: vehicleImagePath + image,
+      thumbnail: vehicleImagePath + image,
+    }))
+    return(
+      <>
+      {
+        props.data.sold == "true" ? ( 
+          <div className="watermarked watermarkedCarousel">
+            <ImageGallery thumbnailPosition="left" items={images} showPlayButton={false} />
+          </div>
+        ) : (
+          <ImageGallery thumbnailPosition="left" items={images} showPlayButton={false} />
+        )
+      }
+      </>
+    )
+  }
+
   const [sliderImages, setSliderImages] = useState(props.data.images);
 
   const [formData, setFormData] = useState({
@@ -195,6 +242,25 @@ const VehicleData = (props) => {
   return (
     <Grid container component="div" direction="row">
       {tooltip}
+      <Modal
+        style={{display: 'flex', justifyContent: 'center', alignItems: 'center', border: 'none'}}
+        open={openImgPopup}
+        onClose={handleImgPopupClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        {/* <div className={classes.imagePopupModal}> */}
+        <Grid container component="div" direction="row" className={classes.imagePopupModal}>
+          <Grid item xs={10} md={10} sm={10} lg={10}>
+            {imgPopup()}
+          </Grid>
+          <Grid item xs={1} md={1} sm={1} lg={1}></Grid>
+          <Grid item xs={1} md={1} sm={1} lg={1}>
+            <img style={{cursor: 'pointer'}} onClick={handleImgPopupClose} src={closeIcon} height="30"  alt="" />
+          </Grid>
+        </Grid>
+        {/* </div> */}
+      </Modal>
       <Grid item xs={12} md={12} sm={12} lg={6} className="vehicleGalSec">
         <div
           className="vehicleGal"
@@ -209,7 +275,7 @@ const VehicleData = (props) => {
             >
               {sliderImages.map((image, key) => {
                 return (
-                  <div key={key} className="watermarked watermarkedCarousel">
+                  <div key={key} style={{cursor: 'pointer'}} onClick={() => setOpenImgPopup(true)} className="watermarked watermarkedCarousel">
                     <img src={vehicleImagePath + image} alt="" />
                   </div>
                 );
@@ -224,7 +290,7 @@ const VehicleData = (props) => {
             >
               {sliderImages.map((image, key) => {
                 return (
-                  <div key={key}>
+                  <div key={key} style={{cursor: 'pointer'}} onClick={() => setOpenImgPopup(true)}>
                     <img src={vehicleImagePath + image} alt="" />
                   </div>
                 );
