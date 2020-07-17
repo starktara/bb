@@ -185,11 +185,14 @@ const Contact = props => {
   const validateAndUpdateFormdata = (event, formData) => {
     let targetValue = event.target.value;
     let targetName = event.target.name;
+    console.log("tagertnamr : ", targetName)
     let errorMessage = "";
     let error = false;
     if (isEmpty(targetValue)) {
-      errorMessage = "This field is required";
-      error = true;
+      if(targetName != 'query'){
+        errorMessage = "This field is required";
+        error = true;
+      }
     } else {
       errorMessage = formValidator(targetName, targetValue);
       if (errorMessage.length) {
@@ -260,7 +263,7 @@ const Contact = props => {
       let targetName = data[0];
       let errorMessage = "";
       let error = false;
-      if(targetName !== "interestedIn" ) {
+      if(targetName !== "query" ) {
         if(targetValue === ""){
           errorMessage = "This field is required";
           error = true;
@@ -434,7 +437,7 @@ const Contact = props => {
                       </Grid>
                       <Grid item xs={11} sm={11} md={6} lg={6}>
                         <label htmlFor="email" className="black-text">
-                          <span className={classes.label}>Email:</span>&nbsp;&nbsp;(eg. abc@gmail.com)
+                          <span className={classes.label}>Email*:</span>&nbsp;&nbsp;(eg. abc@gmail.com)
                         </label>
                         <input type="email" name="email" id="email" placeholder=""
                           onBlur={event =>
