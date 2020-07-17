@@ -5,7 +5,9 @@ const Admzip = require("adm-zip");
 const xlsxj = require("xlsx-to-json");
 const fs = require("fs");
 const { Client } = require("@elastic/elasticsearch");
+const { Router } = require("express");
 const client = new Client({ node: "http://localhost:9200" });
+const path = require("path");
 // const glob = require("glob");
 
 //global fileName variable
@@ -30,6 +32,20 @@ router.post("/Upload", upload.single("file"), function (req, res) {
   } else {
     res.sendStatus(409);
   }
+});
+
+router.get("/SampleTemplate", (req, res) => {
+  fs.readFile("./apis/bulkUpload/SampleTemplate/SampleTemplate.xlsx", (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.setHeader(
+        "Content-Type",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      );
+      res.send(data);
+    }
+  });
 });
 
 function zipHelper() {
@@ -120,7 +136,10 @@ async function dataUpload(data) {
     vehicle.images.forEach((img) => {
       imgArr.push({
         path:
-          "../server/Bulk/BulkUploadFiles/images/" + vehicle.regnumber + "/" + img,
+          "../server/Bulk/BulkUploadFiles/images/" +
+          vehicle.regnumber +
+          "/" +
+          img,
         name: img,
       });
     });
