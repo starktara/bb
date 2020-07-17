@@ -81,10 +81,12 @@ const AdminSignIn = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(actions.loginAdminUser(formData))
-    setShowError(true);
+    setTimeout(() => {
+      setShowError(true);
+    }, 1000);
     setTimeout(() => {
       setShowError(false);
-    }, 3000);
+    }, 3500);
   }
 
   const handleChange = (e) => {
