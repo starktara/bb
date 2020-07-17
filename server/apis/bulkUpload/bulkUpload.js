@@ -36,7 +36,7 @@ router.post("/Upload", upload.single("file"), function (req, res) {
 
 router.get("/SampleTemplate", (req, res) => {
   fs.readFile(
-    "./apis/bulkUpload/SampleTemplate/SampleTemplate.xlsx",
+    "./apis/bulkUpload/SampleTemplate/Records.xlsx",
     (err, data) => {
       if (err) {
         console.log(err);
