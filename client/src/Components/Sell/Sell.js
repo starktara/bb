@@ -16,8 +16,8 @@ import * as actions from "../../store/actions/index";
 import axios from "axios";
 import isEmpty from "validator/lib/isEmpty";
 import isAlpha from "validator/lib/isAlpha";
-import isMobilePhone from "validator/lib/isMobilePhone";
-import isAlphaNumeric from "validator/lib/isAlphanumeric";
+// import isMobilePhone from "validator/lib/isMobilePhone";
+// import isAlphaNumeric from "validator/lib/isAlphanumeric";
 import isAscii from "validator/lib/isAscii";
 import isNumeric from "validator/lib/isNumeric";
 import { makeStyles, withTheme } from "@material-ui/core/styles";
@@ -181,14 +181,14 @@ const formValidator = (name, value) => {
   switch (name) {
     case "name": {
       const nameValue = value.replace(/ /g,'');
-      return !isAlpha(nameValue) ? "Name must contain only Alphabets" : "";
+      return !isAscii(nameValue) || value.length > 100 ? "Enter valid name" : "";
     }
     case "mobile": {
-      return !isMobilePhone(value) ? "Invalid Mobile Number" : "";
+      return value.length > 15 || !isNumeric(value) ? "Invalid Mobile Number" : "";
     }
     case "city":{
       const cityValue = value.replace(/ /g,'');
-      return !isAlphaNumeric(cityValue) ? "City name must only be Alphanumeric" : "";
+      return !isAlpha(cityValue) ? "City name must only be Alphabetic" : "";
     }
     case "address": {
       const addressValue = value.replace(/ /g,'');
@@ -199,16 +199,16 @@ const formValidator = (name, value) => {
       return !isAlpha(makeValue) ? "Make must conatin only aplhabets" : "";
     }
     case "model": {
-      return !isAscii(value) ? "Enter valid Model" : "";
+      return !isAscii(value) || value.length > 50 ? "Enter valid Model" : "";
     }
     case "variant":{
-      return !isAlphaNumeric(value) ? "Variant must be alphanumric" : "";
+      return !isAscii(value) || value.length > 50 ? "Enter valid variant" : "";
     }
     case "yom": {
-      return !isNumeric(value) ? "Enter valid year" : "" ;
+      return !isNumeric(value) || value.length > 4 ? "Enter valid year" : "" ;
     }
     case "kmsdriven" :{
-      return !isNumeric(value) ? "Kms. driven must be number" : "";
+      return !isAscii(value) ? "Kms. driven must be number" : "";
     }
     default: {
       return false;

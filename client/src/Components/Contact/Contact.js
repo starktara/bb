@@ -21,10 +21,11 @@ import EmailIcon from "@material-ui/icons/Email";
 import CallIcon from "@material-ui/icons/Call";
 import { grey } from "@material-ui/core/colors";
 import isEmpty from "validator/lib/isEmpty";
-import isAlpha from "validator/lib/isAlpha";
+// import isAlpha from "validator/lib/isAlpha";
 import isEmail from "validator/lib/isEmail";
-import isMobilePhone from "validator/lib/isMobilePhone";
-import isAlphaNumeric from "validator/lib/isAlphanumeric";
+// import isMobilePhone from "validator/lib/isMobilePhone";
+// import isAlphaNumeric from "validator/lib/isAlphanumeric";
+import isNumeric from "validator/lib/isNumeric";
 import isAscii from "validator/lib/isAscii";
 // import Tooltip from "../UI/Tooltip/Tooltip";
 import axios from "axios";
@@ -119,16 +120,16 @@ const formValidator = (name, value) => {
   switch (name) {
     case "name": {
       const nameValue = value.replace(/ /g, '');
-      return !isAlpha(nameValue) ? "Name must contain only Alphabets" : "";
+      return !isAscii(nameValue) || value.length > 100 ? "Name must contain only Alphabets" : "";
     }
     case "mobile": {
-      return !isMobilePhone(value) ? "Invalid Mobile Number" : "";
+      return value.length > 15 || !isNumeric(value) ? "Invalid Mobile Number" : "";
     }
     case "email": {
       return !isEmail(value) ? "Invalid Email Id" : "";
     }
     case "query": {
-      return !isAscii(value)
+      return !isAscii(value) || value.length > 300
         ? "Query must only have Alphanumeric Characters"
         : "";
     }

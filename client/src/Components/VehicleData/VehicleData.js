@@ -7,9 +7,9 @@ import Grid from "@material-ui/core/Grid";
 import Tooltip from "../UI/Tooltip/Tooltip";
 import axios from "axios";
 import isEmpty from "validator/lib/isEmpty";
-import isAlpha from "validator/lib/isAlpha";
+import isAscii from "validator/lib/isAscii";
 import isEmail from "validator/lib/isEmail";
-import isMobilePhone from "validator/lib/isMobilePhone";
+import isNumeric from "validator/lib/isNumeric";
 import "../Card/watermark.css";
 
 import "./VehicleData.css";
@@ -18,10 +18,10 @@ const formValidator = (name, value) => {
   switch (name) {
     case "name": {
       const nameValue = value.replace(/ /g, "");
-      return !isAlpha(nameValue) ? "Name must contain only Alphabets" : "";
+      return !isAscii(nameValue) || value.length > 100 ? "Enter valid name" : "";
     }
     case "phone": {
-      return !isMobilePhone(value) ? "Invalid Mobile Number" : "";
+      return value.length > 15 || !isNumeric(value) ? "Invalid Mobile Number" : "";
     }
     case "email": {
       return !isEmail(value) ? "Invalid Email Id" : "";

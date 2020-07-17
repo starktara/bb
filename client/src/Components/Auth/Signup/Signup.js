@@ -11,8 +11,9 @@ import M from "materialize-css";
 import isEmpty from "validator/lib/isEmpty";
 import isAlpha from "validator/lib/isAlpha";
 import isEmail from "validator/lib/isEmail";
-import isMobilePhone from "validator/lib/isMobilePhone";
+import isNumeric from "validator/lib/isNumeric";
 import isAlphaNumeric from "validator/lib/isAlphanumeric";
+import isAscii from "validator/lib/isAscii";
 import facebookIcon from "../../../assets/icons/social_media/facebook-icon.png";
 import googleIcon from "../../../assets/icons/social_media/google-icon.png";
 import axios from "axios";
@@ -25,10 +26,10 @@ const formValidator = (name, value) => {
   switch (name) {
     case "name": {
       const nameValue = value.replace(/ /g, '');
-      return !isAlpha(nameValue) ? "Name must contain only Alphabets" : "";
+      return !isAscii(nameValue) || value.length > 100 ? "Enter valid name" : "";
     }
     case "mobile": {
-      return !isMobilePhone(value) ? "Invalid Mobile Number" : "";
+      return value.length > 15 || !isNumeric(value) ? "Invalid Mobile Number" : "";
     }
     case "email": {
       return !isEmail(value) ? "Invalid Email Id" : "";

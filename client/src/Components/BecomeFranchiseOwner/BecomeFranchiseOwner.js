@@ -18,7 +18,7 @@ import callCentre from '../../assets/icons/call-centre.svg'
 import shakeHand from '../../assets/icons/shake-hand.svg'
 import strongOnlinePresence from '../../assets/icons/strong-online-presence.svg';
 import moreSalesThanEver from '../../assets/icons/more-than-sales.svg';
-import Tooltip from "../UI/Tooltip/Tooltip";
+// import Tooltip from "../UI/Tooltip/Tooltip";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from '@material-ui/core/Divider';
 import axios from "axios";
@@ -26,7 +26,7 @@ import isEmpty from "validator/lib/isEmpty";
 import isAlpha from "validator/lib/isAlpha";
 import isAscii from "validator/lib/isAscii";
 import isEmail from "validator/lib/isEmail";
-import isMobilePhone from "validator/lib/isMobilePhone";
+// import isMobilePhone from "validator/lib/isMobilePhone";
 import isNumeric from "validator/lib/isNumeric";
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -37,27 +37,27 @@ const formValidator = (name, value) => {
   switch (name) {
     case "name": {
       const nameValue = value.replace(/ /g, '');
-      return !isAlpha(nameValue) ? "Name must contain only Alphabets" : "";
+      return !isAscii(nameValue) || value.length > 100 ? "Enter a valid name" : "";
     }
     case "mobile": {
-      return !isMobilePhone(value) ? "Invalid Mobile Number" : "";
+      return value.length > 15 || !isNumeric(value) ? "Invalid Mobile Number" : "";
     }
     case "email": {
       return !isEmail(value) ? "Invalid Email Id" : "";
     }
     case "city": {
       const cityValue = value.replace(/ /g, '');
-      return !isAlpha(cityValue)
-        ? "Query must only have Alphanumeric Characters"
+      return !isAlpha(cityValue) || value.length > 100
+        ? "Query must only have alphabet Characters"
         : "";
     }
     case "address": {
-      return !isAscii(value)
+      return !isAscii(value) || value.length > 100
         ? "Address must have Valid Characters"
         : "";
     }
     case "pin": {
-      return !isNumeric(value)
+      return !isNumeric(value) || value.length > 10
         ? "PIN Code must only have Numeric Characters"
         : "";
     }
