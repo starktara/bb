@@ -82,6 +82,7 @@ section-3 {
   font-weight: 800;
   font-size: 24px;
   color: #232c2b;
+  letter-spacing: 1px !important;
 }
 .section-3-heading {
   margin-bottom: 55px;
@@ -109,7 +110,7 @@ section-3 {
   padding-bottom: 15px;
   font-size: 24px;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 1px !important;
 }
 .spacing {
   padding-top: 40px;

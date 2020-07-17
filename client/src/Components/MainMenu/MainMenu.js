@@ -299,13 +299,13 @@ const HamburgerDropdown = () => {
           8956853498
         </a>
       </StyledMenuItem>
-      <Link to={`/help`}>
-        <StyledMenuItem>
-          <img className="icon-img" src={selectedTyre} height="25" alt=""  />
-          <img className="icon-img" src={messageIcon}  alt=""  />
-          <span style={{marginRight:'10px', fontWeight:'700', fontSize:'16px'}}>connect@bikebazaar.com</span>
-        </StyledMenuItem>
-      </Link>
+      <StyledMenuItem className="phone-number-ham">
+        <img className="icon-img" src={selectedTyre} height="25" alt=""  />
+        <img className="icon-img" src={messageIcon}  alt=""  />
+        <a target="_blank" href="mailto:connect@bikebazaar.com" style={{marginRight:'10px', fontWeight:'700', fontSize:'16px'}}>
+          connect@bikebazaar.com
+        </a>
+      </StyledMenuItem>
       <hr className="small-hr" />
       <MenuItem>
         <Link to='/facebook'>

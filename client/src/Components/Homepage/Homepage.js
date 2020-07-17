@@ -255,6 +255,7 @@ const Homepage = (props) => {
           direction="row"
           className="row"
           justify="center"
+          style={{paddingBottom: '20px'}}
         >
           <Grid item xs={12} sm={12} md={4} lg={5}>
             <div className="gola-wrapper">
