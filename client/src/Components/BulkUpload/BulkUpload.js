@@ -3,7 +3,6 @@ import "./BulkUpload.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Footer from "../Footer/Footer";
 import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core";
 import questionIcon from "../../assets/questionIcon.png";
@@ -189,7 +188,6 @@ const BulkUpload = () => {
           </div>
         </Modal>
       </div>
-      <Footer />
     </>
   );
 };
