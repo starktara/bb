@@ -168,7 +168,7 @@ const BulkUpload = () => {
           aria-describedby="simple-modal-description"
         >
           <div className={classes.modalBoxSuccess}>
-            <h4>Instructions for Bulk Upload</h4>
+            <h2>Instructions for Bulk Upload</h2>
             <div style={{ marginTop: "0px", marginLeft: "10px " }}>
               {ModalText()}
             </div>
