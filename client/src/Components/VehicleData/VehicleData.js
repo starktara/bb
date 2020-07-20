@@ -21,8 +21,8 @@ import "./VehicleData.css";
 const useStyles = makeStyles(theme => ({
   imagePopupModal: {
     position: 'absolute',
-    width: '90%',
-    height: '100%',
+    width: '80%',
+    height: '90%',
     backgroundColor: 'white',
     border: '0 solid #fff',
     boxShadow: theme.shadows[5],
@@ -31,6 +31,10 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'flex-start'
+  },
+  formError: {
+    color: "red",
+    fontSize: 13
   },
 }))
 
@@ -71,17 +75,17 @@ const VehicleData = (props) => {
       original: vehicleImagePath + image,
       thumbnail: vehicleImagePath + image,
     }))
-    return(
+    return (
       <>
-      {
-        props.data.sold == "true" ? ( 
-          <div className="watermarked watermarkedCarousel">
-            <ImageGallery thumbnailPosition="left" items={images} showPlayButton={false} />
-          </div>
-        ) : (
-          <ImageGallery thumbnailPosition="left" items={images} showPlayButton={false} />
-        )
-      }
+        {
+          props.data.sold == "true" ? (
+            <div className="watermarked watermarkedCarousel">
+              <ImageGallery thumbnailPosition="left" items={images} showPlayButton={false} />
+            </div>
+          ) : (
+              <ImageGallery thumbnailPosition="left" items={images} showPlayButton={false} />
+            )
+        }
       </>
     )
   }
@@ -151,14 +155,14 @@ const VehicleData = (props) => {
   let discountAmt = 0;
 
   if (props.data.discountPercent) {
-    discountAmt = Math.ceil((props.data.discountPercent * props.data.price)/100);
+    discountAmt = Math.ceil((props.data.discountPercent * props.data.price) / 100);
     discount = (
       <>
-      <span style={{color: 'black'}}>{props.data.discountPercent}% Off</span>
-      <span className="save">
-        Save <strong>` </strong>
-        {discountAmt}
-      </span>
+        <span style={{ color: 'black' }}>{props.data.discountPercent}% Off</span>
+        <span className="save">
+          Save <strong>` </strong>
+          {discountAmt}
+        </span>
       </>
     );
   }
@@ -195,26 +199,49 @@ const VehicleData = (props) => {
 
   const submitForm = (event) => {
     event.preventDefault();
-    props.history.push(`locate-store?store-id=${props.data.storeId}`);
-    axios
-      .post("/apis/leadDetail/insertBuyRequest", formData)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    setTooltipState({
-      open: true,
-      message: "Your details have been saved",
-      variant: "success",
+    const formDataCopy = formData;
+    let errorFlag = false;
+    Object.entries(formData).forEach(data => {
+      let targetValue = data[1].value;
+      let targetName = data[0];
+      let errorMessage = "";
+      let error = false;
+      if (targetValue === "") {
+        errorMessage = "This field is required";
+        error = true;
+      }
+      formDataCopy[targetName].errorMessage = errorMessage;
+      formDataCopy[targetName].error = error;
+      if (error) {
+        errorFlag = true;
+      }
     });
-    setSuccessSubmit(true);
+    if (!errorFlag) {
+      axios
+        .post("/apis/leadDetail/insertBuyRequest", formData)
+        .then((response) => {
+          props.history.push(`locate-store?store-id=${props.data.storeId}`, { message: "Thank you for reaching out to us. The location of the store is provided below:" });
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      setFormData({
+        ...formData,
+        formDataCopy
+      });
+    }
+    // setTooltipState({
+    //   open: true,
+    //   message: "Your details have been saved",
+    //   variant: "success",
+    // });
+    // setSuccessSubmit(true);
   };
 
   useEffect(() => {
-    console.log("props.data.images", props.data);
+    // console.log("props.data.images", props.data);
     let vehicleId = {
       ...formData,
       vehicleid: {
@@ -243,7 +270,7 @@ const VehicleData = (props) => {
     <Grid container component="div" direction="row">
       {tooltip}
       <Modal
-        style={{display: 'flex', justifyContent: 'center', alignItems: 'center', border: 'none'}}
+        style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', border: 'none' }}
         open={openImgPopup}
         onClose={handleImgPopupClose}
         aria-labelledby="simple-modal-title"
@@ -256,7 +283,7 @@ const VehicleData = (props) => {
           </Grid>
           <Grid item xs={1} md={1} sm={1} lg={1}></Grid>
           <Grid item xs={1} md={1} sm={1} lg={1}>
-            <img style={{cursor: 'pointer'}} onClick={handleImgPopupClose} src={closeIcon} height="30"  alt="" />
+            <img style={{ cursor: 'pointer' }} onClick={handleImgPopupClose} src={closeIcon} height="30" alt="" />
           </Grid>
         </Grid>
         {/* </div> */}
@@ -275,28 +302,28 @@ const VehicleData = (props) => {
             >
               {sliderImages.map((image, key) => {
                 return (
-                  <div key={key} style={{cursor: 'pointer'}} onClick={() => setOpenImgPopup(true)} className="watermarked watermarkedCarousel">
+                  <div key={key} style={{ cursor: 'pointer' }} onClick={() => setOpenImgPopup(true)} className="watermarked watermarkedCarousel">
                     <img src={vehicleImagePath + image} alt="" />
                   </div>
                 );
               })}
             </Carousel>
           ) : (
-            <Carousel
-              dynamicHeight={true}
-              showThumbs={true}
-              key={sliderImages[0]}
-              useKeyboardArrows={true}
-            >
-              {sliderImages.map((image, key) => {
-                return (
-                  <div key={key} style={{cursor: 'pointer'}} onClick={() => setOpenImgPopup(true)}>
-                    <img src={vehicleImagePath + image} alt="" />
-                  </div>
-                );
-              })}
-            </Carousel>
-          )}
+              <Carousel
+                dynamicHeight={true}
+                showThumbs={true}
+                key={sliderImages[0]}
+                useKeyboardArrows={true}
+              >
+                {sliderImages.map((image, key) => {
+                  return (
+                    <div key={key} style={{ cursor: 'pointer' }} onClick={() => setOpenImgPopup(true)}>
+                      <img src={vehicleImagePath + image} alt="" />
+                    </div>
+                  );
+                })}
+              </Carousel>
+            )}
         </div>
       </Grid>
       <Grid item xs={12} md={12} sm={12} lg={6}>
@@ -350,7 +377,18 @@ const VehicleData = (props) => {
                     placeholder="Type Your Name"
                     onBlur={(event) => updateFormdata(event, formData)}
                     required
-                  />
+                    className={
+                      formData.name.error
+                        ? "invalid"
+                        : formData.name.value
+                        ? "valid"
+                        : ""
+                    }/>
+                    {formData.name.error && (
+                      <p className={classes.formError}>
+                        {formData.name.errorMessage}
+                      </p>
+                    )}
                 </Grid>
               </Grid>
               <Grid
@@ -374,7 +412,18 @@ const VehicleData = (props) => {
                     placeholder="Type Your Contact Number"
                     onBlur={(event) => updateFormdata(event, formData)}
                     required
-                  />
+                    className={
+                      formData.phone.error
+                        ? "invalid"
+                        : formData.phone.value
+                        ? "valid"
+                        : ""
+                    }/>
+                    {formData.phone.error && (
+                      <p className={classes.formError}>
+                        {formData.phone.errorMessage}
+                      </p>
+                    )}
                 </Grid>
               </Grid>
               <Grid
@@ -398,7 +447,18 @@ const VehicleData = (props) => {
                     placeholder="Type Your Email Id"
                     onBlur={(event) => updateFormdata(event, formData)}
                     required
-                  />
+                    className={
+                      formData.email.error
+                        ? "invalid"
+                        : formData.email.value
+                        ? "valid"
+                        : ""
+                    }/>
+                    {formData.email.error && (
+                      <p className={classes.formError}>
+                        {formData.email.errorMessage}
+                      </p>
+                    )}
                 </Grid>
               </Grid>
               <Grid
@@ -408,7 +468,7 @@ const VehicleData = (props) => {
                 className="form-group"
                 justify="center"
               >
-                <Grid item xs={9} sm={9} md={9} lg={9}>
+                <Grid item xs={9} sm={9} md={9} lg={9} style={{ textAlign: 'center' }}>
                   <label className="fieldname">
                     <input
                       type="checkbox"
@@ -429,7 +489,7 @@ const VehicleData = (props) => {
                 justify="center"
               >
                 <Grid item xs={9} sm={9} md={9} lg={9}>
-                  <div className="form-group">
+                  <div className="form-group" style={{ textAlign: 'center' }}>
                     <button type="button" className="btn" onClick={submitForm}>
                       Get Store Details
                     </button>

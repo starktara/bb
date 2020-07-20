@@ -356,8 +356,8 @@ router.post("/insertBuyRequest", (req, res) => {
         </tr>
       </table>
     `;
-    const sendToEmail = 'onlinesales@bikebazaar.com'; //email to send alerts to
-    mailer(output, 'Appointment Booked', sendToEmail).catch(console.error);
+    const sendToEmail = 'rahul.khedkar@bikebazaar.com'; //email to send alerts to
+    mailer(output, 'Buy request Booked', sendToEmail).catch(console.error);
 
     const { body: bulkResponse } = await client.bulk({ refresh: true, body });
 

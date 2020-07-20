@@ -17,12 +17,27 @@ import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { makeStyles } from "@material-ui/core/styles";
 import { CHANGE_CITY } from "../../store/actions/actionTypes";
-
+import { useLocation, useHistory } from "react-router-dom";
+import Modal from '@material-ui/core/Modal';
+import closeIcon from "../../assets/Close.png";
 
 const useStyles = makeStyles(theme => ({
   mapContainer: {
     width: "100%",
     height: 400
+  },
+  modalBoxSuccess: {
+    position: 'absolute',
+    width: '60%',
+    backgroundColor: 'green',
+    color: 'white',
+    border: '0 solid #fff',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    outline: 0,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start'
   },
   // mapContainerMobile: {
   //   width: "100%",
@@ -40,6 +55,7 @@ const mapProps = {
 
 const LocateStore = props => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const classes = useStyles();
   let [singleStore, setSingleScore] = useState(false);
   const theme = useTheme();
@@ -49,6 +65,13 @@ const LocateStore = props => {
   const { filter } = useSelector(
     state => state.vehicleDetails
   );
+  const [open, setOpen] = React.useState(location.state ? true : false);
+  const handleModalClose = () => {
+    setOpen(false);
+  };
+  const [modalMesg, setModalMesg] = React.useState(
+    ""
+  )
 
   const handleStoreClick = (clickedStore) => {
     const storeFilter = {
@@ -236,6 +259,18 @@ const LocateStore = props => {
     <div id="LocateStore">
       {/* <Header /> */}
       <MainMenu />
+      <Modal
+        style={{display: 'flex', justifyContent: 'center', alignItems: 'center', border: 'none'}}
+        open={open}
+        onClose={handleModalClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        <div className={classes.modalBoxSuccess}>
+          <h4>{location.state ? location.state.message : ""}</h4>
+          <img style={{marginLeft: '10px', cursor: 'pointer'}} onClick={handleModalClose} src={closeIcon} height="20"  alt="" />
+        </div>
+      </Modal>
       <Grid container component="div" direction="row" justify="center" className="mtop40">
         <Grid item xs={11} md={11} sm={11} lg={11}>
           {multiStore}
