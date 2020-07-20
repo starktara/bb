@@ -17,7 +17,7 @@ async function mailer(output, subject, sendTo, attach = []) {
 
     transporter.sendMail({
       from: '"Trial" <bikebazaar01@gmail.com>', // sender address
-      to: 'sendTo', 
+      to: sendTo, 
       subject: subject, // Subject line
       text: '', // plain text body
       html: output, // html body
