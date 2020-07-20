@@ -21,8 +21,8 @@ import "./VehicleData.css";
 const useStyles = makeStyles(theme => ({
   imagePopupModal: {
     position: 'absolute',
-    width: '90%',
-    height: '100%',
+    width: '80%',
+    height: '90%',
     backgroundColor: 'white',
     border: '0 solid #fff',
     boxShadow: theme.shadows[5],
@@ -195,7 +195,7 @@ const VehicleData = (props) => {
 
   const submitForm = (event) => {
     event.preventDefault();
-    props.history.push(`locate-store?store-id=${props.data.storeId}`);
+    // props.history.push(`locate-store?store-id=${props.data.storeId}`);
     axios
       .post("/apis/leadDetail/insertBuyRequest", formData)
       .then((response) => {
@@ -408,7 +408,7 @@ const VehicleData = (props) => {
                 className="form-group"
                 justify="center"
               >
-                <Grid item xs={9} sm={9} md={9} lg={9}>
+                <Grid item xs={9} sm={9} md={9} lg={9}  style={{textAlign: 'center'}}>
                   <label className="fieldname">
                     <input
                       type="checkbox"
@@ -429,7 +429,7 @@ const VehicleData = (props) => {
                 justify="center"
               >
                 <Grid item xs={9} sm={9} md={9} lg={9}>
-                  <div className="form-group">
+                  <div className="form-group" style={{textAlign: 'center'}}>
                     <button type="button" className="btn" onClick={submitForm}>
                       Get Store Details
                     </button>
