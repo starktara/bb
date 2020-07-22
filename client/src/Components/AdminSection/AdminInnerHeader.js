@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 310,
+    minWidth: 285,
     marginLeft: "22%",
   },
   selectEmpty: {
@@ -105,8 +105,7 @@ const AdminInnerHeader = () => {
               <InputLabel
                 style={{
                   color: "white",
-                  fontWeight: "bold",
-                  wordSpacing: "6px",
+                  fontWeight: "bold"
                 }}
                 id="dropdown-admin-header"
               >
