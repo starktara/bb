@@ -49,7 +49,7 @@ const BulkUpload = () => {
   //   axios
   //     .get("/apis/bulkUpload/SampleTemplate")
   //     .then((res) => {
-        
+
   //       console.log(res.status);
   //       console.log(res);
   //     })
@@ -59,18 +59,16 @@ const BulkUpload = () => {
   // };
 
   const templateDownloader = () => {
-		fetch('/apis/bulkUpload/SampleTemplate')
-			.then(response => {
-				response.blob().then(blob => {
-					let url = window.URL.createObjectURL(blob);
-					let a = document.createElement('a');
-					a.href = url;
-					a.download = 'Records.xlsx';
-					a.click();
-				});
-		});
-	}
-	
+    fetch("/apis/bulkUpload/SampleTemplate").then((response) => {
+      response.blob().then((blob) => {
+        let url = window.URL.createObjectURL(blob);
+        let a = document.createElement("a");
+        a.href = url;
+        a.download = "Records.xlsx";
+        a.click();
+      });
+    });
+  };
 
   const onClickHandler = () => {
     const data = new FormData();
@@ -120,7 +118,14 @@ const BulkUpload = () => {
             onClick={() => setOpen(true)}
             title="Instructions for Bulk Upload"
           >
-            <span style={{ marginRight: "10px" }}>
+            <span
+              style={{
+                marginRight: "10px",
+                fontSize: "18px",
+                color: "#26A69A",
+                fontWeight: "bold",
+              }}
+            >
               Instructions for Bulk Upload
             </span>
             <img src={questionIcon} height={25} />
@@ -132,7 +137,10 @@ const BulkUpload = () => {
           </div>
 
           <form encType="multipart/form-data" method="post">
-            <div style={{marginBottom:'20px',marginTop:'20px'}}className="form-group files">
+            <div
+              style={{ marginBottom: "20px", marginTop: "20px" }}
+              className="form-group files"
+            >
               <input
                 name="file"
                 accept=".zip,.rar,.7zip"
