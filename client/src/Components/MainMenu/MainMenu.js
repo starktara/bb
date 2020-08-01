@@ -28,6 +28,8 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Autocomplete } from '@material-ui/lab';
 import TextField from '@material-ui/core/TextField';
 import * as actions from "../../store/actions/index";
+import _ from "lodash";
+import useDebounce from "./use-debounce";
 
 const StyledMenuItem = withStyles({
   root: {
@@ -342,19 +344,22 @@ const MainMenu = props => {
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const [searchTerm, setSearchTerm] = useState("");
 
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
+
   useEffect(() => {
     const filterData = {
       ...filter,
       city: selectedCity
     }
-    if(searchTerm.length > 2)
+    if(debouncedSearchTerm.length > 2){
       setTimeout(() => {
-        dispatch(actions.getVehiclesNames(category, filterData, searchTerm));
+        dispatch(actions.getVehiclesNames(category, filterData, debouncedSearchTerm));
       }, 10);
-  }, [searchTerm, selectedCity]);
+    }
+  }, [debouncedSearchTerm, selectedCity]);
   
   const updateState = value => {
-    setSearchTerm(value);
+    setSearchTerm(value.toLowerCase());
   }
 
   if (matches) {
@@ -377,7 +382,7 @@ const MainMenu = props => {
                         id="searchField"
                         style={{border: "none !important"}}
                         freeSolo
-                        options={vehicleNames}
+                        options={searchTerm ? vehicleNames : []}
                         renderInput={(params) => (
                           <StyledTextField 
                             placeholder="Search Your Two-wheeler" 
