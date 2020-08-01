@@ -40,7 +40,7 @@ const Card = (props) => {
                 src={require("../../assets/icons/rupee-indian-red.svg")}
                 alt=""
               />
-              {Math.ceil(props.cost - (props.cost * props.discountPercent / 100))}
+              {props.discountPercent ? Math.ceil(props.cost - (props.cost * props.discountPercent / 100)) : props.cost}
               {props.discountPercent && <span className={classes.del}><strong>` </strong> {props.cost}</span>}
             </p>
             <ul className="detailPoints">
