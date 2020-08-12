@@ -35,17 +35,17 @@ const useStyles = makeStyles(theme => ({
     },
     redHeading: {
         paddingBottom: 15,
-        fontSize: 32,
+        fontSize: 24,
         fontWeight: 800,
         color: '#ff0000',
         textAlign: 'center'
     },
     subHeading:{
-        fontSize: 26,
+        fontSize: 18,
         fontWeight: 600
     },
     text:{
-        fontSize: 20
+        fontSize: 16
     },
     advantageContainer:{
         width: 1200,

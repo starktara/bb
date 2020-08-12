@@ -62,7 +62,7 @@ const useStyles = makeStyles(theme => ({
     paddingTop: 43.8,
     paddingBottom: 15,
     fontWeight: 800,
-    fontSize: 36,
+    fontSize: 24,
     color: '#232c2b'
   },
   label: {
@@ -73,15 +73,15 @@ const useStyles = makeStyles(theme => ({
   },
   sellHeading:{
     paddingBottom: 15,
-    fontSize: 32,
-    fontWeight: 600,
+    fontSize: 24,
+    fontWeight: 800,
     color: '#ff0000',
     textAlign: 'center'
   },
   sellHeadingMobile:{
     paddingBottom: 15,
     fontSize: 19,
-    fontWeight: 600,
+    fontWeight: 800,
     color: '#ff0000',
     textAlign: 'center'
   },
@@ -508,7 +508,7 @@ const Sell = props => {
       {/* <Header /> */}
       <MainMenu />
       {tooltip}
-      <Grid container component="div" direction="row" justify="center">
+      <Grid container component="div" direction="row" justify="center"> 
         <Grid item xs={11} md={11} sm={11} lg={11} className={classes.banner}>
             <Banner navigation="Sell" heading="Sell any Two-Wheeler" text="" path={props.location.pathname}/>
         </Grid>

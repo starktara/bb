@@ -326,7 +326,7 @@ const HamburgerDropdown = () => {
       <br />
       <Link to={`/copyright`}>
         <StyledMenuItem style={{marginTop:'20px'}} >
-          <span style={{marginLeft:'25px', fontSize:'12px'}}>© 2019 BikeBazaar. All rights reserved.</span>
+          <span style={{marginLeft:'25px', fontSize:'16px'}}>© 2019 BikeBazaar. All rights reserved.</span>
         </StyledMenuItem>
       </Link>
       <br />
@@ -410,7 +410,7 @@ const MainMenu = props => {
               </Grid>
             </Grid>
             <Grid container component="div" direction="row" >
-              <Grid item xs={12} sm={12} md={12} lg={12} style={{display: "flex", justifyContent:"center"}}>
+              <Grid item xs={12} sm={12} md={11} lg={12} style={{display: "flex", justifyContent:"center"}}>
                   <ul className="nav-options">
                     <BuyButton />
                     <li style={{paddingTop: '1px'}}> 

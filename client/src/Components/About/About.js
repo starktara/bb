@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
     },
     redHeading: {
         paddingBottom: 15,
-        fontSize: 32,
+        fontSize: 24,
         fontWeight: 800,
         color: '#ff0000',
     },

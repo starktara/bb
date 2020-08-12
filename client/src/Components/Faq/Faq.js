@@ -24,13 +24,13 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(3)
     },
     faqHeading: {
-        fontSize: 22,
+        fontSize: 24,
         letterSpacing: 0.65,
         color: '#ff0000',
         fontWeight: 600
     },
     faqSteps: {
-        fontSize: 17,
+        fontSize: 18,
         letterSpacing: 0.53,
         color: '#232b2b',
         marginBottom: 30

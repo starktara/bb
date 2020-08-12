@@ -2,7 +2,7 @@
   color: #e92d2c;
   font-weight: bold;
   white-space: nowrap;
-  font-size: 33px;
+  font-size: 24px;
   text-align: center;
 }
 .heading-line {
@@ -10,12 +10,12 @@
 }
 .sub-heading-black {
   font-weight: 600;
-  font-size: 19px;
+  font-size: 18px;
   color: #232c2b;
 }
 .sub-heading-red {
   font-weight: 600;
-  font-size: 20px;
+  font-size: 19px;
   color: #e92d2c;
 }
 p sup {

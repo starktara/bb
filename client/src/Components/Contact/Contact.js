@@ -73,7 +73,7 @@ const useStyles = makeStyles(theme => ({
   },
   label:{
     fontWeight: 600,
-    fontSize: 15,
+    fontSize: 16,
     letterSpacing: '0.83px'
   },
   submit:{
@@ -81,7 +81,7 @@ const useStyles = makeStyles(theme => ({
     padding: '6px 30px',
     borderRadius: 24,
     height: 48,
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 600,  
     textTransform: 'capitalize',
     boxShadow: 'none',

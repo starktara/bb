@@ -75,7 +75,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(5)
   },
   bold: {
-    fontWeight: 600
+    fontWeight: 800
   },
   form: {
     marginTop: theme.spacing(2),
@@ -376,7 +376,7 @@ const BecomeFranchiseOwner = props => {
         </Grid>
         <Grid item xs={11} sm={11} md={11} lg={11} className="franchiseAdvantageSec">
           <div className={"franchiseAdvantage "+advantagePadding}>
-            <h2 className="center-align">BikeBazaar Advantage</h2>
+            <h2 className="center-align centerAdv">BikeBazaar Advantage</h2>
             <div className="center-align">
               <img src={headingLines} alt="" />
             </div>

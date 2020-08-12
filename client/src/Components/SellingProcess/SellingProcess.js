@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
       },
       heading:{
         color: '#232c2b',
-        fontSize: 36,
+        fontSize: 24,
         fontWeight: 800,
         lineHeight: '55px'
       },
@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
         marginTop: 50
       },
       subHeading:{
-        fontSize: 19,
+        fontSize: 18,
         fontWeight: 600,
         lineHeight: '1.5em'
       },

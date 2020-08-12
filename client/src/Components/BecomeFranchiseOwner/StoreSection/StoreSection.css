@@ -11,8 +11,8 @@
 }
 h2 {
     color: #ff0000;
-    font-size: 34px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 800;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -86,7 +86,7 @@ h2 {
  .StoreCard .detail ul.detailPoints li.owner { background: url(../../assets/images/icons/owner.png) 0 7px no-repeat; } */
 .StoreCard .detail p.location {
   margin: 0px;
-  font-size: 16px;
+  font-size: 18px;
   color: #ff0000;
   font-weight: bold;
 }
