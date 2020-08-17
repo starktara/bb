@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#f7f7f7'
   },
   banner: {
-    marginTop: theme.spacing(5)
+    marginTop: theme.spacing(4)
   },
   formContainer: {
     marginTop: theme.spacing(1)

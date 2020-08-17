@@ -19,10 +19,13 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: '#f7f7f7'
     },
     banner: {
-        marginTop: theme.spacing(5)
+        marginTop: theme.spacing(4)
+    },
+    banner1: {
+        marginTop: theme.spacing(1)
     },
     paper: {
-        marginBottom: theme.spacing(5),
+        marginBottom: theme.spacing(6),
         boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
         padding: theme.spacing(3),
         fontSize: 18,
@@ -32,7 +35,7 @@ const useStyles = makeStyles(theme => ({
         fontWeight: 500
     },
     paper2: {
-        marginBottom: theme.spacing(5),
+        marginBottom: theme.spacing(1),
         boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
         padding: '24px 90px 24px 90px',
         fontSize: 18,
@@ -51,7 +54,7 @@ const useStyles = makeStyles(theme => ({
         fontWeight: 500
     },
     redHeading: {
-        paddingBottom: 15,
+        paddingBottom: 10,
         fontSize: 24,
         fontWeight: 800,
         color: '#ff0000',
@@ -65,8 +68,8 @@ const useStyles = makeStyles(theme => ({
     },
     advantageContainer:{
         width: 1200,
-        margin: '40px auto',
-        padding: '40px'
+        margin: '40px auto 27px',
+        padding: '20px'
     },
     ml50: {
         marginLeft: '50px'
@@ -139,7 +142,7 @@ const About = (props) => {
                     <Banner navigation="About" heading="About" text=""/>
                 </Grid>
             </Grid>
-            <Grid container component="div" direction="row" justify="center" className={classes.banner}>
+            <Grid container component="div" direction="row" justify="center" className={classes.banner1}>
                 <Grid item xs={11} sm={11} md={11} lg={11}>
                     <Paper className={classes.paper}>
                         <h3 className={classes.redHeading+' center-align'}>About BikeBazaar</h3>
@@ -170,7 +173,7 @@ const About = (props) => {
                 </Grid>
             </Grid>
             <VehicleAdvantage continerStyle={classes.advantageContainer} heading="BikeBazaar Brings Great Advantage for Buyers"/>
-            <Grid container component="div" direction="row" justify="center" className={classes.banner}>
+            <Grid container component="div" direction="row" justify="center" className={classes.banner1}>
                 <Grid item xs={11} sm={11} md={11} lg={11}>
                     <SellingProcess heading="Selling Process made easy by BikeBazaar"/>
                 </Grid>

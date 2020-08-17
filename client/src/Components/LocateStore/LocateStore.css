@@ -20,7 +20,7 @@
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
   padding: 15px 20px;
-  margin: 0 0 60px 0;
+  margin: 10px 0 40px 0;
 }
 .locateDropdownCard ul {
   list-style: none;
@@ -110,7 +110,7 @@
 }
 .heading-lines {
   text-align: center;
-  margin: 20px 0px 30px 0px;
+  margin: 15px 0px 15px 0px;
 }
 .locationCard {
   border: solid 1px rgba(35, 43, 43, 0.4);

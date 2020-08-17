@@ -232,7 +232,7 @@ const LocateStore = props => {
           return (
   
             <Grid item xs={12} sm={12} md={6} lg={5} xl={4} key={key}>
-              <div className="locationCard" style={{marginRight:"10px", marginBottom: "10px"}}>
+              <div className="locationCard" style={{marginRight:"10px", marginBottom: "15px"}}>
                 <div style={{"cursor":"pointer"}} onClick={()=>handleStoreClick(thisLocation)}>
                   <h5>{thisLocation.locationName}</h5>
                   <div className="locationAddress">

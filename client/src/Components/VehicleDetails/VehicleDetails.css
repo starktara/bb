@@ -20,10 +20,10 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .wapper .pageDtl ul li:first-child { background:none; display: inline-block; padding:0; }
 .wapper .pageDtl ul li {  display: inline-block; background: url(../../assets/images/icons/right.svg) 0 7px no-repeat; background-size: 18px 10px; padding:0 0 0 20px;  }
 .wapper .pageDtl ul li a { color:#707575; } .wapper .pageDtl ul li.current { font-weight: bold; }
-.wapper .pageDtl h1 { font-size: 36px; text-transform: none; font-weight: bold; }
+.wapper .pageDtl h1 { font-size: 24px; text-transform: none; font-weight: bold; }
 .wapper .pageDtl p { font-size: 16px; margin: 8px 0 0; }
 .filter { padding: 0!important; }
-.filter h5 { font-size: 16px; padding: 29px 0 13px; }
+.filter h5 { font-size: 18px; padding: 29px 0 13px; }
 .filterSec { border-radius: 4px; box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2); background-color: #ffffff; }
 .filterSec .CityWidget,.filterSec .BudgetWidget, .filterSec .BrandWidget, .filterSec .YearWidget, .filterSec .kmWidget
 { padding:18px 18px 0; margin: 0; }
@@ -153,7 +153,7 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .vehicleAdvantageSec { background-color: #e5e5e5; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3); }
 .vehicleAdvantage h2 { color: #232c2b; }
 .vehicleAdvantage .advantageSec { padding: 0 0; }
-.vehicleAdvantage .advantageSec .advantage { padding: 10px 0; }
+.vehicleAdvantage .advantageSec .advantage { padding: 5px 0; }
 .vehicleAdvantage .advantageSec .advantage .advantageIconLeft { width: 224px; height: 224px; border-radius: 50%; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17); background-color: #ffffff; position: relative; z-index: 1; text-align: center; }
 .vehicleAdvantage .advantageSec .advantage .advantageIconLeft img { margin: 30% 0; }
 .vehicleAdvantage .advantageSec .advantage h3 { font-size:24px; background: url(../../assets/images/icons/advantage-icon-lt.png) 0 30px no-repeat; font-weight: 800; color: #ff0000; padding-top: 30px; padding-left: 180px; }
@@ -246,9 +246,9 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .similar { width: 100%; margin:40px auto; }
 .similar .carousel { overflow:hidden; }
 .vehicleAdvantage { width:100%; }
-.vehicleAdvantage .advantageSec .advantage, .vehicleAdvantage .advantageSec .advantage1 { padding:20px 0; }
+.vehicleAdvantage .advantageSec .advantage, .vehicleAdvantage .advantageSec .advantage1 { padding:10px 0; }
 .vehicleAdvantage .advantageSec .advantage .advantageIconLeft, .vehicleAdvantage .advantageSec .advantage1 .advantageIconRight { margin: 0 auto;  }
-.vehicleAdvantage .advantageSec .advantage1 h3, .vehicleAdvantage .advantageSec .advantage h3{ background:none; text-align:center; padding: 20px 0 0; }
+.vehicleAdvantage .advantageSec .advantage1 h3, .vehicleAdvantage .advantageSec .advantage h3{ background:none; text-align:center; padding: 10px 0 0; }
 .vehicleAdvantage .advantageSec .advantage1 p, .vehicleAdvantage .advantageSec .advantage p{ text-align:center; padding: 0; font-size: 20px; }
 .vehicleSummarySec, .vehicleReportSec { padding: 50px 12px 0 !important; }
 .vehicleGalSec { padding:0 12px 40px!important; }

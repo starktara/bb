@@ -22,14 +22,14 @@
   color: #ff0000;
   font-size: 24px;
   font-weight: 800;
-  margin-bottom: 20px;
+  margin-bottom: 11px;
 }
 .paper {
   border-radius: 4px;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
   padding: 15px 20px;
-  margin: 0 0px 0px 0;
+  margin: 5px 0px 5px 0;
 }
 .franchiseAdvantage {
   background-color: #e5e5e5;
@@ -37,7 +37,7 @@
 }
 .franchiseAdvantage {
   margin: 40px auto;
-  padding: 40px;
+  padding: 7px;
 }
 .franchiseAdvantage h2 {
   color: #232c2b;
@@ -47,7 +47,7 @@
   padding: 0 0;
 }
 .franchiseAdvantage .franchiseAdvantageSec .advantage {
-  padding: 10px 0px 10px 149px;
+  padding: 4px 0px 10px 149px;
 }
 .franchiseAdvantage .franchiseAdvantageSec .advantage .advantageIconLeft {
   width: 160px;

@@ -33,23 +33,34 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#f7f7f7'
   },
   banner: {
-    marginTop: theme.spacing(5)
+    marginTop: theme.spacing(4),
+    
   },
   formContainer: {
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(4),
   },
   paper: {
-    marginTop: theme.spacing(5),
-    marginBottom: theme.spacing(5),
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(3),
     boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
-    padding: theme.spacing(3),
+    padding: theme.spacing(4),
+    fontSize: 16,
+    letterSpacing: 0.63,
+    color: '#232b2b',
+    lineHeight: '28px',
+  },
+  paper1: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
+    padding: theme.spacing(4),
     fontSize: 16,
     letterSpacing: 0.63,
     color: '#232b2b',
     lineHeight: '28px',
   },
   mapContainer: {
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(3),
     marginBottom: theme.spacing(5),
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2)
@@ -59,8 +70,8 @@ const useStyles = makeStyles(theme => ({
     fontSize: 13
   },
   bookAppointmentHeading:{
-    paddingTop: 43.8,
-    paddingBottom: 15,
+    paddingTop: 30,
+    paddingBottom: 13,
     fontWeight: 800,
     fontSize: 24,
     color: '#232c2b'
@@ -97,7 +108,7 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: '900px 360px',
     marginLeft: 145,
-    marginTop: 50
+    marginTop: 30
   },
   stepOne:{
     position: 'absolute',
@@ -485,7 +496,7 @@ const Sell = props => {
   };
 
   let stepsToSellSection = (matches) ? <Grid item xs={11} sm={11} md={11} lg={11}>
-            <Paper className={classes.paper+ ' center-align'}>
+            <Paper className={classes.paper1+ ' center-align'}>
               <h3 className={classes.sellHeading}>Steps to Sell Your Two-Wheeler</h3>
               <img alt="" src={blackHeadingLines} width="57" height="4"/>
               <div className={classes.steps}>

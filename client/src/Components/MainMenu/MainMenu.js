@@ -36,12 +36,12 @@ const StyledMenuItem = withStyles({
     '&:hover': {
       backgroundColor: 'white',
       color: 'black',
-      fontWeight: 700
+      fontWeight: 800
     },
     color: 'white',
     backgroundColor: 'black',
     fontWeight: 500,
-    fontSize:18,
+    fontSize: 18,
     fontFamily: "inherit",
   },
 })(MenuItem);
