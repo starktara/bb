@@ -1,9 +1,10 @@
 .contact-heading {
   color: #e92d2c;
-  font-weight: bold;
+  font-weight: 800;
   white-space: nowrap;
   font-size: 24px;
   text-align: center;
+  padding-bottom: 15px;
 }
 .heading-line {
   text-align: center;

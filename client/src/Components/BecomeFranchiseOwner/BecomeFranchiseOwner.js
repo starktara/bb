@@ -72,7 +72,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   banner: {
-    marginTop: theme.spacing(5)
+    marginTop: theme.spacing(4)
   },
   bold: {
     fontWeight: 800

@@ -11,7 +11,7 @@ import syv from '../../assets/syv.svg';
 const useStyles = makeStyles(theme => ({
     paper: {
         marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(6),
+        marginBottom: theme.spacing(5),
         boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
         padding: theme.spacing(2),
         fontSize: 16,
@@ -23,7 +23,8 @@ const useStyles = makeStyles(theme => ({
         color: '#232c2b',
         fontSize: 24,
         fontWeight: 800,
-        lineHeight: '55px'
+        lineHeight: '55px',
+        // paddingBottom: 7
       },
       container:{
         marginTop: 30

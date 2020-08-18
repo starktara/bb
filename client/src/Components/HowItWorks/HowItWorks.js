@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
         lineHeight: '28px'
     },
     redHeading: {
-        paddingBottom: 15,
+        paddingBottom: 13,
         fontSize: 24,
         fontWeight: 800,
         color: '#ff0000',

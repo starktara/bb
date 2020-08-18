@@ -53,7 +53,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
     boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
-    padding: theme.spacing(4),
+    padding: theme.spacing(3),
     fontSize: 16,
     letterSpacing: 0.63,
     color: '#232b2b',
@@ -71,7 +71,7 @@ const useStyles = makeStyles(theme => ({
   },
   bookAppointmentHeading:{
     paddingTop: 30,
-    paddingBottom: 13,
+    paddingBottom: 15,
     fontWeight: 800,
     fontSize: 24,
     color: '#232c2b'
@@ -83,14 +83,14 @@ const useStyles = makeStyles(theme => ({
     color: '#232c2b'
   },
   sellHeading:{
-    paddingBottom: 15,
+    paddingBottom: 13,
     fontSize: 24,
     fontWeight: 800,
     color: '#ff0000',
     textAlign: 'center'
   },
   sellHeadingMobile:{
-    paddingBottom: 15,
+    paddingBottom: 13,
     fontSize: 19,
     fontWeight: 800,
     color: '#ff0000',
@@ -101,36 +101,40 @@ const useStyles = makeStyles(theme => ({
   },
   steps:{
     position: 'relative',
-    width:900,
-    height:360,
+    width:'100%',
+    height:420,
     backgroundImage: 'url("'+stepsToSell+'")',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '900px 360px',
-    marginLeft: 145,
-    marginTop: 30
+    paddingRight: theme.spacing(1),
+    marginTop: 50,
   },
   stepOne:{
     position: 'absolute',
     top: 50,
-    fontWeight: 600
+    fontWeight: 600,
+    paddingLeft: '8%'
   },
   stepTwo:{
     position: 'absolute',
     left: 268,
     top: 30,
-    fontWeight: 600
+    fontWeight: 600,
+    paddingLeft: '8%'
   },
   stepThree:{
     position: 'absolute',
     left: 517,
-    fontWeight: 600
+    fontWeight: 600,
+    paddingLeft: '8%'
   },
   stepFour:{
     position: 'absolute',
     left: 716,
     top: -18,
-    fontWeight: 600
+    fontWeight: 600,
+    paddingLeft: '8%'
   },
   advantageHeading:{
     color: '#232c2b',
@@ -229,7 +233,7 @@ const formValidator = (name, value) => {
 
 const Sell = props => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
   const classes = useStyles();
 
   useEffect(() =>{
@@ -495,24 +499,25 @@ const Sell = props => {
     }
   };
 
-  let stepsToSellSection = (matches) ? <Grid item xs={11} sm={11} md={11} lg={11}>
+  let stepsToSellSection = (matches) ? <Grid item Grid item xs={11} sm={11} md={11} lg={11}>
             <Paper className={classes.paper1+ ' center-align'}>
               <h3 className={classes.sellHeading}>Steps to Sell Your Two-Wheeler</h3>
               <img alt="" src={blackHeadingLines} width="57" height="4"/>
-              <div className={classes.steps}>
+                <div className={classes.steps}>
                   <div className={classes.stepOne}>Share Your<br/>Two-Wheeler's Details</div>
                   <div className={classes.stepTwo}>Inspection by our<br/>Auto Expert</div>
                   <div className={classes.stepThree}>Document<br/>Verification</div>
                   <div className={classes.stepFour}>Instant Payment For<br/>Your Two-Wheeler</div>
-              </div>
+                </div>
             </Paper>
+            {/* </Grid> */}
           </Grid> :
-          // <Grid item xs={11} sm={11}>
-            <Paper className={classes.paper+ ' center-align'}>
+          // <Grid item xs={12} sm={12} md={8}>
+            <Paper className={classes.paper1+ ' center-align'}>
                 <h3 className={classes.sellHeadingMobile}>Steps to Sell Your Two-Wheeler</h3>
                 <img src={stepsToSellMobile} width="750" alt=""/>
             </Paper>
-          {/* </Grid>; */}
+          // </Grid>;
 
   return (
     <div id="Sell" className={classes.body}>
