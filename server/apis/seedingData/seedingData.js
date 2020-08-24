@@ -738,7 +738,88 @@ router.get("/uploadLocations", (req, res) => {
         state: "Andhra Pradesh",
         locality: "D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry - 533103, Andhra Pradesh, India.",
         location: { lat: 16.999954, lon: 81.786184 }
+      },
+      {
+        id: 4,
+        name: "BikeBazaar, MCV Wheels",
+        city: "Tirur",
+        state: "Kerala",
+        locality: "",
+        location: { lat: 16.999954, lon: 81.786184 }
+      },
+      {
+        id: 5,
+        name: "Rajaji Nagar, Bangalore",
+        city: "Bangalore",
+        state: "Karnataka",
+        locality: "New no.72, Old No.60/61, Dr. Rajkumar Road, Rajaji Nagar, Opp Srinath sanitary wares,Bangalore - 560010",
+        location: { lat: 16.999954, lon: 81.786184 }
+      },
+      {
+        id: 6,
+        name: "Mootha Centre, Nungambakkam",
+        city: "Nungambakkam",
+        state: "Chennai",
+        locality: "Mootha Centre, Door No 23, Kodambakkam High road, Nungambakkam, Chennai - 600034",
+        location: { lat: 16.999954, lon: 81.786184 }
+      },
+      {
+        id: 7,
+        name: "S/F Arya Samaj, Karol Bagh",
+        city: "New Delhi",
+        state: "",
+        locality: "1694 S/F Arya Samaj Road Karol Bagh, Near Grace Hotel & Sat Bharaba Govt School, l Karol Bagh, New Delhi - 110005",
+        location: { lat: 16.999954, lon: 81.786184 }
+      },
+      {
+        id: 8,
+        name: "Sector-12 A, Gurgaon",
+        city: "Gurgaon",
+        state: "Haryana",
+        locality: "SCO 37, 3rd Floor, Hall No.1 Sector-12 A, Huda Market, Opp. Telephone Exchange, Near Bikanerwala, Gurgaon - 122001",
+        location: { lat: 16.999954, lon: 81.786184 }
+      },
+      {
+        id: 9,
+        name: "Babukhan Estate, Hyderabad",
+        city: "Hyderabad",
+        state: "Telanagna",
+        locality: "5th Floor, Flat No 509/A, Babukhan Estate, Basheerbagh, Hyderabad, Telanagna - 500001",
+        location: { lat: 16.999954, lon: 81.786184 }
+      },
+      {
+        id: 10,
+        name: "ARG CORPORATE PARK, Jaipur",
+        city: "Jaipur",
+        state: "Rajasthan",
+        locality: "ARG CORPORATE PARK GOPAL BARI BUILDING, Ajmer Road, Panch Batti, Mission Compound, Hathroi, Jaipur, Rajasthan",
+        location: { lat: 16.999954, lon: 81.786184 }
+      },
+      {
+        id: 11,
+        name: "Sagar Tech Plaza A, Mumbai",
+        city: "Mumbai",
+        state: "Maharashtra",
+        locality: "Office N0. 208, 2nd Floor, Sagar Tech Plaza A, Sakinaka Junction, Mumbai - 400072",
+        location: { lat: 16.999954, lon: 81.786184 }
+      },
+      {
+        id: 12,
+        name: "Jejani Bhavan, Nagpur",
+        city: "Nagpur",
+        state: "Maharashtra",
+        locality: "Jejani Bhavan, Above Khamgaon urban Bank, Gandhi Grain Market, Telephone Exchange Square, Central Avenue Road, Nagpur - 440009",
+        location: { lat: 16.999954, lon: 81.786184 }
+      },
+      {
+        id: 13,
+        name: "Govind Niwas, Pune",
+        city: "Pune",
+        state: "Maharashtra",
+        locality: "Office no. 2 and 3, 1st Floor, Govind Niwas, Rasta Peth, Near Naidu Ganapati Rasta Peth, Pune - 411011",
+        location: { lat: 16.999954, lon: 81.786184 }
       }
+
     ];
     const body = dataset.flatMap(doc => [
       { index: { _index: "store-location" } },
