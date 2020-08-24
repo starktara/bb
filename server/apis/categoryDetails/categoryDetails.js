@@ -104,7 +104,7 @@ router.get("/getCategoryById", (req, res) => {
         size: 10000,
         query: {
           bool: {
-            must: mustArray,
+            must: mustArray, //or
             filter: [
               {
                 bool: {
@@ -118,6 +118,7 @@ router.get("/getCategoryById", (req, res) => {
       }
     });
     res.send(body.hits.hits);
+    // console.log(body.hits.hits);
   }
   getBikesForCategory().catch(console.log);
 });

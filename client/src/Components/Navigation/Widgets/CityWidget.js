@@ -102,6 +102,86 @@ const CityWidget = props => {
                 checked={city === "Rajahmundry"}
               />
             </li>
+            <li>
+              <FormControlLabel
+                value="Tirur"
+                control={<BBRadio />}
+                label="Tirur"
+                checked={city === "Tirur"}
+              />
+            </li>
+            <li>
+              <FormControlLabel
+                value="Bangalore"
+                control={<BBRadio />}
+                label="Bangalore"
+                checked={city === "Bangalore"}
+              />
+            </li>
+            <li>
+              <FormControlLabel
+                value="Chennai"
+                control={<BBRadio />}
+                label="Chennai"
+                checked={city === "Chennai"}
+              />
+            </li>
+            <li>
+              <FormControlLabel
+                value="New Delhi"
+                control={<BBRadio />}
+                label="New Delhi"
+                checked={city === "New Delhi"}
+              />
+            </li>
+            <li>
+              <FormControlLabel
+                value="Gurgaon"
+                control={<BBRadio />}
+                label="Gurgaon"
+                checked={city === "Gurgaon"}
+              />
+            </li>
+            <li>
+              <FormControlLabel
+                value="Hyderabad"
+                control={<BBRadio />}
+                label="Hyderabad"
+                checked={city === "Hyderabad"}
+              />
+            </li>
+            <li>
+              <FormControlLabel
+                value="Jaipur"
+                control={<BBRadio />}
+                label="Jaipur"
+                checked={city === "Jaipur"}
+              />
+            </li>
+            <li>
+              <FormControlLabel
+                value="Mumbai"
+                control={<BBRadio />}
+                label="Mumbai"
+                checked={city === "Mumbai"}
+              />
+            </li>
+            <li>
+              <FormControlLabel
+                value="Nagpur"
+                control={<BBRadio />}
+                label="Nagpur"
+                checked={city === "Nagpur"}
+              />
+            </li>
+            <li>
+              <FormControlLabel
+                value="Pune"
+                control={<BBRadio />}
+                label="Pune"
+                checked={city === "Pune"}
+              />
+            </li>
           </ul>
         </RadioGroup>
       </div>

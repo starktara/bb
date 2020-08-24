@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import { CHANGE_CATEGORY } from "../../../store/actions/actionTypes";
 import * as actions from "../../../store/actions/index";
+import { Typography } from '@material-ui/core';
 
 const BBRadio = withStyles({
   root: {
@@ -20,8 +21,8 @@ const BBRadio = withStyles({
 const CategoryWidget = props => {
   const dispatch = useDispatch();
   const { category } = useSelector(state => state.vehicleDetails);
+  console.log(category);
   const [selectedCategory, setSelectedCategory] = useState(category);
-
   const handleChange = clickValue => {
     let filterData = props.filter;
     setSelectedCategory(parseInt(clickValue.target.value));
@@ -36,6 +37,10 @@ const CategoryWidget = props => {
     props.cityFilter(categ, filterData);
   }
 
+  const counterHandle = () => {
+    return category.length;
+  }
+  
   useEffect(() => {
     handleChange2(category)
   }, [category]);
@@ -60,8 +65,10 @@ const CategoryWidget = props => {
               <FormControlLabel
                 value="1"
                 control={<BBRadio />}
-                label="Motorcycle"
+                // label="Motorcycle"
+                label={<Typography>Motorcycle {"1"} </Typography>}
                 checked={selectedCategory === 1}
+                onChange={counterHandle}
               />
             </li>
             <li>

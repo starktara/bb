@@ -229,6 +229,36 @@ const LocationDropDown = () => {
       <StyledMenuItem onClick={() => handleCityChange("Rajahmundry")}>
         Rajahmundry
       </StyledMenuItem>
+      <StyledMenuItem onClick={() => handleCityChange("Tirur")}>
+        Tirur
+      </StyledMenuItem>
+      <StyledMenuItem onClick={() => handleCityChange("Bangalore")}>
+        Bangalore
+      </StyledMenuItem>
+      <StyledMenuItem onClick={() => handleCityChange("Chennai")}>
+        Chennai
+      </StyledMenuItem>
+      <StyledMenuItem onClick={() => handleCityChange("New Delhi")}>
+        Delhi
+      </StyledMenuItem>
+      <StyledMenuItem onClick={() => handleCityChange("TGurgaon")}>
+        Gurgaon
+      </StyledMenuItem>
+      <StyledMenuItem onClick={() => handleCityChange("Hyderabad")}>
+        Hyderabad
+      </StyledMenuItem>
+      <StyledMenuItem onClick={() => handleCityChange("Jaipur")}>
+        Jaipur
+      </StyledMenuItem>
+      <StyledMenuItem onClick={() => handleCityChange("Mumbai")}>
+        Mumbai
+      </StyledMenuItem>
+      <StyledMenuItem onClick={() => handleCityChange("Nagpur")}>
+        Nagpur
+      </StyledMenuItem>
+      <StyledMenuItem onClick={() => handleCityChange("Pune")}>
+        Pune
+      </StyledMenuItem>
     </Menu>
     </>
   );
