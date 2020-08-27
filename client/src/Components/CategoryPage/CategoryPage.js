@@ -61,6 +61,7 @@ const CategoryPage = props => {
   const onPageChanged = paginationData => {
     const { currentPage, totalPages, pageLimit } = paginationData;
     console.log("najsbdsjdsdfsdf : : ", paginationData)
+    // console.log(paginationData.totalRecords)
     const offset = (currentPage - 1) * pageLimit;
     dispatch(actions.getPaginatedData(offset, pageLimit));
   };

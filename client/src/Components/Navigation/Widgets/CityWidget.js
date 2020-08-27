@@ -104,10 +104,10 @@ const CityWidget = props => {
             </li>
             <li>
               <FormControlLabel
-                value="Tirur"
+                value="Thrissur"
                 control={<BBRadio />}
-                label="Tirur"
-                checked={city === "Tirur"}
+                label="Thrissur"
+                checked={city === "Thrissur"}
               />
             </li>
             <li>

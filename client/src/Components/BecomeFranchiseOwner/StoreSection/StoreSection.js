@@ -64,7 +64,7 @@ const StoreSection = () => {
                         </div>
                     </div>
                     </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={5} style={{paddingBottom: '13px'}} >
+                    {/* <Grid item xs={12} sm={12} md={6} lg={5} style={{paddingBottom: '13px'}} >
                     <div className="StoreCard">
                         <img src={mvcIcon} alt="" />
                         <div className="detail">
@@ -76,17 +76,17 @@ const StoreSection = () => {
                             <p className="location">Kolkata, West Bengal</p>
                         </div>
                     </div>
-                    </Grid>
+                    </Grid> */}
                     <Grid item xs={12} sm={12} md={6} lg={5}>
                     <div className="StoreCard">
                         <img src={mvcIcon} alt="" />
                         <div className="detail">
-                            <h3>BikeBazaar – Undelcared, Tirur</h3>
+                            <h3>BikeBazaar – Sitaram Trade & Services, Thrissur</h3>
                             <p className="address">
-                                unknown
+                                Sitaram Trade & Services, PT Manual Road, Kollothumpadam, Patturaikal, Thrissur, Kerala
                             </p>
                             <br className="clr"/>
-                            <p className="location">Tirur, Kerala</p>
+                            <p className="location">Thrissur, Kerala</p>
                         </div>
                     </div>
                     </Grid>

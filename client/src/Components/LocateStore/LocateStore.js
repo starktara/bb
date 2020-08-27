@@ -96,17 +96,17 @@ const LocateStore = props => {
       },
       storeId: 1
     },
-    {
-      city: "Kolkata",
-      locationName: "BikeBazaar – Undelcared, Kolkata",
-      address:
-        "",
-      coordinates: {
-        lat: 16.999954,
-        lng: 81.786184
-      },
-      storeId: 2
-    },
+    // {
+    //   city: "Kolkata",
+    //   locationName: "BikeBazaar – Undelcared, Kolkata",
+    //   address:
+    //     "",
+    //   coordinates: {
+    //     lat: 16.999954,
+    //     lng: 81.786184
+    //   },
+    //   storeId: 2
+    // },
     {
       city: "Rajahmundry",
       locationName: "BikeBazaar – MCV Wheels, Rajahmundry",
@@ -119,13 +119,13 @@ const LocateStore = props => {
       storeId: 3
     },
     {
-      city: "Tirur",
-      locationName: "BikeBazaar – Undelcared, Tirur",
+      city: "Thrissur",
+      locationName: "BikeBazaar – Sitaram Trade & Services, Thrissur",
       address:
-        "",
+        "Sitaram Trade & Services, PT Manual Road, Kollothumpadam, Patturaikal, Thrissur, Kerala",
       coordinates: {
-        lat: 16.999954,
-        lng: 81.786184
+        lat: 10.540670,
+        lng: 76.213814
       },
       storeId: 4
     },
@@ -135,8 +135,8 @@ const LocateStore = props => {
       address:
         "New no.72, Old No.60/61, Dr. Rajkumar Road, Rajaji Nagar, Opp Srinath sanitary wares,Bangalore - 560010",
       coordinates: {
-        lat: 16.999954,
-        lng: 81.786184
+        lat: 12.989492, 
+        lng: 77.558663
       },
       storeId: 5
     },
@@ -146,8 +146,8 @@ const LocateStore = props => {
       address:
         "Mootha Centre, Door No 23, Kodambakkam High road, Nungambakkam, Chennai - 600034",
       coordinates: {
-        lat: 16.999954,
-        lng: 81.786184
+        lat: 13.052892, 
+        lng: 80.246384,
       },
       storeId: 6
     },
@@ -157,8 +157,8 @@ const LocateStore = props => {
       address:
         "1694 S/F Arya Samaj Road Karol Bagh, Near Grace Hotel & Sat Bharaba Govt School, l Karol Bagh, New Delhi - 110005",
       coordinates: {
-        lat: 16.999954,
-        lng: 81.786184
+        lat: 28.647347, 
+        lng: 77.194833
       },
       storeId: 7
     },
@@ -168,8 +168,8 @@ const LocateStore = props => {
       address:
         "SCO 37, 3rd Floor, Hall No.1 Sector-12 A, Huda Market, Opp. Telephone Exchange, Near Bikanerwala, Gurgaon - 122001",
       coordinates: {
-        lat: 16.999954,
-        lng: 81.786184
+        lat: 28.468494, 
+        lng: 77.035545
       },
       storeId: 8
     },
@@ -179,8 +179,8 @@ const LocateStore = props => {
       address:
         "5th Floor, Flat No 509/A, Babukhan Estate, Basheerbagh, Hyderabad, Telanagna - 500001",
       coordinates: {
-        lat: 16.999954,
-        lng: 81.786184
+        lat: 17.400817, 
+        lng: 78.474401
       },
       storeId: 9
     },
@@ -190,8 +190,8 @@ const LocateStore = props => {
       address:
         "ARG CORPORATE PARK GOPAL BARI BUILDING, Ajmer Road, Panch Batti, Mission Compound, Hathroi, Jaipur, Rajasthan",
       coordinates: {
-        lat: 16.999954,
-        lng: 81.786184
+        lat: 26.915150, 
+        lng: 75.794112
       },
       storeId: 10
     },
@@ -201,8 +201,8 @@ const LocateStore = props => {
       address:
         "Office N0. 208, 2nd Floor, Sagar Tech Plaza A, Sakinaka Junction, Mumbai - 400072",
       coordinates: {
-        lat: 16.999954,
-        lng: 81.786184
+        lat: 19.102637, 
+        lng: 72.885387
       },
       storeId: 11
     },
@@ -212,8 +212,8 @@ const LocateStore = props => {
       address:
         "Jejani Bhavan, Above Khamgaon urban Bank, Gandhi Grain Market, Telephone Exchange Square, Central Avenue Road, Nagpur - 440009",
       coordinates: {
-        lat: 16.999954,
-        lng: 81.786184
+        lat: 21.148516, 
+        lng: 79.122348
       },
       storeId: 12
     },
@@ -223,15 +223,15 @@ const LocateStore = props => {
       address:
         "Office no. 2 and 3, 1st Floor, Govind Niwas, Rasta Peth, Near Naidu Ganapati Rasta Peth, Pune - 411011",
       coordinates: {
-        lat: 16.999954,
-        lng: 81.786184
+        lat: 18.517641, 
+        lng: 73.867125
       },
       storeId: 13
     }
 
   ]);
 
-  const [cities] = useState(['Aluva', 'Kolkata', 'Rajahmundry', 'Tirur', 'Bangalore', 'Chennai', 'New Delhi', 'Gurgaon', 'Hyderabad', 'Jaipur', 'Mumbai', 'Nagpur', 'Pune']);
+  const [cities] = useState(['Aluva', 'Kolkata', 'Rajahmundry', 'Thrissur', 'Bangalore', 'Chennai', 'New Delhi', 'Gurgaon', 'Hyderabad', 'Jaipur', 'Mumbai', 'Nagpur', 'Pune']);
 
   const [searchedLocation,setSearchedLocation] = useState(null);
 

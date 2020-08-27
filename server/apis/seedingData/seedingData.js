@@ -558,9 +558,9 @@ router.get("/uploadBikes", (req, res) => {
         descr: "",
         price: 30000,
         state: "Kerala",
-        city: "Tirur",
-        loc: "Tirur",
-        location: { lat: 16.999954, lon: 81.786184 },
+        city: "Thrissur",
+        loc: "Thrissur",
+        location: { lat: 10.540670, lng: 76.213814 },
         myear: 2016,
         mmonth: 0,
         kmdriven: 58157,
@@ -583,9 +583,9 @@ router.get("/uploadBikes", (req, res) => {
         descr: "",
         price: 40000,
         state: "Kerala",
-        city: "Tirur",
-        loc: "Tirur",
-        location: { lat: 16.999954, lon: 81.786184 },
+        city: "Thrissur",
+        loc: "Thrissur",
+        location: { lat: 10.540670, lng: 76.213814 },
         myear: 2015,
         mmonth: 0,
         kmdriven: 5737,
@@ -608,9 +608,9 @@ router.get("/uploadBikes", (req, res) => {
         descr: "",
         price: 25000,
         state: "Kerala",
-        city: "Tirur",
-        loc: "Tirur",
-        location: { lat: 10.100914, lon: 76.348984 },
+        city: "Thrissur",
+        loc: "Thrissur",
+        location: { lat: 10.540670, lng: 76.213814 },
         myear: 2015,
         mmonth: 0,
         kmdriven: 8000,
@@ -633,9 +633,9 @@ router.get("/uploadBikes", (req, res) => {
         descr: "",
         price: 38000,
         state: "Kerala",
-        city: "Tirur",
-        loc: "Tirur",
-        location: { lat: 16.999954, lon: 81.786184 },
+        city: "Thrissur",
+        loc: "Thrissur",
+        location: { lat: 10.540670, lng: 76.213814 },
         myear: 2016,
         mmonth: 0,
         kmdriven: 22469,
@@ -660,7 +660,7 @@ router.get("/uploadBikes", (req, res) => {
         state: "Karnataka",
         city: "Bangalore",
         loc: "Bangalore",
-        location: { lat: 16.999954, lon: 81.786184 },
+        location: { lat: 12.989492, lng: 77.558663 },
         myear: 2016,
         mmonth: 0,
         kmdriven: 22469,
@@ -741,11 +741,11 @@ router.get("/uploadLocations", (req, res) => {
       },
       {
         id: 4,
-        name: "BikeBazaar, MCV Wheels",
-        city: "Tirur",
+        name: "BikeBazaar – Sitaram Trade & Services",
+        city: "Thrissur",
         state: "Kerala",
-        locality: "",
-        location: { lat: 16.999954, lon: 81.786184 }
+        locality: "Sitaram Trade & Services, PT Manual Road, Kollothumpadam, Patturaikal, Thrissur, Kerala",
+        location: { lat: 10.540670, lng: 76.213814 }
       },
       {
         id: 5,
@@ -753,7 +753,7 @@ router.get("/uploadLocations", (req, res) => {
         city: "Bangalore",
         state: "Karnataka",
         locality: "New no.72, Old No.60/61, Dr. Rajkumar Road, Rajaji Nagar, Opp Srinath sanitary wares,Bangalore - 560010",
-        location: { lat: 16.999954, lon: 81.786184 }
+        location: {lat: 12.989492, lng: 77.558663}
       },
       {
         id: 6,
@@ -761,15 +761,15 @@ router.get("/uploadLocations", (req, res) => {
         city: "Nungambakkam",
         state: "Chennai",
         locality: "Mootha Centre, Door No 23, Kodambakkam High road, Nungambakkam, Chennai - 600034",
-        location: { lat: 16.999954, lon: 81.786184 }
+        location: { lat: 13.052892, lng: 80.246384 }
       },
       {
         id: 7,
         name: "S/F Arya Samaj, Karol Bagh",
         city: "New Delhi",
-        state: "",
+        state: "New Delhi",
         locality: "1694 S/F Arya Samaj Road Karol Bagh, Near Grace Hotel & Sat Bharaba Govt School, l Karol Bagh, New Delhi - 110005",
-        location: { lat: 16.999954, lon: 81.786184 }
+        location: { lat: 28.647347, lng: 77.194833 }
       },
       {
         id: 8,
@@ -777,7 +777,7 @@ router.get("/uploadLocations", (req, res) => {
         city: "Gurgaon",
         state: "Haryana",
         locality: "SCO 37, 3rd Floor, Hall No.1 Sector-12 A, Huda Market, Opp. Telephone Exchange, Near Bikanerwala, Gurgaon - 122001",
-        location: { lat: 16.999954, lon: 81.786184 }
+        location: { lat: 28.468494, lng: 77.035545 }
       },
       {
         id: 9,
@@ -785,7 +785,7 @@ router.get("/uploadLocations", (req, res) => {
         city: "Hyderabad",
         state: "Telanagna",
         locality: "5th Floor, Flat No 509/A, Babukhan Estate, Basheerbagh, Hyderabad, Telanagna - 500001",
-        location: { lat: 16.999954, lon: 81.786184 }
+        location: { lat: 17.400817, lng: 78.474401 }
       },
       {
         id: 10,
@@ -793,7 +793,7 @@ router.get("/uploadLocations", (req, res) => {
         city: "Jaipur",
         state: "Rajasthan",
         locality: "ARG CORPORATE PARK GOPAL BARI BUILDING, Ajmer Road, Panch Batti, Mission Compound, Hathroi, Jaipur, Rajasthan",
-        location: { lat: 16.999954, lon: 81.786184 }
+        location: { lat: 26.915150, lng: 75.794112 }
       },
       {
         id: 11,
@@ -801,7 +801,7 @@ router.get("/uploadLocations", (req, res) => {
         city: "Mumbai",
         state: "Maharashtra",
         locality: "Office N0. 208, 2nd Floor, Sagar Tech Plaza A, Sakinaka Junction, Mumbai - 400072",
-        location: { lat: 16.999954, lon: 81.786184 }
+        location: { lat: 19.102637, lng: 72.885387 }
       },
       {
         id: 12,
@@ -809,7 +809,7 @@ router.get("/uploadLocations", (req, res) => {
         city: "Nagpur",
         state: "Maharashtra",
         locality: "Jejani Bhavan, Above Khamgaon urban Bank, Gandhi Grain Market, Telephone Exchange Square, Central Avenue Road, Nagpur - 440009",
-        location: { lat: 16.999954, lon: 81.786184 }
+        location: { lat: 21.148516, lng: 79.122348 }
       },
       {
         id: 13,
@@ -817,7 +817,7 @@ router.get("/uploadLocations", (req, res) => {
         city: "Pune",
         state: "Maharashtra",
         locality: "Office no. 2 and 3, 1st Floor, Govind Niwas, Rasta Peth, Near Naidu Ganapati Rasta Peth, Pune - 411011",
-        location: { lat: 16.999954, lon: 81.786184 }
+        location: { lat: 18.517641, lng: 73.867125 }
       }
 
     ];
