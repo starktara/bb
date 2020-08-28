@@ -3,7 +3,7 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { connect, useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { CHANGE_CATEGORY } from "../../../store/actions/actionTypes";
 import * as actions from "../../../store/actions/index";
@@ -28,6 +28,7 @@ const useStyle = makeStyles({
 
 const CategoryWidget = props => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const classes = useStyle();
   const { vehicles, category } = useSelector(state => state.vehicleDetails);
   const [selectedCategory, setSelectedCategory] = useState(category);
@@ -81,30 +82,36 @@ const CategoryWidget = props => {
       <div className="WidgetBody">
         <RadioGroup aria-label="category" name="category" onChange={handleChange}>
           <ul className="cat-list">
-            <li>
-              <FormControlLabel
-                value="1"
-                control={<BBRadio />}
-                label= {`Motorcycle ${selectedCategory === 1 ? valued : ""}` }
-                checked={selectedCategory === 1}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="2"
-                control={<BBRadio />}
-                label={`Scooter ${selectedCategory === 2 ? valued : ""}`}
-                checked={selectedCategory === 2}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="3"
-                control={<BBRadio />}
-                label={`High-end Motorcycle ${selectedCategory === 3 ? valued : " "} `}
-                checked={selectedCategory === 3}
-              />
-            </li>
+            <Link to='/category/bike'>
+              <li>
+                <FormControlLabel
+                  value="1"
+                  control={<BBRadio />}
+                  label= {`Motorcycle ${selectedCategory === 1 ? valued : ""}` }
+                  checked={selectedCategory === 1}
+                />
+              </li>
+            </Link>
+            <Link to='/category/scooter'>
+              <li>
+                <FormControlLabel
+                  value="2"
+                  control={<BBRadio />}
+                  label={`Scooter ${selectedCategory === 2 ? valued : ""}`}
+                  checked={selectedCategory === 2}
+                />
+              </li>
+            </Link>
+            <Link to='/category/high_end_bike'>
+              <li>
+                <FormControlLabel
+                  value="3"
+                  control={<BBRadio />}
+                  label={`High-end Motorcycle ${selectedCategory === 3 ? valued : " "} `}
+                  checked={selectedCategory === 3}
+                />
+              </li>
+            </Link>            
           </ul>
         </RadioGroup>
       </div>
