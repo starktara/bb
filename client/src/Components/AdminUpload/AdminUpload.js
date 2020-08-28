@@ -919,7 +919,7 @@ const AdminUpload = (props) => {
             )}
           </Grid>
           <Grid item xs={12} sm={12} md={5} lg={5}>
-            <label htmlFor="descr">
+            {/* <label htmlFor="descr">
               <span>Description:*</span>&nbsp;&nbsp;
             </label>
             <input
@@ -932,7 +932,7 @@ const AdminUpload = (props) => {
             />
             {formData.descr.error && (
               <p className={classes.formError}>{formData.descr.errorMessage}</p>
-            )}
+            )} */}
           </Grid>
           <Grid item xs={12} sm={12} md={5} lg={5}>
             <label htmlFor="price">
@@ -1034,7 +1034,7 @@ const AdminUpload = (props) => {
               <p className={classes.formError}>{formData.cc.errorMessage}</p>
             )}
           </Grid>
-          <Grid item xs={12} sm={12} md={5} lg={5}>
+          {/* <Grid item xs={12} sm={12} md={5} lg={5}>
             <label htmlFor="bhp">
               <span>BHP:*</span>&nbsp;&nbsp;
             </label>
@@ -1067,7 +1067,7 @@ const AdminUpload = (props) => {
                 {formData.mileage.errorMessage}
               </p>
             )}
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sm={12} md={11} lg={11} className={classes.mb20}>
             <label htmlFor="additionalInfo">
               <span>Additional Information:</span>&nbsp;&nbsp;
