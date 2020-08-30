@@ -739,6 +739,40 @@ router.get("/uploadLocations", (req, res) => {
         locality: "D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry - 533103, Andhra Pradesh, India.",
         location: { lat: 16.999954, lon: 81.786184 }
       },
+    ];
+    const body = dataset.flatMap(doc => [
+      { index: { _index: "store-location" } },
+      doc
+    ]);
+
+    const { body: bulkResponse } = await client.bulk({ refresh: true, body });
+
+    if (bulkResponse.errors) {
+      const erroredDocuments = [];
+      bulkResponse.items.forEach((action, i) => {
+        const operation = Object.keys(action)[0];
+        if (action[operation].error) {
+          erroredDocuments.push({
+            status: action[operation].status,
+            error: action[operation].error,
+            operation: body[i * 2],
+            document: body[i * 2 + 1]
+          });
+        }
+      });
+      console.log(erroredDocuments);
+    }
+
+    const { body: count } = await client.count({ index: "store-location" });
+    console.log(count);
+  }
+  upload().catch(console.log);
+  res.json({ msg: "Location index seeded" });
+});
+
+router.get("/uploadNewLocations", (req, res) => {
+  async function upload() {
+    const dataset = [
       {
         id: 4,
         name: "BikeBazaar – Sitaram Trade & Services",
@@ -848,9 +882,8 @@ router.get("/uploadLocations", (req, res) => {
     console.log(count);
   }
   upload().catch(console.log);
-  res.json({ msg: "Location index seeded" });
+  res.json({ msg: "New Location added" });
 });
-
 
 
 /*create schema to store bike details*/
