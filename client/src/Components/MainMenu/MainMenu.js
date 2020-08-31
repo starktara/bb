@@ -478,6 +478,7 @@ const MainMenu = props => {
               </Grid>
               <Grid item xs={4} sm={4} md={4} lg={4}>
                 <img className="icon-img" src={messageIcon}  alt=""  />
+                <a target="/" href="mailto:connect@bikebazaar.com" />
               </Grid>
               <Grid item xs={4} sm={4} md={4} lg={4}>
                 <HamburgerDropdown />
