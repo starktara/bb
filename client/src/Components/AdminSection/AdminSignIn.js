@@ -73,6 +73,11 @@ const AdminSignIn = () => {
   if(user.isAuthenticated === true){
     history.push("/admin/homepage")
   }
+
+  // if(localStorage.getItem("jwtToken")) {
+  //   history.push("/admin/homepage")
+  // }
+
   const [formData, setFormData] = useState({
     loginid: "",
     password: ""

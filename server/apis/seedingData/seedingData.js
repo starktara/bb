@@ -571,7 +571,7 @@ router.get("/uploadBikes", (req, res) => {
         bhp: 8,
         category: 2,
         mileage: 50,
-        storeId:3
+        storeId:4
       },
       {
         id: 20,
@@ -596,7 +596,7 @@ router.get("/uploadBikes", (req, res) => {
         bhp: 10,
         category: 3,
         mileage: 50,
-        storeId:3
+        storeId:4
       },
       {
         id: 21,
@@ -621,7 +621,7 @@ router.get("/uploadBikes", (req, res) => {
         bhp: 12,
         category: 1,
         mileage: 90,
-        storeId: 2
+        storeId: 4
       },
       {
         id: 22,
@@ -646,7 +646,7 @@ router.get("/uploadBikes", (req, res) => {
         bhp: 8,
         category: 1,
         mileage: 60,
-        storeId:3
+        storeId:4
       },
       {
         id: 23,
@@ -671,7 +671,7 @@ router.get("/uploadBikes", (req, res) => {
         bhp: 8,
         category: 1,
         mileage: 60,
-        storeId:3
+        storeId:5
       }
         
     ];

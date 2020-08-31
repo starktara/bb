@@ -64,6 +64,7 @@
 }
 .menu-icons{
     cursor: pointer;
+    height: 50%;
 }
 .phone-number-container{
     display: flex;

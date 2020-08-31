@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import searchIcon from "../../assets/search-icon.svg";
 import bikeBazaarLogo from "../../assets/BikeB-logo.png";
 import personLogo from "../../assets/Person.png";
-import locationLogo from "../../assets/Location_Icon.png";
+import locationLogo from "../../assets/gps.svg";
 import hamburgerIcon from "../../assets/Hamburger_Icon.png";
 // import callIcon from "../../assets/Call.png";
 import callIcon from "../../assets/Phone.svg";
@@ -181,6 +181,7 @@ const PersonDropdown = () => {
 const LocationDropDown = () => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState();
+  const selectedCity = useSelector(state => state.vehicleDetails.selectedCity);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -188,7 +189,7 @@ const LocationDropDown = () => {
     setAnchorEl(null);
   };
   const handleCityChange = (value) => {
-    console.log(value)
+    // console.log(value)
     dispatch({ type: CHANGE_CITY, payload: value });
     handleClose();
     if(window.location.pathname === "/" ) {
@@ -198,9 +199,13 @@ const LocationDropDown = () => {
       });
     }
   }
+  console.log();
   return (
     <>
-    <img className="menu-icons" aria-controls="location-menu" aria-haspopup="true" onClick={handleClick} src={locationLogo}  alt="" />
+    <span style={{color:"black", fontSize: "12px", justifyContent: "space-between", alignItems: "center"}}>
+      <img className="menu-icons" aria-controls="location-menu" aria-haspopup="true" onClick={handleClick} src={locationLogo}  alt="" />
+      {selectedCity}
+    </span>
     <Menu
       id="location-menu"
       anchorEl={anchorEl}
@@ -210,9 +215,9 @@ const LocationDropDown = () => {
       getContentAnchorEl={null}
       anchorOrigin={{
         vertical: "bottom",
-        horizontal: "left",
+        horizontal: "right",
       }}
-      transformOrigin={{ vertical: "top", horizontal: "center" }}
+      transformOrigin={{ vertical: "bottom", horizontal: "left" }}
       MenuListProps={{ onMouseLeave: handleClose }}
       PaperProps={{
         style: {
@@ -239,7 +244,7 @@ const LocationDropDown = () => {
         Chennai
       </StyledMenuItem>
       <StyledMenuItem onClick={() => handleCityChange("New Delhi")}>
-        Delhi
+        New Delhi
       </StyledMenuItem>
       <StyledMenuItem onClick={() => handleCityChange("TGurgaon")}>
         Gurgaon
@@ -260,10 +265,11 @@ const LocationDropDown = () => {
         Pune
       </StyledMenuItem>
     </Menu>
+    
     </>
   );
 }
-
+    
 const HamburgerDropdown = () => {
   const [anchorEl, setAnchorEl] = useState();
   const handleClick = (event) => {
@@ -373,8 +379,9 @@ const MainMenu = props => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const [searchTerm, setSearchTerm] = useState("");
+  // const [searchLocation, setSearchLocation] = useState(selectedCity);
 
-  const debouncedSearchTerm = useDebounce(searchTerm, 300);
+  const debouncedSearchTerm = useDebounce(searchTerm, 300); //node side search with min of 300 msec
 
   useEffect(() => {
     const filterData = {
@@ -407,24 +414,31 @@ const MainMenu = props => {
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <form id="searchForm" className="input-field">
                   <Grid container component="div" className="search-container-main" direction="row">
-                    <Grid item xs={10} sm={10} md={10} lg={10}>
+                    <Grid item xs={2} sm={2} md={2} lg={2}>
+                      <div id='searchLocation' style={{border: "3px !important"}} >
+                        <LocationDropDown />
+                      </div>
+                    </Grid>
+                    <Grid item xs={8} sm={8} md={8} lg={8}>
+                    <div className="arrow" >
                       <Autocomplete
                         id="searchField"
-                        style={{border: "none !important"}}
+                        style={{border: "0px !important" }}
                         freeSolo
                         options={searchTerm ? vehicleNames : []}
                         renderInput={(params) => (
-                          <StyledTextField 
-                            placeholder="Search Your Two-wheeler" 
-                            onChange={updateState(params.inputProps.value)} 
-                            {...params} 
-                            style={{ paddingLeft:'10px !important', margin:'0px'}} 
-                            label="" 
-                            margin="normal" 
-                            variant="outlined" 
-                          />
-                        )}
+                            <StyledTextField 
+                              placeholder=" Search Your Two-wheeler" 
+                              onChange={updateState(params.inputProps.value)} 
+                              {...params} 
+                              style={{ paddingLeft:'13px !important', margin:'0px'}} 
+                              label="" 
+                              margin="normal" 
+                              variant="outlined" 
+                            />
+                        )}  
                       />
+                    </div>  
                     </Grid>
                     <Grid item xs={2} sm={2} md={2} lg={2}>
                       <Link
@@ -463,7 +477,7 @@ const MainMenu = props => {
                 <PersonDropdown />
               </Grid>
               <Grid item xs={4} sm={4} md={4} lg={4}>
-                <LocationDropDown />
+                <img className="icon-img" src={messageIcon}  alt=""  />
               </Grid>
               <Grid item xs={4} sm={4} md={4} lg={4}>
                 <HamburgerDropdown />

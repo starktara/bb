@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import headingLines from '../../../assets/heading-lines.svg';
 import jkbIcon from '../../../assets/stores/bb_ jkb_motors.jpg';
 import mvcIcon from '../../../assets/stores/bb_mvc_wheels.jpg';
+import stsIcon from '../../../assets/stores/bb_sts_thrissur.jpg';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -79,7 +80,7 @@ const StoreSection = () => {
                     </Grid> */}
                     <Grid item xs={12} sm={12} md={6} lg={5}>
                     <div className="StoreCard">
-                        <img src={mvcIcon} alt="" />
+                        <img src={stsIcon} alt="" />
                         <div className="detail">
                             <h3>BikeBazaar – Sitaram Trade & Services, Thrissur</h3>
                             <p className="address">
@@ -90,7 +91,7 @@ const StoreSection = () => {
                         </div>
                     </div>
                     </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={5} style={{paddingBottom: '13px'}} >
+                    {/* <Grid item xs={12} sm={12} md={6} lg={5} style={{paddingBottom: '13px'}} >
                     <div className="StoreCard">
                         <img src={mvcIcon} alt="" />
                         <div className="detail">
@@ -206,7 +207,7 @@ const StoreSection = () => {
                             <p className="location">Pune, Maharashtra</p>
                         </div>
                     </div>
-                    </Grid>
+                    </Grid> */}
                 </Grid>
                 {/* </Carousel> */}
                 </Grid>

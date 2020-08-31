@@ -68,10 +68,10 @@ const formValidator = (name, value) => {
         ? "Registration no. should contain no. and alphabets only"
         : "";
     }
-    case "descr": {
-      const descrValue = value.replace(/ /g, "");
-      return !isAlphaNumeric(descrValue) ? "Enter valid description" : "";
-    }
+    // case "descr": {
+    //   const descrValue = value.replace(/ /g, "");
+    //   return !isAlphaNumeric(descrValue) ? "Enter valid description" : "";
+    // }
     case "price": {
       return !isNumeric(value) ? "Price must be numeric" : "";
     }
@@ -94,15 +94,15 @@ const formValidator = (name, value) => {
     case "cc": {
       return !isNumeric(value) ? "Enter valid cc" : "";
     }
-    case "bhp": {
-      return !isNumeric(value) ? "Enter valid bhp" : "";
-    }
+    // case "bhp": {
+    //   return !isNumeric(value) ? "Enter valid bhp" : "";
+    // }
     case "category": {
       return !isNumeric(value) ? "Enter valid category" : "";
     }
-    case "mileage": {
-      return !isNumeric(value) ? "Mileage must be numeric" : "";
-    }
+    // case "mileage": {
+    //   return !isNumeric(value) ? "Mileage must be numeric" : "";
+    // }
     case "discountPercent": {
       return !isNumeric(value) || parseFloat(value) > 100 || parseFloat(value) < 0 ? "Invalid Value for Discount" : ""
     }
@@ -155,7 +155,7 @@ const AdminUpload = (props) => {
       value: "",
       error: false,
       errorMessage: "",
-      optional: false,
+      optional: true,
     },
     price: {
       value: "",
@@ -190,20 +190,20 @@ const AdminUpload = (props) => {
     cc: {
       value: "",
       error: false,
-      errorMessage: "13",
+      errorMessage: "",
       optional: false,
     },
     bhp: {
       value: "",
       error: false,
       errorMessage: "",
-      optional: false,
+      optional: true,
     },
     mileage: {
       value: "",
       error: false,
-      errorMessage: "14",
-      optional: false,
+      errorMessage: "",
+      optional: true,
     },
     image: {
       images: [],
@@ -313,7 +313,7 @@ const AdminUpload = (props) => {
   );
 
   const selectFiles = (event, formData) => {
-    for (var i = 0; i < event.target.files.length && i < 3; i++) {
+    for (var i = 0; i < event.target.files.length && i < 6; i++) {
       let previewImagesCopy = previewImages;
       previewImagesCopy.push(event.target.files.item(i));
       setPreviewImages(previewImagesCopy);
@@ -358,6 +358,9 @@ const AdminUpload = (props) => {
     "bulletInfo5",
     "bulletInfo6",
     "sold",
+    "descr",
+    "mileage",
+    "bhp"
   ];
 
   const validateAndUpdateFormdata = (event, formData) => {
@@ -668,8 +671,19 @@ const AdminUpload = (props) => {
 
   const storeOptions = [
     { value: "1", label: "BikeBazaar, Aluva, Kerela" },
-    { value: "2", label: "BikeBazaar, MCV Wheels" },
-    { value: "3", label: "BikeBazaar, Rajahmundry" },
+    { value: "2", label: "BikeBazaar, Rajahmundry" },
+    { value: "3", label: "BikeBazaar, Kolkata" },
+    { value: "4", label: "BikeBazaar, Thrissur" },
+    { value: "5", label: "BikeBazaar, Bangalore" },
+    { value: "6", label: "BikeBazaar, Nungambakkam" },
+    { value: "7", label: "BikeBazaar, New Delhi" },
+    { value: "8", label: "BikeBazaar, Gurgaon" },
+    { value: "9", label: "BikeBazaar, Hyderabad" },
+    { value: "10", label: "BikeBazaar, Jaipur" },
+    { value: "11", label: "BikeBazaar, Mumbai" },
+    { value: "12", label: "BikeBazaar, Nagpur" },
+    { value: "13", label: "BikeBazaar, Pune" },
+
   ];
 
   const brandOptions = BRANDS.map((key, value) => {
