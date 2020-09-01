@@ -50,5 +50,13 @@ export const MODELS = [
     'CRF 1000L',
     'Ducati',
     'Hyousung',
+    'HF Dawn',
+    'Yamaha FZ V3',
+    'Apache 200',
+    'Yamaha Ray ZR',
+    'Yamaha FZ',
+    'FZ V3',
+    'Ray ZR',
+    'FZ',    
 ];
 /* Line number -2 is the model id*/
