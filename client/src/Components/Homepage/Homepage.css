@@ -94,7 +94,7 @@ section-3 {
   font-size: 18px;
 }
 .section-3 h5 {
-  color: #e92d2c;
+  color: #ff0000;
   font-weight: bold;
   white-space: pre-line;
   font-size: 20px;
@@ -187,7 +187,7 @@ i.icon-black {
 #topNav {
   height: 44px;
   line-height: 44px !important;
-  background-color: #232b2b;
+  background-color: #000000;
   padding: 0px 42px 0px 38px;
 }
 #topNav li {

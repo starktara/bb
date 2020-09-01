@@ -35,7 +35,7 @@ import closeIcon from "../../assets/Close.png";
 const BBRadio = withStyles({
   root: {
     "&$checked": {
-      color: "#e92d2c"
+      color: "#ff0000"
     }
   },
   checked: {}

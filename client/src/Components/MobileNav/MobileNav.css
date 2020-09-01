@@ -13,12 +13,12 @@ nav.BBMNav a {
   transition: 200ms;
 }
 nav.BBMNav a:hover {
-  color: #fd1b1b;
+  color: #ff0000;
 }
 nav.BBMNav {
   position: sticky !important;
   top: 0px;
-  background-color: #fd1b1b;
+  background-color: #ff0000;
   height: auto;
   line-height: normal;
   z-index: 999;

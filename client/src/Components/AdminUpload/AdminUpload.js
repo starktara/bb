@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import M from "materialize-css";
 import {BRANDS} from '../../shared/mappings/brands';
 import { MODELS } from '../../shared/mappings/bike_models';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import BulkUpload from "../BulkUpload/BulkUpload";
 import { useTheme } from "@material-ui/core/styles";
@@ -113,6 +113,7 @@ const formValidator = (name, value) => {
 };
 
 const AdminUpload = (props) => {
+  const history = useHistory();
   const classes = useStyles();
   const [formData, setFormData] = useState({
     name: {
@@ -194,7 +195,7 @@ const AdminUpload = (props) => {
       optional: false,
     },
     bhp: {
-      value: "",
+      value: "0",
       error: false,
       errorMessage: "",
       optional: true,
@@ -587,8 +588,10 @@ const AdminUpload = (props) => {
       axios
         .post("/apis/seedData/adminVehiclesUpload", submitObj)
         .then((response) => {
+          history.push('/admin/list');
           if (response.status === 200) {
-            window.location = '/admin/list';
+            // window.location = '/admin/list';
+            // history.push('/admin/list');
             setTooltipState({
               open: true,
               message: "Your details have been saved",
@@ -671,8 +674,8 @@ const AdminUpload = (props) => {
 
   const storeOptions = [
     { value: "1", label: "BikeBazaar, Aluva, Kerela" },
-    { value: "2", label: "BikeBazaar, Rajahmundry" },
-    { value: "3", label: "BikeBazaar, Kolkata" },
+    { value: "2", label: "BikeBazaar, Kolkata" },
+    { value: "3", label: "BikeBazaar, Rajahmundry" },
     { value: "4", label: "BikeBazaar, Thrissur" },
     { value: "5", label: "BikeBazaar, Bangalore" },
     { value: "6", label: "BikeBazaar, Nungambakkam" },

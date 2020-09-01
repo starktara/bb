@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(3),
         fontSize: 18,
         letterSpacing: 0.63,
-        color: '#232b2b',
+        color: '#000000',
         lineHeight: '28px',
         fontWeight: 500
     },
@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
         padding: '24px 90px 24px 90px',
         fontSize: 18,
         letterSpacing: 0.63,
-        color: '#232b2b',
+        color: '#000000',
         lineHeight: '28px',
         fontWeight: 500
     },
@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
         boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
         fontSize: 18,
         letterSpacing: 0.63,
-        color: '#232b2b',
+        color: '#000000',
         lineHeight: '28px',
         fontWeight: 500
     },

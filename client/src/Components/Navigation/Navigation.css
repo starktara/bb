@@ -38,7 +38,7 @@
 .filterSec .YearWidget h3.WidgetTitle,
 .filterSec .kmWidget h3.WidgetTitle {
   font-size: 16px;
-  color: #232b2b;
+  color: #000000;
   font-weight: bold;
 }
 .filterSec .CityWidget h3.WidgetTitle a,
@@ -46,7 +46,7 @@
 .filterSec .BrandWidget h3.WidgetTitle a,
 .filterSec .YearWidget h3.WidgetTitle a,
 .filterSec .kmWidget h3.WidgetTitle a {
-  color: #232b2b;
+  color: #000000;
 }
 .filterSec .CityWidget .WidgetBody,
 .filterSec .BudgetWidget .WidgetBody,
@@ -64,7 +64,7 @@
   font-size: 16px;
 }
 .filterSec .CityWidget .WidgetBody ul.cat-list li a {
-  color: #232b2b;
+  color: #000000;
 }
 
 .filterSec .kmWidget .WidgetBody {
@@ -90,7 +90,7 @@
 .filterSec .BrandWidget .WidgetBody ul.list li label span,
 .filterSec .YearWidget .WidgetBody ul.list li label span {
   font-size: 16px !important;
-  color: #232b2b;
+  color: #000000;
   padding: 2px 0 0;
 }
 .filterSec .BudgetWidget .WidgetBody ul.list li label input.BudgetBox,
@@ -112,14 +112,14 @@
 .filterSec .BrandWidget .WidgetBody ul.list li label a,
 .filterSec .YearWidget .WidgetBody ul.list li label a {
   font-size: 16px;
-  color: #232b2b;
+  color: #000000;
 }
 .filterSec .BudgetWidget .WidgetBody ul.list li label a strong,
 .filterSec .BrandWidget .WidgetBody ul.list li label a strong,
 .filterSec .YearWidget .WidgetBody ul.list li label a strong {
   font-family: RupeeForadian;
   font-size: 18px;
-  color: #232b2b;
+  color: #000000;
 }
 
 .filterSec .YearWidget .WidgetBody ul.list li {
@@ -251,7 +251,7 @@
     bottom: 0;
     text-align: center;
     color: #fff;
-    background: #fd1b1b;
+    background: #ff0000;
     padding: 10px;
     z-index: 10000;
   }
@@ -283,7 +283,7 @@
 
 .MuiTypography-body1{
   font-size: 16px !important;
-  color: #232b2b !important;
+  color: #000000 !important;
   padding: 2px 0 0;
   font-weight: 100;
   font-family: 'Montserrat', sans-serif !important;

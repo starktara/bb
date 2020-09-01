@@ -1,5 +1,5 @@
 .contact-heading {
-  color: #e92d2c;
+  color: #ff0000;
   font-weight: 800;
   white-space: nowrap;
   font-size: 24px;
@@ -18,7 +18,7 @@
 .sub-heading-red {
   font-weight: 600;
   font-size: 19px;
-  color: #e92d2c;
+  color: #ff0000;
 }
 p sup {
   font-size: 60% !important;
@@ -60,9 +60,9 @@ input[type="tel"]:not(.browser-default):focus:not([readonly]),
 input[type="number"]:not(.browser-default):focus:not([readonly]),
 input[type="search"]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #232b2b;
-  -webkit-box-shadow: 0 1px 0 0 #232b2b;
-  box-shadow: 0 1px 0 0 #232b2b;
+  border-bottom: 1px solid #000000;
+  -webkit-box-shadow: 0 1px 0 0 #000000;
+  box-shadow: 0 1px 0 0 #000000;
 }
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
@@ -82,17 +82,17 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 [type="radio"]:checked + span:after,
 [type="radio"].with-gap:checked + span:after {
-  background-color: #e92d2c;
+  background-color: #ff0000;
 }
 [type="radio"]:checked + span:after,
 [type="radio"].with-gap:checked + span:before,
 [type="radio"].with-gap:checked + span:after {
-  border: 2px solid #e92d2c;
+  border: 2px solid #ff0000;
 }
 [type="radio"]:checked + span:after,
 [type="radio"].with-gap:checked + span:before,
 [type="radio"].with-gap:checked + span:after {
-  border: 2px solid #e92d2c;
+  border: 2px solid #ff0000;
 }
 #contactForm span:not(:first-child) {
   margin-right: 10px;

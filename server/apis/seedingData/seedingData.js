@@ -1087,7 +1087,7 @@ router.post("/adminVehiclesUpdate", (req, res) => {
 
 router.post("/adminVehiclesUpload", (req, res) => {
   let formData = req.body;
-  console.log(formData);
+  // console.log(formData);
   async function uploadVehiclels() {
     async function getStore() {
       const { body } = await client.search({
@@ -1103,6 +1103,7 @@ router.post("/adminVehiclesUpload", (req, res) => {
       return body.hits.hits[0]._source;
     }
     let storeDetails = await getStore();
+    console.log("AB: ", storeDetails)
     const dataset = [
       {
         name: formData.name.value,
