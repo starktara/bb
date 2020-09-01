@@ -57,7 +57,7 @@ nav {
     overflow: hidden;
 }
 .search-label-btn{
-    background: #232b2b;
+    background: #000000;
     margin-left: -91px;
     height: 54.5px;
     margin-top: -4px;
@@ -68,7 +68,7 @@ nav {
     border-bottom-right-radius: 5px;
 }
 .search-label-btn:hover{
-    background: #232b2b !important;
+    background: #000000 !important;
 }
 #searchField{
     width: 80.2%;
@@ -192,7 +192,7 @@ nav{
     margin-bottom: 0px; 
 }
 .nav-color{
-    background-color: #fd1b1b;
+    background-color: #ff0000;
 }
 #search{
     background-color: #fed0d1;
@@ -262,7 +262,7 @@ nav{
     margin-bottom: 55px;
 }
 .section-2 h5, .section-3 h5{
-    color: #e92d2c;
+    color: #ff0000;
     font-weight: bold;
     white-space: nowrap;
     font-size: 23px;
@@ -353,7 +353,7 @@ i.icon-black{
 #topNav {
     height: 44px;
     line-height: 44px !important;
-    background-color: #232b2b;
+    background-color: #000000;
     padding: 0px 42px 0px 38px;
 }
 #topNav li{

@@ -12,7 +12,7 @@ import { vehicleData } from "../../../store/actions/vehiclesDetails";
 const BBRadio = withStyles({
   root: {
     "&$checked": {
-      color: "#e92d2c"
+      color: "#ff0000"
     }
   },
   checked: {}
@@ -22,7 +22,7 @@ const BBRadio = withStyles({
 
 const useStyle = makeStyles({
   countColor: {
-    color: '#e92d2c'
+    color: '#ff0000'
   }
 })
 

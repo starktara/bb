@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#f7f7f7"
   },
   logInHeading: {
-    color: "#fd1b1b",
+    color: "#ff0000",
     textAlign: "center",
     fontWeight: 600,
     fontSize: 32,

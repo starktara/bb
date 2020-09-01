@@ -10,7 +10,7 @@ import { CHANGE_CITY, CHANGE_CATEGORY } from "../../../store/actions/actionTypes
 const BBRadio = withStyles({
   root: {
     "&$checked": {
-      color: "#e92d2c"
+      color: "#ff0000"
     }
   },
   checked: {}

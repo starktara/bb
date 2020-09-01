@@ -53,7 +53,7 @@
   text-transform: none;
   text-align: left;
   font-size: 16px;
-  color: #232b2b;
+  color: #000000;
 }
 .custom-drop-mobile {
   width: 195px;
@@ -98,7 +98,7 @@
   margin-left: 5px;
   margin-bottom: 4px;
   letter-spacing: 0.47px;
-  color: #232b2b;
+  color: #000000;
   font-size: 15px;
 }
 .mapHeading {

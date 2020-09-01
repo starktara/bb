@@ -14,9 +14,9 @@ input[type="tel"]:not(.browser-default):focus:not([readonly]),
 input[type="number"]:not(.browser-default):focus:not([readonly]),
 input[type="search"]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #232b2b;
-  -webkit-box-shadow: 0 1px 0 0 #232b2b;
-  box-shadow: 0 1px 0 0 #232b2b;
+  border-bottom: 1px solid #000000;
+  -webkit-box-shadow: 0 1px 0 0 #000000;
+  box-shadow: 0 1px 0 0 #000000;
 }
 #signupForm .select-wrapper input.select-dropdown {
   border-bottom: 1px solid #9e9e9e;
@@ -42,12 +42,12 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 #signupForm [type="radio"]:checked + span:after,
 [type="radio"].with-gap:checked + span:after {
-  background-color: #e92d2c;
+  background-color: #ff0000;
 }
 #signupForm [type="radio"]:checked + span:after,
 [type="radio"].with-gap:checked + span:before,
 [type="radio"].with-gap:checked + span:after {
-  border: 2px solid #e92d2c;
+  border: 2px solid #ff0000;
 }
 
 #signupForm .interest-container p {
@@ -55,8 +55,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
   color: #000 !important;
 }
 #signupForm [type="checkbox"]:checked + span:not(.lever):before {
-  border-right: 2px solid #e92d2c !important;
-  border-bottom: 2px solid #e92d2c !important;
+  border-right: 2px solid #ff0000 !important;
+  border-bottom: 2px solid #ff0000 !important;
 }
 #submitButton {
   background: #ea2c2c;

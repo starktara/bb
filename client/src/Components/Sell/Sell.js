@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(4),
     fontSize: 16,
     letterSpacing: 0.63,
-    color: '#232b2b',
+    color: '#000000',
     lineHeight: '28px',
   },
   paper1: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3),
     fontSize: 16,
     letterSpacing: 0.63,
-    color: '#232b2b',
+    color: '#000000',
     lineHeight: '28px',
   },
   mapContainer: {

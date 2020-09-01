@@ -202,9 +202,9 @@ const LocationDropDown = () => {
   console.log();
   return (
     <>
-    <span style={{color:"black", fontSize: "12px", justifyContent: "space-between", alignItems: "center"}}>
-      <img className="menu-icons" aria-controls="location-menu" aria-haspopup="true" onClick={handleClick} src={locationLogo}  alt="" />
-      {selectedCity}
+    <span style={{height: 40, display: 'flex', justifyContent: "flex-start", alignItems: "center", cursor: 'pointer'}} onClick={handleClick}>
+      <img className="menu-icons" aria-controls="location-menu" aria-haspopup="true" src={locationLogo}  alt="" />
+      <span style={{color:"black", fontSize: 13}}>{selectedCity}</span>
     </span>
     <Menu
       id="location-menu"
@@ -246,7 +246,7 @@ const LocationDropDown = () => {
       <StyledMenuItem onClick={() => handleCityChange("New Delhi")}>
         New Delhi
       </StyledMenuItem>
-      <StyledMenuItem onClick={() => handleCityChange("TGurgaon")}>
+      <StyledMenuItem onClick={() => handleCityChange("Gurgaon")}>
         Gurgaon
       </StyledMenuItem>
       <StyledMenuItem onClick={() => handleCityChange("Hyderabad")}>

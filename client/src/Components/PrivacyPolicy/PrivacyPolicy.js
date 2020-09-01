@@ -20,7 +20,7 @@ const useStyle = makeStyles(theme =>({
         padding: theme.spacing(3),
         fontSize: 16,
         letterSpacing: 0.63,
-        color: '#232b2b',
+        color: '#000000',
         lineHeight: '28px'
     },
     paperHeading: {
@@ -33,7 +33,7 @@ const useStyle = makeStyles(theme =>({
         fontSize: 18,
         lineHeight: '26px',
         letterSpacing: 0.53,
-        color: '#232b2b',
+        color: '#000000',
         fontWeight: 600
     },
     li:{

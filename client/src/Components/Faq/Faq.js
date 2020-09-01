@@ -32,12 +32,12 @@ const useStyles = makeStyles(theme => ({
     faqSteps: {
         fontSize: 18,
         letterSpacing: 0.53,
-        color: '#232b2b',
+        color: '#000000',
         marginBottom: 30
     },
     faqQuestion:{
         fontSize: 18,
-        color: '#232b2b',
+        color: '#000000',
         letterSpacing: 0.53,
         fontWeight: 600
     },
