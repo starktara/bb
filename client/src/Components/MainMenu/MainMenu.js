@@ -246,7 +246,7 @@ const LocationDropDown = () => {
       <StyledMenuItem onClick={() => handleCityChange("New Delhi")}>
         New Delhi
       </StyledMenuItem>
-      <StyledMenuItem onClick={() => handleCityChange("TGurgaon")}>
+      <StyledMenuItem onClick={() => handleCityChange("Gurgaon")}>
         Gurgaon
       </StyledMenuItem>
       <StyledMenuItem onClick={() => handleCityChange("Hyderabad")}>
