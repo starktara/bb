@@ -66,17 +66,13 @@ const AdminSignIn = () => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
-  const user = useSelector(state => state.auth);
+  const admin = useSelector(state => state.auth);
   const errors = useSelector(state => state.errors)
   const [showError, setShowError] = useState(true);
   
-  if(user.isAuthenticated === true){
+  if(admin.isAuthenticated === true){
     history.push("/admin/homepage")
   }
-
-  // if(localStorage.getItem("jwtToken")) {
-  //   history.push("/admin/homepage")
-  // }
 
   const [formData, setFormData] = useState({
     loginid: "",

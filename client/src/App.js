@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import Homepage from './Components/Homepage/Homepage';
 import CategoryPage from './Components/CategoryPage/CategoryPage';
 import LocateStore from './Components/LocateStore/LocateStore';
@@ -23,8 +23,22 @@ import BulkUpload from "./Components/BulkUpload/BulkUpload";
 import AdminSignIn from "./Components/AdminSection/AdminSignIn";
 import AdminHomePage from "./Components/AdminSection/AdminHomePage";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import * as actions from "./store/actions/index";
+import jwt_decode from "jwt-decode";
 
 const App = () => {
+
+    //for admin login
+    const dispatch = useDispatch();
+    if(localStorage.getItem("adminJwtToken")){
+        const token = localStorage.getItem('adminJwtToken')
+        // Set token to Auth header
+        // actions.setAuthToken(token);
+        // Decode token to get user data
+        const decoded = jwt_decode(token);
+        // Set current user
+        dispatch(actions.setCurrentUser(decoded));
+    }
 
     return (
         <Switch>

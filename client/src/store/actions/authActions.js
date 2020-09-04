@@ -1,7 +1,7 @@
 import axios from "axios";
 import setAuthToken from "../../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./actionTypes";
+import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, SET_ADMIN_USER } from "./actionTypes";
 // Register User
 export const registerUser = (userData, history) => dispatch => {
   axios
@@ -60,19 +60,34 @@ export const logoutUser = () => dispatch => {
   dispatch(setCurrentUser());
 };
 
+
+//admin user functions
+
+export const logoutAdminUser = () => dispatch => {
+  localStorage.removeItem("adminJwtToken");
+  setAuthToken(false);
+  dispatch(setAdminUser());
+};
+
+export const setAdminUser = decoded => {
+  return {
+    type: SET_ADMIN_USER,
+    payload: decoded
+  };
+};
+
 export const loginAdminUser = userData => dispatch => {
   axios
     .post("/apis/userDetail/adminLogin", userData)
     .then(res => {
       console.log(res)
       const { token } = res.data;
-      localStorage.setItem("jwtToken", token);
+      localStorage.setItem("adminJwtToken", token);
       setAuthToken(token);
       const decoded = jwt_decode(token);
-      dispatch(setCurrentUser(decoded));
+      dispatch(setAdminUser(decoded));
     })
     .catch(err => {
-      console.log("here", err.response)
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data

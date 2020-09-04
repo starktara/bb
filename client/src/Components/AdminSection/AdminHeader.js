@@ -30,7 +30,7 @@ const AdminHeader = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(actions.logoutUser())
+    dispatch(actions.logoutAdminUser())
     history.push("/admin/signin")
   }
 

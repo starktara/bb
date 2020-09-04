@@ -1,8 +1,9 @@
-import { SET_CURRENT_USER, USER_LOADING } from "../actions/actionTypes";
+import { SET_CURRENT_USER, USER_LOADING, SET_ADMIN_USER } from "../actions/actionTypes";
 const initialState = {
   isAuthenticated: false,
   user: {},
-  loading: false
+  loading: false,
+  admin: {}
 };
 export default function(state = initialState, action) {
   switch (action.type) {
@@ -16,6 +17,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: true
+      };
+    case SET_ADMIN_USER:
+      return {
+        ...state,
+        isAuthenticated: action.payload ? true : false,
+        admin: action.payload
       };
     default:
       return state;
