@@ -487,13 +487,13 @@ const Sell = props => {
         formDataCopy[targetName].errorMessage = errorMessage;
         formDataCopy[targetName].error = error;
       }
-      if(targetName === 'image'){
-        if(formData.image.images.length === 0){
-          error = true;
-          formDataCopy[targetName].errorMessage = 'Please select images to be uploaded';
-          formDataCopy[targetName].error = error;
-        }
-      }
+      // if(targetName === 'image'){
+      //   if(formData.image.images.length === 0){
+      //     error = true;
+      //     formDataCopy[targetName].errorMessage = 'Please select images to be uploaded';
+      //     formDataCopy[targetName].error = error;
+      //   }
+      // }
       if (error) {
         errorFlag = true;
       }      
@@ -807,11 +807,11 @@ const Sell = props => {
                                />
                               <br />
                               { formData.image.message? <p className="text-info">{formData.image.message}</p>: ''}
-                              {formData.image.error && (
+                              {/* {formData.image.error && (
                                 <p className={classes.formError}>
                                   {formData.image.errorMessage}
                                 </p>
-                              )}
+                              )} */}
                               <div className={matches ? "preview-image-container" : "preview-image-container-mobile"}>
                                 {previewImage.map((file, _i)=>(
                                   <div key={_i} className="image-preview">
