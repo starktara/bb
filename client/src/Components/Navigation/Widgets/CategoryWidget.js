@@ -58,13 +58,13 @@ const CategoryWidget = props => {
 
   let valued = " ( " + val(vehicles) + " ) ";
   
-  console.log(typeof records)
+  // console.log(typeof records)
   
   useEffect(() => {
     handleChange2(category)
   }, [category]);
 
-  console.log("value",valued);
+  // console.log("value",valued);
 
   return (
     <div className="CityWidget">

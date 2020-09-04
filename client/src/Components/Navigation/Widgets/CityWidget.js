@@ -20,33 +20,25 @@ const CityWidget = props => {
   const dispatch = useDispatch();
   const { selectedCity, category } = useSelector(state => state.vehicleDetails);
   const [searchTerm, setSearchTerm] = useState("");
-  const [city, setCity] = useState("");
-  const updateState = event => {
-    setSearchTerm(event.target.value);
-    setCity(searchTerm);
-  };
-
-  useEffect(() => {
-    setCity(selectedCity);
-  }, [selectedCity]);
 
   const searchCity = event => {
     event.preventDefault();
-    // let category = props.category;
     let filterData = props.filter;
+    dispatch({ type: CHANGE_CITY, payload: searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1) });
+    dispatch({ type: CHANGE_CATEGORY, payload: category });
     filterData.city = `${searchTerm}*`;
     props.cityFilter(category, filterData);
   };
 
   const searchClick = clickValue => {
-    // let category = props.category;
     let filterData = props.filter;
-    setCity(clickValue.target.value);
     dispatch({ type: CHANGE_CITY, payload: clickValue.target.value });
     dispatch({ type: CHANGE_CATEGORY, payload: category });
     filterData.city = `${clickValue.target.value}*`;
     props.cityFilter(category, filterData);
   };
+
+  const citiesArr = ['Aluva', 'Kolkata', 'Rajahmundry', 'Thrissur', 'Bangalore', 'Chennai', 'New Delhi', 'Gurgaon', 'Hyderabad', 'Jaipur', 'Mumbai', 'Nagpur', 'Pune' ];
 
   return (
     <div className="CityWidget">
@@ -67,9 +59,9 @@ const CityWidget = props => {
             <input
               type="text"
               placeholder="Search your City"
-              name="Search your City"
+              name="citySearchBar"
               value={searchTerm}
-              onChange={updateState}
+              onChange={(event) => setSearchTerm(event.target.value)}
             />
             <button type="button" onClick={searchCity}>
               <i className="material-icons">search</i>
@@ -78,110 +70,16 @@ const CityWidget = props => {
         </div>
         <RadioGroup aria-label="gender" name="city" onChange={searchClick}>
           <ul className="cat-list">
-            <li>
-              <FormControlLabel
-                value="Aluva"
-                control={<BBRadio />}
-                label="Aluva"
-                checked={city === "Aluva"}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="Kolkata"
-                control={<BBRadio />}
-                label="Kolkata"
-                checked={city === "Kolkata"}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="Rajahmundry"
-                control={<BBRadio />}
-                label="Rajahmundry"
-                checked={city === "Rajahmundry"}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="Thrissur"
-                control={<BBRadio />}
-                label="Thrissur"
-                checked={city === "Thrissur"}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="Bangalore"
-                control={<BBRadio />}
-                label="Bangalore"
-                checked={city === "Bangalore"}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="Chennai"
-                control={<BBRadio />}
-                label="Chennai"
-                checked={city === "Chennai"}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="New Delhi"
-                control={<BBRadio />}
-                label="New Delhi"
-                checked={city === "New Delhi"}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="Gurgaon"
-                control={<BBRadio />}
-                label="Gurgaon"
-                checked={city === "Gurgaon"}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="Hyderabad"
-                control={<BBRadio />}
-                label="Hyderabad"
-                checked={city === "Hyderabad"}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="Jaipur"
-                control={<BBRadio />}
-                label="Jaipur"
-                checked={city === "Jaipur"}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="Mumbai"
-                control={<BBRadio />}
-                label="Mumbai"
-                checked={city === "Mumbai"}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="Nagpur"
-                control={<BBRadio />}
-                label="Nagpur"
-                checked={city === "Nagpur"}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="Pune"
-                control={<BBRadio />}
-                label="Pune"
-                checked={city === "Pune"}
-              />
-            </li>
+            {citiesArr.map(eachCity => (
+              <li>
+                <FormControlLabel
+                  value={eachCity}
+                  control={<BBRadio />}
+                  label={eachCity}
+                  checked={selectedCity === eachCity}
+                />
+              </li>
+            ))}
           </ul>
         </RadioGroup>
       </div>

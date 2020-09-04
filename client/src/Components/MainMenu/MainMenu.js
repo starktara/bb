@@ -463,9 +463,9 @@ const MainMenu = props => {
                     <li style={{paddingTop: '1px'}}> 
                       <Link to="/vehicledetails/locate-store">LOCATE STORE</Link>
                     </li>
-                    <li style={{paddingTop: '1px'}}> 
+                    {/* <li style={{paddingTop: '1px'}}> 
                       <Link to="/blog">BLOG</Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </Grid>
             </Grid>
@@ -477,8 +477,9 @@ const MainMenu = props => {
                 <PersonDropdown />
               </Grid>
               <Grid item xs={4} sm={4} md={4} lg={4}>
-                <img className="icon-img" src={messageIcon}  alt=""  />
-                <a target="/" href="mailto:connect@bikebazaar.com" />
+                <a target="/" href="mailto:connect@bikebazaar.com">
+                  <img height="25" style={{marginLeft: -5}} src={messageIcon}  alt=""  />
+                </a>
               </Grid>
               <Grid item xs={4} sm={4} md={4} lg={4}>
                 <HamburgerDropdown />
