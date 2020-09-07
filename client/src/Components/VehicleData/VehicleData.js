@@ -158,7 +158,7 @@ const VehicleData = (props) => {
     discountAmt = Math.ceil((props.data.discountPercent * props.data.price) / 100);
     discount = (
       <>
-        <span style={{ color: 'black' }}>{props.data.discountPercent}% Off</span>
+        {/* <span style={{ color: 'black' }}>{props.data.discountPercent}% Off</span> */} 
         <span className="save">
           Save <strong>` </strong>
           {discountAmt}

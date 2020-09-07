@@ -10,26 +10,27 @@ import syv from '../../assets/syv.svg';
 
 const useStyles = makeStyles(theme => ({
     paper: {
-        marginTop: theme.spacing(5),
+        marginTop: theme.spacing(3),
         marginBottom: theme.spacing(5),
         boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
-        padding: theme.spacing(3),
+        padding: theme.spacing(2),
         fontSize: 16,
         letterSpacing: 0.63,
-        color: '#232b2b',
+        color: '#000000',
         lineHeight: '28px'
       },
       heading:{
         color: '#232c2b',
-        fontSize: 36,
+        fontSize: 24,
         fontWeight: 800,
-        lineHeight: '55px'
+        lineHeight: '55px',
+        // paddingBottom: 7
       },
       container:{
-        marginTop: 50
+        marginTop: 30
       },
       subHeading:{
-        fontSize: 19,
+        fontSize: 18,
         fontWeight: 600,
         lineHeight: '1.5em'
       },

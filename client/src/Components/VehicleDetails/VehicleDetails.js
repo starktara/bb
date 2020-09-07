@@ -90,7 +90,7 @@ const VehicleDetails = (props) => {
                 <Grid item xs={11} sm={11} md={11} lg={11} className={classes.banner}>
                     {vehicle}
                     <VehicleAdvantage continerStyle="advantageContainer"/>
-                    <SimilarVehicles />
+                    {/* <SimilarVehicles /> */}
                 </Grid>
             </Grid>
             <Footer />

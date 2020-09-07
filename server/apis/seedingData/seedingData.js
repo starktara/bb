@@ -546,7 +546,134 @@ router.get("/uploadBikes", (req, res) => {
         category: 2,
         mileage: 50,
         storeId:3
+      },
+      {
+        // data values to be admitted for better processing and user screening
+        id: 19,
+        name: "Hero Duet",
+        type: 2,
+        model: 30,
+        brand: 5,
+        regnumber: "",
+        descr: "",
+        price: 30000,
+        state: "Kerala",
+        city: "Thrissur",
+        loc: "Thrissur",
+        location: { lat: 10.540670, lng: 76.213814 },
+        myear: 2016,
+        mmonth: 0,
+        kmdriven: 58157,
+        images: ["Duet_1_20191216T123330.jpeg","Duet_2_20191216T123330.jpeg","Duet_3_20191216T123330.jpeg", "Duet_4_20191216T123330.jpeg"],
+        mimage: "Duet_4_20191216T123330.jpeg",
+        owner: 1,
+        cc: 110,
+        bhp: 8,
+        category: 2,
+        mileage: 50,
+        storeId:4
+      },
+      {
+        id: 20,
+        name: "Hero Mastero Edge",
+        type: 3,
+        model: 28,
+        brand: 5,
+        regnumber: "",
+        descr: "",
+        price: 40000,
+        state: "Kerala",
+        city: "Thrissur",
+        loc: "Thrissur",
+        location: { lat: 10.540670, lng: 76.213814 },
+        myear: 2015,
+        mmonth: 0,
+        kmdriven: 5737,
+        images: ["Maestro_1_20191216T123130.jpeg","Maestro_2_20191216T123130.jpeg","Maestro_3_20191216T123130.jpeg", "Maestro_4_20191216T123130.jpeg"],
+        mimage: "Maestro_3_20191216T123130.jpeg",
+        owner: 1,
+        cc: 110,
+        bhp: 10,
+        category: 3,
+        mileage: 50,
+        storeId:4
+      },
+      {
+        id: 21,
+        name: "Mahindra Centuro",
+        type: 1,
+        model: 26,
+        brand: 11,
+        regnumber: "",
+        descr: "",
+        price: 25000,
+        state: "Kerala",
+        city: "Thrissur",
+        loc: "Thrissur",
+        location: { lat: 10.540670, lng: 76.213814 },
+        myear: 2015,
+        mmonth: 0,
+        kmdriven: 8000,
+        images: ["Centuro_1_20191216T124557.jpeg","Centuro_2_20191216T124557.jpeg","Centuro_3_20191216T124557.jpeg", "Centuro_4_20191216T124557.jpeg"],
+        mimage: "Centuro_1_20191216T124557.jpeg",
+        owner: 1,
+        cc: 100,
+        bhp: 12,
+        category: 1,
+        mileage: 90,
+        storeId: 4
+      },
+      {
+        id: 22,
+        name: "Yamaha SZ RR",
+        type: 1,
+        model: 27,
+        brand: 0,
+        regnumber: "",
+        descr: "",
+        price: 38000,
+        state: "Kerala",
+        city: "Thrissur",
+        loc: "Thrissur",
+        location: { lat: 10.540670, lng: 76.213814 },
+        myear: 2016,
+        mmonth: 0,
+        kmdriven: 22469,
+        images: ["SZRR_1_20191216T123030.jpeg","SZRR_2_20191216T123030.jpeg","SZRR_3_20191216T123030.jpeg","SZRR_4_20191216T123030.jpeg"],
+        mimage: "SZRR_3_20191216T123030.jpeg",
+        owner: 2,
+        cc: 150,
+        bhp: 8,
+        category: 1,
+        mileage: 60,
+        storeId:4
+      },
+      {
+        id: 23,
+        name: "Yamaha SZ RR",
+        type: 1,
+        model: 27,
+        brand: 0,
+        regnumber: "",
+        descr: "",
+        price: 38000,
+        state: "Karnataka",
+        city: "Bangalore",
+        loc: "Bangalore",
+        location: { lat: 12.989492, lng: 77.558663 },
+        myear: 2016,
+        mmonth: 0,
+        kmdriven: 22469,
+        images: ["SZRR_1_20191216T123030.jpeg","SZRR_2_20191216T123030.jpeg","SZRR_3_20191216T123030.jpeg","SZRR_4_20191216T123030.jpeg"],
+        mimage: "SZRR_3_20191216T123030.jpeg",
+        owner: 2,
+        cc: 150,
+        bhp: 8,
+        category: 1,
+        mileage: 60,
+        storeId:5
       }
+        
     ];
     const body = dataset.flatMap(doc => [
       { index: { _index: "bike-details" } },
@@ -611,7 +738,7 @@ router.get("/uploadLocations", (req, res) => {
         state: "Andhra Pradesh",
         locality: "D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry - 533103, Andhra Pradesh, India.",
         location: { lat: 16.999954, lon: 81.786184 }
-      }
+      },
     ];
     const body = dataset.flatMap(doc => [
       { index: { _index: "store-location" } },
@@ -643,6 +770,120 @@ router.get("/uploadLocations", (req, res) => {
   res.json({ msg: "Location index seeded" });
 });
 
+router.get("/uploadNewLocations", (req, res) => {
+  async function upload() {
+    const dataset = [
+      {
+        id: 4,
+        name: "BikeBazaar – Sitaram Trade & Services",
+        city: "Thrissur",
+        state: "Kerala",
+        locality: "Sitaram Trade & Services, PT Manual Road, Kollothumpadam, Patturaikal, Thrissur, Kerala",
+        location: { lat: 10.540670, lng: 76.213814 }
+      },
+      {
+        id: 5,
+        name: "Rajaji Nagar, Bangalore",
+        city: "Bangalore",
+        state: "Karnataka",
+        locality: "New no.72, Old No.60/61, Dr. Rajkumar Road, Rajaji Nagar, Opp Srinath sanitary wares,Bangalore - 560010",
+        location: {lat: 12.989492, lng: 77.558663}
+      },
+      {
+        id: 6,
+        name: "Mootha Centre, Nungambakkam",
+        city: "Nungambakkam",
+        state: "Chennai",
+        locality: "Mootha Centre, Door No 23, Kodambakkam High road, Nungambakkam, Chennai - 600034",
+        location: { lat: 13.052892, lng: 80.246384 }
+      },
+      {
+        id: 7,
+        name: "S/F Arya Samaj, Karol Bagh",
+        city: "New Delhi",
+        state: "New Delhi",
+        locality: "1694 S/F Arya Samaj Road Karol Bagh, Near Grace Hotel & Sat Bharaba Govt School, l Karol Bagh, New Delhi - 110005",
+        location: { lat: 28.647347, lng: 77.194833 }
+      },
+      {
+        id: 8,
+        name: "Sector-12 A, Gurgaon",
+        city: "Gurgaon",
+        state: "Haryana",
+        locality: "SCO 37, 3rd Floor, Hall No.1 Sector-12 A, Huda Market, Opp. Telephone Exchange, Near Bikanerwala, Gurgaon - 122001",
+        location: { lat: 28.468494, lng: 77.035545 }
+      },
+      {
+        id: 9,
+        name: "Babukhan Estate, Hyderabad",
+        city: "Hyderabad",
+        state: "Telanagna",
+        locality: "5th Floor, Flat No 509/A, Babukhan Estate, Basheerbagh, Hyderabad, Telanagna - 500001",
+        location: { lat: 17.400817, lng: 78.474401 }
+      },
+      {
+        id: 10,
+        name: "ARG CORPORATE PARK, Jaipur",
+        city: "Jaipur",
+        state: "Rajasthan",
+        locality: "ARG CORPORATE PARK GOPAL BARI BUILDING, Ajmer Road, Panch Batti, Mission Compound, Hathroi, Jaipur, Rajasthan",
+        location: { lat: 26.915150, lng: 75.794112 }
+      },
+      {
+        id: 11,
+        name: "Sagar Tech Plaza A, Mumbai",
+        city: "Mumbai",
+        state: "Maharashtra",
+        locality: "Office N0. 208, 2nd Floor, Sagar Tech Plaza A, Sakinaka Junction, Mumbai - 400072",
+        location: { lat: 19.102637, lng: 72.885387 }
+      },
+      {
+        id: 12,
+        name: "Jejani Bhavan, Nagpur",
+        city: "Nagpur",
+        state: "Maharashtra",
+        locality: "Jejani Bhavan, Above Khamgaon urban Bank, Gandhi Grain Market, Telephone Exchange Square, Central Avenue Road, Nagpur - 440009",
+        location: { lat: 21.148516, lng: 79.122348 }
+      },
+      {
+        id: 13,
+        name: "Govind Niwas, Pune",
+        city: "Pune",
+        state: "Maharashtra",
+        locality: "Office no. 2 and 3, 1st Floor, Govind Niwas, Rasta Peth, Near Naidu Ganapati Rasta Peth, Pune - 411011",
+        location: { lat: 18.517641, lng: 73.867125 }
+      }
+
+    ];
+    const body = dataset.flatMap(doc => [
+      { index: { _index: "store-location" } },
+      doc
+    ]);
+
+    const { body: bulkResponse } = await client.bulk({ refresh: true, body });
+
+    if (bulkResponse.errors) {
+      const erroredDocuments = [];
+      bulkResponse.items.forEach((action, i) => {
+        const operation = Object.keys(action)[0];
+        if (action[operation].error) {
+          erroredDocuments.push({
+            status: action[operation].status,
+            error: action[operation].error,
+            operation: body[i * 2],
+            document: body[i * 2 + 1]
+          });
+        }
+      });
+      console.log(erroredDocuments);
+    }
+
+    const { body: count } = await client.count({ index: "store-location" });
+    console.log(count);
+  }
+  upload().catch(console.log);
+  res.json({ msg: "New Location added" });
+});
 
 
 /*create schema to store bike details*/
@@ -846,7 +1087,7 @@ router.post("/adminVehiclesUpdate", (req, res) => {
 
 router.post("/adminVehiclesUpload", (req, res) => {
   let formData = req.body;
-  console.log(formData);
+  // console.log(formData);
   async function uploadVehiclels() {
     async function getStore() {
       const { body } = await client.search({
@@ -862,6 +1103,7 @@ router.post("/adminVehiclesUpload", (req, res) => {
       return body.hits.hits[0]._source;
     }
     let storeDetails = await getStore();
+    console.log("AB: ", storeDetails)
     const dataset = [
       {
         name: formData.name.value,

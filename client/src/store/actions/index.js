@@ -14,5 +14,7 @@ export {
 export {
   loginUser,
   logoutUser,
-  loginAdminUser
+  loginAdminUser,
+  setCurrentUser,
+  logoutAdminUser
 } from "./authActions";

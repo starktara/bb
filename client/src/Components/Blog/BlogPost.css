@@ -3,11 +3,11 @@
 }
 
 .ButtonColor {
-  background-color: #fd1b1b;
+  background-color: #ff0000;
 }
 
 .ButtonColor:hover {
-  background-color: #232b2b;
+  background-color: #000000;
 }
 
 .paginationDiv {
@@ -17,7 +17,7 @@
 
 .pagination > li > a {
   background-color: white;
-  /* color: #FD1B1B; */
+  /* color: #ff0000; */
 }
 
 .pagination > li > a:focus,
@@ -31,24 +31,24 @@
 
 .pagination > .active > a {
   color: white;
-  background-color: #fd1b1b !Important;
-  /* border: solid 1px #FD1B1B !Important; */
+  background-color: #ff0000 !Important;
+  /* border: solid 1px #ff0000 !Important; */
 }
 
 .pagination > .active > a:hover {
   color: white;
-  background-color: #232b2b !Important;
-  /* border: solid 1px #232B2B; */
+  background-color: #000000 !Important;
+  /* border: solid 1px #000000; */
 }
 
 .pagination > .waves-effect > a:hover {
   color: white;
-  background-color: #232b2b !Important;
-  /* border: solid 1px #232B2B; */
+  background-color: #000000 !Important;
+  /* border: solid 1px #000000; */
 }
 
 .marginBottom40px {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .paddingTop12px {

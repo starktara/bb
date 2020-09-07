@@ -20,20 +20,20 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .wapper .pageDtl ul li:first-child { background:none; display: inline-block; padding:0; }
 .wapper .pageDtl ul li {  display: inline-block; background: url(../../assets/images/icons/right.svg) 0 7px no-repeat; background-size: 18px 10px; padding:0 0 0 20px;  }
 .wapper .pageDtl ul li a { color:#707575; } .wapper .pageDtl ul li.current { font-weight: bold; }
-.wapper .pageDtl h1 { font-size: 36px; text-transform: none; font-weight: bold; }
+.wapper .pageDtl h1 { font-size: 24px; text-transform: none; font-weight: bold; }
 .wapper .pageDtl p { font-size: 16px; margin: 8px 0 0; }
 .filter { padding: 0!important; }
-.filter h5 { font-size: 16px; padding: 29px 0 13px; }
+.filter h5 { font-size: 18px; padding: 29px 0 13px; }
 .filterSec { border-radius: 4px; box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2); background-color: #ffffff; }
 .filterSec .CityWidget,.filterSec .BudgetWidget, .filterSec .BrandWidget, .filterSec .YearWidget, .filterSec .kmWidget
 { padding:18px 18px 0; margin: 0; }
 .filterSec .CityWidget h3.WidgetTitle, .filterSec .BudgetWidget h3.WidgetTitle, .filterSec .BrandWidget h3.WidgetTitle, .filterSec .YearWidget h3.WidgetTitle, .filterSec .kmWidget h3.WidgetTitle
-{ font-size: 16px; color: #232b2b; font-weight: bold; }
+{ font-size: 16px; color: #000000; font-weight: bold; }
 .filterSec .CityWidget h3.WidgetTitle a, .filterSec .BudgetWidget h3.WidgetTitle a, .filterSec .BrandWidget h3.WidgetTitle a, .filterSec .YearWidget h3.WidgetTitle a, .filterSec .kmWidget h3.WidgetTitle a
-{ color: #232b2b;}
+{ color: #000000;}
 .filterSec .CityWidget .WidgetBody, .filterSec .BudgetWidget .WidgetBody, .filterSec .BrandWidget .WidgetBody, .filterSec .YearWidget .WidgetBody, .filterSec .kmWidget .WidgetBody
 { padding: 17px 0 15px; border-bottom: solid 1px #e5e5e5; }
-.filterSec .CityWidget .WidgetBody ul.cat-list { list-style: none; } .filterSec .CityWidget .WidgetBody ul.cat-list li { padding: 6px 0; font-size: 16px; } .filterSec .CityWidget .WidgetBody ul.cat-list li a { color: #232b2b; }
+.filterSec .CityWidget .WidgetBody ul.cat-list { list-style: none; } .filterSec .CityWidget .WidgetBody ul.cat-list li { padding: 6px 0; font-size: 16px; } .filterSec .CityWidget .WidgetBody ul.cat-list li a { color: #000000; }
 
 .filterSec .kmWidget .WidgetBody { border-bottom:none; }
 
@@ -44,17 +44,17 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .filterSec .BudgetWidget .WidgetBody ul.list li label, .filterSec .BrandWidget .WidgetBody ul.list li label, .filterSec .YearWidget .WidgetBody ul.list li label
 { cursor: pointer; }
 .filterSec .BudgetWidget .WidgetBody ul.list li label img.rupees, .filterSec .BrandWidget .WidgetBody ul.list li label img.rupees, .filterSec .YearWidget .WidgetBody ul.list li label img.rupees
-{ width: 9px; color: #232b2b; }
+{ width: 9px; color: #000000; }
 .filterSec .BudgetWidget .WidgetBody ul.list li label span, .filterSec .BrandWidget .WidgetBody ul.list li label span, .filterSec .YearWidget .WidgetBody ul.list li label span
-{ font-size: 16px!important; color:#232b2b; padding: 2px 0 0; }
+{ font-size: 16px!important; color:#000000; padding: 2px 0 0; }
 .filterSec .BudgetWidget .WidgetBody ul.list li label input.BudgetBox, .filterSec .BrandWidget .WidgetBody ul.list li label input.BudgetBox, .filterSec .YearWidget .WidgetBody ul.list li label input.BudgetBox
 { margin-right: .4rem; position: relative; overflow: visible; box-sizing: border-box; }
 .filterSec .BudgetWidget .WidgetBody ul.list li label span, .filterSec .BrandWidget .WidgetBody ul.list li label span, .filterSec .YearWidget .WidgetBody ul.list li label span
 { display: inline; padding-left: 25px; font-size: 19px; }
 .filterSec .BudgetWidget .WidgetBody ul.list li label a, .filterSec .BrandWidget .WidgetBody ul.list li label a, .filterSec .YearWidget .WidgetBody ul.list li label a
-{ font-size: 16px; color: #232b2b; }
+{ font-size: 16px; color: #000000; }
 .filterSec .BudgetWidget .WidgetBody ul.list li label a strong, .filterSec .BrandWidget .WidgetBody ul.list li label a strong, .filterSec .YearWidget .WidgetBody ul.list li label a strong
-{ font-family: RupeeForadian; font-size: 18px; color: #232b2b; }
+{ font-family: RupeeForadian; font-size: 18px; color: #000000; }
 
 .filterSec .YearWidget .WidgetBody ul.list li { width: 50%; float: left; padding: 6px 0; }
 
@@ -75,12 +75,12 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .ProductListSec .Product .detail p.price strong { font-family: RupeeForadian; font-size: 21px;  font-weight: bold; }
 .ProductListSec .Product .detail ul.detailPoints { list-style: none; margin: 20px 0 0 0; }
 .ProductListSec .Product .detail ul.detailPoints li { padding:4px 0 4px 23px; font-size: 14px; width: 50%; float: left; }
-.ProductListSec .Product .detail ul.detailPoints li span{ margin-left: 10px; color: #232b2b; }
+.ProductListSec .Product .detail ul.detailPoints li span{ margin-left: 10px; color: #000000; }
 .ProductListSec .Product .detail ul.detailPoints li.year { background: url(../../assets/icons/calender.svg) 0 3px no-repeat; background-size: 20px 20px;}
 .ProductListSec .Product .detail ul.detailPoints li.km { background: url(../../assets/icons/meter.svg) 0 3px no-repeat; background-size: 20px 20px;}
 .ProductListSec .Product .detail ul.detailPoints li.cc { background: url(../../assets/icons/engine-power.svg) 0 3px no-repeat; background-size: 20px 20px;}
 .ProductListSec .Product .detail ul.detailPoints li.owner { background: url(../../assets/icons/user.svg) 0 3px no-repeat; background-size: 20px 20px;}
-.ProductListSec .Product .detail p.location { background: url(../../assets/images/icons/location.png) 0 19px no-repeat; padding: 15px 0 0 18px; margin: 15px 0 0; border-top: #e5e5e5 solid 1px; color: #232b2b;}
+.ProductListSec .Product .detail p.location { background: url(../../assets/images/icons/location.png) 0 19px no-repeat; padding: 15px 0 0 18px; margin: 15px 0 0; border-top: #e5e5e5 solid 1px; color: #000000;}
 .ProductListSec .pagination { text-align: center; }
 .ProductListSec .pagination li { height: 40px; padding: 0; }
 .ProductListSec .pagination li:last-child { margin-left:30px; }
@@ -141,31 +141,31 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 
 .vehicleSummarySec, .vehicleReportSec { padding: 50px 0 0 0!important; }
 .vehicleSummary, .vehicleReport { box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17); background-color: #ffffff; border-radius: 5px; padding:40px; }
-.vehicleSummary h3 { font-size: 24px; color: #fe0000; font-weight: bold; margin-bottom: 15px; }
-.vehicleSummary h4 { font-size: 18px; color: #232c2b; font-weight: bold; }
+.vehicleSummary h3 { font-size: 24px; color: #fe0000; font-weight: 800; margin-bottom: 15px; }
+.vehicleSummary h4 { font-size: 18px; color: #232c2b; font-weight: 800; }
 .vehicleSummary p { font-size: 16px; color: #232c2b; }
 .vehicleSummary ul.list { margin: 15px 0 0; }
 .vehicleSummary ul.list li { background: url(../../assets/images/icons/bullet.png) 0 13px no-repeat; padding: 5px 0 5px 20px; }
 
-.vehicleReport h2, .vehicleAdvantage h2 { font-size: 36px; color: #fe0000; font-weight: bold; margin-bottom: 15px; }
+.vehicleReport h2, .vehicleAdvantage h2 { font-size: 24px; color: #fe0000; font-weight: 800; margin-bottom: 15px; }
 .vehicleReport p { font-size: 18px; color: #232c2b; }
 
 .vehicleAdvantageSec { background-color: #e5e5e5; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3); }
 .vehicleAdvantage h2 { color: #232c2b; }
 .vehicleAdvantage .advantageSec { padding: 0 0; }
-.vehicleAdvantage .advantageSec .advantage { padding: 10px 0; }
+.vehicleAdvantage .advantageSec .advantage { padding: 5px 0; }
 .vehicleAdvantage .advantageSec .advantage .advantageIconLeft { width: 224px; height: 224px; border-radius: 50%; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17); background-color: #ffffff; position: relative; z-index: 1; text-align: center; }
 .vehicleAdvantage .advantageSec .advantage .advantageIconLeft img { margin: 30% 0; }
-.vehicleAdvantage .advantageSec .advantage h3 { font-size:32px; background: url(../../assets/images/icons/advantage-icon-lt.png) 0 30px no-repeat; font-weight: bold; color: #ff0000; padding-top: 30px; padding-left: 180px; }
-.vehicleAdvantage .advantageSec .advantage p { padding-left: 70px; font-size: 24px; }
+.vehicleAdvantage .advantageSec .advantage h3 { font-size:24px; background: url(../../assets/images/icons/advantage-icon-lt.png) 0 30px no-repeat; font-weight: 800; color: #ff0000; padding-top: 30px; padding-left: 180px; }
+.vehicleAdvantage .advantageSec .advantage p { padding-left: 70px; font-size: 18px; }
 
 .vehicleAdvantage .advantageSec .advantage1 { padding: 10px 0; }
 .vehicleAdvantage .advantageSec .advantage1 .icon { float: right; }
 .vehicleAdvantage .advantageSec .advantage1 .detail { float: left; }
 .vehicleAdvantage .advantageSec .advantage1 .advantageIconRight { width: 224px; height: 224px; border-radius: 50%; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17); background-color: #ffffff; position: relative; z-index: 1; text-align: center; margin: 0 0 0 -50px;  }
 .vehicleAdvantage .advantageSec .advantage1 .advantageIconRight img { margin: 25% 0; }
-.vehicleAdvantage .advantageSec .advantage1 h3 { font-size:32px; background: url(../../assets/images/icons/advantage-icon-rt.png) right 30px no-repeat; font-weight: bold; color: #ff0000; padding-top: 30px; padding-right: 180px; text-align: right; }
-.vehicleAdvantage .advantageSec .advantage1 p { padding-right: 70px; font-size: 24px; text-align: right; }
+.vehicleAdvantage .advantageSec .advantage1 h3 { font-size:24px; background: url(../../assets/images/icons/advantage-icon-rt.png) right 30px no-repeat; font-weight: 800; color: #ff0000; padding-top: 30px; padding-right: 180px; text-align: right; }
+.vehicleAdvantage .advantageSec .advantage1 p { padding-right: 70px; font-size: 18px; text-align: right; }
 .advantagePadding {
   padding: 15px !important;
 }
@@ -178,11 +178,11 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 }
 
 .advantageMobile {
-  font-size: 25px !important;
+  font-size: 24px !important;
 }
 
 .advantage1Mobile {
-  font-size: 25px !important;
+  font-size: 24px !important;
 }
 
 .similar { width: 1200px; margin:100px auto; }
@@ -241,14 +241,14 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .sidenav li > a { padding:0; font-weight: 100; height: auto; line-height: 20px; }
 .sidenav li > a:hover { background: none; }
 .filterBand { display:block; }
-.filterBand a { width: 100%; position:fixed; bottom: 0; text-align: center; color: #fff; background: #fd1b1b; padding: 10px; z-index: 10000; }
+.filterBand a { width: 100%; position:fixed; bottom: 0; text-align: center; color: #fff; background: #ff0000; padding: 10px; z-index: 10000; }
 .filterBand i.material-icons { vertical-align: text-bottom; }
 .similar { width: 100%; margin:40px auto; }
 .similar .carousel { overflow:hidden; }
 .vehicleAdvantage { width:100%; }
-.vehicleAdvantage .advantageSec .advantage, .vehicleAdvantage .advantageSec .advantage1 { padding:20px 0; }
+.vehicleAdvantage .advantageSec .advantage, .vehicleAdvantage .advantageSec .advantage1 { padding:10px 0; }
 .vehicleAdvantage .advantageSec .advantage .advantageIconLeft, .vehicleAdvantage .advantageSec .advantage1 .advantageIconRight { margin: 0 auto;  }
-.vehicleAdvantage .advantageSec .advantage1 h3, .vehicleAdvantage .advantageSec .advantage h3{ background:none; text-align:center; padding: 20px 0 0; }
+.vehicleAdvantage .advantageSec .advantage1 h3, .vehicleAdvantage .advantageSec .advantage h3{ background:none; text-align:center; padding: 10px 0 0; }
 .vehicleAdvantage .advantageSec .advantage1 p, .vehicleAdvantage .advantageSec .advantage p{ text-align:center; padding: 0; font-size: 20px; }
 .vehicleSummarySec, .vehicleReportSec { padding: 50px 12px 0 !important; }
 .vehicleGalSec { padding:0 12px 40px!important; }

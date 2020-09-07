@@ -72,15 +72,15 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   banner: {
-    marginTop: theme.spacing(5)
+    marginTop: theme.spacing(4)
   },
   bold: {
-    fontWeight: 600
+    fontWeight: 800
   },
   form: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(1),
     '& .MuiGrid-item': {
-      marginTop: theme.spacing(4)
+      marginTop: theme.spacing(1)
     }
   },
   submitButton: {
@@ -376,9 +376,9 @@ const BecomeFranchiseOwner = props => {
         </Grid>
         <Grid item xs={11} sm={11} md={11} lg={11} className="franchiseAdvantageSec">
           <div className={"franchiseAdvantage "+advantagePadding}>
-            <h2 className="center-align">BikeBazaar Advantage</h2>
+            <h2 className="center-align centerAdv">BikeBazaar Advantage</h2>
             <div className="center-align">
-              <img src={headingLines} alt="" />
+              <img src={headingLines} alt="" width="57" height="3" />
             </div>
             <br />
             <br />
@@ -453,7 +453,7 @@ const BecomeFranchiseOwner = props => {
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
                 <h4 className="redhead">Share Your Details to own a BikeBazaar Store</h4>
-                <img src={blackHeadingLines} alt="" />
+                <img src={blackHeadingLines} alt="" width="57" height="4" />
               </Grid>
               <form action="" id="shareYourDetailsForm" className={classes.form}>
                 <Grid container component="div" direction="row">

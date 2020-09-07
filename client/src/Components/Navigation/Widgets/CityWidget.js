@@ -10,7 +10,7 @@ import { CHANGE_CITY, CHANGE_CATEGORY } from "../../../store/actions/actionTypes
 const BBRadio = withStyles({
   root: {
     "&$checked": {
-      color: "#e92d2c"
+      color: "#ff0000"
     }
   },
   checked: {}
@@ -20,33 +20,25 @@ const CityWidget = props => {
   const dispatch = useDispatch();
   const { selectedCity, category } = useSelector(state => state.vehicleDetails);
   const [searchTerm, setSearchTerm] = useState("");
-  const [city, setCity] = useState("");
-  const updateState = event => {
-    setSearchTerm(event.target.value);
-    setCity(searchTerm);
-  };
-
-  useEffect(() => {
-    setCity(selectedCity);
-  }, [selectedCity]);
 
   const searchCity = event => {
     event.preventDefault();
-    // let category = props.category;
     let filterData = props.filter;
+    dispatch({ type: CHANGE_CITY, payload: searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1) });
+    dispatch({ type: CHANGE_CATEGORY, payload: category });
     filterData.city = `${searchTerm}*`;
     props.cityFilter(category, filterData);
   };
 
   const searchClick = clickValue => {
-    // let category = props.category;
     let filterData = props.filter;
-    setCity(clickValue.target.value);
     dispatch({ type: CHANGE_CITY, payload: clickValue.target.value });
     dispatch({ type: CHANGE_CATEGORY, payload: category });
     filterData.city = `${clickValue.target.value}*`;
     props.cityFilter(category, filterData);
   };
+
+  const citiesArr = ['Aluva', 'Kolkata', 'Rajahmundry', 'Thrissur', 'Bangalore', 'Chennai', 'New Delhi', 'Gurgaon', 'Hyderabad', 'Jaipur', 'Mumbai', 'Nagpur', 'Pune' ];
 
   return (
     <div className="CityWidget">
@@ -67,9 +59,9 @@ const CityWidget = props => {
             <input
               type="text"
               placeholder="Search your City"
-              name="Search your City"
+              name="citySearchBar"
               value={searchTerm}
-              onChange={updateState}
+              onChange={(event) => setSearchTerm(event.target.value)}
             />
             <button type="button" onClick={searchCity}>
               <i className="material-icons">search</i>
@@ -78,30 +70,16 @@ const CityWidget = props => {
         </div>
         <RadioGroup aria-label="gender" name="city" onChange={searchClick}>
           <ul className="cat-list">
-            <li>
-              <FormControlLabel
-                value="Aluva"
-                control={<BBRadio />}
-                label="Aluva"
-                checked={city === "Aluva"}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="Kolkata"
-                control={<BBRadio />}
-                label="Kolkata"
-                checked={city === "Kolkata"}
-              />
-            </li>
-            <li>
-              <FormControlLabel
-                value="Rajahmundry"
-                control={<BBRadio />}
-                label="Rajahmundry"
-                checked={city === "Rajahmundry"}
-              />
-            </li>
+            {citiesArr.map(eachCity => (
+              <li>
+                <FormControlLabel
+                  value={eachCity}
+                  control={<BBRadio />}
+                  label={eachCity}
+                  checked={selectedCity === eachCity}
+                />
+              </li>
+            ))}
           </ul>
         </RadioGroup>
       </div>

@@ -72,7 +72,7 @@ const AdminInnerHeader = () => {
   const location = useLocation();
 
   const handleLogout = () => {
-    dispatch(actions.logoutUser());
+    dispatch(actions.logoutAdminUser());
     history.push("/admin/signin");
   };
 

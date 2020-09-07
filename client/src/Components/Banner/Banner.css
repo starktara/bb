@@ -29,10 +29,10 @@ h2 {
   color: #707575;
 }
 .pageDtl ul li.current {
-  font-weight: bold;
+  font-weight: 800;
 }
 .pageDtl h1 {
-  font-size: 36px;
+  font-size: 28px;
   font-weight: bold;
 }
 .pageDtl p {

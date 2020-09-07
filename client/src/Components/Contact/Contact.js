@@ -35,7 +35,7 @@ import closeIcon from "../../assets/Close.png";
 const BBRadio = withStyles({
   root: {
     "&$checked": {
-      color: "#e92d2c"
+      color: "#ff0000"
     }
   },
   checked: {}
@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#f7f7f7'
   },
   banner: {
-    marginTop: theme.spacing(5)
+    marginTop: theme.spacing(4)
   },
   formContainer: {
     marginTop: theme.spacing(1)
@@ -73,7 +73,7 @@ const useStyles = makeStyles(theme => ({
   },
   label:{
     fontWeight: 600,
-    fontSize: 15,
+    fontSize: 16,
     letterSpacing: '0.83px'
   },
   submit:{
@@ -81,7 +81,7 @@ const useStyles = makeStyles(theme => ({
     padding: '6px 30px',
     borderRadius: 24,
     height: 48,
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 600,  
     textTransform: 'capitalize',
     boxShadow: 'none',

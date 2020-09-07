@@ -18,39 +18,39 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: '#f7f7f7'
     },
     banner: {
-        marginTop: theme.spacing(5)
+        marginTop: theme.spacing(4),
     },
     subContainer:{
         marginTop: 50
       },
     paper: {
-        marginTop: theme.spacing(5),
-        marginBottom: theme.spacing(5),
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(6),
         boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
         padding: theme.spacing(3),
         fontSize: 16,
         letterSpacing: 0.63,
-        color: '#232b2b',
+        color: '#000000',
         lineHeight: '28px'
     },
     redHeading: {
-        paddingBottom: 15,
-        fontSize: 32,
+        paddingBottom: 13,
+        fontSize: 24,
         fontWeight: 800,
         color: '#ff0000',
         textAlign: 'center'
     },
     subHeading:{
-        fontSize: 26,
+        fontSize: 18,
         fontWeight: 600
     },
     text:{
-        fontSize: 20
+        fontSize: 16
     },
     advantageContainer:{
         width: 1200,
-        margin: '40px auto',
-        padding: '40px'
+        margin: '40px auto 27px',
+        paddingTop: '0px',
     },
     mb100: {
         marginBottom: '100px'

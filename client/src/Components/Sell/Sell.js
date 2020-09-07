@@ -33,23 +33,34 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#f7f7f7'
   },
   banner: {
-    marginTop: theme.spacing(5)
+    marginTop: theme.spacing(4),
+    
   },
   formContainer: {
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(4),
   },
   paper: {
-    marginTop: theme.spacing(5),
-    marginBottom: theme.spacing(5),
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(3),
+    boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
+    padding: theme.spacing(4),
+    fontSize: 16,
+    letterSpacing: 0.63,
+    color: '#000000',
+    lineHeight: '28px',
+  },
+  paper1: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
     boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
     padding: theme.spacing(3),
     fontSize: 16,
     letterSpacing: 0.63,
-    color: '#232b2b',
+    color: '#000000',
     lineHeight: '28px',
   },
   mapContainer: {
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(3),
     marginBottom: theme.spacing(5),
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2)
@@ -59,10 +70,10 @@ const useStyles = makeStyles(theme => ({
     fontSize: 13
   },
   bookAppointmentHeading:{
-    paddingTop: 43.8,
+    paddingTop: 30,
     paddingBottom: 15,
     fontWeight: 800,
-    fontSize: 36,
+    fontSize: 24,
     color: '#232c2b'
   },
   label: {
@@ -72,16 +83,16 @@ const useStyles = makeStyles(theme => ({
     color: '#232c2b'
   },
   sellHeading:{
-    paddingBottom: 15,
-    fontSize: 32,
-    fontWeight: 600,
+    paddingBottom: 13,
+    fontSize: 24,
+    fontWeight: 800,
     color: '#ff0000',
     textAlign: 'center'
   },
   sellHeadingMobile:{
-    paddingBottom: 15,
+    paddingBottom: 13,
     fontSize: 19,
-    fontWeight: 600,
+    fontWeight: 800,
     color: '#ff0000',
     textAlign: 'center'
   },
@@ -90,36 +101,40 @@ const useStyles = makeStyles(theme => ({
   },
   steps:{
     position: 'relative',
-    width:900,
-    height:360,
+    width:'100%',
+    height:420,
     backgroundImage: 'url("'+stepsToSell+'")',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '900px 360px',
-    marginLeft: 145,
-    marginTop: 50
+    paddingRight: theme.spacing(1),
+    marginTop: 50,
   },
   stepOne:{
     position: 'absolute',
     top: 50,
-    fontWeight: 600
+    fontWeight: 600,
+    paddingLeft: '8%'
   },
   stepTwo:{
     position: 'absolute',
     left: 268,
     top: 30,
-    fontWeight: 600
+    fontWeight: 600,
+    paddingLeft: '8%'
   },
   stepThree:{
     position: 'absolute',
     left: 517,
-    fontWeight: 600
+    fontWeight: 600,
+    paddingLeft: '8%'
   },
   stepFour:{
     position: 'absolute',
     left: 716,
     top: -18,
-    fontWeight: 600
+    fontWeight: 600,
+    paddingLeft: '8%'
   },
   advantageHeading:{
     color: '#232c2b',
@@ -218,7 +233,7 @@ const formValidator = (name, value) => {
 
 const Sell = props => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
   const classes = useStyles();
 
   useEffect(() =>{
@@ -292,7 +307,9 @@ const Sell = props => {
     image: {
       images: [],
       imageNames: [],
-      message: ""
+      message: "",
+      error: false,
+      errorMessage: ''
     }
   });
 
@@ -470,6 +487,13 @@ const Sell = props => {
         formDataCopy[targetName].errorMessage = errorMessage;
         formDataCopy[targetName].error = error;
       }
+      // if(targetName === 'image'){
+      //   if(formData.image.images.length === 0){
+      //     error = true;
+      //     formDataCopy[targetName].errorMessage = 'Please select images to be uploaded';
+      //     formDataCopy[targetName].error = error;
+      //   }
+      // }
       if (error) {
         errorFlag = true;
       }      
@@ -484,31 +508,32 @@ const Sell = props => {
     }
   };
 
-  let stepsToSellSection = (matches) ? <Grid item xs={11} sm={11} md={11} lg={11}>
-            <Paper className={classes.paper+ ' center-align'}>
+  let stepsToSellSection = (matches) ? <Grid item Grid item xs={11} sm={11} md={11} lg={11}>
+            <Paper className={classes.paper1+ ' center-align'}>
               <h3 className={classes.sellHeading}>Steps to Sell Your Two-Wheeler</h3>
               <img alt="" src={blackHeadingLines} width="57" height="4"/>
-              <div className={classes.steps}>
+                <div className={classes.steps}>
                   <div className={classes.stepOne}>Share Your<br/>Two-Wheeler's Details</div>
                   <div className={classes.stepTwo}>Inspection by our<br/>Auto Expert</div>
                   <div className={classes.stepThree}>Document<br/>Verification</div>
                   <div className={classes.stepFour}>Instant Payment For<br/>Your Two-Wheeler</div>
-              </div>
+                </div>
             </Paper>
+            {/* </Grid> */}
           </Grid> :
-          // <Grid item xs={11} sm={11}>
-            <Paper className={classes.paper+ ' center-align'}>
+          // <Grid item xs={12} sm={12} md={8}>
+            <Paper className={classes.paper1+ ' center-align'}>
                 <h3 className={classes.sellHeadingMobile}>Steps to Sell Your Two-Wheeler</h3>
                 <img src={stepsToSellMobile} width="750" alt=""/>
             </Paper>
-          {/* </Grid>; */}
+          // </Grid>;
 
   return (
     <div id="Sell" className={classes.body}>
       {/* <Header /> */}
       <MainMenu />
       {tooltip}
-      <Grid container component="div" direction="row" justify="center">
+      <Grid container component="div" direction="row" justify="center"> 
         <Grid item xs={11} md={11} sm={11} lg={11} className={classes.banner}>
             <Banner navigation="Sell" heading="Sell any Two-Wheeler" text="" path={props.location.pathname}/>
         </Grid>
@@ -782,6 +807,11 @@ const Sell = props => {
                                />
                               <br />
                               { formData.image.message? <p className="text-info">{formData.image.message}</p>: ''}
+                              {/* {formData.image.error && (
+                                <p className={classes.formError}>
+                                  {formData.image.errorMessage}
+                                </p>
+                              )} */}
                               <div className={matches ? "preview-image-container" : "preview-image-container-mobile"}>
                                 {previewImage.map((file, _i)=>(
                                   <div key={_i} className="image-preview">
