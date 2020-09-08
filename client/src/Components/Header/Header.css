@@ -47,7 +47,7 @@ body{
   overflow: hidden;
 }
 .search-label-btn{
-  background: #000000;
+  background: #1d1d1d;
   padding-top: 7px;
   height: 41px;
   margin-top: -4px;
@@ -58,7 +58,7 @@ body{
   border-bottom-right-radius: 5px;
 }
 .search-label-btn:hover{
-  background: #000000 !important;
+  background: #1d1d1d !important;
 }
 #searchField{
   width: 84.2%;

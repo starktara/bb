@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#f7f7f7'
   },
   banner: {
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(2),
     
   },
   formContainer: {
@@ -43,19 +43,19 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(3),
     boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
-    padding: theme.spacing(4),
+    padding: theme.spacing(3),
     fontSize: 16,
-    letterSpacing: 0.63,
+    letterSpacing: 0,
     color: '#000000',
-    lineHeight: '28px',
+    lineHeight: '15px',
   },
   paper1: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
     boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
-    padding: theme.spacing(3),
+    paddingTop: theme.spacing(3),
     fontSize: 16,
-    letterSpacing: 0.63,
+    letterSpacing: 0,
     color: '#000000',
     lineHeight: '28px',
   },
@@ -79,7 +79,7 @@ const useStyles = makeStyles(theme => ({
   label: {
     fontWeight: 600,
     fontSize: 15,
-    letterSpacing: '0.83px',
+    letterSpacing: '0px',
     color: '#232c2b'
   },
   sellHeading:{
@@ -102,39 +102,44 @@ const useStyles = makeStyles(theme => ({
   steps:{
     position: 'relative',
     width:'100%',
-    height:420,
+    height:600,
     backgroundImage: 'url("'+stepsToSell+'")',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '900px 360px',
-    paddingRight: theme.spacing(1),
+    // paddingRight: theme.spacing(3),
+    paddingRight: '15%',
     marginTop: 50,
   },
   stepOne:{
     position: 'absolute',
     top: 50,
     fontWeight: 600,
-    paddingLeft: '8%'
+    paddingRight: '20%',
+    paddingLeft: '20%'
   },
   stepTwo:{
     position: 'absolute',
     left: 268,
     top: 30,
     fontWeight: 600,
-    paddingLeft: '8%'
+    paddingRight: '20%',
+    paddingLeft: '20%'
   },
   stepThree:{
     position: 'absolute',
     left: 517,
     fontWeight: 600,
-    paddingLeft: '8%'
+    paddingLeft: '20%',
+    paddingRight: '20%',
   },
   stepFour:{
     position: 'absolute',
     left: 716,
     top: -18,
     fontWeight: 600,
-    paddingLeft: '8%'
+    paddingLeft: '20%',
+    paddingRight: '20%',
   },
   advantageHeading:{
     color: '#232c2b',
@@ -161,7 +166,7 @@ const useStyles = makeStyles(theme => ({
     textTransform: 'capitalize',
     padding: 8,
     border: 'none',
-    letterSpacing: '0.83px',
+    letterSpacing: '0px',
     color: 'white'
   },
   modalBoxSuccess: {
@@ -233,7 +238,7 @@ const formValidator = (name, value) => {
 
 const Sell = props => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('md'));
+  const matches = useMediaQuery(theme.breakpoints.up('lg'));
   const classes = useStyles();
 
   useEffect(() =>{

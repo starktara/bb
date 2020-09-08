@@ -331,7 +331,7 @@ const LocateStore = props => {
     locationCards = mapLocations.map((thisLocation, key) => {
       if(searchedLocation===null){
         return (
-          <Grid item xs={12} sm={12} md={6} lg={5} xl={4} key={key}>
+          <Grid item xs={12} sm={12} md={4} lg={4} xl={4} key={key}>
             <div className="locationCard" style={{marginRight:"10px", marginBottom: "17px"}}>
               <div style={{"cursor":"pointer"}} onClick={()=>handleStoreClick(thisLocation)}>
                 <h5>{thisLocation.locationName}</h5>

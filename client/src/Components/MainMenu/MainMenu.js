@@ -39,7 +39,7 @@ const StyledMenuItem = withStyles({
       fontWeight: 800
     },
     color: 'white',
-    backgroundColor: 'black',
+    backgroundColor: '1#d1d1d',
     fontWeight: 500,
     fontSize: 18,
     fontFamily: "inherit",
@@ -296,7 +296,7 @@ const HamburgerDropdown = () => {
       MenuListProps={{ onMouseLeave: handleClose }}
       PaperProps={{
         style: {
-          backgroundColor: "black",
+          backgroundColor: "#1d1d1d",
           width:'380px',
           marginTop: '-16px'
         },
@@ -346,18 +346,18 @@ const HamburgerDropdown = () => {
       </StyledMenuItem>
       <hr className="small-hr" />
       <MenuItem>
-        <Link to='/facebook'>
+        <a href="https://www.facebook.com/BikeBazaaar">
           <img className="social-icon-img" src={faceBookIcon}  alt="" style={{marginLeft:'35px'}} />
-        </Link>
-        <Link to='/twitter'>
+        </a>
+        <a href="https://twitter.com/BikeBazaaar">
           <img className="social-icon-img" src={twitterIcon}  alt="" />
-        </Link>
-        <Link to='/linkedin'>
+        </a>
+        <a href="https://www.linkedin.com/company/bikebazaar">
           <img className="social-icon-img" src={linkedinIcon}  alt="" />
-        </Link>
-        <Link to='/instagram'>
+        </a>
+        <a href="https://www.instagram.com/bikebazaaar/">
           <img className="social-icon-img" src={instagramIcon}  alt="" />
-        </Link>
+        </a>
       </MenuItem>
       <br />
       <Link to={`/copyright`}>
@@ -444,7 +444,7 @@ const MainMenu = props => {
                       <Link
                         to={`/category/bike?searchTerm=${searchTerm}&city=${selectedCity}`}
                       >
-                        <button style={{'marginTop':'1px', width:'100%'}} className="btn search-label-btn" type="submit">
+                        <button style={{'marginTop':'1px', width:'100%', backgroundColor: "#1d1d1d"}} className="btn search-label-btn" type="submit">
                           <img src={searchIcon} height="25" alt="" />
                         </button>
                       </Link>

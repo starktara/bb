@@ -37,25 +37,25 @@ const Footer = () => {
     <div className="row last-row">
         <div className="col s12 m2 floatRight">
             <div className="row">
-                <div className="col s3 m3">
-                    <Link to="/facebook">
-                        <img src={faceBookIcon} alt=""/>
-                    </Link>
+                <div className="col s3 m3" >
+                    <a href="https://www.facebook.com/BikeBazaaar">
+                        <img src={faceBookIcon} style={{height: "20px" }} alt=""/>
+                    </a>
                 </div>
                 <div className="col s3 m3">
-                    <Link to="/twitter">
+                    <a href="https://twitter.com/BikeBazaaar">
                         <img src={twitterIcon} alt=""/>
-                    </Link>
+                    </a>
                 </div>
-                <div className="col s3 m3">
-                    <Link to="/linkedin">
+                <div className="col s3 m3" >
+                    <a href="https://www.linkedin.com/company/bikebazaar">
                         <img src={linkedinIcon} alt=""/>
-                    </Link>
+                    </a>
                 </div>
                 <div className="col s3 m3">
-                    <Link to="/instagram">
+                    <a href="https://www.instagram.com/bikebazaaar/">
                         <img src={instagramIcon} alt=""/>
-                    </Link>
+                    </a>
                 </div>
             </div>
         </div>

@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#f7f7f7'
   },
   banner: {
-    marginTop: theme.spacing(4)
+    marginTop: theme.spacing(2)
   },
   formContainer: {
     marginTop: theme.spacing(1)
@@ -86,7 +86,7 @@ const useStyles = makeStyles(theme => ({
     textTransform: 'capitalize',
     boxShadow: 'none',
     marginLeft: 10,
-    marginTop: 60
+    marginTop: 10
   },
   modalBoxSuccess: {
     position: 'absolute',
@@ -350,18 +350,18 @@ const Contact = props => {
                   BikeBazaar<sup>TM</sup>
                 </p>
                 <p className="address">
-                  The Daftar, Bunglow No. 261/2/7,
-                  <br />
-                  Silver Oak Society, Baner Road, Pune
-                  <br />
-                  Maharashtra - 411045
+                  161/3A, Sham Shankuntal Heights 
+                  <br /> 
+                  Ganeshkhind Road, Modi Baug, Shivaji Nagar
+                  <br /> 
+                  Pune, Maharashtra, 411016
                 </p>
                 <p className="sub-heading-black">Contact:</p>
-                <a target="_blank" href="tel:+91 8956853498" >
+                <a target="_blank" href="tel: 8956853498" >
                   <div className="mobile">
                     <CallIcon style={{ fontSize: 23, color: grey[900] }} />
                     &nbsp;&nbsp;&nbsp;
-                      <span style={{color:'black', opacity: '0.5'}}>+91 8956853498</span>
+                      <span style={{color:'black', opacity: '0.5'}}> 8956853498</span>
                   </div>
                 </a>
                 <a target="_blank" href="mailto:connect@bikebazaar.com" >
@@ -373,10 +373,18 @@ const Contact = props => {
                 </a>
                 <p className="sub-heading-black">Follow Us On:</p>
                 <div className="social-media-links">
-                  <img src={facebookIcon} alt="" height="22" />
-                  <img src={twitterIcon} alt="" height="22" />
-                  <img src={instaIcon} alt="" height="22" />
-                  <img src={linkedinIcon} alt="" height="22" />
+                  <a href="https://www.facebook.com/BikeBazaaar">
+                    <img src={facebookIcon} alt="" height="22" />
+                  </a>
+                  <a href="https://twitter.com/BikeBazaaar" >
+                    <img src={twitterIcon} alt="" height="22" />
+                  </a>
+                  <a href="https://www.instagram.com/bikebazaaar/" >
+                    <img src={instaIcon} alt="" height="22" />
+                  </a>
+                  <a href="https://www.linkedin.com/company/bikebazaar">
+                    <img src={linkedinIcon} alt="" height="22" />
+                  </a>
                 </div>
               </Paper>
             </Grid>
@@ -503,7 +511,7 @@ const Contact = props => {
                       <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
                         <button type="button" className={classes.submit+' btn'} onClick={submitForm}>Share</button>
                       </Grid>
-                      </Grid>
+                    </Grid>
                   </form>
                 </div>
               </Paper>
@@ -512,7 +520,7 @@ const Contact = props => {
           <Grid container component="div" direction="row" className={classes.mapContainer}>
             <Grid item xs={12} sm={12} md={12} lg={12} className="mapContainer">
               <GoogleMap
-                center={{ lat: 18.552392, lng: 73.804709 }}
+                center={{ lat: 18.532815, lng: 73.842566 }}
                 zoom={12}
                 location=""
               />

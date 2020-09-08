@@ -38,7 +38,7 @@ const StoreSection = () => {
                 <Grid item xs={12} sm={12} md={12} lg={12}>
                 {/* <Carousel responsive={responsive} className="flex-center"> */}
                 <Grid container component="div" direction="row" style={{display: 'flex', justifyContent:'space-around'}}>
-                    <Grid item xs={12} sm={12} md={6} lg={5} style={{paddingBottom: '13px'}} >
+                    <Grid item xs={12} sm={12} md={4} lg={4} style={{paddingBottom: '13px'}} >
                     <div className="StoreCard">
                         <img src={jkbIcon} alt="" />
                         <div className="detail">
@@ -52,7 +52,7 @@ const StoreSection = () => {
                         </div>
                     </div>
                     </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={5}>
+                    <Grid item xs={12} sm={12} md={4} lg={4}>
                     <div className="StoreCard">
                         <img src={mvcIcon} alt="" />
                         <div className="detail">
@@ -78,7 +78,7 @@ const StoreSection = () => {
                         </div>
                     </div>
                     </Grid> */}
-                    <Grid item xs={12} sm={12} md={6} lg={5}>
+                    <Grid item xs={12} sm={12} md={4} lg={4}>
                     <div className="StoreCard">
                         <img src={stsIcon} alt="" />
                         <div className="detail">
