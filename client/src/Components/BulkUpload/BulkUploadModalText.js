@@ -53,6 +53,7 @@ const ModalText = () => {
             <li> -"More details about the Two-wheeler" section will not be added through the bulk upload functionality.</li>
             <li> -Not for editing two-wheeler - please DO NOT use to edit any existing two-wheeler details. This functionality is only meant for the purpose of adding new two-wheelers.</li>
             <li> -If the particular bike details are already existing on the web app refrain from adding it again as it will create a duplicate entry</li>
+            <li> -While uploading more then one image -please make sure there shouldn't be any spaces before and after of commas seperations</li>
         </ul>
     </>
 )};

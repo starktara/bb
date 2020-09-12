@@ -8,6 +8,7 @@ const { Client } = require("@elastic/elasticsearch");
 const { Router } = require("express");
 const client = new Client({ node: "http://localhost:9200" });
 const path = require("path");
+const { resolve } = require("path");
 // const glob = require("glob");
 
 //global fileName variable
@@ -35,20 +36,17 @@ router.post("/Upload", upload.single("file"), function (req, res) {
 });
 
 router.get("/SampleTemplate", (req, res) => {
-  fs.readFile(
-    "./apis/bulkUpload/SampleTemplate/Records.xlsx",
-    (err, data) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.setHeader(
-          "Content-Type",
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        );
-        res.send(data);
-      }
+  fs.readFile("./apis/bulkUpload/SampleTemplate/Records.xlsx", (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.setHeader(
+        "Content-Type",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      );
+      res.send(data);
     }
-  );
+  });
 });
 
 function zipHelper() {
@@ -99,14 +97,41 @@ function zipHelper() {
   }
 }
 
+function func1(data) {
+  return new Promise((resolve) => {
+    let regnumtoimage = [];
+    let iteratedimg = [];
+    data.forEach((vehicletoimg) => {
+      regnumtoimage.push(vehicletoimg.images);
+    });
+    for (let i = 0; i < regnumtoimage.length; i++) {
+      fs.readdir(
+        `../server/Bulk/BulkUploadFiles/images/${regnumtoimage[i]}`,
+        (err, files) => {
+          if (err) {
+            console.log(err);
+          } else {
+            //iteratedimg.push({ key: `${regnumtoimage[i]}`, value: files });
+            iteratedimg.push(files);
+          }
+        }
+      );
+    }
+    setTimeout(() => {
+      resolve(iteratedimg);
+    }, 1000);
+  });
+}
+
 async function dataUpload(data) {
+  const imageArray = await func1(data);
   const latLon = [
     { lat: 10.100809, lon: 76.348984 },
     { lat: 22.5726, lon: 88.3639 },
     { lat: 16.999954, lon: 81.786184 },
   ];
-  const dataset = [...data];
-  const modifiedData = dataset.map((vehicle) => ({
+
+  const modifiedData = data.map((vehicle, index) => ({
     id: Date.now(),
     name: vehicle.name,
     type: parseInt(vehicle.category),
@@ -122,8 +147,8 @@ async function dataUpload(data) {
     myear: parseInt(vehicle.manufacturingYear),
     mmonth: parseInt(vehicle.manufacturingMonth),
     kmdriven: parseInt(vehicle.kmdriven),
-    images: vehicle.images.split(","),
-    mimage: vehicle.images.split(",")[0],
+    images: imageArray[index],
+    mimage: imageArray[index][0],
     owner: parseInt(vehicle.NumberOfOwner),
     cc: parseInt(vehicle.cc),
     bhp: 0,
@@ -133,7 +158,7 @@ async function dataUpload(data) {
     sold: "false",
     discountPercent: parseFloat(vehicle.discountPercent),
   }));
-  // console.log(modifiedData)
+
   let imgArr = [];
   modifiedData.forEach((vehicle) => {
     vehicle.images.forEach((img) => {
@@ -142,11 +167,12 @@ async function dataUpload(data) {
           "../server/Bulk/BulkUploadFiles/images/" +
           vehicle.regnumber +
           "/" +
-          img,
-        name: img,
+          img.trim(),
+        name: img.trim(),
       });
     });
   });
+
   imgArr.forEach((oldImage) => {
     fs.rename(
       oldImage.path,
@@ -156,6 +182,7 @@ async function dataUpload(data) {
       }
     );
   });
+
   // console.log(imgArr)
   const body = modifiedData.flatMap((doc) => [
     { index: { _index: "bike-details" } },
