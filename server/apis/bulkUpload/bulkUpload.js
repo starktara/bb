@@ -100,10 +100,12 @@ function zipHelper() {
 function func1(data) {
   return new Promise((resolve) => {
     let regnumtoimage = [];
-    let iteratedimg = [];
+    let iteratedimg = {};
+
     data.forEach((vehicletoimg) => {
-      regnumtoimage.push(vehicletoimg.images);
+      regnumtoimage.push(vehicletoimg.registrationNumber);
     });
+
     for (let i = 0; i < regnumtoimage.length; i++) {
       fs.readdir(
         `../server/Bulk/BulkUploadFiles/images/${regnumtoimage[i]}`,
@@ -111,8 +113,7 @@ function func1(data) {
           if (err) {
             console.log(err);
           } else {
-            //iteratedimg.push({ key: `${regnumtoimage[i]}`, value: files });
-            iteratedimg.push(files);
+            iteratedimg[`${regnumtoimage[i]}`] = files;
           }
         }
       );
@@ -124,7 +125,10 @@ function func1(data) {
 }
 
 async function dataUpload(data) {
-  const imageArray = await func1(data);
+  const regtoimagesMapping = await func1(data);
+
+  console.log(regtoimagesMapping);
+
   const latLon = [
     { lat: 10.100809, lon: 76.348984 },
     { lat: 22.5726, lon: 88.3639 },
@@ -147,8 +151,8 @@ async function dataUpload(data) {
     myear: parseInt(vehicle.manufacturingYear),
     mmonth: parseInt(vehicle.manufacturingMonth),
     kmdriven: parseInt(vehicle.kmdriven),
-    images: imageArray[index],
-    mimage: imageArray[index][0],
+    images: regtoimagesMapping[vehicle.registrationNumber],
+    mimage: regtoimagesMapping[vehicle.registrationNumber][0],
     owner: parseInt(vehicle.NumberOfOwner),
     cc: parseInt(vehicle.cc),
     bhp: 0,
@@ -168,7 +172,7 @@ async function dataUpload(data) {
           vehicle.regnumber +
           "/" +
           img.trim(),
-        name: img.trim(),
+        name: img.trim() + "_" + vehicle.regnumber,
       });
     });
   });
