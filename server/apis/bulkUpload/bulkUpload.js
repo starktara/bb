@@ -61,7 +61,8 @@ function zipHelper() {
     xlsxj(
       {
         input: "./Bulk/BulkUploadFiles/Records.xlsx",
-        output: null,
+        output: null,   
+                     
       },
       function (err, result) {
         if (err) {
@@ -98,6 +99,7 @@ function zipHelper() {
 }
 
 function func1(data) {
+
   return new Promise((resolve) => {
     let regnumtoimage = [];
     let iteratedimg = {};
@@ -125,7 +127,18 @@ function func1(data) {
 }
 
 async function dataUpload(data) {
+
   const regtoimagesMapping = await func1(data);
+
+  //making the modified array keys and values
+
+  for (registerKeys in regtoimagesMapping) {
+    regtoimagesMapping[registerKeys] = regtoimagesMapping[registerKeys].map(
+      (eachImg) => {
+        return registerKeys + "_" + eachImg.trim();
+      }
+    );
+  }
 
   console.log(regtoimagesMapping);
 
@@ -163,7 +176,10 @@ async function dataUpload(data) {
     discountPercent: parseFloat(vehicle.discountPercent),
   }));
 
+  console.log(modifiedData);
+
   let imgArr = [];
+
   modifiedData.forEach((vehicle) => {
     vehicle.images.forEach((img) => {
       imgArr.push({
@@ -172,22 +188,45 @@ async function dataUpload(data) {
           vehicle.regnumber +
           "/" +
           img.trim(),
-        name: img.trim() + "_" + vehicle.regnumber,
+        name: img.trim(),
       });
     });
   });
 
-  imgArr.forEach((oldImage) => {
-    fs.rename(
-      oldImage.path,
-      `../client/public/vehicles/${oldImage.name}`,
-      () => {
-        console.log("Images moved");
+  // imgArr.forEach((oldImage) => {
+  //   fs.rename(
+  //     oldImage.path,
+  //     `../client/public/vehicles/${oldImage.name}`,
+  //     () => {
+  //       console.log("Images moved");
+  //     }
+  //   );
+  // });
+
+  data.forEach((vehicle) => {
+    fs.readdir(
+      `../server/Bulk/BulkUploadFiles/images/${vehicle.registrationNumber}`,
+      (err, files) => {
+        if (err) {
+          console.log(err);
+        } else {
+          files.forEach((eachImg) => {
+            fs.rename(
+              `../server/Bulk/BulkUploadFiles/images/${vehicle.registrationNumber}/${eachImg}`,
+              `../client/public/vehicles/${
+                vehicle.registrationNumber + "_" + eachImg
+              }`,
+              () => {
+                console.log("Images moved");
+              }
+            );
+          });
+        }
       }
     );
   });
 
-  // console.log(imgArr)
+  console.log(imgArr);
   const body = modifiedData.flatMap((doc) => [
     { index: { _index: "bike-details" } },
     doc,
