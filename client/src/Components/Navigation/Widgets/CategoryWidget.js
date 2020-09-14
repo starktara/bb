@@ -31,12 +31,11 @@ const CategoryWidget = props => {
   const history = useHistory();
   const classes = useStyle();
   const { vehicles, category } = useSelector(state => state.vehicleDetails);
-  console.log("only vehicles", vehicles);
   const [selectedCategory, setSelectedCategory] = useState(category);
+  // const [valued, setValued] = useState();
   
   const handleChange = clickValue => {
     let filterData = props.filter;
-    console.log("filter count",parseInt(clickValue.target.value));
     setSelectedCategory(parseInt(clickValue.target.value));
     dispatch({ type: CHANGE_CATEGORY, payload: parseInt(clickValue.target.value) });
     props.cityFilter(parseInt(clickValue.target.value), filterData);
@@ -83,16 +82,6 @@ const CategoryWidget = props => {
       <div className="WidgetBody">
         <RadioGroup aria-label="category" name="category" onChange={handleChange}>
           <ul className="cat-list">
-          <Link to='/category/all'>
-              <li>
-                <FormControlLabel
-                  value="0"
-                  control={<BBRadio />}
-                  label= {`All ${selectedCategory === 0 ? valued : ""}` }
-                  checked={selectedCategory === 0}
-                />
-              </li>
-            </Link>
             <Link to='/category/bike'>
               <li>
                 <FormControlLabel

@@ -63,9 +63,9 @@ const MobNav = () => {
           <li>
             <Link to="/becomefranchiseowner">Become a Franchise Owner</Link>
           </li>
-          {/* <li>
+          <li>
             <Link to="/blog">BLOG</Link>
-          </li> */}
+          </li>
         </ul>
       </div>
       <div className="bbMlogo">

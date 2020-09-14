@@ -5,11 +5,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { connect, useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../store/actions/index";
 import { withStyles } from "@material-ui/core/styles";
-import TextField from '@material-ui/core/TextField';
-import { Autocomplete } from '@material-ui/lab';
-import useDebounce from '../../MainMenu/use-debounce';
 import { CHANGE_CITY, CHANGE_CATEGORY } from "../../../store/actions/actionTypes";
-
 
 const BBRadio = withStyles({
   root: {
@@ -20,26 +16,10 @@ const BBRadio = withStyles({
   checked: {}
 })(props => <Radio {...props} />);
 
-
 const CityWidget = props => {
   const dispatch = useDispatch();
-  const { selectedCity, category, citynames } = useSelector(state => state.vehicleDetails);
+  const { selectedCity, category } = useSelector(state => state.vehicleDetails);
   const [searchTerm, setSearchTerm] = useState("");
-  const debouncedSearchTerm = useDebounce(searchTerm, 300);
-
-  useEffect(() => {
-    const filterData = {
-      ...citynames,
-      city: selectedCity
-    }
-    console.log("filterData",filterData['city']);
-
-    if(debouncedSearchTerm.length > 2){
-      setTimeout(() => {
-        dispatch(actions.getCityNames(filterData, debouncedSearchTerm));
-      }, 10);
-    }
-  }, [debouncedSearchTerm, selectedCity]);
 
   const searchCity = event => {
     event.preventDefault();
@@ -56,10 +36,6 @@ const CityWidget = props => {
     dispatch({ type: CHANGE_CATEGORY, payload: category });
     filterData.city = `${clickValue.target.value}*`;
     props.cityFilter(category, filterData);
-  };
-
-  const updateState = value => {
-    setSearchTerm(value.toLowerCase());
   };
 
   const citiesArr = ['Aluva', 'Kolkata', 'Rajahmundry', 'Thrissur', 'Bangalore', 'Chennai', 'New Delhi', 'Gurgaon', 'Hyderabad', 'Jaipur', 'Mumbai', 'Nagpur', 'Pune' ];
@@ -80,25 +56,16 @@ const CityWidget = props => {
       <div className="WidgetBody">
         <div className="search-container">
           <form onSubmit={searchCity}>
-            <div style={{width: "85%"}}>
-              <Autocomplete
-                id="searchCity"
-                freeSolo
-                options={searchTerm ? citiesArr: []}
-                renderInput={(params) => (
-                    <TextField 
-                      onChange={updateState(params.inputProps.value)} 
-                      {...params} 
-                      id="outlined-basic"
-                      label=" Search your City" 
-                      variant="outlined" 
-                    />
-                )}
-              />
-            </div>
-            {/* <button type="button" onClick={searchCity}>
-                <i className="material-icons">search</i>
-            </button> */}
+            <input
+              type="text"
+              placeholder="Search your City"
+              name="citySearchBar"
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+            />
+            <button type="button" onClick={searchCity}>
+              <i className="material-icons">search</i>
+            </button>
           </form>
         </div>
         <RadioGroup aria-label="gender" name="city" onChange={searchClick}>

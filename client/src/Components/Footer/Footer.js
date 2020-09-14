@@ -1,13 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import faceBookIcon from '../../assets/facebook.svg';
-// import twitterIcon from '../../assets/twitter-icon.svg';
-// import linkedinIcon from '../../assets/linkedin-icon.svg';
-// import instagramIcon from '../../assets/instagram-icon.svg';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import InstagramIcon from '@material-ui/icons/Instagram';
+import faceBookIcon from '../../assets/facebook-icon.svg';
+import twitterIcon from '../../assets/twitter-icon.svg';
+import linkedinIcon from '../../assets/linkedin-icon.svg';
+import instagramIcon from '../../assets/instagram-icon.svg';
 
 const Footer = () => {
 
@@ -41,28 +37,24 @@ const Footer = () => {
     <div className="row last-row">
         <div className="col s12 m2 floatRight">
             <div className="row">
-                <div className="col s2 m3" >
+                <div className="col s3 m3" >
                     <a href="https://www.facebook.com/BikeBazaaar">
-                        <FacebookIcon />
-                        {/* <img src={FacebookIcon}  alt=""/> */}
+                        <img src={faceBookIcon} style={{height: "20px" }} alt=""/>
                     </a>
                 </div>
-                <div className="col s2 m3">
+                <div className="col s3 m3">
                     <a href="https://twitter.com/BikeBazaaar">
-                        <TwitterIcon />
-                        {/* <img src={twitterIcon} alt=""/> */}
+                        <img src={twitterIcon} alt=""/>
                     </a>
                 </div>
-                <div className="col s2 m3" >
+                <div className="col s3 m3" >
                     <a href="https://www.linkedin.com/company/bikebazaar">
-                        <LinkedInIcon />
-                        {/* <img src={linkedinIcon} alt=""/> */}
+                        <img src={linkedinIcon} alt=""/>
                     </a>
                 </div>
-                <div className="col s2 m3">
+                <div className="col s3 m3">
                     <a href="https://www.instagram.com/bikebazaaar/">
-                        <InstagramIcon />
-                        {/* <img src={instagramIcon} alt=""/> */}
+                        <img src={instagramIcon} alt=""/>
                     </a>
                 </div>
             </div>

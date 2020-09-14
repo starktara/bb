@@ -2,8 +2,7 @@ export {
   getVehicles,
   getPaginatedData,
   getVehicleData,
-  getVehiclesNames,
-  getCityNames
+  getVehiclesNames
 } from "./vehiclesDetails";
 export {
   getStoreData

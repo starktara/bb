@@ -28,7 +28,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const CATEGORY = [
-    'All',
     'Motorcycle',
     'Scooter',
     'High-End Motorcycle'
