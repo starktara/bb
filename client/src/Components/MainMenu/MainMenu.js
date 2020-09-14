@@ -9,10 +9,10 @@ import hamburgerIcon from "../../assets/Hamburger_Icon.png";
 import callIcon from "../../assets/Phone.svg";
 import messageIcon from "../../assets/message.png";
 import closeIcon from "../../assets/Close.png";
-import faceBookIcon from '../../assets/facebook-icon.svg';
-import twitterIcon from '../../assets/twitter-icon.svg';
-import linkedinIcon from '../../assets/linkedin-icon.svg';
-import instagramIcon from '../../assets/instagram-icon.svg';
+// import faceBookIcon from '../../assets/facebook-icon.svg';
+// import twitterIcon from '../../assets/twitter-icon.svg';
+// import linkedinIcon from '../../assets/linkedin-icon.svg';
+// import instagramIcon from '../../assets/instagram-icon.svg';
 import selectedTyre from '../../assets/SelectedPageTyre.svg';
 import Grid from "@material-ui/core/Grid";
 import M from "materialize-css";
@@ -30,6 +30,31 @@ import TextField from '@material-ui/core/TextField';
 import * as actions from "../../store/actions/index";
 import _ from "lodash";
 import useDebounce from "./use-debounce";
+import Button from "@material-ui/core/Button";
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import InstagramIcon from '@material-ui/icons/Instagram';
+
+const StyledMenu = withStyles({
+  paper: {
+    border: "1px solid #d3d4d5"
+  }
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: "bottom",
+      horizontal: "center"
+    }}
+    transformOrigin={{
+      vertical: "top",
+      horizontal: "center"
+    }}
+    {...props}
+  />
+));
 
 const StyledMenuItem = withStyles({
   root: {
@@ -178,14 +203,21 @@ const PersonDropdown = () => {
   );
 }
 
+
 const LocationDropDown = () => {
   const dispatch = useDispatch();
-  const [anchorEl, setAnchorEl] = useState();
-  const selectedCity = useSelector(state => state.vehicleDetails.selectedCity);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(1);
+  const { selectedCity } = useSelector(state => state.vehicleDetails);
+  
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const eventIndex = (event, index) => {
+    setSelectedIndex(index);
     setAnchorEl(null);
   };
   const handleCityChange = (value) => {
@@ -199,13 +231,25 @@ const LocationDropDown = () => {
       });
     }
   }
-  console.log();
+
+  console.log("New City", selectedCity);
+
   return (
     <>
     <span style={{height: 40, display: 'flex', justifyContent: "flex-start", alignItems: "center", cursor: 'pointer'}} onClick={handleClick}>
       <img className="menu-icons" aria-controls="location-menu" aria-haspopup="true" src={locationLogo}  alt="" />
-      <span style={{color:"black", fontSize: 13}}>{selectedCity}</span>
+      {/* <span style={{color:"black", fontSize: 13}}>{selectedCity}</span> */}
+      <Button
+        // aria-controls="customised-menu"
+        aria-haspopup="true"
+        variant="text"
+        color="white"
+        onClick={handleClick}
+      >
+        {selectedCity ? selectedCity : "Select City"}
+      </Button>
     </span>
+    
     <Menu
       id="location-menu"
       anchorEl={anchorEl}
@@ -346,18 +390,30 @@ const HamburgerDropdown = () => {
       </StyledMenuItem>
       <hr className="small-hr" />
       <MenuItem>
-        <a href="https://www.facebook.com/BikeBazaaar">
-          <img className="social-icon-img" src={faceBookIcon}  alt="" style={{marginLeft:'35px'}} />
-        </a>
-        <a href="https://twitter.com/BikeBazaaar">
-          <img className="social-icon-img" src={twitterIcon}  alt="" />
-        </a>
-        <a href="https://www.linkedin.com/company/bikebazaar">
-          <img className="social-icon-img" src={linkedinIcon}  alt="" />
-        </a>
-        <a href="https://www.instagram.com/bikebazaaar/">
-          <img className="social-icon-img" src={instagramIcon}  alt="" />
-        </a>
+        <div style={{marginLeft:'20px'}}>
+          <a href="https://www.facebook.com/BikeBazaaar">
+            {/* <img className="social-icon-img" src={faceBookIcon}  alt="" style={{marginLeft:'35px'}} /> */}
+            <FacebookIcon />
+          </a>
+        </div>
+        <div style={{marginLeft:'20px'}}>
+          <a href="https://twitter.com/BikeBazaaar">
+            {/* <img className="social-icon-img" src={twitterIcon}  alt="" /> */}
+            <TwitterIcon />
+          </a>
+        </div>
+        <div style={{marginLeft:'20px'}}>
+          <a href="https://www.linkedin.com/company/bikebazaar">
+            {/* <img className="social-icon-img" src={linkedinIcon}  alt="" /> */}
+            <LinkedInIcon />
+          </a>
+        </div>
+        <div style={{marginLeft:'20px'}}>
+          <a href="https://www.instagram.com/bikebazaaar/">
+            <InstagramIcon />
+            {/* <img className="social-icon-img" src={instagramIcon}  alt="" /> */}
+          </a>
+        </div>
       </MenuItem>
       <br />
       <Link to={`/copyright`}>
@@ -395,6 +451,7 @@ const MainMenu = props => {
     }
   }, [debouncedSearchTerm, selectedCity]);
   
+
   const updateState = value => {
     setSearchTerm(value.toLowerCase());
   }

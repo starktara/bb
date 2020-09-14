@@ -184,6 +184,14 @@
   color: #fff;
 }
 
+.searchCity {
+  width: 75%;
+  background-color: white;
+  border-radius: 5px;
+  height: 57px;
+  padding-left: 13px;
+  padding-bottom: 30px;
+}
 .rangeOut {
   padding: 10px 0 0;
   font-size: 16px;
