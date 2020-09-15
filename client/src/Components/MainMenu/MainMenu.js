@@ -207,7 +207,7 @@ const PersonDropdown = () => {
 const LocationDropDown = () => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useState(1);
+  // const [selectedIndex, setSelectedIndex] = useState(1);
   const { selectedCity } = useSelector(state => state.vehicleDetails);
   
   const handleClick = (event) => {
@@ -216,19 +216,20 @@ const LocationDropDown = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const eventIndex = (event, index) => {
-    setSelectedIndex(index);
-    setAnchorEl(null);
-  };
+  // const eventIndex = (event, index) => {
+  //   setSelectedIndex(index);
+  //   setAnchorEl(null);
+  // };
   const handleCityChange = (value) => {
     // console.log(value)
     if (value === "Select City") {
-      dispatch({ type: CHANGE_CITY, payload: "" });  
+      dispatch({ type: CHANGE_CITY, payload: "" });
     }
-    else {
+    else{
       dispatch({ type: CHANGE_CITY, payload: value });
-    }
     
+    }
+
     handleClose();
     if(window.location.pathname === "/" ) {
       window.scrollTo({

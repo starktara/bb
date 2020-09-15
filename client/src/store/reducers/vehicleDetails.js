@@ -79,13 +79,13 @@ const reducer = (state = initialState, action) => {
         totalPages: null,
         vehicle: null,
         category: null,
-        selectedCity: "",
+        selectedCity: "Aluva",
         filter: {
           sort: {
             column: null,
             order: null
           },
-          city: "",
+          city: "Aluva",
           myear: [],
           budget: [],
           brand: [],

@@ -108,8 +108,8 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: '900px 360px',
     // paddingRight: theme.spacing(3),
-    padding: theme.spacing(1),
     // paddingRight: '15%',
+    padding: theme.spacing(1),
     marginTop: 50,
   },
   stepOne:{
@@ -554,9 +554,8 @@ const Sell = props => {
                 <Grid container component="div" direction="row">
                   <Grid item xs={12} sm={12} md={12} lg={12}>
                     <form action="" id="shareYourDetailsForm" encType="multipart/form-data">
-
                      {/* 1st row for Appointment Form */}
-                      <Grid container component="div" direction="row" justify="space-evenly">
+                     <Grid container component="div" direction="row" justify="space-evenly">
                         <Grid item xs={12} sm={12} md={12} lg={12} >
                           <Grid container component="div" direction="row"  justify="space-evenly" >
                             <Grid item xs={12} md={12} sm={5} lg={5}>

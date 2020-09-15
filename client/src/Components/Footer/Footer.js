@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import faceBookIcon from '../../assets/facebook.svg';
-// import twitterIcon from '../../assets/twitter-icon.svg';
-// import linkedinIcon from '../../assets/linkedin-icon.svg';
-// import instagramIcon from '../../assets/instagram-icon.svg';
+import faceBookIcon from '../../assets/facebook-icon.svg';
+import twitterIcon from '../../assets/twitter-icon.svg';
+import linkedinIcon from '../../assets/linkedin-icon.svg';
+import instagramIcon from '../../assets/instagram-icon.svg';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
@@ -41,7 +41,7 @@ const Footer = () => {
     <div className="row last-row">
         <div className="col s12 m2 floatRight">
             <div className="row">
-                <div className="col s2 m3" >
+            <div className="col s2 m3" >
                     <a href="https://www.facebook.com/BikeBazaaar">
                         <FacebookIcon />
                         {/* <img src={FacebookIcon}  alt=""/> */}
@@ -62,8 +62,7 @@ const Footer = () => {
                 <div className="col s2 m3">
                     <a href="https://www.instagram.com/bikebazaaar/">
                         <InstagramIcon />
-                        {/* <img src={instagramIcon} alt=""/> */}
-                    </a>
+                        {/* <img src={instagramIcon} alt=""/> */}                    </a>
                 </div>
             </div>
         </div>

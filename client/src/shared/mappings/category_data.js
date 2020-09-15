@@ -1,7 +1,7 @@
 export default {
-    'all': {
+    'all' : {
         id: 0,
-        name: "All"
+        name: 'All'
     },
     'bike' : {
         id: 1,
