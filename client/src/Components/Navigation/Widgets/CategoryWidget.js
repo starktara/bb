@@ -83,7 +83,7 @@ const CategoryWidget = props => {
       <div className="WidgetBody">
         <RadioGroup aria-label="category" name="category" onChange={handleChange}>
           <ul className="cat-list">
-          <Link to='/category/all'>
+          {/* <Link to='/category/all'>
               <li>
                 <FormControlLabel
                   value="0"
@@ -92,7 +92,7 @@ const CategoryWidget = props => {
                   checked={selectedCategory === 0}
                 />
               </li>
-            </Link>
+            </Link> */}
             <Link to='/category/bike'>
               <li>
                 <FormControlLabel

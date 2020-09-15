@@ -25,12 +25,16 @@ router.get("/getCategoryById", (req, res) => {
         })
       }
     } else {
-        if (filterData.category !== 0) {
+        if (req.query.category != 0) {
+          console.log("insider", req.query.category);
           mustArray.push({
             match: {
               category: req.query.category
             }
           });
+        }
+        else {
+          console.log("else",req.query.category);
         }
     }
 
@@ -94,6 +98,7 @@ router.get("/getCategoryById", (req, res) => {
     }
     
     if (filterData.city !== "") {
+      console.log("filter city", filterData.city);
       mustArray.push({
         match_phrase: {
           city: `${filterData.city}*`

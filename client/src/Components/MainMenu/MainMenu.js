@@ -222,7 +222,13 @@ const LocationDropDown = () => {
   };
   const handleCityChange = (value) => {
     // console.log(value)
-    dispatch({ type: CHANGE_CITY, payload: value });
+    if (value === "Select City") {
+      dispatch({ type: CHANGE_CITY, payload: "" });  
+    }
+    else {
+      dispatch({ type: CHANGE_CITY, payload: value });
+    }
+    
     handleClose();
     if(window.location.pathname === "/" ) {
       window.scrollTo({
@@ -259,9 +265,9 @@ const LocationDropDown = () => {
       getContentAnchorEl={null}
       anchorOrigin={{
         vertical: "bottom",
-        horizontal: "right",
+        horizontal: "center",
       }}
-      transformOrigin={{ vertical: "bottom", horizontal: "left" }}
+      transformOrigin={{ vertical: "top", horizontal: "center" }}
       MenuListProps={{ onMouseLeave: handleClose }}
       PaperProps={{
         style: {
@@ -269,6 +275,9 @@ const LocationDropDown = () => {
         },
       }}
     >
+      <StyledMenuItem onClick={() => handleCityChange("Select City")}>
+        Select City
+      </StyledMenuItem>
       <StyledMenuItem onClick={() => handleCityChange("Aluva")}>
         Aluva
       </StyledMenuItem>
