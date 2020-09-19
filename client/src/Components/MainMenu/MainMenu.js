@@ -5,7 +5,6 @@ import bikeBazaarLogo from "../../assets/BikeB-logo.png";
 import personLogo from "../../assets/Person.png";
 import locationLogo from "../../assets/gps.svg";
 import hamburgerIcon from "../../assets/Hamburger_Icon.png";
-// import callIcon from "../../assets/Call.png";
 import callIcon from "../../assets/Phone.svg";
 import messageIcon from "../../assets/message.png";
 import closeIcon from "../../assets/Close.png";
@@ -30,31 +29,12 @@ import TextField from '@material-ui/core/TextField';
 import * as actions from "../../store/actions/index";
 import _ from "lodash";
 import useDebounce from "./use-debounce";
-import Button from "@material-ui/core/Button";
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import InstagramIcon from '@material-ui/icons/Instagram';
-
-const StyledMenu = withStyles({
-  paper: {
-    border: "1px solid #d3d4d5"
-  }
-})((props) => (
-  <Menu
-    elevation={0}
-    getContentAnchorEl={null}
-    anchorOrigin={{
-      vertical: "bottom",
-      horizontal: "center"
-    }}
-    transformOrigin={{
-      vertical: "top",
-      horizontal: "center"
-    }}
-    {...props}
-  />
-));
+import ListItemText from '@material-ui/core/ListItemText';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 const StyledMenuItem = withStyles({
   root: {
@@ -63,8 +43,9 @@ const StyledMenuItem = withStyles({
       color: 'black',
       fontWeight: 800
     },
+    // #1d1d1d
     color: 'white',
-    backgroundColor: '1#d1d1d',
+    backgroundColor: 'black',
     fontWeight: 500,
     fontSize: 18,
     fontFamily: "inherit",
@@ -207,19 +188,18 @@ const PersonDropdown = () => {
 const LocationDropDown = () => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
-  // const [selectedIndex, setSelectedIndex] = useState(1);
+  const [select, setSelect] = useState(true);
   const { selectedCity } = useSelector(state => state.vehicleDetails);
   
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    setSelect(!select);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
-  // const eventIndex = (event, index) => {
-  //   setSelectedIndex(index);
-  //   setAnchorEl(null);
-  // };
+  
   const handleCityChange = (value) => {
     // console.log(value)
     if (value === "Select City") {
@@ -243,22 +223,18 @@ const LocationDropDown = () => {
 
   return (
     <>
-    <span style={{height: 40, display: 'flex', justifyContent: "flex-start", alignItems: "center", cursor: 'pointer'}} onClick={handleClick}>
+    <span style={{height: 40, display: 'flex', justifyContent: "flex-start", alignItems: "center", cursor: 'pointer', color: 'black'}} onClick={handleClick}>
       <img className="menu-icons" aria-controls="location-menu" aria-haspopup="true" src={locationLogo}  alt="" />
-      {/* <span style={{color:"black", fontSize: 13}}>{selectedCity}</span> */}
-      <Button
-        // aria-controls="customised-menu"
-        aria-haspopup="true"
-        variant="text"
-        color="white"
-        onClick={handleClick}
-      >
+      <span style={{paddingLeft: '10px', width: "100%"}} >
         {selectedCity ? selectedCity : "Select City"}
-      </Button>
+      </span>
+      <span onClick={handleClick} >
+        {select ? <ExpandMoreIcon style={{paddingTop: "5px", justifyContent: "center"}} /> : <ChevronRightIcon style={{paddingTop: "5px", justifyContent: "center"}} />  }
+      </span>
     </span>
     
     <Menu
-      id="location-menu"
+      id="customized-menu"
       anchorEl={anchorEl}
       keepMounted
       open={Boolean(anchorEl)}
@@ -272,10 +248,12 @@ const LocationDropDown = () => {
       MenuListProps={{ onMouseLeave: handleClose }}
       PaperProps={{
         style: {
-          backgroundColor: "black",
+          backgroundColor: "#1d1d1d",
+          marginLeft: "0.5%",
         },
       }}
     >
+
       <StyledMenuItem onClick={() => handleCityChange("Select City")}>
         Select City
       </StyledMenuItem>
@@ -289,7 +267,7 @@ const LocationDropDown = () => {
         Rajahmundry
       </StyledMenuItem>
       <StyledMenuItem onClick={() => handleCityChange("Thrissur")}>
-      Thrissur
+        Thrissur
       </StyledMenuItem>
       <StyledMenuItem onClick={() => handleCityChange("Bangalore")}>
         Bangalore
