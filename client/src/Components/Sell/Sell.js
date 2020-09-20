@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#f7f7f7'
   },
   banner: {
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(2),
     
   },
   formContainer: {
@@ -43,19 +43,19 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(3),
     boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
-    padding: theme.spacing(4),
+    padding: theme.spacing(3),
     fontSize: 16,
-    letterSpacing: 0.63,
+    letterSpacing: 0,
     color: '#000000',
-    lineHeight: '28px',
+    lineHeight: '15px',
   },
   paper1: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
     boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
-    padding: theme.spacing(3),
+    paddingTop: theme.spacing(3),
     fontSize: 16,
-    letterSpacing: 0.63,
+    letterSpacing: 0,
     color: '#000000',
     lineHeight: '28px',
   },
@@ -79,7 +79,7 @@ const useStyles = makeStyles(theme => ({
   label: {
     fontWeight: 600,
     fontSize: 15,
-    letterSpacing: '0.83px',
+    letterSpacing: '0px',
     color: '#232c2b'
   },
   sellHeading:{
@@ -102,39 +102,45 @@ const useStyles = makeStyles(theme => ({
   steps:{
     position: 'relative',
     width:'100%',
-    height:420,
+    height:550,
     backgroundImage: 'url("'+stepsToSell+'")',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '900px 360px',
-    paddingRight: theme.spacing(1),
+    // paddingRight: theme.spacing(3),
+    // paddingRight: '15%',
+    padding: theme.spacing(1),
     marginTop: 50,
   },
   stepOne:{
     position: 'absolute',
     top: 50,
     fontWeight: 600,
-    paddingLeft: '8%'
+    paddingRight: '18%',
+    paddingLeft: '22%'
   },
   stepTwo:{
     position: 'absolute',
     left: 268,
     top: 30,
     fontWeight: 600,
-    paddingLeft: '8%'
+    paddingRight: '18%',
+    paddingLeft: '23%'
   },
   stepThree:{
     position: 'absolute',
     left: 517,
     fontWeight: 600,
-    paddingLeft: '8%'
+    paddingLeft: '23%',
+    paddingRight: '15%',
   },
   stepFour:{
     position: 'absolute',
     left: 716,
     top: -18,
     fontWeight: 600,
-    paddingLeft: '8%'
+    paddingLeft: '23%',
+    paddingRight: '15%',
   },
   advantageHeading:{
     color: '#232c2b',
@@ -161,7 +167,7 @@ const useStyles = makeStyles(theme => ({
     textTransform: 'capitalize',
     padding: 8,
     border: 'none',
-    letterSpacing: '0.83px',
+    letterSpacing: '0px',
     color: 'white'
   },
   modalBoxSuccess: {
@@ -233,7 +239,7 @@ const formValidator = (name, value) => {
 
 const Sell = props => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('md'));
+  const matches = useMediaQuery(theme.breakpoints.up('lg'));
   const classes = useStyles();
 
   useEffect(() =>{
@@ -548,10 +554,11 @@ const Sell = props => {
                 <Grid container component="div" direction="row">
                   <Grid item xs={12} sm={12} md={12} lg={12}>
                     <form action="" id="shareYourDetailsForm" encType="multipart/form-data">
-                      <Grid container component="div" direction="row" justify="space-evenly">
-                        <Grid item xs={12} sm={12} md={5} lg={5}>
-                          <Grid container component="div" direction="row">
-                            <Grid item xs={12} md={12} sm={12} lg={12}>
+                     {/* 1st row for Appointment Form */}
+                     <Grid container component="div" direction="row" justify="space-evenly">
+                        <Grid item xs={12} sm={12} md={12} lg={12} >
+                          <Grid container component="div" direction="row"  justify="space-evenly" >
+                            <Grid item xs={12} md={12} sm={5} lg={5}>
                               <label htmlFor="name">
                                 <span className={classes.label}>Name:*</span>&nbsp;&nbsp;(eg. Varunam Reddy)
                               </label>
@@ -572,104 +579,7 @@ const Sell = props => {
                                 </p>
                               )}
                             </Grid>
-                          </Grid>
-                          <Grid container component="div" direction="row">
-                            <Grid item xs={12} sm={12} md={12} lg={12}>
-                              <label htmlFor="city">
-                                <span  className={classes.label}>City:*</span>&nbsp;&nbsp;(eg. Pune, Kolkata)
-                              </label>
-                              <input type="text" name="city" id="city"
-                                onBlur={event =>
-                                  validateAndUpdateFormdata(event, formData)
-                                }
-                                className={
-                                  formData.city.error
-                                    ? "invalid"
-                                    : formData.city.value
-                                    ? "valid"
-                                    : ""
-                                }/>
-                              {formData.city.error && (
-                                <p className={classes.formError}>
-                                  {formData.city.errorMessage}
-                                </p>
-                              )}
-                            </Grid>
-                          </Grid>
-                          <Grid container component="div" direction="row">
-                            <Grid item xs={12} sm={12} md={12} lg={12}>
-                              <label htmlFor="make">
-                                <span  className={classes.label}>Make:*</span>&nbsp;&nbsp;(eg. Honda, Bajaj)
-                              </label>
-                              <input type="text" name="make" required
-                                onBlur={event =>
-                                  validateAndUpdateFormdata(event, formData)
-                                }
-                                className={
-                                  formData.make.error
-                                    ? "invalid"
-                                    : formData.make.value
-                                    ? "valid"
-                                    : ""
-                                }/>
-                              {formData.make.error && (
-                                <p className={classes.formError}>
-                                  {formData.make.errorMessage}
-                                </p>
-                              )}
-                            </Grid>
-                          </Grid>
-                          <Grid container component="div" direction="row">
-                            <Grid item xs={12} sm={12} md={12} lg={12}>
-                              <label htmlFor="variant">
-                                <span  className={classes.label}>Variant:</span>&nbsp;&nbsp;(eg. 150cc std)
-                              </label>
-                              <input type="text" name="variant" id="variant"
-                                onBlur={event =>
-                                  updateFormdata(event, formData)}
-                                  className={
-                                    formData.variant.error
-                                      ? "invalid"
-                                      : formData.variant.value
-                                      ? "valid"
-                                      : ""
-                                  }/>
-                                {formData.variant.error && (
-                                  <p className={classes.formError}>
-                                    {formData.variant.errorMessage}
-                                  </p>
-                                )}
-                            </Grid>
-                          </Grid>
-                          <Grid container component="div" direction="row">
-                            <Grid item xs={12} sm={12} md={12} lg={12}>
-                              <label htmlFor="yom">
-                                <span  className={classes.label}>Year of Manufacture:*</span>&nbsp;&nbsp;(eg. 2013)
-                              </label>
-                              <input
-                                type="text"
-                                name="yom"
-                                onBlur={event =>
-                                  validateAndUpdateFormdata(event, formData)
-                                }
-                                className={
-                                  formData.yom.error
-                                    ? "invalid"
-                                    : formData.yom.value
-                                    ? "valid"
-                                    : ""
-                                }/>
-                              {formData.yom.error && (
-                                <p className={classes.formError}>
-                                  {formData.yom.errorMessage}
-                                </p>
-                              )}
-                            </Grid>
-                          </Grid>
-                        </Grid>
-                        <Grid item xs={12} sm={12} md={5} lg={5}>
-                          <Grid container component="div" direction="row">
-                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
                               <label htmlFor="mobile">
                                 <span  className={classes.label}>Mobile No:*</span>&nbsp;&nbsp;(eg. +91 9999999999)
                               </label>
@@ -691,8 +601,35 @@ const Sell = props => {
                               )}
                             </Grid>
                           </Grid>
-                          <Grid container component="div" direction="row">
-                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                        </Grid>
+                      </Grid>
+                      
+                      {/* 2nd row for Appointment Form */}
+                      <Grid container component="div" direction="row" justify="space-evenly">
+                        <Grid item xs={12} sm={12} md={12} lg={12} >
+                          <Grid container component="div" direction="row"  justify="space-evenly" >
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
+                                <label htmlFor="city">
+                                  <span  className={classes.label}>City:*</span>&nbsp;&nbsp;(eg. Pune, Kolkata)
+                                </label>
+                                <input type="text" name="city" id="city"
+                                  onBlur={event =>
+                                    validateAndUpdateFormdata(event, formData)
+                                  }
+                                  className={
+                                    formData.city.error
+                                      ? "invalid"
+                                      : formData.city.value
+                                      ? "valid"
+                                      : ""
+                                  }/>
+                                {formData.city.error && (
+                                  <p className={classes.formError}>
+                                    {formData.city.errorMessage}
+                                  </p>
+                                )}
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
                               <label htmlFor="address">
                                 <span  className={classes.label}>Address:</span>&nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
                               </label>
@@ -714,8 +651,35 @@ const Sell = props => {
                                 )}
                             </Grid>
                           </Grid>
-                          <Grid container component="div" direction="row">
-                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                        </Grid>
+                      </Grid>
+                      
+                      {/* 3rd row for Appointment Form */}
+                      <Grid container component="div" direction="row" justify="space-evenly">
+                        <Grid item xs={12} sm={12} md={12} lg={12} >
+                          <Grid container component="div" direction="row"  justify="space-evenly" >
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
+                                <label htmlFor="make">
+                                  <span  className={classes.label}>Make:*</span>&nbsp;&nbsp;(eg. Honda, Bajaj)
+                                </label>
+                                <input type="text" name="make" required
+                                  onBlur={event =>
+                                    validateAndUpdateFormdata(event, formData)
+                                  }
+                                  className={
+                                    formData.make.error
+                                      ? "invalid"
+                                      : formData.make.value
+                                      ? "valid"
+                                      : ""
+                                  }/>
+                                {formData.make.error && (
+                                  <p className={classes.formError}>
+                                    {formData.make.errorMessage}
+                                  </p>
+                                )}
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
                               <label htmlFor="model">
                                 <span  className={classes.label}>Model:*</span>&nbsp;&nbsp;(eg. Activa, Pulsar)
                               </label>
@@ -737,8 +701,34 @@ const Sell = props => {
                               )}
                             </Grid>
                           </Grid>
-                          <Grid container component="div" direction="row">
-                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                        </Grid>
+                      </Grid>
+                      
+                      {/* 4nd row for Appointment Form */}
+                      <Grid container component="div" direction="row" justify="space-evenly">
+                        <Grid item xs={12} sm={12} md={12} lg={12} >
+                          <Grid container component="div" direction="row"  justify="space-evenly" >
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
+                                <label htmlFor="variant">
+                                  <span  className={classes.label}>Variant:</span>&nbsp;&nbsp;(eg. 150cc std)
+                                </label>
+                                <input type="text" name="variant" id="variant"
+                                  onBlur={event =>
+                                    updateFormdata(event, formData)}
+                                    className={
+                                      formData.variant.error
+                                        ? "invalid"
+                                        : formData.variant.value
+                                        ? "valid"
+                                        : ""
+                                    }/>
+                                  {formData.variant.error && (
+                                    <p className={classes.formError}>
+                                      {formData.variant.errorMessage}
+                                    </p>
+                                  )}
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
                               <label htmlFor="kmsdriven">
                                 <span  className={classes.label}>KMs Driven:</span>&nbsp;&nbsp;(eg. 40,0000 km)
                               </label>
@@ -760,8 +750,37 @@ const Sell = props => {
                               )}
                             </Grid>
                           </Grid>
-                          <Grid container component="div" direction="row">
-                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                        </Grid>
+                      </Grid>
+                      
+                      {/* 5nd row for Appointment Form */}
+                      <Grid container component="div" direction="row" justify="space-evenly">
+                        <Grid item xs={12} sm={12} md={12} lg={12} >
+                          <Grid container component="div" direction="row"  justify="space-evenly" >
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
+                                <label htmlFor="yom">
+                                  <span  className={classes.label}>Year of Manufacture:*</span>&nbsp;&nbsp;(eg. 2013)
+                                </label>
+                                <input
+                                  type="text"
+                                  name="yom"
+                                  onBlur={event =>
+                                    validateAndUpdateFormdata(event, formData)
+                                  }
+                                  className={
+                                    formData.yom.error
+                                      ? "invalid"
+                                      : formData.yom.value
+                                      ? "valid"
+                                      : ""
+                                  }/>
+                                {formData.yom.error && (
+                                  <p className={classes.formError}>
+                                    {formData.yom.errorMessage}
+                                  </p>
+                                )}
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
                               <label htmlFor="promocode">
                                 <span  className={classes.label}>Promocode:</span>&nbsp;&nbsp;(If applicable)
                               </label>
@@ -783,6 +802,10 @@ const Sell = props => {
                               )}
                             </Grid>
                           </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid container component="div" direction="row" justify="space-evenly">
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
                       </Grid>
                       <Grid container component="div" direction="row" justify="space-evenly" className={classes.banner+' form-group'}>
                               <Grid item xs={11} sm={11} md={11} lg={11}>

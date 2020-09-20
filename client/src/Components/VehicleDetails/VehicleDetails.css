@@ -156,7 +156,7 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .vehicleAdvantage .advantageSec .advantage { padding: 5px 0; }
 .vehicleAdvantage .advantageSec .advantage .advantageIconLeft { width: 224px; height: 224px; border-radius: 50%; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17); background-color: #ffffff; position: relative; z-index: 1; text-align: center; }
 .vehicleAdvantage .advantageSec .advantage .advantageIconLeft img { margin: 30% 0; }
-.vehicleAdvantage .advantageSec .advantage h3 { font-size:24px; background: url(../../assets/images/icons/advantage-icon-lt.png) 0 30px no-repeat; font-weight: 800; color: #ff0000; padding-top: 30px; padding-left: 180px; }
+.vehicleAdvantage .advantageSec .advantage h3 { font-size:24px; background: url(../../assets/images/icons/advantage-icon-lt.png) 0 30px no-repeat; font-weight: 800; color: #ff0000; padding-top: 37px; padding-left: 180px; }
 .vehicleAdvantage .advantageSec .advantage p { padding-left: 70px; font-size: 18px; }
 
 .vehicleAdvantage .advantageSec .advantage1 { padding: 10px 0; }
@@ -164,7 +164,7 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .vehicleAdvantage .advantageSec .advantage1 .detail { float: left; }
 .vehicleAdvantage .advantageSec .advantage1 .advantageIconRight { width: 224px; height: 224px; border-radius: 50%; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17); background-color: #ffffff; position: relative; z-index: 1; text-align: center; margin: 0 0 0 -50px;  }
 .vehicleAdvantage .advantageSec .advantage1 .advantageIconRight img { margin: 25% 0; }
-.vehicleAdvantage .advantageSec .advantage1 h3 { font-size:24px; background: url(../../assets/images/icons/advantage-icon-rt.png) right 30px no-repeat; font-weight: 800; color: #ff0000; padding-top: 30px; padding-right: 180px; text-align: right; }
+.vehicleAdvantage .advantageSec .advantage1 h3 { font-size:24px; background: url(../../assets/images/icons/advantage-icon-rt.png) right 30px no-repeat; font-weight: 800; color: #ff0000; padding-top: 37px; padding-right: 180px; text-align: right; }
 .vehicleAdvantage .advantageSec .advantage1 p { padding-right: 70px; font-size: 18px; text-align: right; }
 .advantagePadding {
   padding: 15px !important;

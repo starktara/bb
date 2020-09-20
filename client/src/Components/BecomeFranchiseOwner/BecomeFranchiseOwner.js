@@ -85,7 +85,7 @@ const useStyles = makeStyles(theme => ({
   },
   submitButton: {
     position: 'relative',
-    background: '#eb2c2d',
+    background: '#ff0000',
     padding: '6px 30px',
     borderRadius: 24,
     height: 48,

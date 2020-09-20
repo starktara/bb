@@ -47,7 +47,7 @@ body{
   overflow: hidden;
 }
 .search-label-btn{
-  background: #000000;
+  background: #1d1d1d;
   padding-top: 7px;
   height: 41px;
   margin-top: -4px;
@@ -58,11 +58,11 @@ body{
   border-bottom-right-radius: 5px;
 }
 .search-label-btn:hover{
-  background: #000000 !important;
+  background: #1d1d1d !important;
 }
 #searchField{
   width: 84.2%;
-  background: url(../../assets/icons/right.svg) 0 7px no-repeat;
+  /* background: url(../../assets/icons/right.svg) 0 7px no-repeat; */
   background-size: 13px 27px;
   background-color: white;
   height: 40px;
@@ -78,6 +78,11 @@ body{
   height: 40px;
   padding-left: 4px;
   /* padding-top: 7px; */
+}
+
+#searchLocation:hover {
+  border-bottom-left-radius: 0px;
+
 }
 
 .nav-options {
@@ -285,6 +290,11 @@ i.icon-black{
   border-bottom: none!important;
   box-shadow: none!important;
 }
+
+.collapse {
+  top: "-40px",
+}
+
 .box-shadow{
   width: fit-content;
   border-radius: 15px;

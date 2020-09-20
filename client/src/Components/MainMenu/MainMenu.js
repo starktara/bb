@@ -5,14 +5,13 @@ import bikeBazaarLogo from "../../assets/BikeB-logo.png";
 import personLogo from "../../assets/Person.png";
 import locationLogo from "../../assets/gps.svg";
 import hamburgerIcon from "../../assets/Hamburger_Icon.png";
-// import callIcon from "../../assets/Call.png";
 import callIcon from "../../assets/Phone.svg";
 import messageIcon from "../../assets/message.png";
 import closeIcon from "../../assets/Close.png";
-import faceBookIcon from '../../assets/facebook-icon.svg';
-import twitterIcon from '../../assets/twitter-icon.svg';
-import linkedinIcon from '../../assets/linkedin-icon.svg';
-import instagramIcon from '../../assets/instagram-icon.svg';
+// import faceBookIcon from '../../assets/facebook-icon.svg';
+// import twitterIcon from '../../assets/twitter-icon.svg';
+// import linkedinIcon from '../../assets/linkedin-icon.svg';
+// import instagramIcon from '../../assets/instagram-icon.svg';
 import selectedTyre from '../../assets/SelectedPageTyre.svg';
 import Grid from "@material-ui/core/Grid";
 import M from "materialize-css";
@@ -30,6 +29,12 @@ import TextField from '@material-ui/core/TextField';
 import * as actions from "../../store/actions/index";
 import _ from "lodash";
 import useDebounce from "./use-debounce";
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import ListItemText from '@material-ui/core/ListItemText';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 const StyledMenuItem = withStyles({
   root: {
@@ -38,6 +43,7 @@ const StyledMenuItem = withStyles({
       color: 'black',
       fontWeight: 800
     },
+    // #1d1d1d
     color: 'white',
     backgroundColor: 'black',
     fontWeight: 500,
@@ -178,19 +184,32 @@ const PersonDropdown = () => {
   );
 }
 
+
 const LocationDropDown = () => {
   const dispatch = useDispatch();
-  const [anchorEl, setAnchorEl] = useState();
-  const selectedCity = useSelector(state => state.vehicleDetails.selectedCity);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [select, setSelect] = useState(true);
+  const { selectedCity } = useSelector(state => state.vehicleDetails);
+  
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    setSelect(!select);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+  
   const handleCityChange = (value) => {
     // console.log(value)
-    dispatch({ type: CHANGE_CITY, payload: value });
+    if (value === "Select City") {
+      dispatch({ type: CHANGE_CITY, payload: "" });
+    }
+    else{
+      dispatch({ type: CHANGE_CITY, payload: value });
+    
+    }
+
     handleClose();
     if(window.location.pathname === "/" ) {
       window.scrollTo({
@@ -199,15 +218,23 @@ const LocationDropDown = () => {
       });
     }
   }
-  console.log();
+
+  console.log("New City", selectedCity);
+
   return (
     <>
-    <span style={{height: 40, display: 'flex', justifyContent: "flex-start", alignItems: "center", cursor: 'pointer'}} onClick={handleClick}>
+    <span style={{height: 40, display: 'flex', justifyContent: "flex-start", alignItems: "center", cursor: 'pointer', color: 'black'}} onClick={handleClick}>
       <img className="menu-icons" aria-controls="location-menu" aria-haspopup="true" src={locationLogo}  alt="" />
-      <span style={{color:"black", fontSize: 13}}>{selectedCity}</span>
+      <span style={{paddingLeft: '10px', width: "100%"}} >
+        {selectedCity ? selectedCity : "Select City"}
+      </span>
+      <span onClick={handleClick} >
+        {select ? <ExpandMoreIcon style={{paddingTop: "5px", justifyContent: "center"}} /> : <ChevronRightIcon style={{paddingTop: "5px", justifyContent: "center"}} />  }
+      </span>
     </span>
+    
     <Menu
-      id="location-menu"
+      id="customized-menu"
       anchorEl={anchorEl}
       keepMounted
       open={Boolean(anchorEl)}
@@ -215,16 +242,21 @@ const LocationDropDown = () => {
       getContentAnchorEl={null}
       anchorOrigin={{
         vertical: "bottom",
-        horizontal: "right",
+        horizontal: "center",
       }}
-      transformOrigin={{ vertical: "bottom", horizontal: "left" }}
+      transformOrigin={{ vertical: "top", horizontal: "center" }}
       MenuListProps={{ onMouseLeave: handleClose }}
       PaperProps={{
         style: {
-          backgroundColor: "black",
+          backgroundColor: "#1d1d1d",
+          marginLeft: "0.5%",
         },
       }}
     >
+
+      <StyledMenuItem onClick={() => handleCityChange("Select City")}>
+        Select City
+      </StyledMenuItem>
       <StyledMenuItem onClick={() => handleCityChange("Aluva")}>
         Aluva
       </StyledMenuItem>
@@ -235,7 +267,7 @@ const LocationDropDown = () => {
         Rajahmundry
       </StyledMenuItem>
       <StyledMenuItem onClick={() => handleCityChange("Thrissur")}>
-      Thrissur
+        Thrissur
       </StyledMenuItem>
       <StyledMenuItem onClick={() => handleCityChange("Bangalore")}>
         Bangalore
@@ -296,7 +328,7 @@ const HamburgerDropdown = () => {
       MenuListProps={{ onMouseLeave: handleClose }}
       PaperProps={{
         style: {
-          backgroundColor: "black",
+          backgroundColor: "#1d1d1d",
           width:'380px',
           marginTop: '-16px'
         },
@@ -346,18 +378,30 @@ const HamburgerDropdown = () => {
       </StyledMenuItem>
       <hr className="small-hr" />
       <MenuItem>
-        <Link to='/facebook'>
-          <img className="social-icon-img" src={faceBookIcon}  alt="" style={{marginLeft:'35px'}} />
-        </Link>
-        <Link to='/twitter'>
-          <img className="social-icon-img" src={twitterIcon}  alt="" />
-        </Link>
-        <Link to='/linkedin'>
-          <img className="social-icon-img" src={linkedinIcon}  alt="" />
-        </Link>
-        <Link to='/instagram'>
-          <img className="social-icon-img" src={instagramIcon}  alt="" />
-        </Link>
+        <div style={{marginLeft:'20px'}}>
+          <a href="https://www.facebook.com/BikeBazaaar">
+            {/* <img className="social-icon-img" src={faceBookIcon}  alt="" style={{marginLeft:'35px'}} /> */}
+            <FacebookIcon />
+          </a>
+        </div>
+        <div style={{marginLeft:'20px'}}>
+          <a href="https://twitter.com/BikeBazaaar">
+            {/* <img className="social-icon-img" src={twitterIcon}  alt="" /> */}
+            <TwitterIcon />
+          </a>
+        </div>
+        <div style={{marginLeft:'20px'}}>
+          <a href="https://www.linkedin.com/company/bikebazaar">
+            {/* <img className="social-icon-img" src={linkedinIcon}  alt="" /> */}
+            <LinkedInIcon />
+          </a>
+        </div>
+        <div style={{marginLeft:'20px'}}>
+          <a href="https://www.instagram.com/bikebazaaar/">
+            <InstagramIcon />
+            {/* <img className="social-icon-img" src={instagramIcon}  alt="" /> */}
+          </a>
+        </div>
       </MenuItem>
       <br />
       <Link to={`/copyright`}>
@@ -395,6 +439,7 @@ const MainMenu = props => {
     }
   }, [debouncedSearchTerm, selectedCity]);
   
+
   const updateState = value => {
     setSearchTerm(value.toLowerCase());
   }
@@ -444,7 +489,7 @@ const MainMenu = props => {
                       <Link
                         to={`/category/bike?searchTerm=${searchTerm}&city=${selectedCity}`}
                       >
-                        <button style={{'marginTop':'1px', width:'100%'}} className="btn search-label-btn" type="submit">
+                        <button style={{'marginTop':'1px', width:'100%', backgroundColor: "#1d1d1d"}} className="btn search-label-btn" type="submit">
                           <img src={searchIcon} height="25" alt="" />
                         </button>
                       </Link>

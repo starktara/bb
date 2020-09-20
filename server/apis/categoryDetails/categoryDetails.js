@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Client } = require("@elastic/elasticsearch");
+const { filter } = require("lodash");
 const client = new Client({ node: "http://localhost:9200" });
 
 router.get("/getCategoryById", (req, res) => {
@@ -24,11 +25,17 @@ router.get("/getCategoryById", (req, res) => {
         })
       }
     } else {
-      mustArray.push({
-        match: {
-          category: req.query.category
+        if (req.query.category != 0) {
+          console.log("insider", req.query.category);
+          mustArray.push({
+            match: {
+              category: req.query.category
+            }
+          });
         }
-      });
+        else {
+          console.log("else",req.query.category);
+        }
     }
 
     if (filterData.sort.column != null) {
@@ -89,12 +96,15 @@ router.get("/getCategoryById", (req, res) => {
         }
       });
     }
-
-    mustArray.push({
-      match_phrase: {
-        city: `${filterData.city}*`
-      }
-    });
+    
+    if (filterData.city !== "") {
+      console.log("filter city", filterData.city)
+      mustArray.push({
+        match_phrase: {
+          city: `${filterData.city}*`
+        }
+      })
+    };
 
 
     const { body } = await client.search({
