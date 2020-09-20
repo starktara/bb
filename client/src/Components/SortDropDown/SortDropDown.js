@@ -24,11 +24,8 @@ class SortDropDown extends Component {
 
   handleScroll = () => {
     const { scrollPos } = this.state;
-    console.log("scrollpos", scrollPos);
     const currScroll = window.scrollY;
     const visible = scrollPos < currScroll;
-    console.log("curr", currScroll);
-    // console.log("visible", listOpen);
     this.setState({
       scrollPos: currScroll,
       visible
@@ -55,9 +52,7 @@ class SortDropDown extends Component {
     
     return (
       <React.Fragment>
-		    {/* <div className="filterBand"><button data-target="slide-out" className="sidenav-trigger"><i className="material-icons">filter_list</i> Filter</button></div> */}
-        <h5>One Step Closer to Your Dream Bike</h5>
-        {/* {this.scrollPos ? "collapse" : ""} */}
+		    <h5>One Step Closer to Your Dream Bike</h5>
         <div className={this.scrollPos ? "collapse" : "input-field sortby"} onClick={this.toggleList}>
           <select
             ref={(select) => {this.select = select}}
