@@ -18,4 +18,5 @@ export const BRANDS = [
     'Hyosung',
     'UM',
     'Jawa',
+    'Aprillia'
 ];

@@ -40,12 +40,12 @@ export const apiFail = (error) => {
 
 export const getVehicles = (category = null, filterData = null, searchTerm = null) => {
     let url = "";
-    // if(category==null || category==0){
-    //     url = "/apis/seedData/getAllBikes";
-    // }
-    // else{
+    if(category==null || category==0){
+        url = "/apis/seedData/getAllBikes";
+    }
+    else{
     url = "/apis/categoryDetails/getCategoryById?category=" + category + "&filterData=" + JSON.stringify(filterData) + "&searchTerm=" + searchTerm;
-    // }
+    }
     return dispatch => {
         axios.get(url)
             .then(response => {
