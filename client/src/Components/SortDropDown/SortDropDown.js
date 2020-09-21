@@ -53,7 +53,7 @@ class SortDropDown extends Component {
     return (
       <React.Fragment>
 		    <h5>One Step Closer to Your Dream Bike</h5>
-        <div className={this.scrollPos ? "collapse" : "input-field sortby"} onClick={this.toggleList}>
+        <div className="input-field sortby" onClick={this.toggleList}>
           <select
             ref={(select) => {this.select = select}}
             onChange={this.selectOption}

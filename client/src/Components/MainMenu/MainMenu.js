@@ -45,9 +45,9 @@ const StyledMenuItem = withStyles({
     },
     // #1d1d1d
     color: 'white',
-    backgroundColor: 'black',
+    backgroundColor: '#1d1d1d',
     fontWeight: 500,
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: "inherit",
   },
 })(MenuItem);
@@ -225,7 +225,7 @@ const LocationDropDown = () => {
     <>
     <span style={{height: 40, display: 'flex', justifyContent: "flex-start", alignItems: "center", cursor: 'pointer', color: 'black'}} onClick={handleClick}>
       <img className="menu-icons" aria-controls="location-menu" aria-haspopup="true" src={locationLogo}  alt="" />
-      <span style={{paddingLeft: '10px', width: "100%"}} >
+      <span style={{width: "100%"}} >
         {selectedCity ? selectedCity : "Select City"}
       </span>
       <span onClick={handleClick} >
@@ -248,7 +248,7 @@ const LocationDropDown = () => {
       MenuListProps={{ onMouseLeave: handleClose }}
       PaperProps={{
         style: {
-          backgroundColor: "#1d1d1d",
+          backgroundColor: "black",
           marginLeft: "0.5%",
         },
       }}
