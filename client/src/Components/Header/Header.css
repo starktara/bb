@@ -291,10 +291,6 @@ i.icon-black{
   box-shadow: none!important;
 }
 
-.collapse {
-  top: "-40px",
-}
-
 .box-shadow{
   width: fit-content;
   border-radius: 15px;

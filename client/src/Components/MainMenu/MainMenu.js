@@ -33,7 +33,6 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import ListItemText from '@material-ui/core/ListItemText';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 const StyledMenuItem = withStyles({
@@ -234,7 +233,7 @@ const LocationDropDown = () => {
     </span>
     
     <Menu
-      id="customized-menu"
+      id="customised-menu"
       anchorEl={anchorEl}
       keepMounted
       open={Boolean(anchorEl)}
@@ -249,7 +248,9 @@ const LocationDropDown = () => {
       PaperProps={{
         style: {
           backgroundColor: "black",
-          marginLeft: "0.5%",
+          marginLeft: "-0.4%",
+          width: "9.34%",
+          
         },
       }}
     >
@@ -465,7 +466,7 @@ const MainMenu = props => {
                         <LocationDropDown />
                       </div>
                     </Grid>
-                    <Grid item xs={8} sm={7} md={7} lg={7}>
+                    <Grid item xs={8} sm={7} md={7} lg={7} >
                     <div className="arrow" >
                       <Autocomplete
                         id="searchField"
