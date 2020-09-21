@@ -223,9 +223,9 @@ const LocationDropDown = () => {
 
   return (
     <>
-    <span style={{height: 40, display: 'flex', justifyContent: "flex-start", alignItems: "center", cursor: 'pointer', color: 'black'}} onClick={handleClick}>
+    <span style={{height: 40,display: 'flex', justifyContent: "flex-start", alignItems: "center", cursor: 'pointer', color: 'black'}} onClick={handleClick}>
       <img className="menu-icons" aria-controls="location-menu" aria-haspopup="true" src={locationLogo}  alt="" />
-      <span style={{width: "100%"}} >
+      <span style={{width: "85%", marginLeft: "1.75%"}} >
         {selectedCity ? selectedCity : "Select City"}
       </span>
       <span onClick={handleClick} >
@@ -455,17 +455,17 @@ const MainMenu = props => {
             </Link>
           </Grid>
           <Grid item xs={1} sm={1} md={1} lg={1}></Grid>
-          <Grid item xs={6} sm={6} md={6} lg={6}>
+          <Grid item xs={6} sm={5} md={5} lg={5}>
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <form id="searchForm" className="input-field">
                   <Grid container component="div" className="search-container-main" direction="row">
-                    <Grid item xs={2} sm={2} md={2} lg={2}>
+                    <Grid item xs={2} sm={3} md={3} lg={3}>
                       <div id='searchLocation' style={{border: "3px !important"}} >
                         <LocationDropDown />
                       </div>
                     </Grid>
-                    <Grid item xs={8} sm={8} md={8} lg={8}>
+                    <Grid item xs={8} sm={7} md={7} lg={7}>
                     <div className="arrow" >
                       <Autocomplete
                         id="searchField"
@@ -500,7 +500,7 @@ const MainMenu = props => {
               </Grid>
             </Grid>
             <Grid container component="div" direction="row" >
-              <Grid item xs={12} sm={12} md={11} lg={12} style={{display: "flex", justifyContent:"center"}}>
+              <Grid item xs={12} sm={12} md={12} lg={12} style={{display: "flex", justifyContent:"center"}}>
                   <ul className="nav-options">
                     <BuyButton />
                     <li style={{paddingTop: '1px'}}> 
