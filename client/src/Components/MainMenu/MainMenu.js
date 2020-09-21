@@ -329,7 +329,7 @@ const HamburgerDropdown = () => {
       PaperProps={{
         style: {
           backgroundColor: "#1d1d1d",
-          width:'380px',
+          width:'353px',
           marginTop: '-16px'
         },
       }}
@@ -356,7 +356,7 @@ const HamburgerDropdown = () => {
         </StyledMenuItem>
       </Link>
       <Link to={`/contact`}>
-        <StyledMenuItem style={{marginBottom:'20px'}}>
+        <StyledMenuItem style={{marginBottom:'10px'}}>
           <img className="icon-img" src={selectedTyre} height="25" alt=""  />
           <span style={{lineHeight:'34px'}}>Contact Us</span>
         </StyledMenuItem>
@@ -405,8 +405,9 @@ const HamburgerDropdown = () => {
       </MenuItem>
       <br />
       <Link to={`/copyright`}>
-        <StyledMenuItem style={{marginTop:'20px'}} >
-          <span style={{marginLeft:'25px', fontSize:'16px'}}>© 2019 BikeBazaar. All rights reserved.</span>
+        <StyledMenuItem  >
+        {/* style={{marginTop:'12px'}} style removed added by Ankit */}
+          <span style={{ fontSize:'16px'}}>© 2019 BikeBazaar. All rights reserved.</span>
         </StyledMenuItem>
       </Link>
       <br />
