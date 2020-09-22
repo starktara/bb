@@ -5,14 +5,13 @@ import bikeBazaarLogo from "../../assets/BikeB-logo.png";
 import personLogo from "../../assets/Person.png";
 import locationLogo from "../../assets/gps.svg";
 import hamburgerIcon from "../../assets/Hamburger_Icon.png";
-// import callIcon from "../../assets/Call.png";
 import callIcon from "../../assets/Phone.svg";
 import messageIcon from "../../assets/message.png";
 import closeIcon from "../../assets/Close.png";
-import faceBookIcon from '../../assets/facebook-icon.svg';
-import twitterIcon from '../../assets/twitter-icon.svg';
-import linkedinIcon from '../../assets/linkedin-icon.svg';
-import instagramIcon from '../../assets/instagram-icon.svg';
+// import faceBookIcon from '../../assets/facebook-icon.svg';
+// import twitterIcon from '../../assets/twitter-icon.svg';
+// import linkedinIcon from '../../assets/linkedin-icon.svg';
+// import instagramIcon from '../../assets/instagram-icon.svg';
 import selectedTyre from '../../assets/SelectedPageTyre.svg';
 import Grid from "@material-ui/core/Grid";
 import M from "materialize-css";
@@ -30,18 +29,24 @@ import TextField from '@material-ui/core/TextField';
 import * as actions from "../../store/actions/index";
 import _ from "lodash";
 import useDebounce from "./use-debounce";
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 const StyledMenuItem = withStyles({
   root: {
     '&:hover': {
       backgroundColor: 'white',
       color: 'black',
-      fontWeight: 800
+      fontWeight: 600
     },
+    // #1d1d1d
     color: 'white',
-    backgroundColor: '1#d1d1d',
-    fontWeight: 500,
-    fontSize: 18,
+    backgroundColor: '#1d1d1d',
+    fontWeight: 400,
+    fontSize: 16,
     fontFamily: "inherit",
   },
 })(MenuItem);
@@ -178,19 +183,32 @@ const PersonDropdown = () => {
   );
 }
 
+
 const LocationDropDown = () => {
   const dispatch = useDispatch();
-  const [anchorEl, setAnchorEl] = useState();
-  const selectedCity = useSelector(state => state.vehicleDetails.selectedCity);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [select, setSelect] = useState(true);
+  const { selectedCity } = useSelector(state => state.vehicleDetails);
+  
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    setSelect(!select);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+  
   const handleCityChange = (value) => {
     // console.log(value)
-    dispatch({ type: CHANGE_CITY, payload: value });
+    if (value === "Select City") {
+      dispatch({ type: CHANGE_CITY, payload: "" });
+    }
+    else{
+      dispatch({ type: CHANGE_CITY, payload: value });
+    
+    }
+
     handleClose();
     if(window.location.pathname === "/" ) {
       window.scrollTo({
@@ -199,15 +217,24 @@ const LocationDropDown = () => {
       });
     }
   }
-  console.log();
+
+  console.log("New City", selectedCity);
+
   return (
     <>
-    <span style={{height: 40, display: 'flex', justifyContent: "flex-start", alignItems: "center", cursor: 'pointer'}} onClick={handleClick}>
-      <img className="menu-icons" aria-controls="location-menu" aria-haspopup="true" src={locationLogo}  alt="" />
-      <span style={{color:"black", fontSize: 13}}>{selectedCity}</span>
+    <span style={{height: 40,display: 'flex', justifyContent: "flex-start", alignItems: "center", cursor: 'pointer', color: 'black'}} onClick={handleClick}>
+      <img className="menu-icons1" aria-controls="location-menu" aria-haspopup="true" src={locationLogo}  alt="" />
+      <span className="span-select-city" >
+        {selectedCity ? selectedCity : "Select City"}
+      </span>
+      <span onClick={handleClick} >
+        {select ? <ExpandMoreIcon style={{paddingTop: "5px", justifyContent: "center" }} /> : <ChevronRightIcon style={{paddingTop: "5px", justifyContent: "center"}} />  }
+      </span>
+      <div id="border-height"></div>
     </span>
+    
     <Menu
-      id="location-menu"
+      id="customised-menu"
       anchorEl={anchorEl}
       keepMounted
       open={Boolean(anchorEl)}
@@ -215,16 +242,23 @@ const LocationDropDown = () => {
       getContentAnchorEl={null}
       anchorOrigin={{
         vertical: "bottom",
-        horizontal: "right",
+        horizontal: "center",
       }}
-      transformOrigin={{ vertical: "bottom", horizontal: "left" }}
+      transformOrigin={{ vertical: "top", horizontal: "center" }}
       MenuListProps={{ onMouseLeave: handleClose }}
       PaperProps={{
         style: {
           backgroundColor: "black",
+          marginLeft: "-0.1%",
+          width: "11.72%",
+          scrollbarWidth: "thin"
         },
       }}
     >
+
+      <StyledMenuItem onClick={() => handleCityChange("Select City")}>
+        Select City
+      </StyledMenuItem>
       <StyledMenuItem onClick={() => handleCityChange("Aluva")}>
         Aluva
       </StyledMenuItem>
@@ -235,7 +269,7 @@ const LocationDropDown = () => {
         Rajahmundry
       </StyledMenuItem>
       <StyledMenuItem onClick={() => handleCityChange("Thrissur")}>
-      Thrissur
+        Thrissur
       </StyledMenuItem>
       <StyledMenuItem onClick={() => handleCityChange("Bangalore")}>
         Bangalore
@@ -297,7 +331,7 @@ const HamburgerDropdown = () => {
       PaperProps={{
         style: {
           backgroundColor: "#1d1d1d",
-          width:'380px',
+          width:'328px',
           marginTop: '-16px'
         },
       }}
@@ -324,7 +358,7 @@ const HamburgerDropdown = () => {
         </StyledMenuItem>
       </Link>
       <Link to={`/contact`}>
-        <StyledMenuItem style={{marginBottom:'20px'}}>
+        <StyledMenuItem style={{marginBottom:'10px'}}>
           <img className="icon-img" src={selectedTyre} height="25" alt=""  />
           <span style={{lineHeight:'34px'}}>Contact Us</span>
         </StyledMenuItem>
@@ -346,23 +380,36 @@ const HamburgerDropdown = () => {
       </StyledMenuItem>
       <hr className="small-hr" />
       <MenuItem>
-        <a href="https://www.facebook.com/BikeBazaaar">
-          <img className="social-icon-img" src={faceBookIcon}  alt="" style={{marginLeft:'35px'}} />
-        </a>
-        <a href="https://twitter.com/BikeBazaaar">
-          <img className="social-icon-img" src={twitterIcon}  alt="" />
-        </a>
-        <a href="https://www.linkedin.com/company/bikebazaar">
-          <img className="social-icon-img" src={linkedinIcon}  alt="" />
-        </a>
-        <a href="https://www.instagram.com/bikebazaaar/">
-          <img className="social-icon-img" src={instagramIcon}  alt="" />
-        </a>
+        <div style={{marginLeft:'20px'}}>
+          <a href="https://www.facebook.com/BikeBazaaar">
+            {/* <img className="social-icon-img" src={faceBookIcon}  alt="" style={{marginLeft:'35px'}} /> */}
+            <FacebookIcon />
+          </a>
+        </div>
+        <div style={{marginLeft:'20px'}}>
+          <a href="https://twitter.com/BikeBazaaar">
+            {/* <img className="social-icon-img" src={twitterIcon}  alt="" /> */}
+            <TwitterIcon />
+          </a>
+        </div>
+        <div style={{marginLeft:'20px'}}>
+          <a href="https://www.linkedin.com/company/bikebazaar">
+            {/* <img className="social-icon-img" src={linkedinIcon}  alt="" /> */}
+            <LinkedInIcon />
+          </a>
+        </div>
+        <div style={{marginLeft:'20px'}}>
+          <a href="https://www.instagram.com/bikebazaaar/">
+            <InstagramIcon />
+            {/* <img className="social-icon-img" src={instagramIcon}  alt="" /> */}
+          </a>
+        </div>
       </MenuItem>
       <br />
       <Link to={`/copyright`}>
-        <StyledMenuItem style={{marginTop:'20px'}} >
-          <span style={{marginLeft:'25px', fontSize:'16px'}}>© 2019 BikeBazaar. All rights reserved.</span>
+        <StyledMenuItem  >
+        {/* style={{marginTop:'12px'}} style removed added by Ankit */}
+          <span style={{ fontSize:'16px'}}>© 2019 BikeBazaar. All rights reserved.</span>
         </StyledMenuItem>
       </Link>
       <br />
@@ -395,6 +442,7 @@ const MainMenu = props => {
     }
   }, [debouncedSearchTerm, selectedCity]);
   
+
   const updateState = value => {
     setSearchTerm(value.toLowerCase());
   }
@@ -414,12 +462,13 @@ const MainMenu = props => {
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <form id="searchForm" className="input-field">
                   <Grid container component="div" className="search-container-main" direction="row">
-                    <Grid item xs={2} sm={2} md={2} lg={2}>
-                      <div id='searchLocation' style={{border: "3px !important"}} >
+                    <Grid item xs={2} sm={2} md={3} lg={3}>
+                      <div id='searchLocation' >
                         <LocationDropDown />
+                        
                       </div>
                     </Grid>
-                    <Grid item xs={8} sm={8} md={8} lg={8}>
+                    <Grid item xs={8} sm={8} md={7} lg={7} >
                     <div className="arrow" >
                       <Autocomplete
                         id="searchField"
@@ -454,7 +503,7 @@ const MainMenu = props => {
               </Grid>
             </Grid>
             <Grid container component="div" direction="row" >
-              <Grid item xs={12} sm={12} md={11} lg={12} style={{display: "flex", justifyContent:"center"}}>
+              <Grid item xs={12} sm={12} md={12} lg={12} style={{display: "flex", justifyContent:"center"}}>
                   <ul className="nav-options">
                     <BuyButton />
                     <li style={{paddingTop: '1px'}}> 
@@ -473,15 +522,15 @@ const MainMenu = props => {
           <Grid item xs={1} sm={1} md={1} lg={1}></Grid>
           <Grid item xs={2} sm={2} md={2} lg={2} className="location-btn-container">
             <Grid container component="div" direction="row" style={{paddingTop:'5px', display:'flex', alignItems:'center'}}>
-              <Grid item xs={4} sm={4} md={4} lg={4}>
+              <Grid item xs={2} sm={2} md={4} lg={4}>
                 <PersonDropdown />
               </Grid>
-              <Grid item xs={4} sm={4} md={4} lg={4}>
+              <Grid item xs={2} sm={2} md={4} lg={4}>
                 <a target="/" href="mailto:connect@bikebazaar.com">
                   <img height="25" style={{marginLeft: -5}} src={messageIcon}  alt=""  />
                 </a>
               </Grid>
-              <Grid item xs={4} sm={4} md={4} lg={4}>
+              <Grid item xs={1} sm={1} md={2} lg={2}>
                 <HamburgerDropdown />
               </Grid>
             </Grid>

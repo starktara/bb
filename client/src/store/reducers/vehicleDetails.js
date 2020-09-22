@@ -9,8 +9,8 @@ const initialState = {
   currentPage: null,
   totalPages: null,
   vehicle: null,
-  category: 1,
-  selectedCity: "Aluva", //this will serve as city filter gets update on city widget
+  category: 0,
+  selectedCity: "", //this will serve as city filter gets update on city widget
   filter: {
     sort: {
       column: null,

@@ -103,6 +103,7 @@ const CategoryPage = props => {
     renderedVehicles = <h2>'No Vehicles Found!'</h2>;
   }
 
+  console.log(categoryData);
   let navigation = categoryData[props.match.params.category].name
     .replace("Bike", "Motorcycle")
     .slice(0, -1)
