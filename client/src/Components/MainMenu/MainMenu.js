@@ -40,12 +40,12 @@ const StyledMenuItem = withStyles({
     '&:hover': {
       backgroundColor: 'white',
       color: 'black',
-      fontWeight: 800
+      fontWeight: 600
     },
     // #1d1d1d
     color: 'white',
     backgroundColor: '#1d1d1d',
-    fontWeight: 500,
+    fontWeight: 400,
     fontSize: 16,
     fontFamily: "inherit",
   },
@@ -223,13 +223,14 @@ const LocationDropDown = () => {
   return (
     <>
     <span style={{height: 40,display: 'flex', justifyContent: "flex-start", alignItems: "center", cursor: 'pointer', color: 'black'}} onClick={handleClick}>
-      <img className="menu-icons" aria-controls="location-menu" aria-haspopup="true" src={locationLogo}  alt="" />
-      <span style={{width: "85%", marginLeft: "1.75%"}} >
+      <img className="menu-icons1" aria-controls="location-menu" aria-haspopup="true" src={locationLogo}  alt="" />
+      <span className="span-select-city" >
         {selectedCity ? selectedCity : "Select City"}
       </span>
       <span onClick={handleClick} >
-        {select ? <ExpandMoreIcon style={{paddingTop: "5px", justifyContent: "center"}} /> : <ChevronRightIcon style={{paddingTop: "5px", justifyContent: "center"}} />  }
+        {select ? <ExpandMoreIcon style={{paddingTop: "5px", justifyContent: "center" }} /> : <ChevronRightIcon style={{paddingTop: "5px", justifyContent: "center"}} />  }
       </span>
+      <div id="border-height"></div>
     </span>
     
     <Menu
@@ -248,9 +249,9 @@ const LocationDropDown = () => {
       PaperProps={{
         style: {
           backgroundColor: "black",
-          marginLeft: "-0.4%",
-          width: "9.34%",
-          
+          marginLeft: "-0.1%",
+          width: "11.72%",
+          scrollbarWidth: "thin"
         },
       }}
     >
@@ -330,7 +331,7 @@ const HamburgerDropdown = () => {
       PaperProps={{
         style: {
           backgroundColor: "#1d1d1d",
-          width:'353px',
+          width:'328px',
           marginTop: '-16px'
         },
       }}
@@ -456,17 +457,18 @@ const MainMenu = props => {
             </Link>
           </Grid>
           <Grid item xs={1} sm={1} md={1} lg={1}></Grid>
-          <Grid item xs={6} sm={5} md={5} lg={5}>
+          <Grid item xs={6} sm={6} md={6} lg={6}>
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <form id="searchForm" className="input-field">
                   <Grid container component="div" className="search-container-main" direction="row">
-                    <Grid item xs={2} sm={3} md={3} lg={3}>
-                      <div id='searchLocation' style={{border: "3px !important"}} >
+                    <Grid item xs={2} sm={2} md={3} lg={3}>
+                      <div id='searchLocation' >
                         <LocationDropDown />
+                        
                       </div>
                     </Grid>
-                    <Grid item xs={8} sm={7} md={7} lg={7} >
+                    <Grid item xs={8} sm={8} md={7} lg={7} >
                     <div className="arrow" >
                       <Autocomplete
                         id="searchField"
@@ -520,15 +522,15 @@ const MainMenu = props => {
           <Grid item xs={1} sm={1} md={1} lg={1}></Grid>
           <Grid item xs={2} sm={2} md={2} lg={2} className="location-btn-container">
             <Grid container component="div" direction="row" style={{paddingTop:'5px', display:'flex', alignItems:'center'}}>
-              <Grid item xs={4} sm={4} md={4} lg={4}>
+              <Grid item xs={2} sm={2} md={4} lg={4}>
                 <PersonDropdown />
               </Grid>
-              <Grid item xs={4} sm={4} md={4} lg={4}>
+              <Grid item xs={2} sm={2} md={4} lg={4}>
                 <a target="/" href="mailto:connect@bikebazaar.com">
                   <img height="25" style={{marginLeft: -5}} src={messageIcon}  alt=""  />
                 </a>
               </Grid>
-              <Grid item xs={4} sm={4} md={4} lg={4}>
+              <Grid item xs={1} sm={1} md={2} lg={2}>
                 <HamburgerDropdown />
               </Grid>
             </Grid>

@@ -62,11 +62,19 @@
 .social-icon-img {
     margin-right: 15px;
 }
-.menu-icons{
+.menu-icons1{
     cursor: pointer;
     height: 47%;
     margin-top: 1%;
-    margin-left: 5%;
+    /* /* margin-left: 5%; * */
+}
+.menu-icons{
+    cursor: pointer;
+    height: 50%;
+}
+.span-select-city{
+    margin-left: 1.75%;
+    width: 200%;
 }
 .phone-number-container{
     display: flex;
