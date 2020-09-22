@@ -72,7 +72,7 @@ nav {
     background: #000000 !important;
 }
 #searchField{
-    width: 80.2%;
+    width: 82.94%;
     background-color: white;
     border-radius: 5px;
     height: 57px;
@@ -401,9 +401,6 @@ i.icon-black{
     border-bottom: none!important;
     box-shadow: none!important;
 }
-.collapse {
-    top: "-40px",
-  }
   
 .box-shadow{
     width: fit-content;

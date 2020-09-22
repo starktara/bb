@@ -53,13 +53,14 @@ class SortDropDown extends Component {
     return (
       <React.Fragment>
 		    <h5>One Step Closer to Your Dream Bike</h5>
-        <div className={this.scrollPos ? "collapse" : "input-field sortby"} onClick={this.toggleList}>
+        <div className="input-field sortby" onClick={this.toggleList}>
           <select
             ref={(select) => {this.select = select}}
             onChange={this.selectOption}
             visible={this.state.visible}
-            defaultValue="">
-            <option value="" disabled>Sort by</option>
+            // defaultValue="">
+            >
+            <option value="">Sort by</option>
             <option value="price-asc">Price - Low to High</option>
             <option value="price-desc">Price - High to Low</option>
             <option value="myear-asc">Manufacturing Year - Low to High</option>

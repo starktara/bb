@@ -33,7 +33,6 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import ListItemText from '@material-ui/core/ListItemText';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 const StyledMenuItem = withStyles({
@@ -41,13 +40,13 @@ const StyledMenuItem = withStyles({
     '&:hover': {
       backgroundColor: 'white',
       color: 'black',
-      fontWeight: 800
+      fontWeight: 600
     },
     // #1d1d1d
     color: 'white',
-    backgroundColor: 'black',
-    fontWeight: 500,
-    fontSize: 18,
+    backgroundColor: '#1d1d1d',
+    fontWeight: 400,
+    fontSize: 16,
     fontFamily: "inherit",
   },
 })(MenuItem);
@@ -223,18 +222,19 @@ const LocationDropDown = () => {
 
   return (
     <>
-    <span style={{height: 40, display: 'flex', justifyContent: "flex-start", alignItems: "center", cursor: 'pointer', color: 'black'}} onClick={handleClick}>
-      <img className="menu-icons" aria-controls="location-menu" aria-haspopup="true" src={locationLogo}  alt="" />
-      <span style={{paddingLeft: '10px', width: "100%"}} >
+    <span style={{height: 40,display: 'flex', justifyContent: "flex-start", alignItems: "center", cursor: 'pointer', color: 'black'}} onClick={handleClick}>
+      <img className="menu-icons1" aria-controls="location-menu" aria-haspopup="true" src={locationLogo}  alt="" />
+      <span className="span-select-city" >
         {selectedCity ? selectedCity : "Select City"}
       </span>
       <span onClick={handleClick} >
-        {select ? <ExpandMoreIcon style={{paddingTop: "5px", justifyContent: "center"}} /> : <ChevronRightIcon style={{paddingTop: "5px", justifyContent: "center"}} />  }
+        {select ? <ExpandMoreIcon style={{paddingTop: "5px", justifyContent: "center" }} /> : <ChevronRightIcon style={{paddingTop: "5px", justifyContent: "center"}} />  }
       </span>
+      <div id="border-height"></div>
     </span>
     
     <Menu
-      id="customized-menu"
+      id="customised-menu"
       anchorEl={anchorEl}
       keepMounted
       open={Boolean(anchorEl)}
@@ -248,8 +248,10 @@ const LocationDropDown = () => {
       MenuListProps={{ onMouseLeave: handleClose }}
       PaperProps={{
         style: {
-          backgroundColor: "#1d1d1d",
-          marginLeft: "0.5%",
+          backgroundColor: "black",
+          marginLeft: "-0.1%",
+          width: "11.72%",
+          scrollbarWidth: "thin"
         },
       }}
     >
@@ -329,7 +331,7 @@ const HamburgerDropdown = () => {
       PaperProps={{
         style: {
           backgroundColor: "#1d1d1d",
-          width:'380px',
+          width:'25.5%',
           marginTop: '-16px'
         },
       }}
@@ -356,7 +358,7 @@ const HamburgerDropdown = () => {
         </StyledMenuItem>
       </Link>
       <Link to={`/contact`}>
-        <StyledMenuItem style={{marginBottom:'20px'}}>
+        <StyledMenuItem style={{marginBottom:'10px'}}>
           <img className="icon-img" src={selectedTyre} height="25" alt=""  />
           <span style={{lineHeight:'34px'}}>Contact Us</span>
         </StyledMenuItem>
@@ -405,8 +407,9 @@ const HamburgerDropdown = () => {
       </MenuItem>
       <br />
       <Link to={`/copyright`}>
-        <StyledMenuItem style={{marginTop:'20px'}} >
-          <span style={{marginLeft:'25px', fontSize:'16px'}}>© 2019 BikeBazaar. All rights reserved.</span>
+        <StyledMenuItem  >
+        {/* style={{marginTop:'12px'}} style removed added by Ankit */}
+          <span style={{ fontSize:'16px'}}>© 2019 BikeBazaar. All rights reserved.</span>
         </StyledMenuItem>
       </Link>
       <br />
@@ -459,12 +462,13 @@ const MainMenu = props => {
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <form id="searchForm" className="input-field">
                   <Grid container component="div" className="search-container-main" direction="row">
-                    <Grid item xs={2} sm={2} md={2} lg={2}>
-                      <div id='searchLocation' style={{border: "3px !important"}} >
+                    <Grid item xs={2} sm={2} md={3} lg={3}>
+                      <div id='searchLocation' >
                         <LocationDropDown />
+                        
                       </div>
                     </Grid>
-                    <Grid item xs={8} sm={8} md={8} lg={8}>
+                    <Grid item xs={8} sm={8} md={7} lg={7} >
                     <div className="arrow" >
                       <Autocomplete
                         id="searchField"
@@ -499,7 +503,7 @@ const MainMenu = props => {
               </Grid>
             </Grid>
             <Grid container component="div" direction="row" >
-              <Grid item xs={12} sm={12} md={11} lg={12} style={{display: "flex", justifyContent:"center"}}>
+              <Grid item xs={12} sm={12} md={12} lg={12} style={{display: "flex", justifyContent:"center"}}>
                   <ul className="nav-options">
                     <BuyButton />
                     <li style={{paddingTop: '1px'}}> 
@@ -518,15 +522,15 @@ const MainMenu = props => {
           <Grid item xs={1} sm={1} md={1} lg={1}></Grid>
           <Grid item xs={2} sm={2} md={2} lg={2} className="location-btn-container">
             <Grid container component="div" direction="row" style={{paddingTop:'5px', display:'flex', alignItems:'center'}}>
-              <Grid item xs={4} sm={4} md={4} lg={4}>
+              <Grid item xs={2} sm={2} md={4} lg={4}>
                 <PersonDropdown />
               </Grid>
-              <Grid item xs={4} sm={4} md={4} lg={4}>
+              <Grid item xs={2} sm={2} md={4} lg={4}>
                 <a target="/" href="mailto:connect@bikebazaar.com">
                   <img height="25" style={{marginLeft: -5}} src={messageIcon}  alt=""  />
                 </a>
               </Grid>
-              <Grid item xs={4} sm={4} md={4} lg={4}>
+              <Grid item xs={1} sm={1} md={2} lg={2}>
                 <HamburgerDropdown />
               </Grid>
             </Grid>

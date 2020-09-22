@@ -61,7 +61,7 @@ body{
   background: #1d1d1d !important;
 }
 #searchField{
-  width: 84.2%;
+  width: 89.2%;
   /* background: url(../../assets/icons/right.svg) 0 7px no-repeat; */
   background-size: 13px 27px;
   background-color: white;
@@ -78,6 +78,17 @@ body{
   height: 40px;
   padding-left: 4px;
   /* padding-top: 7px; */
+  width: 100%;
+  /* border-right: 1px solid black; */
+  /* line-height: 10px; */
+  
+}
+
+#border-height {
+  border-right: 2px solid black;
+  height: 18px;
+  line-height: 10px;
+  position: relative;
 }
 
 #searchLocation:hover {
@@ -289,10 +300,6 @@ i.icon-black{
 .input-field input[type=text]:focus {
   border-bottom: none!important;
   box-shadow: none!important;
-}
-
-.collapse {
-  top: "-40px",
 }
 
 .box-shadow{
