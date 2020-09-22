@@ -331,7 +331,7 @@ const HamburgerDropdown = () => {
       PaperProps={{
         style: {
           backgroundColor: "#1d1d1d",
-          width:'328px',
+          width:'25.5%',
           marginTop: '-16px'
         },
       }}
