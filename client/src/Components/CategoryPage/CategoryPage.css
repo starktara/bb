@@ -70,6 +70,7 @@ form {
   margin: 0 0 0 -20px;
   left: 0 !important;
   top: 45 !important;
+  z-index: 1;
 }
 .ProductListSec .sortby input.select-dropdown {
   background: url(../../assets/icons/drop-down.png) 100% / 15% no-repeat #fff;
@@ -80,6 +81,7 @@ form {
   margin-left: -44px;
   height: 48px;
 }
+
 
 .ProductListSec .Prod {
   height: auto;

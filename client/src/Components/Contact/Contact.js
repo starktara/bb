@@ -350,11 +350,12 @@ const Contact = props => {
                   BikeBazaar<sup>TM</sup>
                 </p>
                 <p className="address">
-                  161/3A, Sham Shankuntal Heights 
-                  <br /> 
-                  Ganeshkhind Road, Modi Baug, Shivaji Nagar
-                  <br /> 
-                  Pune, Maharashtra, 411016
+                The Daftar, Bungalow No. 261/2/7
+                <br />
+                Silver Oak Society, Baner Road, Baner
+                <br />
+                Pune, Maharashtra 411045.
+                <br />
                 </p>
                 <p className="sub-heading-black">Contact:</p>
                 <a target="_blank" href="tel: 8956853498" >
@@ -520,7 +521,7 @@ const Contact = props => {
           <Grid container component="div" direction="row" className={classes.mapContainer}>
             <Grid item xs={12} sm={12} md={12} lg={12} className="mapContainer">
               <GoogleMap
-                center={{ lat: 18.532815, lng: 73.842566 }}
+                center={{ lat: 18.552560, lng: 73.804782 }}
                 zoom={12}
                 location=""
               />

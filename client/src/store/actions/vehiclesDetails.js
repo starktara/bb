@@ -40,15 +40,16 @@ export const apiFail = (error) => {
 
 export const getVehicles = (category = null, filterData = null, searchTerm = null) => {
     let url = "";
-    if(category==null){
+    if(category==null || category==0){
         url = "/apis/seedData/getAllBikes";
     }
     else{
-        url = "/apis/categoryDetails/getCategoryById?category=" + category + "&filterData=" + JSON.stringify(filterData) + "&searchTerm=" + searchTerm;
+    url = "/apis/categoryDetails/getCategoryById?category=" + category + "&filterData=" + JSON.stringify(filterData) + "&searchTerm=" + searchTerm;
     }
     return dispatch => {
         axios.get(url)
             .then(response => {
+                console.log("response1", response);
                 dispatch(vehicleList(response.data, filterData, category));
             })
             .catch(err => {
@@ -84,6 +85,20 @@ export const getVehiclesNames = (category, filterData, searchTerm) => {
         axios.get(url)
             .then(response => {
                 const names = response.data.map(bike => bike._source.name);
+                dispatch(vehicleNames(names))
+            })
+            .catch(err => {
+                dispatch(apiFail(err));
+            });
+    };
+};
+
+export const getCityNames = (filterData, searchTerm) => {
+    const url = "/apis/categoryDetails/getCities?filterData=" + JSON.stringify(filterData) + "&searchTerm=" + searchTerm;
+    return dispatch => {
+        axios.get(url)
+            .then(response => {
+                const names = response.data.map(city => city._source.name);
                 dispatch(vehicleNames(names))
             })
             .catch(err => {

@@ -28,6 +28,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const CATEGORY = [
+    'All',
     'Motorcycle',
     'Scooter',
     'High-End Motorcycle'
@@ -69,7 +70,7 @@ const VehicleDetails = (props) => {
             <Grid container component="div" direction="row" justify="center" alignItems="center">
                 <Grid item xs={12} sm={12} md={12} lg={12} className={classes.banner}>
                 <Banner
-                    navigation={CATEGORY[props.vehicle._source.category-1]}
+                    navigation={CATEGORY[props.vehicle._source.category]}
                     heading={name}
                     text=""
                     path={props.location.pathname}
