@@ -61,8 +61,7 @@ function zipHelper() {
     xlsxj(
       {
         input: "./Bulk/BulkUploadFiles/Records.xlsx",
-        output: null,   
-                     
+        output: null,
       },
       function (err, result) {
         if (err) {
@@ -98,11 +97,11 @@ function zipHelper() {
   }
 }
 
-function func1(data) {
-
+function imgMappingHelper(data) {
   return new Promise((resolve) => {
     let regnumtoimage = [];
     let iteratedimg = {};
+    let z = 0;
 
     data.forEach((vehicletoimg) => {
       regnumtoimage.push(vehicletoimg.registrationNumber);
@@ -119,16 +118,16 @@ function func1(data) {
           }
         }
       );
+      z++;
     }
     setTimeout(() => {
       resolve(iteratedimg);
-    }, 1000);
+    }, z * 10);
   });
 }
 
 async function dataUpload(data) {
-
-  const regtoimagesMapping = await func1(data);
+  const regtoimagesMapping = await imgMappingHelper(data);
 
   //making the modified array keys and values
 
@@ -139,8 +138,6 @@ async function dataUpload(data) {
       }
     );
   }
-
-  console.log(regtoimagesMapping);
 
   const latLon = [
     { lat: 10.100809, lon: 76.348984 },
