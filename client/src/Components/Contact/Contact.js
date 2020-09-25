@@ -66,6 +66,7 @@ const useStyles = makeStyles(theme => ({
   mapContainer: {
     marginTop: theme.spacing(5),
     marginBottom: theme.spacing(5),
+    height: 500
   },
   formError: {
     color: "red",
@@ -519,7 +520,7 @@ const Contact = props => {
             </Grid>
           </Grid>
           <Grid container component="div" direction="row" className={classes.mapContainer}>
-            <Grid item xs={12} sm={12} md={12} lg={12} className="mapContainer">
+            <Grid item xs={12} sm={12} md={12} lg={12} className="mapContainer" >
               <GoogleMap
                 center={{ lat: 18.552560, lng: 73.804782 }}
                 zoom={12}
