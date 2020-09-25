@@ -66,6 +66,7 @@ const useStyles = makeStyles(theme => ({
   mapContainer: {
     marginTop: theme.spacing(5),
     marginBottom: theme.spacing(5),
+    height: 500
   },
   formError: {
     color: "red",
