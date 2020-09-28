@@ -23,6 +23,9 @@ import FormControl from "@material-ui/core/FormControl";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AdminInnerHeader from "../AdminSection/AdminInnerHeader";
 import Spinner from "../../Components/UI/Spinner/Spinner";
+import { Image } from "semantic-ui-react";
+import Carousel from 'react-elastic-carousel';
+
 
 const useStyles = makeStyles((theme) => ({
   formError: {
@@ -273,6 +276,13 @@ const AdminUpload = (props) => {
     message: "",
     variant: "error",
   });
+
+  const responsive = [
+    {
+    width: 460,
+    itemsToShow: 5,
+    },
+  ];
 
   const [loader, setLoader] = useState(false);
 
@@ -1326,39 +1336,70 @@ const AdminUpload = (props) => {
 
               <br />
 
-              <div
-                className={
-                  matches
-                    ? "preview-image-container"
-                    : "preview-image-container-mobile"
-                }
-              >
-                {previewImages.map((file, _i) => (
-                  <div key={_i} className="image-preview">
+              { matches ? 
+                <div
+                className="preview-image-container"
+                > 
+                  <Carousel breakPoints={responsive}>
+                  {previewImages.map((file, _i) => (
+                    <div key={_i} className="image-preview-carousel">
+                    {file.saved !== undefined ? (
+                      <Image draggable={false} className="image-preview-carousel"
+                      src={vehicleImagePath + file.name}
+                      />
+                      ) : (
+                      <Image className="image-preview-carousel"
+                      src={URL.createObjectURL(file)}
+                      />
+                      ) 
+                      }
+
+                      <span title="Remove image">
+                      <DeleteIcon
+                      className="delete-icon"
+                      onClick={() => removeImageHandler(_i)}
+                      />
+                      </span>
+                    <br />
+                    </div>
+                  ))}
+                  </Carousel>
+                </div> :
+                <div
+                className="preview-image-container-mobile"
+                > 
+                  {previewImages.map((file, _i) => (
+                    <div key={_i} className="image-preview">
                     {file.saved !== undefined ? (
                       <img
-                        src={vehicleImagePath + file.name}
-                        width={200}
-                        height={150}
+                      width={200}
+                      height={150}
+                      src={vehicleImagePath + file.name}
                       />
-                    ) : (
+                      ) : (
                       <img
-                        src={URL.createObjectURL(file)}
-                        width={200}
-                        height={150}
+                      src={URL.createObjectURL(file)}
+                      width={200}
+                      height={150}
                       />
-                    )}
+                      ) 
+                      }
 
-                    <span title="Remove image">
+                      <span title="Remove image">
                       <DeleteIcon
-                        className="delete-icon"
-                        onClick={() => removeImageHandler(_i)}
+                      className="delete-icon"
+                      onClick={() => removeImageHandler(_i)}
                       />
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </Grid>
+                      </span>
+                    <br />
+                    </div>
+                    ))}
+                    </div> 
+                  } 
+
+                <br /> 
+{/* break the carousel here! */}
+          </Grid>
           </Grid>
           <div className="center-align">
             {vehicleId !== undefined ? (
