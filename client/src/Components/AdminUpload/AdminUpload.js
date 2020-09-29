@@ -279,9 +279,29 @@ const AdminUpload = (props) => {
 
   const responsive = [
     {
-    width: 460,
-    itemsToShow: 5,
+    width: 1,
+    itemsToShow: 2,
     },
+    {
+    width: 480,
+    itemsToShow: 4,
+    itemsToScroll: 2,
+    },
+    {
+    width: 750,
+    itemsToShow: 5,
+    itemsToScroll: 3,
+    },
+    {
+    width: 1150,
+    itemsToShow: 6,
+    itemsToScroll: 3,
+    },
+    {
+    width: 1650,
+    itemsToShow: 7,
+    itemsToScroll: 4,
+    }
   ];
 
   const [loader, setLoader] = useState(false);
@@ -1317,7 +1337,7 @@ const AdminUpload = (props) => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={12} sm={12} md={10} lg={10} className={classes.mt40}>
+            <Grid item xs={12} sm={12} md={11} lg={11} className={classes.mt40}>
               <label htmlFor="image">
                 <span className={classes.label}> Upload images </span>
               </label>
@@ -1334,13 +1354,13 @@ const AdminUpload = (props) => {
                 ""
               )}
 
-              <br />
-
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12} className={classes.mt40}>
               { matches ? 
                 <div
                 className="preview-image-container"
                 > 
-                  <Carousel breakPoints={responsive}>
+                  <Carousel breakPoints={responsive} pagination={false}>
                   {previewImages.map((file, _i) => (
                     <div key={_i} className="image-preview-carousel">
                     {file.saved !== undefined ? (
