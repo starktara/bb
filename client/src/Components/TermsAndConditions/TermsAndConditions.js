@@ -33,7 +33,7 @@ const useStyle = makeStyles(theme =>({
         fontSize: 18,
         lineHeight: '26px',
         letterSpacing: 0.53,
-        color: '#000000',
+        color: '#ff0000',
         fontWeight: 600
     },
     list:{

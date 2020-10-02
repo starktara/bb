@@ -349,7 +349,7 @@ const VehicleData = (props) => {
               <li className="cc">{props.data.cc} CC</li>
               <li className="owner">{props.data.owner}</li>
               <li className="location">
-                {props.data.loc + ", " + props.data.city}
+                {props.data.loc + ", " + props.data.state}
               </li>
             </ul>
             <br className="clr" />
