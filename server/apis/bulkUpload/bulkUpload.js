@@ -5,11 +5,8 @@ const Admzip = require("adm-zip");
 const xlsxj = require("xlsx-to-json");
 const fs = require("fs");
 const { Client } = require("@elastic/elasticsearch");
-const { Router } = require("express");
 const client = new Client({ node: "http://localhost:9200" });
-const path = require("path");
-const { resolve } = require("path");
-// const glob = require("glob");
+
 
 //global fileName variable
 var fileName = null;
