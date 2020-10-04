@@ -170,23 +170,6 @@ async function dataUpload(data) {
     discountPercent: parseFloat(vehicle.discountPercent),
   }));
 
-  console.log(modifiedData);
-
-  let imgArr = [];
-
-  modifiedData.forEach((vehicle) => {
-    vehicle.images.forEach((img) => {
-      imgArr.push({
-        path:
-          "../server/Bulk/BulkUploadFiles/images/" +
-          vehicle.regnumber +
-          "/" +
-          img.trim(),
-        name: img.trim(),
-      });
-    });
-  });
-
   // imgArr.forEach((oldImage) => {
   //   fs.rename(
   //     oldImage.path,
@@ -220,7 +203,7 @@ async function dataUpload(data) {
     );
   });
 
-  console.log(imgArr);
+ 
   const body = modifiedData.flatMap((doc) => [
     { index: { _index: "bike-details" } },
     doc,
