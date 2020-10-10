@@ -211,6 +211,11 @@ const BecomeFranchiseOwner = props => {
       value: "",
       error: false,
       errorMessage: ""
+    },
+    currentBusiness:{
+      value: "",
+      error: false,
+      errorMessage: ""
     }
   });
 
@@ -585,6 +590,22 @@ const BecomeFranchiseOwner = props => {
                           </div>
                         )}
                       </Grid>
+
+                      <Grid item xs={12} sm={12} md={5} lg={5}>
+                        <label className="fieldname" htmlFor="currentBusiness">
+                          <span className={classes.label}>Current Business:</span>&nbsp;&nbsp;
+                            </label>
+                        <input type="text" name="currentBusiness" id="currentBusiness"
+                         
+                          onBlur={event =>
+                            updateFormdata(event, formData)
+                          } />
+                       
+                      </Grid>
+
+                      {/* sample grid for adjusting */}
+                      <Grid item xs={12} sm={12} md={5} lg={5}>
+                      </Grid>                      
                     </Grid>
                   </Grid>
                 </Grid>
