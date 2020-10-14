@@ -5,10 +5,10 @@ const Admzip = require("adm-zip");
 const xlsxj = require("xlsx-to-json");
 const fs = require("fs");
 const { Client } = require("@elastic/elasticsearch");
-const { Router } = require("express");
+
 const client = new Client({ node: "http://localhost:9200" });
 const path = require("path");
-// const glob = require("glob");
+
 
 //global fileName variable
 var fileName = null;
@@ -107,7 +107,7 @@ async function dataUpload(data) {
   ];
   const dataset = [...data];
   const modifiedData = dataset.map((vehicle) => ({
-    id: Date.now(),
+    id:Date.now(),
     name: vehicle.name,
     type: parseInt(vehicle.category),
     model: parseInt(vehicle.model),

@@ -71,7 +71,7 @@ const CityWidget = props => {
       ...citynames,
       city: selectedCity
     }
-    console.log("filterData",filterData['city']);
+  
 
     if(debouncedSearchTerm.length > 2){
       setTimeout(() => {

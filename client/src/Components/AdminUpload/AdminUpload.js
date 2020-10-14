@@ -9,9 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import M from "materialize-css";
 import {BRANDS} from '../../shared/mappings/brands';
 import { MODELS } from '../../shared/mappings/bike_models';
-import { Link, useHistory } from 'react-router-dom'
-import Button from '@material-ui/core/Button';
-import BulkUpload from "../BulkUpload/BulkUpload";
+import {  useHistory } from 'react-router-dom'
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import DropdownComponentUpload from "./DropdownComponentUpload";

@@ -78,7 +78,7 @@ const LocateStore = props => {
       ...filter,
       storeId: clickedStore.storeId
     };
-    console.log("Store: ", clickedStore.stored);
+  
     // dispatch(actions.getVehiclesByStore(store, null, null, null));
     dispatch(actions.getVehicles( 1, storeFilter, null));
     dispatch({ type: CHANGE_CITY, payload: clickedStore.city});

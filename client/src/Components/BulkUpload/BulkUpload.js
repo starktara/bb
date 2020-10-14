@@ -47,24 +47,9 @@ const BulkUpload = () => {
 
   const onChangeHandler = (event) => {
     const files = event.target.files[0];
-    console.log(files);
-
     setSelectedFile(files);
   };
 
-  // const templateDownloader = () => {
-  //   console.log("working");
-  //   axios
-  //     .get("/apis/bulkUpload/SampleTemplate")
-  //     .then((res) => {
-
-  //       console.log(res.status);
-  //       console.log(res);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
 
   const templateDownloader = () => {
     fetch("/apis/bulkUpload/SampleTemplate").then((response) => {
@@ -90,13 +75,12 @@ const BulkUpload = () => {
       data.append("file", selectedFile);
       data.append("name", selectedFile.name);
 
-      console.log(data);
       //accessing the backendapi
       axios
         .post("/apis/bulkUpload/Upload", data)
         .then((res) => {
           // then print response status
-          console.log(res.statusText);
+       
           setshowSpinner(false);
           toast.success("Upload successfull !! ");
         })

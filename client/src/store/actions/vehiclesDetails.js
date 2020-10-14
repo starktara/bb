@@ -49,7 +49,6 @@ export const getVehicles = (category = null, filterData = null, searchTerm = nul
     return dispatch => {
         axios.get(url)
             .then(response => {
-                console.log("response1", response);
                 dispatch(vehicleList(response.data, filterData, category));
             })
             .catch(err => {
